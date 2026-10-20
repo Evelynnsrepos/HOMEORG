@@ -20,6 +20,7 @@ export default function Pantry() {
   const updatePantry = useStore((s) => s.updatePantry);
   const removePantry = useStore((s) => s.removePantry);
   const addShopping = useStore((s) => s.addShopping);
+  const rememberShelf = useStore((s) => s.rememberShelf);
 
   const [place, setPlace] = useState<Place>('fridge');
   const [draft, setDraft] = useState('');
@@ -163,12 +164,24 @@ export default function Pantry() {
           </Row>
 
           <Spacer h={8} />
-          <Btn
-            tone="sage"
-            icon="barcode-outline"
-            label="Scan a barcode"
-            onPress={() => router.push('/scan')}
-          />
+          <Row style={{ gap: 8 }}>
+            <View style={{ flex: 1 }}>
+              <Btn
+                tone="sage"
+                icon="barcode-outline"
+                label="Scan a barcode"
+                onPress={() => router.push('/scan')}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Btn
+                tone="quiet"
+                icon="document-text-outline"
+                label="REWE order"
+                onPress={() => router.push('/import')}
+              />
+            </View>
+          </Row>
 
           {/* The shelf ----------------------------------------------- */}
           <Spacer h={14} />
@@ -255,6 +268,7 @@ export default function Pantry() {
           onClose={() => setMenu(null)}
           onMove={(to) => {
             updatePantry(menu.id, { place: to });
+            rememberShelf(menu.name, to);
             setPlace(to);
             setMenu(null);
           }}

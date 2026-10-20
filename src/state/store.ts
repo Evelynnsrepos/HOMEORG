@@ -6,9 +6,10 @@ import { presetChallenges } from '../data/challenges';
 import { roomTypeById } from '../data/roomTypes';
 import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
-import { unitStep as pantryStep } from '../data/units';
+import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
 import { coinsForEffort, momentumBonus, taskCycleMs } from '../lib/engine';
+import { sameThing } from '../lib/orderImport';
 import { uid } from '../lib/id';
 import type {
   Achievement,
@@ -70,6 +71,10 @@ interface State {
   recipes: Recipe[];
   shopping: ShoppingItem[];
   pantry: PantryItem[];
+  /** shelf you moved something to, by lowercased name, so the next order gets it right */
+  shelfMemory: Record<string, Place>;
+  /** order numbers already put away, so the same PDF can't double the shelves */
+  importedOrders: string[];
   notes: PinnedNote[];
   sprints: SprintRecord[];
   achievements: Achievement[];
@@ -127,6 +132,9 @@ interface Actions {
   updatePantry: (id: string, patch: Partial<PantryItem>) => void;
   removePantry: (id: string) => void;
   useUpIngredients: (names: string[]) => void;
+  rememberShelf: (name: string, place: Place) => void;
+  /** a whole shop at once: onto the shelves, off the list. Returns how many list items it ticked. */
+  putAway: (items: Omit<PantryItem, 'id' | 'addedAt'>[], orderNo?: string) => number;
 
   addNote: (title: string, body: string) => void;
   removeNote: (id: string) => void;
@@ -155,6 +163,8 @@ const initialState: State = {
   recipes: [],
   shopping: [],
   pantry: [],
+  shelfMemory: {},
+  importedOrders: [],
   notes: [],
   sprints: [],
   achievements: [],
@@ -705,6 +715,30 @@ export const useStore = create<Store>()(
         set((s) => ({ pantry: s.pantry.map((p) => (p.id === id ? { ...p, ...patch } : p)) })),
 
       removePantry: (id) => set((s) => ({ pantry: s.pantry.filter((p) => p.id !== id) })),
+
+      rememberShelf: (name, place) =>
+        set((s) => {
+          const key = name.trim().toLowerCase();
+          if (!key || s.shelfMemory[key] === place) return {};
+          return { shelfMemory: { ...s.shelfMemory, [key]: place } };
+        }),
+
+      putAway: (items, orderNo) => {
+        for (const item of items) get().addPantry(item);
+        let ticked = 0;
+        set((s) => ({
+          shopping: s.shopping.map((i) => {
+            if (i.done || !items.some((it) => sameThing(i.name, it.name))) return i;
+            ticked++;
+            return { ...i, done: true };
+          }),
+          importedOrders:
+            orderNo && !s.importedOrders.includes(orderNo)
+              ? [...s.importedOrders, orderNo].slice(-50)
+              : s.importedOrders,
+        }));
+        return ticked;
+      },
 
       /** Cooked a meal: knock one step off everything it used. */
       useUpIngredients: (names) =>
