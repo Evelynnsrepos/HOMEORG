@@ -130,9 +130,13 @@ app/                 Screens (expo-router, dateibasiert)
   (tabs)/            Home, Today, My Home, Profile
   room/ task/ challenge/ decorate/ recipe/
   recipes.tsx shopping.tsx pantry.tsx Die drei Küchen-Reiter
+  scan.tsx import.tsx Barcode scannen, REWE-Bestellung einräumen
 src/
   lib/engine.ts      Sauberkeit, Priorität, Raumgesundheit, Tagesplanung
   lib/date.ts        Kalenderechte Intervalle
+  lib/pdf.ts         Kleiner PDF-Textleser (offline)
+  lib/rewe.ts        REWE-Bestellung lesen
+  lib/orderImport.ts Bestellung → Vorrat: Namen, Mengen, Regalplatz
   state/store.ts     Zustand + AsyncStorage
   state/music.ts     Player-Zustand (eigener Store, eigene Persistenz)
   state/derived.ts   Abgeleitete Werte für die Screens
@@ -194,6 +198,23 @@ tippst den Namen nur selbst.
 REWEs eigener Produkt-Endpunkt (`mobile-api.rewe.de`) löst nicht mehr auf, und
 für Warenkorb oder Einkaufsliste gibt es keine öffentliche Schnittstelle. Hier
 ist also nichts nachgebaut oder umgangen worden.
+
+## REWE-Bestellung einräumen
+
+Im Vorrat: **REWE order** → das PDF wählen, das REWE zur Abholung oder Lieferung
+schickt (Abhol-/Lieferavis). Die App liest es auf dem Handy, nichts wird
+hochgeladen. Gezählt wird die Liefermenge: Nicht Lieferbares und Gebühren fallen
+weg, Ersatzartikel kommen als das, was wirklich in der Tüte war, lose Ware mit
+dem echten Gewicht. Jedes Produkt bekommt einen Platz (Kühlschrank, Gefrierfach,
+Schrank) vorgeschlagen; Nicht-Essbares wie Teelichter ist abgewählt. Kurz
+durchsehen, **Put away**, fertig. Was auf der Einkaufsliste stand, wird
+abgehakt, und dieselbe Bestellung zweimal einräumen gibt eine Warnung.
+
+Wird etwas umgeräumt (hier oder später im Vorrat), merkt sich die App den Platz
+fürs nächste Mal.
+
+`npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen
+(`scripts/fixtures/`, ohne Kopfdaten wie Name oder Kundennummer).
 
 ## Was fehlt
 

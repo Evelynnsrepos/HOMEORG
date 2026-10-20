@@ -51,7 +51,9 @@ export function formatQty(n: number): string {
 export function qtyLabel(qty: number, unit: string): string {
   const known = unitById(unit);
   let word = known?.long ?? unit;
-  if (qty === 1 && word.length > 1 && word.endsWith('s')) word = word.slice(0, -1);
+  if (qty === 1 && word.length > 1 && word.endsWith('s')) {
+    word = word.endsWith('ches') ? word.slice(0, -2) : word.slice(0, -1);
+  }
   if (unit === 'pc' && qty === 1) word = 'pc';
   return `${formatQty(qty)} ${word}`;
 }
@@ -66,9 +68,29 @@ export const places: { id: Place; name: string; emoji: string; blurb: string }[]
 
 /**
  * A first guess at where something belongs and how it is measured, so adding a
- * shopped item is one tap instead of three.
+ * shopped item is one tap instead of three. First match wins, so the narrow
+ * rules come before the broad ones: "Koriander gemahlen" is a spice before it
+ * is a herb, "H-Milch" lives in the cupboard until it's opened.
+ *
+ * German first, because that's what the supermarket and the barcode database
+ * call things; the English list below catches what you type yourself.
  */
 const guesses: { match: RegExp; place: Place; unit: string }[] = [
+  { match: /gemahlen|gerebelt|flocken|gewürz|zimt|oregano|thymian|piment|kreuzkümmel|kurkuma|muskat|curry|pfeffer\b/i, place: 'pantry', unit: 'pack' },
+  { match: /\bH-|haltbar|haferdrink|hafermilch|mandeldrink|sojadrink|reisdrink|oat ?drink/i, place: 'pantry', unit: 'pack' },
+  { match: /tomatenmark|paprikamark|paste\b|pesto|honig|marmelade|konfitüre|senf|nutella|aufstrich/i, place: 'pantry', unit: 'jar' },
+  { match: /\btk\b|tiefkühl|tiefgefroren|pommes|frites|kroketten|iglo|dinos|onion rings|fischstäbchen|\beis\b|eiscreme|rahmspinat/i, place: 'freezer', unit: 'pack' },
+  { match: /joghurt|jogurt|skyr|quark|frischkäse|philadelphia|halloumi|feta|hirtenkäse|mozzarella|käse|butter|kaergarden|sahne|schmand|crème fraîche|creme fraiche|\bmilch\b|vollmilch|frischmilch/i, place: 'fridge', unit: 'pack' },
+  { match: /\beier\b/i, place: 'fridge', unit: 'pc' },
+  { match: /hack|gyros|strips|hähnchen|huhn|pute|wurst|schinken|salami|speck|aufschnitt|lachs|fisch|garnelen|tofu|tempeh|seitan|frische hefe|\bhefe\b|hummus/i, place: 'fridge', unit: 'pack' },
+  { match: /petersilie|koriander|basilikum|schnittlauch|\bdill\b|minze|rosmarin|im bund|\bbund\b/i, place: 'fridge', unit: 'bunch' },
+  { match: /salat|rucola|spinat|radieschen|lauchzwiebel|frühlingszwiebel|brokkoli|broccoli|chinakohl|kohlrabi|paprika|aubergine|zucchini|gurke|pilze|champignons|möhre|karotte|sellerie|\blauch|beeren|trauben/i, place: 'fridge', unit: 'pc' },
+  { match: /passiert|stückige|gehackte tomaten|\bdose\b|bohnen|kichererbsen|\bmais\b|kokosmilch|linsen/i, place: 'pantry', unit: 'can' },
+  { match: /kartoffel(?!.*pommes)|kart\./i, place: 'pantry', unit: 'bag' },
+  { match: /zwiebel|knoblauch|tomate|zitrone|limette|banane|apfel|äpfel|birne|orange|mandarine|avocado|ingwer|kürbis/i, place: 'pantry', unit: 'pc' },
+  { match: /öl\b|essig|aceto|balsamico|ketchup|mayonnaise|würze|sauce|soße|sirup|saft|wasser|wein\b|bier\b/i, place: 'pantry', unit: 'bottle' },
+  { match: /mehl|zucker|nudeln|fusilli|penne|spaghetti|tortiglioni|lasagne|reis|bulgur|couscous|haferflocken|müsli|korinthen|rosinen|nüsse|kerne|mandeln|fondor|backpulver|vanille|brot|toast|sandwich|brötchen|chips|schokolade|kekse|kaffee|tee\b/i, place: 'pantry', unit: 'pack' },
+
   { match: /milk|cream|yoghurt|yogurt|butter|cheese|quark|skyr/i, place: 'fridge', unit: 'ml' },
   { match: /egg/i, place: 'fridge', unit: 'pc' },
   { match: /chicken|beef|pork|mince|bacon|ham|sausage|fish|salmon|tofu/i, place: 'fridge', unit: 'g' },
@@ -81,7 +103,9 @@ const guesses: { match: RegExp; place: Place; unit: string }[] = [
   { match: /onion|potato|carrot|garlic|apple|banana|lemon|pepper|courgette/i, place: 'pantry', unit: 'pc' },
 ];
 
-export function guessFor(name: string): { place: Place; unit: string } {
+export function guessFor(name: string): { place: Place; unit: string; known: boolean } {
   const hit = guesses.find((g) => g.match.test(name));
-  return hit ? { place: hit.place, unit: hit.unit } : { place: 'pantry', unit: 'pc' };
+  return hit
+    ? { place: hit.place, unit: hit.unit, known: true }
+    : { place: 'pantry', unit: 'pc', known: false };
 }
