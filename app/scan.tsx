@@ -198,7 +198,7 @@ export default function Scan() {
           initial={{ qty: pending.qty ?? 1, unit: pending.unit, place: pending.place }}
           onCancel={close}
           onConfirm={(b) => {
-            addPantry({ name: b.name, qty: b.qty, unit: b.unit, place: b.place });
+            addPantry(b);
             setAdded((a) => [...a, `${b.name} · ${qtyLabel(b.qty, b.unit)}`]);
             tap();
             close();

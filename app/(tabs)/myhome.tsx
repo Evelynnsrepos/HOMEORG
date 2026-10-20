@@ -60,6 +60,25 @@ export default function MyHome() {
       <Row style={{ gap: 10 }}>
         <Btn style={{ flex: 1 }} label="Open the shop" icon="storefront" onPress={() => router.push('/shop')} />
       </Row>
+      <Spacer h={8} />
+      <Row style={{ gap: 8 }}>
+        <Btn
+          style={{ flex: 1 }}
+          small
+          tone="quiet"
+          icon="grid-outline"
+          label="Rooms and floors"
+          onPress={() => router.push('/layout')}
+        />
+        <Btn
+          style={{ flex: 1 }}
+          small
+          tone="quiet"
+          icon="home-outline"
+          label="House view"
+          onPress={() => router.push('/house')}
+        />
+      </Row>
 
       <Spacer h={14} />
       <Card soft style={{ padding: 14 }}>

@@ -67,11 +67,11 @@ export default function Profile() {
 
       <Spacer h={12} />
       <Card style={{ padding: 0, overflow: 'hidden' }}>
-        <MenuRow icon="restaurant" label="Recipes" hint="What you could cook" onPress={() => router.push('/recipes')} />
+        <MenuRow icon="restaurant" label="Kitchen" hint="Pantry, cooking plan, recipe book" onPress={() => router.push('/kitchen')} />
         <Divider />
         <MenuRow icon="cart" label="Shopping list" onPress={() => router.push('/shopping')} />
         <Divider />
-        <MenuRow icon="file-tray-stacked" label="Pantry" hint="What is still in the fridge" onPress={() => router.push('/pantry')} />
+        <MenuRow icon="file-tray-stacked" label="Shelves" hint="What is still in the fridge" onPress={() => router.push('/pantry')} />
         <Divider />
         <MenuRow icon="bookmark" label="Pinned info" hint="Wifi codes, bin days, the boiler" onPress={() => router.push('/notes')} />
         <Divider />

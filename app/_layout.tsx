@@ -59,12 +59,13 @@ export default function RootLayout() {
           }}
         >
           <Stack.Screen name="(tabs)" />
-          {/* The three kitchen screens replace each other when you tap the
+          {/* The four kitchen screens replace each other when you tap the
               segmented control up top. A slide would throw the whole page
               sideways for what is meant to look like one button moving. */}
+          <Stack.Screen name="kitchen" options={{ animation: 'fade', animationDuration: 140 }} />
+          <Stack.Screen name="cook" options={{ animation: 'fade', animationDuration: 140 }} />
           <Stack.Screen name="recipes" options={{ animation: 'fade', animationDuration: 140 }} />
           <Stack.Screen name="shopping" options={{ animation: 'fade', animationDuration: 140 }} />
-          <Stack.Screen name="pantry" options={{ animation: 'fade', animationDuration: 140 }} />
           <Stack.Screen name="welcome" options={{ animation: 'fade' }} />
           <Stack.Screen name="focus" options={{ animation: 'fade' }} />
           <Stack.Screen name="sprint" options={{ animation: 'fade' }} />

@@ -9,7 +9,6 @@ import type { PantryItem } from '../src/lib/types';
 import { useStore } from '../src/state/store';
 import { colors, font, radius } from '../src/theme';
 import { Btn, Card, Chip, Empty, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
-import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { QuantitySheet } from '../src/ui/QuantitySheet';
 
 export default function Pantry() {
@@ -58,14 +57,11 @@ export default function Pantry() {
           <Row style={{ justifyContent: 'space-between' }}>
             <IconBtn
               name="chevron-back"
-              onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))}
+              onPress={() => (router.canGoBack() ? router.back() : router.replace('/kitchen'))}
             />
-            <T v="heading">Kitchen</T>
+            <T v="heading">Shelves</T>
             <View style={{ width: 38 }} />
           </Row>
-
-          <Spacer h={12} />
-          <KitchenTabs active="pantry" />
 
           <Spacer h={16} />
           <T v="display" style={{ fontSize: 28 }}>
@@ -239,7 +235,7 @@ export default function Pantry() {
           initial={{ place }}
           onCancel={() => setAdding(null)}
           onConfirm={(b) => {
-            addPantry({ name: b.name, qty: b.qty, unit: b.unit, place: b.place });
+            addPantry(b);
             setAdding(null);
             setDraft('');
             setPlace(b.place);
@@ -251,11 +247,16 @@ export default function Pantry() {
         <QuantitySheet
           name={editing.name}
           note="On the shelf"
-          initial={{ qty: editing.qty, unit: editing.unit, place: editing.place }}
+          initial={{
+            qty: editing.qty,
+            unit: editing.unit,
+            place: editing.place,
+            bestBefore: editing.bestBefore,
+          }}
           confirmLabel="Save"
           onCancel={() => setEditing(null)}
           onConfirm={(b) => {
-            updatePantry(editing.id, { name: b.name, qty: b.qty, unit: b.unit, place: b.place });
+            updatePantry(editing.id, b);
             setEditing(null);
             setPlace(b.place);
           }}

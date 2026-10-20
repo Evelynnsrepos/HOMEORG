@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 
+import { addDays, dayKey, daysBetween } from '../lib/date';
 import { formatQty, guessFor, places, units, unitStep, type Place } from '../data/units';
 import { colors, font, radius } from '../theme';
 import { Btn, Card, Chip, Row, Spacer, T, tap } from './base';
@@ -11,7 +12,18 @@ export interface Bought {
   qty: number;
   unit: string;
   place: Place;
+  /** day key, only for things that go off */
+  bestBefore?: string;
 }
+
+/** "Good for" shortcuts, in days from today. */
+const KEEPS = [
+  { label: '2 days', days: 2 },
+  { label: '4 days', days: 4 },
+  { label: '1 week', days: 7 },
+  { label: '2 weeks', days: 14 },
+  { label: '1 month', days: 30 },
+];
 
 /**
  * "How much did you buy?" — the sheet that turns a ticked-off shopping item
@@ -39,6 +51,7 @@ export function QuantitySheet({
   const [qty, setQty] = useState(initial?.qty ?? 1);
   const [unit, setUnit] = useState(initial?.unit ?? guess.unit);
   const [place, setPlace] = useState<Place>(initial?.place ?? guess.place);
+  const [bestBefore, setBestBefore] = useState<string | undefined>(initial?.bestBefore);
   const [custom, setCustom] = useState('');
   const [customOpen, setCustomOpen] = useState(
     !!initial?.unit && !units.some((u) => u.id === initial.unit),
@@ -166,6 +179,33 @@ export function QuantitySheet({
             ))}
           </Row>
 
+          {/* good till ------------------------------------------------ */}
+          <Spacer h={16} />
+          <Row style={{ justifyContent: 'space-between' }}>
+            <T v="over">Good for</T>
+            {bestBefore ? (
+              <T v="caption">
+                till {bestBefore.slice(8)}.{bestBefore.slice(5, 7)}. ({daysBetween(dayKey(), bestBefore)}d)
+              </T>
+            ) : null}
+          </Row>
+          <Spacer h={8} />
+          <Row style={{ flexWrap: 'wrap', gap: 6 }}>
+            <Chip small label="Keeps" active={!bestBefore} onPress={() => setBestBefore(undefined)} />
+            {KEEPS.map((k) => {
+              const day = dayKey(addDays(new Date(), k.days));
+              return (
+                <Chip
+                  key={k.days}
+                  small
+                  label={k.label}
+                  active={bestBefore === day}
+                  onPress={() => setBestBefore(day)}
+                />
+              );
+            })}
+          </Row>
+
           <Spacer h={20} />
           <Row style={{ gap: 10 }}>
             <Btn label="Cancel" tone="quiet" full={false} onPress={onCancel} />
@@ -173,7 +213,7 @@ export function QuantitySheet({
               style={{ flex: 1 }}
               label={confirmLabel}
               disabled={qty <= 0 || !label.trim()}
-              onPress={() => onConfirm({ name: label.trim(), qty, unit: activeUnit, place })}
+              onPress={() => onConfirm({ name: label.trim(), qty, unit: activeUnit, place, bestBefore })}
             />
           </Row>
         </Card>

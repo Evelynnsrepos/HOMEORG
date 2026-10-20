@@ -100,7 +100,7 @@ export default function ImportOrder() {
       if (r.place !== guessed) rememberShelf(r.key, r.place);
     }
     const ticked = putAway(
-      kept.map(({ name, qty, unit, place }) => ({ name, qty, unit, place })),
+      kept.map(({ name, qty, unit, place, bestBefore }) => ({ name, qty, unit, place, bestBefore })),
       plan.orderNo,
     );
     const counts: Record<Place, number> = { fridge: 0, freezer: 0, pantry: 0 };
@@ -331,7 +331,12 @@ export default function ImportOrder() {
         <QuantitySheet
           name={editing.name}
           note={editing.source}
-          initial={{ qty: editing.qty, unit: editing.unit, place: editing.place }}
+          initial={{
+            qty: editing.qty,
+            unit: editing.unit,
+            place: editing.place,
+            bestBefore: editing.bestBefore,
+          }}
           confirmLabel="Save"
           onCancel={() => setEditing(null)}
           onConfirm={(b) => {

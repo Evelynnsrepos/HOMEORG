@@ -5,10 +5,14 @@ import { KeyboardAvoidingView, Platform, Pressable, TextInput, View } from 'reac
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { qtyLabel } from '../data/units';
-import type { PantryItem } from '../lib/types';
+import { effortLabel } from '../lib/kitchen';
+import type { PantryItem, RecipeEffort, RecipeExtra } from '../lib/types';
 import { useStore } from '../state/store';
 import { colors, font, radius } from '../theme';
-import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T, tap } from './base';
+import { Btn, Card, Chip, IconBtn, Press, Row, Screen, Spacer, T, tap } from './base';
+import { EffortMeter } from './Kitchen';
+
+const TIMES = [10, 20, 30, 45, 60, 90, 120, 180];
 
 /** Something you can tap instead of typing it out. */
 type Suggestion = { name: string; note?: string; onShelf?: boolean };
@@ -33,6 +37,10 @@ export function RecipeEditor({ id }: { id?: string }) {
   const [name, setName] = useState(existing?.name ?? '');
   const [list, setList] = useState<string[]>(existing?.ingredients ?? []);
   const [draft, setDraft] = useState('');
+  const [minutes, setMinutes] = useState<number | undefined>(existing?.minutes);
+  const [effort, setEffort] = useState<RecipeEffort | undefined>(existing?.effort);
+  const [steps, setSteps] = useState(existing?.steps ?? '');
+  const [link, setLink] = useState(existing?.link ?? '');
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   /** Loose match, because "2 onions" and "onion" are the same thing to a cook. */
@@ -106,8 +114,14 @@ export function RecipeEditor({ id }: { id?: string }) {
     if (!clean) return;
     // a half-typed line counts too, nobody expects to lose it on save
     const final = draft.trim() ? merge(list, draft) : list;
-    if (existing) updateRecipe(existing.id, clean, final);
-    else addRecipe(clean, final);
+    const extra: RecipeExtra = {
+      minutes,
+      effort,
+      steps: steps.trim() || undefined,
+      link: link.trim() || undefined,
+    };
+    if (existing) updateRecipe(existing.id, clean, final, extra);
+    else addRecipe(clean, final, extra);
     leave();
   }
 
@@ -300,6 +314,84 @@ export function RecipeEditor({ id }: { id?: string }) {
               </Row>
             </>
           ) : null}
+
+          <Spacer h={24} />
+          <T v="over">How long does it take?</T>
+          <Spacer h={8} />
+          <Row style={{ flexWrap: 'wrap', gap: 6 }}>
+            {TIMES.map((m) => (
+              <Chip
+                key={m}
+                small
+                label={m < 60 ? `${m} min` : `${m / 60}${m % 60 ? '.5' : ''} h`}
+                active={minutes === m}
+                onPress={() => setMinutes(minutes === m ? undefined : m)}
+              />
+            ))}
+          </Row>
+
+          <Spacer h={22} />
+          <Row style={{ justifyContent: 'space-between' }}>
+            <T v="over">Effort</T>
+            {effort ? <EffortMeter effort={effort} /> : null}
+          </Row>
+          <Spacer h={8} />
+          <Row style={{ gap: 6 }}>
+            {([1, 2, 3] as RecipeEffort[]).map((e) => (
+              <Chip
+                key={e}
+                small
+                label={effortLabel[e]}
+                active={effort === e}
+                onPress={() => setEffort(effort === e ? undefined : e)}
+              />
+            ))}
+          </Row>
+
+          <Spacer h={22} />
+          <T v="over">How you make it</T>
+          <Spacer h={8} />
+          <TextInput
+            value={steps}
+            onChangeText={setSteps}
+            multiline
+            placeholder={'One step per line.\nOnions in first, then...'}
+            placeholderTextColor={colors.inkMuted}
+            style={{
+              minHeight: 110,
+              textAlignVertical: 'top',
+              backgroundColor: colors.card,
+              borderRadius: radius.md,
+              borderWidth: 1,
+              borderColor: colors.line,
+              paddingHorizontal: 14,
+              paddingVertical: 12,
+              fontFamily: font.medium,
+              fontSize: 15,
+              color: colors.ink,
+            }}
+          />
+          <Spacer h={10} />
+          <TextInput
+            value={link}
+            onChangeText={setLink}
+            placeholder="Or paste a link to it"
+            placeholderTextColor={colors.inkMuted}
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="url"
+            style={{
+              backgroundColor: colors.card,
+              borderRadius: radius.md,
+              borderWidth: 1,
+              borderColor: colors.line,
+              paddingHorizontal: 14,
+              paddingVertical: 12,
+              fontFamily: font.medium,
+              fontSize: 15,
+              color: colors.ink,
+            }}
+          />
 
           {existing ? (
             <>
