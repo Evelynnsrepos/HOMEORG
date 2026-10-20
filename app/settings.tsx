@@ -1,7 +1,10 @@
+import * as DocumentPicker from 'expo-document-picker';
+import { File } from 'expo-file-system';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Alert, Pressable, Switch, TextInput, View } from 'react-native';
+import { Alert, Platform, Pressable, Switch, TextInput, View } from 'react-native';
 
+import { describeBackup, exportBackup, NotABackup, parseBackup, restoreBackup } from '../src/lib/backup';
 import { humanMinutes } from '../src/lib/date';
 import { cancelDailyReminder, scheduleDailyReminder } from '../src/lib/notify';
 import { useMusic } from '../src/state/music';
@@ -21,6 +24,7 @@ export default function Settings() {
   const musicOn = useMusic((m) => m.enabled);
 
   const [custom, setCustom] = useState(`${settings.dailyBudget}`);
+  const [busy, setBusy] = useState<'export' | 'import' | null>(null);
   const [customOpen, setCustomOpen] = useState(![15, 30, 60, 90].includes(settings.dailyBudget));
 
   async function setReminder(on: boolean) {
@@ -41,6 +45,68 @@ export default function Settings() {
       return;
     }
     patch({ reminderOn: true });
+  }
+
+  async function exportData() {
+    setBusy('export');
+    try {
+      await exportBackup();
+    } catch {
+      Alert.alert('Export failed', "The backup file couldn't be written. Try again in a moment.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function importData() {
+    const res = await DocumentPicker.getDocumentAsync({
+      type: ['application/json', 'text/plain', 'application/octet-stream'],
+      copyToCacheDirectory: true,
+    });
+    if (res.canceled || !res.assets[0]) return;
+    const asset = res.assets[0];
+
+    setBusy('import');
+    let backup;
+    try {
+      const text =
+        Platform.OS === 'web' && asset.file ? await asset.file.text() : await new File(asset.uri).text();
+      backup = parseBackup(text);
+    } catch (e) {
+      Alert.alert(
+        'Not a backup',
+        e instanceof NotABackup && e.message === 'made by a newer app'
+          ? 'That backup comes from a newer version of the app. Update this one first.'
+          : 'That file isn\'t a Homeorg<3 backup. Pick the .json file you exported.',
+      );
+      return;
+    } finally {
+      setBusy(null);
+    }
+
+    Alert.alert(
+      'Replace everything?',
+      `${describeBackup(backup)}\n\nWhat is on this phone now gets replaced by the backup.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Import',
+          style: 'destructive',
+          onPress: async () => {
+            restoreBackup(backup);
+            const s = useStore.getState().settings;
+            // a reminder only exists on the phone that scheduled it
+            if (s.reminderOn) {
+              const ok = await scheduleDailyReminder(s.reminderHour, s.reminderMinute, 'Your list is waiting.');
+              if (!ok) patch({ reminderOn: false });
+            } else {
+              await cancelDailyReminder();
+            }
+            Alert.alert('Welcome back', 'Everything from the backup is in place.');
+          },
+        },
+      ],
+    );
   }
 
   return (
@@ -237,11 +303,41 @@ export default function Settings() {
 
       <Spacer h={14} />
       <Card style={{ padding: 16 }}>
+        <T v="over">Your data</T>
+        <Spacer h={8} />
+        <T v="caption">
+          Export saves your whole household in one file: rooms, chores, history, coins, furniture,
+          challenges, recipes, shelves, lists, notes and settings. Keep it somewhere safe, then
+          import it on a new phone or a new version of the app. Before and after photos stay on
+          this phone.
+        </T>
+        <Spacer h={14} />
+        <Btn
+          label="Export data"
+          icon="share-outline"
+          tone="sage"
+          loading={busy === 'export'}
+          onPress={exportData}
+          disabled={busy !== null}
+        />
+        <Spacer h={8} />
+        <Btn
+          label="Import data"
+          icon="download-outline"
+          tone="quiet"
+          loading={busy === 'import'}
+          onPress={importData}
+          disabled={busy !== null}
+        />
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
         <T v="over">Danger zone</T>
         <Spacer h={8} />
         <T v="caption">
           Wipes every room, chore, completion, coin and piece of furniture on this device. There is
-          no backup, because there is no server.
+          no server, so export your data first if you want to keep it.
         </T>
         <Spacer h={14} />
         <Btn

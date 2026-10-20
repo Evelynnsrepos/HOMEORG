@@ -137,6 +137,7 @@ src/
   lib/pdf.ts         Kleiner PDF-Textleser (offline)
   lib/rewe.ts        REWE-Bestellung lesen
   lib/orderImport.ts Bestellung → Vorrat: Namen, Mengen, Regalplatz
+  lib/backup.ts      Alle Daten als eine JSON-Datei raus und wieder rein
   state/store.ts     Zustand + AsyncStorage
   state/music.ts     Player-Zustand (eigener Store, eigene Persistenz)
   state/derived.ts   Abgeleitete Werte für die Screens
@@ -215,6 +216,20 @@ fürs nächste Mal.
 
 `npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen
 (`scripts/fixtures/`, ohne Kopfdaten wie Name oder Kundennummer).
+
+## Daten sichern
+
+**Settings → Export data** schreibt alles in eine Datei
+`homeorg-backup-JJJJ-MM-TT.json`: Haushalt, Räume, Aufgaben, Verlauf, Münzen,
+Möbel, Challenges, Rezepte, Vorrat, Listen, Notizen, Einstellungen und die
+Musikwahl. Danach geht das Teilen-Menü auf, also z. B. in Drive, Dateien oder
+per Mail ablegen. **Import data** liest so eine Datei wieder ein und ersetzt
+dabei alles, was gerade auf dem Handy ist (vorher wird gefragt). Vorher-/Nachher-
+Fotos kommen nicht mit, die bleiben auf dem Gerät.
+
+Die Datei trägt eine Formatversion (`format: "homeorg-backup"`, `version: 1`)
+und die Speicherversion, damit spätere Versionen der App ältere Sicherungen
+lesen und notfalls migrieren können.
 
 ## Was fehlt
 
