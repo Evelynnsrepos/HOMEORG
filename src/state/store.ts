@@ -9,6 +9,7 @@ import { starterFor } from '../data/starterRooms';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
 import { coinsForEffort, momentumBonus, taskCycleMs } from '../lib/engine';
+import { inStock } from '../lib/kitchen';
 import { sameThing } from '../lib/orderImport';
 import { uid } from '../lib/id';
 import type {
@@ -21,7 +22,9 @@ import type {
   LegacySavedMeal,
   PantryItem,
   PinnedNote,
+  PlannedMeal,
   Recipe,
+  RecipeExtra,
   Room,
   Settings,
   ShoppingItem,
@@ -69,6 +72,8 @@ interface State {
   challenges: ChallengeProgress[];
   customChallenges: CustomChallenge[];
   recipes: Recipe[];
+  /** dishes put on the next days */
+  mealPlan: PlannedMeal[];
   shopping: ShoppingItem[];
   pantry: PantryItem[];
   /** shelf you moved something to, by lowercased name, so the next order gets it right */
@@ -116,11 +121,16 @@ interface Actions {
   createCustomChallenge: (ch: Omit<CustomChallenge, 'id' | 'createdAt'>) => string;
   deleteCustomChallenge: (id: string) => void;
 
-  addRecipe: (name: string, ingredients: string[]) => void;
-  updateRecipe: (id: string, name: string, ingredients: string[]) => void;
+  addRecipe: (name: string, ingredients: string[], extra?: RecipeExtra) => string | undefined;
+  updateRecipe: (id: string, name: string, ingredients: string[], extra?: RecipeExtra) => void;
   removeRecipe: (id: string) => void;
   toggleWanted: (id: string) => void;
   cookRecipe: (id: string) => void;
+  /** what is missing goes on the list, and the dish gets starred for the planner. Returns how many went on. */
+  recipeToList: (id: string) => number;
+
+  planMeal: (recipeId: string, day: string) => void;
+  unplanMeal: (id: string) => void;
 
   addShopping: (name: string, qty?: number, from?: string) => void;
   toggleShopping: (id: string) => void;
@@ -161,6 +171,7 @@ const initialState: State = {
   challenges: [],
   customChallenges: [],
   recipes: [],
+  mealPlan: [],
   shopping: [],
   pantry: [],
   shelfMemory: {},
@@ -596,58 +607,95 @@ export const useStore = create<Store>()(
         })),
 
       /** Writing down a dish you already have keeps one entry, the newer one. */
-      addRecipe: (name, ingredients) =>
-        set((s) => {
-          const clean = name.trim();
-          if (!clean) return {};
-          const existing = s.recipes.find(
-            (r) => r.name.trim().toLowerCase() === clean.toLowerCase(),
-          );
-          if (existing) {
-            return {
-              recipes: s.recipes.map((r) =>
-                r.id === existing.id ? { ...r, name: clean, ingredients } : r,
-              ),
-            };
-          }
-          return {
-            recipes: [
-              { id: uid('rec'), name: clean, ingredients, createdAt: new Date().toISOString() },
-              ...s.recipes,
-            ],
-          };
-        }),
+      addRecipe: (name, ingredients, extra = {}) => {
+        const clean = name.trim();
+        if (!clean) return undefined;
+        const existing = get().recipes.find(
+          (r) => r.name.trim().toLowerCase() === clean.toLowerCase(),
+        );
+        if (existing) {
+          set((s) => ({
+            recipes: s.recipes.map((r) =>
+              r.id === existing.id ? { ...r, ...extra, name: clean, ingredients } : r,
+            ),
+          }));
+          return existing.id;
+        }
+        const id = uid('rec');
+        set((s) => ({
+          recipes: [
+            { id, name: clean, ingredients, ...extra, createdAt: new Date().toISOString() },
+            ...s.recipes,
+          ],
+        }));
+        return id;
+      },
 
       /** Clearing the name is how you throw a recipe out from the edit form. */
-      updateRecipe: (id, name, ingredients) =>
-        set((s) => {
-          const clean = name.trim();
-          if (!clean) return { recipes: s.recipes.filter((r) => r.id !== id) };
-          return {
-            recipes: s.recipes.map((r) =>
-              r.id === id ? { ...r, name: clean, ingredients } : r,
-            ),
-          };
-        }),
+      updateRecipe: (id, name, ingredients, extra = {}) => {
+        const clean = name.trim();
+        if (!clean) return get().removeRecipe(id);
+        set((s) => ({
+          recipes: s.recipes.map((r) =>
+            r.id === id ? { ...r, ...extra, name: clean, ingredients } : r,
+          ),
+        }));
+      },
 
-      removeRecipe: (id) => set((s) => ({ recipes: s.recipes.filter((r) => r.id !== id) })),
+      removeRecipe: (id) =>
+        set((s) => ({
+          recipes: s.recipes.filter((r) => r.id !== id),
+          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id),
+        })),
 
       toggleWanted: (id) =>
         set((s) => ({
           recipes: s.recipes.map((r) => (r.id === id ? { ...r, wanted: !r.wanted } : r)),
         })),
 
-      /** Cooked it: the shelves come down a step and the recipe gets a date. */
+      /**
+       * Cooked it: the shelves come down a step and the recipe gets a date.
+       * The plan for today (or a day already gone) is done with, too.
+       */
       cookRecipe: (id) => {
         const recipe = get().recipes.find((r) => r.id === id);
         if (!recipe) return;
         get().useUpIngredients(recipe.ingredients);
+        const today = dayKey();
         set((s) => ({
           recipes: s.recipes.map((r) =>
             r.id === id ? { ...r, lastCooked: new Date().toISOString() } : r,
           ),
+          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || m.day > today),
         }));
       },
+
+      recipeToList: (id) => {
+        const recipe = get().recipes.find((r) => r.id === id);
+        if (!recipe) return 0;
+        const { pantry } = get();
+        const missing = recipe.ingredients.filter((i) => !inStock(pantry, i));
+        missing.forEach((i) => get().addShopping(i, 1, recipe.name));
+        set((s) => ({
+          recipes: s.recipes.map((r) => (r.id === id ? { ...r, wanted: true } : r)),
+        }));
+        return missing.length;
+      },
+
+      /** The same dish twice on one day is a slip of the thumb, not a plan. */
+      planMeal: (recipeId, day) =>
+        set((s) =>
+          s.mealPlan.some((m) => m.recipeId === recipeId && m.day === day)
+            ? {}
+            : {
+                mealPlan: [
+                  ...s.mealPlan,
+                  { id: uid('meal'), recipeId, day, createdAt: new Date().toISOString() },
+                ],
+              },
+        ),
+
+      unplanMeal: (id) => set((s) => ({ mealPlan: s.mealPlan.filter((m) => m.id !== id) })),
 
       addShopping: (name, qty = 1, from) =>
         set((s) => {

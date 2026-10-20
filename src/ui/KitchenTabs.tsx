@@ -5,11 +5,12 @@ import { Pressable, Text } from 'react-native';
 import { colors, font, radius } from '../theme';
 import { Row, tap } from './base';
 
-/** The three kitchen screens share one segmented header. */
+/** The kitchen screens share one segmented header. */
 const tabs = [
+  { id: 'kitchen', label: 'Pantry', href: '/kitchen' },
+  { id: 'cook', label: 'Cook', href: '/cook' },
   { id: 'recipes', label: 'Recipes', href: '/recipes' },
   { id: 'shopping', label: 'Shopping', href: '/shopping' },
-  { id: 'pantry', label: 'Pantry', href: '/pantry' },
 ] as const;
 
 export type KitchenTab = (typeof tabs)[number]['id'];

@@ -23,6 +23,8 @@ export interface ImportDraft {
   /** the line as REWE printed it */
   source: string;
   changed?: 'amount' | 'substitute';
+  /** set by hand in the review, day key */
+  bestBefore?: string;
 }
 
 export interface Skipped {

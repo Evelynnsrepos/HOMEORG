@@ -207,7 +207,7 @@ export default function Shopping() {
           initial={{ qty: bought.qty }}
           onCancel={() => setBought(null)}
           onConfirm={(b) => {
-            addPantry({ name: b.name, qty: b.qty, unit: b.unit, place: b.place });
+            addPantry(b);
             remove(bought.id);
             setBought(null);
           }}

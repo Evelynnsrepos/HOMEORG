@@ -3,39 +3,35 @@ import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { KeyboardAvoidingView, Platform, TextInput, View } from 'react-native';
 
-import { qtyLabel } from '../src/data/units';
 import { lastDoneLabel } from '../src/lib/date';
-import type { PantryItem, Recipe } from '../src/lib/types';
+import { matchRecipe } from '../src/lib/kitchen';
+import type { Recipe } from '../src/lib/types';
 import { useStore } from '../src/state/store';
 import { colors, font, radius } from '../src/theme';
-import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
+import { Btn, Card, Chip, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
+import { CookTime, DaySheet, EffortMeter } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { Toast } from '../src/ui/TaskRow';
 
-/** A recipe with the pantry held up against it. */
-type Sorted = {
-  recipe: Recipe;
-  parts: { name: string; have?: PantryItem }[];
-  missing: string[];
-};
+type Filter = 'all' | 'starred' | 'quick';
 
 /**
- * Not a week plan. A pool of the things you know how to cook, sorted by what
- * the kitchen can actually supply today. Writing one down happens on its own
- * screen — see src/ui/RecipeEditor.tsx.
+ * The recipe book: everything you know how to cook, written down once and
+ * reused. What to cook on which day is the job of "Let's cook it" (app/cook.tsx).
  */
-export default function Recipes() {
+export default function RecipeBook() {
   const router = useRouter();
 
   const recipes = useStore((s) => s.recipes);
   const pantry = useStore((s) => s.pantry);
-  const removeRecipe = useStore((s) => s.removeRecipe);
+  const mealPlan = useStore((s) => s.mealPlan);
   const toggleWanted = useStore((s) => s.toggleWanted);
-  const cookRecipe = useStore((s) => s.cookRecipe);
-  const addShopping = useStore((s) => s.addShopping);
+  const recipeToList = useStore((s) => s.recipeToList);
+  const planMeal = useStore((s) => s.planMeal);
 
   const [query, setQuery] = useState('');
-  const [confirmId, setConfirmId] = useState<string | null>(null);
+  const [filter, setFilter] = useState<Filter>('all');
+  const [planning, setPlanning] = useState<Recipe | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
   function say(text: string) {
@@ -43,205 +39,98 @@ export default function Recipes() {
     setTimeout(() => setToast(null), 2600);
   }
 
-  const all = useMemo(() => {
-    /** Loose match, because "2 onions" and "onion" are the same thing to a cook. */
-    const inStock = (name: string) => {
-      const b = name.trim().toLowerCase();
-      if (!b) return undefined;
-      return pantry.find((p) => {
-        const a = p.name.trim().toLowerCase();
-        return a === b || a.includes(b) || b.includes(a);
-      });
-    };
-
-    return recipes
-      .map((recipe) => {
-        const parts = recipe.ingredients.map((name) => ({ name, have: inStock(name) }));
-        return { recipe, parts, missing: parts.filter((p) => !p.have).map((p) => p.name) };
-      })
-      .sort((a, b) => {
-        if (!!a.recipe.wanted !== !!b.recipe.wanted) return a.recipe.wanted ? -1 : 1;
-        if (a.missing.length !== b.missing.length) return a.missing.length - b.missing.length;
-        // then whatever you have not made in the longest while
-        return (a.recipe.lastCooked ?? '').localeCompare(b.recipe.lastCooked ?? '');
-      });
-  }, [recipes, pantry]);
-
-  // counted over the whole book, so a search does not make the headline lie
-  const readyNow = all.filter((c) => !c.missing.length).length;
-
-  const cards = useMemo(() => {
+  const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return all;
-    return all.filter(
-      (c) =>
-        c.recipe.name.toLowerCase().includes(q) ||
-        c.recipe.ingredients.some((i) => i.toLowerCase().includes(q)),
-    );
-  }, [all, query]);
+    return [...recipes]
+      .filter((r) => filter !== 'starred' || r.wanted)
+      .filter((r) => filter !== 'quick' || r.effort === 1 || (r.minutes ?? 999) <= 30)
+      .filter(
+        (r) =>
+          !q ||
+          r.name.toLowerCase().includes(q) ||
+          r.ingredients.some((i) => i.toLowerCase().includes(q)),
+      )
+      .sort((a, b) => {
+        if (!!a.wanted !== !!b.wanted) return a.wanted ? -1 : 1;
+        return a.name.localeCompare(b.name);
+      });
+  }, [recipes, query, filter]);
 
-  /**
-   * With an empty pantry everything would land under "needs a shop", which
-   * tells you nothing at all. So the shelves have to hold something before the
-   * list splits itself up.
-   */
-  const groups = pantry.length
-    ? [
-        {
-          key: 'ready',
-          title: 'You could cook this now',
-          items: cards.filter((c) => !c.missing.length),
-        },
-        {
-          key: 'close',
-          title: 'One or two things short',
-          items: cards.filter((c) => c.missing.length > 0 && c.missing.length <= 2),
-        },
-        {
-          key: 'shop',
-          title: 'Needs a shop first',
-          items: cards.filter((c) => c.missing.length > 2),
-        },
-      ].filter((g) => g.items.length)
-    : [{ key: 'all', title: '', items: cards }];
-
-  /* ---- one recipe ----------------------------------------------------- */
-
-  function renderCard(c: Sorted) {
-    const r = c.recipe;
+  function renderCard(r: Recipe) {
     const n = r.ingredients.length;
-    const note = !n
-      ? 'No ingredients written down'
-      : !pantry.length
-        ? n + (n === 1 ? ' ingredient' : ' ingredients')
-        : !c.missing.length
-          ? 'Everything is in the kitchen'
-          : c.missing.length + ' of ' + n + ' still to buy';
+    const m = matchRecipe(r, pantry);
+    const hasSteps = !!r.steps?.trim();
+    const planned = mealPlan.filter((p) => p.recipeId === r.id).length;
 
     return (
       <Card key={r.id} style={{ padding: 14, marginBottom: 10 }}>
-        <Row style={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
-          <Press
-            style={{ flex: 1, paddingRight: 8 }}
-            onPress={() => router.push(`/recipe/${r.id}`)}
-          >
-            <T v="heading">{r.name}</T>
-            <Spacer h={2} />
-            <T v="caption" color={!n || c.missing.length ? colors.inkMuted : colors.sageDeep}>
-              {note}
-            </T>
-          </Press>
-          <Press
-            hitSlop={10}
-            onPress={() => {
-              tap();
-              toggleWanted(r.id);
-            }}
-          >
-            <Ionicons
-              name={r.wanted ? 'star' : 'star-outline'}
-              size={19}
-              color={r.wanted ? colors.gold : colors.inkMuted}
-            />
-          </Press>
-        </Row>
+        <Press onPress={() => router.push(`/recipe/${r.id}`)}>
+          <Row style={{ alignItems: 'flex-start' }}>
+            <View style={{ flex: 1, paddingRight: 8 }}>
+              <T v="heading">{r.name}</T>
+              <Spacer h={4} />
+              <Row style={{ gap: 10, flexWrap: 'wrap' }}>
+                <CookTime minutes={r.minutes} />
+                <EffortMeter effort={r.effort} size={6} />
+                <T v="caption" style={{ fontSize: 11 }}>
+                  {n ? `${n} ${n === 1 ? 'ingredient' : 'ingredients'}` : 'No ingredients yet'}
+                  {pantry.length && n ? (m.missing.length ? ` · ${m.missing.length} to buy` : ' · all here') : ''}
+                </T>
+              </Row>
+            </View>
+            <Press
+              hitSlop={10}
+              onPress={() => {
+                tap();
+                toggleWanted(r.id);
+              }}
+            >
+              <Ionicons
+                name={r.wanted ? 'star' : 'star-outline'}
+                size={19}
+                color={r.wanted ? colors.gold : colors.inkMuted}
+              />
+            </Press>
+          </Row>
 
-        {n ? (
-          <>
-            <Spacer h={9} />
-            <Row style={{ flexWrap: 'wrap', gap: 5 }}>
-              {c.parts.map(({ name, have }) => (
-                <Row
-                  key={name}
-                  style={{
-                    backgroundColor: have ? colors.sageSoft : colors.cardAlt,
-                    borderRadius: radius.pill,
-                    paddingHorizontal: 9,
-                    paddingVertical: 4,
-                    gap: 4,
-                  }}
-                >
-                  {have ? <Ionicons name="checkmark" size={10} color={colors.sageDeep} /> : null}
-                  <T
-                    v="caption"
-                    style={{ fontSize: 11 }}
-                    color={have ? colors.sageDeep : colors.inkMuted}
-                  >
-                    {name}
-                    {have ? ' · ' + qtyLabel(have.qty, have.unit) : ''}
-                  </T>
-                </Row>
-              ))}
-            </Row>
-          </>
-        ) : null}
+          <Spacer h={8} />
+          <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+            {hasSteps ? <Tag icon="list-outline" text="Steps" /> : null}
+            {r.link ? <Tag icon="link-outline" text="Link" /> : null}
+            {planned ? <Tag icon="calendar-outline" text={`Planned ${planned}x`} tint /> : null}
+            {r.lastCooked ? (
+              <T v="caption" style={{ fontSize: 11 }}>
+                Cooked {lastDoneLabel(r.lastCooked).toLowerCase()}
+              </T>
+            ) : null}
+          </Row>
+        </Press>
 
         <Spacer h={11} />
         <Row style={{ gap: 8 }}>
-          {c.missing.length ? (
-            <Btn
-              small
-              style={{ flex: 1 }}
-              tone="quiet"
-              icon="cart-outline"
-              label={
-                c.missing.length === n ? 'All to the list' : c.missing.length + ' to the list'
-              }
-              onPress={() => {
-                c.missing.forEach((i) => addShopping(i, 1, r.name));
-                say(c.missing.length + ' on the shopping list');
-              }}
-            />
-          ) : null}
+          <Btn
+            small
+            style={{ flex: 1 }}
+            tone="quiet"
+            icon="cart-outline"
+            label="To the list"
+            onPress={() => {
+              const k = recipeToList(r.id);
+              say(k ? `${k} on the shopping list` : 'Nothing missing, starred for the planner');
+            }}
+          />
           <Btn
             small
             style={{ flex: 1 }}
             tone="sage"
-            icon="restaurant-outline"
-            label="Cooked it"
-            onPress={() => {
-              cookRecipe(r.id);
-              say(pantry.length ? r.name + ' came off the shelves' : r.name + ' it is');
-            }}
+            icon="calendar-outline"
+            label="Plan it"
+            onPress={() => setPlanning(r)}
           />
-        </Row>
-
-        <Spacer h={9} />
-        <Row style={{ gap: 14 }}>
-          <Press
-            onPress={() => {
-              setConfirmId(null);
-              router.push(`/recipe/${r.id}`);
-            }}
-          >
-            <T v="caption" color={colors.coralDeep}>
-              Edit
-            </T>
-          </Press>
-          <Press
-            onPress={() => {
-              if (confirmId === r.id) {
-                removeRecipe(r.id);
-                setConfirmId(null);
-              } else setConfirmId(r.id);
-            }}
-          >
-            <T v="caption" color={confirmId === r.id ? colors.ember : colors.inkMuted}>
-              {confirmId === r.id ? 'Tap again to remove' : 'Remove'}
-            </T>
-          </Press>
-          <View style={{ flex: 1 }} />
-          {r.lastCooked ? (
-            <T v="caption" color={colors.inkMuted}>
-              Last cooked {lastDoneLabel(r.lastCooked)}
-            </T>
-          ) : null}
         </Row>
       </Card>
     );
   }
-
-  /* ---- screen ---------------------------------------------------------- */
 
   return (
     <View style={{ flex: 1 }}>
@@ -249,7 +138,7 @@ export default function Recipes() {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        <Screen>
+        <Screen keyboardShouldPersistTaps="handled">
           <Row style={{ justifyContent: 'space-between' }}>
             <IconBtn
               name="chevron-back"
@@ -263,96 +152,142 @@ export default function Recipes() {
           <KitchenTabs active="recipes" />
 
           <Spacer h={16} />
-          <T v="display" style={{ fontSize: 28 }}>
-            What could{'\n'}you cook?
-          </T>
-          <Spacer h={6} />
-          <T v="label">
-            {!recipes.length
-              ? 'Your own little book of dishes.'
-              : pantry.length
-                ? recipes.length + ' written down · ' + readyNow + ' you could make right now'
-                : recipes.length + ' written down. Fill the pantry and this list sorts itself.'}
-          </T>
+          <Row style={{ alignItems: 'flex-end' }}>
+            <View style={{ flex: 1 }}>
+              <T v="display" style={{ fontSize: 28 }}>
+                My recipe{'\n'}book
+              </T>
+              <Spacer h={6} />
+              <T v="label">
+                {recipes.length
+                  ? `${recipes.length} written down, ready to cook again.`
+                  : 'Write a dish down once, cook it forever.'}
+              </T>
+            </View>
+            <IconBtn
+              name="add"
+              bg={colors.coral}
+              color="#FFF8F2"
+              size={24}
+              onPress={() => router.push('/recipe/new')}
+            />
+          </Row>
 
-          <Spacer h={16} />
-          <Btn icon="add" label="Add a recipe" onPress={() => router.push('/recipe/new')} />
+          <Spacer h={14} />
+          <Row
+            style={{
+              backgroundColor: colors.cardAlt,
+              borderRadius: radius.md,
+              paddingHorizontal: 12,
+              gap: 8,
+            }}
+          >
+            <Ionicons name="search" size={14} color={colors.inkMuted} />
+            <TextInput
+              value={query}
+              onChangeText={setQuery}
+              placeholder="Search a dish or an ingredient"
+              placeholderTextColor={colors.inkMuted}
+              style={{
+                flex: 1,
+                paddingVertical: 11,
+                fontFamily: font.medium,
+                fontSize: 14.5,
+                color: colors.ink,
+              }}
+            />
+            {query ? (
+              <Press onPress={() => setQuery('')} hitSlop={8}>
+                <Ionicons name="close-circle" size={15} color={colors.inkMuted} />
+              </Press>
+            ) : null}
+          </Row>
 
-          {recipes.length >= 6 ? (
-            <>
-              <Spacer h={10} />
-              <Row
-                style={{
-                  backgroundColor: colors.cardAlt,
-                  borderRadius: radius.md,
-                  paddingHorizontal: 12,
-                  gap: 8,
-                }}
-              >
-                <Ionicons name="search" size={14} color={colors.inkMuted} />
-                <TextInput
-                  value={query}
-                  onChangeText={setQuery}
-                  placeholder="Find a dish or an ingredient"
-                  placeholderTextColor={colors.inkMuted}
-                  style={{
-                    flex: 1,
-                    paddingVertical: 11,
-                    fontFamily: font.medium,
-                    fontSize: 14.5,
-                    color: colors.ink,
-                  }}
-                />
-                {query ? (
-                  <Press onPress={() => setQuery('')} hitSlop={8}>
-                    <Ionicons name="close-circle" size={15} color={colors.inkMuted} />
-                  </Press>
-                ) : null}
-              </Row>
-            </>
-          ) : null}
+          <Spacer h={10} />
+          <Row style={{ gap: 6 }}>
+            <Chip small label="All" active={filter === 'all'} onPress={() => setFilter('all')} />
+            <Chip
+              small
+              icon="star"
+              label="Starred"
+              active={filter === 'starred'}
+              onPress={() => setFilter('starred')}
+            />
+            <Chip
+              small
+              icon="flash"
+              label="Quick"
+              active={filter === 'quick'}
+              onPress={() => setFilter('quick')}
+            />
+          </Row>
 
-          <Spacer h={16} />
-
+          <Spacer h={14} />
           {!recipes.length ? (
             <Card soft style={{ padding: 20, alignItems: 'center' }}>
-              <T style={{ fontSize: 30 }}>{'\u{1F372}'}</T>
+              <T style={{ fontSize: 30 }}>{'\u{1F4D6}'}</T>
               <Spacer h={8} />
               <T v="heading" center>
-                Nothing in the book yet
+                The book is empty
               </T>
               <Spacer h={6} />
               <T v="body" center style={{ maxWidth: 280 }}>
-                Write down a dish and what goes in it. Homeorg&lt;3 holds it against the pantry and
-                tells you which ones you could make tonight.
+                Add a dish with its ingredients, and the steps or a link to them. Then plan it for
+                the next days or put what is missing on the shopping list.
               </T>
+              <Spacer h={14} />
+              <Btn icon="add" label="Add a recipe" onPress={() => router.push('/recipe/new')} />
             </Card>
-          ) : !cards.length ? (
+          ) : !shown.length ? (
             <T v="body" center color={colors.inkMuted}>
-              Nothing matches {'“' + query.trim() + '”'}.
+              {query.trim() ? `Nothing matches “${query.trim()}”.` : 'Nothing in here yet.'}
             </T>
           ) : (
-            groups.map((g) => (
-              <View key={g.key}>
-                {g.title ? (
-                  <>
-                    <Row style={{ gap: 7 }}>
-                      <T v="over">{g.title}</T>
-                      <T v="over" color={colors.inkMuted}>
-                        {g.items.length}
-                      </T>
-                    </Row>
-                    <Spacer h={8} />
-                  </>
-                ) : null}
-                {g.items.map(renderCard)}
-                <Spacer h={10} />
-              </View>
-            ))
+            shown.map(renderCard)
           )}
         </Screen>
       </KeyboardAvoidingView>
+
+      {planning ? (
+        <DaySheet
+          title={planning.name}
+          taken={mealPlan.filter((p) => p.recipeId === planning.id).map((p) => p.day)}
+          onClose={() => setPlanning(null)}
+          onPick={(d) => {
+            planMeal(planning.id, d);
+            setPlanning(null);
+            say(`${planning.name} is on the plan`);
+          }}
+        />
+      ) : null}
       {toast ? <Toast text={toast} bottom={30} /> : null}
     </View>
+  );
+}
+
+function Tag({
+  icon,
+  text,
+  tint,
+}: {
+  icon: keyof typeof Ionicons.glyphMap;
+  text: string;
+  tint?: boolean;
+}) {
+  return (
+    <Row
+      style={{
+        gap: 4,
+        backgroundColor: tint ? colors.sageSoft : colors.cardAlt,
+        borderRadius: radius.pill,
+        paddingHorizontal: 8,
+        paddingVertical: 3,
+      }}
+    >
+      <Ionicons name={icon} size={10} color={tint ? colors.sageDeep : colors.inkSoft} />
+      <T v="caption" style={{ fontSize: 10.5 }} color={tint ? colors.sageDeep : colors.inkSoft}>
+        {text}
+      </T>
+    </Row>
   );
 }

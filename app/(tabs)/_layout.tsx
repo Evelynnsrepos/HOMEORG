@@ -14,6 +14,7 @@ const items: {
   active: keyof typeof Ionicons.glyphMap;
 }[] = [
   { name: 'index', label: 'Home', icon: 'home-outline', active: 'home' },
+  { name: 'history', label: 'History', icon: 'stats-chart-outline', active: 'stats-chart' },
   { name: 'today', label: 'Today', icon: 'checkbox-outline', active: 'checkbox' },
   { name: 'myhome', label: 'My Home', icon: 'heart-outline', active: 'heart' },
   { name: 'profile', label: 'Profile', icon: 'person-outline', active: 'person' },
@@ -69,6 +70,7 @@ export default function TabsLayout() {
       )}
     >
       <Tabs.Screen name="index" />
+      <Tabs.Screen name="history" />
       <Tabs.Screen name="today" />
       <Tabs.Screen name="myhome" />
       <Tabs.Screen name="profile" />

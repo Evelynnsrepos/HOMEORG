@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -21,6 +21,8 @@ export default function Sprint() {
   useKeepAwake();
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  // Home's "Focus now?" boxes hand over a length so the timer is already set
+  const params = useLocalSearchParams<{ minutes?: string }>();
 
   const allTasks = useStore((s) => s.tasks);
   const rooms = useStore((s) => s.rooms);
@@ -28,7 +30,7 @@ export default function Sprint() {
   const recordSprint = useStore((s) => s.recordSprint);
 
   const [stage, setStage] = useState<Stage>('setup');
-  const [minutes, setMinutes] = useState(25);
+  const [minutes, setMinutes] = useState(() => Number(params.minutes) || 25);
   const [selected, setSelected] = useState<string[]>([]);
   const [left, setLeft] = useState(0);
   const [doneIds, setDoneIds] = useState<string[]>([]);

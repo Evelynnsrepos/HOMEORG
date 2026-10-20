@@ -105,6 +105,28 @@ export interface Recipe {
   wanted?: boolean;
   /** ISO, stamped by "Cooked it". Only sorts the list and prints a small note. */
   lastCooked?: string;
+  /** how you make it, free text, one step per line */
+  steps?: string;
+  /** or where it lives online, when the steps are somebody else's */
+  link?: string;
+  /** rough time from start to plate */
+  minutes?: number;
+  /** 1 quick and easy, 2 some work, 3 a project */
+  effort?: RecipeEffort;
+  createdAt: string;
+}
+
+export type RecipeEffort = 1 | 2 | 3;
+
+/** The bits of a recipe besides its name and what goes in it. */
+export type RecipeExtra = Pick<Recipe, 'steps' | 'link' | 'minutes' | 'effort'>;
+
+/** One dish put on one of the next days in "Let's cook it". */
+export interface PlannedMeal {
+  id: string;
+  recipeId: string;
+  /** day key */
+  day: string;
   createdAt: string;
 }
 
