@@ -176,6 +176,63 @@ export default function Settings() {
 
       <Spacer h={14} />
       <Card style={{ padding: 16 }}>
+        <T v="over">Your streak, your pace</T>
+        <Spacer h={5} />
+        <T v="caption">
+          Anything counts: a chore, cooking, putting shopping away, checking in. Pick a rhythm that fits
+          your energy — there's no wrong answer.
+        </T>
+        <Spacer h={12} />
+        <T v="label">Show up at least</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[
+            [1, 'Every day'],
+            [2, 'Every 2 days'],
+            [3, 'Every 3 days'],
+            [7, 'Once a week'],
+          ].map(([n, label]) => (
+            <Chip
+              key={n}
+              small
+              label={label as string}
+              active={(settings.streakEvery ?? 1) === n}
+              onPress={() => patch({ streakEvery: n as number })}
+            />
+          ))}
+        </Row>
+        <Spacer h={12} />
+        <T v="label">Grace days before it breaks</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[1, 2, 3, 5].map((n) => (
+            <Chip
+              key={n}
+              small
+              label={`${n} ${n === 1 ? 'day' : 'days'}`}
+              active={(settings.streakGrace ?? 2) === n}
+              onPress={() => patch({ streakGrace: n })}
+            />
+          ))}
+        </Row>
+        <Spacer h={12} />
+        <T v="label">A good week is</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[1, 2, 3, 5].map((n) => (
+            <Chip
+              key={n}
+              small
+              label={`${n} ${n === 1 ? 'active day' : 'active days'}`}
+              active={(settings.weekGoal ?? 3) === n}
+              onPress={() => patch({ weekGoal: n })}
+            />
+          ))}
+        </Row>
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
         <T v="over">Daily time budget</T>
         <Spacer h={5} />
         <T v="caption">

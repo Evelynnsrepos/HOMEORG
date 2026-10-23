@@ -15,6 +15,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useStore } from '../src/state/store';
+import { CoinToast } from '../src/ui/CoinToast';
 import { MusicEngine } from '../src/ui/MusicEngine';
 import { applyTheme, colors, currentTheme, themeReturn } from '../src/theme';
 
@@ -88,6 +89,7 @@ export default function RootLayout() {
           <Stack.Screen name="sprint" options={{ animation: 'fade' }} />
           <Stack.Screen name="spin" options={{ presentation: 'transparentModal', animation: 'fade' }} />
         </Stack>
+        <CoinToast />
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

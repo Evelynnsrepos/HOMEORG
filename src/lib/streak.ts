@@ -23,7 +23,7 @@ export interface Streak {
   days: number;
   /** consecutive weeks that met the goal (this week counts once it does) */
   weeks: number;
-  /** days left before the chain breaks, 0 when it's already broken */
+  /** days you can rest from today before the chain breaks; 0 means today keeps it */
   safeFor: number;
   /** active days so far this week (Monday to Sunday) */
   thisWeek: number;
@@ -45,7 +45,7 @@ export function streakOf(active: Set<string>, s: StreakSettings = DEFAULT_STREAK
   let safeFor = 0;
   if (sorted.length && daysBetween(sorted[0], dayKey(today)) <= limit) {
     days = 1;
-    safeFor = limit - daysBetween(sorted[0], dayKey(today)) + 1;
+    safeFor = limit - daysBetween(sorted[0], dayKey(today));
     for (let i = 1; i < sorted.length && daysBetween(sorted[i], sorted[i - 1]) <= limit; i++) days++;
   }
 
