@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import * as DocumentPicker from 'expo-document-picker';
 import { File } from 'expo-file-system';
 import { useRouter } from 'expo-router';
@@ -10,7 +11,7 @@ import { cancelDailyReminder, scheduleDailyReminder } from '../src/lib/notify';
 import { useMusic } from '../src/state/music';
 import { useToday } from '../src/state/derived';
 import { useStore } from '../src/state/store';
-import { colors, font, radius } from '../src/theme';
+import { colors, currentTheme, font, radius, themeReturn, themes, type Theme } from '../src/theme';
 import { Btn, Card, Chip, Divider, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
 
 const WEEK = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -134,6 +135,29 @@ export default function Settings() {
             color: colors.ink,
           }}
         />
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
+        <T v="over">Colour scheme</T>
+        <Spacer h={5} />
+        <T v="caption">The whole app changes with it. Classic is the plain original look.</T>
+        <Spacer h={12} />
+        <View style={{ gap: 8 }}>
+          {themes.map((t) => (
+            <ThemeOption
+              key={t.id}
+              theme={t}
+              active={currentTheme().id === t.id}
+              onPress={() => {
+                if (currentTheme().id === t.id) return;
+                tap();
+                themeReturn.route = '/settings';
+                patch({ theme: t.id });
+              }}
+            />
+          ))}
+        </View>
       </Card>
 
       <Spacer h={14} />
@@ -359,6 +383,54 @@ export default function Settings() {
         />
       </Card>
     </Screen>
+  );
+}
+
+/** A scheme as a little preview: its paper, a card, and its accent colours. */
+function ThemeOption({ theme, active, onPress }: { theme: Theme; active: boolean; onPress: () => void }) {
+  const p = theme.palette;
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => ({
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
+        padding: 8,
+        borderRadius: radius.md,
+        borderWidth: 2,
+        borderColor: active ? colors.coral : colors.lineSoft,
+        backgroundColor: colors.card,
+        opacity: pressed ? 0.8 : 1,
+      })}
+    >
+      <View
+        style={{
+          width: 64,
+          height: 46,
+          borderRadius: 12,
+          backgroundColor: p.bg,
+          borderWidth: 1,
+          borderColor: p.line,
+          padding: 6,
+          justifyContent: 'space-between',
+        }}
+      >
+        <View style={{ height: 12, borderRadius: 4, backgroundColor: p.card, borderWidth: 1, borderColor: p.lineSoft }} />
+        <View style={{ flexDirection: 'row', gap: 4 }}>
+          {[p.coral, p.sage, p.gold, p.lilac].map((c, i) => (
+            <View key={i} style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: c }} />
+          ))}
+        </View>
+      </View>
+      <View style={{ flex: 1 }}>
+        <T v="heading" style={{ fontSize: 15 }}>
+          {theme.name}
+        </T>
+        <T v="caption">{theme.blurb}</T>
+      </View>
+      {active ? <Ionicons name="checkmark-circle" size={22} color={colors.coral} /> : null}
+    </Pressable>
   );
 }
 

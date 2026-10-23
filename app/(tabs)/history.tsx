@@ -12,7 +12,7 @@ import { useStats } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { colors, font, radius } from '../../src/theme';
 import { Btn, Card, Press, Row, Screen, Spacer, T } from '../../src/ui/base';
-import { Garland, Sticker } from '../../src/ui/Decor';
+import { ScreenGarland, Sticker } from '../../src/ui/Decor';
 
 const sourceIcon: Record<Completion['source'], keyof typeof Ionicons.glyphMap> = {
   tick: 'checkmark',
@@ -73,10 +73,10 @@ export default function History() {
 
   const tiles = [
     { value: hype.chores, label: hype.chores === 1 ? 'chore done' : 'chores done', bg: colors.coralSoft, fg: colors.coralDeep },
-    { value: hype.cooked, label: hype.cooked === 1 ? 'meal cooked' : 'meals cooked', bg: colors.goldSoft, fg: '#A2701A' },
+    { value: hype.cooked, label: hype.cooked === 1 ? 'meal cooked' : 'meals cooked', bg: colors.goldSoft, fg: colors.goldDeep },
     { value: hype.minutes, label: 'minutes of care', bg: colors.sageSoft, fg: colors.sageDeep },
-    { value: hype.bestStreak, label: 'best day streak', bg: '#EFE3FF', fg: '#7A4FC4' },
-    { value: coins, label: 'coins earned', bg: colors.goldSoft, fg: '#A2701A' },
+    { value: hype.bestStreak, label: 'best day streak', bg: colors.lilacSoft, fg: colors.lilacDeep },
+    { value: coins, label: 'coins earned', bg: colors.goldSoft, fg: colors.goldDeep },
     { value: hype.dishes, label: hype.dishes === 1 ? 'dish mastered' : 'dishes mastered', bg: colors.coralSoft, fg: colors.coralDeep },
   ];
   const inner = Math.min(W, 520) - 32;
@@ -84,16 +84,16 @@ export default function History() {
 
   return (
     <Screen>
-      <Garland width={Math.min(W, 520)} height={70} bulbs={4} seed={11} style={{ marginHorizontal: -16, marginTop: -8, marginBottom: -34 }} />
+      <ScreenGarland height={70} bulbs={4} seed={11} />
 
       {/* The hero ---------------------------------------------------- */}
       <View style={{ borderRadius: radius.lg, overflow: 'hidden' }}>
         <Svg style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} width="100%" height="100%">
           <Defs>
             <LinearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
-              <Stop offset="0" stopColor="#FFB3D4" />
-              <Stop offset="0.55" stopColor="#FF79B0" />
-              <Stop offset="1" stopColor="#B48CF0" />
+              <Stop offset="0" stopColor={colors.coral} stopOpacity={0.7} />
+              <Stop offset="0.55" stopColor={colors.coral} />
+              <Stop offset="1" stopColor={colors.lilac} />
             </LinearGradient>
           </Defs>
           <Rect x="0" y="0" width="100%" height="100%" fill="url(#hero)" />
@@ -220,7 +220,7 @@ export default function History() {
                           {clockTime(new Date(e.at))}
                         </T>
                         <View style={{ width: 26, height: 26, borderRadius: radius.pill, backgroundColor: colors.goldSoft, alignItems: 'center', justifyContent: 'center' }}>
-                          <Ionicons name="restaurant" size={13} color="#A2701A" />
+                          <Ionicons name="restaurant" size={13} color={colors.goldDeep} />
                         </View>
                         <View style={{ flex: 1 }}>
                           <T v="body" color={colors.ink} numberOfLines={1}>

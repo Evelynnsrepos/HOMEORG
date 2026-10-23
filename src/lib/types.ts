@@ -72,6 +72,8 @@ export interface Settings {
   onboarded: boolean;
   /** "Let's cook it" groups the picks by weekday. Off: one shortlist. */
   cookByDay?: boolean;
+  /** colour scheme id from src/theme.ts; missing means the default */
+  theme?: string;
 }
 
 export interface ChallengeProgress {

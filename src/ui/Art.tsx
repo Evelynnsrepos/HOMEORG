@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import Svg, { Circle, ClipPath, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
 import type { RecipeEffort } from '../lib/types';
+import { colors } from '../theme';
 
 /**
  * Pieces traced from the iPad sketches: the rainbow effort ring, the wavy
@@ -171,20 +172,12 @@ const BOOK_PAGES =
   'M74,226 L174,128 Q178,168 190,188 Q330,196 396,244 Q414,268 420,302 Q432,248 470,198 ' +
   'L554,84 Q566,130 584,152 Q636,128 688,140 L946,652 L610,878 Q560,886 508,890 L132,742 Z';
 
-/** The purple open book from the sketch: a cover peeking out behind white pages. */
-export function RecipeBookArt({ size = 64, color = '#7D2470' }: { size?: number; color?: string }) {
+/** The purple open book from the sketch: two flat shapes, a cover peeking out behind white pages. */
+export function RecipeBookArt({ size = 64, color = colors.plum }: { size?: number; color?: string }) {
   return (
     <Svg width={size} height={(size * 860) / 960} viewBox="30 70 960 860">
       <Path d={BOOK_COVER} fill={color} />
-      <Path d={BOOK_PAGES} fill="#FFFFFF" stroke="#F3E6F1" strokeWidth={4} />
-      <Path d="M420,302 Q460,600 508,888" stroke="#EADCEB" strokeWidth={10} fill="none" />
-      {/* a few lines of writing on each page */}
-      {[0, 1, 2].map((i) => (
-        <React.Fragment key={i}>
-          <Path d={`M${175 + i * 8},${330 + i * 90} Q${260},${330 + i * 95} ${360 - i * 6},${390 + i * 95}`} stroke="#F0D5E8" strokeWidth={14} strokeLinecap="round" fill="none" />
-          <Path d={`M${530 + i * 25},${300 + i * 110} Q${640},${260 + i * 110} ${740 + i * 30},${300 + i * 110}`} stroke="#F0D5E8" strokeWidth={14} strokeLinecap="round" fill="none" />
-        </React.Fragment>
-      ))}
+      <Path d={BOOK_PAGES} fill="#FFFFFF" />
     </Svg>
   );
 }

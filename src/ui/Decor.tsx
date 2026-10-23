@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleProp, View, ViewStyle, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
+import { currentTheme } from '../theme';
+
 /**
  * The kawaii dressing: ivy hanging off the top of a screen, warm Edison bulbs
  * on their cords, and pink stickers with faces. All drawn here, nothing
@@ -75,7 +77,7 @@ function Strand({ x, length, seed }: { x: number; length: number; seed: number }
 function Bulb({ x, cord, scale = 1, id }: { x: number; cord: number; scale?: number; id: string }) {
   return (
     <G>
-      <Line x1={x} y1={0} x2={x} y2={cord} stroke="#2B2320" strokeWidth={1.2} />
+      <Line x1={x} y1={0} x2={x} y2={cord} stroke={currentTheme().dark ? '#8A7F78' : '#2B2320'} strokeWidth={1.2} />
       <G transform={`translate(${x} ${cord}) scale(${scale})`}>
         <Circle cx={0} cy={18} r={22} fill={`url(#${id})`} />
         {/* socket */}
@@ -118,6 +120,7 @@ export function Garland({
   seed?: number;
   style?: StyleProp<ViewStyle>;
 }) {
+  if (!currentTheme().decor) return null;
   const r = rng(seed);
   const strands = [
     { x: 8, length: height * 0.95 },
@@ -269,6 +272,7 @@ export function Sticker({
   tilt?: number;
   style?: StyleProp<ViewStyle>;
 }) {
+  if (!currentTheme().decor) return null;
   const s = STICKERS[kind];
   return (
     <View pointerEvents="none" style={[{ width: size, height: size, transform: [{ rotate: `${tilt}deg` }] }, style]}>
@@ -288,6 +292,7 @@ export function Sticker({
  */
 export function ScreenGarland({ seed = 7, bulbs = 3, height = 70 }: { seed?: number; bulbs?: number; height?: number }) {
   const { width } = useWindowDimensions();
+  if (!currentTheme().decor) return null;
   return (
     <Garland
       width={Math.min(width, 520)}

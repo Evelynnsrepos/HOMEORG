@@ -11,7 +11,7 @@ import { useStore } from '../../src/state/store';
 import { band, bandColor, bandLabel, colors, font, radius } from '../../src/theme';
 import { EffortRing, FridgeGauge } from '../../src/ui/Art';
 import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/base';
-import { Garland, Sticker } from '../../src/ui/Decor';
+import { ScreenGarland, Sticker } from '../../src/ui/Decor';
 
 const FOCUS_MINUTES = [15, 25, 45];
 /** a fridge with this many things in it reads as full on the gauge */
@@ -66,7 +66,7 @@ export default function HomeTab() {
 
   return (
     <Screen>
-      <Garland width={Math.min(W, 520)} height={84} style={{ marginHorizontal: -16, marginTop: -8, marginBottom: -40 }} />
+      <ScreenGarland height={84} />
 
       {/* Header ---------------------------------------------------- */}
       <Row style={{ justifyContent: 'space-between' }}>
@@ -82,7 +82,7 @@ export default function HomeTab() {
           <Press onPress={() => router.push('/shop')}>
             <Row style={pill(colors.goldSoft)}>
               <Ionicons name="ellipse" size={11} color={colors.gold} />
-              <T v="heading" style={{ fontSize: 12.5 }} color="#8A6B1F">
+              <T v="heading" style={{ fontSize: 12.5 }} color={colors.goldDeep}>
                 {coins}
               </T>
             </Row>

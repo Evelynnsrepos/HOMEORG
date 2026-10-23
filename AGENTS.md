@@ -43,7 +43,7 @@ There is no linter and no other test suite. "Done" means `tsc` and
 | `src/ui/Art.tsx` | Traced sketch art: `EffortRing`, `FridgeGauge`, `RecipeBookArt`. |
 | `src/ui/Decor.tsx` | `Garland`/`ScreenGarland` (vines + bulbs) and `Sticker`. |
 | `src/ui/Kitchen.tsx` | Kitchen pieces: effort meter, `PickTile`, `packRows`, `DaySheet`. |
-| `src/theme.ts` | Colours, radii, fonts, shadows. |
+| `src/theme.ts` | Colour schemes, radii, fonts, shadows. |
 | `scripts/` | APK build, signing, icons, music, the REWE test and its fixtures. |
 
 ## Rules
@@ -66,14 +66,29 @@ There is no linter and no other test suite. "Done" means `tsc` and
 - Backups (`src/lib/backup.ts`) take the whole state, so new fields ride along.
 
 ### The look
-- Colours come from `colors` in `src/theme.ts`. The token names are older than
-  the palette: **`coral` is the pink, `sage` is the mint**. Don't hard-code a
-  hex that a token already covers.
+- There are several colour schemes (Kawaii, Classic, Dracula, Matcha,
+  Lavender, Midnight), picked in Settings and stored as `settings.theme`.
+  Kawaii is the default. A new scheme is one entry in `themes` in
+  `src/theme.ts` with every `Palette` key filled — check it on a dark *and* a
+  light screen.
+- Colours come from `colors` in `src/theme.ts`, which holds the active scheme.
+  **Read `colors.x` while rendering, never at module load** (no
+  `const X = colors.coral` at the top of a file, no colours in a module-level
+  style object): switching scheme copies the new palette in and remounts the
+  app, so anything captured earlier keeps the old colour. Use getters if a
+  module-level table needs colours (see `bandColor`).
+- The token names are older than the schemes: **`coral` is the main accent,
+  `sage` is "done"**. Don't hard-code a hex that a token already covers — it
+  will look wrong in Dracula or Midnight.
 - The palette has no alarm red. Overdue is a warm peach (`needsLove`,
   `needsYou`) — the app never scolds.
 - Decorate with `ScreenGarland` at the top of tab screens and the odd
   `Sticker` on a card corner (absolute, small negative offset, slight tilt).
-  Keep it to one or two stickers per screen; they're seasoning.
+  Keep it to one or two stickers per screen; they're seasoning. Both render
+  nothing in schemes with `decor: false` (Classic), so lay screens out to work
+  without them.
+- Art traced from the sketches stays in the sketches' flat shape language: a
+  few solid shapes, no added detail lines, textures or inner shadows.
 - Effort is always the rainbow `EffortRing` (1 = a third, 3 = full circle),
   never dots or stars.
 - Everything decorative is SVG drawn in code. If real sticker PNGs are added

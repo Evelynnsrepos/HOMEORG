@@ -190,9 +190,9 @@ export default function Cook() {
             <Svg style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} width="100%" height="100%">
               <Defs>
                 <LinearGradient id="banner" x1="0" y1="0" x2="1" y2="1">
-                  <Stop offset="0" stopColor="#FF9CC8" />
-                  <Stop offset="0.6" stopColor="#FF79B0" />
-                  <Stop offset="1" stopColor="#C58CF5" />
+                  <Stop offset="0" stopColor={colors.coral} stopOpacity={0.75} />
+                  <Stop offset="0.6" stopColor={colors.coral} />
+                  <Stop offset="1" stopColor={colors.lilac} />
                 </LinearGradient>
               </Defs>
               <Rect x="0" y="0" width="100%" height="100%" fill="url(#banner)" />
