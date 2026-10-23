@@ -50,8 +50,10 @@ export default function ImportOrder() {
   const [burst, setBurst] = useState(0);
 
   const pick = useCallback(async () => {
+    // a PDF from a mail app or a download can come without its type on
+    // Android and would be greyed out; take any file, the reader says if it isn't one
     const res = await DocumentPicker.getDocumentAsync({
-      type: 'application/pdf',
+      type: Platform.OS === 'android' ? '*/*' : 'application/pdf',
       copyToCacheDirectory: true,
     });
     // changed your mind: whatever was on screen stays there
@@ -59,7 +61,12 @@ export default function ImportOrder() {
 
     setStage({ kind: 'reading' });
     try {
-      const plan = readReweOrder(await bytesOf(res.assets[0]), useStore.getState().shelfMemory);
+      const bytes = await bytesOf(res.assets[0]);
+      if (String.fromCharCode(...bytes.subarray(0, 1024)).indexOf('%PDF') < 0) {
+        setStage({ kind: 'failed', message: "That file isn't a PDF. Pick the PDF REWE sent you, or the eBon from the till." });
+        return;
+      }
+      const plan = readReweOrder(bytes, useStore.getState().shelfMemory);
       setRows(plan.drafts.map((d, id) => ({ ...d, id })));
       setStage({ kind: 'review', plan });
     } catch (e) {

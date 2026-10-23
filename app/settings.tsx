@@ -60,8 +60,10 @@ export default function Settings() {
   }
 
   async function importData() {
+    // Android file apps label a .json all sorts of ways (or not at all), and a
+    // type filter greys the file out; take any file and check what's inside
     const res = await DocumentPicker.getDocumentAsync({
-      type: ['application/json', 'text/plain', 'application/octet-stream'],
+      type: Platform.OS === 'android' ? '*/*' : ['application/json', 'text/plain', 'application/octet-stream'],
       copyToCacheDirectory: true,
     });
     if (res.canceled || !res.assets[0]) return;
