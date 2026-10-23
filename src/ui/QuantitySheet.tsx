@@ -5,8 +5,10 @@ import { Pressable, TextInput, View } from 'react-native';
 import { addDays, dayKey, daysBetween } from '../lib/date';
 import { autoBestBefore, shelfLifeText } from '../data/shelfLife';
 import { formatQty, guessFor, places, units, unitStep, type Place } from '../data/units';
+import { ocrAvailable } from '../lib/ocr';
 import { colors, font, radius } from '../theme';
 import { Btn, Card, Chip, Row, Spacer, T, tap } from './base';
+import { DateScanner } from './DateScanner';
 
 export interface Bought {
   name: string;
@@ -37,6 +39,7 @@ export function QuantitySheet({
   initial,
   hints,
   dateNote,
+  onScanningChange,
   confirmLabel = 'Put it away',
   onCancel,
   onConfirm,
@@ -45,6 +48,8 @@ export function QuantitySheet({
   hints?: string[];
   /** where a date filled in up front came from, e.g. "from the QR code" */
   dateNote?: string;
+  /** told when the date camera opens and closes, so a camera behind can pause */
+  onScanningChange?: (on: boolean) => void;
   name: string;
   /** a line under the title — where the name came from, say */
   note?: string;
@@ -59,6 +64,12 @@ export function QuantitySheet({
   const [unit, setUnit] = useState(initial?.unit ?? guess.unit);
   const [place, setPlace] = useState<Place>(initial?.place ?? guess.place);
   const [bestBefore, setBestBefore] = useState<string | null | undefined>(initial?.bestBefore);
+  const [scanning, setScanning] = useState(false);
+  const [scanned, setScanned] = useState<string | null>(null);
+  const scanDate = (on: boolean) => {
+    setScanning(on);
+    onScanningChange?.(on);
+  };
   // what "Auto" would give for this name on this shelf, shown so it's not a black box
   const auto = autoBestBefore(label || name, place, new Date(), hints);
   const [custom, setCustom] = useState('');
@@ -196,6 +207,7 @@ export function QuantitySheet({
               <T v="caption">
                 {bestBefore === undefined ? '≈ ' : ''}till {dateText((bestBefore ?? auto)!)}
                 {dateNote && bestBefore && bestBefore === initial?.bestBefore ? ` · ${dateNote}` : ''}
+                {scanned && bestBefore === scanned ? ' · read off the label' : ''}
               </T>
             ) : null}
           </Row>
@@ -208,6 +220,9 @@ export function QuantitySheet({
               active={bestBefore === undefined}
               onPress={() => setBestBefore(undefined)}
             />
+            {ocrAvailable() ? (
+              <Chip small icon="camera-outline" label="Scan date" active={!!scanned && bestBefore === scanned} onPress={() => scanDate(true)} />
+            ) : null}
             <Chip small label="Keeps" active={bestBefore === null} onPress={() => setBestBefore(null)} />
             {KEEPS.map((k) => {
               const day = dayKey(addDays(new Date(), k.days));
@@ -235,6 +250,16 @@ export function QuantitySheet({
           </Row>
         </Card>
       </Pressable>
+      {scanning ? (
+        <DateScanner
+          onClose={() => scanDate(false)}
+          onFound={(day) => {
+            setBestBefore(day);
+            setScanned(day);
+            scanDate(false);
+          }}
+        />
+      ) : null}
     </Pressable>
   );
 }

@@ -233,6 +233,19 @@ wird „Kräuterseitlinge bio“, aus `SONNENB.OEL KALT` „Sonnenblumenöl kalt
 einen echten eBon (`scripts/fixtures/`, ohne Kopfdaten wie Name, Kundennummer
 oder Kartendaten).
 
+## Haltbarkeit
+
+Alles im Vorrat bekommt ein Mindesthaltbarkeitsdatum, in dieser Reihenfolge:
+vom Etikett (**Scan date** liest es per Kamera, auf dem Handy, mit Google ML
+Kit — MHD, SKT, 賞味期限, 有效日期, 유통기한 …), aus dem QR-/DataMatrix-Code
+neuer Verpackungen (GS1), oder geschätzt nach Lagerort: eigene Tabelle für
+deutsche und internationale Namen, dann die USDA-FoodKeeper-Daten (CC0), dann
+die Kategorien von Open Food Facts. Geschätzte Daten stehen mit „≈“ da.
+
+Die Texterkennung ist ein natives Modul: in der APK ja, in Expo Go und im
+Browser nicht. Sie macht die APK um rund 20 MB größer (fünf Schriftsysteme).
+FoodKeeper neu einlesen: `node scripts/import-foodkeeper.js`.
+
 ## Daten sichern
 
 **Settings → Export data** schreibt alles in eine Datei

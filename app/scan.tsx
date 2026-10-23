@@ -38,6 +38,8 @@ export default function Scan() {
   const [pending, setPending] = useState<Pending | null>(null);
   const [added, setAdded] = useState<string[]>([]);
   const [torch, setTorch] = useState(false);
+  /** the date camera in the sheet needs the camera to itself */
+  const [datePaused, setDatePaused] = useState(false);
   /** the scanner fires many times a second — one barcode at a time is plenty */
   const lock = useRef<string | null>(null);
 
@@ -110,15 +112,19 @@ export default function Scan() {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#14120F' }}>
-      <CameraView
-        style={{ flex: 1 }}
-        facing="back"
-        enableTorch={torch}
-        barcodeScannerSettings={{
-          barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128', 'qr', 'datamatrix'],
-        }}
-        onBarcodeScanned={pending ? undefined : onScanned}
-      />
+      {datePaused ? (
+        <View style={{ flex: 1 }} />
+      ) : (
+        <CameraView
+          style={{ flex: 1 }}
+          facing="back"
+          enableTorch={torch}
+          barcodeScannerSettings={{
+            barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128', 'qr', 'datamatrix'],
+          }}
+          onBarcodeScanned={pending ? undefined : onScanned}
+        />
+      )}
 
       {/* framing box */}
       <View
@@ -214,6 +220,7 @@ export default function Scan() {
           initial={{ qty: pending.qty ?? 1, unit: pending.unit, place: pending.place, bestBefore: pending.expiry }}
           hints={pending.hints}
           dateNote={pending.dateKind ? DATE_NOTE[pending.dateKind] : undefined}
+          onScanningChange={setDatePaused}
           onCancel={close}
           onConfirm={(b) => {
             addPantry({ ...b, hints: pending.hints });
