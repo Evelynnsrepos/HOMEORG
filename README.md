@@ -252,6 +252,13 @@ Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
 Dazu kommen 57 selbst gezeichnete Haustiere in drei Sets (Hauskatzen, Wildkatzen
 wie Manul, Serval und Tiger, Vögel und Häschen) aus `scripts/pets/`; jeden
 Monat ist ein Tier-Set neben drei Möbel-Sets in der Maschine.
+
+**Haustier-Modus** (optional, in den Einstellungen): eine Kachel auf Home mit
+deinem Tier als Pixelbild und Schnell-Tipps für Futter, Wasser, Katzenklo,
+Gassi …, ein Bildschirm für Pflege und Vorräte (Futter, Streu, Heu mit
+Reichweite in Tagen) und an schweren Tagen der Vorschlag zum Kuscheln.
+„Nicht vergessen“ (für alle) sammelt Abgelaufenes zum Wegwerfen, Bald-Fälliges,
+einen leeren Kühlschrank und – mit Tieren – Vorräte und fällige Reinigung.
 Wände und Böden (rund 250 Tapeten und 150 Böden in 16 Mustern, je mit einer
 rosa Variante) entstehen mit `python3 scripts/build-surfaces.py`.
 
