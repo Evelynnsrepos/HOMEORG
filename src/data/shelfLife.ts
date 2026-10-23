@@ -1,4 +1,5 @@
 import { addDays, dayKey } from '../lib/date';
+import { foodkeeper, type FkDays } from './foodkeeper';
 import type { Place } from './units';
 
 /**
@@ -23,6 +24,12 @@ import type { Place } from './units';
  * ends up in a shared fridge. `scripts/test-shelf.ts` holds the names that
  * keep it honest; add yours there when a guess surprises you.
  *
+ * 3. Nothing here? The **USDA FoodKeeper** table (data/foodkeeper.ts, CC0)
+ *    has 650 more products in English, from abalone to zucchini bread.
+ * 4. Still nothing? **Hints** get the same treatment — the categories Open
+ *    Food Facts knows for a scanned barcode ("en:kimchi", "Fermented foods")
+ *    — so a jar with only a Korean name on it still lands somewhere sensible.
+ *
  * A number is days from when it went on that shelf. `null` means it keeps
  * (honey, salt, vinegar): no date. A place left out falls back per place.
  */
@@ -39,7 +46,7 @@ const states: Rule[] = [
   [/frisch gepresst|saft frisch|frischer saft|fresh(ly)? (squeezed|juice)|smoothie/i, { fridge: 4, freezer: 90, pantry: 0 }],
   [/getränk|\bdrink\b|drink\b|nektar|\blimo|limonade|schorle|eistee|iced tea|\bcola\b|energy ?drink/i, { pantry: 365, fridge: 7, freezer: 90 }],
   [/\bdosen?\b|konserve|passiert|passata|\bglas\b|im glas|in lake|eingelegt|in öl\b|in oel\b|in oil\b|\btin\b|tinned|canned|\bjar\b|pickled/i, TIN],
-  [/getrocknet|dried|trocken|instant|pulver|gemahlen|ground (?!beef|meat|pork|turkey|chicken|lamb)|powder|flakes|flocken|raspeln|desiccated/i, DRY],
+  [/getrocknet|dried|trocken|instant|pulver|gemahlen|ground (?!beef|meat|pork|turkey|chicken|lamb)|powder|flakes|flocken|raspeln|desiccated|jerky|dörrfleisch|biltong/i, DRY],
   [/gekocht|gebraten|gegart|cooked|leftover|\breste\b|vom vortag/i, { fridge: 3, freezer: 90, pantry: 0 }],
   [/\bh-|haltbar|\buht\b|long ?life/i, { pantry: 90, fridge: 4, freezer: 90 }],
 ];
@@ -153,7 +160,7 @@ const rules: Rule[] = [
   [/marmelade|konfitüre|jam\b|gelee|chutney|fruchtaufstrich/i, { pantry: 365, fridge: 60 }],
   [/erdnussbutter|erdnussb|peanut butter|nutella|nussmus|mandelmus|cashewmus|aufstrich|spread/i, { pantry: 180, fridge: 180 }],
   [/ahornsirup|maple syrup|sirup|syrup|agave|dattelsirup|melasse|molasses/i, { pantry: 365, fridge: 365 }],
-  [/nori|kombu|wakame|seetang|seaweed|algen|dashi/i, DRY],
+  [/nori|kombu\b|wakame|seetang|seaweed|algen|dashi/i, DRY],
   [/gewürz|spice|pfeffer|zimt|oregano|kreuzkümmel|cumin|garam masala|berbere|za.?atar|sumach|sumac|currypulver|curry powder|chiliflocken|muskat|nelke|kardamom|anis|lorbeer|vanille|safran|ras el hanout|five spice|fünf gewürz|gochugaru|shichimi|togarashi|aleppo|chilipulver|chili powder|paprika edelsüß|edelsüß/i, DRY],
   [/kaffee|coffee|\btee\b|\btea\b|matcha|kakao|cocoa/i, DRY],
   [/schokolade|chocolate|nüsse|nuesse|\bnuts?\b|mandeln|almond|cashew|walnu|erdnüsse|peanuts|haselnu|hazelnut|pistazie|pistachio|kerne|seeds|sesam|sesame|chia|leinsamen|flax/i, { pantry: 180, fridge: 365 }],
@@ -170,6 +177,8 @@ export interface ShelfLife {
   days: number | null;
   /** false when it's only the place's fallback */
   known: boolean;
+  /** where the number came from */
+  source: 'table' | 'foodkeeper' | 'fallback';
 }
 
 const global = (re: RegExp) => new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
@@ -195,22 +204,82 @@ function matchKeeps(name: string): Keeps | undefined {
   return best;
 }
 
-export function shelfLife(name: string, place: Place): ShelfLife {
-  const keeps = matchKeeps(name);
-  if (!keeps) return { days: fallback[place], known: false };
-  return { days: place in keeps ? keeps[place]! : fallback[place], known: true };
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const fkRows = foodkeeper.map(([, words, fridge, freezer, pantry]) => ({
+  // whole words, with an optional English plural
+  words: words.map((w) => new RegExp(`(^|[^a-z])${escape(w)}(s|es)?($|[^a-z])`)),
+  lengths: words.map((w) => w.length),
+  keeps: { fridge: fk(fridge), freezer: fk(freezer), pantry: fk(pantry) },
+}));
+
+function fk(d: FkDays): number | null | undefined {
+  return d === 'k' ? null : d === null ? undefined : d;
+}
+
+/**
+ * The FoodKeeper product that shares the most keywords with the name, the
+ * longest keyword breaking a tie: "corn tortillas" is the corn tortilla, not
+ * corn. English only, so this comes after the table above.
+ */
+function matchFoodKeeper(name: string): Keeps | undefined {
+  const n = name.toLowerCase();
+  let best: Keeps | undefined;
+  let hits = 0;
+  let longest = 0;
+  for (const row of fkRows) {
+    let h = 0;
+    let l = 0;
+    row.words.forEach((re, i) => {
+      if (re.test(n)) {
+        h++;
+        l = Math.max(l, row.lengths[i]);
+      }
+    });
+    if (h > hits || (h === hits && h > 0 && l > longest)) {
+      best = Object.fromEntries(Object.entries(row.keeps).filter(([, v]) => v !== undefined)) as Keeps;
+      hits = h;
+      longest = l;
+    }
+  }
+  return best;
+}
+
+/**
+ * How long `name` keeps on `place`. `hints` are other words for the same
+ * thing — Open Food Facts categories for a scanned product, most specific
+ * first — tried in order after the name itself.
+ */
+export function shelfLife(name: string, place: Place, hints: string[] = []): ShelfLife {
+  // Open Food Facts tags look like "en:fermented-foods"
+  const tidy = hints.map((h) => h.replace(/^[a-z]{2}:/, '').replace(/-/g, ' '));
+  for (const text of [name, ...tidy]) {
+    const own = matchKeeps(text);
+    if (own) return pick(own, place, 'table');
+    const fkKeeps = matchFoodKeeper(text);
+    if (fkKeeps) return pick(fkKeeps, place, 'foodkeeper');
+  }
+  return { days: fallback[place], known: false, source: 'fallback' };
+}
+
+function pick(keeps: Keeps, place: Place, source: ShelfLife['source']): ShelfLife {
+  return { days: place in keeps ? keeps[place]! : fallback[place], known: true, source };
 }
 
 /** The best-before day for something put on `place` at `from`, or undefined if it keeps. */
-export function autoBestBefore(name: string, place: Place, from: Date | string = new Date()): string | undefined {
-  const { days } = shelfLife(name, place);
+export function autoBestBefore(
+  name: string,
+  place: Place,
+  from: Date | string = new Date(),
+  hints: string[] = [],
+): string | undefined {
+  const { days } = shelfLife(name, place, hints);
   if (days == null) return undefined;
   return dayKey(addDays(new Date(from), days));
 }
 
 /** "about 5 days", "about 3 months", "keeps", "not sure" — for the date picker. */
-export function shelfLifeText(name: string, place: Place): string {
-  const { days, known } = shelfLife(name, place);
+export function shelfLifeText(name: string, place: Place, hints: string[] = []): string {
+  const { days, known } = shelfLife(name, place, hints);
   if (days == null) return known ? 'keeps' : 'not sure';
   if (days === 0) return 'use today';
   if (days < 14) return `about ${days} ${days === 1 ? 'day' : 'days'}`;

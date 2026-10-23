@@ -69,6 +69,21 @@ check('dates count from when it went on the shelf', () => {
   assert.equal(autoBestBefore('Eier', 'fridge', '2026-10-01T09:00:00'), '2026-10-29');
 });
 
+check('FoodKeeper fills in English names the table does not know', () => {
+  assert.equal(shelfLife('venison', 'fridge').source, 'foodkeeper');
+  assert.equal(shelfLife('scallops', 'fridge').days, 1);
+  assert.equal(shelfLife('caviar', 'fridge').source, 'foodkeeper');
+  // the table still answers first, so German names keep their tested numbers
+  assert.equal(shelfLife('Milch', 'fridge').source, 'table');
+  assert.equal(days('beef jerky', 'pantry'), 365);
+  assert.notEqual(days('kombucha', 'fridge'), 365);
+});
+
+check('hints from a barcode lookup help a name nobody knows', () => {
+  assert.equal(shelfLife('배추김치', 'fridge').known, false);
+  assert.equal(shelfLife('배추김치', 'fridge', ['en:kimchi', 'en:fermented-foods']).days, 90);
+});
+
 check('ingredients from many kitchens land in a sensible range', () => {
   const { items } = JSON.parse(readFileSync(join(__dirname, 'fixtures', 'shelf-life.json'), 'utf8')) as {
     items: { name: string; place: Place; min?: number; max?: number; keeps?: boolean }[];
