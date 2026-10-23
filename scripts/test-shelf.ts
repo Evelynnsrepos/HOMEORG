@@ -6,6 +6,8 @@
  * is not mince; peanut butter is not butter.
  */
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { autoBestBefore, shelfLife } from '../src/data/shelfLife';
 import type { Place } from '../src/data/units';
@@ -40,8 +42,14 @@ check('the freezer buys time', () => {
 check('names that look like something else', () => {
   assert.equal(days('Thunfischfilet in öl', 'pantry'), 365);
   assert.equal(days('Veganes pilz-hack', 'fridge'), 7);
-  assert.equal(days('Bio erdnussbutter crunchy', 'pantry'), 90);
-  assert.equal(days('Apfelgetränk pfirsich', 'pantry'), 180);
+  assert.equal(days('Bio erdnussbutter crunchy', 'pantry'), 180);
+  assert.equal(days('Apfelgetränk pfirsich', 'pantry'), 365);
+  // the thing is at the end of a German compound
+  assert.equal(days('Fischsauce', 'pantry'), 730);
+  assert.equal(days('Tamarindenpaste', 'fridge'), 180);
+  assert.equal(days('Knoblauch', 'pantry'), 60);
+  assert.equal(days('Zuckerschoten', 'fridge'), 5);
+  assert.equal(days('coconut milk', 'pantry'), 365);
   assert.equal(days('H-Milch', 'pantry'), 90);
   assert.equal(days('Kokosmilch', 'pantry'), 365);
   assert.equal(days('Lauchzwiebeln', 'fridge'), 7);
@@ -58,7 +66,22 @@ check('some things keep', () => {
 
 check('dates count from when it went on the shelf', () => {
   assert.equal(autoBestBefore('Milch', 'fridge', '2026-10-20T12:00:00'), '2026-10-25');
-  assert.equal(autoBestBefore('Eier', 'fridge', '2026-10-01T09:00:00'), '2026-10-22');
+  assert.equal(autoBestBefore('Eier', 'fridge', '2026-10-01T09:00:00'), '2026-10-29');
+});
+
+check('ingredients from many kitchens land in a sensible range', () => {
+  const { items } = JSON.parse(readFileSync(join(__dirname, 'fixtures', 'shelf-life.json'), 'utf8')) as {
+    items: { name: string; place: Place; min?: number; max?: number; keeps?: boolean }[];
+  };
+  const off = items.filter((it) => {
+    const r = shelfLife(it.name, it.place);
+    return it.keeps ? r.days !== null : r.days === null || r.days < it.min! || r.days > it.max!;
+  });
+  assert.deepEqual(
+    off.map((it) => `${it.name} (${it.place}): ${shelfLife(it.name, it.place).days}`),
+    [],
+    `${off.length} of ${items.length} outside their range`,
+  );
 });
 
 if (failed) {
