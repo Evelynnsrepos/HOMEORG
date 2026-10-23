@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import { presetChallenges } from '../src/data/challenges';
 import { playlists } from '../src/data/musicTracks';
+import { stickerSets } from '../src/data/stickerCatalog';
 import { shopItems } from '../src/data/shop';
 import { useStore } from '../src/state/store';
 import { colors } from '../src/theme';
@@ -102,6 +103,20 @@ export default function About() {
         and Inspection Service, public domain (CC0). Text recognition for scanning dates runs on the
         phone with Google ML Kit; no picture leaves the device.
       </T>
+
+      <Spacer h={20} />
+      <T v="over">Sticker art</T>
+      <Spacer h={8} />
+      <T v="body">
+        The pixel stickers are from LPC Revised (github.com/ElizaWy/LPC), cut into single pieces and
+        scaled up, under CC-BY 3.0 / OGA-BY 3.0. Thank you to everyone who drew them:
+      </T>
+      <Spacer h={6} />
+      {stickerSets.map((set) => (
+        <T key={set.id} v="caption" style={{ marginBottom: 4 }}>
+          {set.emoji} {set.name}: {set.artists.join(', ') || 'see CREDITS.md'}
+        </T>
+      ))}
 
       <Spacer h={20} />
       <T v="over">Where the art comes from</T>

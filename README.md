@@ -233,6 +233,23 @@ wird „Kräuterseitlinge bio“, aus `SONNENB.OEL KALT` „Sonnenblumenöl kalt
 einen echten eBon (`scripts/fixtures/`, ohne Kopfdaten wie Name, Kundennummer
 oder Kartendaten).
 
+## Zimmer, Sticker, Münzen
+
+Zimmer werden mit Stickern eingerichtet: frei platzieren, skalieren, drehen,
+spiegeln, stapeln. Rund 2500 Pixel-Teile in 12 Sets (LPC Revised, CC-BY /
+OGA-BY, Credits im About-Screen) gibt es nur über den Sticker-Automaten —
+jede Ziehung ein neues Teil, jeden Monat drei andere Sets. Münzen gibt es
+fürs Putzen, Kochen, Vorher-/Nachher-Fotos, Einräumen, MHDs eintragen,
+Einchecken und Streaks (mit Tageslimit pro Quelle). Keine In-App-Käufe.
+
+Streaks zählen jeden aktiven Tag, im selbst gewählten Rhythmus (täglich, alle
+2–3 Tage, wöchentlich) und mit Schonfrist. Das „Wie geht's dir?"-Kärtchen auf
+Home speichert Stimmung, soziale Kapazität und Energie; an schweren Tagen
+gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
+been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
+
+Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
+
 ## Haltbarkeit
 
 Alles im Vorrat bekommt ein Mindesthaltbarkeitsdatum, in dieser Reihenfolge:

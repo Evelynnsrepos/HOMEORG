@@ -21,7 +21,7 @@ npm ci                 # install
 npx expo start         # dev server, scan the QR code with Expo Go
 npm run web            # quick look in a browser (no camera, no haptics)
 npm run tsc            # typecheck — must pass
-npm test               # REWE import, shelf life, GS1 codes, printed dates — must pass
+npm test               # REWE, shelf life, GS1, printed dates, stickers, streaks, check-ins — must pass
 npm run apk            # local release APK (needs JDK 21 + Android SDK 36)
 ```
 
@@ -41,7 +41,8 @@ There is no linter and no other test suite. "Done" means `tsc` and
 | `src/data/` | Static tables: room types, shop items, challenges, units. |
 | `src/ui/base.tsx` | Building blocks: `T`, `Card`, `Row`, `Btn`, `Chip`, `Ring`, `Bar`, `Screen`… use these, don't restyle from scratch. |
 | `src/ui/Art.tsx` | Traced sketch art: `EffortRing`, `FridgeGauge`, `RecipeBookArt`. |
-| `src/ui/Decor.tsx` | `Garland`/`ScreenGarland` (vines + bulbs) and `Sticker`. |
+| `src/ui/Decor.tsx` | `Garland`/`ScreenGarland` (vines + bulbs) and the kawaii `Sticker` decorations. |
+| `src/ui/StickerLayer.tsx` | Draws a room's placed stickers; `PieceImage` draws one piece. |
 | `src/ui/Kitchen.tsx` | Kitchen pieces: effort meter, `PickTile`, `packRows`, `DaySheet`. |
 | `src/theme.ts` | Colour schemes, radii, fonts, shadows. |
 | `scripts/` | APK build, signing, icons, music, the REWE test and its fixtures. |
@@ -114,6 +115,48 @@ There is no linter and no other test suite. "Done" means `tsc` and
   tricky block — match the density of the file you're in.
 - Keep logic that can be pure in `src/lib/` so it can be tested with `tsx`.
 - Small, focused edits beat rewrites. Don't reformat code you aren't changing.
+
+## Rooms, stickers and coins
+
+**Rooms are decorated with stickers** (`room.stickers`, `src/lib/stickers.ts`):
+a piece id, a centre as a fraction of the room picture, a width as a
+fraction of its width, a rotation, a mirror flag and a layer. Pieces are
+pixel art from `src/data/stickerCatalog.ts` or the original drawn furniture
+(`svg:<shop item id>`). The editor (`app/decorate/[id].tsx`) drags, pinches,
+twists, and has buttons for the same. Old slot layouts were moved to stickers
+once on load; `room.decor` is only history now.
+
+**The sticker library** is generated: `python3 scripts/build-stickers.py`
+(needs Pillow) cuts the LPC Revised sheets in `scripts/data/lpc-revised/`
+(CC-BY 3.0 / OGA-BY 3.0) into ~2500 pieces in 12 sets, writes
+`assets/stickers/` and `src/data/stickerCatalog.ts`, and the credits to
+`assets/stickers/CREDITS.md`. The artists are listed on the About screen —
+that attribution is required, keep it.
+
+**The sticker draw** (`app/shop.tsx`) is the only place coins are spent:
+every draw is a piece you don't own yet, from this month's three sets
+(`featuredSets`, they rotate on the 1st), set first then piece by rarity.
+**There are no in-app purchases and never will be.**
+
+**Coins** come from almost everything, through the store's `earn(source)`
+with a daily cap per source (`src/lib/rewards.ts`) so nothing can be farmed.
+New ways to earn go there, with a cap, and on the list in `app/shop.tsx`.
+
+**Streaks** (`src/lib/streak.ts`) count any active day — chores, anything
+that earned coins, a check-in — at the rhythm the person chose
+(`streakEvery`), with grace days (`streakGrace`) before it breaks, and a week
+streak for weeks with `weekGoal` active days. Keep them forgiving.
+
+## Check-ins and data
+
+The Home tile and `app/mood.tsx` record how someone feels (`moods`: mood,
+room for other people, energy to clean, energy for hobbies, 0-100; presets
+fill all four). A hard day (`isHardDay` in `src/lib/mood.ts`) opens the
+comfort sheet (`src/ui/Comfort.tsx`): affirmations, suggestions that only
+ever mean doing *less*, and a pointer to TelefonSeelsorge. Never answer a low
+check-in with more tasks, guilt or streak warnings. `app/mood-data.tsx`
+draws it all: a contribution-style grid, the last 30 days, gentle patterns.
+This data never leaves the phone.
 
 ## The kitchen in one paragraph
 

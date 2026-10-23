@@ -57,6 +57,7 @@ export default function Profile() {
       <Spacer h={16} />
       <Card style={{ padding: 0, overflow: 'hidden' }}>
         <MenuRow icon="stats-chart" label="Insights" hint="Your week, room by room" onPress={() => router.push('/insights')} />
+        <MenuRow icon="heart" label="How you've been" hint="Check-ins, energy and activity over time" onPress={() => router.push('/mood-data')} />
         <Divider />
         <MenuRow icon="trophy" label="Challenges" hint="16 checklists + your own" onPress={() => router.push('/challenges')} />
         <Divider />
