@@ -9,7 +9,7 @@ import { starterFor } from '../data/starterRooms';
 import { autoBestBefore } from '../data/shelfLife';
 import { REWARDS, allowed, trimLog, type CoinEvent, type RewardSource } from '../lib/rewards';
 import { DEFAULT_SURFACES, ROOM_SURFACES } from '../lib/surfaces';
-import { drawPiece, featuredSets, pieceById, starterPieces, starterStickers, stickersFromSlots } from '../lib/stickers';
+import { drawPiece, featuredSets, pieceById, pixelForDrawn, pixelOnly, starterPieces, starterStickers, stickersFromSlots } from '../lib/stickers';
 import { DEFAULT_STREAK, activeDays, streakOf, weekStartKey, type StreakSettings } from '../lib/streak';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
@@ -1217,6 +1217,19 @@ export const useStore = create<Store>()(
         if (dated) useStore.setState({ pantry: dated });
         const moved = stickerRooms(useStore.getState().rooms ?? []);
         if (moved) useStore.setState({ rooms: moved });
+        // the drawn furniture is gone: rooms keep their layout with pixel pieces instead
+        const now = useStore.getState();
+        if (now.rooms.some((r) => pixelOnly(r.stickers ?? []))) {
+          const rooms = now.rooms.map((r) => {
+            const next = pixelOnly(r.stickers ?? []);
+            return next ? { ...r, stickers: next } : r;
+          });
+          useStore.setState({ rooms, pieces: withRoomPieces(now.pieces, rooms) });
+        }
+        // and the drawn pieces you owned become their pixel stand-ins in your collection
+        const fromDrawn = (now.inventory ?? []).map((id) => pixelForDrawn(id)).filter((id): id is string => !!id);
+        const have = useStore.getState().pieces ?? [];
+        if (fromDrawn.some((id) => !have.includes(id))) useStore.setState({ pieces: [...new Set([...have, ...fromDrawn])] });
         const known = forgetLostPieces(useStore.getState());
         if (known) useStore.setState(known);
         if (!state.welcomeKit) {

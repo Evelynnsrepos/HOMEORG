@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 
 import { pieces, stickerSets } from '../src/data/stickerCatalog';
 import { surfaceFamilies, surfaces } from '../src/data/roomSurfaces';
-import { drawPiece, featuredSets, pieceById, starterPieces, starterStickers, stickersFromSlots } from '../src/lib/stickers';
+import { shopItems } from '../src/data/shop';
+import { drawPiece, featuredSets, pieceById, pixelForDrawn, pixelOnly, starterPieces, starterStickers, stickersFromSlots } from '../src/lib/stickers';
 import { DEFAULT_SURFACES, ROOM_SURFACES, surfaceFor } from '../src/lib/surfaces';
 
 let failed = 0;
@@ -114,13 +115,28 @@ check('pets: manul, serval, tiger, house cats and birds are all there', () => {
   assert.ok(pieces.filter((p) => p.kind === 'pet').length >= 50);
 });
 
-check('old slot furniture becomes stickers in the same places', () => {
+check('old slot furniture becomes pixel stickers in the same places', () => {
   let n = 0;
   const out = stickersFromSlots(['art_botanical', null, null, 'sofa_sage', 'rug_sage'], () => `k${n++}`);
   assert.equal(out.length, 3);
-  assert.equal(out[0].piece, 'svg:art_botanical');
+  assert.ok(out.every((k) => !k.piece.startsWith('svg:') && pieceById(k.piece)?.type === 'pixel'));
   assert.ok(out[0].y < out[1].y, 'wall above floor');
-  assert.equal(out.find((k) => k.piece === 'svg:rug_sage')?.z, 0);
+  assert.equal(out.find((k) => k.piece === 'rainbow-checkered-rug-02')?.z, 0);
+});
+
+check('every drawn piece from before has a pixel stand-in, and saved rooms move over', () => {
+  for (const item of shopItems) assert.ok(pixelForDrawn(item.id), item.id);
+  const room = [
+    { id: 'a', piece: 'svg:sofa_sage', x: 0.5, y: 0.7, size: 0.3, rot: 0, z: 1 },
+    { id: 'b', piece: 'loveseat-small-casual-solid-a-02', x: 0.2, y: 0.7, size: 0.3, rot: 0, z: 2 },
+    { id: 'c', piece: 'rainbow-rug-02', x: 0.5, y: 0.8, size: 0.3, rot: 0, z: 0 },
+  ];
+  const moved = pixelOnly(room)!;
+  assert.equal(moved.length, 3);
+  assert.equal(moved[0].piece, 'loveseat-small-casual-patterned-c-02');
+  assert.equal(moved[1].piece, 'loveseat-small-casual-patterned-c-02');
+  assert.equal(moved[2], room[2]);
+  assert.equal(pixelOnly([room[2]]), null);
 });
 
 if (failed) {

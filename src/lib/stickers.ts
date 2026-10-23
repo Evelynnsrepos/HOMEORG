@@ -1,4 +1,4 @@
-import { itemById, type ShopItem } from '../data/shop';
+import { itemById, type Kind } from '../data/shop';
 import { pieces, stickerSets, type Piece, type Rarity } from '../data/stickerCatalog';
 import { ART_H, ART_W } from './surfaces';
 import type { PlacedSticker } from './types';
@@ -8,31 +8,26 @@ export type { PlacedSticker };
 /*
  * Rooms are decorated with stickers: any piece, anywhere, any size, any
  * angle, mirrored or not, stacked in any order. A piece is either pixel art
- * from the sticker library ("lounge-042") or one of the original drawn pieces
- * from before the library existed ("svg:sofa_sage"), which everybody keeps.
+ * from the sticker library ("lounge-042"). The drawn furniture from before the
+ * library ("svg:sofa_sage") is gone: each such id now stands for the pixel
+ * piece closest to it (`DRAWN_TO_PIXEL`), and saved rooms are moved over on load.
  *
  * Positions are fractions of the room picture, so a room looks the same on a
  * phone, a tablet and the little card on Home.
  */
 
-export type AnyPiece =
-  | { type: 'pixel'; id: string; piece: Piece }
-  | { type: 'svg'; id: string; item: ShopItem };
+export type AnyPiece = { type: 'pixel'; id: string; piece: Piece };
 
 const byId = new Map(pieces.map((p) => [p.id, p]));
 
 export function pieceById(id: string): AnyPiece | undefined {
-  if (id.startsWith('svg:')) {
-    const item = itemById(id.slice(4));
-    return item ? { type: 'svg', id, item } : undefined;
-  }
-  const piece = byId.get(id);
+  const piece = byId.get(id.startsWith('svg:') ? pixelForDrawn(id) ?? '' : id);
   return piece ? { type: 'pixel', id, piece } : undefined;
 }
 
 /** Height over width, so a sticker keeps its shape at any size. */
 export function aspect(p: AnyPiece): number {
-  return p.type === 'pixel' ? p.piece.h / p.piece.w : 1;
+  return p.piece.h / p.piece.w;
 }
 
 /**
@@ -40,7 +35,6 @@ export function aspect(p: AnyPiece): number {
  * (a room is 192 of their pixels across), drawn pieces by what they are.
  */
 export function defaultSize(p: AnyPiece): number {
-  if (p.type === 'svg') return p.item.zone === 'small' ? 0.16 : p.item.zone === 'wall' ? 0.22 : 0.3;
   return Math.min(0.55, Math.max(0.07, p.piece.w / ART_W));
 }
 
@@ -52,13 +46,13 @@ export function defaultSize(p: AnyPiece): number {
 type Spot = [string | RegExp, number, number];
 const STARTERS: Record<string, Spot[]> = {
   kitchen: [['fridge-03', 26, 118], ['oven-modern-01', 62, 118], ['sink-countertop-02', 112, 114], ['kitchen-clutter-a-07', 112, 64], [/^Flowers/, 165, 144]],
-  living: [['rainbow-rug-02', 96, 160], ['loveseat-small-casual-solid-a-02', 96, 140], [/^Paintings, Landscape/, 96, 52], ['lighting-floor-02', 166, 128], [/^Flowers/, 26, 144]],
+  living: [['rainbow-checkered-rug-02', 96, 158], ['loveseat-small-casual-patterned-c-02', 96, 124], [/^Paintings, Landscape/, 96, 52], ['lighting-floor-02', 166, 128], [/^Flowers/, 26, 144]],
   bathroom: [['sink-pedestal-01', 68, 118], [/^Mirrors/, 68, 60], [/^Flowers/, 150, 136]],
   bedroom: [['beds-single-a-07', 96, 158], [/^Paintings, Abstract/, 96, 52], ['end-table-11', 45, 118], ['lighting-table-01', 45, 100], ['dresser-03', 158, 118]],
   kids: [['rainbow-checkered-rug-02', 128, 160], ['beds-single-a-06', 52, 158], [/^Paintings, Portraits/, 135, 58], [/^Games/, 128, 148]],
   dining: [['table-ornate-wood-04', 96, 148], [/^Paintings, Still Life/, 96, 58], ['lighting-wall-07', 158, 48], [/^Flowers/, 30, 144]],
   office: [['desk-office-04', 90, 128], ['chair-office-02', 90, 158], ['shelf-04', 166, 118], [/^Paintings, Landscape/, 38, 58]],
-  hallway: [['rainbow-rug-04', 96, 160], ['mirror-standing-01', 45, 128], [/^Clock, Grandfather/, 150, 118], ['lighting-wall-07', 96, 48]],
+  hallway: [['rainbow-checkered-rug-04', 96, 158], ['mirror-standing-01', 45, 128], [/^Clock, Grandfather/, 150, 118], ['lighting-wall-07', 96, 48]],
   laundry: [[/^Baskets/, 52, 144], [/^Buckets/, 135, 144], ['shelf-02', 96, 58]],
   guest: [['beds-single-a-01', 75, 158], [/^Paintings, Landscape/, 96, 52], ['end-table-01', 150, 118]],
   garage: [['workbench-carpentry-01', 82, 128], [/^Boxes/, 158, 148], [/^Ladder/, 22, 128]],
@@ -68,6 +62,84 @@ const STARTERS: Record<string, Spot[]> = {
   custom: [[/^Flowers/, 45, 144], [/^Paintings, Abstract/, 96, 52]],
 };
 
+// sheets sometimes hold a row of things cut as one; keep to one-object sizes
+const fits = (p: Piece) => p.w <= 130 && p.h <= 100 && p.h / p.w < 3.2;
+
+/** A piece by id, or the biggest single piece whose label matches. */
+function pick(label: string | RegExp): Piece | undefined {
+  return typeof label === 'string'
+    ? byId.get(label)
+    : pieces.filter((p) => label.test(p.label) && fits(p)).sort((a, b) => b.w * b.h - a.w * a.h)[0];
+}
+
+/** Every kind of the old drawn furniture, and the pixel piece that takes its place. */
+const DRAWN_TO_PIXEL: Record<Kind, string | RegExp> = {
+  sofa: 'loveseat-small-casual-patterned-c-02',
+  armchair: 'chair-sofa-a-04',
+  stool: 'bar-stools-02',
+  bed: 'beds-single-a-07',
+  coffeeTable: 'table-ornate-wood-04',
+  diningTable: 'table-ornate-wood-04',
+  desk: 'desk-office-04',
+  sideboard: 'dresser-03',
+  bookcase: 'shelf-04',
+  wardrobe: 'cabinet-04',
+  // the wide flat rug: the tall ones are taller than the floor and climb the wall
+  rug: 'rainbow-checkered-rug-02',
+  plantTall: /^Flowers/,
+  plantSmall: 'flowers-07',
+  cactus: /^Flowers/,
+  floorLamp: 'lighting-floor-02',
+  tableLamp: 'lighting-table-01',
+  pendant: 'lighting-wall-07',
+  shelf: 'shelf-02',
+  artFrame: /^Paintings, Landscape/,
+  mirror: /^Mirrors/,
+  clock: 'clock-grandfather-01',
+  windowBox: 'flowers-07',
+  tv: 'tv-widescreen-01',
+  basket: 'baskets-a-01',
+  petBed: 'pet-cat-ginger-tabby-loaf',
+  beanbag: 'ottoman-small-a-01',
+  fireplace: 'fireplace-02',
+  piano: 'dresser-01',
+  aquarium: 'pet-fish-goldfish',
+  toybox: 'presents-03',
+  easel: /^Paintings, Abstract/,
+  guitar: /^Games/,
+  candles: 'lighting-table-03',
+  vase: 'vase-studies-05',
+  garland: 'fireplace-accessories-a-03',
+  tree: 'christmas-tree-01',
+  pumpkin: 'flowers-03',
+  lantern: 'lighting-table-01',
+};
+
+/** Pieces that turned out to be two views cut as one (a sofa from the front and the back). */
+const REPLACED: Record<string, string> = {
+  'loveseat-small-casual-solid-a-02': 'loveseat-small-casual-patterned-c-02',
+};
+
+/**
+ * A saved room's stickers with every drawn piece swapped for its pixel
+ * stand-in, at the pixel piece's own size. Null when there was nothing to swap.
+ */
+export function pixelOnly(stickers: PlacedSticker[]): PlacedSticker[] | null {
+  if (!stickers.some((k) => k.piece.startsWith('svg:') || REPLACED[k.piece])) return null;
+  return stickers.flatMap((k) => {
+    const id = k.piece.startsWith('svg:') ? pixelForDrawn(k.piece) : REPLACED[k.piece] ?? k.piece;
+    const piece = id ? byId.get(id) : undefined;
+    if (!piece) return [];
+    return [id === k.piece ? k : { ...k, piece: piece.id, size: defaultSize({ type: 'pixel', id: piece.id, piece }), rot: 0 }];
+  });
+}
+
+/** The pixel piece an old "svg:<shop item>" id now stands for. */
+export function pixelForDrawn(id: string): string | undefined {
+  const item = itemById(id.replace(/^svg:/, ''));
+  return item ? (pick(DRAWN_TO_PIXEL[item.kind]) ?? pick(/^Flowers/))?.id : undefined;
+}
+
 /**
  * A few pixel pieces so a new room isn't bare: the biggest single piece matching
  * each label (the whole bed, not its pillow), standing where it would in a room.
@@ -75,12 +147,7 @@ const STARTERS: Record<string, Spot[]> = {
 export function starterStickers(typeId: string, makeId: () => string): PlacedSticker[] {
   const out: PlacedSticker[] = [];
   (STARTERS[typeId] ?? STARTERS.custom).forEach(([label, cx, bottom], i) => {
-    // sheets sometimes hold a row of things cut as one; keep to one-object sizes
-    const fits = (p: Piece) => p.w <= 130 && p.h <= 100 && p.h / p.w < 3.2;
-    const piece =
-      typeof label === 'string'
-        ? pieces.find((p) => p.id === label)
-        : pieces.filter((p) => label.test(p.label) && fits(p)).sort((a, b) => b.w * b.h - a.w * a.h)[0];
+    const piece = pick(label);
     if (!piece) return;
     const w = Math.min(piece.w, ART_W * 0.55);
     const h = (w * piece.h) / piece.w;
@@ -104,15 +171,17 @@ export function stickersFromSlots(decor: (string | null)[] | undefined, makeId: 
   const out: PlacedSticker[] = [];
   (decor ?? []).forEach((itemId, i) => {
     const slot = OLD_SLOTS[i];
-    if (!itemId || !slot || !itemById(itemId)) return;
+    const pixel = itemId ? pixelForDrawn(itemId) : undefined;
+    const piece = pixel ? byId.get(pixel) : undefined;
+    if (!itemId || !slot || !piece) return;
     const [cx, baseY, size] = slot;
     const rug = itemById(itemId)?.kind === 'rug';
     out.push({
       id: makeId(),
-      piece: `svg:${itemId}`,
+      piece: piece.id,
       x: cx / 200,
       y: (baseY - size / 2 - 12) / 108,
-      size: size / 200,
+      size: defaultSize({ type: 'pixel', id: piece.id, piece }),
       rot: 0,
       // rugs lie under everything, wall pieces behind the floor ones
       z: rug ? 0 : i < 3 ? 1 : i < 8 ? 2 : 3,

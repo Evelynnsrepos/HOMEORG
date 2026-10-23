@@ -4,7 +4,6 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Image, Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
-import { itemById } from '../../src/data/shop';
 import { surfaceFamilies, surfaces, type Surface as Tile } from '../../src/data/roomSurfaces';
 import { pieces, stickerSets } from '../../src/data/stickerCatalog';
 import { defaultSize, pieceById, type PlacedSticker } from '../../src/lib/stickers';
@@ -34,7 +33,6 @@ export default function Decorate() {
   const router = useRouter();
   const room = useStore((s) => s.rooms.find((r) => r.id === id));
   const owned = useStore((s) => s.pieces ?? []);
-  const inventory = useStore((s) => s.inventory);
   const coins = useStore((s) => s.coins);
   const addSticker = useStore((s) => s.addSticker);
   const updateSticker = useStore((s) => s.updateSticker);
@@ -43,8 +41,8 @@ export default function Decorate() {
   const setSurface = useStore((s) => s.setSurface);
 
   const [tab, setTab] = useState<Tab>('stickers');
-  // open on the newest pixel piece's set; the drawn originals sit at the end
-  const [shelf, setShelf] = useState<string>(() => pieces.find((p) => p.id === owned.at(-1))?.set ?? 'original');
+  // open on the set of the newest piece you got
+  const [shelf, setShelf] = useState<string>(() => pieces.find((p) => p.id === owned.at(-1))?.set ?? stickerSets[0].id);
   const [selected, setSelected] = useState<string | null>(null);
   /** the selected sticker while a finger is on it, before it's saved */
   const [draft, setDraft] = useState<PlacedSticker | null>(null);
@@ -54,18 +52,12 @@ export default function Decorate() {
 
   const ownedSet = useMemo(() => new Set(owned), [owned]);
   const shelves = useMemo(
-    () => [
-      ...stickerSets.map((s) => ({ ...s, count: pieces.filter((p) => p.set === s.id && ownedSet.has(p.id)).length })),
-      { id: 'original', name: 'Originals', emoji: '🪑', count: inventory.length },
-    ],
-    [inventory, ownedSet],
+    () => stickerSets.map((s) => ({ ...s, count: pieces.filter((p) => p.set === s.id && ownedSet.has(p.id)).length })),
+    [ownedSet],
   );
   const tray = useMemo(
-    () =>
-      shelf === 'original'
-        ? inventory.filter((i) => itemById(i)).map((i) => `svg:${i}`)
-        : pieces.filter((p) => p.set === shelf && ownedSet.has(p.id)).map((p) => p.id),
-    [shelf, inventory, ownedSet],
+    () => pieces.filter((p) => p.set === shelf && ownedSet.has(p.id)).map((p) => p.id),
+    [shelf, ownedSet],
   );
 
   // gesture bookkeeping: where the sticker was when the fingers came down
@@ -165,7 +157,7 @@ export default function Decorate() {
     const sid = addSticker(room.id, piece, {
       size: defaultSize(p),
       x: 0.5 + jitter(),
-      y: (p.type === 'pixel' && p.piece.kind === 'wall') || (p.type === 'svg' && p.item.zone === 'wall') ? 0.3 : 0.62 + jitter() / 2,
+      y: p.piece.kind === 'wall' ? 0.3 : 0.62 + jitter() / 2,
     });
     setSelected(sid);
   };

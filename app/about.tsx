@@ -5,8 +5,7 @@ import { View } from 'react-native';
 import { presetChallenges } from '../src/data/challenges';
 import { playlists } from '../src/data/musicTracks';
 import { surfaceArtists } from '../src/data/roomSurfaces';
-import { stickerSets } from '../src/data/stickerCatalog';
-import { shopItems } from '../src/data/shop';
+import { pieces, stickerSets } from '../src/data/stickerCatalog';
 import { useStore } from '../src/state/store';
 import { colors } from '../src/theme';
 import { Card, Divider, IconBtn, Row, Screen, Spacer, T } from '../src/ui/base';
@@ -57,7 +56,7 @@ export default function About() {
         <Divider />
         <Line label="Completions recorded" value={`${completions.length}`} />
         <Divider />
-        <Line label="Shop items" value={`${shopItems.length}`} />
+        <Line label="Pixel pieces" value={`${pieces.length}`} />
         <Divider />
         <Line label="Preset challenges" value={`${presetChallenges.length}`} />
         <Divider />
