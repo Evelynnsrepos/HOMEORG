@@ -38,8 +38,7 @@ import type {
   Settings,
   ShoppingItem,
   SprintRecord,
-  Task,
-} from '../lib/types';
+  Task, MyPet, PetCare, PetSupply } from '../lib/types';
 import { roomPalette } from '../theme';
 
 export const DECOR_SLOTS = 10;
@@ -101,6 +100,10 @@ interface State {
   /** every coin earned outside chores' own price, with where it came from — for caps, streaks and the data screen */
   coinLog: CoinEvent[];
   moods: MoodEntry[];
+  /** pet mode: your pets, their care and their supplies (older installs: missing) */
+  pets?: MyPet[];
+  petLog?: PetCare[];
+  petSupplies?: PetSupply[];
   /** the last coins earned, for the little toast; not saved */
   lastReward: { coins: number; label: string; at: number } | null;
   achievements: Achievement[];
@@ -144,6 +147,17 @@ interface Actions {
   /** Draw `n` new pieces for coins. Null when you can't afford it; fewer when the library runs out. */
   drawPieces: (n: number, price: number) => string[] | null;
   saveMood: (m: Omit<MoodEntry, 'id' | 'day' | 'at'>) => void;
+  addPet: (p: Omit<MyPet, 'id' | 'createdAt'>) => string;
+  updatePet: (id: string, patch: Partial<Omit<MyPet, 'id'>>) => void;
+  removePet: (id: string) => void;
+  /** a quick tap of care; returns the log entry's id so it can be undone */
+  logCare: (petId: string, action: string) => string;
+  undoCare: (id: string) => void;
+  addSupply: (s: Omit<PetSupply, 'id' | 'updatedAt'>) => void;
+  updateSupply: (id: string, patch: Partial<Omit<PetSupply, 'id'>>) => void;
+  /** back to a full pack (or `amount`), counted from now */
+  restockSupply: (id: string, amount?: number) => void;
+  removeSupply: (id: string) => void;
   placeDecor: (roomId: string, slot: number, itemId: string | null) => void;
   setSurface: (roomId: string, kind: 'wallpaper' | 'flooring', itemId: string) => void;
 
@@ -220,6 +234,9 @@ const initialState: State = {
   welcomeKit: false,
   coinLog: [],
   moods: [],
+  pets: [],
+  petLog: [],
+  petSupplies: [],
   lastReward: null,
   achievements: [],
   breakdownDay: '',
@@ -1113,6 +1130,40 @@ export const useStore = create<Store>()(
           settings: { ...s.settings, homeType, floors },
           rooms: s.rooms.map((r) => ({ ...r, floor: assignment[r.id] ?? 0 })),
         })),
+
+      addPet: (p) => {
+        const id = uid('pet');
+        set((s) => ({ pets: [...(s.pets ?? []), { ...p, id, createdAt: new Date().toISOString() }] }));
+        return id;
+      },
+      updatePet: (id, patch) => set((s) => ({ pets: (s.pets ?? []).map((p) => (p.id === id ? { ...p, ...patch } : p)) })),
+      removePet: (id) =>
+        set((s) => ({
+          pets: (s.pets ?? []).filter((p) => p.id !== id),
+          petLog: (s.petLog ?? []).filter((c) => c.petId !== id),
+        })),
+      logCare: (petId, action) => {
+        const id = uid('care');
+        // a year of taps is plenty to see patterns; older ones fall off
+        set((s) => ({ petLog: [...(s.petLog ?? []), { id, petId, action, at: new Date().toISOString() }].slice(-3000) }));
+        get().earn('pet');
+        get().checkStreaks();
+        return id;
+      },
+      undoCare: (id) => set((s) => ({ petLog: (s.petLog ?? []).filter((c) => c.id !== id) })),
+      addSupply: (x) =>
+        set((s) => ({ petSupplies: [...(s.petSupplies ?? []), { ...x, id: uid('sup'), updatedAt: new Date().toISOString() }] })),
+      updateSupply: (id, patch) =>
+        set((s) => ({
+          petSupplies: (s.petSupplies ?? []).map((x) => (x.id === id ? { ...x, ...patch, updatedAt: new Date().toISOString() } : x)),
+        })),
+      restockSupply: (id, amount) =>
+        set((s) => ({
+          petSupplies: (s.petSupplies ?? []).map((x) =>
+            x.id === id ? { ...x, amount: amount ?? x.full, updatedAt: new Date().toISOString() } : x,
+          ),
+        })),
+      removeSupply: (id) => set((s) => ({ petSupplies: (s.petSupplies ?? []).filter((x) => x.id !== id) })),
 
       resetEverything: () => set({ ...initialState, hydrated: true }),
     }),

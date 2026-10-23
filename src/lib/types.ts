@@ -124,6 +124,8 @@ export interface Settings {
   showStickers?: boolean;
   /** faint pixel colour splashes behind the screens; missing means whatever the scheme does */
   showSplashes?: boolean;
+  /** pet mode: the pets widget on Home, pet care and supplies */
+  petMode?: boolean;
 }
 
 export interface ChallengeProgress {
@@ -271,4 +273,42 @@ export interface SprintRecord {
 export interface Achievement {
   id: string;
   unlockedAt: string;
+}
+
+export type PetKind = 'cat' | 'dog' | 'bird' | 'bunny' | 'other';
+
+/** One of your real pets, with a pixel preset to show them by. */
+export interface MyPet {
+  id: string;
+  name: string;
+  kind: PetKind;
+  /** a pixel pet piece id; every preset is free for your own pet */
+  look: string;
+  createdAt: string;
+}
+
+/** A quick-tapped bit of care: fed, watered, litter box done… */
+export interface PetCare {
+  id: string;
+  petId: string;
+  /** an action id from CARE in src/lib/pets.ts */
+  action: string;
+  at: string;
+}
+
+export type SupplyKind = 'food' | 'treats' | 'litter' | 'hay' | 'bedding' | 'meds' | 'other';
+
+/** Something your pets go through, and how fast. */
+export interface PetSupply {
+  id: string;
+  name: string;
+  kind: SupplyKind;
+  /** how much there was at `updatedAt` */
+  amount: number;
+  /** a full pack, for one-tap restocking */
+  full: number;
+  unit: string;
+  /** how much goes each day; 0 = not tracked */
+  perDay: number;
+  updatedAt: string;
 }

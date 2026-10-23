@@ -11,6 +11,8 @@ import { ScreenGarland } from '../../src/ui/Decor';
 import { Splashes } from '../../src/ui/PixelSplash';
 
 export default function Profile() {
+  const petMode = useStore((s) => !!s.settings.petMode);
+  const petCount = useStore((s) => (s.pets ?? []).length);
   const { width: W } = useWindowDimensions();
   const router = useRouter();
   const settings = useStore((s) => s.settings);
@@ -60,6 +62,9 @@ export default function Profile() {
       <Spacer h={16} />
       <Card style={{ padding: 0, overflow: 'hidden' }}>
         <MenuRow icon="stats-chart" label="Insights" hint="Your week, room by room" onPress={() => router.push('/insights')} />
+        {petMode ? (
+          <MenuRow icon="paw" label="Pets" hint={petCount ? `${petCount} ${petCount === 1 ? 'pet' : 'pets'} · care and supplies` : 'Add your pets'} onPress={() => router.push('/pets')} />
+        ) : null}
         <MenuRow icon="heart" label="How you've been" hint="Check-ins, energy and activity over time" onPress={() => router.push('/mood-data')} />
         <Divider />
         <MenuRow icon="trophy" label="Challenges" hint="16 checklists + your own" onPress={() => router.push('/challenges')} />

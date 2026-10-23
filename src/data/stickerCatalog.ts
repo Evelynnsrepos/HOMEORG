@@ -56,6 +56,7 @@ export const stickerSets: StickerSet[] = [
   { id: "cats", name: "Cosy Cats", emoji: "\ud83d\udc08", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
   { id: "wildcats", name: "Wild Whiskers", emoji: "\ud83d\udc05", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
   { id: "feathers", name: "Feathers & Fluff", emoji: "\ud83d\udc26", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
+  { id: "dogs", name: "Good Dogs", emoji: "\ud83d\udc15", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
 ];
 
 const SRC: ImageSourcePropType[] = [
@@ -2652,6 +2653,18 @@ const SRC: ImageSourcePropType[] = [
   require('../../assets/stickers/feathers/pet-bunny-pink.png'),
   require('../../assets/stickers/feathers/pet-bunny-cream.png'),
   require('../../assets/stickers/feathers/pet-bunny-black.png'),
+  require('../../assets/stickers/dogs/pet-dog-golden.png'),
+  require('../../assets/stickers/dogs/pet-dog-labrador-black.png'),
+  require('../../assets/stickers/dogs/pet-dog-labrador-choc.png'),
+  require('../../assets/stickers/dogs/pet-dog-pug.png'),
+  require('../../assets/stickers/dogs/pet-dog-dalmatian.png'),
+  require('../../assets/stickers/dogs/pet-dog-poodle-white.png'),
+  require('../../assets/stickers/dogs/pet-dog-poodle-apricot.png'),
+  require('../../assets/stickers/dogs/pet-dog-corgi.png'),
+  require('../../assets/stickers/dogs/pet-dog-husky.png'),
+  require('../../assets/stickers/dogs/pet-dog-shiba.png'),
+  require('../../assets/stickers/dogs/pet-dog-german-shepherd.png'),
+  require('../../assets/stickers/dogs/pet-dog-pomeranian-pink.png'),
 ];
 
 /** id|set|label|w|h|kind|rarity, in the same order as SRC */
@@ -5249,6 +5262,18 @@ pet-bunny-dutch|feathers|Dutch bunny|15|16|pet|common
 pet-bunny-pink|feathers|Candy bunny|15|16|pet|rare
 pet-bunny-cream|feathers|Cream bunny|15|16|pet|common
 pet-bunny-black|feathers|Black bunny|15|16|pet|common
+pet-dog-golden|dogs|Golden retriever|17|17|pet|common
+pet-dog-labrador-black|dogs|Black labrador|17|17|pet|common
+pet-dog-labrador-choc|dogs|Chocolate labrador|17|17|pet|common
+pet-dog-pug|dogs|Pug|17|17|pet|common
+pet-dog-dalmatian|dogs|Dalmatian|17|17|pet|rare
+pet-dog-poodle-white|dogs|White poodle|17|17|pet|common
+pet-dog-poodle-apricot|dogs|Apricot poodle|17|17|pet|common
+pet-dog-corgi|dogs|Corgi|17|18|pet|common
+pet-dog-husky|dogs|Husky|17|18|pet|rare
+pet-dog-shiba|dogs|Shiba|17|18|pet|common
+pet-dog-german-shepherd|dogs|Shepherd|17|18|pet|common
+pet-dog-pomeranian-pink|dogs|Candy pom|17|18|pet|rare
 `;
 
 export const pieces: Piece[] = META.trim()

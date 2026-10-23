@@ -182,6 +182,24 @@ check-in with more tasks, guilt or streak warnings. `app/mood-data.tsx`
 draws it all: a contribution-style grid, the last 30 days, gentle patterns.
 This data never leaves the phone.
 
+## Pet mode and "Don't forget this"
+
+**"Don't forget this"** on Home is for everyone: `reminders()` in
+`src/lib/remind.ts` gathers food to throw out or use up, a fridge running
+empty (only once the kitchen is in use) and, in pet mode, pet supplies
+running low and cleaning jobs that are due. Feeding and water never go on
+it; they live on the pet tile, so the list stays a nudge, not a nag.
+
+**Pet mode** (`settings.petMode`, off by default) puts a pet tile next to
+it on Home and opens `app/pets.tsx`. Your pets (`pets`) have a kind and a
+look — any pixel pet preset, free, whether or not it was drawn. Each kind
+has its care taps (`CARE` in `src/lib/pets.ts`); a tap logs to `petLog`
+and pays a little (`pet` in rewards), a second tap within ten minutes takes
+it back. A care action someone has never logged stays calm; only one that
+was done and is now overdue warms up. Supplies (`petSupplies`) run down by
+their daily use and nudge five days before they run out. On a hard check-in
+the comfort sheet suggests a cuddle session with your pets first.
+
 ## The kitchen in one paragraph
 
 Recipes live in the book (`recipes`). "Let's cook it" shows **picks**
@@ -199,7 +217,7 @@ keeps in the fridge, freezer and cupboard (`null` = keeps, no date). The
 store marks those with `bestBeforeAuto: true`; moving such an item to
 another shelf looks it up again from that day (freezing buys months), while
 a date typed from the packet (`bestBeforeAuto: false`) is never touched.
-The "About to expire" list on Home runs on these dates.
+The "Don't forget this" card on Home (`src/lib/remind.ts`) runs on these dates.
 
 How a date gets there, best first:
 

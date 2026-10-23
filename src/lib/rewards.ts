@@ -18,6 +18,7 @@ export type RewardSource =
   | 'recipe'
   | 'note'
   | 'mood'
+  | 'pet'
   | 'streakDay'
   | 'streakWeek';
 
@@ -32,6 +33,7 @@ export const REWARDS: Record<RewardSource, { coins: number; dailyCap: number; la
   recipe: { coins: 10, dailyCap: 30, label: 'Recipe saved' },
   note: { coins: 3, dailyCap: 9, label: 'Info pinned' },
   mood: { coins: 10, dailyCap: 10, label: 'Checked in' },
+  pet: { coins: 2, dailyCap: 16, label: 'Pet looked after' },
   streakDay: { coins: 5, dailyCap: 15, label: 'Streak kept' },
   streakWeek: { coins: 40, dailyCap: 100, label: 'Week streak' },
 };

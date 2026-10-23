@@ -183,6 +183,18 @@ export default function Settings() {
 
       <Spacer h={14} />
       <Card style={{ padding: 16 }}>
+        <T v="over">Pets</T>
+        <Spacer h={5} />
+        <Toggle
+          label="Pet mode"
+          hint="A pet tile on Home with quick care taps, pet supplies, and a cuddle on hard days"
+          value={!!settings.petMode}
+          onChange={(petMode) => patch({ petMode })}
+        />
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
         <T v="over">Your streak, your pace</T>
         <Spacer h={5} />
         <T v="caption">

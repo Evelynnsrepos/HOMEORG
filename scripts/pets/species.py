@@ -4,13 +4,14 @@ are common, birds and bunnies rare-ish, the big and wild cats are the epic
 finds. Ids stay stable: add new pets at the end of a list, never rename.
 """
 from coats import Coat
-from templates import (BIGCAT_LIE, BIRD_CREST, BIRD_PERCH, BUNNY_SIT, CAT_LOAF, CAT_SIT, LION_LIE,
+from templates import (BIGCAT_LIE, DOG_SIT, DOG_SIT_POINTY, BIRD_CREST, BIRD_PERCH, BUNNY_SIT, CAT_LOAF, CAT_SIT, LION_LIE,
                        LYNX_SIT, MANUL_SIT, SERVAL_SIT)
 
 PET_SETS = [
     ('cats', 'Cosy Cats', '🐈'),
     ('wildcats', 'Wild Whiskers', '🐅'),
     ('feathers', 'Feathers & Fluff', '🐦'),
+    ('dogs', 'Good Dogs', '🐕'),
 ]
 
 HOUSE_CATS = [
@@ -74,6 +75,22 @@ BUNNIES = [
 ]
 
 
+DOGS = [
+    ('golden', 'Golden retriever', DOG_SIT, Coat('#e0b060', pale='#f6e2b8', eye='#2a1c14', nose='#2a1c14')),
+    ('labrador-black', 'Black labrador', DOG_SIT, Coat('#2e2a30', pale='#3a3438', eye='#8a5a2a', nose='#141018', outline='#0e0a0c')),
+    ('labrador-choc', 'Chocolate labrador', DOG_SIT, Coat('#6a4430', pale='#8a5e44', eye='#c9903a', nose='#2a1810')),
+    ('pug', 'Pug', DOG_SIT, Coat('#e0c090', 'points', point='#2a2228', pale='#ecd4a8', eye='#2a1c14', nose='#141018')),
+    ('dalmatian', 'Dalmatian', DOG_SIT, Coat('#f6f4f0', 'cheetah', mark='#2a2428', pale='#ffffff', eye='#2a1c14', nose='#2a1c14', outline='#6a5a64')),
+    ('poodle-white', 'White poodle', DOG_SIT, Coat('#f6f2ee', pale='#ffffff', eye='#2a1c14', nose='#2a1c14', outline='#7a6a70')),
+    ('poodle-apricot', 'Apricot poodle', DOG_SIT, Coat('#e8b890', pale='#f8dcc4', eye='#2a1c14', nose='#6a4430')),
+    ('corgi', 'Corgi', DOG_SIT_POINTY, Coat('#e09040', pale='#fbf2e6', eye='#2a1c14', nose='#2a1c14')),
+    ('husky', 'Husky', DOG_SIT_POINTY, Coat('#7d8796', pale='#f6f6f6', eye='#7fb6e6', nose='#2a1c14')),
+    ('shiba', 'Shiba', DOG_SIT_POINTY, Coat('#d98a3c', pale='#fbefdc', eye='#2a1c14', nose='#2a1c14')),
+    ('german-shepherd', 'Shepherd', DOG_SIT_POINTY, Coat('#b07a40', 'points', point='#2a2228', pale='#d9a868', eye='#2a1c14', nose='#141018')),
+    ('pomeranian-pink', 'Candy pom', DOG_SIT_POINTY, Coat('#f6c0d0', pale='#fff0f4', eye='#2a1c14', nose='#7a4a5a')),
+]
+
+
 def all_pets():
     """(id, set, label, rarity, template, coat) for every pet, in a stable order."""
     out = []
@@ -90,4 +107,6 @@ def all_pets():
     for cid, label, coat in BUNNIES:
         rarity = 'rare' if cid == 'bunny-pink' else 'common'
         out.append((f'pet-{cid}', 'feathers', label, rarity, BUNNY_SIT, coat))
+    for cid, label, tpl, coat in DOGS:
+        out.append((f'pet-dog-{cid}', 'dogs', label, 'rare' if cid in ('pomeranian-pink', 'husky', 'dalmatian') else 'common', tpl, coat))
     return out

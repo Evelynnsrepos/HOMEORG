@@ -2,7 +2,7 @@
 
 Pixel art from **LPC Revised** (https://github.com/ElizaWy/LPC), cut into single stickers and
 scaled 4x by scripts/build-stickers.py. Licensed CC-BY 3.0 / OGA-BY 3.0. Full per-sheet credits are in
-scripts/data/lpc-revised/Objects/**/Credits.txt.
+scripts/data/lpc-revised/Objects/**/Credits.txt. The pet sets are drawn for this app (scripts/pets/), CC0.
 
 ## 🥐 Bakery & Dairy
 
@@ -120,6 +120,11 @@ Artists: Homeorg (drawn for the app)
 Licence: CC0 1.0
 
 ## 🐦 Feathers & Fluff
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+
+## 🐕 Good Dogs
 
 Artists: Homeorg (drawn for the app)  
 Licence: CC0 1.0

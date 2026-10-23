@@ -1,13 +1,26 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { Linking, Pressable, View } from 'react-native';
 
 import { affirmationsFor, suggestionsFor, type Scales, type Suggestion } from '../lib/mood';
+import type { MyPet, PetKind } from '../lib/types';
 import { useStore } from '../state/store';
 import { colors } from '../theme';
 import { Btn, Card, Press, Row, Spacer, T, tap } from './base';
 import { Sticker } from './Decor';
+import { PieceImage } from './StickerLayer';
+
+const CUDDLE: Record<PetKind, string> = {
+  cat: 'Sit with them a while. A purring cat on your lap counts as rest.',
+  dog: 'A head on your knee fixes more than it has any right to.',
+  bird: 'Let them sit on your shoulder and chatter for a bit.',
+  bunny: 'Sit on the floor with them. Slow strokes, slow breaths.',
+  other: 'Spend a quiet moment together. They are glad you are here.',
+};
+
+const names = (pets: MyPet[]) =>
+  pets.length === 1 ? pets[0].name : `${pets.slice(0, -1).map((p) => p.name).join(', ')} and ${pets.at(-1)!.name}`;
 
 const SUGGEST: Record<Suggestion, { icon: keyof typeof Ionicons.glyphMap; label: string; hint: string }> = {
   rest: { icon: 'bed-outline', label: 'Take a few days off', hint: 'Vacation mode pauses every chore. Nothing piles up.' },
@@ -22,6 +35,12 @@ export function Comfort({ v, onClose }: { v: Scales; onClose: () => void }) {
   const vacation = useStore((s) => s.settings.vacation);
   const toggleVacation = useStore((s) => s.toggleVacation);
   const lines = affirmationsFor(v);
+  // in pet mode, the first thing on a hard day is the softest one
+  const petMode = useStore((s) => !!s.settings.petMode);
+  const pets = useStore((s) => s.pets ?? []);
+  const logCare = useStore((s) => s.logCare);
+  const [cuddled, setCuddled] = useState(false);
+  const cuddle = petMode && pets.length ? pets.slice(0, 3) : [];
   const act = (s: Suggestion) => {
     tap();
     if (s === 'rest' && !vacation) toggleVacation();
@@ -49,6 +68,26 @@ export function Comfort({ v, onClose }: { v: Scales; onClose: () => void }) {
           <Spacer h={4} />
           <T v="over">If it helps</T>
           <Spacer h={6} />
+          {cuddle.length ? (
+            <Press
+              onPress={() => {
+                tap();
+                if (!cuddled) cuddle.forEach((p) => logCare(p.id, 'cuddle'));
+                setCuddled(true);
+              }}
+              style={{ flexDirection: 'row', gap: 10, alignItems: 'center', paddingVertical: 8, borderTopWidth: 1, borderTopColor: colors.lineSoft }}
+            >
+              <View style={{ width: 28, alignItems: 'center' }}>
+                <PieceImage piece={cuddle[0].look} width={26} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <T v="label" color={colors.ink}>
+                  {cuddled ? 'Enjoy your cuddle 💗' : `Cuddle session with ${names(cuddle)}`}
+                </T>
+                <T v="caption">{CUDDLE[cuddle[0].kind]}</T>
+              </View>
+            </Press>
+          ) : null}
           {suggestionsFor(v).map((s) => (
             <Press
               key={s}

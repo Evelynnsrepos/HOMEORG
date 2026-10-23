@@ -189,6 +189,7 @@ export default function StickerDraw() {
             ['cart', REWARDS.shopping.label, `+${REWARDS.shopping.coins}`],
             ['book', REWARDS.recipe.label, `+${REWARDS.recipe.coins}`],
             ['heart', REWARDS.mood.label, `+${REWARDS.mood.coins} a day`],
+            ['paw', REWARDS.pet.label, `+${REWARDS.pet.coins} a tap`],
             ['flame', 'Streak kept', 'up to +15 a day'],
             ['trophy', 'Week streak', '+40 and up'],
           ].map(([icon, label, value], i) => (

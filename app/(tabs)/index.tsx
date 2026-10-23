@@ -3,8 +3,7 @@ import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
-import { places } from '../../src/data/units';
-import { cookableNow, expiringSoon, matchRecipes, shelfLifeLabel } from '../../src/lib/kitchen';
+import { cookableNow, expiringSoon, matchRecipes } from '../../src/lib/kitchen';
 import { dayKey } from '../../src/lib/date';
 import { PRESETS, SCALES, isHardDay, nearestPreset } from '../../src/lib/mood';
 import { pickChallenge } from '../../src/lib/suggest';
@@ -16,11 +15,12 @@ import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/bas
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
 import { ScriptTitle } from '../../src/ui/Script';
 import { PixelSplash, Splashes } from '../../src/ui/PixelSplash';
+import { FRIDGE_FULL, reminders } from '../../src/lib/remind';
+import { DontForget, PetWidget } from '../../src/ui/Pets';
 
 const FOCUS_MINUTES = [15, 25, 45];
 const MOOD_TINT = { mood: '#FF79B0', social: '#B48CF0', clean: '#6FCDA8', hobby: '#FFB35C' } as const;
 /** a fridge with this many things in it reads as full on the gauge */
-const FRIDGE_FULL = 24;
 
 /**
  * Home, laid out like the sketch: cleanliness up top, then the fridge with
@@ -49,6 +49,13 @@ export default function HomeTab() {
   const dueCount = plan.tasks.length;
 
   const soon = useMemo(() => expiringSoon(pantry, 4), [pantry]);
+  const pets = useStore((s) => s.pets);
+  const petLog = useStore((s) => s.petLog);
+  const supplies = useStore((s) => s.petSupplies);
+  const nudges = useMemo(
+    () => reminders({ pantry, petMode: settings.petMode, pets, petLog, supplies }),
+    [pantry, settings.petMode, pets, petLog, supplies],
+  );
   const cookable = useMemo(() => {
     const ready = cookableNow(recipes, pantry);
     // ready ones first, then the closest, so the column is never half empty
@@ -406,57 +413,21 @@ export default function HomeTab() {
         </Card>
       </Press>
 
-      {/* About to expire -------------------------------------------- */}
+      {/* Don't forget this | Pets ----------------------------------- */}
       <Spacer h={10} />
-      <Card style={{ padding: 14, borderColor: soon.length ? colors.needsLove : colors.lineSoft }}>
-        <CardHead
-          icon="time-outline"
-          title={soon.length ? 'About to expire, please use it' : 'Nothing about to expire'}
-          tint={soon.length ? colors.needsLove : undefined}
-        />
-        {soon.length ? (
-          <>
-            <Spacer h={8} />
-            {soon.map((p, i) => {
-              const where = places.find((pl) => pl.id === p.place);
-              const label = shelfLifeLabel(p.bestBefore!);
-              return (
-                <Press
-                  key={p.id}
-                  onPress={() => router.push('/pantry')}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 8,
-                    paddingVertical: 8,
-                    borderTopWidth: i ? 1 : 0,
-                    borderTopColor: colors.lineSoft,
-                  }}
-                >
-                  <T v="body" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
-                    {p.name}
-                  </T>
-                  <T v="caption" style={{ width: 78 }}>
-                    {where ? `${where.emoji} ${where.name}` : ''}
-                  </T>
-                  <T
-                    v="caption"
-                    style={{ width: 62, textAlign: 'right', fontFamily: font.semi }}
-                    color={label.endsWith('over') ? colors.needsYou : colors.needsLove}
-                  >
-                    {label}
-                  </T>
-                </Press>
-              );
-            })}
-          </>
-        ) : (
-          <T v="caption" style={{ marginTop: 4 }}>
-            Add a best-before date on the shelves and anything close to it shows up here.
-          </T>
-        )}
-        <Sticker kind="icecream" size={38} tilt={-12} style={{ position: 'absolute', right: -6, top: -16 }} />
-      </Card>
+      {settings.petMode ? (
+        <Row style={{ gap: 10, alignItems: 'stretch' }}>
+          <View style={{ width: colW }}>
+            <DontForget items={nudges} width={colW} max={5} />
+          </View>
+          <PetWidget width={colW} />
+        </Row>
+      ) : (
+        <View>
+          <DontForget items={nudges} />
+          <Sticker kind="icecream" size={38} tilt={-12} style={{ position: 'absolute', right: -6, top: -16 }} />
+        </View>
+      )}
     </Screen>
   );
 }
