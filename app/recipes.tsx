@@ -10,6 +10,7 @@ import { useStore } from '../src/state/store';
 import { colors, font, radius } from '../src/theme';
 import { Btn, Card, Chip, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
 import { RecipeBookArt } from '../src/ui/Art';
+import { ScriptTitle } from '../src/ui/Script';
 import { CookTime, DaySheet, EffortMeter } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { Toast } from '../src/ui/TaskRow';
@@ -168,11 +169,19 @@ export default function RecipeBook() {
           <KitchenTabs active="recipes" />
 
           <Spacer h={16} />
-          <T v="display" style={{ fontSize: 30 }}>
-            My recipe book
-          </T>
-          <Spacer h={10} />
-          <Row style={{ gap: 14, alignItems: 'center' }}>
+          <Spacer h={6} />
+          <ScriptTitle
+            words={['My recipe', 'book']}
+            size={42}
+            grow={1.2}
+            step={1.6}
+            tilt={-7}
+            color={colors.coralDeep}
+            outline={colors.bg}
+            style={{ zIndex: 2, marginLeft: 6 }}
+          />
+          {/* the book tucks up under the end of the title */}
+          <Row style={{ gap: 14, alignItems: 'center', marginTop: -26 }}>
             <RecipeBookArt size={120} />
             <Press
               onPress={() => router.push('/recipe/new')}

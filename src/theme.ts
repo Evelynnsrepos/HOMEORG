@@ -347,6 +347,8 @@ export const font = {
   semi: 'Bricolage_600SemiBold',
   medium: 'Bricolage_500Medium',
   body: 'Bricolage_400Regular',
+  /** Dancing Script, only for the few handwritten titles (ui/Script.tsx) */
+  script: 'Script_700Bold',
 } as const;
 
 export const shadow = {

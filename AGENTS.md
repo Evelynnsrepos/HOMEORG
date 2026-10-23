@@ -89,6 +89,12 @@ There is no linter and no other test suite. "Done" means `tsc` and
   without them.
 - Art traced from the sketches stays in the sketches' flat shape language: a
   few solid shapes, no added detail lines, textures or inner shadows.
+- Two fonts: Bricolage Grotesque for everything, and the handwritten
+  **Dancing Script** only through `ScriptTitle` (`src/ui/Script.tsx`) in a
+  few hand-picked spots — the "Let's cook it" banner, the recipe book title
+  and the word over the fridge gauge. It sits on a slanted, stepped line and
+  may spill over card edges on purpose; give its neighbours room rather than
+  straightening it. Don't spread it to body text or buttons.
 - Effort is always the rainbow `EffortRing` (1 = a third, 3 = full circle),
   never dots or stars.
 - Everything decorative is SVG drawn in code. If real sticker PNGs are added

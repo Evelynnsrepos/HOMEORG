@@ -163,6 +163,14 @@ export function FridgeGauge({ level, width = 120 }: { level: number; width?: num
   );
 }
 
+/** The word written over the gauge, and the gauge's own colour at that level. */
+export function fridgeWord(level: number): { word: string; color: string } {
+  if (level <= 0) return { word: 'Empty', color: '#A4B800' };
+  if (level < 0.3) return { word: 'Almost out', color: '#F2A900' };
+  if (level < 0.75) return { word: 'Half full', color: '#FF6B1E' };
+  return { word: 'Full!', color: '#FF1A8C' };
+}
+
 /* ---- recipe book ------------------------------------------------------ */
 
 const BOOK_COVER =

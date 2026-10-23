@@ -9,9 +9,10 @@ import { pickChallenge } from '../../src/lib/suggest';
 import { useHomeHealth, useRooms, useStreak, useToday } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { band, bandColor, bandLabel, colors, font, radius } from '../../src/theme';
-import { EffortRing, FridgeGauge } from '../../src/ui/Art';
+import { EffortRing, FridgeGauge, fridgeWord } from '../../src/ui/Art';
 import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
+import { ScriptTitle } from '../../src/ui/Script';
 
 const FOCUS_MINUTES = [15, 25, 45];
 /** a fridge with this many things in it reads as full on the gauge */
@@ -62,6 +63,8 @@ export default function HomeTab() {
 
   const inFridge = pantry.filter((i) => i.place === 'fridge');
   const fridgeSoon = soon.filter((i) => i.place === 'fridge').length;
+  const fridgeLevel = inFridge.length / FRIDGE_FULL;
+  const fridgeSays = fridgeWord(fridgeLevel);
   const colW = (Math.min(W, 520) - 32 - 10) / 2;
 
   return (
@@ -155,10 +158,20 @@ export default function HomeTab() {
           <Press onPress={() => router.push('/pantry')}>
             <Card style={{ padding: 13 }}>
               <CardHead icon="snow-outline" title="Fridge status" />
-              <Spacer h={8} />
+              <Spacer h={34} />
               <View style={{ alignItems: 'center' }}>
-                <FridgeGauge level={inFridge.length / FRIDGE_FULL} width={colW * 0.72} />
+                <FridgeGauge level={fridgeLevel} width={colW * 0.72} />
               </View>
+              {/* written across the card on a slant, like on the sketch board */}
+              <ScriptTitle
+                words={fridgeSays.word.split(' ')}
+                size={30}
+                step={1.1}
+                tilt={-12}
+                color={fridgeSays.color}
+                outline={colors.card}
+                style={{ position: 'absolute', top: 26, left: 6 }}
+              />
               <Spacer h={6} />
               <T v="caption" numberOfLines={2}>
                 {inFridge.length

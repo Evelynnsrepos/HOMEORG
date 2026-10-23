@@ -19,6 +19,7 @@ import { colors, font, radius } from '../src/theme';
 import { RecipeBookArt } from '../src/ui/Art';
 import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
 import { Sticker } from '../src/ui/Decor';
+import { ScriptTitle } from '../src/ui/Script';
 import { CookTime, DaySheet, EffortMeter, PickTile, dayLabel, packRows, tileSpan } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { Toast } from '../src/ui/TaskRow';
@@ -185,31 +186,38 @@ export default function Cook() {
           <KitchenTabs active="cook" />
 
           {/* The banner ------------------------------------------------- */}
-          <Spacer h={16} />
-          <View style={{ borderRadius: radius.lg, overflow: 'hidden', minHeight: 116 }}>
-            <Svg style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} width="100%" height="100%">
-              <Defs>
-                <LinearGradient id="banner" x1="0" y1="0" x2="1" y2="1">
-                  <Stop offset="0" stopColor={colors.coral} stopOpacity={0.75} />
-                  <Stop offset="0.6" stopColor={colors.coral} />
-                  <Stop offset="1" stopColor={colors.lilac} />
-                </LinearGradient>
-              </Defs>
-              <Rect x="0" y="0" width="100%" height="100%" fill="url(#banner)" />
-            </Svg>
-            <View style={{ padding: 18, paddingRight: 110 }}>
-              <T style={{ fontFamily: font.display, fontSize: 38, lineHeight: 40, color: '#FFFFFF' }}>
-                Let's cook it
-              </T>
-              <Spacer h={6} />
-              <T v="label" color="#FFF0F7">
-                {total
-                  ? `${total} ${total === 1 ? 'dish' : 'dishes'} picked for the next days`
-                  : 'Pick a few dishes for the next days'}
-              </T>
+          <Spacer h={30} />
+          <View style={{ minHeight: 150 }}>
+            {/* the gradient is clipped to the card; the title on top is not */}
+            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radius.lg, overflow: 'hidden' }}>
+              <Svg width="100%" height="100%">
+                <Defs>
+                  <LinearGradient id="banner" x1="0" y1="0" x2="1" y2="1">
+                    <Stop offset="0" stopColor={colors.coral} stopOpacity={0.75} />
+                    <Stop offset="0.6" stopColor={colors.coral} />
+                    <Stop offset="1" stopColor={colors.lilac} />
+                  </LinearGradient>
+                </Defs>
+                <Rect x="0" y="0" width="100%" height="100%" fill="url(#banner)" />
+              </Svg>
             </View>
-            <Sticker kind="cake" size={62} tilt={10} style={{ position: 'absolute', right: 14, top: 10 }} />
-            <Sticker kind="star" size={34} tilt={-14} style={{ position: 'absolute', right: 70, bottom: 6 }} />
+            <ScriptTitle
+              words={["Let's", 'cook', 'it!']}
+              size={44}
+              grow={1.35}
+              step={0.9}
+              tilt={-9}
+              color="#FFFFFF"
+              outline={colors.coralDeep}
+              style={{ marginTop: -30, marginLeft: 4 }}
+            />
+            <T v="label" color="#FFF0F7" style={{ paddingHorizontal: 18, paddingBottom: 14, marginTop: -4, paddingRight: 100 }}>
+              {total
+                ? `${total} ${total === 1 ? 'dish' : 'dishes'} picked for the next days`
+                : 'Pick a few dishes for the next days'}
+            </T>
+            <Sticker kind="cake" size={62} tilt={10} style={{ position: 'absolute', right: 14, top: 12 }} />
+            <Sticker kind="star" size={34} tilt={-14} style={{ position: 'absolute', right: 74, bottom: 10 }} />
           </View>
 
           {/* From the book or to the book ------------------------------- */}

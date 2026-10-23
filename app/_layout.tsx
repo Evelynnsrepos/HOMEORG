@@ -6,6 +6,7 @@ import {
   BricolageGrotesque_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/bricolage-grotesque';
+import { DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
@@ -24,6 +25,7 @@ export default function RootLayout() {
     Bricolage_600SemiBold: BricolageGrotesque_600SemiBold,
     Bricolage_700Bold: BricolageGrotesque_700Bold,
     Bricolage_800ExtraBold: BricolageGrotesque_800ExtraBold,
+    Script_700Bold: DancingScript_700Bold,
   });
 
   const hydrated = useStore((s) => s.hydrated);
