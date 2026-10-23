@@ -4,6 +4,8 @@ import { View } from 'react-native';
 
 import { presetChallenges } from '../src/data/challenges';
 import { playlists } from '../src/data/musicTracks';
+import { surfaceArtists } from '../src/data/roomSurfaces';
+import { stickerSets } from '../src/data/stickerCatalog';
 import { shopItems } from '../src/data/shop';
 import { useStore } from '../src/state/store';
 import { colors } from '../src/theme';
@@ -68,7 +70,7 @@ export default function About() {
       <T v="body">
         Household sharing, live multiplayer sprints, kid approvals and photo sync all need a server
         to pass data between phones. This build is deliberately server-free, so those are left out.
-        Everything else — the dollhouse, the shop, Focus mode, Sprints, challenges, the kitchen
+        Everything else — the dollhouse, the sticker draws, Focus mode, Sprints, challenges, the kitchen
         and insights — runs entirely on the device.
       </T>
 
@@ -104,12 +106,29 @@ export default function About() {
       </T>
 
       <Spacer h={20} />
+      <T v="over">Sticker art</T>
+      <Spacer h={8} />
+      <T v="body">
+        The pixel stickers are from LPC Revised (github.com/ElizaWy/LPC), cut into single pieces and
+        scaled up, under CC-BY 3.0 / OGA-BY 3.0. Thank you to everyone who drew them:
+      </T>
+      <Spacer h={6} />
+      {stickerSets.map((set) => (
+        <T key={set.id} v="caption" style={{ marginBottom: 4 }}>
+          {set.emoji} {set.name}: {set.artists.join(', ') || 'see CREDITS.md'}
+        </T>
+      ))}
+      <T v="caption" style={{ marginBottom: 4 }}>
+        🧱 Walls and floors: {surfaceArtists.join(', ')} (the blush ones are our pink recolours)
+      </T>
+
+      <Spacer h={20} />
       <T v="over">Where the art comes from</T>
       <Spacer h={8} />
       <T v="body">
-        None of it is an image file. Every piece of furniture, every wall, floor, chart and room is
-        a drawing recipe in the code — a shape and three colours. That is why the whole shop costs
-        nothing to carry around, and why it all looks like one thing.
+        Rooms, their walls and floors and the stickers in them are pixel art from the sheets above,
+        all in the same top-down view and the same pixel size, so they fit together. Everything
+        else — the vines, bulbs, charts and the original furniture — is drawn in code.
       </T>
 
       <Spacer h={20} />

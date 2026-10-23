@@ -35,9 +35,47 @@ export interface Room {
   order: number;
   wallpaper: string;
   flooring: string;
-  /** slot index (0-9) -> shop item id */
+  /** the old slot layout (index 0-9 -> shop item id); kept only to move it over to stickers */
   decor: (string | null)[];
+  /** what's in the room now: stickers, anywhere, any size and angle */
+  stickers?: PlacedSticker[];
   createdAt: string;
+}
+
+/** One sticker in a room. See src/lib/stickers.ts. */
+export interface PlacedSticker {
+  id: string;
+  /** a sticker library id ("lounge-042") or an original drawn piece ("svg:sofa_sage") */
+  piece: string;
+  /** centre, as a fraction of the room picture; a little outside hangs off the edge */
+  x: number;
+  y: number;
+  /** width as a fraction of the room's width */
+  size: number;
+  /** degrees, clockwise */
+  rot: number;
+  flip?: boolean;
+  /** higher is in front */
+  z: number;
+}
+
+export type MoodPreset = 'great' | 'okay' | 'meh' | 'low' | 'rough';
+
+/** One check-in: how you feel, 0-100 on each scale. The newest one of a day is the day's. */
+export interface MoodEntry {
+  id: string;
+  /** day key */
+  day: string;
+  at: string;
+  preset?: MoodPreset;
+  mood: number;
+  /** capacity for other people */
+  social: number;
+  /** energy to clean */
+  clean: number;
+  /** energy for hobbies */
+  hobby: number;
+  note?: string;
 }
 
 export interface Completion {
@@ -74,10 +112,20 @@ export interface Settings {
   cookByDay?: boolean;
   /** colour scheme id from src/theme.ts; missing means the default */
   theme?: string;
+  /** streak rhythm: show up at least every N days (1, 2, 3 or 7) */
+  streakEvery?: number;
+  /** extra days before a streak breaks */
+  streakGrace?: number;
+  /** active days that make a week count for the week streak */
+  weekGoal?: number;
   /** vines and fairy lights; missing means whatever the scheme does */
   showVines?: boolean;
   /** stickers on cards; missing means whatever the scheme does */
   showStickers?: boolean;
+  /** faint pixel colour splashes behind the screens; missing means whatever the scheme does */
+  showSplashes?: boolean;
+  /** pet mode: the pets widget on Home, pet care and supplies */
+  petMode?: boolean;
 }
 
 export interface ChallengeProgress {
@@ -225,4 +273,42 @@ export interface SprintRecord {
 export interface Achievement {
   id: string;
   unlockedAt: string;
+}
+
+export type PetKind = 'cat' | 'dog' | 'bird' | 'bunny' | 'small' | 'fish' | 'reptile' | 'other';
+
+/** One of your real pets, with a pixel preset to show them by. */
+export interface MyPet {
+  id: string;
+  name: string;
+  kind: PetKind;
+  /** a pixel pet piece id; every preset is free for your own pet */
+  look: string;
+  createdAt: string;
+}
+
+/** A quick-tapped bit of care: fed, watered, litter box done… */
+export interface PetCare {
+  id: string;
+  petId: string;
+  /** an action id from CARE in src/lib/pets.ts */
+  action: string;
+  at: string;
+}
+
+export type SupplyKind = 'food' | 'treats' | 'litter' | 'hay' | 'bedding' | 'meds' | 'other';
+
+/** Something your pets go through, and how fast. */
+export interface PetSupply {
+  id: string;
+  name: string;
+  kind: SupplyKind;
+  /** how much there was at `updatedAt` */
+  amount: number;
+  /** a full pack, for one-tap restocking */
+  full: number;
+  unit: string;
+  /** how much goes each day; 0 = not tracked */
+  perDay: number;
+  updatedAt: string;
 }

@@ -172,6 +172,82 @@ export default function Settings() {
           value={settings.showStickers ?? currentTheme().decor}
           onChange={(showStickers) => patch({ showStickers })}
         />
+        <Divider />
+        <Toggle
+          label="Pixel splashes"
+          hint="Faint dabs of colour here and there, like pixel watercolour"
+          value={settings.showSplashes ?? currentTheme().decor}
+          onChange={(showSplashes) => patch({ showSplashes })}
+        />
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
+        <T v="over">Pets</T>
+        <Spacer h={5} />
+        <Toggle
+          label="Pet mode"
+          hint="A pet tile on Home with quick care taps, pet supplies, and a cuddle on hard days"
+          value={!!settings.petMode}
+          onChange={(petMode) => patch({ petMode })}
+        />
+      </Card>
+
+      <Spacer h={14} />
+      <Card style={{ padding: 16 }}>
+        <T v="over">Your streak, your pace</T>
+        <Spacer h={5} />
+        <T v="caption">
+          Anything counts: a chore, cooking, putting shopping away, checking in. Pick a rhythm that fits
+          your energy — there's no wrong answer.
+        </T>
+        <Spacer h={12} />
+        <T v="label">Show up at least</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[
+            [1, 'Every day'],
+            [2, 'Every 2 days'],
+            [3, 'Every 3 days'],
+            [7, 'Once a week'],
+          ].map(([n, label]) => (
+            <Chip
+              key={n}
+              small
+              label={label as string}
+              active={(settings.streakEvery ?? 1) === n}
+              onPress={() => patch({ streakEvery: n as number })}
+            />
+          ))}
+        </Row>
+        <Spacer h={12} />
+        <T v="label">Grace days before it breaks</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[1, 2, 3, 5].map((n) => (
+            <Chip
+              key={n}
+              small
+              label={`${n} ${n === 1 ? 'day' : 'days'}`}
+              active={(settings.streakGrace ?? 2) === n}
+              onPress={() => patch({ streakGrace: n })}
+            />
+          ))}
+        </Row>
+        <Spacer h={12} />
+        <T v="label">A good week is</T>
+        <Spacer h={6} />
+        <Row style={{ gap: 6, flexWrap: 'wrap' }}>
+          {[1, 2, 3, 5].map((n) => (
+            <Chip
+              key={n}
+              small
+              label={`${n} ${n === 1 ? 'active day' : 'active days'}`}
+              active={(settings.weekGoal ?? 3) === n}
+              onPress={() => patch({ weekGoal: n })}
+            />
+          ))}
+        </Row>
       </Card>
 
       <Spacer h={14} />

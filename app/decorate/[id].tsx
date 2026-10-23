@@ -1,38 +1,77 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useMemo, useState } from 'react';
-import { Pressable, View, useWindowDimensions } from 'react-native';
+import React, { useMemo, useRef, useState } from 'react';
+import { Image, Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
-import { floorings, itemById, wallpapers } from '../../src/data/shop';
+import { itemById } from '../../src/data/shop';
+import { surfaceFamilies, surfaces, type Surface as Tile } from '../../src/data/roomSurfaces';
+import { pieces, stickerSets } from '../../src/data/stickerCatalog';
+import { defaultSize, pieceById, type PlacedSticker } from '../../src/lib/stickers';
+import { surfaceFor } from '../../src/lib/surfaces';
 import { useStore } from '../../src/state/store';
 import { colors, radius } from '../../src/theme';
-import { Btn, Card, Chip, Empty, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
-import { FurnitureTile } from '../../src/ui/Furniture';
-import { RoomCanvas, SLOTS, slotAccepts } from '../../src/ui/RoomCanvas';
+import { Btn, Empty, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
+import { ROOM_ASPECT, RoomCanvas } from '../../src/ui/RoomCanvas';
+import { PieceImage, stickerAt } from '../../src/ui/StickerLayer';
 
+type Tab = 'stickers' | 'walls' | 'floors';
 
+const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+
+/**
+ * Decorating a room is sticking stickers on it: any piece you own, as many
+ * times as you like, anywhere, any size, turned and mirrored, stacked in any
+ * order. Drag with one finger, pinch to resize, twist to turn — or use the
+ * buttons under the room, which do the same in small steps.
+ *
+ * The room and the toolbar stay put while the tray below scrolls, so moving a
+ * sticker never scrolls the page instead.
+ */
 export default function Decorate() {
   const { width: W } = useWindowDimensions();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const room = useStore((s) => s.rooms.find((r) => r.id === id));
-  const rooms = useStore((s) => s.rooms);
+  const owned = useStore((s) => s.pieces ?? []);
   const inventory = useStore((s) => s.inventory);
   const coins = useStore((s) => s.coins);
-  const placeDecor = useStore((s) => s.placeDecor);
+  const addSticker = useStore((s) => s.addSticker);
+  const updateSticker = useStore((s) => s.updateSticker);
+  const removeSticker = useStore((s) => s.removeSticker);
+  const layerSticker = useStore((s) => s.layerSticker);
   const setSurface = useStore((s) => s.setSurface);
 
-  const [slot, setSlot] = useState<number | null>(null);
-  const [tab, setTab] = useState<'items' | 'walls' | 'floors'>('items');
+  const [tab, setTab] = useState<Tab>('stickers');
+  // open on the newest pixel piece's set; the drawn originals sit at the end
+  const [shelf, setShelf] = useState<string>(() => pieces.find((p) => p.id === owned.at(-1))?.set ?? 'original');
+  const [selected, setSelected] = useState<string | null>(null);
+  /** the selected sticker while a finger is on it, before it's saved */
+  const [draft, setDraft] = useState<PlacedSticker | null>(null);
 
-  const usedElsewhere = useMemo(() => {
-    const set = new Set<string>();
-    for (const r of rooms) {
-      if (r.id === id) continue;
-      for (const d of r.decor ?? []) if (d) set.add(d);
-    }
-    return set;
-  }, [rooms, id]);
+  const width = Math.min(W, 520) - 32;
+  const height = width * ROOM_ASPECT;
+
+  const ownedSet = useMemo(() => new Set(owned), [owned]);
+  const shelves = useMemo(
+    () => [
+      ...stickerSets.map((s) => ({ ...s, count: pieces.filter((p) => p.set === s.id && ownedSet.has(p.id)).length })),
+      { id: 'original', name: 'Originals', emoji: '🪑', count: inventory.length },
+    ],
+    [inventory, ownedSet],
+  );
+  const tray = useMemo(
+    () =>
+      shelf === 'original'
+        ? inventory.filter((i) => itemById(i)).map((i) => `svg:${i}`)
+        : pieces.filter((p) => p.set === shelf && ownedSet.has(p.id)).map((p) => p.id),
+    [shelf, inventory, ownedSet],
+  );
+
+  // gesture bookkeeping: where the sticker was when the fingers came down
+  const base = useRef<PlacedSticker | null>(null);
+  const live = useRef({ dx: 0, dy: 0, scale: 1, rot: 0 });
+  const fingers = useRef(0);
 
   if (!room) {
     return (
@@ -42,229 +81,359 @@ export default function Decorate() {
     );
   }
 
-  const available = inventory
-    .map((i) => itemById(i))
-    .filter((i): i is NonNullable<typeof i> => !!i)
-    .filter((i) => !usedElsewhere.has(i.id))
-    .filter((i) => (slot == null ? true : slotAccepts(SLOTS[slot], i.zone)));
+  const stickers = room.stickers ?? [];
+  const current = stickers.find((k) => k.id === selected) ?? null;
+  const shown = draft ? stickers.map((k) => (k.id === draft.id ? draft : k)) : stickers;
+
+  const begin = () => {
+    if (!current) return;
+    if (fingers.current++ === 0) {
+      base.current = current;
+      live.current = { dx: 0, dy: 0, scale: 1, rot: 0 };
+    }
+  };
+  const move = () => {
+    const b = base.current;
+    if (!b) return;
+    const l = live.current;
+    setDraft({
+      ...b,
+      x: clamp(b.x + l.dx / width, -0.1, 1.1),
+      y: clamp(b.y + l.dy / height, -0.1, 1.1),
+      size: clamp(b.size * l.scale, 0.04, 1.4),
+      rot: Math.round(b.rot + l.rot),
+    });
+  };
+  const end = () => {
+    if (--fingers.current > 0) return;
+    fingers.current = 0;
+    const b = base.current;
+    base.current = null;
+    setDraft((d) => {
+      if (d && b) updateSticker(room.id, d.id, { x: d.x, y: d.y, size: d.size, rot: d.rot });
+      return null;
+    });
+  };
+
+  const pan = Gesture.Pan()
+    .runOnJS(true)
+    .maxPointers(2)
+    .onBegin(begin)
+    .onUpdate((e) => {
+      live.current.dx = e.translationX;
+      live.current.dy = e.translationY;
+      move();
+    })
+    .onFinalize(end);
+  const pinch = Gesture.Pinch()
+    .runOnJS(true)
+    .onBegin(begin)
+    .onUpdate((e) => {
+      live.current.scale = e.scale;
+      move();
+    })
+    .onFinalize(end);
+  const twist = Gesture.Rotation()
+    .runOnJS(true)
+    .onBegin(begin)
+    .onUpdate((e) => {
+      live.current.rot = (e.rotation * 180) / Math.PI;
+      move();
+    })
+    .onFinalize(end);
+  const pick = Gesture.Tap()
+    .runOnJS(true)
+    .onEnd((e) => {
+      const hit = stickerAt(stickers, e.x, e.y, width, height);
+      if (hit !== selected) tap();
+      setSelected(hit);
+    });
+  const gestures = Gesture.Race(pick, Gesture.Simultaneous(pan, pinch, twist));
+
+  const nudge = (patch: Partial<PlacedSticker>) => {
+    if (!current) return;
+    tap();
+    updateSticker(room.id, current.id, patch);
+  };
+
+  const place = (piece: string) => {
+    const p = pieceById(piece);
+    if (!p) return;
+    tap();
+    // a little off-centre each time, so a second copy doesn't hide the first
+    const jitter = () => (Math.random() - 0.5) * 0.16;
+    const sid = addSticker(room.id, piece, {
+      size: defaultSize(p),
+      x: 0.5 + jitter(),
+      y: (p.type === 'pixel' && p.piece.kind === 'wall') || (p.type === 'svg' && p.item.zone === 'wall') ? 0.3 : 0.62 + jitter() / 2,
+    });
+    setSelected(sid);
+  };
 
   return (
-    <Screen>
-      <Row style={{ justifyContent: 'space-between' }}>
-        <IconBtn name="chevron-back" onPress={() => router.back()} />
-        <T v="heading">
-          {room.emoji} {room.name}
-        </T>
-        <Row
-          style={{
-            backgroundColor: colors.goldSoft,
-            borderRadius: radius.pill,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            gap: 5,
-          }}
-        >
-          <Ionicons name="ellipse" size={11} color={colors.gold} />
-          <T v="label" style={{ fontSize: 12 }} color="#8A6B1F">
-            {coins}
+    <Screen scroll={false}>
+      <View style={{ paddingHorizontal: 16, paddingTop: 8 }}>
+        <Row style={{ justifyContent: 'space-between' }}>
+          <IconBtn name="chevron-back" onPress={() => router.back()} />
+          <T v="heading">
+            {room.emoji} {room.name}
           </T>
+          <Press onPress={() => router.push('/shop')}>
+            <Row
+              style={{
+                backgroundColor: colors.goldSoft,
+                borderRadius: radius.pill,
+                paddingHorizontal: 10,
+                paddingVertical: 5,
+                gap: 5,
+              }}
+            >
+              <Ionicons name="ellipse" size={11} color={colors.gold} />
+              <T v="label" style={{ fontSize: 12 }} color={colors.goldDeep}>
+                {coins}
+              </T>
+            </Row>
+          </Press>
         </Row>
-      </Row>
 
-      <Spacer h={12} />
-      <View
-        style={{
-          borderRadius: radius.lg,
-          overflow: 'hidden',
-          borderWidth: 1,
-          borderColor: colors.line,
-        }}
-      >
-        <RoomCanvas room={room} width={W - 34} editing activeSlot={slot} />
+        {/* the room ------------------------------------------------------ */}
+        <Spacer h={10} />
+        <GestureDetector gesture={gestures}>
+          <View
+            collapsable={false}
+            style={{ borderRadius: radius.lg, overflow: 'hidden', borderWidth: 1, borderColor: colors.line, alignSelf: 'center' }}
+          >
+            <RoomCanvas room={{ ...room, stickers: shown }} width={width} selected={selected} />
+          </View>
+        </GestureDetector>
+
+        {/* what to do with the selected one ------------------------------ */}
+        <Spacer h={8} />
+        {current ? (
+          <Row style={{ justifyContent: 'space-between', gap: 4 }}>
+            <Tool icon="remove" label="Smaller" onPress={() => nudge({ size: clamp(current.size / 1.15, 0.04, 1.4) })} />
+            <Tool icon="add" label="Bigger" onPress={() => nudge({ size: clamp(current.size * 1.15, 0.04, 1.4) })} />
+            <Tool icon="refresh" label="Turn" onPress={() => nudge({ rot: current.rot + 15 })} />
+            <Tool icon="swap-horizontal" label="Mirror" onPress={() => nudge({ flip: !current.flip })} />
+            <Tool icon="arrow-up" label="Front" onPress={() => (tap(), layerSticker(room.id, current.id, 'front'))} />
+            <Tool icon="arrow-down" label="Back" onPress={() => (tap(), layerSticker(room.id, current.id, 'back'))} />
+            <Tool
+              icon="copy-outline"
+              label="Copy"
+              onPress={() => {
+                tap();
+                const { id: _old, z: _z, ...rest } = current;
+                setSelected(addSticker(room.id, current.piece, { ...rest, x: rest.x + 0.04, y: rest.y + 0.04 }));
+              }}
+            />
+            <Tool
+              icon="trash-outline"
+              label="Remove"
+              onPress={() => {
+                tap();
+                removeSticker(room.id, current.id);
+                setSelected(null);
+              }}
+            />
+          </Row>
+        ) : (
+          <T v="caption" center>
+            {stickers.length
+              ? 'Tap a sticker to move it. Drag, pinch to resize, twist to turn.'
+              : 'Pick a sticker below and it lands in the room.'}
+          </T>
+        )}
+
+        <Spacer h={10} />
+        <Row style={{ gap: 6 }}>
+          {(['stickers', 'walls', 'floors'] as Tab[]).map((t) => (
+            <Press
+              key={t}
+              onPress={() => setTab(t)}
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                paddingVertical: 8,
+                borderRadius: radius.pill,
+                backgroundColor: tab === t ? colors.coralSoft : colors.cardAlt,
+              }}
+            >
+              <T v="label" color={tab === t ? colors.coralDeep : colors.inkSoft}>
+                {t === 'stickers' ? 'Stickers' : t === 'walls' ? 'Wallpaper' : 'Floor'}
+              </T>
+            </Press>
+          ))}
+        </Row>
       </View>
 
-      <Spacer h={12} />
-      <T v="over">Ten slots — pick one</T>
-      <Spacer h={8} />
-      <Row style={{ flexWrap: 'wrap', gap: 6 }}>
-        {SLOTS.map((s, i) => {
-          const filled = !!(room.decor ?? [])[i];
-          return (
-            <Chip
-              key={i}
-              small
-              label={s.hint}
-              icon={filled ? 'checkmark-circle' : undefined}
-              active={slot === i}
-              tone={colors.coral}
-              onPress={() => setSlot(slot === i ? null : i)}
-            />
-          );
-        })}
-      </Row>
+      {/* the tray -------------------------------------------------------- */}
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16, paddingTop: 10 }}>
+        {tab === 'stickers' ? (
+          <>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <Row style={{ gap: 6 }}>
+                {shelves.map((s) => (
+                  <Press
+                    key={s.id}
+                    onPress={() => setShelf(s.id)}
+                    style={{
+                      paddingHorizontal: 11,
+                      paddingVertical: 7,
+                      borderRadius: radius.pill,
+                      borderWidth: 1,
+                      borderColor: shelf === s.id ? colors.coral : colors.line,
+                      backgroundColor: shelf === s.id ? colors.coralSoft : colors.card,
+                      opacity: s.count ? 1 : 0.5,
+                    }}
+                  >
+                    <T v="caption" color={shelf === s.id ? colors.coralDeep : colors.inkSoft}>
+                      {s.emoji} {s.name} · {s.count}
+                    </T>
+                  </Press>
+                ))}
+              </Row>
+            </ScrollView>
+            <Spacer h={10} />
+            {tray.length ? (
+              <Row style={{ flexWrap: 'wrap', gap: 8 }}>
+                {tray.map((piece) => (
+                  <Press
+                    key={piece}
+                    onPress={() => place(piece)}
+                    style={{
+                      width: (width - 24) / 4,
+                      height: (width - 24) / 4,
+                      borderRadius: radius.md,
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.lineSoft,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Fit piece={piece} box={(width - 24) / 4 - 14} />
+                  </Press>
+                ))}
+              </Row>
+            ) : (
+              <View style={{ alignItems: 'center', paddingVertical: 18, gap: 10 }}>
+                <T v="body" center>
+                  No stickers from this set yet.
+                </T>
+                <Btn small full={false} icon="sparkles" label="Draw some" onPress={() => router.push('/shop')} />
+              </View>
+            )}
+          </>
+        ) : null}
 
-      {slot != null && (room.decor ?? [])[slot] ? (
-        <>
-          <Spacer h={10} />
-          <Btn
-            small
-            tone="quiet"
-            label="Clear this slot"
-            icon="close-circle-outline"
-            onPress={() => placeDecor(room.id, slot, null)}
+        {tab === 'walls' || tab === 'floors' ? (
+          <SurfacePicker
+            kind={tab === 'walls' ? 'wall' : 'floor'}
+            current={tab === 'walls' ? surfaceFor('wall', room.wallpaper).id : surfaceFor('floor', room.flooring).id}
+            width={width}
+            onPick={(id) => setSurface(room.id, tab === 'walls' ? 'wallpaper' : 'flooring', id)}
           />
-        </>
-      ) : null}
-
-      <Spacer h={18} />
-      <Row style={{ gap: 7 }}>
-        <Chip small label="Furniture" active={tab === 'items'} onPress={() => setTab('items')} />
-        <Chip small label="Wallpaper" active={tab === 'walls'} onPress={() => setTab('walls')} />
-        <Chip small label="Flooring" active={tab === 'floors'} onPress={() => setTab('floors')} />
-      </Row>
-      <Spacer h={12} />
-
-      {tab === 'items' ? (
-        available.length === 0 ? (
-          <Card soft>
-            <T v="heading">
-              {slot == null ? 'Nothing in storage yet' : 'Nothing fits that slot yet'}
-            </T>
-            <Spacer h={4} />
-            <T v="body">
-              Coins come from finishing chores. Spend them in the shop, then place what you buy
-              here.
-            </T>
-            <Spacer h={12} />
-            <Btn label="Open the shop" small onPress={() => router.push('/shop')} />
-          </Card>
-        ) : (
-          <Row style={{ flexWrap: 'wrap', gap: 10 }}>
-            {available.map((item) => {
-              const here = (room.decor ?? []).indexOf(item.id);
-              return (
-                <Pressable
-                  key={item.id}
-                  onPress={() => {
-                    tap();
-                    if (slot == null) {
-                      const firstFree = SLOTS.findIndex(
-                        (s, i) => !(room.decor ?? [])[i] && slotAccepts(s, item.zone),
-                      );
-                      if (firstFree >= 0) placeDecor(room.id, firstFree, item.id);
-                      return;
-                    }
-                    placeDecor(room.id, slot, item.id);
-                  }}
-                  style={{
-                    width: (W - 34 - 20) / 3,
-                    borderRadius: radius.md,
-                    backgroundColor: colors.card,
-                    borderWidth: 1.5,
-                    borderColor: here >= 0 ? colors.sage : colors.lineSoft,
-                    padding: 8,
-                    alignItems: 'center',
-                  }}
-                >
-                  <FurnitureTile kind={item.kind} palette={item.palette} size={62} />
-                  <T v="caption" center numberOfLines={2} style={{ fontSize: 10 }}>
-                    {item.name}
-                  </T>
-                </Pressable>
-              );
-            })}
-          </Row>
-        )
-      ) : null}
-
-      {tab === 'walls' ? (
-        <Row style={{ flexWrap: 'wrap', gap: 10 }}>
-          {wallpapers.map((w) => {
-            const active = room.wallpaper === w.id;
-            return (
-              <Press
-                key={w.id}
-                onPress={() => setSurface(room.id, 'wallpaper', w.id)}
-                style={{
-                  width: (W - 34 - 20) / 3,
-                  borderRadius: radius.md,
-                  overflow: 'hidden',
-                  borderWidth: 2,
-                  borderColor: active ? colors.sage : colors.lineSoft,
-                }}
-              >
-                <View style={{ height: 54, backgroundColor: w.base }}>
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: 18,
-                      backgroundColor: w.accent,
-                    }}
-                  />
-                </View>
-                <T v="caption" center style={{ paddingVertical: 5, fontSize: 10 }}>
-                  {w.name}
-                </T>
-              </Press>
-            );
-          })}
-        </Row>
-      ) : null}
-
-      {tab === 'floors' ? (
-        <Row style={{ flexWrap: 'wrap', gap: 10 }}>
-          {floorings.map((f) => {
-            const active = room.flooring === f.id;
-            return (
-              <Press
-                key={f.id}
-                onPress={() => setSurface(room.id, 'flooring', f.id)}
-                style={{
-                  width: (W - 34 - 20) / 3,
-                  borderRadius: radius.md,
-                  overflow: 'hidden',
-                  borderWidth: 2,
-                  borderColor: active ? colors.sage : colors.lineSoft,
-                }}
-              >
-                <View style={{ height: 54, backgroundColor: f.base }}>
-                  <View
-                    style={{
-                      position: 'absolute',
-                      top: 18,
-                      left: 0,
-                      right: 0,
-                      height: 3,
-                      backgroundColor: f.accent,
-                    }}
-                  />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      top: 34,
-                      left: 0,
-                      right: 0,
-                      height: 3,
-                      backgroundColor: f.accent,
-                    }}
-                  />
-                </View>
-                <T v="caption" center style={{ paddingVertical: 5, fontSize: 10 }}>
-                  {f.name}
-                </T>
-              </Press>
-            );
-          })}
-        </Row>
-      ) : null}
-
-      <Spacer h={16} />
-      <T v="caption">
-        Furniture lives in one room at a time — placing it here takes it out of wherever it was.
-      </T>
+        ) : null}
+      </ScrollView>
     </Screen>
+  );
+}
+
+/** A piece shrunk to fit a square, keeping its shape. */
+function Fit({ piece, box }: { piece: string; box: number }) {
+  const p = pieceById(piece);
+  if (!p) return null;
+  const ratio = p.type === 'pixel' ? p.piece.h / p.piece.w : 1;
+  return <PieceImage piece={piece} width={ratio > 1 ? box / ratio : box} />;
+}
+
+function Tool({ icon, label, onPress }: { icon: keyof typeof Ionicons.glyphMap; label: string; onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityLabel={label}
+      style={({ pressed }) => ({
+        flex: 1,
+        alignItems: 'center',
+        paddingVertical: 7,
+        borderRadius: radius.md,
+        backgroundColor: pressed ? colors.coralSoft : colors.cardAlt,
+      })}
+    >
+      <Ionicons name={icon} size={17} color={colors.ink} />
+      <T v="caption" style={{ fontSize: 9 }}>
+        {label}
+      </T>
+    </Pressable>
+  );
+}
+
+/**
+ * Every wall or floor, a row per pattern and a swatch per colour — the real
+ * tile, so what you tap is what you get. Walls and floors are free.
+ */
+function SurfacePicker({
+  kind,
+  current,
+  width,
+  onPick,
+}: {
+  kind: 'wall' | 'floor';
+  current: string;
+  width: number;
+  onPick: (id: string) => void;
+}) {
+  const families = surfaceFamilies.filter((f) => f.kind === kind);
+  const size = Math.floor((width - 5 * 6) / 6);
+  return (
+    <View style={{ gap: 12 }}>
+      {families.map((f) => (
+        <View key={f.id}>
+          <T v="label" color={colors.ink} style={{ marginBottom: 6 }}>
+            {f.name}
+          </T>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6 }}>
+            {surfaces
+              .filter((s) => s.family === f.id)
+              .map((s) => (
+                <Swatch key={s.id} tile={s} size={size} active={s.id === current} onPress={() => (tap(), onPick(s.id))} />
+              ))}
+          </ScrollView>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function Swatch({ tile, size, active, onPress }: { tile: Tile; size: number; active: boolean; onPress: () => void }) {
+  // walls show their paper, rail and baseboard; floors a patch of two by two tiles
+  const h = tile.kind === 'wall' ? size * 1.33 : size;
+  const k = tile.kind === 'wall' ? size / tile.w : size / 2 / Math.min(tile.w, tile.h);
+  return (
+    <Press
+      onPress={onPress}
+      accessibilityLabel={tile.label}
+      accessibilityState={{ selected: active }}
+      style={{
+        width: size,
+        height: h,
+        borderRadius: radius.sm,
+        overflow: 'hidden',
+        borderWidth: active ? 3 : 1,
+        borderColor: active ? colors.coral : colors.lineSoft,
+      }}
+    >
+      {[0, 1].flatMap((y) =>
+        [0, 1].map((x) => (
+          <Image
+            key={`${x}${y}`}
+            source={tile.src}
+            fadeDuration={0}
+            resizeMode="stretch"
+            style={{ position: 'absolute', left: x * tile.w * k, top: y * tile.h * k, width: tile.w * k, height: tile.h * k }}
+          />
+        )),
+      )}
+    </Press>
   );
 }

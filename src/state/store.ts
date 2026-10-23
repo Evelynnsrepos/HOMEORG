@@ -7,6 +7,10 @@ import { roomTypeById } from '../data/roomTypes';
 import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
 import { autoBestBefore } from '../data/shelfLife';
+import { REWARDS, allowed, trimLog, type CoinEvent, type RewardSource } from '../lib/rewards';
+import { DEFAULT_SURFACES, ROOM_SURFACES } from '../lib/surfaces';
+import { drawPiece, featuredSets, pieceById, starterPieces, starterStickers, stickersFromSlots } from '../lib/stickers';
+import { DEFAULT_STREAK, activeDays, streakOf, weekStartKey, type StreakSettings } from '../lib/streak';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
 import { coinsForEffort, momentumBonus, taskCycleMs } from '../lib/engine';
@@ -24,7 +28,9 @@ import type {
   PantryItem,
   PinnedNote,
   CookedMeal,
+  MoodEntry,
   NewPantryItem,
+  PlacedSticker,
   PlannedMeal,
   Recipe,
   RecipeExtra,
@@ -32,8 +38,7 @@ import type {
   Settings,
   ShoppingItem,
   SprintRecord,
-  Task,
-} from '../lib/types';
+  Task, MyPet, PetCare, PetSupply } from '../lib/types';
 import { roomPalette } from '../theme';
 
 export const DECOR_SLOTS = 10;
@@ -86,6 +91,21 @@ interface State {
   importedOrders: string[];
   notes: PinnedNote[];
   sprints: SprintRecord[];
+  /** sticker library pieces you own */
+  pieces: string[];
+  /** the welcome kit of stickers has been handed out */
+  welcomeKit: boolean;
+  /** the first pets were handed out (installs from before pets get them once) */
+  petKit?: boolean;
+  /** every coin earned outside chores' own price, with where it came from — for caps, streaks and the data screen */
+  coinLog: CoinEvent[];
+  moods: MoodEntry[];
+  /** pet mode: your pets, their care and their supplies (older installs: missing) */
+  pets?: MyPet[];
+  petLog?: PetCare[];
+  petSupplies?: PetSupply[];
+  /** the last coins earned, for the little toast; not saved */
+  lastReward: { coins: number; label: string; at: number } | null;
   achievements: Achievement[];
   breakdownDay: string;
   breakdownUsed: number;
@@ -116,6 +136,28 @@ interface Actions {
   attachPhoto: (completionId: string, kind: 'before' | 'after', uri: string) => void;
 
   buyItem: (itemId: string) => boolean;
+  /** Coins for doing something good, within today's cap for that kind of thing. Returns what was paid. */
+  earn: (source: RewardSource, coins?: number) => number;
+  /** Pays the daily and weekly streak bonuses once each, when they're due. */
+  checkStreaks: () => void;
+  addSticker: (roomId: string, piece: string, at?: Partial<PlacedSticker>) => string;
+  updateSticker: (roomId: string, id: string, patch: Partial<PlacedSticker>) => void;
+  removeSticker: (roomId: string, id: string) => void;
+  layerSticker: (roomId: string, id: string, to: 'front' | 'back') => void;
+  /** Draw `n` new pieces for coins. Null when you can't afford it; fewer when the library runs out. */
+  drawPieces: (n: number, price: number) => string[] | null;
+  saveMood: (m: Omit<MoodEntry, 'id' | 'day' | 'at'>) => void;
+  addPet: (p: Omit<MyPet, 'id' | 'createdAt'>) => string;
+  updatePet: (id: string, patch: Partial<Omit<MyPet, 'id'>>) => void;
+  removePet: (id: string) => void;
+  /** a quick tap of care; returns the log entry's id so it can be undone */
+  logCare: (petId: string, action: string) => string;
+  undoCare: (id: string) => void;
+  addSupply: (s: Omit<PetSupply, 'id' | 'updatedAt'>) => void;
+  updateSupply: (id: string, patch: Partial<Omit<PetSupply, 'id'>>) => void;
+  /** back to a full pack (or `amount`), counted from now */
+  restockSupply: (id: string, amount?: number) => void;
+  removeSupply: (id: string) => void;
   placeDecor: (roomId: string, slot: number, itemId: string | null) => void;
   setSurface: (roomId: string, kind: 'wallpaper' | 'flooring', itemId: string) => void;
 
@@ -188,6 +230,14 @@ const initialState: State = {
   importedOrders: [],
   notes: [],
   sprints: [],
+  pieces: [],
+  welcomeKit: false,
+  coinLog: [],
+  moods: [],
+  pets: [],
+  petLog: [],
+  petSupplies: [],
+  lastReward: null,
   achievements: [],
   breakdownDay: '',
   breakdownUsed: 0,
@@ -231,23 +281,11 @@ function spread(condition: number, seedText: string): number {
   return Math.max(0, Math.min(1, condition + jitter));
 }
 
-/** Rooms don't all want the same wallpaper. */
-const surfaceFor: Record<string, [string, string]> = {
-  kitchen: ['wall_plaster', 'floor_tile'],
-  living: ['wall_sage', 'floor_oak'],
-  bathroom: ['wall_blush', 'floor_tile'],
-  bedroom: ['wall_blush', 'floor_ash'],
-  kids: ['wall_botanic', 'floor_ash'],
-  dining: ['wall_clay', 'floor_herring'],
-  office: ['wall_sage', 'floor_ash'],
-  hallway: ['wall_clay', 'floor_herring'],
-  laundry: ['wall_plaster', 'floor_tile'],
-  guest: ['wall_botanic', 'floor_oak'],
-  garage: ['wall_plaster', 'floor_slate'],
-  storage: ['wall_plaster', 'floor_slate'],
-  balcony: ['wall_botanic', 'floor_slate'],
-  wc: ['wall_blush', 'floor_tile'],
-};
+/** A new room's pixel pieces are yours too, so they show up in the tray. */
+function withRoomPieces(owned: string[] | undefined, rooms: Room[]): string[] {
+  const ids = rooms.flatMap((r) => (r.stickers ?? []).map((k) => k.piece)).filter((id) => !id.startsWith('svg:'));
+  return [...new Set([...(owned ?? []), ...ids])];
+}
 
 /** Starter pieces are yours to keep, so you can move them between rooms. */
 function withStarters(inventory: string[], rooms: Room[]): string[] {
@@ -261,6 +299,38 @@ function withStarters(inventory: string[], rooms: Room[]): string[] {
  * that no longer exist. Drop those, and if that empties a room out entirely,
  * hand it its starter set back rather than leaving it bare.
  */
+/** The streak rhythm from the settings, with gentle defaults. */
+function streakSettings(s: State): StreakSettings {
+  return {
+    every: s.settings.streakEvery ?? DEFAULT_STREAK.every,
+    grace: s.settings.streakGrace ?? DEFAULT_STREAK.grace,
+    weekGoal: s.settings.weekGoal ?? DEFAULT_STREAK.weekGoal,
+  };
+}
+
+/**
+ * Rooms from before stickers: their ten slots become stickers in the same
+ * spots, once. After that the slots are only history.
+ */
+function stickerRooms(rooms: Room[]): Room[] | null {
+  if (rooms.every((r) => r.stickers)) return null;
+  return rooms.map((r) => (r.stickers ? r : { ...r, stickers: stickersFromSlots(r.decor, () => uid('stk')) }));
+}
+
+/**
+ * Pieces whose art is no longer in the catalog (a test build's ids, say)
+ * are let go quietly, so a missing picture never breaks a room.
+ */
+function forgetLostPieces(s: Pick<State, 'pieces' | 'rooms'>): Pick<State, 'pieces' | 'rooms'> | null {
+  const pieces = (s.pieces ?? []).filter((id) => pieceById(id));
+  const lost = (r: Room) => (r.stickers ?? []).some((k) => !pieceById(k.piece));
+  if (pieces.length === (s.pieces ?? []).length && !s.rooms.some(lost)) return null;
+  return {
+    pieces,
+    rooms: s.rooms.map((r) => (lost(r) ? { ...r, stickers: r.stickers!.filter((k) => pieceById(k.piece)) } : r)),
+  };
+}
+
 /** What a new or edited item's date should be: given, "keeps", or looked up. */
 function datedFor(
   name: string,
@@ -342,8 +412,9 @@ function buildRoom(input: NewRoomInput, order: number): { room: Room; tasks: Tas
   const starter = starterFor(input.typeId);
   const decor: (string | null)[] = Array(DECOR_SLOTS).fill(null);
   for (const [slot, itemId] of Object.entries(starter)) decor[Number(slot)] = itemId;
+  const stickers = starterStickers(input.typeId, () => uid('stk'));
 
-  const [wallpaper, flooring] = surfaceFor[input.typeId] ?? ['wall_plaster', 'floor_oak'];
+  const [wallpaper, flooring] = ROOM_SURFACES[input.typeId] ?? DEFAULT_SURFACES;
 
   const room: Room = {
     id,
@@ -356,6 +427,7 @@ function buildRoom(input: NewRoomInput, order: number): { room: Room; tasks: Tas
     wallpaper,
     flooring,
     decor,
+    stickers,
     createdAt: new Date().toISOString(),
   };
   const tasks: Task[] = input.chores.map((ch) => ({
@@ -422,6 +494,7 @@ export const useStore = create<Store>()(
             rooms: built_rooms,
             tasks: built.flatMap((b) => b.tasks),
             inventory: withStarters(s.inventory, built_rooms),
+            pieces: withRoomPieces(s.pieces, built_rooms),
           };
         }),
 
@@ -432,6 +505,7 @@ export const useStore = create<Store>()(
           rooms: [...s.rooms, room],
           tasks: [...s.tasks, ...tasks],
           inventory: withStarters(s.inventory, [room]),
+          pieces: withRoomPieces(s.pieces, [room]),
         }));
         return room.id;
       },
@@ -500,6 +574,8 @@ export const useStore = create<Store>()(
         set((s) => ({
           completions: [completion, ...s.completions].slice(0, 4000),
           coins: s.coins + coins,
+          coinLog: trimLog([...(s.coinLog ?? []), { day: dayKey(now), source: 'chore', coins }]),
+          lastReward: { coins, label: REWARDS.chore.label, at: Date.now() },
           tasks: s.tasks.map((t) =>
             t.id === id
               ? {
@@ -511,6 +587,7 @@ export const useStore = create<Store>()(
               : t,
           ),
         }));
+        get().checkStreaks();
         return coins;
       },
 
@@ -544,7 +621,7 @@ export const useStore = create<Store>()(
        * Photos never leave the device. We keep the newest 50 and drop anything
        * older than 35 days, the same ceiling the hosted app uses.
        */
-      attachPhoto: (completionId, kind, uri) =>
+      attachPhoto: (completionId, kind, uri) => {
         set((s) => {
           const cutoff = Date.now() - 35 * 86_400_000;
           let kept = 0;
@@ -562,7 +639,9 @@ export const useStore = create<Store>()(
               return { ...c, photoBefore: undefined, photoAfter: undefined };
             }),
           };
-        }),
+        });
+        get().earn('photo');
+      },
 
       buyItem: (itemId) => {
         const item = shopItems.find((i) => i.id === itemId);
@@ -570,6 +649,112 @@ export const useStore = create<Store>()(
         if (!item || s.inventory.includes(itemId) || s.coins < item.price) return false;
         set({ coins: s.coins - item.price, inventory: [...s.inventory, itemId] });
         return true;
+      },
+
+      earn: (source, coins = REWARDS[source].coins) => {
+        const s = get();
+        const day = dayKey();
+        const log = s.coinLog ?? [];
+        const amount = allowed(log, source, day, coins);
+        // a capped action still counts as showing up today, once
+        const seen = log.some((e) => e.day === day && e.source === source);
+        if (amount > 0 || !seen) {
+          set({
+            coins: s.coins + amount,
+            coinLog: trimLog([...log, { day, source, coins: amount }]),
+            lastReward: amount > 0 ? { coins: amount, label: REWARDS[source].label, at: Date.now() } : s.lastReward,
+          });
+        }
+        if (source !== 'streakDay' && source !== 'streakWeek') get().checkStreaks();
+        return amount;
+      },
+
+      checkStreaks: () => {
+        const s = get();
+        const day = dayKey();
+        const log = s.coinLog ?? [];
+        const rhythm = streakSettings(s);
+        const streak = streakOf(activeDays([s.completions, log, s.moods ?? []]), rhythm);
+        if (streak.days >= 2 && !log.some((e) => e.day === day && e.source === 'streakDay')) {
+          get().earn('streakDay', 5 + Math.min(streak.days, 10));
+        }
+        const week = weekStartKey();
+        if (streak.thisWeek >= rhythm.weekGoal && !log.some((e) => e.day >= week && e.source === 'streakWeek')) {
+          get().earn('streakWeek', 40 + 10 * Math.min(streak.weeks - 1, 6));
+        }
+      },
+
+      addSticker: (roomId, piece, at = {}) => {
+        const id = uid('stk');
+        set((s) => ({
+          rooms: s.rooms.map((r) => {
+            if (r.id !== roomId) return r;
+            const stickers = r.stickers ?? [];
+            const top = stickers.reduce((m, k) => Math.max(m, k.z), 0);
+            return {
+              ...r,
+              stickers: [...stickers, { id, piece, x: 0.5, y: 0.55, size: 0.25, rot: 0, z: top + 1, ...at }],
+            };
+          }),
+        }));
+        return id;
+      },
+
+      updateSticker: (roomId, id, patch) =>
+        set((s) => ({
+          rooms: s.rooms.map((r) =>
+            r.id === roomId
+              ? { ...r, stickers: (r.stickers ?? []).map((k) => (k.id === id ? { ...k, ...patch } : k)) }
+              : r,
+          ),
+        })),
+
+      removeSticker: (roomId, id) =>
+        set((s) => ({
+          rooms: s.rooms.map((r) =>
+            r.id === roomId ? { ...r, stickers: (r.stickers ?? []).filter((k) => k.id !== id) } : r,
+          ),
+        })),
+
+      /** Front or back of the pile; the rest keep their order. */
+      layerSticker: (roomId, id, to) =>
+        set((s) => ({
+          rooms: s.rooms.map((r) => {
+            if (r.id !== roomId) return r;
+            const rest = (r.stickers ?? []).filter((k) => k.id !== id).sort((a, b) => a.z - b.z);
+            const me = (r.stickers ?? []).find((k) => k.id === id);
+            if (!me) return r;
+            const order = to === 'front' ? [...rest, me] : [me, ...rest];
+            return { ...r, stickers: order.map((k, i) => ({ ...k, z: i })) };
+          }),
+        })),
+
+      drawPieces: (n, price) => {
+        const s = get();
+        if (s.coins < price) return null;
+        const owned = new Set(s.pieces ?? []);
+        const featured = featuredSets();
+        const got: string[] = [];
+        for (let i = 0; i < n; i++) {
+          const p = drawPiece(owned, featured);
+          if (!p) break;
+          owned.add(p.id);
+          got.push(p.id);
+        }
+        if (!got.length) return [];
+        // a ten-draw that runs the library dry only charges for what it gave
+        const paid = Math.round((price * got.length) / n);
+        set({ coins: s.coins - paid, pieces: [...(s.pieces ?? []), ...got] });
+        return got;
+      },
+
+      saveMood: (m) => {
+        const now = new Date();
+        const day = dayKey(now);
+        set((s) => ({
+          moods: [...(s.moods ?? []).filter((x) => x.day !== day), { ...m, id: uid('mood'), day, at: now.toISOString() }].slice(-1000),
+        }));
+        get().earn('mood');
       },
 
       placeDecor: (roomId, slot, itemId) =>
@@ -678,6 +863,7 @@ export const useStore = create<Store>()(
             ...s.recipes,
           ],
         }));
+        get().earn('recipe');
         return id;
       },
 
@@ -719,6 +905,7 @@ export const useStore = create<Store>()(
           mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || (!!m.day && m.day > today)),
           cookLog: [...(s.cookLog ?? []), { id: uid('cook'), recipeId: id, name: recipe.name, at: now }],
         }));
+        get().earn('cook');
       },
 
       recipeToList: (id) => {
@@ -773,17 +960,21 @@ export const useStore = create<Store>()(
           };
         }),
 
-      toggleShopping: (id) =>
+      toggleShopping: (id) => {
+        const ticking = get().shopping.some((i) => i.id === id && !i.done);
         set((s) => ({
           shopping: s.shopping.map((i) => (i.id === id ? { ...i, done: !i.done } : i)),
-        })),
+        }));
+        if (ticking) get().earn('shopping');
+      },
 
       removeShopping: (id) => set((s) => ({ shopping: s.shopping.filter((i) => i.id !== id) })),
 
       clearDoneShopping: () => set((s) => ({ shopping: s.shopping.filter((i) => !i.done) })),
 
       /** Same thing, same unit, same shelf? Top it up rather than duplicate it. */
-      addPantry: (item) =>
+      addPantry: (item) => {
+        const before = get().pantry;
         set((s) => {
           const key = item.name.trim().toLowerCase();
           if (!key) return {};
@@ -813,7 +1004,12 @@ export const useStore = create<Store>()(
               ...s.pantry,
             ],
           };
-        }),
+        });
+        if (get().pantry !== before) {
+          get().earn('pantry');
+          if (item.bestBefore) get().earn('bestBefore');
+        }
+      },
 
       adjustPantry: (id, delta) =>
         set((s) => ({
@@ -825,7 +1021,8 @@ export const useStore = create<Store>()(
           }),
         })),
 
-      updatePantry: (id, patch) =>
+      updatePantry: (id, patch) => {
+        const was = get().pantry.find((p) => p.id === id);
         set((s) => ({
           pantry: s.pantry.map((p) => {
             if (p.id !== id) return p;
@@ -841,7 +1038,9 @@ export const useStore = create<Store>()(
             }
             return next;
           }),
-        })),
+        }));
+        if (patch.bestBefore && was && patch.bestBefore !== was.bestBefore) get().earn('bestBefore');
+      },
 
       removePantry: (id) => set((s) => ({ pantry: s.pantry.filter((p) => p.id !== id) })),
 
@@ -853,7 +1052,9 @@ export const useStore = create<Store>()(
         }),
 
       putAway: (items, orderNo) => {
+        const fresh = !!orderNo && !get().importedOrders.includes(orderNo);
         for (const item of items) get().addPantry(item);
+        if (fresh) get().earn('import');
         let ticked = 0;
         set((s) => ({
           shopping: s.shopping.map((i) => {
@@ -885,13 +1086,15 @@ export const useStore = create<Store>()(
           };
         }),
 
-      addNote: (title, body) =>
+      addNote: (title, body) => {
         set((s) => ({
           notes: [
             { id: uid('note'), title, body, createdAt: new Date().toISOString() },
             ...s.notes,
           ],
-        })),
+        }));
+        get().earn('note');
+      },
 
       removeNote: (id) => set((s) => ({ notes: s.notes.filter((n) => n.id !== id) })),
 
@@ -918,6 +1121,7 @@ export const useStore = create<Store>()(
             tasks: built.flatMap((b) => b.tasks),
             completions: [],
             inventory: withStarters(s.inventory, built_rooms),
+            pieces: withRoomPieces(s.pieces, built_rooms),
           };
         }),
 
@@ -926,6 +1130,40 @@ export const useStore = create<Store>()(
           settings: { ...s.settings, homeType, floors },
           rooms: s.rooms.map((r) => ({ ...r, floor: assignment[r.id] ?? 0 })),
         })),
+
+      addPet: (p) => {
+        const id = uid('pet');
+        set((s) => ({ pets: [...(s.pets ?? []), { ...p, id, createdAt: new Date().toISOString() }] }));
+        return id;
+      },
+      updatePet: (id, patch) => set((s) => ({ pets: (s.pets ?? []).map((p) => (p.id === id ? { ...p, ...patch } : p)) })),
+      removePet: (id) =>
+        set((s) => ({
+          pets: (s.pets ?? []).filter((p) => p.id !== id),
+          petLog: (s.petLog ?? []).filter((c) => c.petId !== id),
+        })),
+      logCare: (petId, action) => {
+        const id = uid('care');
+        // a year of taps is plenty to see patterns; older ones fall off
+        set((s) => ({ petLog: [...(s.petLog ?? []), { id, petId, action, at: new Date().toISOString() }].slice(-3000) }));
+        get().earn('pet');
+        get().checkStreaks();
+        return id;
+      },
+      undoCare: (id) => set((s) => ({ petLog: (s.petLog ?? []).filter((c) => c.id !== id) })),
+      addSupply: (x) =>
+        set((s) => ({ petSupplies: [...(s.petSupplies ?? []), { ...x, id: uid('sup'), updatedAt: new Date().toISOString() }] })),
+      updateSupply: (id, patch) =>
+        set((s) => ({
+          petSupplies: (s.petSupplies ?? []).map((x) => (x.id === id ? { ...x, ...patch, updatedAt: new Date().toISOString() } : x)),
+        })),
+      restockSupply: (id, amount) =>
+        set((s) => ({
+          petSupplies: (s.petSupplies ?? []).map((x) =>
+            x.id === id ? { ...x, amount: amount ?? x.full, updatedAt: new Date().toISOString() } : x,
+          ),
+        })),
+      removeSupply: (id) => set((s) => ({ petSupplies: (s.petSupplies ?? []).filter((x) => x.id !== id) })),
 
       resetEverything: () => set({ ...initialState, hydrated: true }),
     }),
@@ -970,13 +1208,24 @@ export const useStore = create<Store>()(
         delete s.savedMeals;
         return { ...s, recipes: [...byName.values()] } as unknown as Store;
       },
-      partialize: ({ hydrated, ...rest }) => rest as Store,
+      partialize: ({ hydrated, lastReward, ...rest }) => rest as Store,
       onRehydrateStorage: () => (state) => {
         if (!state) return;
         const fixed = reconcileDecor(state);
         if (fixed) useStore.setState(fixed);
         const dated = dateOldShelves(state.pantry ?? []);
         if (dated) useStore.setState({ pantry: dated });
+        const moved = stickerRooms(useStore.getState().rooms ?? []);
+        if (moved) useStore.setState({ rooms: moved });
+        const known = forgetLostPieces(useStore.getState());
+        if (known) useStore.setState(known);
+        if (!state.welcomeKit) {
+          useStore.setState({ pieces: [...new Set([...(state.pieces ?? []), ...starterPieces()])], welcomeKit: true, petKit: true });
+        } else if (!state.petKit) {
+          // pets came later: everyone who already had the welcome kit meets a few now
+          const kit = starterPieces().filter((id) => id.startsWith('pet-'));
+          useStore.setState({ pieces: [...new Set([...(useStore.getState().pieces ?? []), ...kit])], petKit: true });
+        }
         state.setHydrated();
       },
     },

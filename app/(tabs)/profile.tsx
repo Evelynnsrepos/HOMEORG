@@ -1,15 +1,19 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Switch, View } from 'react-native';
+import { Switch, View, useWindowDimensions } from 'react-native';
 
 import { useStats } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { colors, font } from '../../src/theme';
 import { Card, Divider, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
 import { ScreenGarland } from '../../src/ui/Decor';
+import { Splashes } from '../../src/ui/PixelSplash';
 
 export default function Profile() {
+  const petMode = useStore((s) => !!s.settings.petMode);
+  const petCount = useStore((s) => (s.pets ?? []).length);
+  const { width: W } = useWindowDimensions();
   const router = useRouter();
   const settings = useStore((s) => s.settings);
   const coins = useStore((s) => s.coins);
@@ -18,6 +22,7 @@ export default function Profile() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.86, y: 140, size: 150 }, { x: 0.08, y: 580, size: 130, tone: 'sage' }]} />
       <ScreenGarland seed={9} />
       <Row style={{ gap: 14 }}>
         <View
@@ -57,12 +62,16 @@ export default function Profile() {
       <Spacer h={16} />
       <Card style={{ padding: 0, overflow: 'hidden' }}>
         <MenuRow icon="stats-chart" label="Insights" hint="Your week, room by room" onPress={() => router.push('/insights')} />
+        {petMode ? (
+          <MenuRow icon="paw" label="Pets" hint={petCount ? `${petCount} ${petCount === 1 ? 'pet' : 'pets'} · care and supplies` : 'Add your pets'} onPress={() => router.push('/pets')} />
+        ) : null}
+        <MenuRow icon="heart" label="How you've been" hint="Check-ins, energy and activity over time" onPress={() => router.push('/mood-data')} />
         <Divider />
         <MenuRow icon="trophy" label="Challenges" hint="16 checklists + your own" onPress={() => router.push('/challenges')} />
         <Divider />
         <MenuRow icon="ribbon" label="Achievements" hint="Quietly waiting for you" onPress={() => router.push('/achievements')} />
         <Divider />
-        <MenuRow icon="storefront" label="The Shop" hint={`${coins} coins to spend`} onPress={() => router.push('/shop')} />
+        <MenuRow icon="sparkles" label="Sticker draws" hint={`${coins} coins to spend`} onPress={() => router.push('/shop')} />
         <Divider />
         <MenuRow icon="home" label="Home layout" hint="Rooms, floors, moving house" onPress={() => router.push('/layout')} />
       </Card>

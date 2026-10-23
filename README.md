@@ -79,6 +79,31 @@ Server — samt der 37 MB Musik. Für iOS führt allerdings kein Weg daran vorbe
 und dort kommt ein Apple-Developer-Konto (99 €/Jahr) dazu. Ohne das bleibt
 Expo Go, was zum Benutzen völlig reicht.
 
+## iPhone (sideloaden)
+
+Ohne App Store: Der *Release*-Workflow baut neben der APK eine **unsignierte
+IPA** (auf einem kostenlosen macOS-Rechner von GitHub, kein eigener Mac nötig).
+Signiert wird sie beim Installieren mit deiner eigenen Apple-ID:
+
+1. IPA herunterladen – aus dem GitHub-Release (`homeorg-v….ipa`) oder unter
+   *Actions → Release → Run workflow* als Artefakt.
+2. Mit **SideStore** oder **AltStore** (iPhone + einmalig Computer) oder
+   **Sideloadly** (Windows/Mac) installieren und mit der Apple-ID anmelden.
+3. Auf dem iPhone *Einstellungen → Datenschutz & Sicherheit → Entwicklermodus*
+   einschalten und dem Entwickler unter *Allgemein → VPN & Geräteverwaltung*
+   vertrauen.
+
+Mit einer **kostenlosen Apple-ID** läuft die App 7 Tage und muss dann
+aufgefrischt werden (SideStore/AltStore machen das automatisch im WLAN);
+höchstens 3 selbst installierte Apps gleichzeitig. Mit dem **Apple Developer
+Program** (99 €/Jahr) hält die Signatur ein Jahr. Daten bleiben beim
+Auffrischen erhalten, solange die App nicht gelöscht wird – trotzdem ab und zu
+unter *Einstellungen → Sichern* ein Backup machen.
+
+Die Erinnerungen sind lokale Benachrichtigungen; die Push-Berechtigung, die
+eine kostenlose Apple-ID nicht signieren kann, nimmt der Workflow heraus.
+Datum-Scan (ML Kit) braucht iOS 15.5 oder neuer.
+
 ## Wie es funktioniert
 
 **Sauberkeit** Jede Aufgabe hat eine Frequenz. Von 100 % (gerade geputzt) läuft
@@ -152,7 +177,7 @@ src/
   state/music.ts     Player-Zustand (eigener Store, eigene Persistenz)
   state/derived.ts   Abgeleitete Werte für die Screens
   data/              Raumtypen, Möbelkatalog, Challenges, Zerlegung, Playlists, Maßeinheiten
-  ui/RoomCanvas.tsx  Der Raum: Wand, Boden, Einbauten, Stellplätze
+  ui/RoomCanvas.tsx  Der Raum: Pixel-Wand und -Boden, darauf die Sticker
   ui/Furniture.tsx   Die 120 Möbel als SVG-Rezepte
   ui/QuantitySheet.tsx  "Wie viel hast du gekauft?"
   ui/RecipeEditor.tsx   Ein Rezept schreiben, Zutat für Zutat
@@ -232,6 +257,36 @@ wird „Kräuterseitlinge bio“, aus `SONNENB.OEL KALT` „Sonnenblumenöl kalt
 `npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen und
 einen echten eBon (`scripts/fixtures/`, ohne Kopfdaten wie Name, Kundennummer
 oder Kartendaten).
+
+## Zimmer, Sticker, Münzen
+
+Zimmer werden mit Stickern eingerichtet: frei platzieren, skalieren, drehen,
+spiegeln, stapeln. Rund 2500 Pixel-Teile in 21 Sets (LPC Revised, CC-BY /
+OGA-BY, Credits im About-Screen) gibt es nur über den Sticker-Automaten —
+jede Ziehung ein neues Teil, jeden Monat drei andere Sets. Münzen gibt es
+fürs Putzen, Kochen, Vorher-/Nachher-Fotos, Einräumen, MHDs eintragen,
+Einchecken und Streaks (mit Tageslimit pro Quelle). Keine In-App-Käufe.
+
+Streaks zählen jeden aktiven Tag, im selbst gewählten Rhythmus (täglich, alle
+2–3 Tage, wöchentlich) und mit Schonfrist. Das „Wie geht's dir?"-Kärtchen auf
+Home speichert Stimmung, soziale Kapazität und Energie; an schweren Tagen
+gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
+been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
+
+Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
+Dazu kommen 97 selbst gezeichnete Haustiere in sechs Sets (Hauskatzen, Wildkatzen
+wie Manul, Serval und Tiger, Vögel und Häschen, Hunde, Fische im Glas, Hamster,
+Meerschweinchen, Ratten, Geckos und Schildkröten) aus `scripts/pets/`; jeden
+Monat ist ein Tier-Set neben drei Möbel-Sets in der Maschine.
+
+**Haustier-Modus** (optional, in den Einstellungen): eine Kachel auf Home mit
+deinem Tier als Pixelbild und Schnell-Tipps für Futter, Wasser, Katzenklo,
+Gassi, Wasserwechsel, Terrarium …, ein Bildschirm für Pflege und Vorräte (Futter, Streu, Heu mit
+Reichweite in Tagen) und an schweren Tagen der Vorschlag zum Kuscheln.
+„Nicht vergessen“ (für alle) sammelt Abgelaufenes zum Wegwerfen, Bald-Fälliges,
+einen leeren Kühlschrank und – mit Tieren – Vorräte und fällige Reinigung.
+Wände und Böden (rund 250 Tapeten und 150 Böden in 16 Mustern, je mit einer
+rosa Variante) entstehen mit `python3 scripts/build-surfaces.py`.
 
 ## Haltbarkeit
 

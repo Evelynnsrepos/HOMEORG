@@ -3,8 +3,9 @@ import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
-import { places } from '../../src/data/units';
-import { cookableNow, expiringSoon, matchRecipes, shelfLifeLabel } from '../../src/lib/kitchen';
+import { cookableNow, expiringSoon, matchRecipes } from '../../src/lib/kitchen';
+import { dayKey } from '../../src/lib/date';
+import { PRESETS, SCALES, isHardDay, nearestPreset } from '../../src/lib/mood';
 import { pickChallenge } from '../../src/lib/suggest';
 import { useHomeHealth, useRooms, useStreak, useToday } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
@@ -13,10 +14,13 @@ import { EffortRing, FridgeGauge, fridgeWord } from '../../src/ui/Art';
 import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
 import { ScriptTitle } from '../../src/ui/Script';
+import { PixelSplash, Splashes } from '../../src/ui/PixelSplash';
+import { FRIDGE_FULL, reminders } from '../../src/lib/remind';
+import { DontForget, PetWidget } from '../../src/ui/Pets';
 
 const FOCUS_MINUTES = [15, 25, 45];
+const MOOD_TINT = { mood: '#FF79B0', social: '#B48CF0', clean: '#6FCDA8', hobby: '#FFB35C' } as const;
 /** a fridge with this many things in it reads as full on the gauge */
-const FRIDGE_FULL = 24;
 
 /**
  * Home, laid out like the sketch: cleanliness up top, then the fridge with
@@ -30,6 +34,8 @@ export default function HomeTab() {
   const settings = useStore((s) => s.settings);
   const coins = useStore((s) => s.coins);
   const notes = useStore((s) => s.notes);
+  const todayMood = useStore((s) => (s.moods ?? []).filter((m) => m.day === dayKey()).at(-1));
+  const saveMood = useStore((s) => s.saveMood);
   const pantry = useStore((s) => s.pantry);
   const recipes = useStore((s) => s.recipes);
   const progress = useStore((s) => s.challenges);
@@ -43,6 +49,13 @@ export default function HomeTab() {
   const dueCount = plan.tasks.length;
 
   const soon = useMemo(() => expiringSoon(pantry, 4), [pantry]);
+  const pets = useStore((s) => s.pets);
+  const petLog = useStore((s) => s.petLog);
+  const supplies = useStore((s) => s.petSupplies);
+  const nudges = useMemo(
+    () => reminders({ pantry, petMode: settings.petMode, pets, petLog, supplies }),
+    [pantry, settings.petMode, pets, petLog, supplies],
+  );
   const cookable = useMemo(() => {
     const ready = cookableNow(recipes, pantry);
     // ready ones first, then the closest, so the column is never half empty
@@ -69,6 +82,7 @@ export default function HomeTab() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.9, y: 150, size: 170 }, { x: 0.06, y: 540, size: 150, tone: 'lilac' }, { x: 0.94, y: 1000, size: 130, tone: 'gold' }]} />
       <ScreenGarland height={84} />
 
       {/* Header ---------------------------------------------------- */}
@@ -290,120 +304,130 @@ export default function HomeTab() {
         </Card>
       </Row>
 
-      {/* Info | Focus now? ------------------------------------------ */}
+      {/* How do you feel? | Focus now? ---------------------------------- */}
       <Spacer h={10} />
       <Row style={{ gap: 10, alignItems: 'stretch' }}>
-        <Press style={{ width: colW * 0.8 }} onPress={() => router.push('/notes')}>
-          <Card style={{ flex: 1, padding: 13 }}>
-            <CardHead icon="star" title="Info" tint={colors.gold} />
-            <Spacer h={6} />
-            {notes.length ? (
-              notes.slice(0, 3).map((n, i) => (
-                <View
-                  key={n.id}
-                  style={{ paddingVertical: 4, borderTopWidth: i ? 1 : 0, borderTopColor: colors.lineSoft }}
-                >
-                  <T v="label" color={colors.ink} numberOfLines={1}>
-                    {n.title}
-                  </T>
-                  {n.body ? (
-                    <T v="caption" numberOfLines={1}>
-                      {n.body}
-                    </T>
-                  ) : null}
-                </View>
-              ))
-            ) : (
-              <T v="caption">Wifi code, bin days, the boiler. Pin them here.</T>
-            )}
-          </Card>
-        </Press>
-
-        <Card style={{ flex: 1, padding: 13 }}>
-          <Press onPress={() => router.push('/focus')}>
-            <CardHead icon="timer-outline" title="Focus now?" />
+        <Card style={{ flex: 1, padding: 13, overflow: 'hidden' }}>
+          <PixelSplash size={110} tone="lilac" pixel={5} seed={4} style={{ right: -36, bottom: -40 }} />
+          <Press onPress={() => router.push('/mood')}>
+            <Row style={{ justifyContent: 'space-between' }}>
+              <CardHead icon="heart-outline" title="How do you feel?" tint={colors.coralDeep} />
+              <Ionicons name="options-outline" size={14} color={colors.inkMuted} />
+            </Row>
           </Press>
           <Spacer h={8} />
-          <Row style={{ gap: 6 }}>
+          <Row style={{ gap: 4 }}>
+            {PRESETS.map((p) => {
+              const on = todayMood?.preset === p.id || (!todayMood?.preset && todayMood && nearestPreset(todayMood).id === p.id);
+              return (
+                <Press
+                  key={p.id}
+                  accessibilityLabel={`Feeling ${p.label.toLowerCase()}`}
+                  onPress={() => {
+                    saveMood({ ...p.values, preset: p.id });
+                    // a hard day gets a kind word straight away
+                    if (isHardDay({ ...p.values, preset: p.id })) router.push('/mood?comfort=1');
+                  }}
+                  style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    paddingVertical: 6,
+                    borderRadius: radius.sm,
+                    backgroundColor: on ? colors.coralSoft : colors.cardAlt,
+                    borderWidth: on ? 1.5 : 0,
+                    borderColor: colors.coral,
+                  }}
+                >
+                  <T style={{ fontSize: 20 }}>{p.emoji}</T>
+                </Press>
+              );
+            })}
+          </Row>
+          <Spacer h={8} />
+          {todayMood ? (
+            <Press onPress={() => router.push('/mood')}>
+              <Row style={{ gap: 5 }}>
+                {SCALES.map((sc) => (
+                  <View key={sc.key} style={{ flex: 1 }}>
+                    <Bar pct={todayMood[sc.key]} height={4} color={MOOD_TINT[sc.key]} />
+                  </View>
+                ))}
+              </Row>
+              <T v="caption" style={{ marginTop: 4 }}>
+                Mood · people · cleaning · hobbies. Tap to adjust.
+              </T>
+            </Press>
+          ) : (
+            <Press onPress={() => router.push('/mood')}>
+              <T v="caption">One tap is enough. Or slide it out in detail ›</T>
+            </Press>
+          )}
+        </Card>
+
+        <Card style={{ width: colW * 0.62, padding: 11 }}>
+          <Press onPress={() => router.push('/focus')}>
+            <CardHead icon="timer-outline" title="Focus" />
+          </Press>
+          <Spacer h={6} />
+          <View style={{ gap: 5 }}>
             {FOCUS_MINUTES.map((m) => (
               <Press
                 key={m}
                 onPress={() => router.push(`/sprint?minutes=${m}`)}
                 style={{
-                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'baseline',
+                  justifyContent: 'center',
+                  gap: 3,
                   backgroundColor: colors.cardAlt,
-                  borderRadius: radius.md,
-                  paddingVertical: 10,
-                  alignItems: 'center',
+                  borderRadius: radius.sm,
+                  paddingVertical: 5,
                 }}
               >
-                <T style={{ fontFamily: font.display, fontSize: 19, color: colors.ink }}>{m}</T>
+                <T style={{ fontFamily: font.display, fontSize: 16, color: colors.ink }}>{m}</T>
                 <T v="caption" style={{ fontSize: 10 }}>
                   min
                 </T>
               </Press>
             ))}
-          </Row>
-          <Spacer h={8} />
-          <Press onPress={() => router.push('/focus')}>
-            <T v="caption" color={colors.coralDeep}>
-              Or one task at a time ›
-            </T>
-          </Press>
+          </View>
         </Card>
       </Row>
 
-      {/* About to expire -------------------------------------------- */}
+      {/* Info --------------------------------------------------------- */}
       <Spacer h={10} />
-      <Card style={{ padding: 14, borderColor: soon.length ? colors.needsLove : colors.lineSoft }}>
-        <CardHead
-          icon="time-outline"
-          title={soon.length ? 'About to expire, please use it' : 'Nothing about to expire'}
-          tint={soon.length ? colors.needsLove : undefined}
-        />
-        {soon.length ? (
-          <>
-            <Spacer h={8} />
-            {soon.map((p, i) => {
-              const where = places.find((pl) => pl.id === p.place);
-              const label = shelfLifeLabel(p.bestBefore!);
-              return (
-                <Press
-                  key={p.id}
-                  onPress={() => router.push('/pantry')}
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    gap: 8,
-                    paddingVertical: 8,
-                    borderTopWidth: i ? 1 : 0,
-                    borderTopColor: colors.lineSoft,
-                  }}
-                >
-                  <T v="body" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
-                    {p.name}
-                  </T>
-                  <T v="caption" style={{ width: 78 }}>
-                    {where ? `${where.emoji} ${where.name}` : ''}
-                  </T>
-                  <T
-                    v="caption"
-                    style={{ width: 62, textAlign: 'right', fontFamily: font.semi }}
-                    color={label.endsWith('over') ? colors.needsYou : colors.needsLove}
-                  >
-                    {label}
-                  </T>
-                </Press>
-              );
-            })}
-          </>
-        ) : (
-          <T v="caption" style={{ marginTop: 4 }}>
-            Add a best-before date on the shelves and anything close to it shows up here.
-          </T>
-        )}
-        <Sticker kind="icecream" size={38} tilt={-12} style={{ position: 'absolute', right: -6, top: -16 }} />
-      </Card>
+      <Press onPress={() => router.push('/notes')}>
+        <Card style={{ paddingVertical: 11, paddingHorizontal: 13 }}>
+          <Row style={{ gap: 10 }}>
+            <CardHead icon="star" title="Info" tint={colors.gold} />
+            <T v="caption" numberOfLines={1} style={{ flex: 1 }}>
+              {notes.length
+                ? notes
+                    .slice(0, 3)
+                    .map((n) => n.title)
+                    .join(' · ')
+                : 'Wifi code, bin days, the boiler. Pin them here.'}
+            </T>
+            <Ionicons name="chevron-forward" size={13} color={colors.inkMuted} />
+          </Row>
+        </Card>
+      </Press>
+
+      {/* Don't forget this | Pets ----------------------------------- */}
+      <Spacer h={10} />
+      {settings.petMode ? (
+        <Row style={{ gap: 10, alignItems: 'stretch' }}>
+          <View style={{ width: colW }}>
+            <DontForget items={nudges} width={colW} max={5} />
+          </View>
+          <PetWidget width={colW} />
+        </Row>
+      ) : (
+        <View>
+          <DontForget items={nudges} />
+          <Sticker kind="icecream" size={38} tilt={-12} style={{ position: 'absolute', right: -6, top: -16 }} />
+        </View>
+      )}
     </Screen>
   );
 }

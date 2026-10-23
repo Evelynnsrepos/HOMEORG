@@ -12,6 +12,7 @@ import {
   type DayPlan,
 } from '../lib/engine';
 import type { Task } from '../lib/types';
+import { DEFAULT_STREAK, activeDays, streakOf, type Streak } from '../lib/streak';
 import { useStore } from './store';
 
 /** Recompute at most once a minute — cleanliness moves slowly. */
@@ -54,10 +55,30 @@ export function useHomeHealth() {
   return useMemo(() => overallHealth(tasks), [tasks, tick]);
 }
 
-export function useStreak() {
+/**
+ * The gentle streak: any day you did something for your home or checked in,
+ * at the rhythm you chose, with grace days before it breaks.
+ */
+export function useGentleStreak(): Streak {
   const completions = useStore((s) => s.completions);
+  const coinLog = useStore((s) => s.coinLog);
+  const moods = useStore((s) => s.moods);
+  const settings = useStore((s) => s.settings);
   const tick = useTick();
-  return useMemo(() => streakDays(completions), [completions, tick]);
+  return useMemo(
+    () =>
+      streakOf(activeDays([completions, coinLog ?? [], moods ?? []]), {
+        every: settings.streakEvery ?? DEFAULT_STREAK.every,
+        grace: settings.streakGrace ?? DEFAULT_STREAK.grace,
+        weekGoal: settings.weekGoal ?? DEFAULT_STREAK.weekGoal,
+      }),
+    [completions, coinLog, moods, settings, tick],
+  );
+}
+
+/** Days in the current gentle streak. */
+export function useStreak() {
+  return useGentleStreak().days;
 }
 
 export interface WeekStats {
@@ -74,6 +95,7 @@ export interface WeekStats {
 export function useStats(): WeekStats {
   const completions = useStore((s) => s.completions);
   const tasks = useStore((s) => s.tasks);
+  const gentle = useGentleStreak().days;
   const tick = useTick();
 
   return useMemo(() => {
@@ -107,7 +129,7 @@ export function useStats(): WeekStats {
     return {
       tasks: week.length,
       minutes: Math.round(week.reduce((s, c) => s + creditedMinutes(c, tasks), 0)),
-      streak: streakDays(completions),
+      streak: gentle,
       best: {
         tasks: completions.length,
         minutes: Math.round(completions.reduce((s, c) => s + creditedMinutes(c, tasks), 0)),
@@ -117,7 +139,7 @@ export function useStats(): WeekStats {
       byRoom: [...roomMap.entries()].map(([roomId, v]) => ({ roomId, ...v })),
       byHour,
     };
-  }, [completions, tasks, tick]);
+  }, [completions, tasks, gentle, tick]);
 }
 
 const EFFORTS_FOR = {

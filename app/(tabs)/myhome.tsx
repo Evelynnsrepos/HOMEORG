@@ -3,7 +3,9 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 
-import { itemById, shopItems } from '../../src/data/shop';
+import { pieces } from '../../src/data/stickerCatalog';
+import { pieceById } from '../../src/lib/stickers';
+import { PieceImage } from '../../src/ui/StickerLayer';
 import { useRooms } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { colors, radius, shadow } from '../../src/theme';
@@ -11,6 +13,7 @@ import { Btn, Card, Empty, Press, Row, Screen, Spacer, T } from '../../src/ui/ba
 import { FurnitureTile } from '../../src/ui/Furniture';
 import { RoomCanvas } from '../../src/ui/RoomCanvas';
 import { ScreenGarland } from '../../src/ui/Decor';
+import { Splashes } from '../../src/ui/PixelSplash';
 
 
 export default function MyHome() {
@@ -19,17 +22,15 @@ export default function MyHome() {
   const rooms = useRooms();
   const coins = useStore((s) => s.coins);
   const inventory = useStore((s) => s.inventory);
+  const owned = useStore((s) => s.pieces ?? []);
 
-  const placed = rooms.reduce(
-    (n, r) => n + (r.room.decor ?? []).filter(Boolean).length,
-    0,
-  );
-  const unplaced = inventory.filter(
-    (id) => !rooms.some((r) => (r.room.decor ?? []).includes(id)),
-  );
+  const placed = rooms.reduce((n, r) => n + (r.room.stickers ?? []).length, 0);
+  // the newest pieces first: what you most likely want to stick somewhere
+  const newest = [...owned].reverse().slice(0, 12);
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.9, y: 120, size: 160, tone: 'lilac' }, { x: 0.05, y: 660, size: 160 }]} />
       <ScreenGarland seed={5} />
       <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <View style={{ flex: 1 }}>
@@ -60,7 +61,7 @@ export default function MyHome() {
 
       <Spacer h={16} />
       <Row style={{ gap: 10 }}>
-        <Btn style={{ flex: 1 }} label="Open the shop" icon="storefront" onPress={() => router.push('/shop')} />
+        <Btn style={{ flex: 1 }} label="Draw stickers" icon="sparkles" onPress={() => router.push('/shop')} />
       </Row>
       <Spacer h={8} />
       <Row style={{ gap: 8 }}>
@@ -85,44 +86,40 @@ export default function MyHome() {
       <Spacer h={14} />
       <Card soft style={{ padding: 14 }}>
         <Row style={{ justifyContent: 'space-around' }}>
-          <Mini value={`${inventory.length}`} label="Owned" />
-          <Mini value={`${placed}`} label="Placed" />
-          <Mini value={`${shopItems.length - inventory.length}`} label="Left to find" />
+          <Mini value={`${owned.length + inventory.length}`} label="Stickers" />
+          <Mini value={`${placed}`} label="Stuck on" />
+          <Mini value={`${pieces.length - owned.length}`} label="Left to find" />
         </Row>
       </Card>
 
-      {unplaced.length ? (
+      {newest.length ? (
         <>
           <Row style={{ marginTop: 22, justifyContent: 'space-between' }}>
-            <T v="over">In your storage</T>
-            <T v="caption">{unplaced.length} waiting</T>
+            <T v="over">Newest in your collection</T>
+            <T v="caption">{owned.length} pixel pieces</T>
           </Row>
           <Spacer h={8} />
           <Row style={{ flexWrap: 'wrap', gap: 8 }}>
-            {unplaced.slice(0, 12).map((id) => {
-              const item = itemById(id);
-              if (!item) return null;
-              return (
-                <View
-                  key={id}
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: radius.md,
-                    backgroundColor: colors.card,
-                    borderWidth: 1,
-                    borderColor: colors.lineSoft,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <FurnitureTile kind={item.kind} palette={item.palette} size={52} />
-                </View>
-              );
-            })}
+            {newest.map((id) => (
+              <View
+                key={id}
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: radius.md,
+                  backgroundColor: colors.card,
+                  borderWidth: 1,
+                  borderColor: colors.lineSoft,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <PieceImage piece={id} width={Math.min(50, 50 * (pieceShape(id) || 1))} />
+              </View>
+            ))}
           </Row>
           <Spacer h={6} />
-          <T v="caption">Open a room below to put these somewhere.</T>
+          <T v="caption">Open a room below to stick these anywhere.</T>
         </>
       ) : null}
 
@@ -154,7 +151,7 @@ export default function MyHome() {
                   {room.emoji} {room.name}
                 </T>
                 <T v="caption">
-                  {(room.decor ?? []).filter(Boolean).length} of 10 slots filled
+                  {(room.stickers ?? []).length} {(room.stickers ?? []).length === 1 ? 'sticker' : 'stickers'}
                 </T>
               </View>
               <Row style={{ gap: 5 }}>
@@ -180,4 +177,11 @@ function Mini({ value, label }: { value: string; label: string }) {
       <T v="caption">{label}</T>
     </View>
   );
+}
+
+/** Width over height for a tall piece, so it fits its square; 1 for wide ones. */
+function pieceShape(id: string): number {
+  const p = pieceById(id);
+  if (!p || p.type !== 'pixel') return 1;
+  return Math.min(1, p.piece.w / p.piece.h);
 }

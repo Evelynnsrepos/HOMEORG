@@ -248,24 +248,6 @@ export const shopItems: ShopItem[] = defs.map(([id, name, kind, zone, rarity, pa
   seasonal: SEASONAL.has(id),
 }));
 
-export const wallpapers = [
-  { id: 'wall_plaster', name: 'Warm Plaster', base: '#F3E9D9', accent: '#E6D8C1', pattern: 'plain' },
-  { id: 'wall_sage', name: 'Sage Stripe', base: '#E3ECE1', accent: '#CADDCB', pattern: 'stripe' },
-  { id: 'wall_clay', name: 'Clay Wash', base: '#F2DFD1', accent: '#E3C7B3', pattern: 'wash' },
-  { id: 'wall_botanic', name: 'Botanical', base: '#EFEBDC', accent: '#A7C096', pattern: 'leaf' },
-  { id: 'wall_blush', name: 'Blush Dots', base: '#F8E8E5', accent: '#E7C4BD', pattern: 'dots' },
-  { id: 'wall_night', name: 'Midnight', base: '#404857', accent: '#343C49', pattern: 'stars' },
-] as const;
-
-export const floorings = [
-  { id: 'floor_oak', name: 'Oak Boards', base: '#DEC096', accent: '#C7A576', pattern: 'plank' },
-  { id: 'floor_ash', name: 'Pale Ash', base: '#EBDDC7', accent: '#D8C7A9', pattern: 'plank' },
-  { id: 'floor_herring', name: 'Herringbone', base: '#D7B58B', accent: '#BC9366', pattern: 'herring' },
-  { id: 'floor_tile', name: 'Chequer Tile', base: '#F0EBDF', accent: '#CEC4B1', pattern: 'check' },
-  { id: 'floor_sisal', name: 'Sisal Mat', base: '#E2D3B0', accent: '#CDBB93', pattern: 'weave' },
-  { id: 'floor_slate', name: 'Slate', base: '#C7C5BE', accent: '#ACAAA2', pattern: 'stone' },
-] as const;
-
 export function itemById(id: string | null | undefined): ShopItem | undefined {
   if (!id) return undefined;
   return shopItems.find((i) => i.id === id);

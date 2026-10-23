@@ -21,7 +21,7 @@ npm ci                 # install
 npx expo start         # dev server, scan the QR code with Expo Go
 npm run web            # quick look in a browser (no camera, no haptics)
 npm run tsc            # typecheck — must pass
-npm test               # REWE import, shelf life, GS1 codes, printed dates — must pass
+npm test               # REWE, shelf life, GS1, printed dates, stickers, streaks, check-ins — must pass
 npm run apk            # local release APK (needs JDK 21 + Android SDK 36)
 ```
 
@@ -41,7 +41,8 @@ There is no linter and no other test suite. "Done" means `tsc` and
 | `src/data/` | Static tables: room types, shop items, challenges, units. |
 | `src/ui/base.tsx` | Building blocks: `T`, `Card`, `Row`, `Btn`, `Chip`, `Ring`, `Bar`, `Screen`… use these, don't restyle from scratch. |
 | `src/ui/Art.tsx` | Traced sketch art: `EffortRing`, `FridgeGauge`, `RecipeBookArt`. |
-| `src/ui/Decor.tsx` | `Garland`/`ScreenGarland` (vines + bulbs) and `Sticker`. |
+| `src/ui/Decor.tsx` | `Garland`/`ScreenGarland` (vines + bulbs) and the kawaii `Sticker` decorations. |
+| `src/ui/StickerLayer.tsx` | Draws a room's placed stickers; `PieceImage` draws one piece. |
 | `src/ui/Kitchen.tsx` | Kitchen pieces: effort meter, `PickTile`, `packRows`, `DaySheet`. |
 | `src/theme.ts` | Colour schemes, radii, fonts, shadows. |
 | `scripts/` | APK build, signing, icons, music, the REWE test and its fixtures. |
@@ -88,6 +89,11 @@ There is no linter and no other test suite. "Done" means `tsc` and
   the scheme (stickers are coloured from its palette) and two switches in
   Settings (`showVines`, `showStickers`; unset = the scheme's `decor`
   default, off in Classic). Lay screens out to work without them.
+- `PixelSplash` / `Splashes` (`src/ui/PixelSplash.tsx`) add faint dithered
+  dabs of colour, deep in the middle and loose pixels at the edge, to echo the
+  pixel rooms. Two or three per screen, behind content or tucked into a card
+  corner, and keep them a whisper: if you notice one before the content, it's
+  too strong. They follow `showSplashes` (unset = the scheme's `decor`).
 - Art traced from the sketches stays in the sketches' flat shape language: a
   few solid shapes, no added detail lines, textures or inner shadows.
 - Two fonts: Bricolage Grotesque for everything, and the handwritten
@@ -115,6 +121,87 @@ There is no linter and no other test suite. "Done" means `tsc` and
 - Keep logic that can be pure in `src/lib/` so it can be tested with `tsx`.
 - Small, focused edits beat rewrites. Don't reformat code you aren't changing.
 
+## Rooms, stickers and coins
+
+**Rooms are decorated with stickers** (`room.stickers`, `src/lib/stickers.ts`):
+a piece id, a centre as a fraction of the room picture, a width as a
+fraction of its width, a rotation, a mirror flag and a layer. Pieces are
+pixel art from `src/data/stickerCatalog.ts` or the original drawn furniture
+(`svg:<shop item id>`). The editor (`app/decorate/[id].tsx`) drags, pinches,
+twists, and has buttons for the same. Old slot layouts were moved to stickers
+once on load; `room.decor` is only history now.
+
+**The sticker library** is generated: `python3 scripts/build-stickers.py`
+(needs Pillow) cuts the LPC Revised sheets in `scripts/data/lpc-revised/`
+(CC-BY 3.0 / OGA-BY 3.0) into ~2500 pieces in 21 sets of about 80–160 (ids come from the source sheet, so sets can be reshuffled without touching anyone's collection), writes
+`assets/stickers/` and `src/data/stickerCatalog.ts`, and the credits to
+`assets/stickers/CREDITS.md`. The artists are listed on the About screen —
+that attribution is required, keep it.
+
+**Walls and floors** are generated too: `python3 scripts/build-surfaces.py`
+cuts the LPC Structure sheets in `scripts/data/lpc-revised/Structure/` into
+96x128 wall cells and small floor tiles (plus a pink "blush" recolour per
+pattern), writing `assets/surfaces/` and `src/data/roomSurfaces.ts`.
+`RoomCanvas` lays them edge to edge in a 192 x 160 art-pixel room (the top of
+the wall cropped off), the same pixel size the stickers use — keep the two in
+step. Surface ids come from the sheet, `surfaceFor()` in `src/lib/surfaces.ts`
+maps the old vector ids over and falls back for anything unknown. A new room
+gets its type's surfaces (`ROOM_SURFACES`) and a few hand-picked pixel pieces
+(`starterStickers`). Walls and floors are free; only stickers are drawn.
+
+**Pets** are drawn for the app, not cut from LPC: `scripts/pets/` holds
+hand-made pixel templates (one character per pixel, see `templates.py`),
+coats with patterns (`coats.py`: tabby, tiger, spots, rosettes, points,
+calico…) and the list of every species and colour (`species.py`).
+`build-stickers.py` renders them into six pet sets (cats, wild cats, birds and bunnies, dogs,
+fish in bowls, little critters) (`pets: true` in the
+catalog). Add a pet at the end of its list and never rename an id. Keep them
+at LPC scale — a house cat is about 17 pixels across.
+
+**The sticker draw** (`app/shop.tsx`) is the only place coins are spent:
+every draw is a piece you don't own yet, from this month's three furniture
+sets and one pet set (`featuredSets`, they rotate on the 1st), set first then piece by rarity.
+**There are no in-app purchases and never will be.**
+
+**Coins** come from almost everything, through the store's `earn(source)`
+with a daily cap per source (`src/lib/rewards.ts`) so nothing can be farmed.
+New ways to earn go there, with a cap, and on the list in `app/shop.tsx`.
+
+**Streaks** (`src/lib/streak.ts`) count any active day — chores, anything
+that earned coins, a check-in — at the rhythm the person chose
+(`streakEvery`), with grace days (`streakGrace`) before it breaks, and a week
+streak for weeks with `weekGoal` active days. Keep them forgiving.
+
+## Check-ins and data
+
+The Home tile and `app/mood.tsx` record how someone feels (`moods`: mood,
+room for other people, energy to clean, energy for hobbies, 0-100; presets
+fill all four). A hard day (`isHardDay` in `src/lib/mood.ts`) opens the
+comfort sheet (`src/ui/Comfort.tsx`): affirmations, suggestions that only
+ever mean doing *less*, and a pointer to TelefonSeelsorge. Never answer a low
+check-in with more tasks, guilt or streak warnings. `app/mood-data.tsx`
+draws it all: a contribution-style grid, the last 30 days, gentle patterns.
+This data never leaves the phone.
+
+## Pet mode and "Don't forget this"
+
+**"Don't forget this"** on Home is for everyone: `reminders()` in
+`src/lib/remind.ts` gathers food to throw out or use up, a fridge running
+empty (only once the kitchen is in use) and, in pet mode, pet supplies
+running low and cleaning jobs that are due. Feeding and water never go on
+it; they live on the pet tile, so the list stays a nudge, not a nag.
+
+**Pet mode** (`settings.petMode`, off by default) puts a pet tile next to
+it on Home and opens `app/pets.tsx`. Your pets (`pets`) have a kind and a
+look — any pixel pet preset, free, whether or not it was drawn. Each kind
+has its care taps (`CARE` in `src/lib/pets.ts`: cats, dogs, birds, bunnies,
+hamsters and co, fish, reptiles, other); a tap logs to `petLog`
+and pays a little (`pet` in rewards), a second tap within ten minutes takes
+it back. A care action someone has never logged stays calm, on the tile and in
+"Don't forget this"; only one that was done and is now overdue warms up. Supplies (`petSupplies`) run down by
+their daily use and nudge five days before they run out. On a hard check-in
+the comfort sheet suggests a cuddle session with your pets first.
+
 ## The kitchen in one paragraph
 
 Recipes live in the book (`recipes`). "Let's cook it" shows **picks**
@@ -132,7 +219,7 @@ keeps in the fridge, freezer and cupboard (`null` = keeps, no date). The
 store marks those with `bestBeforeAuto: true`; moving such an item to
 another shelf looks it up again from that day (freezing buys months), while
 a date typed from the packet (`bestBeforeAuto: false`) is never touched.
-The "About to expire" list on Home runs on these dates.
+The "Don't forget this" card on Home (`src/lib/remind.ts`) runs on these dates.
 
 How a date gets there, best first:
 
@@ -188,7 +275,12 @@ fields the parser reads — see `scripts/fixtures/`.
   push often. Don't commit `credentials/`, `android/` or `ios/`.
 - **Release:** bump `version` (and `android.versionCode`) in `app.json`, merge
   to `main`, then tag: `git tag v1.3.0 && git push origin v1.3.0`. The
-  *Release* workflow builds the APK and attaches it to a GitHub release.
+  *Release* workflow builds the APK and an unsigned iOS IPA (on a macOS
+  runner, `ipa` job) and attaches both to a GitHub release. The IPA is for
+  sideloading (AltStore, SideStore, Sideloadly sign it with the user's Apple
+  ID); the job drops the `aps-environment` entitlement because a free Apple ID
+  can't sign push, and reminders are local notifications anyway. Keep iOS in
+  mind: no Android-only APIs without a `Platform.OS` fallback.
   *Run workflow* on the Actions tab builds one without releasing.
 - **Signing in CI** needs four repository secrets (Settings → Secrets and
   variables → Actions):
