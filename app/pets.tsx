@@ -22,7 +22,7 @@ const SUPPLY_KINDS: { id: SupplyKind; label: string; emoji: string }[] = [
   { id: 'meds', label: 'Meds', emoji: '💊' },
   { id: 'other', label: 'Other', emoji: '🛍️' },
 ];
-const UNITS = ['g', 'kg', 'cans', 'pouches', 'bags', 'l', 'pcs'];
+const UNITS = ['g', 'kg', 'cans', 'pouches', 'bags', 'l', 'ml', 'pcs'];
 
 /** Quick starts for the supply form, by the kinds of pets you have. */
 const SUPPLY_PRESETS: Record<PetKind, Omit<PetSupply, 'id' | 'updatedAt'>[]> = {
@@ -44,6 +44,21 @@ const SUPPLY_PRESETS: Record<PetKind, Omit<PetSupply, 'id' | 'updatedAt'>[]> = {
     { name: 'Hay', kind: 'hay', amount: 3, full: 3, unit: 'kg', perDay: 0.15 },
     { name: 'Bunny pellets', kind: 'food', amount: 1500, full: 1500, unit: 'g', perDay: 40 },
     { name: 'Bedding', kind: 'bedding', amount: 30, full: 30, unit: 'l', perDay: 1.5 },
+  ],
+  small: [
+    { name: 'Pellets', kind: 'food', amount: 1000, full: 1000, unit: 'g', perDay: 15 },
+    { name: 'Bedding', kind: 'bedding', amount: 30, full: 30, unit: 'l', perDay: 1 },
+    { name: 'Hay', kind: 'hay', amount: 1, full: 1, unit: 'kg', perDay: 0.03 },
+  ],
+  fish: [
+    { name: 'Fish flakes', kind: 'food', amount: 100, full: 100, unit: 'g', perDay: 1 },
+    { name: 'Water conditioner', kind: 'other', amount: 250, full: 250, unit: 'ml', perDay: 2 },
+    { name: 'Filter pads', kind: 'other', amount: 6, full: 6, unit: 'pcs', perDay: 1 / 14 },
+  ],
+  reptile: [
+    { name: 'Crickets', kind: 'food', amount: 50, full: 50, unit: 'pcs', perDay: 3 },
+    { name: 'Calcium powder', kind: 'meds', amount: 100, full: 100, unit: 'g', perDay: 0.5 },
+    { name: 'Substrate', kind: 'bedding', amount: 10, full: 10, unit: 'l', perDay: 0.15 },
   ],
   other: [{ name: 'Food', kind: 'food', amount: 1, full: 1, unit: 'bags', perDay: 0 }],
 };

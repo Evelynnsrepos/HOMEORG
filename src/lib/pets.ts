@@ -42,6 +42,25 @@ export const CARE: Record<PetKind, CareAction[]> = {
     { id: 'hutch', label: 'Clean hutch', emoji: '🧹', every: 24 * 3, chore: true },
     { id: 'roam', label: 'Hop time', emoji: '🐾', every: 24 },
   ],
+  small: [
+    { id: 'food', label: 'Fresh food', emoji: '🥕', every: 24 },
+    { id: 'water', label: 'Water', emoji: '💧', every: 24 },
+    { id: 'spot', label: 'Spot clean', emoji: '🧹', every: 48, chore: true },
+    { id: 'cage', label: 'Full clean', emoji: '🧽', every: 24 * 7, chore: true },
+    { id: 'run', label: 'Run time', emoji: '🎡', every: 24 },
+  ],
+  fish: [
+    { id: 'food', label: 'Feed', emoji: '🐟', every: 24 },
+    { id: 'heater', label: 'Heater & light', emoji: '💡', every: 24 },
+    { id: 'waterchange', label: 'Water change', emoji: '🪣', every: 24 * 7, chore: true },
+    { id: 'filter', label: 'Glass & filter', emoji: '🧽', every: 24 * 14, chore: true },
+  ],
+  reptile: [
+    { id: 'food', label: 'Food & bugs', emoji: '🦗', every: 48 },
+    { id: 'mist', label: 'Water & mist', emoji: '💦', every: 24 },
+    { id: 'heat', label: 'Heat lamp', emoji: '🔆', every: 24 },
+    { id: 'tank', label: 'Clean tank', emoji: '🧽', every: 24 * 7, chore: true },
+  ],
   other: [
     { id: 'food', label: 'Food', emoji: '🍽️', every: 24 },
     { id: 'water', label: 'Water', emoji: '💧', every: 24 },
@@ -54,6 +73,9 @@ export const PET_KINDS: { id: PetKind; label: string; emoji: string }[] = [
   { id: 'dog', label: 'Dog', emoji: '🐕' },
   { id: 'bird', label: 'Bird', emoji: '🐦' },
   { id: 'bunny', label: 'Bunny', emoji: '🐇' },
+  { id: 'small', label: 'Hamster & co', emoji: '🐹' },
+  { id: 'fish', label: 'Fish', emoji: '🐠' },
+  { id: 'reptile', label: 'Reptile', emoji: '🦎' },
   { id: 'other', label: 'Other', emoji: '🐾' },
 ];
 
@@ -63,6 +85,9 @@ export function kindOfPreset(pieceId: string): PetKind {
   if (!p || p.kind !== 'pet') return 'other';
   if (pieceId.startsWith('pet-dog-')) return 'dog';
   if (pieceId.startsWith('pet-bunny-')) return 'bunny';
+  if (pieceId.startsWith('pet-fish-')) return 'fish';
+  if (/^pet-(gecko|turtle|tortoise)/.test(pieceId)) return 'reptile';
+  if (/^pet-(hamster|guinea|rat)-/.test(pieceId)) return 'small';
   if (p.set === 'feathers') return 'bird';
   return 'cat';
 }

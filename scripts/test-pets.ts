@@ -31,6 +31,11 @@ check('every kind of pet has presets to look like, and presets know their kind',
   assert.equal(kindOfPreset('pet-dog-corgi'), 'dog');
   assert.equal(kindOfPreset('pet-budgie-blue'), 'bird');
   assert.equal(kindOfPreset('pet-bunny-grey'), 'bunny');
+  assert.equal(kindOfPreset('pet-fish-betta-blue'), 'fish');
+  assert.equal(kindOfPreset('pet-hamster-golden'), 'small');
+  assert.equal(kindOfPreset('pet-rat-hooded'), 'small');
+  assert.equal(kindOfPreset('pet-gecko-leopard'), 'reptile');
+  assert.equal(kindOfPreset('pet-tortoise'), 'reptile');
   assert.equal(kindOfPreset('a-sofa'), 'other');
 });
 
@@ -44,6 +49,13 @@ check('care is due when its time has passed, and fresh right after a tap', () =>
   assert.equal(st.litter.due, true);
   assert.equal(st.water.due, true);
   assert.equal(st.water.since, Infinity);
+});
+
+check('fish never get a water bowl, and their water change is a chore', () => {
+  const nemo: MyPet = { ...mochi, id: 'f', name: 'Nemo', kind: 'fish', look: 'pet-fish-goldfish' };
+  const st = careState(nemo, [], now);
+  assert.ok(!st.some((s) => s.action.id === 'water'));
+  assert.ok(st.some((s) => s.action.id === 'waterchange' && s.action.chore));
 });
 
 check('supplies run down by their daily use', () => {
@@ -64,6 +76,10 @@ check("don't forget: tossing comes first, then using up, never nags about feedin
 check('an almost empty fridge asks for a restock, a new install does not', () => {
   assert.ok(reminders({ pantry: [item('c', 'Reis', 'pantry')], now }).some((x) => x.id === 'fridge-low'));
   assert.equal(reminders({ pantry: [], now }).length, 0);
+});
+
+check('a brand-new pet does not fill the list with jobs never done', () => {
+  assert.equal(reminders({ pantry: [], now, petMode: true, pets: [mochi], petLog: [], supplies: [] }).length, 0);
 });
 
 check('pet supplies and jobs only show in pet mode', () => {

@@ -249,13 +249,14 @@ gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
 been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
 
 Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
-Dazu kommen 57 selbst gezeichnete Haustiere in drei Sets (Hauskatzen, Wildkatzen
-wie Manul, Serval und Tiger, Vögel und Häschen) aus `scripts/pets/`; jeden
+Dazu kommen 97 selbst gezeichnete Haustiere in sechs Sets (Hauskatzen, Wildkatzen
+wie Manul, Serval und Tiger, Vögel und Häschen, Hunde, Fische im Glas, Hamster,
+Meerschweinchen, Ratten, Geckos und Schildkröten) aus `scripts/pets/`; jeden
 Monat ist ein Tier-Set neben drei Möbel-Sets in der Maschine.
 
 **Haustier-Modus** (optional, in den Einstellungen): eine Kachel auf Home mit
 deinem Tier als Pixelbild und Schnell-Tipps für Futter, Wasser, Katzenklo,
-Gassi …, ein Bildschirm für Pflege und Vorräte (Futter, Streu, Heu mit
+Gassi, Wasserwechsel, Terrarium …, ein Bildschirm für Pflege und Vorräte (Futter, Streu, Heu mit
 Reichweite in Tagen) und an schweren Tagen der Vorschlag zum Kuscheln.
 „Nicht vergessen“ (für alle) sammelt Abgelaufenes zum Wegwerfen, Bald-Fälliges,
 einen leeren Kühlschrank und – mit Tieren – Vorräte und fällige Reinigung.

@@ -4,7 +4,8 @@ are common, birds and bunnies rare-ish, the big and wild cats are the epic
 finds. Ids stay stable: add new pets at the end of a list, never rename.
 """
 from coats import Coat
-from templates import (BIGCAT_LIE, DOG_SIT, DOG_SIT_POINTY, BIRD_CREST, BIRD_PERCH, BUNNY_SIT, CAT_LOAF, CAT_SIT, LION_LIE,
+from templates import (BETTA_BOWL, BIGCAT_LIE, DOG_SIT, DOG_SIT_POINTY, GECKO, GOLDFISH_BOWL, GUINEA_PIG, HAMSTER, RAT,
+                       TETRA_BOWL, TURTLE, BIRD_CREST, BIRD_PERCH, BUNNY_SIT, CAT_LOAF, CAT_SIT, LION_LIE,
                        LYNX_SIT, MANUL_SIT, SERVAL_SIT)
 
 PET_SETS = [
@@ -12,6 +13,8 @@ PET_SETS = [
     ('wildcats', 'Wild Whiskers', '🐅'),
     ('feathers', 'Feathers & Fluff', '🐦'),
     ('dogs', 'Good Dogs', '🐕'),
+    ('fishes', 'Fish Bowl', '🐠'),
+    ('critters', 'Little Critters', '🐹'),
 ]
 
 HOUSE_CATS = [
@@ -91,6 +94,43 @@ DOGS = [
 ]
 
 
+FISH = [
+    ('goldfish', 'Goldfish', GOLDFISH_BOWL, Coat('#e8842e', tail='#f2a84a', eye='#1a1418')),
+    ('goldfish-calico', 'Calico goldfish', GOLDFISH_BOWL, Coat('#f6f0e6', 'calico', patch=('#e8842e', '#2e2a30'), tail='#f6c8a8', eye='#1a1418')),
+    ('goldfish-moor', 'Black moor', GOLDFISH_BOWL, Coat('#2e2a33', tail='#4a4250', eye='#e0c24a')),
+    ('betta-red', 'Red betta', BETTA_BOWL, Coat('#c8304a', tail='#e84a6a', eye='#1a1418')),
+    ('betta-blue', 'Blue betta', BETTA_BOWL, Coat('#3a5ac8', tail='#5a8af0', eye='#1a1418')),
+    ('betta-purple', 'Purple betta', BETTA_BOWL, Coat('#7a3ab0', tail='#b070e0', eye='#1a1418')),
+    ('betta-koi', 'Koi betta', BETTA_BOWL, Coat('#f6f0ec', 'calico', patch=('#e8504a', '#2e2a30'), tail='#f8c0c8', eye='#1a1418')),
+    ('tetra-neon', 'Neon tetra', TETRA_BOWL, Coat('#3a8ae0', tail='#e84a5a', eye='#1a1418')),
+    ('guppy', 'Guppy', TETRA_BOWL, Coat('#a8b0b8', tail='#f070b0', eye='#1a1418')),
+    ('guppy-sunny', 'Sunny guppy', TETRA_BOWL, Coat('#f2d070', tail='#3a8ae0', eye='#1a1418')),
+]
+
+CRITTERS = [
+    ('hamster-golden', 'Golden hamster', 'small', HAMSTER, Coat('#e0a860', pale='#fbf2e6', eye='#1a1418')),
+    ('hamster-white', 'White dwarf hamster', 'small', HAMSTER, Coat('#f6f2ee', pale='#ffffff', eye='#d0405a', outline='#7a6a70')),
+    ('hamster-russian', 'Russian dwarf hamster', 'small', HAMSTER, Coat('#9a9aa0', pale='#f2f2f2', eye='#1a1418')),
+    ('hamster-panda', 'Panda hamster', 'small', HAMSTER, Coat('#2e2a33', 'tuxedo', pale='#ffffff', eye='#d0a0a8', outline='#141018')),
+    ('guinea-tricolor', 'Tricolour guinea pig', 'small', GUINEA_PIG, Coat('#c98a4a', 'calico', patch=('#2e2a30', '#f6f0e6'), pale='#f6f0e6', eye='#1a1418')),
+    ('guinea-ginger', 'Ginger guinea pig', 'small', GUINEA_PIG, Coat('#d98a3c', pale='#f6e2c4', eye='#1a1418')),
+    ('guinea-white', 'White guinea pig', 'small', GUINEA_PIG, Coat('#f6f2ee', pale='#ffffff', eye='#d0405a', outline='#7a6a70')),
+    ('guinea-dutch', 'Dutch guinea pig', 'small', GUINEA_PIG, Coat('#2e2a33', 'tortie', patch=('#f6f0e6',), pale='#f6f0e6', eye='#1a1418', outline='#141018')),
+    ('rat-grey', 'Grey rat', 'small', RAT, Coat('#9a9aa0', pale='#f2f2f2', tail='#f2b8c0', eye='#1a1418')),
+    ('rat-white', 'White rat', 'small', RAT, Coat('#f6f2ee', pale='#ffffff', tail='#f2b8c0', eye='#d0405a', outline='#7a6a70')),
+    ('rat-hooded', 'Hooded rat', 'small', RAT, Coat('#f6f2ee', head='#2e2a33', pale='#ffffff', tail='#f2b8c0', eye='#1a1418', outline='#5a4a50')),
+    ('rat-cinnamon', 'Cinnamon rat', 'small', RAT, Coat('#b88a62', pale='#f2e6d4', tail='#f2b8c0', eye='#1a1418')),
+    ('gecko-leopard', 'Leopard gecko', 'reptile', GECKO, Coat('#f2d070', 'spots', mark='#5a4a3a', eye='#1a1418')),
+    ('gecko-albino', 'Albino gecko', 'reptile', GECKO, Coat('#f6e2b0', 'spots', mark='#e0a070', eye='#d0405a')),
+    ('gecko-crested', 'Crested gecko', 'reptile', GECKO, Coat('#e0904a', eye='#1a1418')),
+    ('turtle', 'Turtle', 'reptile', TURTLE, Coat('#7aa860', tail='#6a8a3a', pale='#c9d890', eye='#1a1418')),
+    ('turtle-red', 'Red-eared slider', 'reptile', TURTLE, Coat('#6a9a50', tail='#4a6a3a', pale='#e8d880', ear='#d84a3a', eye='#1a1418')),
+    ('tortoise', 'Tortoise', 'reptile', TURTLE, Coat('#b89a6a', tail='#8a6a3a', pale='#d8c8a0', eye='#1a1418')),
+]
+
+RARE_EXTRA = {'betta-purple', 'betta-koi', 'goldfish-moor', 'hamster-panda', 'rat-hooded', 'gecko-crested', 'tortoise'}
+
+
 def all_pets():
     """(id, set, label, rarity, template, coat) for every pet, in a stable order."""
     out = []
@@ -107,6 +147,10 @@ def all_pets():
     for cid, label, coat in BUNNIES:
         rarity = 'rare' if cid == 'bunny-pink' else 'common'
         out.append((f'pet-{cid}', 'feathers', label, rarity, BUNNY_SIT, coat))
+    for cid, label, tpl, coat in FISH:
+        out.append((f'pet-fish-{cid}', 'fishes', label, 'rare' if cid in RARE_EXTRA else 'common', tpl, coat))
+    for cid, label, _kind, tpl, coat in CRITTERS:
+        out.append((f'pet-{cid}', 'critters', label, 'rare' if cid in RARE_EXTRA else 'common', tpl, coat))
     for cid, label, tpl, coat in DOGS:
         out.append((f'pet-dog-{cid}', 'dogs', label, 'rare' if cid in ('pomeranian-pink', 'husky', 'dalmatian') else 'common', tpl, coat))
     return out

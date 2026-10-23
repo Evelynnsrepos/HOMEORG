@@ -153,7 +153,8 @@ gets its type's surfaces (`ROOM_SURFACES`) and a few hand-picked pixel pieces
 hand-made pixel templates (one character per pixel, see `templates.py`),
 coats with patterns (`coats.py`: tabby, tiger, spots, rosettes, points,
 calico…) and the list of every species and colour (`species.py`).
-`build-stickers.py` renders them into three pet sets (`pets: true` in the
+`build-stickers.py` renders them into six pet sets (cats, wild cats, birds and bunnies, dogs,
+fish in bowls, little critters) (`pets: true` in the
 catalog). Add a pet at the end of its list and never rename an id. Keep them
 at LPC scale — a house cat is about 17 pixels across.
 
@@ -193,10 +194,11 @@ it; they live on the pet tile, so the list stays a nudge, not a nag.
 **Pet mode** (`settings.petMode`, off by default) puts a pet tile next to
 it on Home and opens `app/pets.tsx`. Your pets (`pets`) have a kind and a
 look — any pixel pet preset, free, whether or not it was drawn. Each kind
-has its care taps (`CARE` in `src/lib/pets.ts`); a tap logs to `petLog`
+has its care taps (`CARE` in `src/lib/pets.ts`: cats, dogs, birds, bunnies,
+hamsters and co, fish, reptiles, other); a tap logs to `petLog`
 and pays a little (`pet` in rewards), a second tap within ten minutes takes
-it back. A care action someone has never logged stays calm; only one that
-was done and is now overdue warms up. Supplies (`petSupplies`) run down by
+it back. A care action someone has never logged stays calm, on the tile and in
+"Don't forget this"; only one that was done and is now overdue warms up. Supplies (`petSupplies`) run down by
 their daily use and nudge five days before they run out. On a hard check-in
 the comfort sheet suggests a cuddle session with your pets first.
 

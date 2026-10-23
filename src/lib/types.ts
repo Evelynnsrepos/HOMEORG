@@ -275,7 +275,7 @@ export interface Achievement {
   unlockedAt: string;
 }
 
-export type PetKind = 'cat' | 'dog' | 'bird' | 'bunny' | 'other';
+export type PetKind = 'cat' | 'dog' | 'bird' | 'bunny' | 'small' | 'fish' | 'reptile' | 'other';
 
 /** One of your real pets, with a pixel preset to show them by. */
 export interface MyPet {

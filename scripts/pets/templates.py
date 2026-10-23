@@ -8,7 +8,7 @@ Pixel templates for the pets, drawn by hand, one character per pixel.
   q r s  coat on ears and paws (the "points" of a Siamese)
   w W    pale fur: muzzle, chest, belly (W = its shade)
   i  inner ear   e  eye   k  pupil   n  nose   b  beak   f  feet (birds)
-  c  crest (birds)   g  wing (birds)   m  mane   t  ear tuft
+  c  crest (birds)   g  wing (birds)   m  mane   t  ear tuft   a G S P O  water, glass, sand, weed, glass edge (fish bowls)
 
 Light comes from the top left, like the LPC furniture.
 """
@@ -225,4 +225,151 @@ o223wwwww3233o...
 o23rrwwwrr333o...
 .orrsoooosrrso...
 ..oooooooooooo...
+"""
+
+# --- fish: a round bowl (a water, G glass shine, S sand, P weed) with a fish laid in
+
+BOWL = """
+.....OOOOOOOO.....
+....OGGGGGGGGO....
+.....OaaaaaaO.....
+...OOaaaaaaaaOO...
+..OaaaaaaaaaaaaO..
+.OGaaaaaaaaaaaaaO.
+.OGaaaaaaaaaaaaaO.
+OGaaaaaaaaaaaaaaaO
+OGaaaaaaaaaaaaPaaO
+OaaaaaaaaaaaaaPaaO
+OaaaaaaaaaaaaPaaaO
+.OSSSaaaaaaaaPSSO.
+.OSSSSSSSSSSSSSSO.
+..OSSSSSSSSSSSSO..
+...OOOOOOOOOOOO...
+"""
+
+ROUND_FISH = """
+...ooo..oo
+.oo1122o79o
+oek12222o8o
+.oo2233o89o
+...ooo..oo
+"""
+
+SLIM_FISH = """
+..ooooo.oo
+.o11222o7o
+oek22223o8o
+.oo33333o9o
+...ooooooo
+"""
+
+BETTA = """
+...oo....ooo
+..o7o...o778o
+.oo1122o7888o
+oek12222o8889o
+.oo2233o78899o
+..o8o...o899o
+...oo....ooo
+"""
+
+
+def overlay(base, part, at):
+    """Lay a small template onto a bigger one at (x, y); '.' in the part keeps the base."""
+    rows = [list(r) for r in base.strip('\n').split('\n')]
+    x0, y0 = at
+    for dy, line in enumerate(part.strip('\n').split('\n')):
+        for dx, ch in enumerate(line):
+            if ch != '.':
+                rows[y0 + dy][x0 + dx] = ch
+    return '\n' + '\n'.join(''.join(r) for r in rows) + '\n'
+
+
+GOLDFISH_BOWL = overlay(BOWL, ROUND_FISH, (3, 6))
+TETRA_BOWL = overlay(BOWL, SLIM_FISH, (3, 6))
+BETTA_BOWL = overlay(BOWL, BETTA, (2, 4))
+
+# --- little critters
+
+HAMSTER = """
+..oo......oo..
+.oiio....oiio.
+.oi45555555io.
+o445555555556o
+o45k555555k56o
+o455wwnnww556o
+o45wwwwwwwww56o
+o12wwwwwwww23o
+o12wwwwwwww23o
+o122wwwwww233o
+.o12rrwwrr23o.
+..oooooooooo..
+"""
+
+GUINEA_PIG = """
+.......oo..........
+...ooooiooooooo....
+..o455551112222oo..
+.o45k555111222222o.
+.o45e5551122222222o
+on55555512222222223o
+.oww5551222222223ro
+..owwrr1333333333rro
+...ooooooooooooooooo
+"""
+
+RAT = """
+..ooo....ooo.......
+.oiiio..oiiio......
+.oiiq5555qiio......
+..o45555555o.......
+.o45k5555k5o.......
+.o455wwwww5o.......
+..o55wnkw55o.......
+..o12wwww22o.......
+.o112wwww222o......
+.o122wwww2223o.....
+.o223rwwr3233oooo..
+..orroooorroo7778o.
+...oooo..oooo..o8o.
+...............o8o.
+.............oo8o..
+.............o8o...
+..............o....
+"""
+
+# --- reptiles
+
+GECKO = """
+....ooo....
+...o454o...
+..ok545ko..
+..o55555o..
+oo.o555o.oo
+orooo2oooro
+.oo12222oo.
+..o12222o..
+..o12223o..
+..o12223o..
+oo.o123o.oo
+orooo2oooro
+.oo.o7o.oo.
+....o8o....
+....o8o....
+.....o8o...
+......o9o..
+.......o...
+"""
+
+TURTLE = """
+......ooooooo......
+....oo7878787oo....
+...o78787878787o...
+..o8787878787878o..
+.oo7878787878787o..
+o45o8787878787878o.
+oek5o99999999999o2o
+.o55o2o2oooooo2o2o.
+..ooo.oro....oro...
+......ooo....ooo...
 """

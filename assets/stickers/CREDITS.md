@@ -129,3 +129,13 @@ Licence: CC0 1.0
 Artists: Homeorg (drawn for the app)  
 Licence: CC0 1.0
 
+## 🐠 Fish Bowl
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+
+## 🐹 Little Critters
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+

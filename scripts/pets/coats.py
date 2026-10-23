@@ -53,6 +53,9 @@ class Coat:
             if self.pattern == 'calico' and h(x // 3, y // 3, 5) < 0.25:
                 return self.patch[1]
             return c
+        scene = {'a': '#cfe9f5', 'G': '#ffffff', 'S': '#ead6aa', 'P': '#5cae5a', 'O': '#7aa4bc'}
+        if ch in scene:
+            return scene[ch]
         if ch == 'm':
             return self.mane if h(x, y, 11) < 0.7 else dark(self.mane, 0.18)
         simple = {'t': self.tuft, 'i': self.cheek or self.ear, 'e': self.eye,

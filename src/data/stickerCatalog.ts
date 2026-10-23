@@ -57,6 +57,8 @@ export const stickerSets: StickerSet[] = [
   { id: "wildcats", name: "Wild Whiskers", emoji: "\ud83d\udc05", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
   { id: "feathers", name: "Feathers & Fluff", emoji: "\ud83d\udc26", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
   { id: "dogs", name: "Good Dogs", emoji: "\ud83d\udc15", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
+  { id: "fishes", name: "Fish Bowl", emoji: "\ud83d\udc20", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
+  { id: "critters", name: "Little Critters", emoji: "\ud83d\udc39", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
 ];
 
 const SRC: ImageSourcePropType[] = [
@@ -2653,6 +2655,34 @@ const SRC: ImageSourcePropType[] = [
   require('../../assets/stickers/feathers/pet-bunny-pink.png'),
   require('../../assets/stickers/feathers/pet-bunny-cream.png'),
   require('../../assets/stickers/feathers/pet-bunny-black.png'),
+  require('../../assets/stickers/fishes/pet-fish-goldfish.png'),
+  require('../../assets/stickers/fishes/pet-fish-goldfish-calico.png'),
+  require('../../assets/stickers/fishes/pet-fish-goldfish-moor.png'),
+  require('../../assets/stickers/fishes/pet-fish-betta-red.png'),
+  require('../../assets/stickers/fishes/pet-fish-betta-blue.png'),
+  require('../../assets/stickers/fishes/pet-fish-betta-purple.png'),
+  require('../../assets/stickers/fishes/pet-fish-betta-koi.png'),
+  require('../../assets/stickers/fishes/pet-fish-tetra-neon.png'),
+  require('../../assets/stickers/fishes/pet-fish-guppy.png'),
+  require('../../assets/stickers/fishes/pet-fish-guppy-sunny.png'),
+  require('../../assets/stickers/critters/pet-hamster-golden.png'),
+  require('../../assets/stickers/critters/pet-hamster-white.png'),
+  require('../../assets/stickers/critters/pet-hamster-russian.png'),
+  require('../../assets/stickers/critters/pet-hamster-panda.png'),
+  require('../../assets/stickers/critters/pet-guinea-tricolor.png'),
+  require('../../assets/stickers/critters/pet-guinea-ginger.png'),
+  require('../../assets/stickers/critters/pet-guinea-white.png'),
+  require('../../assets/stickers/critters/pet-guinea-dutch.png'),
+  require('../../assets/stickers/critters/pet-rat-grey.png'),
+  require('../../assets/stickers/critters/pet-rat-white.png'),
+  require('../../assets/stickers/critters/pet-rat-hooded.png'),
+  require('../../assets/stickers/critters/pet-rat-cinnamon.png'),
+  require('../../assets/stickers/critters/pet-gecko-leopard.png'),
+  require('../../assets/stickers/critters/pet-gecko-albino.png'),
+  require('../../assets/stickers/critters/pet-gecko-crested.png'),
+  require('../../assets/stickers/critters/pet-turtle.png'),
+  require('../../assets/stickers/critters/pet-turtle-red.png'),
+  require('../../assets/stickers/critters/pet-tortoise.png'),
   require('../../assets/stickers/dogs/pet-dog-golden.png'),
   require('../../assets/stickers/dogs/pet-dog-labrador-black.png'),
   require('../../assets/stickers/dogs/pet-dog-labrador-choc.png'),
@@ -5262,6 +5292,34 @@ pet-bunny-dutch|feathers|Dutch bunny|15|16|pet|common
 pet-bunny-pink|feathers|Candy bunny|15|16|pet|rare
 pet-bunny-cream|feathers|Cream bunny|15|16|pet|common
 pet-bunny-black|feathers|Black bunny|15|16|pet|common
+pet-fish-goldfish|fishes|Goldfish|18|15|pet|common
+pet-fish-goldfish-calico|fishes|Calico goldfish|18|15|pet|common
+pet-fish-goldfish-moor|fishes|Black moor|18|15|pet|rare
+pet-fish-betta-red|fishes|Red betta|18|15|pet|common
+pet-fish-betta-blue|fishes|Blue betta|18|15|pet|common
+pet-fish-betta-purple|fishes|Purple betta|18|15|pet|rare
+pet-fish-betta-koi|fishes|Koi betta|18|15|pet|rare
+pet-fish-tetra-neon|fishes|Neon tetra|18|15|pet|common
+pet-fish-guppy|fishes|Guppy|18|15|pet|common
+pet-fish-guppy-sunny|fishes|Sunny guppy|18|15|pet|common
+pet-hamster-golden|critters|Golden hamster|15|12|pet|common
+pet-hamster-white|critters|White dwarf hamster|15|12|pet|common
+pet-hamster-russian|critters|Russian dwarf hamster|15|12|pet|common
+pet-hamster-panda|critters|Panda hamster|15|12|pet|rare
+pet-guinea-tricolor|critters|Tricolour guinea pig|20|9|pet|common
+pet-guinea-ginger|critters|Ginger guinea pig|20|9|pet|common
+pet-guinea-white|critters|White guinea pig|20|9|pet|common
+pet-guinea-dutch|critters|Dutch guinea pig|20|9|pet|common
+pet-rat-grey|critters|Grey rat|19|17|pet|common
+pet-rat-white|critters|White rat|19|17|pet|common
+pet-rat-hooded|critters|Hooded rat|19|17|pet|rare
+pet-rat-cinnamon|critters|Cinnamon rat|19|17|pet|common
+pet-gecko-leopard|critters|Leopard gecko|11|18|pet|common
+pet-gecko-albino|critters|Albino gecko|11|18|pet|common
+pet-gecko-crested|critters|Crested gecko|11|18|pet|rare
+pet-turtle|critters|Turtle|19|10|pet|common
+pet-turtle-red|critters|Red-eared slider|19|10|pet|common
+pet-tortoise|critters|Tortoise|19|10|pet|rare
 pet-dog-golden|dogs|Golden retriever|17|17|pet|common
 pet-dog-labrador-black|dogs|Black labrador|17|17|pet|common
 pet-dog-labrador-choc|dogs|Chocolate labrador|17|17|pet|common

@@ -16,6 +16,9 @@ const CUDDLE: Record<PetKind, string> = {
   dog: 'A head on your knee fixes more than it has any right to.',
   bird: 'Let them sit on your shoulder and chatter for a bit.',
   bunny: 'Sit on the floor with them. Slow strokes, slow breaths.',
+  small: 'Let them potter about on your lap. Tiny feet, big calm.',
+  fish: 'Sit by the bowl and watch them drift for a few minutes. That counts too.',
+  reptile: 'A warm lizard on your hand and nowhere to be. Just be still together.',
   other: 'Spend a quiet moment together. They are glad you are here.',
 };
 

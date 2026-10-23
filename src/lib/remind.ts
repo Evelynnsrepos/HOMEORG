@@ -93,13 +93,14 @@ export function reminders(input: {
     }
     for (const pet of input.pets ?? []) {
       for (const st of careState(pet, input.petLog ?? [], now)) {
-        if (!st.action.chore || !st.due) continue;
-        const late = isFinite(st.since) ? st.since / st.action.every : 2;
+        // a job never logged isn't nagged about: a new pet shouldn't fill the list
+        if (!st.action.chore || !st.due || !isFinite(st.since)) continue;
+        const late = st.since / st.action.every;
         out.push({
           id: `care-${pet.id}-${st.action.id}`,
           emoji: st.action.emoji,
           text: `${st.action.label} for ${pet.name}`,
-          detail: isFinite(st.since) ? `last ${agoLabel(st.since)}` : 'not done yet',
+          detail: `last ${agoLabel(st.since)}`,
           tone: late >= 1.5 ? 'warm' : 'soft',
           route: '/pets',
           urgency: 2 - late,
