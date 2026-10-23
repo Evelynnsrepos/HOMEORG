@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewStyle, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 /**
@@ -278,5 +278,23 @@ export function Sticker({
         {s.body}
       </Svg>
     </View>
+  );
+}
+
+/**
+ * The garland as the first thing inside a <Screen>: full bleed past the
+ * screen's side padding, tucked up into the top inset, and overlapping the
+ * header a little so it doesn't push everything down.
+ */
+export function ScreenGarland({ seed = 7, bulbs = 3, height = 70 }: { seed?: number; bulbs?: number; height?: number }) {
+  const { width } = useWindowDimensions();
+  return (
+    <Garland
+      width={Math.min(width, 520)}
+      height={height}
+      bulbs={bulbs}
+      seed={seed}
+      style={{ marginHorizontal: -16, marginTop: -8, marginBottom: -Math.round(height * 0.3) }}
+    />
   );
 }

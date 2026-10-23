@@ -10,6 +10,7 @@ import { colors, radius, shadow } from '../../src/theme';
 import { Btn, Card, Empty, Press, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { FurnitureTile } from '../../src/ui/Furniture';
 import { RoomCanvas } from '../../src/ui/RoomCanvas';
+import { ScreenGarland } from '../../src/ui/Decor';
 
 
 export default function MyHome() {
@@ -29,6 +30,7 @@ export default function MyHome() {
 
   return (
     <Screen>
+      <ScreenGarland seed={5} />
       <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <View style={{ flex: 1 }}>
           <T v="display" style={{ fontSize: 30 }}>

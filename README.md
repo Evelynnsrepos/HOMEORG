@@ -59,6 +59,13 @@ aktualisieren — dann hilft nur deinstallieren und neu aufspielen.
 `scripts/sign-android.js` die Signierung danach jedes Mal neu. `npm run apk`
 erledigt das mit.
 
+### Über GitHub bauen lassen
+
+Ein Tag wie `v1.3.0` pushen, und der Workflow *Release* baut die APK und hängt
+sie an ein GitHub-Release. Damit sie mit dem eigenen Schlüssel signiert ist,
+braucht das Repo vier Secrets (`ANDROID_KEYSTORE_BASE64` und drei Passwörter
+bzw. Alias); wie, steht in [AGENTS.md](AGENTS.md#git-and-releases).
+
 ### Der andere Weg: EAS
 
 `eas.json` liegt dabei, falls du lieber in der Cloud baust:
@@ -127,15 +134,18 @@ Ein einfacher Haken zählt die geschätzten Minuten.
 
 ```
 app/                 Screens (expo-router, dateibasiert)
-  (tabs)/            Home, Today, My Home, Profile
+  (tabs)/            Home, History, Today, My Home, Profile
   room/ task/ challenge/ decorate/ recipe/
-  recipes.tsx shopping.tsx pantry.tsx Die drei Küchen-Reiter
+  kitchen.tsx cook.tsx recipes.tsx shopping.tsx  Die vier Küchen-Reiter
   scan.tsx import.tsx Barcode scannen, REWE-Bestellung einräumen
 src/
   lib/engine.ts      Sauberkeit, Priorität, Raumgesundheit, Tagesplanung
   lib/date.ts        Kalenderechte Intervalle
-  lib/pdf.ts         Kleiner PDF-Textleser (offline)
+  lib/pdf.ts         Kleiner PDF-Textleser (offline, auch verschlüsselte eBons)
+  lib/crypt.ts       MD5 und RC4 für den PDF-Schutz
   lib/rewe.ts        REWE-Bestellung lesen
+  lib/ebon.ts        REWE-eBon (Kassenbon) lesen
+  lib/hype.ts        Die Zahlen und Jubelsätze für History
   lib/orderImport.ts Bestellung → Vorrat: Namen, Mengen, Regalplatz
   lib/backup.ts      Alle Daten als eine JSON-Datei raus und wieder rein
   state/store.ts     Zustand + AsyncStorage
@@ -147,6 +157,8 @@ src/
   ui/QuantitySheet.tsx  "Wie viel hast du gekauft?"
   ui/RecipeEditor.tsx   Ein Rezept schreiben, Zutat für Zutat
   ui/MusicEngine.tsx Der eine Audio-Player der App (hängt im Root-Layout)
+  ui/Art.tsx         Effort-Ring, Kühlschrank-Anzeige, Rezeptbuch (nach den Skizzen)
+  ui/Decor.tsx       Efeu, Glühbirnen und Kawaii-Sticker
 assets/music/        27 Titel (~37 MB)
 scripts/
   prepare-music.js   Musik kuratieren und neu kodieren
@@ -202,8 +214,8 @@ ist also nichts nachgebaut oder umgangen worden.
 
 ## REWE-Bestellung einräumen
 
-Im Vorrat: **REWE order** → das PDF wählen, das REWE zur Abholung oder Lieferung
-schickt (Abhol-/Lieferavis). Die App liest es auf dem Handy, nichts wird
+Im Vorrat: **REWE PDF** → das PDF wählen, das REWE zur Abholung oder Lieferung
+schickt (Abhol-/Lieferavis), oder den **eBon** vom Einkauf im Markt. Die App liest es auf dem Handy, nichts wird
 hochgeladen. Gezählt wird die Liefermenge: Nicht Lieferbares und Gebühren fallen
 weg, Ersatzartikel kommen als das, was wirklich in der Tüte war, lose Ware mit
 dem echten Gewicht. Jedes Produkt bekommt einen Platz (Kühlschrank, Gefrierfach,
@@ -214,8 +226,12 @@ abgehakt, und dieselbe Bestellung zweimal einräumen gibt eine Warnung.
 Wird etwas umgeräumt (hier oder später im Vorrat), merkt sich die App den Platz
 fürs nächste Mal.
 
-`npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen
-(`scripts/fixtures/`, ohne Kopfdaten wie Name oder Kundennummer).
+Beim eBon steht kein Liefer-Status, dafür Kassenkürzel: aus `KRAEUT.SEITL.BIO`
+wird „Kräuterseitlinge bio“, aus `SONNENB.OEL KALT` „Sonnenblumenöl kalt“.
+
+`npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen und
+einen echten eBon (`scripts/fixtures/`, ohne Kopfdaten wie Name, Kundennummer
+oder Kartendaten).
 
 ## Daten sichern
 
