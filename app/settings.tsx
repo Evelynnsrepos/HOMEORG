@@ -158,6 +158,20 @@ export default function Settings() {
             />
           ))}
         </View>
+        <Spacer h={6} />
+        <Toggle
+          label="Vines and fairy lights"
+          hint="Hanging over the top of the main screens"
+          value={settings.showVines ?? currentTheme().decor}
+          onChange={(showVines) => patch({ showVines })}
+        />
+        <Divider />
+        <Toggle
+          label="Stickers"
+          hint="Little cuties on the cards, in the scheme's colours"
+          value={settings.showStickers ?? currentTheme().decor}
+          onChange={(showStickers) => patch({ showStickers })}
+        />
       </Card>
 
       <Spacer h={14} />

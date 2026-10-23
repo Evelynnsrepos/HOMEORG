@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleProp, View, ViewStyle, useWindowDimensions } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
-import { currentTheme } from '../theme';
+import { useStore } from '../state/store';
+import { colors, currentTheme } from '../theme';
 
 /**
  * The kawaii dressing: ivy hanging off the top of a screen, warm Edison bulbs
@@ -120,7 +121,8 @@ export function Garland({
   seed?: number;
   style?: StyleProp<ViewStyle>;
 }) {
-  if (!currentTheme().decor) return null;
+  const on = useStore((st) => st.settings.showVines) ?? currentTheme().decor;
+  if (!on) return null;
   const r = rng(seed);
   const strands = [
     { x: 8, length: height * 0.95 },
@@ -167,18 +169,17 @@ export function Garland({
 export type StickerKind = 'heart' | 'cat' | 'icecream' | 'cake' | 'present' | 'star';
 
 const INK = '#4A2C3E';
-const BLUSH = '#FF4F8B';
 
 /** Two dot eyes with a shine, blush and a small smile, centred on (cx, cy). */
-function Face({ cx, cy, s = 1, cat }: { cx: number; cy: number; s?: number; cat?: boolean }) {
+function Face({ cx, cy, s = 1, cat, blush }: { cx: number; cy: number; s?: number; cat?: boolean; blush: string }) {
   return (
     <G transform={`translate(${cx} ${cy}) scale(${s})`}>
       <Ellipse cx={-11} cy={0} rx={3.6} ry={4.4} fill={INK} />
       <Ellipse cx={11} cy={0} rx={3.6} ry={4.4} fill={INK} />
       <Circle cx={-9.8} cy={-1.6} r={1.3} fill="#FFF" />
       <Circle cx={12.2} cy={-1.6} r={1.3} fill="#FFF" />
-      <Ellipse cx={-18} cy={8} rx={5.5} ry={3.2} fill={BLUSH} fillOpacity={0.45} />
-      <Ellipse cx={18} cy={8} rx={5.5} ry={3.2} fill={BLUSH} fillOpacity={0.45} />
+      <Ellipse cx={-18} cy={8} rx={5.5} ry={3.2} fill={blush} fillOpacity={0.45} />
+      <Ellipse cx={18} cy={8} rx={5.5} ry={3.2} fill={blush} fillOpacity={0.45} />
       <Path
         d={cat ? 'M-6,6 Q-3,10 0,6 Q3,10 6,6' : 'M-4,6 Q0,10.5 4,6'}
         stroke={INK}
@@ -190,14 +191,35 @@ function Face({ cx, cy, s = 1, cat }: { cx: number; cy: number; s?: number; cat?
   );
 }
 
-const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> = {
+/** Sticker colours from the active scheme: its accent, softened and deepened. */
+function stickerPalette() {
+  return {
+    main: mix(colors.coral, '#FFFFFF', 0.25),
+    light: mix(colors.coral, '#FFFFFF', 0.45),
+    accent: colors.coral,
+    cherry: mix(colors.coral, '#000000', 0.18),
+    ribbon: mix(colors.gold, '#FFFFFF', 0.25),
+    cream: mix(colors.gold, '#FFFFFF', 0.88),
+    blush: mix(colors.coral, '#000000', 0.1),
+  };
+}
+type StickerPalette = ReturnType<typeof stickerPalette>;
+
+/** Blend two #RRGGBB colours, t of the way from a to b. */
+function mix(a: string, b: string, t: number): string {
+  const ch = (hex: string, i: number) => parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16);
+  const out = [0, 1, 2].map((i) => Math.round(ch(a, i) + (ch(b, i) - ch(a, i)) * t));
+  return `#${out.map((v) => v.toString(16).padStart(2, '0')).join('')}`;
+}
+
+const stickerArt = (p: StickerPalette): Record<StickerKind, { outline: string; body: React.ReactNode }> => ({
   heart: {
     outline: 'M50,88 C20,68 6,50 10,32 C14,16 34,12 50,28 C66,12 86,16 90,32 C94,50 80,68 50,88 Z',
     body: (
       <>
-        <Path d="M50,88 C20,68 6,50 10,32 C14,16 34,12 50,28 C66,12 86,16 90,32 C94,50 80,68 50,88 Z" fill="#FF8FB8" />
+        <Path d="M50,88 C20,68 6,50 10,32 C14,16 34,12 50,28 C66,12 86,16 90,32 C94,50 80,68 50,88 Z" fill={p.main} />
         <Path d="M22,30 C24,24 30,22 34,24" stroke="#FFFFFF" strokeOpacity={0.7} strokeWidth={4} strokeLinecap="round" fill="none" />
-        <Face cx={50} cy={46} />
+        <Face blush={p.blush} cx={50} cy={46} />
       </>
     ),
   },
@@ -205,9 +227,9 @@ const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> 
     outline: 'M18,42 L20,10 L42,28 Q50,26 58,28 L80,10 L82,42 Q92,60 80,76 Q66,92 50,92 Q34,92 20,76 Q8,60 18,42 Z',
     body: (
       <>
-        <Path d="M18,42 L20,10 L42,28 Q50,26 58,28 L80,10 L82,42 Q92,60 80,76 Q66,92 50,92 Q34,92 20,76 Q8,60 18,42 Z" fill="#FFB3CF" />
-        <Path d="M24,20 L36,30 L25,36 Z M76,20 L64,30 L75,36 Z" fill="#FF7FAE" />
-        <Face cx={50} cy={56} cat />
+        <Path d="M18,42 L20,10 L42,28 Q50,26 58,28 L80,10 L82,42 Q92,60 80,76 Q66,92 50,92 Q34,92 20,76 Q8,60 18,42 Z" fill={p.light} />
+        <Path d="M24,20 L36,30 L25,36 Z M76,20 L64,30 L75,36 Z" fill={p.accent} />
+        <Face blush={p.blush} cx={50} cy={56} cat />
         <Path d="M10,60 L26,62 M10,68 L26,66 M90,60 L74,62 M90,68 L74,66" stroke={INK} strokeWidth={1.4} strokeLinecap="round" />
       </>
     ),
@@ -218,10 +240,10 @@ const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> 
       <>
         <Path d="M33,52 L50,95 L67,52 Z" fill="#F6C98C" />
         <Path d="M38,58 L58,80 M46,54 L62,70 M62,58 L44,80 M54,54 L39,70" stroke="#E0A262" strokeWidth={1.5} />
-        <Path d="M26,56 C20,30 36,14 50,14 C64,14 80,30 74,56 Q68,51 62,57 Q56,51 50,57 Q44,51 38,57 Q32,51 26,56 Z" fill="#FF9CC4" />
-        <Circle cx={50} cy={11} r={6} fill="#FF3E7F" />
+        <Path d="M26,56 C20,30 36,14 50,14 C64,14 80,30 74,56 Q68,51 62,57 Q56,51 50,57 Q44,51 38,57 Q32,51 26,56 Z" fill={p.light} />
+        <Circle cx={50} cy={11} r={6} fill={p.cherry} />
         <Path d="M50,6 Q54,0 58,2" stroke="#4E7F3E" strokeWidth={1.6} fill="none" />
-        <Face cx={50} cy={36} s={0.85} />
+        <Face blush={p.blush} cx={50} cy={36} s={0.85} />
       </>
     ),
   },
@@ -229,11 +251,11 @@ const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> 
     outline: 'M12,50 L74,24 Q80,22 84,30 L90,44 L90,82 Q90,86 86,86 L16,90 Q12,90 12,86 Z',
     body: (
       <>
-        <Path d="M12,52 L90,46 L90,82 Q90,86 86,86 L16,90 Q12,90 12,86 Z" fill="#FFF3E8" />
-        <Path d="M12,66 L90,61 L90,69 L12,74 Z" fill="#FFB3CF" />
-        <Path d="M12,50 L74,24 Q80,22 84,30 L90,44 L90,48 Q84,54 80,48 Q74,56 68,49 Q62,57 56,50 Q50,58 44,51 Q38,59 32,52 Q26,60 20,53 Q15,58 12,52 Z" fill="#FF8FB8" />
-        <Circle cx={74} cy={22} r={6} fill="#FF3E7F" />
-        <Face cx={51} cy={77} s={0.7} />
+        <Path d="M12,52 L90,46 L90,82 Q90,86 86,86 L16,90 Q12,90 12,86 Z" fill={p.cream} />
+        <Path d="M12,66 L90,61 L90,69 L12,74 Z" fill={p.light} />
+        <Path d="M12,50 L74,24 Q80,22 84,30 L90,44 L90,48 Q84,54 80,48 Q74,56 68,49 Q62,57 56,50 Q50,58 44,51 Q38,59 32,52 Q26,60 20,53 Q15,58 12,52 Z" fill={p.main} />
+        <Circle cx={74} cy={22} r={6} fill={p.cherry} />
+        <Face blush={p.blush} cx={51} cy={77} s={0.7} />
       </>
     ),
   },
@@ -241,11 +263,11 @@ const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> 
     outline: 'M50,34 C36,14 22,22 32,34 L16,34 L16,48 L20,48 L20,88 L80,88 L80,48 L84,48 L84,34 L68,34 C78,22 64,14 50,34 Z',
     body: (
       <>
-        <Rect x={20} y={46} width={60} height={42} rx={3} fill="#FF8FB8" />
-        <Rect x={16} y={34} width={68} height={14} rx={3} fill="#FFB3CF" />
-        <Rect x={45} y={34} width={10} height={54} fill="#FFE07A" />
-        <Path d="M50,34 C36,14 22,22 32,34 Z M50,34 C64,14 78,22 68,34 Z" fill="#FFE07A" />
-        <Face cx={50} cy={66} s={0.7} />
+        <Rect x={20} y={46} width={60} height={42} rx={3} fill={p.main} />
+        <Rect x={16} y={34} width={68} height={14} rx={3} fill={p.light} />
+        <Rect x={45} y={34} width={10} height={54} fill={p.ribbon} />
+        <Path d="M50,34 C36,14 22,22 32,34 Z M50,34 C64,14 78,22 68,34 Z" fill={p.ribbon} />
+        <Face blush={p.blush} cx={50} cy={66} s={0.7} />
       </>
     ),
   },
@@ -253,12 +275,12 @@ const STICKERS: Record<StickerKind, { outline: string; body: React.ReactNode }> 
     outline: 'M50,8 L61,36 L91,38 L68,57 L76,88 L50,71 L24,88 L32,57 L9,38 L39,36 Z',
     body: (
       <>
-        <Path d="M50,8 L61,36 L91,38 L68,57 L76,88 L50,71 L24,88 L32,57 L9,38 L39,36 Z" fill="#FFA8C8" strokeLinejoin="round" stroke="#FFA8C8" strokeWidth={6} />
-        <Face cx={50} cy={50} s={0.75} />
+        <Path d="M50,8 L61,36 L91,38 L68,57 L76,88 L50,71 L24,88 L32,57 L9,38 L39,36 Z" fill={p.light} strokeLinejoin="round" stroke={p.light} strokeWidth={6} />
+        <Face blush={p.blush} cx={50} cy={50} s={0.75} />
       </>
     ),
   },
-};
+});
 
 /** A die-cut sticker: white border, a soft drop shadow, a little tilt. */
 export function Sticker({
@@ -272,12 +294,13 @@ export function Sticker({
   tilt?: number;
   style?: StyleProp<ViewStyle>;
 }) {
-  if (!currentTheme().decor) return null;
-  const s = STICKERS[kind];
+  const on = useStore((st) => st.settings.showStickers) ?? currentTheme().decor;
+  if (!on) return null;
+  const s = stickerArt(stickerPalette())[kind];
   return (
     <View pointerEvents="none" style={[{ width: size, height: size, transform: [{ rotate: `${tilt}deg` }] }, style]}>
       <Svg width={size} height={size} viewBox="-6 -6 112 112">
-        <Path d={s.outline} transform="translate(2 3)" fill="#C2507F" fillOpacity={0.18} stroke="#C2507F" strokeOpacity={0.18} strokeWidth={12} strokeLinejoin="round" />
+        <Path d={s.outline} transform="translate(2 3)" fill={colors.shadow} fillOpacity={0.18} stroke={colors.shadow} strokeOpacity={0.18} strokeWidth={12} strokeLinejoin="round" />
         <Path d={s.outline} fill="#FFFFFF" stroke="#FFFFFF" strokeWidth={12} strokeLinejoin="round" />
         {s.body}
       </Svg>
@@ -292,7 +315,8 @@ export function Sticker({
  */
 export function ScreenGarland({ seed = 7, bulbs = 3, height = 70 }: { seed?: number; bulbs?: number; height?: number }) {
   const { width } = useWindowDimensions();
-  if (!currentTheme().decor) return null;
+  const on = useStore((st) => st.settings.showVines) ?? currentTheme().decor;
+  if (!on) return null;
   return (
     <Garland
       width={Math.min(width, 520)}

@@ -84,9 +84,10 @@ There is no linter and no other test suite. "Done" means `tsc` and
   `needsYou`) — the app never scolds.
 - Decorate with `ScreenGarland` at the top of tab screens and the odd
   `Sticker` on a card corner (absolute, small negative offset, slight tilt).
-  Keep it to one or two stickers per screen; they're seasoning. Both render
-  nothing in schemes with `decor: false` (Classic), so lay screens out to work
-  without them.
+  Keep it to one or two stickers per screen; they're seasoning. They follow
+  the scheme (stickers are coloured from its palette) and two switches in
+  Settings (`showVines`, `showStickers`; unset = the scheme's `decor`
+  default, off in Classic). Lay screens out to work without them.
 - Art traced from the sketches stays in the sketches' flat shape language: a
   few solid shapes, no added detail lines, textures or inner shadows.
 - Two fonts: Bricolage Grotesque for everything, and the handwritten

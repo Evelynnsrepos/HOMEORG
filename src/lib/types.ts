@@ -74,6 +74,10 @@ export interface Settings {
   cookByDay?: boolean;
   /** colour scheme id from src/theme.ts; missing means the default */
   theme?: string;
+  /** vines and fairy lights; missing means whatever the scheme does */
+  showVines?: boolean;
+  /** stickers on cards; missing means whatever the scheme does */
+  showStickers?: boolean;
 }
 
 export interface ChallengeProgress {
