@@ -227,11 +227,22 @@ def main():
         lines.append(f'  {{ id: {json.dumps(sid)}, name: {json.dumps(name)}, emoji: {json.dumps(emoji)}, '
                      f'artists: {json.dumps(sorted(set_artists[sid]), ensure_ascii=False)}, '
                      f'licenses: {json.dumps(sorted(set_licenses[sid]) or ["CC-BY 3.0", "OGA-BY 3.0"])} }},')
-    lines += ['];', '', 'export const pieces: Piece[] = [']
+    # two flat lists instead of 2500 object literals, which TypeScript can't infer in one go:
+    # the images (Metro needs a literal require for each) and one text line of details per piece
+    lines += ['];', '', 'const SRC: ImageSourcePropType[] = [']
     for e in entries:
-        lines.append(f"  {{ id: '{e['id']}', set: '{e['set']}', label: {json.dumps(e['label'])}, w: {e['w']}, h: {e['h']}, "
-                     f"kind: '{e['kind']}', rarity: '{e['rarity']}', src: require('../../assets/stickers/{e['file']}') }},")
-    lines += ['];', '']
+        lines.append(f"  require('../../assets/stickers/{e['file']}'),")
+    lines += ['];', '', '/** id|set|label|w|h|kind|rarity, in the same order as SRC */', 'const META = `']
+    for e in entries:
+        lines.append('|'.join([e['id'], e['set'], e['label'].replace('|', '/').replace('`', "'"), str(e['w']), str(e['h']), e['kind'], e['rarity']]))
+    lines += ['`;', '',
+              'export const pieces: Piece[] = META.trim()',
+              "  .split('\\n')",
+              '  .map((line, i) => {',
+              "    const [id, set, label, w, h, kind, rarity] = line.split('|');",
+              '    return { id, set, label, w: Number(w), h: Number(h), kind: kind as StickerKind, rarity: rarity as Rarity, src: SRC[i] };',
+              '  });',
+              '']
     with open(CATALOG, 'w', encoding='utf-8') as fh:
         fh.write('\n'.join(lines))
 

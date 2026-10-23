@@ -44,2541 +44,5088 @@ export const stickerSets: StickerSet[] = [
   { id: "fireside", name: "Fireside", emoji: "\ud83d\udd25", artists: ["Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)", "Lanea Zimmerman (aka Sharm)"], licenses: ["OGA-BY 3.0"] },
 ];
 
-export const pieces: Piece[] = [
-  { id: 'fireside-001', set: 'fireside', label: "Barrel", w: 48, h: 61, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/001.png') },
-  { id: 'fireside-002', set: 'fireside', label: "Barrel", w: 28, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/002.png') },
-  { id: 'fireside-003', set: 'fireside', label: "Barrel", w: 28, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/003.png') },
-  { id: 'fireside-004', set: 'fireside', label: "Barrel", w: 28, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/004.png') },
-  { id: 'bedroom-001', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 50, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/001.png') },
-  { id: 'bedroom-002', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/002.png') },
-  { id: 'bedroom-003', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/003.png') },
-  { id: 'bedroom-004', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 50, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/004.png') },
-  { id: 'bedroom-005', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/005.png') },
-  { id: 'bedroom-006', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/006.png') },
-  { id: 'bedroom-007', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 50, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/007.png') },
-  { id: 'bedroom-008', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/008.png') },
-  { id: 'bedroom-009', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/009.png') },
-  { id: 'bedroom-010', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/010.png') },
-  { id: 'bedroom-011', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/011.png') },
-  { id: 'bedroom-012', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/012.png') },
-  { id: 'bedroom-013', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/013.png') },
-  { id: 'bedroom-014', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/014.png') },
-  { id: 'bedroom-015', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/015.png') },
-  { id: 'bedroom-016', set: 'bedroom', label: "Beds, Child Headboards", w: 38, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/016.png') },
-  { id: 'bedroom-017', set: 'bedroom', label: "Beds, Child Headboards", w: 12, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/017.png') },
-  { id: 'bedroom-018', set: 'bedroom', label: "Beds, Child Headboards", w: 6, h: 49, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/018.png') },
-  { id: 'bedroom-019', set: 'bedroom', label: "Beds, Child Mattresses", w: 32, h: 56, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/019.png') },
-  { id: 'bedroom-020', set: 'bedroom', label: "Beds, Child Mattresses", w: 56, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/020.png') },
-  { id: 'bedroom-021', set: 'bedroom', label: "Beds, Child Mattresses", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/021.png') },
-  { id: 'bedroom-022', set: 'bedroom', label: "Beds, Child Mattresses", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/022.png') },
-  { id: 'bedroom-023', set: 'bedroom', label: "Beds, Child Mattresses", w: 32, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/023.png') },
-  { id: 'bedroom-024', set: 'bedroom', label: "Beds, Child Mattresses", w: 32, h: 9, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/024.png') },
-  { id: 'bedroom-025', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/025.png') },
-  { id: 'bedroom-026', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/026.png') },
-  { id: 'bedroom-027', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/027.png') },
-  { id: 'bedroom-028', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/028.png') },
-  { id: 'bedroom-029', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/029.png') },
-  { id: 'bedroom-030', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/030.png') },
-  { id: 'bedroom-031', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/031.png') },
-  { id: 'bedroom-032', set: 'bedroom', label: "Beds, Child", w: 64, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/032.png') },
-  { id: 'bedroom-033', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/033.png') },
-  { id: 'bedroom-034', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/034.png') },
-  { id: 'bedroom-035', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/035.png') },
-  { id: 'bedroom-036', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/036.png') },
-  { id: 'bedroom-037', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/037.png') },
-  { id: 'bedroom-038', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/038.png') },
-  { id: 'bedroom-039', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/039.png') },
-  { id: 'bedroom-040', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/040.png') },
-  { id: 'bedroom-041', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/041.png') },
-  { id: 'bedroom-042', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/042.png') },
-  { id: 'bedroom-043', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/043.png') },
-  { id: 'bedroom-044', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/044.png') },
-  { id: 'bedroom-045', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/045.png') },
-  { id: 'bedroom-046', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/046.png') },
-  { id: 'bedroom-047', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/047.png') },
-  { id: 'bedroom-048', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/048.png') },
-  { id: 'bedroom-049', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/049.png') },
-  { id: 'bedroom-050', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/050.png') },
-  { id: 'bedroom-051', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/051.png') },
-  { id: 'bedroom-052', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/052.png') },
-  { id: 'bedroom-053', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/053.png') },
-  { id: 'bedroom-054', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/054.png') },
-  { id: 'bedroom-055', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/055.png') },
-  { id: 'bedroom-056', set: 'bedroom', label: "Beds, Child", w: 44, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/056.png') },
-  { id: 'bedroom-057', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/057.png') },
-  { id: 'bedroom-058', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/058.png') },
-  { id: 'bedroom-059', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/059.png') },
-  { id: 'bedroom-060', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/060.png') },
-  { id: 'bedroom-061', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/061.png') },
-  { id: 'bedroom-062', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/062.png') },
-  { id: 'bedroom-063', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/063.png') },
-  { id: 'bedroom-064', set: 'bedroom', label: "Beds, Child", w: 12, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/064.png') },
-  { id: 'bedroom-065', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/065.png') },
-  { id: 'bedroom-066', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/066.png') },
-  { id: 'bedroom-067', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/067.png') },
-  { id: 'bedroom-068', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/068.png') },
-  { id: 'bedroom-069', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/069.png') },
-  { id: 'bedroom-070', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/070.png') },
-  { id: 'bedroom-071', set: 'bedroom', label: "Beds, Double B", w: 126, h: 237, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/071.png') },
-  { id: 'bedroom-072', set: 'bedroom', label: "Beds, Double C - Overlays", w: 10, h: 53, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/072.png') },
-  { id: 'bedroom-073', set: 'bedroom', label: "Beds, Double C - Overlays", w: 10, h: 52, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/073.png') },
-  { id: 'bedroom-074', set: 'bedroom', label: "Beds, Double C - Overlays", w: 10, h: 52, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/074.png') },
-  { id: 'bedroom-075', set: 'bedroom', label: "Beds, Double C - Overlays", w: 10, h: 53, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/075.png') },
-  { id: 'bedroom-076', set: 'bedroom', label: "Beds, Double C - Overlays", w: 128, h: 53, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/076.png') },
-  { id: 'bedroom-077', set: 'bedroom', label: "Beds, Double C - Overlays", w: 64, h: 53, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/077.png') },
-  { id: 'bedroom-078', set: 'bedroom', label: "Beds, Double C - Overlays", w: 11, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/078.png') },
-  { id: 'bedroom-079', set: 'bedroom', label: "Beds, Double C", w: 512, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/079.png') },
-  { id: 'bedroom-080', set: 'bedroom', label: "Beds, Double C", w: 512, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/080.png') },
-  { id: 'bedroom-081', set: 'bedroom', label: "Beds, Double C", w: 448, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/081.png') },
-  { id: 'bedroom-082', set: 'bedroom', label: "Beds, Double C", w: 512, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/082.png') },
-  { id: 'bedroom-083', set: 'bedroom', label: "Beds, Double C", w: 512, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/083.png') },
-  { id: 'bedroom-084', set: 'bedroom', label: "Beds, Double C", w: 448, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/084.png') },
-  { id: 'bedroom-085', set: 'bedroom', label: "Beds, Double C", w: 320, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/085.png') },
-  { id: 'bedroom-086', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/086.png') },
-  { id: 'bedroom-087', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 89, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/087.png') },
-  { id: 'bedroom-088', set: 'bedroom', label: "Beds, Double Headboards", w: 12, h: 89, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/088.png') },
-  { id: 'bedroom-089', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 89, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/089.png') },
-  { id: 'bedroom-090', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/090.png') },
-  { id: 'bedroom-091', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/091.png') },
-  { id: 'bedroom-092', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/092.png') },
-  { id: 'bedroom-093', set: 'bedroom', label: "Beds, Double Headboards", w: 12, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/093.png') },
-  { id: 'bedroom-094', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/094.png') },
-  { id: 'bedroom-095', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/095.png') },
-  { id: 'bedroom-096', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/096.png') },
-  { id: 'bedroom-097', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/097.png') },
-  { id: 'bedroom-098', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/098.png') },
-  { id: 'bedroom-099', set: 'bedroom', label: "Beds, Double Headboards", w: 12, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/099.png') },
-  { id: 'bedroom-100', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/100.png') },
-  { id: 'bedroom-101', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/101.png') },
-  { id: 'bedroom-102', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/102.png') },
-  { id: 'bedroom-103', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/103.png') },
-  { id: 'bedroom-104', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/104.png') },
-  { id: 'bedroom-105', set: 'bedroom', label: "Beds, Double Headboards", w: 12, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/105.png') },
-  { id: 'bedroom-106', set: 'bedroom', label: "Beds, Double Headboards", w: 6, h: 71, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/106.png') },
-  { id: 'bedroom-107', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/107.png') },
-  { id: 'bedroom-108', set: 'bedroom', label: "Beds, Double Headboards", w: 64, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/108.png') },
-  { id: 'bedroom-109', set: 'bedroom', label: "Beds, Double Mattresses", w: 72, h: 60, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/109.png') },
-  { id: 'bedroom-110', set: 'bedroom', label: "Beds, Double Mattresses", w: 60, h: 70, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/110.png') },
-  { id: 'bedroom-111', set: 'bedroom', label: "Beds, Double Mattresses", w: 60, h: 14, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/111.png') },
-  { id: 'bedroom-112', set: 'bedroom', label: "Beds, Double Mattresses", w: 60, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/112.png') },
-  { id: 'bedroom-113', set: 'bedroom', label: "Beds, Double Mattresses", w: 15, h: 60, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/113.png') },
-  { id: 'bedroom-114', set: 'bedroom', label: "Beds, Double Mattresses", w: 15, h: 60, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/114.png') },
-  { id: 'bedroom-115', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/115.png') },
-  { id: 'bedroom-116', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/116.png') },
-  { id: 'bedroom-117', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/117.png') },
-  { id: 'bedroom-118', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/118.png') },
-  { id: 'bedroom-119', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/119.png') },
-  { id: 'bedroom-120', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/120.png') },
-  { id: 'bedroom-121', set: 'bedroom', label: "Beds, Double", w: 126, h: 238, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/121.png') },
-  { id: 'bedroom-122', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/122.png') },
-  { id: 'bedroom-123', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/123.png') },
-  { id: 'bedroom-124', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/124.png') },
-  { id: 'bedroom-125', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/125.png') },
-  { id: 'bedroom-126', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/126.png') },
-  { id: 'bedroom-127', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/127.png') },
-  { id: 'bedroom-128', set: 'bedroom', label: "Beds, Single A", w: 46, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/128.png') },
-  { id: 'bedroom-129', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/129.png') },
-  { id: 'bedroom-130', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/130.png') },
-  { id: 'bedroom-131', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/131.png') },
-  { id: 'bedroom-132', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/132.png') },
-  { id: 'bedroom-133', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/133.png') },
-  { id: 'bedroom-134', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/134.png') },
-  { id: 'bedroom-135', set: 'bedroom', label: "Beds, Single A", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/135.png') },
-  { id: 'bedroom-136', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/136.png') },
-  { id: 'bedroom-137', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/137.png') },
-  { id: 'bedroom-138', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/138.png') },
-  { id: 'bedroom-139', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/139.png') },
-  { id: 'bedroom-140', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/140.png') },
-  { id: 'bedroom-141', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/141.png') },
-  { id: 'bedroom-142', set: 'bedroom', label: "Beds, Single A", w: 46, h: 58, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/142.png') },
-  { id: 'bedroom-143', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/143.png') },
-  { id: 'bedroom-144', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/144.png') },
-  { id: 'bedroom-145', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/145.png') },
-  { id: 'bedroom-146', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/146.png') },
-  { id: 'bedroom-147', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/147.png') },
-  { id: 'bedroom-148', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/148.png') },
-  { id: 'bedroom-149', set: 'bedroom', label: "Beds, Single A", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/149.png') },
-  { id: 'bedroom-150', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/150.png') },
-  { id: 'bedroom-151', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/151.png') },
-  { id: 'bedroom-152', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/152.png') },
-  { id: 'bedroom-153', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/153.png') },
-  { id: 'bedroom-154', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/154.png') },
-  { id: 'bedroom-155', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/155.png') },
-  { id: 'bedroom-156', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/156.png') },
-  { id: 'bedroom-157', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/157.png') },
-  { id: 'bedroom-158', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/158.png') },
-  { id: 'bedroom-159', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/159.png') },
-  { id: 'bedroom-160', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/160.png') },
-  { id: 'bedroom-161', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/161.png') },
-  { id: 'bedroom-162', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/162.png') },
-  { id: 'bedroom-163', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/163.png') },
-  { id: 'bedroom-164', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/164.png') },
-  { id: 'bedroom-165', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/165.png') },
-  { id: 'bedroom-166', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/166.png') },
-  { id: 'bedroom-167', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/167.png') },
-  { id: 'bedroom-168', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/168.png') },
-  { id: 'bedroom-169', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/169.png') },
-  { id: 'bedroom-170', set: 'bedroom', label: "Beds, Single A", w: 59, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/170.png') },
-  { id: 'bedroom-171', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/171.png') },
-  { id: 'bedroom-172', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/172.png') },
-  { id: 'bedroom-173', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/173.png') },
-  { id: 'bedroom-174', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/174.png') },
-  { id: 'bedroom-175', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/175.png') },
-  { id: 'bedroom-176', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/176.png') },
-  { id: 'bedroom-177', set: 'bedroom', label: "Beds, Single A", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/177.png') },
-  { id: 'bedroom-178', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/178.png') },
-  { id: 'bedroom-179', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/179.png') },
-  { id: 'bedroom-180', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/180.png') },
-  { id: 'bedroom-181', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/181.png') },
-  { id: 'bedroom-182', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/182.png') },
-  { id: 'bedroom-183', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/183.png') },
-  { id: 'bedroom-184', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/184.png') },
-  { id: 'bedroom-185', set: 'bedroom', label: "Beds, Single B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/185.png') },
-  { id: 'bedroom-186', set: 'bedroom', label: "Beds, Single C", w: 48, h: 71, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/186.png') },
-  { id: 'bedroom-187', set: 'bedroom', label: "Beds, Single C", w: 48, h: 71, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/187.png') },
-  { id: 'bedroom-188', set: 'bedroom', label: "Beds, Single C", w: 48, h: 71, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/188.png') },
-  { id: 'bedroom-189', set: 'bedroom', label: "Beds, Single C", w: 48, h: 71, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/189.png') },
-  { id: 'bedroom-190', set: 'bedroom', label: "Beds, Single C", w: 71, h: 55, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/190.png') },
-  { id: 'bedroom-191', set: 'bedroom', label: "Beds, Single C", w: 71, h: 55, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/191.png') },
-  { id: 'bedroom-192', set: 'bedroom', label: "Beds, Single C", w: 71, h: 55, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/192.png') },
-  { id: 'bedroom-193', set: 'bedroom', label: "Beds, Single C", w: 71, h: 55, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/193.png') },
-  { id: 'bedroom-194', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/194.png') },
-  { id: 'bedroom-195', set: 'bedroom', label: "Beds, Single Headboards", w: 6, h: 274, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/195.png') },
-  { id: 'bedroom-196', set: 'bedroom', label: "Beds, Single Headboards", w: 12, h: 274, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/196.png') },
-  { id: 'bedroom-197', set: 'bedroom', label: "Beds, Single Headboards", w: 6, h: 274, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/197.png') },
-  { id: 'bedroom-198', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/198.png') },
-  { id: 'bedroom-199', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 18, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/199.png') },
-  { id: 'bedroom-200', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/200.png') },
-  { id: 'bedroom-201', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 18, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/201.png') },
-  { id: 'bedroom-202', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/202.png') },
-  { id: 'bedroom-203', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 18, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/203.png') },
-  { id: 'bedroom-204', set: 'bedroom', label: "Beds, Single Headboards", w: 48, h: 17, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/204.png') },
-  { id: 'bedroom-205', set: 'bedroom', label: "Beds, Single Mattresses", w: 72, h: 49, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/205.png') },
-  { id: 'bedroom-206', set: 'bedroom', label: "Beds, Single Mattresses", w: 44, h: 70, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/206.png') },
-  { id: 'bedroom-207', set: 'bedroom', label: "Beds, Single Mattresses", w: 44, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/207.png') },
-  { id: 'bedroom-208', set: 'bedroom', label: "Beds, Single Mattresses", w: 44, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/208.png') },
-  { id: 'bedroom-209', set: 'bedroom', label: "Beds, Single Mattresses", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/209.png') },
-  { id: 'bedroom-210', set: 'bedroom', label: "Beds, Single Mattresses", w: 15, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/210.png') },
-  { id: 'bedroom-211', set: 'bedroom', label: "Single Beds B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/211.png') },
-  { id: 'bedroom-212', set: 'bedroom', label: "Single Beds B", w: 121, h: 216, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/212.png') },
-  { id: 'kitchen-001', set: 'kitchen', label: "Bin", w: 14, h: 31, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/001.png') },
-  { id: 'kitchen-002', set: 'kitchen', label: "Bin", w: 14, h: 31, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/002.png') },
-  { id: 'kitchen-003', set: 'kitchen', label: "Bin", w: 14, h: 31, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/003.png') },
-  { id: 'kitchen-004', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/004.png') },
-  { id: 'kitchen-005', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/005.png') },
-  { id: 'kitchen-006', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/006.png') },
-  { id: 'kitchen-007', set: 'kitchen', label: "Bin", w: 14, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/007.png') },
-  { id: 'kitchen-008', set: 'kitchen', label: "Bin", w: 14, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/008.png') },
-  { id: 'kitchen-009', set: 'kitchen', label: "Bin", w: 14, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/009.png') },
-  { id: 'kitchen-010', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/010.png') },
-  { id: 'kitchen-011', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/011.png') },
-  { id: 'kitchen-012', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/012.png') },
-  { id: 'kitchen-013', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/013.png') },
-  { id: 'kitchen-014', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/014.png') },
-  { id: 'kitchen-015', set: 'kitchen', label: "Bin", w: 18, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/015.png') },
-  { id: 'kitchen-016', set: 'kitchen', label: "Bin", w: 12, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/016.png') },
-  { id: 'kitchen-017', set: 'kitchen', label: "Bin", w: 12, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/017.png') },
-  { id: 'kitchen-018', set: 'kitchen', label: "Bin", w: 12, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/018.png') },
-  { id: 'kitchen-019', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/019.png') },
-  { id: 'kitchen-020', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/020.png') },
-  { id: 'kitchen-021', set: 'kitchen', label: "Bin", w: 16, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/021.png') },
-  { id: 'kitchen-022', set: 'kitchen', label: "Cabinet", w: 224, h: 165, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/022.png') },
-  { id: 'kitchen-023', set: 'kitchen', label: "Cabinet", w: 128, h: 27, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/023.png') },
-  { id: 'kitchen-024', set: 'kitchen', label: "Cabinet", w: 28, h: 56, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/024.png') },
-  { id: 'kitchen-025', set: 'kitchen', label: "Cabinet", w: 28, h: 56, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/025.png') },
-  { id: 'kitchen-026', set: 'kitchen', label: "Cabinet", w: 28, h: 56, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/026.png') },
-  { id: 'kitchen-027', set: 'kitchen', label: "Cabinet", w: 128, h: 43, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/027.png') },
-  { id: 'curious-001', set: 'curious', label: "Cauldron", w: 27, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/001.png') },
-  { id: 'curious-002', set: 'curious', label: "Cauldron", w: 31, h: 127, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/002.png') },
-  { id: 'fireside-005', set: 'fireside', label: "Chest", w: 64, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/fireside/005.png') },
-  { id: 'fireside-006', set: 'fireside', label: "Chest", w: 28, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/006.png') },
-  { id: 'fireside-007', set: 'fireside', label: "Chest", w: 28, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/007.png') },
-  { id: 'fireside-008', set: 'fireside', label: "Chest", w: 28, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/008.png') },
-  { id: 'fireside-009', set: 'fireside', label: "Chest", w: 28, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/009.png') },
-  { id: 'fireside-010', set: 'fireside', label: "Chest", w: 28, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/fireside/010.png') },
-  { id: 'fireside-011', set: 'fireside', label: "Chest", w: 28, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/fireside/011.png') },
-  { id: 'fireside-012', set: 'fireside', label: "Chest", w: 64, h: 24, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/fireside/012.png') },
-  { id: 'festive-001', set: 'festive', label: "Christmas Tree", w: 85, h: 114, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/festive/001.png') },
-  { id: 'festive-002', set: 'festive', label: "Christmas Tree", w: 85, h: 114, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/festive/002.png') },
-  { id: 'study-001', set: 'study', label: "Clock, Grandfather", w: 18, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/001.png') },
-  { id: 'study-002', set: 'study', label: "Clock, Grandfather", w: 18, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/002.png') },
-  { id: 'study-003', set: 'study', label: "Clock, Grandfather", w: 18, h: 71, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/003.png') },
-  { id: 'study-004', set: 'study', label: "Copy Machine", w: 53, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/004.png') },
-  { id: 'kitchen-028', set: 'kitchen', label: "Countertop", w: 186, h: 210, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/028.png') },
-  { id: 'study-005', set: 'study', label: "Crate", w: 64, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/005.png') },
-  { id: 'study-006', set: 'study', label: "Crate", w: 19, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/study/006.png') },
-  { id: 'study-007', set: 'study', label: "Crate", w: 22, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/study/007.png') },
-  { id: 'study-008', set: 'study', label: "Crate", w: 19, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/study/008.png') },
-  { id: 'study-009', set: 'study', label: "Crate", w: 22, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/study/009.png') },
-  { id: 'study-010', set: 'study', label: "Desk, Office", w: 52, h: 90, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/010.png') },
-  { id: 'study-011', set: 'study', label: "Desk, Office", w: 192, h: 40, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/011.png') },
-  { id: 'study-012', set: 'study', label: "Desk, Office", w: 58, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/012.png') },
-  { id: 'study-013', set: 'study', label: "Desk, Office", w: 58, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/013.png') },
-  { id: 'study-014', set: 'study', label: "Desk, Office", w: 58, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/014.png') },
-  { id: 'study-015', set: 'study', label: "Desk, Office", w: 58, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/015.png') },
-  { id: 'bedroom-213', set: 'bedroom', label: "Desk, Vanity", w: 56, h: 65, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/213.png') },
-  { id: 'bedroom-214', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/214.png') },
-  { id: 'bedroom-215', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/215.png') },
-  { id: 'bedroom-216', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/216.png') },
-  { id: 'bedroom-217', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/217.png') },
-  { id: 'bedroom-218', set: 'bedroom', label: "Dresser", w: 44, h: 72, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/218.png') },
-  { id: 'bedroom-219', set: 'bedroom', label: "Dresser", w: 44, h: 72, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/219.png') },
-  { id: 'bedroom-220', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/220.png') },
-  { id: 'bedroom-221', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/221.png') },
-  { id: 'bedroom-222', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/222.png') },
-  { id: 'bedroom-223', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/223.png') },
-  { id: 'bedroom-224', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/224.png') },
-  { id: 'bedroom-225', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/225.png') },
-  { id: 'bedroom-226', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/226.png') },
-  { id: 'bedroom-227', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/227.png') },
-  { id: 'bedroom-228', set: 'bedroom', label: "Dresser", w: 44, h: 72, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/228.png') },
-  { id: 'bedroom-229', set: 'bedroom', label: "Dresser", w: 44, h: 72, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/229.png') },
-  { id: 'bedroom-230', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/230.png') },
-  { id: 'bedroom-231', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/231.png') },
-  { id: 'bedroom-232', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/232.png') },
-  { id: 'bedroom-233', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/233.png') },
-  { id: 'bedroom-234', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/234.png') },
-  { id: 'bedroom-235', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/235.png') },
-  { id: 'bedroom-236', set: 'bedroom', label: "Dresser", w: 22, h: 72, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/236.png') },
-  { id: 'bedroom-237', set: 'bedroom', label: "Dresser", w: 62, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/237.png') },
-  { id: 'bedroom-238', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/238.png') },
-  { id: 'bedroom-239', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/239.png') },
-  { id: 'bedroom-240', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/240.png') },
-  { id: 'bedroom-241', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/241.png') },
-  { id: 'bedroom-242', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/242.png') },
-  { id: 'bedroom-243', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/243.png') },
-  { id: 'bedroom-244', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/244.png') },
-  { id: 'bedroom-245', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/245.png') },
-  { id: 'bedroom-246', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/246.png') },
-  { id: 'bedroom-247', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/247.png') },
-  { id: 'bedroom-248', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/248.png') },
-  { id: 'bedroom-249', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/249.png') },
-  { id: 'bedroom-250', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/250.png') },
-  { id: 'bedroom-251', set: 'bedroom', label: "End Table", w: 20, h: 24, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/251.png') },
-  { id: 'fireside-013', set: 'fireside', label: "Fireplace, Cast Iron", w: 96, h: 91, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/fireside/013.png') },
-  { id: 'fireside-014', set: 'fireside', label: "Fireplace", w: 72, h: 70, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/fireside/014.png') },
-  { id: 'fireside-015', set: 'fireside', label: "Fireplace", w: 94, h: 72, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/fireside/015.png') },
-  { id: 'fireside-016', set: 'fireside', label: "Fireplace", w: 80, h: 74, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/fireside/016.png') },
-  { id: 'kitchen-029', set: 'kitchen', label: "Fridge", w: 30, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/029.png') },
-  { id: 'kitchen-030', set: 'kitchen', label: "Fridge", w: 30, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/030.png') },
-  { id: 'kitchen-031', set: 'kitchen', label: "Fridge", w: 32, h: 62, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/031.png') },
-  { id: 'maker-001', set: 'maker', label: "Ladder", w: 26, h: 83, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/001.png') },
-  { id: 'maker-002', set: 'maker', label: "Ladder", w: 48, h: 83, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/002.png') },
-  { id: 'bedroom-252', set: 'bedroom', label: "Lighting, Floor", w: 96, h: 57, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/252.png') },
-  { id: 'bedroom-253', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/253.png') },
-  { id: 'bedroom-254', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/254.png') },
-  { id: 'bedroom-255', set: 'bedroom', label: "Lighting, Floor", w: 63, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/255.png') },
-  { id: 'bedroom-256', set: 'bedroom', label: "Lighting, Floor", w: 20, h: 52, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/256.png') },
-  { id: 'bedroom-257', set: 'bedroom', label: "Lighting, Floor", w: 20, h: 52, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/257.png') },
-  { id: 'bedroom-258', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/258.png') },
-  { id: 'bedroom-259', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 49, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/259.png') },
-  { id: 'bedroom-260', set: 'bedroom', label: "Lighting, Floor", w: 18, h: 52, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/260.png') },
-  { id: 'bedroom-261', set: 'bedroom', label: "Lighting, Floor", w: 18, h: 52, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/261.png') },
-  { id: 'bedroom-262', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/262.png') },
-  { id: 'bedroom-263', set: 'bedroom', label: "Lighting, Floor", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/263.png') },
-  { id: 'bedroom-264', set: 'bedroom', label: "Lighting, Floor", w: 12, h: 50, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/264.png') },
-  { id: 'bedroom-265', set: 'bedroom', label: "Lighting, Floor", w: 12, h: 50, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/bedroom/265.png') },
-  { id: 'garden-001', set: 'garden', label: "Lighting, Outdoors", w: 18, h: 80, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/001.png') },
-  { id: 'garden-002', set: 'garden', label: "Lighting, Outdoors", w: 18, h: 80, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/002.png') },
-  { id: 'bedroom-266', set: 'bedroom', label: "Mirror, Standing", w: 39, h: 62, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/266.png') },
-  { id: 'bedroom-267', set: 'bedroom', label: "Mirror, Standing", w: 39, h: 62, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/267.png') },
-  { id: 'bedroom-268', set: 'bedroom', label: "Mirror, Standing", w: 39, h: 62, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/268.png') },
-  { id: 'bedroom-269', set: 'bedroom', label: "Mirror, Standing", w: 39, h: 62, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/269.png') },
-  { id: 'kitchen-032', set: 'kitchen', label: "Oven, Modern", w: 32, h: 41, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/032.png') },
-  { id: 'garden-003', set: 'garden', label: "Planter", w: 160, h: 84, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/garden/003.png') },
-  { id: 'lounge-001', set: 'lounge', label: "Diamond Rug, tiling", w: 384, h: 192, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/001.png') },
-  { id: 'lounge-002', set: 'lounge', label: "Rainbow Checkered Rug", w: 56, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/002.png') },
-  { id: 'lounge-003', set: 'lounge', label: "Rainbow Checkered Rug", w: 100, h: 42, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/003.png') },
-  { id: 'lounge-004', set: 'lounge', label: "Rainbow Checkered Rug", w: 56, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/004.png') },
-  { id: 'lounge-005', set: 'lounge', label: "Rainbow Checkered Rug", w: 100, h: 42, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/005.png') },
-  { id: 'lounge-006', set: 'lounge', label: "Rainbow Rug", w: 92, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/006.png') },
-  { id: 'lounge-007', set: 'lounge', label: "Rainbow Rug", w: 83, h: 70, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/007.png') },
-  { id: 'lounge-008', set: 'lounge', label: "Rainbow Rug", w: 83, h: 70, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/008.png') },
-  { id: 'lounge-009', set: 'lounge', label: "Rainbow Rug", w: 92, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/009.png') },
-  { id: 'lounge-010', set: 'lounge', label: "Swirling Vine Rug", w: 160, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/010.png') },
-  { id: 'maker-003', set: 'maker', label: "Sawhorse", w: 60, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/003.png') },
-  { id: 'kitchen-033', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/033.png') },
-  { id: 'kitchen-034', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/034.png') },
-  { id: 'kitchen-035', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/035.png') },
-  { id: 'kitchen-036', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/036.png') },
-  { id: 'kitchen-037', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/037.png') },
-  { id: 'kitchen-038', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/038.png') },
-  { id: 'kitchen-039', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/039.png') },
-  { id: 'kitchen-040', set: 'kitchen', label: "Bar Stools", w: 24, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/040.png') },
-  { id: 'kitchen-041', set: 'kitchen', label: "Chair, Dining A", w: 26, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/041.png') },
-  { id: 'kitchen-042', set: 'kitchen', label: "Chair, Dining A", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/042.png') },
-  { id: 'kitchen-043', set: 'kitchen', label: "Chair, Dining A", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/043.png') },
-  { id: 'kitchen-044', set: 'kitchen', label: "Chair, Dining A", w: 7, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/044.png') },
-  { id: 'kitchen-045', set: 'kitchen', label: "Chair, Dining A", w: 7, h: 19, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/045.png') },
-  { id: 'kitchen-046', set: 'kitchen', label: "Chair, Dining A", w: 26, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/046.png') },
-  { id: 'kitchen-047', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/047.png') },
-  { id: 'kitchen-048', set: 'kitchen', label: "Chair, Dining A", w: 26, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/048.png') },
-  { id: 'kitchen-049', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/049.png') },
-  { id: 'kitchen-050', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/050.png') },
-  { id: 'kitchen-051', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/051.png') },
-  { id: 'kitchen-052', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/052.png') },
-  { id: 'kitchen-053', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/053.png') },
-  { id: 'kitchen-054', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/054.png') },
-  { id: 'kitchen-055', set: 'kitchen', label: "Chair, Dining A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/055.png') },
-  { id: 'kitchen-056', set: 'kitchen', label: "Chair, Dining B", w: 26, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/056.png') },
-  { id: 'kitchen-057', set: 'kitchen', label: "Chair, Dining B", w: 26, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/057.png') },
-  { id: 'kitchen-058', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/058.png') },
-  { id: 'kitchen-059', set: 'kitchen', label: "Chair, Dining B", w: 26, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/059.png') },
-  { id: 'kitchen-060', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/060.png') },
-  { id: 'kitchen-061', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/061.png') },
-  { id: 'kitchen-062', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/062.png') },
-  { id: 'kitchen-063', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/063.png') },
-  { id: 'kitchen-064', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/064.png') },
-  { id: 'kitchen-065', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/065.png') },
-  { id: 'kitchen-066', set: 'kitchen', label: "Chair, Dining B", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/066.png') },
-  { id: 'kitchen-067', set: 'kitchen', label: "Chair, Dining C", w: 24, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/067.png') },
-  { id: 'kitchen-068', set: 'kitchen', label: "Chair, Dining C", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/068.png') },
-  { id: 'kitchen-069', set: 'kitchen', label: "Chair, Dining C", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/069.png') },
-  { id: 'kitchen-070', set: 'kitchen', label: "Chair, Dining C", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/070.png') },
-  { id: 'kitchen-071', set: 'kitchen', label: "Chair, Dining D", w: 26, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/071.png') },
-  { id: 'kitchen-072', set: 'kitchen', label: "Chair, Dining D", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/072.png') },
-  { id: 'kitchen-073', set: 'kitchen', label: "Chair, Dining D", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/073.png') },
-  { id: 'kitchen-074', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/074.png') },
-  { id: 'kitchen-075', set: 'kitchen', label: "Chair, Dining D", w: 18, h: 9, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/075.png') },
-  { id: 'kitchen-076', set: 'kitchen', label: "Chair, Dining D", w: 18, h: 9, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/076.png') },
-  { id: 'kitchen-077', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/077.png') },
-  { id: 'kitchen-078', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/078.png') },
-  { id: 'kitchen-079', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/079.png') },
-  { id: 'kitchen-080', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/080.png') },
-  { id: 'kitchen-081', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/081.png') },
-  { id: 'kitchen-082', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/082.png') },
-  { id: 'kitchen-083', set: 'kitchen', label: "Chair, Dining D", w: 24, h: 27, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/083.png') },
-  { id: 'kitchen-084', set: 'kitchen', label: "Chair, Dining E", w: 26, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/084.png') },
-  { id: 'kitchen-085', set: 'kitchen', label: "Chair, Dining E", w: 22, h: 128, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/085.png') },
-  { id: 'kitchen-086', set: 'kitchen', label: "Chair, Dining E", w: 22, h: 128, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/086.png') },
-  { id: 'kitchen-087', set: 'kitchen', label: "Chair, Dining E", w: 26, h: 15, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/087.png') },
-  { id: 'kitchen-088', set: 'kitchen', label: "Chair, Dining E", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/088.png') },
-  { id: 'kitchen-089', set: 'kitchen', label: "Chair, Dining E", w: 26, h: 15, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/089.png') },
-  { id: 'kitchen-090', set: 'kitchen', label: "Chair, Dining E", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/090.png') },
-  { id: 'kitchen-091', set: 'kitchen', label: "Chair, Dining E", w: 26, h: 15, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/091.png') },
-  { id: 'kitchen-092', set: 'kitchen', label: "Chair, Dining E", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/092.png') },
-  { id: 'kitchen-093', set: 'kitchen', label: "Chair, Dining E", w: 26, h: 15, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/093.png') },
-  { id: 'kitchen-094', set: 'kitchen', label: "Chair, Dining E", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/094.png') },
-  { id: 'kitchen-095', set: 'kitchen', label: "Chair, Dining F", w: 24, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/095.png') },
-  { id: 'kitchen-096', set: 'kitchen', label: "Chair, Dining F", w: 22, h: 128, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/096.png') },
-  { id: 'kitchen-097', set: 'kitchen', label: "Chair, Dining F", w: 22, h: 128, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/097.png') },
-  { id: 'kitchen-098', set: 'kitchen', label: "Chair, Dining F", w: 25, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/098.png') },
-  { id: 'kitchen-099', set: 'kitchen', label: "Chair, Dining F", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/099.png') },
-  { id: 'kitchen-100', set: 'kitchen', label: "Chair, Dining F", w: 25, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/100.png') },
-  { id: 'kitchen-101', set: 'kitchen', label: "Chair, Dining F", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/101.png') },
-  { id: 'kitchen-102', set: 'kitchen', label: "Chair, Dining F", w: 25, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/102.png') },
-  { id: 'kitchen-103', set: 'kitchen', label: "Chair, Dining F", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/103.png') },
-  { id: 'kitchen-104', set: 'kitchen', label: "Chair, Dining F", w: 25, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/104.png') },
-  { id: 'kitchen-105', set: 'kitchen', label: "Chair, Dining F", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/105.png') },
-  { id: 'lounge-011', set: 'lounge', label: "Chair, Office", w: 24, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/011.png') },
-  { id: 'lounge-012', set: 'lounge', label: "Chair, Office", w: 24, h: 29, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/012.png') },
-  { id: 'lounge-013', set: 'lounge', label: "Chair, Office", w: 24, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/013.png') },
-  { id: 'lounge-014', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/014.png') },
-  { id: 'lounge-015', set: 'lounge', label: "Chair, Sofa A", w: 23, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/015.png') },
-  { id: 'lounge-016', set: 'lounge', label: "Chair, Sofa A", w: 23, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/016.png') },
-  { id: 'lounge-017', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/017.png') },
-  { id: 'lounge-018', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/018.png') },
-  { id: 'lounge-019', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/019.png') },
-  { id: 'lounge-020', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/020.png') },
-  { id: 'lounge-021', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/021.png') },
-  { id: 'lounge-022', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/022.png') },
-  { id: 'lounge-023', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/023.png') },
-  { id: 'lounge-024', set: 'lounge', label: "Chair, Sofa A", w: 22, h: 28, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/024.png') },
-  { id: 'lounge-025', set: 'lounge', label: "Chair, Sofa B", w: 27, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/025.png') },
-  { id: 'lounge-026', set: 'lounge', label: "Chair, Sofa B", w: 24, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/026.png') },
-  { id: 'lounge-027', set: 'lounge', label: "Chair, Sofa B", w: 24, h: 256, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/027.png') },
-  { id: 'lounge-028', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/028.png') },
-  { id: 'lounge-029', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/029.png') },
-  { id: 'lounge-030', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/030.png') },
-  { id: 'lounge-031', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/031.png') },
-  { id: 'lounge-032', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/032.png') },
-  { id: 'lounge-033', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/033.png') },
-  { id: 'lounge-034', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/034.png') },
-  { id: 'lounge-035', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/035.png') },
-  { id: 'lounge-036', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/036.png') },
-  { id: 'lounge-037', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/037.png') },
-  { id: 'lounge-038', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/038.png') },
-  { id: 'lounge-039', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/039.png') },
-  { id: 'lounge-040', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/040.png') },
-  { id: 'lounge-041', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/041.png') },
-  { id: 'lounge-042', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/042.png') },
-  { id: 'lounge-043', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/043.png') },
-  { id: 'lounge-044', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/044.png') },
-  { id: 'lounge-045', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/045.png') },
-  { id: 'lounge-046', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/046.png') },
-  { id: 'lounge-047', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/047.png') },
-  { id: 'lounge-048', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/048.png') },
-  { id: 'lounge-049', set: 'lounge', label: "Chair, Sofa B", w: 26, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/049.png') },
-  { id: 'lounge-050', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/050.png') },
-  { id: 'lounge-051', set: 'lounge', label: "Chair, Sofa B", w: 22, h: 14, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/051.png') },
-  { id: 'lounge-052', set: 'lounge', label: "Chair, Sofa C", w: 54, h: 512, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/052.png') },
-  { id: 'lounge-053', set: 'lounge', label: "Chair, Sofa C", w: 127, h: 512, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/053.png') },
-  { id: 'lounge-054', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/054.png') },
-  { id: 'lounge-055', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/055.png') },
-  { id: 'lounge-056', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/056.png') },
-  { id: 'lounge-057', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/057.png') },
-  { id: 'lounge-058', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/058.png') },
-  { id: 'lounge-059', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/059.png') },
-  { id: 'lounge-060', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/060.png') },
-  { id: 'lounge-061', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/061.png') },
-  { id: 'lounge-062', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/062.png') },
-  { id: 'lounge-063', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/063.png') },
-  { id: 'lounge-064', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/064.png') },
-  { id: 'lounge-065', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/065.png') },
-  { id: 'lounge-066', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/066.png') },
-  { id: 'lounge-067', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/067.png') },
-  { id: 'lounge-068', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/068.png') },
-  { id: 'lounge-069', set: 'lounge', label: "Chair, Sofa C", w: 35, h: 35, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/069.png') },
-  { id: 'lounge-070', set: 'lounge', label: "Chair, Sofa D", w: 256, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/070.png') },
-  { id: 'lounge-071', set: 'lounge', label: "Chair, Sofa E", w: 256, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/071.png') },
-  { id: 'lounge-072', set: 'lounge', label: "Chair, Sofa F", w: 256, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/072.png') },
-  { id: 'lounge-073', set: 'lounge', label: "Chair, Sofa G", w: 256, h: 128, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/073.png') },
-  { id: 'lounge-074', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/074.png') },
-  { id: 'lounge-075', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/075.png') },
-  { id: 'lounge-076', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/076.png') },
-  { id: 'lounge-077', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/077.png') },
-  { id: 'lounge-078', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/078.png') },
-  { id: 'lounge-079', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/079.png') },
-  { id: 'lounge-080', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/080.png') },
-  { id: 'lounge-081', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/081.png') },
-  { id: 'lounge-082', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/082.png') },
-  { id: 'lounge-083', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/083.png') },
-  { id: 'lounge-084', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/084.png') },
-  { id: 'lounge-085', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/085.png') },
-  { id: 'lounge-086', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/086.png') },
-  { id: 'lounge-087', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/087.png') },
-  { id: 'lounge-088', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/088.png') },
-  { id: 'lounge-089', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/089.png') },
-  { id: 'lounge-090', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/090.png') },
-  { id: 'lounge-091', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/091.png') },
-  { id: 'lounge-092', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/092.png') },
-  { id: 'lounge-093', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/093.png') },
-  { id: 'lounge-094', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/094.png') },
-  { id: 'lounge-095', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/095.png') },
-  { id: 'lounge-096', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/096.png') },
-  { id: 'lounge-097', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/097.png') },
-  { id: 'lounge-098', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/098.png') },
-  { id: 'lounge-099', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/099.png') },
-  { id: 'lounge-100', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/100.png') },
-  { id: 'lounge-101', set: 'lounge', label: "Loveseat, Small - Casual Patterned A", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/101.png') },
-  { id: 'lounge-102', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/102.png') },
-  { id: 'lounge-103', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/103.png') },
-  { id: 'lounge-104', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/104.png') },
-  { id: 'lounge-105', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/105.png') },
-  { id: 'lounge-106', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/106.png') },
-  { id: 'lounge-107', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/107.png') },
-  { id: 'lounge-108', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/108.png') },
-  { id: 'lounge-109', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/109.png') },
-  { id: 'lounge-110', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/110.png') },
-  { id: 'lounge-111', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/111.png') },
-  { id: 'lounge-112', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/112.png') },
-  { id: 'lounge-113', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/113.png') },
-  { id: 'lounge-114', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/114.png') },
-  { id: 'lounge-115', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/115.png') },
-  { id: 'lounge-116', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/116.png') },
-  { id: 'lounge-117', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/117.png') },
-  { id: 'lounge-118', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/118.png') },
-  { id: 'lounge-119', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/119.png') },
-  { id: 'lounge-120', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/120.png') },
-  { id: 'lounge-121', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/121.png') },
-  { id: 'lounge-122', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/122.png') },
-  { id: 'lounge-123', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/123.png') },
-  { id: 'lounge-124', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/124.png') },
-  { id: 'lounge-125', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/125.png') },
-  { id: 'lounge-126', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/126.png') },
-  { id: 'lounge-127', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/127.png') },
-  { id: 'lounge-128', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/128.png') },
-  { id: 'lounge-129', set: 'lounge', label: "Loveseat, Small - Casual Patterned B", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/129.png') },
-  { id: 'lounge-130', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/130.png') },
-  { id: 'lounge-131', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/131.png') },
-  { id: 'lounge-132', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/132.png') },
-  { id: 'lounge-133', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/133.png') },
-  { id: 'lounge-134', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/134.png') },
-  { id: 'lounge-135', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/135.png') },
-  { id: 'lounge-136', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/136.png') },
-  { id: 'lounge-137', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/137.png') },
-  { id: 'lounge-138', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/138.png') },
-  { id: 'lounge-139', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/139.png') },
-  { id: 'lounge-140', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/140.png') },
-  { id: 'lounge-141', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/141.png') },
-  { id: 'lounge-142', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/142.png') },
-  { id: 'lounge-143', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/143.png') },
-  { id: 'lounge-144', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/144.png') },
-  { id: 'lounge-145', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/145.png') },
-  { id: 'lounge-146', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/146.png') },
-  { id: 'lounge-147', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/147.png') },
-  { id: 'lounge-148', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/148.png') },
-  { id: 'lounge-149', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/149.png') },
-  { id: 'lounge-150', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/150.png') },
-  { id: 'lounge-151', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/151.png') },
-  { id: 'lounge-152', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/152.png') },
-  { id: 'lounge-153', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/153.png') },
-  { id: 'lounge-154', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/154.png') },
-  { id: 'lounge-155', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/155.png') },
-  { id: 'lounge-156', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/156.png') },
-  { id: 'lounge-157', set: 'lounge', label: "Loveseat, Small - Casual Patterned C", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/157.png') },
-  { id: 'lounge-158', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/158.png') },
-  { id: 'lounge-159', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/159.png') },
-  { id: 'lounge-160', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/160.png') },
-  { id: 'lounge-161', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 52, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/161.png') },
-  { id: 'lounge-162', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/162.png') },
-  { id: 'lounge-163', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/163.png') },
-  { id: 'lounge-164', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/164.png') },
-  { id: 'lounge-165', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/165.png') },
-  { id: 'lounge-166', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/166.png') },
-  { id: 'lounge-167', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/167.png') },
-  { id: 'lounge-168', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/168.png') },
-  { id: 'lounge-169', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/169.png') },
-  { id: 'lounge-170', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/170.png') },
-  { id: 'lounge-171', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/171.png') },
-  { id: 'lounge-172', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/172.png') },
-  { id: 'lounge-173', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/173.png') },
-  { id: 'lounge-174', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/174.png') },
-  { id: 'lounge-175', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/175.png') },
-  { id: 'lounge-176', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/176.png') },
-  { id: 'lounge-177', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/177.png') },
-  { id: 'lounge-178', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/178.png') },
-  { id: 'lounge-179', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/179.png') },
-  { id: 'lounge-180', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/180.png') },
-  { id: 'lounge-181', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 25, h: 55, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/181.png') },
-  { id: 'lounge-182', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/182.png') },
-  { id: 'lounge-183', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/183.png') },
-  { id: 'lounge-184', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/184.png') },
-  { id: 'lounge-185', set: 'lounge', label: "Loveseat, Small - Casual Patterned D", w: 53, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/185.png') },
-  { id: 'lounge-186', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/186.png') },
-  { id: 'lounge-187', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/187.png') },
-  { id: 'lounge-188', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/188.png') },
-  { id: 'lounge-189', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/189.png') },
-  { id: 'lounge-190', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/190.png') },
-  { id: 'lounge-191', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/191.png') },
-  { id: 'lounge-192', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/192.png') },
-  { id: 'lounge-193', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/193.png') },
-  { id: 'lounge-194', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/194.png') },
-  { id: 'lounge-195', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/195.png') },
-  { id: 'lounge-196', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/196.png') },
-  { id: 'lounge-197', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/197.png') },
-  { id: 'lounge-198', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/198.png') },
-  { id: 'lounge-199', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/199.png') },
-  { id: 'lounge-200', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/200.png') },
-  { id: 'lounge-201', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/201.png') },
-  { id: 'lounge-202', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/202.png') },
-  { id: 'lounge-203', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/203.png') },
-  { id: 'lounge-204', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/204.png') },
-  { id: 'lounge-205', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/205.png') },
-  { id: 'lounge-206', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 95, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/206.png') },
-  { id: 'lounge-207', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 95, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/207.png') },
-  { id: 'lounge-208', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 95, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/208.png') },
-  { id: 'lounge-209', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 95, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/209.png') },
-  { id: 'lounge-210', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/210.png') },
-  { id: 'lounge-211', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/211.png') },
-  { id: 'lounge-212', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/212.png') },
-  { id: 'lounge-213', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/213.png') },
-  { id: 'lounge-214', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/214.png') },
-  { id: 'lounge-215', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/215.png') },
-  { id: 'lounge-216', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/216.png') },
-  { id: 'lounge-217', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/217.png') },
-  { id: 'lounge-218', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/218.png') },
-  { id: 'lounge-219', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/219.png') },
-  { id: 'lounge-220', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/220.png') },
-  { id: 'lounge-221', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/221.png') },
-  { id: 'lounge-222', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/222.png') },
-  { id: 'lounge-223', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/223.png') },
-  { id: 'lounge-224', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/224.png') },
-  { id: 'lounge-225', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 25, h: 12, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/225.png') },
-  { id: 'lounge-226', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/226.png') },
-  { id: 'lounge-227', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/227.png') },
-  { id: 'lounge-228', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/228.png') },
-  { id: 'lounge-229', set: 'lounge', label: "Loveseat, Small - Casual Solid A", w: 56, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/229.png') },
-  { id: 'lounge-230', set: 'lounge', label: "Loveseat, Small - Casual Solid B", w: 256, h: 255, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/230.png') },
-  { id: 'lounge-231', set: 'lounge', label: "Loveseat, Small - Casual Solid C", w: 256, h: 95, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/231.png') },
-  { id: 'lounge-232', set: 'lounge', label: "Loveseat, Small - Casual Solid C", w: 256, h: 126, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/232.png') },
-  { id: 'lounge-233', set: 'lounge', label: "Loveseat, Small - Casual Solid C", w: 256, h: 30, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/233.png') },
-  { id: 'lounge-234', set: 'lounge', label: "Loveseat, Small - Formal A", w: 256, h: 40, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/234.png') },
-  { id: 'lounge-235', set: 'lounge', label: "Loveseat, Small - Formal A", w: 256, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/235.png') },
-  { id: 'lounge-236', set: 'lounge', label: "Loveseat, Small - Formal A", w: 256, h: 40, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/236.png') },
-  { id: 'lounge-237', set: 'lounge', label: "Loveseat, Small - Formal A", w: 256, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/237.png') },
-  { id: 'lounge-238', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/238.png') },
-  { id: 'lounge-239', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/239.png') },
-  { id: 'lounge-240', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/240.png') },
-  { id: 'lounge-241', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/241.png') },
-  { id: 'lounge-242', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/242.png') },
-  { id: 'lounge-243', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/243.png') },
-  { id: 'lounge-244', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/244.png') },
-  { id: 'lounge-245', set: 'lounge', label: "Ottoman, Long A", w: 24, h: 51, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/245.png') },
-  { id: 'lounge-246', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/246.png') },
-  { id: 'lounge-247', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/247.png') },
-  { id: 'lounge-248', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/248.png') },
-  { id: 'lounge-249', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/249.png') },
-  { id: 'lounge-250', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/250.png') },
-  { id: 'lounge-251', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/251.png') },
-  { id: 'lounge-252', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/252.png') },
-  { id: 'lounge-253', set: 'lounge', label: "Ottoman, Long A", w: 57, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/253.png') },
-  { id: 'lounge-254', set: 'lounge', label: "Ottoman, Medium A", w: 128, h: 30, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/254.png') },
-  { id: 'lounge-255', set: 'lounge', label: "Ottoman, Medium A", w: 128, h: 30, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/255.png') },
-  { id: 'lounge-256', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/256.png') },
-  { id: 'lounge-257', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/257.png') },
-  { id: 'lounge-258', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/258.png') },
-  { id: 'lounge-259', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/259.png') },
-  { id: 'lounge-260', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/260.png') },
-  { id: 'lounge-261', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/261.png') },
-  { id: 'lounge-262', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/262.png') },
-  { id: 'lounge-263', set: 'lounge', label: "Ottoman, Small A", w: 24, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/263.png') },
-  { id: 'lounge-264', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/264.png') },
-  { id: 'lounge-265', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/265.png') },
-  { id: 'lounge-266', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/266.png') },
-  { id: 'lounge-267', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/267.png') },
-  { id: 'lounge-268', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/268.png') },
-  { id: 'lounge-269', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/269.png') },
-  { id: 'lounge-270', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/270.png') },
-  { id: 'lounge-271', set: 'lounge', label: "Ottoman, Small B", w: 24, h: 22, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/271.png') },
-  { id: 'lounge-272', set: 'lounge', label: "Sofa Set, Casual A", w: 122, h: 63, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/272.png') },
-  { id: 'lounge-273', set: 'lounge', label: "Sofa Set, Casual A", w: 154, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/273.png') },
-  { id: 'lounge-274', set: 'lounge', label: "Sofa Set, Casual A", w: 29, h: 82, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/274.png') },
-  { id: 'lounge-275', set: 'lounge', label: "Sofa Set, Casual A", w: 29, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/275.png') },
-  { id: 'lounge-276', set: 'lounge', label: "Sofa Set, Casual A", w: 40, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/276.png') },
-  { id: 'lounge-277', set: 'lounge', label: "Sofa Set, Casual A", w: 40, h: 31, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/277.png') },
-  { id: 'lounge-278', set: 'lounge', label: "Sofa Set, Casual A", w: 120, h: 31, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/278.png') },
-  { id: 'lounge-279', set: 'lounge', label: "Sofa Set, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/279.png') },
-  { id: 'lounge-280', set: 'lounge', label: "Sofa, Casual A", w: 124, h: 224, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/280.png') },
-  { id: 'lounge-281', set: 'lounge', label: "Sofa, Casual A", w: 154, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/281.png') },
-  { id: 'lounge-282', set: 'lounge', label: "Sofa, Casual A", w: 154, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/282.png') },
-  { id: 'lounge-283', set: 'lounge', label: "Sofa, Casual A", w: 29, h: 82, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/283.png') },
-  { id: 'lounge-284', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/284.png') },
-  { id: 'lounge-285', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/285.png') },
-  { id: 'lounge-286', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/286.png') },
-  { id: 'lounge-287', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/287.png') },
-  { id: 'lounge-288', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/288.png') },
-  { id: 'lounge-289', set: 'lounge', label: "Sofa, Casual A", w: 154, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/289.png') },
-  { id: 'lounge-290', set: 'lounge', label: "Sofa, Casual A", w: 154, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/290.png') },
-  { id: 'lounge-291', set: 'lounge', label: "Sofa, Casual A", w: 29, h: 82, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/291.png') },
-  { id: 'lounge-292', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/292.png') },
-  { id: 'lounge-293', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/293.png') },
-  { id: 'lounge-294', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/294.png') },
-  { id: 'lounge-295', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/295.png') },
-  { id: 'lounge-296', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/296.png') },
-  { id: 'lounge-297', set: 'lounge', label: "Sofa, Casual A", w: 28, h: 16, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/297.png') },
-  { id: 'curious-003', set: 'curious', label: "Thrones", w: 320, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/003.png') },
-  { id: 'curious-004', set: 'curious', label: "Thrones", w: 30, h: 75, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/004.png') },
-  { id: 'curious-005', set: 'curious', label: "Thrones", w: 61, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/005.png') },
-  { id: 'curious-006', set: 'curious', label: "Thrones", w: 61, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/006.png') },
-  { id: 'curious-007', set: 'curious', label: "Thrones", w: 61, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/007.png') },
-  { id: 'curious-008', set: 'curious', label: "Thrones", w: 61, h: 75, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/008.png') },
-  { id: 'curious-009', set: 'curious', label: "Thrones", w: 30, h: 75, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/009.png') },
-  { id: 'maker-004', set: 'maker', label: "Dress Form", w: 30, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/004.png') },
-  { id: 'maker-005', set: 'maker', label: "Dress Form", w: 28, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/005.png') },
-  { id: 'maker-006', set: 'maker', label: "Dress Form", w: 27, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/006.png') },
-  { id: 'maker-007', set: 'maker', label: "Dress Form", w: 23, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/007.png') },
-  { id: 'maker-008', set: 'maker', label: "Dress Form", w: 27, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/008.png') },
-  { id: 'maker-009', set: 'maker', label: "Dress Form", w: 23, h: 64, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/009.png') },
-  { id: 'maker-010', set: 'maker', label: "Loom", w: 51, h: 60, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/010.png') },
-  { id: 'maker-011', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/011.png') },
-  { id: 'maker-012', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/012.png') },
-  { id: 'maker-013', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/013.png') },
-  { id: 'maker-014', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/014.png') },
-  { id: 'maker-015', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/015.png') },
-  { id: 'maker-016', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/016.png') },
-  { id: 'maker-017', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/017.png') },
-  { id: 'maker-018', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/018.png') },
-  { id: 'maker-019', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/019.png') },
-  { id: 'maker-020', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/020.png') },
-  { id: 'maker-021', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/021.png') },
-  { id: 'maker-022', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/022.png') },
-  { id: 'maker-023', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/023.png') },
-  { id: 'maker-024', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/024.png') },
-  { id: 'maker-025', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/025.png') },
-  { id: 'maker-026', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/026.png') },
-  { id: 'maker-027', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/027.png') },
-  { id: 'maker-028', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/028.png') },
-  { id: 'maker-029', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/029.png') },
-  { id: 'maker-030', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/030.png') },
-  { id: 'maker-031', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/031.png') },
-  { id: 'maker-032', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/032.png') },
-  { id: 'maker-033', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/033.png') },
-  { id: 'maker-034', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/034.png') },
-  { id: 'maker-035', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/035.png') },
-  { id: 'maker-036', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/036.png') },
-  { id: 'maker-037', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/037.png') },
-  { id: 'maker-038', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/038.png') },
-  { id: 'maker-039', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/039.png') },
-  { id: 'maker-040', set: 'maker', label: "Loom", w: 35, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/040.png') },
-  { id: 'maker-041', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/041.png') },
-  { id: 'maker-042', set: 'maker', label: "Loom", w: 35, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/042.png') },
-  { id: 'maker-043', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/043.png') },
-  { id: 'maker-044', set: 'maker', label: "Loom", w: 35, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/044.png') },
-  { id: 'maker-045', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/045.png') },
-  { id: 'maker-046', set: 'maker', label: "Loom", w: 35, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/046.png') },
-  { id: 'maker-047', set: 'maker', label: "Spinning Wheel", w: 34, h: 26, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/047.png') },
-  { id: 'maker-048', set: 'maker', label: "Spinning Wheel", w: 34, h: 26, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/048.png') },
-  { id: 'maker-049', set: 'maker', label: "Spinning Wheel", w: 34, h: 26, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/049.png') },
-  { id: 'maker-050', set: 'maker', label: "Spinning Wheel", w: 34, h: 26, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/050.png') },
-  { id: 'maker-051', set: 'maker', label: "Spinning Wheel", w: 29, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/051.png') },
-  { id: 'maker-052', set: 'maker', label: "Spinning Wheel", w: 40, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/052.png') },
-  { id: 'maker-053', set: 'maker', label: "Spinning Wheel", w: 40, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/053.png') },
-  { id: 'maker-054', set: 'maker', label: "Spinning Wheel", w: 40, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/054.png') },
-  { id: 'maker-055', set: 'maker', label: "Spinning Wheel", w: 41, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/055.png') },
-  { id: 'maker-056', set: 'maker', label: "Workbench, Sewing Machine", w: 64, h: 50, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/056.png') },
-  { id: 'maker-057', set: 'maker', label: "Workbench, Sewing", w: 62, h: 54, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/057.png') },
-  { id: 'maker-058', set: 'maker', label: "Workbench, Sewing", w: 62, h: 47, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/058.png') },
-  { id: 'maker-059', set: 'maker', label: "Workbench, Sewing", w: 62, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/059.png') },
-  { id: 'maker-060', set: 'maker', label: "Workbench, Sewing", w: 30, h: 90, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/060.png') },
-  { id: 'maker-061', set: 'maker', label: "Workbench, Sewing", w: 30, h: 90, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/061.png') },
-  { id: 'maker-062', set: 'maker', label: "Workbench, Sewing", w: 30, h: 90, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/062.png') },
-  { id: 'maker-063', set: 'maker', label: "Workbench, Sewing", w: 62, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/063.png') },
-  { id: 'maker-064', set: 'maker', label: "Workbench, Sewing", w: 22, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/064.png') },
-  { id: 'maker-065', set: 'maker', label: "Workbench, Sewing", w: 22, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/065.png') },
-  { id: 'maker-066', set: 'maker', label: "Workbench, Sewing", w: 22, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/066.png') },
-  { id: 'maker-067', set: 'maker', label: "Shavehorse", w: 52, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/067.png') },
-  { id: 'maker-068', set: 'maker', label: "Shavehorse", w: 52, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/068.png') },
-  { id: 'study-016', set: 'study', label: "Shelf", w: 32, h: 96, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/016.png') },
-  { id: 'study-017', set: 'study', label: "Shelf", w: 96, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/017.png') },
-  { id: 'study-018', set: 'study', label: "Shelf", w: 32, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/study/018.png') },
-  { id: 'study-019', set: 'study', label: "Shelf", w: 32, h: 59, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/019.png') },
-  { id: 'study-020', set: 'study', label: "Shelf", w: 62, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/020.png') },
-  { id: 'study-021', set: 'study', label: "Shelf", w: 64, h: 21, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/study/021.png') },
-  { id: 'kitchen-106', set: 'kitchen', label: "Sink, Countertop", w: 61, h: 29, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/106.png') },
-  { id: 'kitchen-107', set: 'kitchen', label: "Sink, Countertop", w: 22, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/107.png') },
-  { id: 'kitchen-108', set: 'kitchen', label: "Sink, Countertop", w: 22, h: 13, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/108.png') },
-  { id: 'kitchen-109', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 33, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/109.png') },
-  { id: 'kitchen-110', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 33, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/110.png') },
-  { id: 'kitchen-111', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 33, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/111.png') },
-  { id: 'kitchen-112', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 33, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/112.png') },
-  { id: 'kitchen-113', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/113.png') },
-  { id: 'kitchen-114', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/114.png') },
-  { id: 'kitchen-115', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/115.png') },
-  { id: 'kitchen-116', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/116.png') },
-  { id: 'kitchen-117', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/117.png') },
-  { id: 'kitchen-118', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/118.png') },
-  { id: 'kitchen-119', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/119.png') },
-  { id: 'kitchen-120', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/120.png') },
-  { id: 'kitchen-121', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/121.png') },
-  { id: 'kitchen-122', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/122.png') },
-  { id: 'kitchen-123', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/123.png') },
-  { id: 'kitchen-124', set: 'kitchen', label: "Sink, Pedestal", w: 14, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/kitchen/124.png') },
-  { id: 'kitchen-125', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/125.png') },
-  { id: 'kitchen-126', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/126.png') },
-  { id: 'kitchen-127', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/127.png') },
-  { id: 'kitchen-128', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/128.png') },
-  { id: 'kitchen-129', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/129.png') },
-  { id: 'kitchen-130', set: 'kitchen', label: "Sink, Pedestal", w: 22, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/130.png') },
-  { id: 'forge-001', set: 'forge', label: "Anvils", w: 46, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/001.png') },
-  { id: 'forge-002', set: 'forge', label: "Anvils", w: 32, h: 24, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/002.png') },
-  { id: 'forge-003', set: 'forge', label: "Anvils", w: 30, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/003.png') },
-  { id: 'forge-004', set: 'forge', label: "Anvils", w: 128, h: 24, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/004.png') },
-  { id: 'forge-005', set: 'forge', label: "Bellows", w: 36, h: 11, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/005.png') },
-  { id: 'forge-006', set: 'forge', label: "Bellows", w: 29, h: 10, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/006.png') },
-  { id: 'forge-007', set: 'forge', label: "Bellows", w: 20, h: 9, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/007.png') },
-  { id: 'forge-008', set: 'forge', label: "Bellows", w: 7, h: 7, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/008.png') },
-  { id: 'forge-009', set: 'forge', label: "Bellows", w: 20, h: 9, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/009.png') },
-  { id: 'forge-010', set: 'forge', label: "Bellows", w: 13, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/010.png') },
-  { id: 'forge-011', set: 'forge', label: "Bellows", w: 26, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/011.png') },
-  { id: 'forge-012', set: 'forge', label: "Bellows", w: 13, h: 6, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/012.png') },
-  { id: 'forge-013', set: 'forge', label: "Bellows", w: 75, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/013.png') },
-  { id: 'forge-014', set: 'forge', label: "Bellows", w: 43, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/014.png') },
-  { id: 'forge-015', set: 'forge', label: "Bellows", w: 43, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/015.png') },
-  { id: 'forge-016', set: 'forge', label: "Bellows", w: 43, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/016.png') },
-  { id: 'forge-017', set: 'forge', label: "Bellows", w: 43, h: 22, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/017.png') },
-  { id: 'forge-018', set: 'forge', label: "Bellows", w: 43, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/018.png') },
-  { id: 'forge-019', set: 'forge', label: "Coal Piles", w: 113, h: 51, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/019.png') },
-  { id: 'forge-020', set: 'forge', label: "Coal Piles", w: 102, h: 47, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/020.png') },
-  { id: 'forge-021', set: 'forge', label: "Coal Piles", w: 60, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/021.png') },
-  { id: 'forge-022', set: 'forge', label: "Coal Piles", w: 91, h: 47, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/022.png') },
-  { id: 'forge-023', set: 'forge', label: "Coal Piles", w: 67, h: 45, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/023.png') },
-  { id: 'forge-024', set: 'forge', label: "Coal Piles", w: 32, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/024.png') },
-  { id: 'forge-025', set: 'forge', label: "Coal Piles", w: 51, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/025.png') },
-  { id: 'forge-026', set: 'forge', label: "Coal Piles", w: 30, h: 21, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/026.png') },
-  { id: 'forge-027', set: 'forge', label: "Coal Piles", w: 288, h: 56, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/027.png') },
-  { id: 'forge-028', set: 'forge', label: "Forge A", w: 256, h: 103, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/028.png') },
-  { id: 'forge-029', set: 'forge', label: "Forge A", w: 7, h: 7, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/029.png') },
-  { id: 'forge-030', set: 'forge', label: "Forge A", w: 18, h: 31, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/030.png') },
-  { id: 'forge-031', set: 'forge', label: "Forge A", w: 18, h: 26, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/031.png') },
-  { id: 'forge-032', set: 'forge', label: "Forge A", w: 18, h: 52, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/032.png') },
-  { id: 'forge-033', set: 'forge', label: "Forge A", w: 18, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/033.png') },
-  { id: 'forge-034', set: 'forge', label: "Forge A", w: 512, h: 116, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/034.png') },
-  { id: 'forge-035', set: 'forge', label: "Furnace A", w: 128, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/035.png') },
-  { id: 'forge-036', set: 'forge', label: "Furnace A", w: 51, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/036.png') },
-  { id: 'forge-037', set: 'forge', label: "Furnace A", w: 51, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/037.png') },
-  { id: 'forge-038', set: 'forge', label: "Furnace A", w: 51, h: 20, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/038.png') },
-  { id: 'forge-039', set: 'forge', label: "Furnace A", w: 51, h: 19, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/039.png') },
-  { id: 'forge-040', set: 'forge', label: "Furnace A", w: 51, h: 19, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/040.png') },
-  { id: 'forge-041', set: 'forge', label: "Furnace A", w: 49, h: 16, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/041.png') },
-  { id: 'forge-042', set: 'forge', label: "Furnace A", w: 29, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/042.png') },
-  { id: 'forge-043', set: 'forge', label: "Furnace A", w: 25, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/043.png') },
-  { id: 'forge-044', set: 'forge', label: "Furnace A", w: 15, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/044.png') },
-  { id: 'forge-045', set: 'forge', label: "Furnace A", w: 6, h: 38, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/045.png') },
-  { id: 'forge-046', set: 'forge', label: "Furnace A", w: 29, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/046.png') },
-  { id: 'forge-047', set: 'forge', label: "Furnace A", w: 25, h: 28, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/047.png') },
-  { id: 'forge-048', set: 'forge', label: "Furnace A", w: 15, h: 35, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/048.png') },
-  { id: 'forge-049', set: 'forge', label: "Furnace A", w: 6, h: 38, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/forge/049.png') },
-  { id: 'forge-050', set: 'forge', label: "Grindstone", w: 96, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/050.png') },
-  { id: 'forge-051', set: 'forge', label: "Smelter", w: 64, h: 40, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/051.png') },
-  { id: 'forge-052', set: 'forge', label: "Smelter", w: 192, h: 40, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/052.png') },
-  { id: 'forge-053', set: 'forge', label: "Workbench, Smith", w: 125, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/053.png') },
-  { id: 'forge-054', set: 'forge', label: "Workbench, Smith", w: 61, h: 62, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/054.png') },
-  { id: 'forge-055', set: 'forge', label: "Workbench, Smith", w: 63, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/055.png') },
-  { id: 'forge-056', set: 'forge', label: "Workbench, Smith", w: 60, h: 50, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/forge/056.png') },
-  { id: 'forge-057', set: 'forge', label: "Workbench, Smith", w: 58, h: 50, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/forge/057.png') },
-  { id: 'bedroom-270', set: 'bedroom', label: "Standing Screen", w: 256, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/bedroom/270.png') },
-  { id: 'bedroom-271', set: 'bedroom', label: "Standing Screen", w: 31, h: 86, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/bedroom/271.png') },
-  { id: 'curious-010', set: 'curious', label: "Stone Slab", w: 64, h: 26, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/010.png') },
-  { id: 'curious-011', set: 'curious', label: "Stone Slab", w: 49, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/011.png') },
-  { id: 'curious-012', set: 'curious', label: "Stone Slab", w: 64, h: 33, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/012.png') },
-  { id: 'curious-013', set: 'curious', label: "Stone Slab", w: 49, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/013.png') },
-  { id: 'lounge-298', set: 'lounge', label: "TV, Widescreen - No Service", w: 96, h: 54, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/298.png') },
-  { id: 'lounge-299', set: 'lounge', label: "TV, Widescreen - No Service", w: 80, h: 45, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/299.png') },
-  { id: 'lounge-300', set: 'lounge', label: "TV, Widescreen - No Service", w: 64, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/300.png') },
-  { id: 'lounge-301', set: 'lounge', label: "TV, Widescreen - No Service", w: 48, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/301.png') },
-  { id: 'lounge-302', set: 'lounge', label: "TV, Widescreen - No Service", w: 32, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/302.png') },
-  { id: 'lounge-303', set: 'lounge', label: "TV, Widescreen - No Service", w: 96, h: 54, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/303.png') },
-  { id: 'lounge-304', set: 'lounge', label: "TV, Widescreen - No Service", w: 80, h: 45, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/304.png') },
-  { id: 'lounge-305', set: 'lounge', label: "TV, Widescreen - No Service", w: 64, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/305.png') },
-  { id: 'lounge-306', set: 'lounge', label: "TV, Widescreen - No Service", w: 48, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/306.png') },
-  { id: 'lounge-307', set: 'lounge', label: "TV, Widescreen - No Service", w: 32, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/307.png') },
-  { id: 'lounge-308', set: 'lounge', label: "TV, Widescreen - No Service", w: 96, h: 54, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/308.png') },
-  { id: 'lounge-309', set: 'lounge', label: "TV, Widescreen - No Service", w: 80, h: 45, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/309.png') },
-  { id: 'lounge-310', set: 'lounge', label: "TV, Widescreen - No Service", w: 64, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/310.png') },
-  { id: 'lounge-311', set: 'lounge', label: "TV, Widescreen - No Service", w: 48, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/311.png') },
-  { id: 'lounge-312', set: 'lounge', label: "TV, Widescreen - No Service", w: 32, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/312.png') },
-  { id: 'lounge-313', set: 'lounge', label: "TV, Widescreen - No Service", w: 96, h: 54, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/313.png') },
-  { id: 'lounge-314', set: 'lounge', label: "TV, Widescreen - No Service", w: 80, h: 45, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/314.png') },
-  { id: 'lounge-315', set: 'lounge', label: "TV, Widescreen - No Service", w: 64, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/315.png') },
-  { id: 'lounge-316', set: 'lounge', label: "TV, Widescreen - No Service", w: 48, h: 27, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/316.png') },
-  { id: 'lounge-317', set: 'lounge', label: "TV, Widescreen - No Service", w: 32, h: 18, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/317.png') },
-  { id: 'lounge-318', set: 'lounge', label: "TV, Widescreen", w: 100, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/318.png') },
-  { id: 'lounge-319', set: 'lounge', label: "TV, Widescreen", w: 84, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/319.png') },
-  { id: 'lounge-320', set: 'lounge', label: "TV, Widescreen", w: 68, h: 43, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/320.png') },
-  { id: 'lounge-321', set: 'lounge', label: "TV, Widescreen", w: 52, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/321.png') },
-  { id: 'lounge-322', set: 'lounge', label: "TV, Widescreen", w: 36, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/322.png') },
-  { id: 'lounge-323', set: 'lounge', label: "TV, Widescreen", w: 32, h: 11, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/323.png') },
-  { id: 'lounge-324', set: 'lounge', label: "TV, Widescreen", w: 24, h: 10, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/324.png') },
-  { id: 'lounge-325', set: 'lounge', label: "Table, Card", w: 128, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/325.png') },
-  { id: 'lounge-326', set: 'lounge', label: "Table, Card", w: 128, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/326.png') },
-  { id: 'lounge-327', set: 'lounge', label: "Table, Card", w: 128, h: 61, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/lounge/327.png') },
-  { id: 'kitchen-131', set: 'kitchen', label: "Table, Ornate Wood", w: 64, h: 32, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/131.png') },
-  { id: 'kitchen-132', set: 'kitchen', label: "Table, Ornate Wood", w: 16, h: 46, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/132.png') },
-  { id: 'kitchen-133', set: 'kitchen', label: "Table, Ornate Wood", w: 80, h: 112, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/133.png') },
-  { id: 'kitchen-134', set: 'kitchen', label: "Table, Ornate Wood", w: 48, h: 25, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/134.png') },
-  { id: 'kitchen-135', set: 'kitchen', label: "Table, Ornate Wood", w: 48, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/kitchen/135.png') },
-  { id: 'maker-069', set: 'maker', label: "Table, Rough Wood", w: 80, h: 42, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/069.png') },
-  { id: 'maker-070', set: 'maker', label: "Table, Rough Wood", w: 96, h: 32, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/070.png') },
-  { id: 'maker-071', set: 'maker', label: "Table, Rough Wood", w: 29, h: 86, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/071.png') },
-  { id: 'maker-072', set: 'maker', label: "Table, Rough Wood", w: 29, h: 86, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/072.png') },
-  { id: 'maker-073', set: 'maker', label: "Table, Rough Wood", w: 29, h: 86, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/maker/073.png') },
-  { id: 'maker-074', set: 'maker', label: "Table, Rough Wood", w: 80, h: 42, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/074.png') },
-  { id: 'maker-075', set: 'maker', label: "Table, Rough Wood", w: 80, h: 42, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/075.png') },
-  { id: 'maker-076', set: 'maker', label: "Table, Workshop", w: 127, h: 116, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/076.png') },
-  { id: 'garden-004', set: 'garden', label: "Trough", w: 128, h: 320, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/garden/004.png') },
-  { id: 'garden-005', set: 'garden', label: "Trough", w: 62, h: 320, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/garden/005.png') },
-  { id: 'garden-006', set: 'garden', label: "Trough", w: 57, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/006.png') },
-  { id: 'garden-007', set: 'garden', label: "Trough", w: 59, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/007.png') },
-  { id: 'garden-008', set: 'garden', label: "Trough", w: 57, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/008.png') },
-  { id: 'garden-009', set: 'garden', label: "Trough", w: 59, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/009.png') },
-  { id: 'garden-010', set: 'garden', label: "Trough", w: 57, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/010.png') },
-  { id: 'garden-011', set: 'garden', label: "Trough", w: 59, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/011.png') },
-  { id: 'garden-012', set: 'garden', label: "Trough", w: 57, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/012.png') },
-  { id: 'garden-013', set: 'garden', label: "Trough", w: 59, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/013.png') },
-  { id: 'garden-014', set: 'garden', label: "Trough", w: 57, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/014.png') },
-  { id: 'garden-015', set: 'garden', label: "Trough", w: 59, h: 38, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/garden/015.png') },
-  { id: 'lounge-328', set: 'lounge', label: "Vase-Studies", w: 22, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/328.png') },
-  { id: 'lounge-329', set: 'lounge', label: "Vase-Studies", w: 24, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/329.png') },
-  { id: 'lounge-330', set: 'lounge', label: "Vase-Studies", w: 22, h: 45, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/330.png') },
-  { id: 'lounge-331', set: 'lounge', label: "Vase-Studies", w: 16, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/331.png') },
-  { id: 'lounge-332', set: 'lounge', label: "Vase-Studies", w: 20, h: 34, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/332.png') },
-  { id: 'lounge-333', set: 'lounge', label: "Vase-Studies", w: 28, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/333.png') },
-  { id: 'lounge-334', set: 'lounge', label: "Vase-Studies", w: 28, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/334.png') },
-  { id: 'lounge-335', set: 'lounge', label: "Vase-Studies", w: 28, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/335.png') },
-  { id: 'lounge-336', set: 'lounge', label: "Vase-Studies", w: 28, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/336.png') },
-  { id: 'lounge-337', set: 'lounge', label: "Vase-Studies", w: 24, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/337.png') },
-  { id: 'lounge-338', set: 'lounge', label: "Vase-Studies", w: 24, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/338.png') },
-  { id: 'lounge-339', set: 'lounge', label: "Vase-Studies", w: 24, h: 36, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/339.png') },
-  { id: 'lounge-340', set: 'lounge', label: "Vase-Studies", w: 26, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/340.png') },
-  { id: 'lounge-341', set: 'lounge', label: "Vase-Studies", w: 26, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/341.png') },
-  { id: 'lounge-342', set: 'lounge', label: "Vase-Studies", w: 26, h: 37, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/342.png') },
-  { id: 'study-022', set: 'study', label: "Vending Machine", w: 80, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/022.png') },
-  { id: 'study-023', set: 'study', label: "Vending Machine", w: 80, h: 64, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/study/023.png') },
-  { id: 'kitchen-136', set: 'kitchen', label: "Water Cooler", w: 18, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/136.png') },
-  { id: 'kitchen-137', set: 'kitchen', label: "Water Cooler", w: 16, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/137.png') },
-  { id: 'kitchen-138', set: 'kitchen', label: "Water Cooler", w: 18, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/138.png') },
-  { id: 'kitchen-139', set: 'kitchen', label: "Water Cooler", w: 16, h: 53, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/kitchen/139.png') },
-  { id: 'curious-014', set: 'curious', label: "Wolf Stone", w: 128, h: 127, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/curious/014.png') },
-  { id: 'maker-077', set: 'maker', label: "Workbench, Carpentry", w: 77, h: 52, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/077.png') },
-  { id: 'maker-078', set: 'maker', label: "Workbench, Carpentry", w: 40, h: 88, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/078.png') },
-  { id: 'maker-079', set: 'maker', label: "Workbench, Carpentry", w: 43, h: 88, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/079.png') },
-  { id: 'maker-080', set: 'maker', label: "Workbench, Wire Drawing", w: 26, h: 20, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/080.png') },
-  { id: 'maker-081', set: 'maker', label: "Workbench, Wire Drawing", w: 32, h: 17, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/maker/081.png') },
-  { id: 'maker-082', set: 'maker', label: "Workbench, Wire Drawing", w: 63, h: 57, kind: 'furniture', rarity: 'epic', src: require('../../assets/stickers/maker/082.png') },
-  { id: 'curious-015', set: 'curious', label: "Shopping Cart", w: 30, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/015.png') },
-  { id: 'curious-016', set: 'curious', label: "Shopping Cart", w: 30, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/curious/016.png') },
-  { id: 'lounge-343', set: 'lounge', label: "Wheelchair, Black", w: 32, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/343.png') },
-  { id: 'lounge-344', set: 'lounge', label: "Wheelchair, Black", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/344.png') },
-  { id: 'lounge-345', set: 'lounge', label: "Wheelchair, Black", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/345.png') },
-  { id: 'lounge-346', set: 'lounge', label: "Wheelchair, Black", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/346.png') },
-  { id: 'lounge-347', set: 'lounge', label: "Wheelchair, Black", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/347.png') },
-  { id: 'lounge-348', set: 'lounge', label: "Wheelchair, Black", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/348.png') },
-  { id: 'lounge-349', set: 'lounge', label: "Wheelchair, Black", w: 32, h: 42, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/349.png') },
-  { id: 'lounge-350', set: 'lounge', label: "Wheelchair, Black", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/350.png') },
-  { id: 'lounge-351', set: 'lounge', label: "Wheelchair, Black", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/351.png') },
-  { id: 'lounge-352', set: 'lounge', label: "Wheelchair, Black", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/352.png') },
-  { id: 'lounge-353', set: 'lounge', label: "Wheelchair, Blue", w: 32, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/353.png') },
-  { id: 'lounge-354', set: 'lounge', label: "Wheelchair, Blue", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/354.png') },
-  { id: 'lounge-355', set: 'lounge', label: "Wheelchair, Blue", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/355.png') },
-  { id: 'lounge-356', set: 'lounge', label: "Wheelchair, Blue", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/356.png') },
-  { id: 'lounge-357', set: 'lounge', label: "Wheelchair, Blue", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/357.png') },
-  { id: 'lounge-358', set: 'lounge', label: "Wheelchair, Blue", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/358.png') },
-  { id: 'lounge-359', set: 'lounge', label: "Wheelchair, Blue", w: 32, h: 42, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/359.png') },
-  { id: 'lounge-360', set: 'lounge', label: "Wheelchair, Blue", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/360.png') },
-  { id: 'lounge-361', set: 'lounge', label: "Wheelchair, Blue", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/361.png') },
-  { id: 'lounge-362', set: 'lounge', label: "Wheelchair, Blue", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/362.png') },
-  { id: 'lounge-363', set: 'lounge', label: "Wheelchair, Pink", w: 32, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/363.png') },
-  { id: 'lounge-364', set: 'lounge', label: "Wheelchair, Pink", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/364.png') },
-  { id: 'lounge-365', set: 'lounge', label: "Wheelchair, Pink", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/365.png') },
-  { id: 'lounge-366', set: 'lounge', label: "Wheelchair, Pink", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/366.png') },
-  { id: 'lounge-367', set: 'lounge', label: "Wheelchair, Pink", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/367.png') },
-  { id: 'lounge-368', set: 'lounge', label: "Wheelchair, Pink", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/368.png') },
-  { id: 'lounge-369', set: 'lounge', label: "Wheelchair, Pink", w: 32, h: 42, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/369.png') },
-  { id: 'lounge-370', set: 'lounge', label: "Wheelchair, Pink", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/370.png') },
-  { id: 'lounge-371', set: 'lounge', label: "Wheelchair, Pink", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/371.png') },
-  { id: 'lounge-372', set: 'lounge', label: "Wheelchair, Pink", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/372.png') },
-  { id: 'lounge-373', set: 'lounge', label: "Wheelchair, Tan", w: 32, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/373.png') },
-  { id: 'lounge-374', set: 'lounge', label: "Wheelchair, Tan", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/374.png') },
-  { id: 'lounge-375', set: 'lounge', label: "Wheelchair, Tan", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/375.png') },
-  { id: 'lounge-376', set: 'lounge', label: "Wheelchair, Tan", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/376.png') },
-  { id: 'lounge-377', set: 'lounge', label: "Wheelchair, Tan", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/377.png') },
-  { id: 'lounge-378', set: 'lounge', label: "Wheelchair, Tan", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/378.png') },
-  { id: 'lounge-379', set: 'lounge', label: "Wheelchair, Tan", w: 32, h: 42, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/379.png') },
-  { id: 'lounge-380', set: 'lounge', label: "Wheelchair, Tan", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/380.png') },
-  { id: 'lounge-381', set: 'lounge', label: "Wheelchair, Tan", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/381.png') },
-  { id: 'lounge-382', set: 'lounge', label: "Wheelchair, Tan", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/382.png') },
-  { id: 'lounge-383', set: 'lounge', label: "Wheelchair, White", w: 32, h: 30, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/383.png') },
-  { id: 'lounge-384', set: 'lounge', label: "Wheelchair, White", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/384.png') },
-  { id: 'lounge-385', set: 'lounge', label: "Wheelchair, White", w: 26, h: 23, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/385.png') },
-  { id: 'lounge-386', set: 'lounge', label: "Wheelchair, White", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/386.png') },
-  { id: 'lounge-387', set: 'lounge', label: "Wheelchair, White", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/387.png') },
-  { id: 'lounge-388', set: 'lounge', label: "Wheelchair, White", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/388.png') },
-  { id: 'lounge-389', set: 'lounge', label: "Wheelchair, White", w: 32, h: 42, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/389.png') },
-  { id: 'lounge-390', set: 'lounge', label: "Wheelchair, White", w: 32, h: 34, kind: 'furniture', rarity: 'rare', src: require('../../assets/stickers/lounge/390.png') },
-  { id: 'lounge-391', set: 'lounge', label: "Wheelchair, White", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/391.png') },
-  { id: 'lounge-392', set: 'lounge', label: "Wheelchair, White", w: 22, h: 25, kind: 'furniture', rarity: 'common', src: require('../../assets/stickers/lounge/392.png') },
-  { id: 'garden-016', set: 'garden', label: "Baskets A", w: 95, h: 64, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/garden/016.png') },
-  { id: 'study-024', set: 'study', label: "Boxes", w: 28, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/024.png') },
-  { id: 'study-025', set: 'study', label: "Boxes", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/025.png') },
-  { id: 'study-026', set: 'study', label: "Boxes", w: 14, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/026.png') },
-  { id: 'study-027', set: 'study', label: "Boxes", w: 20, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/027.png') },
-  { id: 'garden-017', set: 'garden', label: "Buckets", w: 21, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/017.png') },
-  { id: 'garden-018', set: 'garden', label: "Buckets", w: 21, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/018.png') },
-  { id: 'kitchen-140', set: 'kitchen', label: "Coffee Maker", w: 15, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/140.png') },
-  { id: 'kitchen-141', set: 'kitchen', label: "Coffee Maker", w: 9, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/141.png') },
-  { id: 'kitchen-142', set: 'kitchen', label: "Coffee Maker", w: 15, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/142.png') },
-  { id: 'kitchen-143', set: 'kitchen', label: "Coffee Maker", w: 9, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/143.png') },
-  { id: 'kitchen-144', set: 'kitchen', label: "Dishes A", w: 29, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/144.png') },
-  { id: 'kitchen-145', set: 'kitchen', label: "Dishes A", w: 20, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/145.png') },
-  { id: 'kitchen-146', set: 'kitchen', label: "Dishes A", w: 22, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/146.png') },
-  { id: 'kitchen-147', set: 'kitchen', label: "Dishes A", w: 24, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/147.png') },
-  { id: 'kitchen-148', set: 'kitchen', label: "Dishes A", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/148.png') },
-  { id: 'kitchen-149', set: 'kitchen', label: "Dishes A", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/149.png') },
-  { id: 'kitchen-150', set: 'kitchen', label: "Dishes A", w: 20, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/150.png') },
-  { id: 'kitchen-151', set: 'kitchen', label: "Dishes A", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/151.png') },
-  { id: 'kitchen-152', set: 'kitchen', label: "Dishes A", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/152.png') },
-  { id: 'kitchen-153', set: 'kitchen', label: "Dishes A", w: 20, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/153.png') },
-  { id: 'kitchen-154', set: 'kitchen', label: "Dishes A", w: 64, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/kitchen/154.png') },
-  { id: 'kitchen-155', set: 'kitchen', label: "Dishes A", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/155.png') },
-  { id: 'curious-017', set: 'curious', label: "Dungeon Elements", w: 24, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/curious/017.png') },
-  { id: 'curious-018', set: 'curious', label: "Dungeon Elements", w: 30, h: 53, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/curious/018.png') },
-  { id: 'curious-019', set: 'curious', label: "Dungeon Elements", w: 32, h: 23, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/curious/019.png') },
-  { id: 'curious-020', set: 'curious', label: "Dungeon Elements", w: 17, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/curious/020.png') },
-  { id: 'curious-021', set: 'curious', label: "Dungeon Elements", w: 30, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/curious/021.png') },
-  { id: 'curious-022', set: 'curious', label: "Dungeon Elements", w: 31, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/curious/022.png') },
-  { id: 'curious-023', set: 'curious', label: "Dungeon Elements", w: 7, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/curious/023.png') },
-  { id: 'curious-024', set: 'curious', label: "Dungeon Elements", w: 7, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/curious/024.png') },
-  { id: 'bedroom-272', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/272.png') },
-  { id: 'bedroom-273', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/273.png') },
-  { id: 'bedroom-274', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/274.png') },
-  { id: 'bedroom-275', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/275.png') },
-  { id: 'bedroom-276', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/276.png') },
-  { id: 'bedroom-277', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/277.png') },
-  { id: 'bedroom-278', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/278.png') },
-  { id: 'bedroom-279', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/279.png') },
-  { id: 'bedroom-280', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/280.png') },
-  { id: 'bedroom-281', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/281.png') },
-  { id: 'bedroom-282', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/282.png') },
-  { id: 'bedroom-283', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/283.png') },
-  { id: 'bedroom-284', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/284.png') },
-  { id: 'bedroom-285', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/285.png') },
-  { id: 'bedroom-286', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/286.png') },
-  { id: 'bedroom-287', set: 'bedroom', label: "Blankets, Crumpled", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/287.png') },
-  { id: 'bedroom-288', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/288.png') },
-  { id: 'bedroom-289', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/289.png') },
-  { id: 'bedroom-290', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/290.png') },
-  { id: 'bedroom-291', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/291.png') },
-  { id: 'bedroom-292', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/292.png') },
-  { id: 'bedroom-293', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/293.png') },
-  { id: 'bedroom-294', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/294.png') },
-  { id: 'bedroom-295', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/295.png') },
-  { id: 'bedroom-296', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/296.png') },
-  { id: 'bedroom-297', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/297.png') },
-  { id: 'bedroom-298', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/298.png') },
-  { id: 'bedroom-299', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/299.png') },
-  { id: 'bedroom-300', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/300.png') },
-  { id: 'bedroom-301', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/301.png') },
-  { id: 'bedroom-302', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/302.png') },
-  { id: 'bedroom-303', set: 'bedroom', label: "Blankets, Crumpled", w: 30, h: 38, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/303.png') },
-  { id: 'maker-083', set: 'maker', label: "Fabric Baskets", w: 128, h: 44, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/083.png') },
-  { id: 'maker-084', set: 'maker', label: "Fabric Baskets", w: 128, h: 44, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/084.png') },
-  { id: 'maker-085', set: 'maker', label: "Fabric Rolls, Groups", w: 28, h: 64, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/085.png') },
-  { id: 'maker-086', set: 'maker', label: "Fabric Rolls, Groups", w: 24, h: 49, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/086.png') },
-  { id: 'maker-087', set: 'maker', label: "Fabric Rolls, Groups", w: 26, h: 49, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/087.png') },
-  { id: 'maker-088', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/088.png') },
-  { id: 'maker-089', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/089.png') },
-  { id: 'maker-090', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/090.png') },
-  { id: 'maker-091', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/091.png') },
-  { id: 'maker-092', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/092.png') },
-  { id: 'maker-093', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/093.png') },
-  { id: 'maker-094', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/094.png') },
-  { id: 'maker-095', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/095.png') },
-  { id: 'maker-096', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/096.png') },
-  { id: 'maker-097', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/097.png') },
-  { id: 'maker-098', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/098.png') },
-  { id: 'maker-099', set: 'maker', label: "Fabric Rolls", w: 15, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/099.png') },
-  { id: 'maker-100', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/100.png') },
-  { id: 'maker-101', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/101.png') },
-  { id: 'maker-102', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/102.png') },
-  { id: 'maker-103', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/103.png') },
-  { id: 'maker-104', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/104.png') },
-  { id: 'maker-105', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/105.png') },
-  { id: 'maker-106', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/106.png') },
-  { id: 'maker-107', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/107.png') },
-  { id: 'maker-108', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/108.png') },
-  { id: 'maker-109', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/109.png') },
-  { id: 'maker-110', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/110.png') },
-  { id: 'maker-111', set: 'maker', label: "Fabric Rolls", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/111.png') },
-  { id: 'maker-112', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/112.png') },
-  { id: 'maker-113', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/113.png') },
-  { id: 'maker-114', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/114.png') },
-  { id: 'maker-115', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/115.png') },
-  { id: 'maker-116', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/116.png') },
-  { id: 'maker-117', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/117.png') },
-  { id: 'maker-118', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/118.png') },
-  { id: 'maker-119', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/119.png') },
-  { id: 'maker-120', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/120.png') },
-  { id: 'maker-121', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/121.png') },
-  { id: 'maker-122', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/122.png') },
-  { id: 'maker-123', set: 'maker', label: "Fabric Rolls", w: 14, h: 38, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/123.png') },
-  { id: 'maker-124', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/124.png') },
-  { id: 'maker-125', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/125.png') },
-  { id: 'maker-126', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/126.png') },
-  { id: 'maker-127', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/127.png') },
-  { id: 'maker-128', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/128.png') },
-  { id: 'maker-129', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/129.png') },
-  { id: 'maker-130', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/130.png') },
-  { id: 'maker-131', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/131.png') },
-  { id: 'maker-132', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/132.png') },
-  { id: 'maker-133', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/133.png') },
-  { id: 'maker-134', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/134.png') },
-  { id: 'maker-135', set: 'maker', label: "Fabric Rolls", w: 15, h: 40, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/135.png') },
-  { id: 'maker-136', set: 'maker', label: "Fabril Rolls, Mounted", w: 52, h: 60, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/136.png') },
-  { id: 'maker-137', set: 'maker', label: "Fabril Rolls, Mounted", w: 52, h: 60, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/137.png') },
-  { id: 'maker-138', set: 'maker', label: "Fabril Rolls, Mounted", w: 52, h: 60, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/138.png') },
-  { id: 'maker-139', set: 'maker', label: "Fabril Rolls, Mounted", w: 52, h: 60, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/139.png') },
-  { id: 'fireside-017', set: 'fireside', label: "Fire, Camp", w: 31, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/fireside/017.png') },
-  { id: 'fireside-018', set: 'fireside', label: "Fire, Camp", w: 127, h: 30, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/fireside/018.png') },
-  { id: 'fireside-019', set: 'fireside', label: "Fire, Fireplace", w: 128, h: 24, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/fireside/019.png') },
-  { id: 'fireside-020', set: 'fireside', label: "Fire, Fireplace", w: 96, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/fireside/020.png') },
-  { id: 'fireside-021', set: 'fireside', label: "Fire, Fireplace", w: 128, h: 24, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/fireside/021.png') },
-  { id: 'fireside-022', set: 'fireside', label: "Fireplace, Accessories A", w: 10, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/fireside/022.png') },
-  { id: 'fireside-023', set: 'fireside', label: "Fireplace, Accessories A", w: 9, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/fireside/023.png') },
-  { id: 'fireside-024', set: 'fireside', label: "Fireplace, Accessories A", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/fireside/024.png') },
-  { id: 'garden-019', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/019.png') },
-  { id: 'garden-020', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/020.png') },
-  { id: 'garden-021', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/021.png') },
-  { id: 'garden-022', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/022.png') },
-  { id: 'garden-023', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/023.png') },
-  { id: 'garden-024', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/024.png') },
-  { id: 'garden-025', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/025.png') },
-  { id: 'garden-026', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/026.png') },
-  { id: 'garden-027', set: 'garden', label: "Flowers", w: 7, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/027.png') },
-  { id: 'garden-028', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/028.png') },
-  { id: 'garden-029', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/029.png') },
-  { id: 'garden-030', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/030.png') },
-  { id: 'garden-031', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/031.png') },
-  { id: 'garden-032', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/032.png') },
-  { id: 'garden-033', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/033.png') },
-  { id: 'garden-034', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/034.png') },
-  { id: 'garden-035', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/035.png') },
-  { id: 'garden-036', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/036.png') },
-  { id: 'garden-037', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/037.png') },
-  { id: 'garden-038', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/038.png') },
-  { id: 'garden-039', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/039.png') },
-  { id: 'garden-040', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/040.png') },
-  { id: 'garden-041', set: 'garden', label: "Flowers", w: 22, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/041.png') },
-  { id: 'garden-042', set: 'garden', label: "Flowers", w: 12, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/042.png') },
-  { id: 'garden-043', set: 'garden', label: "Flowers", w: 12, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/043.png') },
-  { id: 'garden-044', set: 'garden', label: "Flowers", w: 8, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/044.png') },
-  { id: 'garden-045', set: 'garden', label: "Flowers", w: 8, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/045.png') },
-  { id: 'garden-046', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/046.png') },
-  { id: 'garden-047', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/047.png') },
-  { id: 'garden-048', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/048.png') },
-  { id: 'garden-049', set: 'garden', label: "Flowers", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/049.png') },
-  { id: 'garden-050', set: 'garden', label: "Flowers", w: 22, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/050.png') },
-  { id: 'garden-051', set: 'garden', label: "Flowers", w: 12, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/051.png') },
-  { id: 'garden-052', set: 'garden', label: "Flowers", w: 12, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/052.png') },
-  { id: 'garden-053', set: 'garden', label: "Flowers", w: 8, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/053.png') },
-  { id: 'garden-054', set: 'garden', label: "Flowers", w: 8, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/garden/054.png') },
-  { id: 'pantry-001', set: 'pantry', label: "Bread A", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/001.png') },
-  { id: 'pantry-002', set: 'pantry', label: "Bread A", w: 16, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/002.png') },
-  { id: 'pantry-003', set: 'pantry', label: "Bread A", w: 22, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/003.png') },
-  { id: 'pantry-004', set: 'pantry', label: "Bread A", w: 22, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/004.png') },
-  { id: 'pantry-005', set: 'pantry', label: "Bread A", w: 23, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/005.png') },
-  { id: 'pantry-006', set: 'pantry', label: "Bread A", w: 13, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/006.png') },
-  { id: 'pantry-007', set: 'pantry', label: "Bread A", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/007.png') },
-  { id: 'pantry-008', set: 'pantry', label: "Bread A", w: 16, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/008.png') },
-  { id: 'pantry-009', set: 'pantry', label: "Bread B", w: 17, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/009.png') },
-  { id: 'pantry-010', set: 'pantry', label: "Bread B", w: 30, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/010.png') },
-  { id: 'pantry-011', set: 'pantry', label: "Bread B", w: 26, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/011.png') },
-  { id: 'pantry-012', set: 'pantry', label: "Bread B", w: 23, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/012.png') },
-  { id: 'pantry-013', set: 'pantry', label: "Bread B", w: 23, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/013.png') },
-  { id: 'pantry-014', set: 'pantry', label: "Bread B", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/014.png') },
-  { id: 'pantry-015', set: 'pantry', label: "Bread B", w: 96, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/015.png') },
-  { id: 'pantry-016', set: 'pantry', label: "Bread B", w: 20, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/016.png') },
-  { id: 'pantry-017', set: 'pantry', label: "Bread B", w: 27, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/017.png') },
-  { id: 'pantry-018', set: 'pantry', label: "Bread B", w: 32, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/018.png') },
-  { id: 'pantry-019', set: 'pantry', label: "Bread B", w: 62, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/019.png') },
-  { id: 'pantry-020', set: 'pantry', label: "Bread B", w: 95, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/020.png') },
-  { id: 'pantry-021', set: 'pantry', label: "Bread B", w: 29, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/021.png') },
-  { id: 'pantry-022', set: 'pantry', label: "Bread B", w: 22, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/022.png') },
-  { id: 'pantry-023', set: 'pantry', label: "Bread B", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/023.png') },
-  { id: 'pantry-024', set: 'pantry', label: "Bread B", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/024.png') },
-  { id: 'pantry-025', set: 'pantry', label: "Bread B", w: 16, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/025.png') },
-  { id: 'pantry-026', set: 'pantry', label: "Bread B", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/026.png') },
-  { id: 'pantry-027', set: 'pantry', label: "Bread B", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/027.png') },
-  { id: 'pantry-028', set: 'pantry', label: "Bread B", w: 26, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/028.png') },
-  { id: 'pantry-029', set: 'pantry', label: "Bread B", w: 24, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/029.png') },
-  { id: 'pantry-030', set: 'pantry', label: "Bread B", w: 21, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/030.png') },
-  { id: 'pantry-031', set: 'pantry', label: "Bread B", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/031.png') },
-  { id: 'pantry-032', set: 'pantry', label: "Bread B", w: 62, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/032.png') },
-  { id: 'pantry-033', set: 'pantry', label: "Bread B", w: 31, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/033.png') },
-  { id: 'pantry-034', set: 'pantry', label: "Bread B", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/034.png') },
-  { id: 'pantry-035', set: 'pantry', label: "Bread B", w: 25, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/035.png') },
-  { id: 'pantry-036', set: 'pantry', label: "Bread C", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/036.png') },
-  { id: 'pantry-037', set: 'pantry', label: "Bread C", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/037.png') },
-  { id: 'pantry-038', set: 'pantry', label: "Bread C", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/038.png') },
-  { id: 'pantry-039', set: 'pantry', label: "Bread C", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/039.png') },
-  { id: 'pantry-040', set: 'pantry', label: "Bread C", w: 11, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/040.png') },
-  { id: 'pantry-041', set: 'pantry', label: "Bread C", w: 16, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/041.png') },
-  { id: 'pantry-042', set: 'pantry', label: "Bread C", w: 25, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/042.png') },
-  { id: 'pantry-043', set: 'pantry', label: "Bread C", w: 23, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/043.png') },
-  { id: 'pantry-044', set: 'pantry', label: "Bread C", w: 21, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/044.png') },
-  { id: 'pantry-045', set: 'pantry', label: "Bread C", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/045.png') },
-  { id: 'pantry-046', set: 'pantry', label: "Bread C", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/046.png') },
-  { id: 'pantry-047', set: 'pantry', label: "Bread C", w: 12, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/047.png') },
-  { id: 'pantry-048', set: 'pantry', label: "Bread C", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/048.png') },
-  { id: 'pantry-049', set: 'pantry', label: "Bread C", w: 29, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/049.png') },
-  { id: 'pantry-050', set: 'pantry', label: "Bread C", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/050.png') },
-  { id: 'pantry-051', set: 'pantry', label: "Bread C", w: 31, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/051.png') },
-  { id: 'pantry-052', set: 'pantry', label: "Bread C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/052.png') },
-  { id: 'pantry-053', set: 'pantry', label: "Bread C", w: 24, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/053.png') },
-  { id: 'pantry-054', set: 'pantry', label: "Bread C", w: 29, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/054.png') },
-  { id: 'pantry-055', set: 'pantry', label: "Bread C", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/055.png') },
-  { id: 'pantry-056', set: 'pantry', label: "Bread C", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/056.png') },
-  { id: 'pantry-057', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/057.png') },
-  { id: 'pantry-058', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/058.png') },
-  { id: 'pantry-059', set: 'pantry', label: "Bread C", w: 16, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/059.png') },
-  { id: 'pantry-060', set: 'pantry', label: "Bread C", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/060.png') },
-  { id: 'pantry-061', set: 'pantry', label: "Bread C", w: 52, h: 22, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/061.png') },
-  { id: 'pantry-062', set: 'pantry', label: "Bread C", w: 24, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/062.png') },
-  { id: 'pantry-063', set: 'pantry', label: "Bread C", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/063.png') },
-  { id: 'pantry-064', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/064.png') },
-  { id: 'pantry-065', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/065.png') },
-  { id: 'pantry-066', set: 'pantry', label: "Bread C", w: 64, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/066.png') },
-  { id: 'pantry-067', set: 'pantry', label: "Bread C", w: 27, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/067.png') },
-  { id: 'pantry-068', set: 'pantry', label: "Bread C", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/068.png') },
-  { id: 'pantry-069', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/069.png') },
-  { id: 'pantry-070', set: 'pantry', label: "Bread C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/070.png') },
-  { id: 'pantry-071', set: 'pantry', label: "Butter", w: 17, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/071.png') },
-  { id: 'pantry-072', set: 'pantry', label: "Butter", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/072.png') },
-  { id: 'pantry-073', set: 'pantry', label: "Butter", w: 31, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/073.png') },
-  { id: 'pantry-074', set: 'pantry', label: "Cheese A", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/074.png') },
-  { id: 'pantry-075', set: 'pantry', label: "Cheese A", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/075.png') },
-  { id: 'pantry-076', set: 'pantry', label: "Cheese A", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/076.png') },
-  { id: 'pantry-077', set: 'pantry', label: "Cheese A", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/077.png') },
-  { id: 'pantry-078', set: 'pantry', label: "Cheese A", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/078.png') },
-  { id: 'pantry-079', set: 'pantry', label: "Cheese A", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/079.png') },
-  { id: 'pantry-080', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/080.png') },
-  { id: 'pantry-081', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/081.png') },
-  { id: 'pantry-082', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/082.png') },
-  { id: 'pantry-083', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/083.png') },
-  { id: 'pantry-084', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/084.png') },
-  { id: 'pantry-085', set: 'pantry', label: "Cheese A", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/085.png') },
-  { id: 'pantry-086', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/086.png') },
-  { id: 'pantry-087', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/087.png') },
-  { id: 'pantry-088', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/088.png') },
-  { id: 'pantry-089', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/089.png') },
-  { id: 'pantry-090', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/090.png') },
-  { id: 'pantry-091', set: 'pantry', label: "Cheese A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/091.png') },
-  { id: 'pantry-092', set: 'pantry', label: "Cheese B", w: 17, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/092.png') },
-  { id: 'pantry-093', set: 'pantry', label: "Cheese B", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/093.png') },
-  { id: 'pantry-094', set: 'pantry', label: "Cheese B", w: 20, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/094.png') },
-  { id: 'pantry-095', set: 'pantry', label: "Cheese B", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/095.png') },
-  { id: 'pantry-096', set: 'pantry', label: "Cheese B", w: 7, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/096.png') },
-  { id: 'pantry-097', set: 'pantry', label: "Cheese B", w: 20, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/097.png') },
-  { id: 'pantry-098', set: 'pantry', label: "Cheese B", w: 15, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/098.png') },
-  { id: 'pantry-099', set: 'pantry', label: "Cheese B", w: 25, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/099.png') },
-  { id: 'pantry-100', set: 'pantry', label: "Cheese B", w: 21, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/100.png') },
-  { id: 'pantry-101', set: 'pantry', label: "Cheese B", w: 24, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/101.png') },
-  { id: 'pantry-102', set: 'pantry', label: "Cheese B", w: 23, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/102.png') },
-  { id: 'pantry-103', set: 'pantry', label: "Cheese B", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/103.png') },
-  { id: 'pantry-104', set: 'pantry', label: "Cheese B", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/104.png') },
-  { id: 'pantry-105', set: 'pantry', label: "Cheese B", w: 23, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/105.png') },
-  { id: 'pantry-106', set: 'pantry', label: "Cheese B", w: 25, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/106.png') },
-  { id: 'pantry-107', set: 'pantry', label: "Cheese B", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/107.png') },
-  { id: 'pantry-108', set: 'pantry', label: "Cheese B", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/108.png') },
-  { id: 'pantry-109', set: 'pantry', label: "Cheese B", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/109.png') },
-  { id: 'pantry-110', set: 'pantry', label: "Cheese B", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/110.png') },
-  { id: 'pantry-111', set: 'pantry', label: "Cheese B", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/111.png') },
-  { id: 'pantry-112', set: 'pantry', label: "Cheese B", w: 23, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/112.png') },
-  { id: 'pantry-113', set: 'pantry', label: "Dessert", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/113.png') },
-  { id: 'pantry-114', set: 'pantry', label: "Dessert", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/114.png') },
-  { id: 'pantry-115', set: 'pantry', label: "Dessert", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/115.png') },
-  { id: 'pantry-116', set: 'pantry', label: "Dessert", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/116.png') },
-  { id: 'pantry-117', set: 'pantry', label: "Dessert", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/117.png') },
-  { id: 'pantry-118', set: 'pantry', label: "Dessert", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/118.png') },
-  { id: 'pantry-119', set: 'pantry', label: "Dessert", w: 32, h: 22, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/119.png') },
-  { id: 'pantry-120', set: 'pantry', label: "Dessert", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/120.png') },
-  { id: 'pantry-121', set: 'pantry', label: "Dessert", w: 26, h: 37, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/121.png') },
-  { id: 'pantry-122', set: 'pantry', label: "Dessert", w: 26, h: 37, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/122.png') },
-  { id: 'pantry-123', set: 'pantry', label: "Dessert", w: 64, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/123.png') },
-  { id: 'pantry-124', set: 'pantry', label: "Dessert", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/124.png') },
-  { id: 'pantry-125', set: 'pantry', label: "Dessert", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/125.png') },
-  { id: 'pantry-126', set: 'pantry', label: "Eggs", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/126.png') },
-  { id: 'pantry-127', set: 'pantry', label: "Eggs", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/127.png') },
-  { id: 'pantry-128', set: 'pantry', label: "Eggs", w: 22, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/128.png') },
-  { id: 'pantry-129', set: 'pantry', label: "Eggs", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/129.png') },
-  { id: 'pantry-130', set: 'pantry', label: "Eggs", w: 24, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/130.png') },
-  { id: 'pantry-131', set: 'pantry', label: "Eggs", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/131.png') },
-  { id: 'pantry-132', set: 'pantry', label: "Eggs", w: 27, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/132.png') },
-  { id: 'pantry-133', set: 'pantry', label: "Eggs", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/133.png') },
-  { id: 'pantry-134', set: 'pantry', label: "Eggs", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/134.png') },
-  { id: 'pantry-135', set: 'pantry', label: "Eggs", w: 26, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/135.png') },
-  { id: 'pantry-136', set: 'pantry', label: "Eggs", w: 128, h: 29, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/136.png') },
-  { id: 'pantry-137', set: 'pantry', label: "Eggs", w: 27, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/137.png') },
-  { id: 'pantry-138', set: 'pantry', label: "Fruit A", w: 19, h: 32, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/138.png') },
-  { id: 'pantry-139', set: 'pantry', label: "Fruit A", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/139.png') },
-  { id: 'pantry-140', set: 'pantry', label: "Fruit A", w: 11, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/140.png') },
-  { id: 'pantry-141', set: 'pantry', label: "Fruit A", w: 10, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/141.png') },
-  { id: 'pantry-142', set: 'pantry', label: "Fruit A", w: 11, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/142.png') },
-  { id: 'pantry-143', set: 'pantry', label: "Fruit A", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/143.png') },
-  { id: 'pantry-144', set: 'pantry', label: "Fruit A", w: 12, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/144.png') },
-  { id: 'pantry-145', set: 'pantry', label: "Fruit A", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/145.png') },
-  { id: 'pantry-146', set: 'pantry', label: "Fruit A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/146.png') },
-  { id: 'pantry-147', set: 'pantry', label: "Fruit A", w: 14, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/147.png') },
-  { id: 'pantry-148', set: 'pantry', label: "Fruit A", w: 10, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/148.png') },
-  { id: 'pantry-149', set: 'pantry', label: "Fruit A", w: 20, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/149.png') },
-  { id: 'pantry-150', set: 'pantry', label: "Fruit A", w: 11, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/150.png') },
-  { id: 'pantry-151', set: 'pantry', label: "Fruit A", w: 14, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/151.png') },
-  { id: 'pantry-152', set: 'pantry', label: "Fruit A", w: 21, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/152.png') },
-  { id: 'pantry-153', set: 'pantry', label: "Fruit A", w: 11, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/153.png') },
-  { id: 'pantry-154', set: 'pantry', label: "Fruit A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/154.png') },
-  { id: 'pantry-155', set: 'pantry', label: "Fruit A", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/155.png') },
-  { id: 'pantry-156', set: 'pantry', label: "Fruit A", w: 9, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/156.png') },
-  { id: 'pantry-157', set: 'pantry', label: "Fruit A", w: 10, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/157.png') },
-  { id: 'pantry-158', set: 'pantry', label: "Fruit A", w: 15, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/158.png') },
-  { id: 'pantry-159', set: 'pantry', label: "Fruit A", w: 14, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/159.png') },
-  { id: 'pantry-160', set: 'pantry', label: "Fruit A", w: 11, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/160.png') },
-  { id: 'pantry-161', set: 'pantry', label: "Fruit A", w: 9, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/161.png') },
-  { id: 'pantry-162', set: 'pantry', label: "Fruit A", w: 18, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/162.png') },
-  { id: 'pantry-163', set: 'pantry', label: "Fruit A", w: 21, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/163.png') },
-  { id: 'pantry-164', set: 'pantry', label: "Fruit A", w: 7, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/164.png') },
-  { id: 'pantry-165', set: 'pantry', label: "Fruit A", w: 11, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/165.png') },
-  { id: 'pantry-166', set: 'pantry', label: "Fruit A", w: 21, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/166.png') },
-  { id: 'pantry-167', set: 'pantry', label: "Fruit A", w: 12, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/167.png') },
-  { id: 'pantry-168', set: 'pantry', label: "Fruit A", w: 21, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/168.png') },
-  { id: 'pantry-169', set: 'pantry', label: "Fruit A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/169.png') },
-  { id: 'pantry-170', set: 'pantry', label: "Fruit B", w: 16, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/170.png') },
-  { id: 'pantry-171', set: 'pantry', label: "Fruit B", w: 14, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/171.png') },
-  { id: 'pantry-172', set: 'pantry', label: "Fruit B", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/172.png') },
-  { id: 'pantry-173', set: 'pantry', label: "Fruit B", w: 12, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/173.png') },
-  { id: 'pantry-174', set: 'pantry', label: "Fruit B", w: 11, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/174.png') },
-  { id: 'pantry-175', set: 'pantry', label: "Fruit B", w: 11, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/175.png') },
-  { id: 'pantry-176', set: 'pantry', label: "Fruit B", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/176.png') },
-  { id: 'pantry-177', set: 'pantry', label: "Fruit B", w: 9, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/177.png') },
-  { id: 'pantry-178', set: 'pantry', label: "Fruit B", w: 14, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/178.png') },
-  { id: 'pantry-179', set: 'pantry', label: "Fruit B", w: 16, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/179.png') },
-  { id: 'pantry-180', set: 'pantry', label: "Fruit B", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/180.png') },
-  { id: 'pantry-181', set: 'pantry', label: "Fruit B", w: 17, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/181.png') },
-  { id: 'pantry-182', set: 'pantry', label: "Fruit B", w: 8, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/182.png') },
-  { id: 'pantry-183', set: 'pantry', label: "Fruit B", w: 8, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/183.png') },
-  { id: 'pantry-184', set: 'pantry', label: "Fruit B", w: 16, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/184.png') },
-  { id: 'pantry-185', set: 'pantry', label: "Fruit B", w: 20, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/185.png') },
-  { id: 'pantry-186', set: 'pantry', label: "Fruit B", w: 28, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/186.png') },
-  { id: 'pantry-187', set: 'pantry', label: "Fruit B", w: 19, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/187.png') },
-  { id: 'pantry-188', set: 'pantry', label: "Fruit B", w: 14, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/188.png') },
-  { id: 'pantry-189', set: 'pantry', label: "Fruit B", w: 23, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/189.png') },
-  { id: 'pantry-190', set: 'pantry', label: "Fruit B", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/190.png') },
-  { id: 'pantry-191', set: 'pantry', label: "Fruit B", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/191.png') },
-  { id: 'pantry-192', set: 'pantry', label: "Fruit B", w: 24, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/192.png') },
-  { id: 'pantry-193', set: 'pantry', label: "Fruit B", w: 19, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/193.png') },
-  { id: 'pantry-194', set: 'pantry', label: "Fruit B", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/194.png') },
-  { id: 'pantry-195', set: 'pantry', label: "Fruit B", w: 23, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/195.png') },
-  { id: 'pantry-196', set: 'pantry', label: "Fruit B", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/196.png') },
-  { id: 'pantry-197', set: 'pantry', label: "Fruit B", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/197.png') },
-  { id: 'pantry-198', set: 'pantry', label: "Fruit B", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/198.png') },
-  { id: 'pantry-199', set: 'pantry', label: "Fruit B", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/199.png') },
-  { id: 'pantry-200', set: 'pantry', label: "Fruit B", w: 31, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/200.png') },
-  { id: 'pantry-201', set: 'pantry', label: "Fruit B", w: 30, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/201.png') },
-  { id: 'pantry-202', set: 'pantry', label: "Fruit B", w: 24, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/202.png') },
-  { id: 'pantry-203', set: 'pantry', label: "Fruit B", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/203.png') },
-  { id: 'pantry-204', set: 'pantry', label: "Fruit B", w: 27, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/204.png') },
-  { id: 'pantry-205', set: 'pantry', label: "Fruit B", w: 32, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/205.png') },
-  { id: 'pantry-206', set: 'pantry', label: "Fruit B", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/206.png') },
-  { id: 'pantry-207', set: 'pantry', label: "Fruit B", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/207.png') },
-  { id: 'pantry-208', set: 'pantry', label: "Fruit B", w: 25, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/208.png') },
-  { id: 'pantry-209', set: 'pantry', label: "Fruit B", w: 27, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/209.png') },
-  { id: 'pantry-210', set: 'pantry', label: "Fruit B", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/210.png') },
-  { id: 'pantry-211', set: 'pantry', label: "Fruit B", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/211.png') },
-  { id: 'pantry-212', set: 'pantry', label: "Fruit B", w: 28, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/212.png') },
-  { id: 'pantry-213', set: 'pantry', label: "Fruit B", w: 28, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/213.png') },
-  { id: 'pantry-214', set: 'pantry', label: "Fruit B", w: 20, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/214.png') },
-  { id: 'pantry-215', set: 'pantry', label: "Fruit B", w: 480, h: 48, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/215.png') },
-  { id: 'pantry-216', set: 'pantry', label: "Fruit B", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/216.png') },
-  { id: 'pantry-217', set: 'pantry', label: "Fruit B", w: 12, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/217.png') },
-  { id: 'pantry-218', set: 'pantry', label: "Fruit B", w: 24, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/218.png') },
-  { id: 'pantry-219', set: 'pantry', label: "Fruit B", w: 10, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/219.png') },
-  { id: 'pantry-220', set: 'pantry', label: "Fruit B", w: 12, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/220.png') },
-  { id: 'pantry-221', set: 'pantry', label: "Fruit B", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/221.png') },
-  { id: 'pantry-222', set: 'pantry', label: "Fruit B", w: 18, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/222.png') },
-  { id: 'pantry-223', set: 'pantry', label: "Fruit B", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/223.png') },
-  { id: 'pantry-224', set: 'pantry', label: "Fruit B", w: 18, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/224.png') },
-  { id: 'pantry-225', set: 'pantry', label: "Fruit B", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/225.png') },
-  { id: 'pantry-226', set: 'pantry', label: "Fruit B", w: 10, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/226.png') },
-  { id: 'pantry-227', set: 'pantry', label: "Fruit B", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/227.png') },
-  { id: 'pantry-228', set: 'pantry', label: "Fruit B", w: 15, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/228.png') },
-  { id: 'pantry-229', set: 'pantry', label: "Fruit B", w: 11, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/229.png') },
-  { id: 'pantry-230', set: 'pantry', label: "Fruit B", w: 7, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/230.png') },
-  { id: 'pantry-231', set: 'pantry', label: "Fruit B", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/231.png') },
-  { id: 'pantry-232', set: 'pantry', label: "Fruit B", w: 10, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/232.png') },
-  { id: 'pantry-233', set: 'pantry', label: "Fruit B", w: 10, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/233.png') },
-  { id: 'pantry-234', set: 'pantry', label: "Fruit B", w: 31, h: 63, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/234.png') },
-  { id: 'pantry-235', set: 'pantry', label: "Fruit B", w: 31, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/235.png') },
-  { id: 'pantry-236', set: 'pantry', label: "Fruit B", w: 21, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/236.png') },
-  { id: 'pantry-237', set: 'pantry', label: "Fruit B", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/237.png') },
-  { id: 'pantry-238', set: 'pantry', label: "Fruit B", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/238.png') },
-  { id: 'pantry-239', set: 'pantry', label: "Fruit B", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/239.png') },
-  { id: 'pantry-240', set: 'pantry', label: "Fruit B", w: 28, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/240.png') },
-  { id: 'pantry-241', set: 'pantry', label: "Fruit B", w: 59, h: 58, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/241.png') },
-  { id: 'pantry-242', set: 'pantry', label: "Fruit B", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/242.png') },
-  { id: 'pantry-243', set: 'pantry', label: "Fruit B", w: 24, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/243.png') },
-  { id: 'pantry-244', set: 'pantry', label: "Fruit B", w: 19, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/244.png') },
-  { id: 'pantry-245', set: 'pantry', label: "Fruit B", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/245.png') },
-  { id: 'pantry-246', set: 'pantry', label: "Fruit B", w: 19, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/246.png') },
-  { id: 'pantry-247', set: 'pantry', label: "Fruit B", w: 17, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/247.png') },
-  { id: 'pantry-248', set: 'pantry', label: "Fruit B", w: 29, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/248.png') },
-  { id: 'pantry-249', set: 'pantry', label: "Fruit B", w: 30, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/249.png') },
-  { id: 'pantry-250', set: 'pantry', label: "Fruit B", w: 29, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/250.png') },
-  { id: 'pantry-251', set: 'pantry', label: "Fruit B", w: 28, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/251.png') },
-  { id: 'pantry-252', set: 'pantry', label: "Fruit B", w: 32, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/252.png') },
-  { id: 'pantry-253', set: 'pantry', label: "Fruit B", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/253.png') },
-  { id: 'pantry-254', set: 'pantry', label: "Fruit B", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/254.png') },
-  { id: 'pantry-255', set: 'pantry', label: "Fruit B", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/255.png') },
-  { id: 'pantry-256', set: 'pantry', label: "Fruit B", w: 24, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/256.png') },
-  { id: 'pantry-257', set: 'pantry', label: "Fruit B", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/257.png') },
-  { id: 'pantry-258', set: 'pantry', label: "Fruit B", w: 29, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/258.png') },
-  { id: 'pantry-259', set: 'pantry', label: "Fruit B", w: 21, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/259.png') },
-  { id: 'pantry-260', set: 'pantry', label: "Fruit B", w: 480, h: 144, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/260.png') },
-  { id: 'pantry-261', set: 'pantry', label: "Fruit B", w: 448, h: 46, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/261.png') },
-  { id: 'pantry-262', set: 'pantry', label: "Grains, Grasses", w: 7, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/262.png') },
-  { id: 'pantry-263', set: 'pantry', label: "Grains, Grasses", w: 18, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/263.png') },
-  { id: 'pantry-264', set: 'pantry', label: "Grains, Grasses", w: 19, h: 27, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/264.png') },
-  { id: 'pantry-265', set: 'pantry', label: "Grains, Grasses", w: 11, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/265.png') },
-  { id: 'pantry-266', set: 'pantry', label: "Grains, Grasses", w: 9, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/266.png') },
-  { id: 'pantry-267', set: 'pantry', label: "Grains, Grasses", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/267.png') },
-  { id: 'pantry-268', set: 'pantry', label: "Grains, Grasses", w: 15, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/268.png') },
-  { id: 'pantry-269', set: 'pantry', label: "Grains, Grasses", w: 20, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/269.png') },
-  { id: 'pantry-270', set: 'pantry', label: "Grains, Grasses", w: 23, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/270.png') },
-  { id: 'pantry-271', set: 'pantry', label: "Grains, Grasses", w: 10, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/271.png') },
-  { id: 'pantry-272', set: 'pantry', label: "Grains, Grasses", w: 12, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/272.png') },
-  { id: 'pantry-273', set: 'pantry', label: "Grains, Grasses", w: 23, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/273.png') },
-  { id: 'pantry-274', set: 'pantry', label: "Grains, Grasses", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/274.png') },
-  { id: 'pantry-275', set: 'pantry', label: "Grains, Grasses", w: 14, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/275.png') },
-  { id: 'pantry-276', set: 'pantry', label: "Grains, Grasses", w: 22, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/276.png') },
-  { id: 'pantry-277', set: 'pantry', label: "Grains, Grasses", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/277.png') },
-  { id: 'pantry-278', set: 'pantry', label: "Grains, Grasses", w: 22, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/278.png') },
-  { id: 'pantry-279', set: 'pantry', label: "Grains, Grasses", w: 18, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/279.png') },
-  { id: 'pantry-280', set: 'pantry', label: "Grains, Grasses", w: 18, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/280.png') },
-  { id: 'pantry-281', set: 'pantry', label: "Grains, Grasses", w: 31, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/281.png') },
-  { id: 'pantry-282', set: 'pantry', label: "Grains, Grasses", w: 32, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/282.png') },
-  { id: 'pantry-283', set: 'pantry', label: "Grains, Grasses", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/283.png') },
-  { id: 'pantry-284', set: 'pantry', label: "Grains, Grasses", w: 29, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/284.png') },
-  { id: 'pantry-285', set: 'pantry', label: "Grains, Grasses", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/285.png') },
-  { id: 'pantry-286', set: 'pantry', label: "Grains, Grasses", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/286.png') },
-  { id: 'pantry-287', set: 'pantry', label: "Grains, Grasses", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/287.png') },
-  { id: 'pantry-288', set: 'pantry', label: "Grains, Grasses", w: 23, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/288.png') },
-  { id: 'pantry-289', set: 'pantry', label: "Grains, Grasses", w: 23, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/289.png') },
-  { id: 'pantry-290', set: 'pantry', label: "Grains, Grasses", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/290.png') },
-  { id: 'pantry-291', set: 'pantry', label: "Grains, Grasses", w: 320, h: 45, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/291.png') },
-  { id: 'pantry-292', set: 'pantry', label: "Grains, Rice, Noodles", w: 22, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/292.png') },
-  { id: 'pantry-293', set: 'pantry', label: "Grains, Rice, Noodles", w: 19, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/293.png') },
-  { id: 'pantry-294', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/294.png') },
-  { id: 'pantry-295', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/295.png') },
-  { id: 'pantry-296', set: 'pantry', label: "Grains, Rice, Noodles", w: 19, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/296.png') },
-  { id: 'pantry-297', set: 'pantry', label: "Grains, Rice, Noodles", w: 22, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/297.png') },
-  { id: 'pantry-298', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/298.png') },
-  { id: 'pantry-299', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/299.png') },
-  { id: 'pantry-300', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/300.png') },
-  { id: 'pantry-301', set: 'pantry', label: "Grains, Rice, Noodles", w: 16, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/301.png') },
-  { id: 'pantry-302', set: 'pantry', label: "Hamburgers", w: 18, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/302.png') },
-  { id: 'pantry-303', set: 'pantry', label: "Hamburgers", w: 19, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/303.png') },
-  { id: 'pantry-304', set: 'pantry', label: "Hamburgers", w: 17, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/304.png') },
-  { id: 'pantry-305', set: 'pantry', label: "Hamburgers", w: 17, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/305.png') },
-  { id: 'pantry-306', set: 'pantry', label: "Hamburgers", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/306.png') },
-  { id: 'pantry-307', set: 'pantry', label: "Hamburgers", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/307.png') },
-  { id: 'pantry-308', set: 'pantry', label: "Hamburgers", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/308.png') },
-  { id: 'pantry-309', set: 'pantry', label: "Hamburgers", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/309.png') },
-  { id: 'pantry-310', set: 'pantry', label: "Hamburgers", w: 18, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/310.png') },
-  { id: 'pantry-311', set: 'pantry', label: "Hamburgers", w: 12, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/311.png') },
-  { id: 'pantry-312', set: 'pantry', label: "Hamburgers", w: 31, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/312.png') },
-  { id: 'pantry-313', set: 'pantry', label: "Hamburgers", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/313.png') },
-  { id: 'pantry-314', set: 'pantry', label: "Hamburgers", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/314.png') },
-  { id: 'pantry-315', set: 'pantry', label: "Hamburgers", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/315.png') },
-  { id: 'pantry-316', set: 'pantry', label: "Hamburgers", w: 12, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/316.png') },
-  { id: 'pantry-317', set: 'pantry', label: "Herbs & Spices", w: 29, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/317.png') },
-  { id: 'pantry-318', set: 'pantry', label: "Herbs & Spices", w: 21, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/318.png') },
-  { id: 'pantry-319', set: 'pantry', label: "Herbs & Spices", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/319.png') },
-  { id: 'pantry-320', set: 'pantry', label: "Herbs & Spices", w: 18, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/320.png') },
-  { id: 'pantry-321', set: 'pantry', label: "Herbs & Spices", w: 20, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/321.png') },
-  { id: 'pantry-322', set: 'pantry', label: "Herbs & Spices", w: 17, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/322.png') },
-  { id: 'pantry-323', set: 'pantry', label: "Herbs & Spices", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/323.png') },
-  { id: 'pantry-324', set: 'pantry', label: "Herbs & Spices", w: 23, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/324.png') },
-  { id: 'pantry-325', set: 'pantry', label: "Herbs & Spices", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/325.png') },
-  { id: 'pantry-326', set: 'pantry', label: "Herbs & Spices", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/326.png') },
-  { id: 'pantry-327', set: 'pantry', label: "Herbs & Spices", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/327.png') },
-  { id: 'pantry-328', set: 'pantry', label: "Herbs & Spices", w: 15, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/328.png') },
-  { id: 'pantry-329', set: 'pantry', label: "Herbs & Spices", w: 20, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/329.png') },
-  { id: 'pantry-330', set: 'pantry', label: "Herbs & Spices", w: 11, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/330.png') },
-  { id: 'pantry-331', set: 'pantry', label: "Herbs & Spices", w: 19, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/331.png') },
-  { id: 'pantry-332', set: 'pantry', label: "Herbs & Spices", w: 25, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/332.png') },
-  { id: 'pantry-333', set: 'pantry', label: "Herbs & Spices", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/333.png') },
-  { id: 'pantry-334', set: 'pantry', label: "Herbs & Spices", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/334.png') },
-  { id: 'pantry-335', set: 'pantry', label: "Herbs & Spices", w: 19, h: 27, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/335.png') },
-  { id: 'pantry-336', set: 'pantry', label: "Herbs & Spices", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/336.png') },
-  { id: 'pantry-337', set: 'pantry', label: "Herbs & Spices", w: 32, h: 22, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/337.png') },
-  { id: 'pantry-338', set: 'pantry', label: "Herbs & Spices", w: 20, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/338.png') },
-  { id: 'pantry-339', set: 'pantry', label: "Herbs & Spices", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/339.png') },
-  { id: 'pantry-340', set: 'pantry', label: "Herbs & Spices", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/340.png') },
-  { id: 'pantry-341', set: 'pantry', label: "Herbs & Spices", w: 23, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/341.png') },
-  { id: 'pantry-342', set: 'pantry', label: "Herbs & Spices", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/342.png') },
-  { id: 'pantry-343', set: 'pantry', label: "Herbs & Spices", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/343.png') },
-  { id: 'pantry-344', set: 'pantry', label: "Herbs & Spices", w: 18, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/344.png') },
-  { id: 'pantry-345', set: 'pantry', label: "Herbs & Spices", w: 27, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/345.png') },
-  { id: 'pantry-346', set: 'pantry', label: "Herbs & Spices", w: 17, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/346.png') },
-  { id: 'pantry-347', set: 'pantry', label: "Herbs & Spices", w: 31, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/347.png') },
-  { id: 'pantry-348', set: 'pantry', label: "Herbs & Spices", w: 26, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/348.png') },
-  { id: 'pantry-349', set: 'pantry', label: "Herbs & Spices", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/349.png') },
-  { id: 'pantry-350', set: 'pantry', label: "Herbs & Spices", w: 27, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/350.png') },
-  { id: 'pantry-351', set: 'pantry', label: "Herbs & Spices", w: 30, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/351.png') },
-  { id: 'pantry-352', set: 'pantry', label: "Herbs & Spices", w: 63, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/352.png') },
-  { id: 'pantry-353', set: 'pantry', label: "Herbs & Spices", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/353.png') },
-  { id: 'pantry-354', set: 'pantry', label: "Herbs & Spices", w: 30, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/354.png') },
-  { id: 'pantry-355', set: 'pantry', label: "Herbs & Spices", w: 28, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/355.png') },
-  { id: 'pantry-356', set: 'pantry', label: "Herbs & Spices", w: 27, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/356.png') },
-  { id: 'pantry-357', set: 'pantry', label: "Herbs & Spices", w: 26, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/357.png') },
-  { id: 'pantry-358', set: 'pantry', label: "Herbs & Spices", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/358.png') },
-  { id: 'pantry-359', set: 'pantry', label: "Herbs & Spices", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/359.png') },
-  { id: 'pantry-360', set: 'pantry', label: "Herbs & Spices", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/360.png') },
-  { id: 'pantry-361', set: 'pantry', label: "Herbs & Spices", w: 480, h: 142, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/361.png') },
-  { id: 'pantry-362', set: 'pantry', label: "Herbs & Spices", w: 480, h: 46, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/362.png') },
-  { id: 'pantry-363', set: 'pantry', label: "Meals", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/363.png') },
-  { id: 'pantry-364', set: 'pantry', label: "Meals", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/364.png') },
-  { id: 'pantry-365', set: 'pantry', label: "Meals", w: 17, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/365.png') },
-  { id: 'pantry-366', set: 'pantry', label: "Meals", w: 17, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/366.png') },
-  { id: 'pantry-367', set: 'pantry', label: "Meals", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/367.png') },
-  { id: 'pantry-368', set: 'pantry', label: "Meals", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/368.png') },
-  { id: 'pantry-369', set: 'pantry', label: "Meals", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/369.png') },
-  { id: 'pantry-370', set: 'pantry', label: "Meals", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/370.png') },
-  { id: 'pantry-371', set: 'pantry', label: "Meals", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/371.png') },
-  { id: 'pantry-372', set: 'pantry', label: "Meals", w: 17, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/372.png') },
-  { id: 'pantry-373', set: 'pantry', label: "Meals", w: 17, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/373.png') },
-  { id: 'pantry-374', set: 'pantry', label: "Meals", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/374.png') },
-  { id: 'pantry-375', set: 'pantry', label: "Meals", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/375.png') },
-  { id: 'pantry-376', set: 'pantry', label: "Meals", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/376.png') },
-  { id: 'pantry-377', set: 'pantry', label: "Meals", w: 62, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/377.png') },
-  { id: 'pantry-378', set: 'pantry', label: "Meals", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/378.png') },
-  { id: 'pantry-379', set: 'pantry', label: "Meals", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/379.png') },
-  { id: 'pantry-380', set: 'pantry', label: "Meals", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/380.png') },
-  { id: 'pantry-381', set: 'pantry', label: "Meals", w: 20, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/381.png') },
-  { id: 'pantry-382', set: 'pantry', label: "Meats A", w: 30, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/382.png') },
-  { id: 'pantry-383', set: 'pantry', label: "Meats A", w: 15, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/383.png') },
-  { id: 'pantry-384', set: 'pantry', label: "Meats A", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/384.png') },
-  { id: 'pantry-385', set: 'pantry', label: "Meats A", w: 14, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/385.png') },
-  { id: 'pantry-386', set: 'pantry', label: "Meats A", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/386.png') },
-  { id: 'pantry-387', set: 'pantry', label: "Meats A", w: 19, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/387.png') },
-  { id: 'pantry-388', set: 'pantry', label: "Meats A", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/388.png') },
-  { id: 'pantry-389', set: 'pantry', label: "Meats A", w: 15, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/389.png') },
-  { id: 'pantry-390', set: 'pantry', label: "Meats A", w: 14, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/390.png') },
-  { id: 'pantry-391', set: 'pantry', label: "Meats A", w: 10, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/391.png') },
-  { id: 'pantry-392', set: 'pantry', label: "Meats A", w: 19, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/392.png') },
-  { id: 'pantry-393', set: 'pantry', label: "Meats A", w: 17, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/393.png') },
-  { id: 'pantry-394', set: 'pantry', label: "Meats A", w: 18, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/394.png') },
-  { id: 'pantry-395', set: 'pantry', label: "Meats A", w: 15, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/395.png') },
-  { id: 'pantry-396', set: 'pantry', label: "Meats A", w: 14, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/396.png') },
-  { id: 'pantry-397', set: 'pantry', label: "Meats A", w: 31, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/397.png') },
-  { id: 'pantry-398', set: 'pantry', label: "Meats A", w: 20, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/398.png') },
-  { id: 'pantry-399', set: 'pantry', label: "Meats A", w: 18, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/399.png') },
-  { id: 'pantry-400', set: 'pantry', label: "Meats A", w: 25, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/400.png') },
-  { id: 'pantry-401', set: 'pantry', label: "Meats A", w: 16, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/401.png') },
-  { id: 'pantry-402', set: 'pantry', label: "Meats A", w: 18, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/402.png') },
-  { id: 'pantry-403', set: 'pantry', label: "Meats A", w: 20, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/403.png') },
-  { id: 'pantry-404', set: 'pantry', label: "Meats A", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/404.png') },
-  { id: 'pantry-405', set: 'pantry', label: "Meats A", w: 14, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/405.png') },
-  { id: 'pantry-406', set: 'pantry', label: "Meats A", w: 29, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/406.png') },
-  { id: 'pantry-407', set: 'pantry', label: "Meats A", w: 18, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/407.png') },
-  { id: 'pantry-408', set: 'pantry', label: "Meats A", w: 14, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/408.png') },
-  { id: 'pantry-409', set: 'pantry', label: "Meats A", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/409.png') },
-  { id: 'pantry-410', set: 'pantry', label: "Meats A", w: 9, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/410.png') },
-  { id: 'pantry-411', set: 'pantry', label: "Meats A", w: 20, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/411.png') },
-  { id: 'pantry-412', set: 'pantry', label: "Meats A", w: 17, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/412.png') },
-  { id: 'pantry-413', set: 'pantry', label: "Meats A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/413.png') },
-  { id: 'pantry-414', set: 'pantry', label: "Meats A", w: 7, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/414.png') },
-  { id: 'pantry-415', set: 'pantry', label: "Meats A", w: 7, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/415.png') },
-  { id: 'pantry-416', set: 'pantry', label: "Meats A", w: 22, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/416.png') },
-  { id: 'pantry-417', set: 'pantry', label: "Meats A", w: 29, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/417.png') },
-  { id: 'pantry-418', set: 'pantry', label: "Meats A", w: 17, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/418.png') },
-  { id: 'pantry-419', set: 'pantry', label: "Meats A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/419.png') },
-  { id: 'pantry-420', set: 'pantry', label: "Meats A", w: 7, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/420.png') },
-  { id: 'pantry-421', set: 'pantry', label: "Meats A", w: 7, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/421.png') },
-  { id: 'pantry-422', set: 'pantry', label: "Meats A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/422.png') },
-  { id: 'pantry-423', set: 'pantry', label: "Meats A", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/423.png') },
-  { id: 'pantry-424', set: 'pantry', label: "Meats B", w: 32, h: 94, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/424.png') },
-  { id: 'pantry-425', set: 'pantry', label: "Meats B", w: 30, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/425.png') },
-  { id: 'pantry-426', set: 'pantry', label: "Meats B", w: 31, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/426.png') },
-  { id: 'pantry-427', set: 'pantry', label: "Meats B", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/427.png') },
-  { id: 'pantry-428', set: 'pantry', label: "Meats B", w: 22, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/428.png') },
-  { id: 'pantry-429', set: 'pantry', label: "Meats B", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/429.png') },
-  { id: 'pantry-430', set: 'pantry', label: "Meats B", w: 18, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/430.png') },
-  { id: 'pantry-431', set: 'pantry', label: "Meats B", w: 25, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/431.png') },
-  { id: 'pantry-432', set: 'pantry', label: "Meats B", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/432.png') },
-  { id: 'pantry-433', set: 'pantry', label: "Meats B", w: 20, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/433.png') },
-  { id: 'pantry-434', set: 'pantry', label: "Meats B", w: 31, h: 59, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/434.png') },
-  { id: 'pantry-435', set: 'pantry', label: "Meats B", w: 29, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/435.png') },
-  { id: 'pantry-436', set: 'pantry', label: "Meats B", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/436.png') },
-  { id: 'pantry-437', set: 'pantry', label: "Meats B", w: 24, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/437.png') },
-  { id: 'pantry-438', set: 'pantry', label: "Meats B", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/438.png') },
-  { id: 'pantry-439', set: 'pantry', label: "Meats B", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/439.png') },
-  { id: 'pantry-440', set: 'pantry', label: "Meats B", w: 30, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/440.png') },
-  { id: 'pantry-441', set: 'pantry', label: "Meats B", w: 24, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/441.png') },
-  { id: 'pantry-442', set: 'pantry', label: "Meats B", w: 24, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/442.png') },
-  { id: 'pantry-443', set: 'pantry', label: "Meats B", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/443.png') },
-  { id: 'pantry-444', set: 'pantry', label: "Meats B", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/444.png') },
-  { id: 'pantry-445', set: 'pantry', label: "Meats B", w: 29, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/445.png') },
-  { id: 'pantry-446', set: 'pantry', label: "Meats B", w: 64, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/446.png') },
-  { id: 'pantry-447', set: 'pantry', label: "Meats B", w: 20, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/447.png') },
-  { id: 'pantry-448', set: 'pantry', label: "Meats B", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/448.png') },
-  { id: 'pantry-449', set: 'pantry', label: "Meats B", w: 26, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/449.png') },
-  { id: 'pantry-450', set: 'pantry', label: "Mushrooms", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/450.png') },
-  { id: 'pantry-451', set: 'pantry', label: "Mushrooms", w: 21, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/451.png') },
-  { id: 'pantry-452', set: 'pantry', label: "Mushrooms", w: 12, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/452.png') },
-  { id: 'pantry-453', set: 'pantry', label: "Mushrooms", w: 14, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/453.png') },
-  { id: 'pantry-454', set: 'pantry', label: "Mushrooms", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/454.png') },
-  { id: 'pantry-455', set: 'pantry', label: "Mushrooms", w: 18, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/455.png') },
-  { id: 'pantry-456', set: 'pantry', label: "Mushrooms", w: 12, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/456.png') },
-  { id: 'pantry-457', set: 'pantry', label: "Mushrooms", w: 12, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/457.png') },
-  { id: 'pantry-458', set: 'pantry', label: "Mushrooms", w: 23, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/458.png') },
-  { id: 'pantry-459', set: 'pantry', label: "Mushrooms", w: 11, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/459.png') },
-  { id: 'pantry-460', set: 'pantry', label: "Mushrooms", w: 10, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/460.png') },
-  { id: 'pantry-461', set: 'pantry', label: "Mushrooms", w: 29, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/461.png') },
-  { id: 'pantry-462', set: 'pantry', label: "Mushrooms", w: 95, h: 62, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/462.png') },
-  { id: 'pantry-463', set: 'pantry', label: "Mushrooms", w: 19, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/463.png') },
-  { id: 'pantry-464', set: 'pantry', label: "Mushrooms", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/464.png') },
-  { id: 'pantry-465', set: 'pantry', label: "Mushrooms", w: 17, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/465.png') },
-  { id: 'pantry-466', set: 'pantry', label: "Mushrooms", w: 20, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/466.png') },
-  { id: 'pantry-467', set: 'pantry', label: "Mushrooms", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/467.png') },
-  { id: 'pantry-468', set: 'pantry', label: "Mushrooms", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/468.png') },
-  { id: 'pantry-469', set: 'pantry', label: "Mushrooms", w: 25, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/469.png') },
-  { id: 'pantry-470', set: 'pantry', label: "Mushrooms", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/470.png') },
-  { id: 'pantry-471', set: 'pantry', label: "Mushrooms", w: 27, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/471.png') },
-  { id: 'pantry-472', set: 'pantry', label: "Mushrooms", w: 58, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/472.png') },
-  { id: 'pantry-473', set: 'pantry', label: "Mushrooms", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/473.png') },
-  { id: 'pantry-474', set: 'pantry', label: "Mushrooms", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/474.png') },
-  { id: 'pantry-475', set: 'pantry', label: "Nuts", w: 19, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/475.png') },
-  { id: 'pantry-476', set: 'pantry', label: "Nuts", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/476.png') },
-  { id: 'pantry-477', set: 'pantry', label: "Nuts", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/477.png') },
-  { id: 'pantry-478', set: 'pantry', label: "Nuts", w: 19, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/478.png') },
-  { id: 'pantry-479', set: 'pantry', label: "Nuts", w: 19, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/479.png') },
-  { id: 'pantry-480', set: 'pantry', label: "Nuts", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/480.png') },
-  { id: 'pantry-481', set: 'pantry', label: "Nuts", w: 22, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/481.png') },
-  { id: 'pantry-482', set: 'pantry', label: "Nuts", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/482.png') },
-  { id: 'pantry-483', set: 'pantry', label: "Nuts", w: 14, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/483.png') },
-  { id: 'pantry-484', set: 'pantry', label: "Nuts", w: 29, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/484.png') },
-  { id: 'pantry-485', set: 'pantry', label: "Nuts", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/485.png') },
-  { id: 'pantry-486', set: 'pantry', label: "Nuts", w: 24, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/486.png') },
-  { id: 'pantry-487', set: 'pantry', label: "Nuts", w: 29, h: 61, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/487.png') },
-  { id: 'pantry-488', set: 'pantry', label: "Nuts", w: 29, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/488.png') },
-  { id: 'pantry-489', set: 'pantry', label: "Nuts", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/489.png') },
-  { id: 'pantry-490', set: 'pantry', label: "Nuts", w: 24, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/490.png') },
-  { id: 'pantry-491', set: 'pantry', label: "Nuts", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/491.png') },
-  { id: 'pantry-492', set: 'pantry', label: "Nuts", w: 25, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/492.png') },
-  { id: 'pantry-493', set: 'pantry', label: "Nuts", w: 16, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/493.png') },
-  { id: 'pantry-494', set: 'pantry', label: "Nuts", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/494.png') },
-  { id: 'pantry-495', set: 'pantry', label: "Nuts", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/495.png') },
-  { id: 'pantry-496', set: 'pantry', label: "Nuts", w: 24, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/496.png') },
-  { id: 'pantry-497', set: 'pantry', label: "Nuts", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/497.png') },
-  { id: 'pantry-498', set: 'pantry', label: "Nuts", w: 25, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/498.png') },
-  { id: 'pantry-499', set: 'pantry', label: "Nuts", w: 28, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/499.png') },
-  { id: 'pantry-500', set: 'pantry', label: "Nuts", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/500.png') },
-  { id: 'pantry-501', set: 'pantry', label: "Nuts", w: 28, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/501.png') },
-  { id: 'pantry-502', set: 'pantry', label: "Nuts", w: 288, h: 44, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/502.png') },
-  { id: 'pantry-503', set: 'pantry', label: "Seafood A", w: 95, h: 21, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/503.png') },
-  { id: 'pantry-504', set: 'pantry', label: "Seafood A", w: 7, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/504.png') },
-  { id: 'pantry-505', set: 'pantry', label: "Seafood A", w: 62, h: 17, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/505.png') },
-  { id: 'pantry-506', set: 'pantry', label: "Seafood A", w: 25, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/506.png') },
-  { id: 'pantry-507', set: 'pantry', label: "Seafood A", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/507.png') },
-  { id: 'pantry-508', set: 'pantry', label: "Seafood A", w: 25, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/508.png') },
-  { id: 'pantry-509', set: 'pantry', label: "Seafood A", w: 62, h: 16, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/509.png') },
-  { id: 'pantry-510', set: 'pantry', label: "Seafood A", w: 18, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/510.png') },
-  { id: 'pantry-511', set: 'pantry', label: "Seafood A", w: 9, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/511.png') },
-  { id: 'pantry-512', set: 'pantry', label: "Seafood A", w: 159, h: 61, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/512.png') },
-  { id: 'pantry-513', set: 'pantry', label: "Seafood A", w: 16, h: 31, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/513.png') },
-  { id: 'pantry-514', set: 'pantry', label: "Seafood A", w: 14, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/514.png') },
-  { id: 'pantry-515', set: 'pantry', label: "Seafood A", w: 29, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/515.png') },
-  { id: 'pantry-516', set: 'pantry', label: "Seafood A", w: 29, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/516.png') },
-  { id: 'pantry-517', set: 'pantry', label: "Seafood A", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/517.png') },
-  { id: 'pantry-518', set: 'pantry', label: "Seafood A", w: 21, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/518.png') },
-  { id: 'pantry-519', set: 'pantry', label: "Seafood A", w: 10, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/519.png') },
-  { id: 'pantry-520', set: 'pantry', label: "Seafood A", w: 28, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/520.png') },
-  { id: 'pantry-521', set: 'pantry', label: "Seafood A", w: 32, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/521.png') },
-  { id: 'pantry-522', set: 'pantry', label: "Seafood A", w: 25, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/522.png') },
-  { id: 'pantry-523', set: 'pantry', label: "Seafood A", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/523.png') },
-  { id: 'pantry-524', set: 'pantry', label: "Seafood A", w: 62, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/524.png') },
-  { id: 'pantry-525', set: 'pantry', label: "Seafood A", w: 31, h: 23, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/525.png') },
-  { id: 'pantry-526', set: 'pantry', label: "Seafood A", w: 36, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/526.png') },
-  { id: 'pantry-527', set: 'pantry', label: "Seafood A", w: 42, h: 19, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/527.png') },
-  { id: 'pantry-528', set: 'pantry', label: "Seafood A", w: 19, h: 42, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/528.png') },
-  { id: 'pantry-529', set: 'pantry', label: "Seafood A", w: 25, h: 36, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/529.png') },
-  { id: 'pantry-530', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/530.png') },
-  { id: 'pantry-531', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/531.png') },
-  { id: 'pantry-532', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/532.png') },
-  { id: 'pantry-533', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 20, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/533.png') },
-  { id: 'pantry-534', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/534.png') },
-  { id: 'pantry-535', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/535.png') },
-  { id: 'pantry-536', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 7, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/536.png') },
-  { id: 'pantry-537', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 18, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/537.png') },
-  { id: 'pantry-538', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 8, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/538.png') },
-  { id: 'pantry-539', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 20, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/539.png') },
-  { id: 'pantry-540', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/540.png') },
-  { id: 'pantry-541', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/541.png') },
-  { id: 'pantry-542', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/542.png') },
-  { id: 'pantry-543', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/543.png') },
-  { id: 'pantry-544', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/544.png') },
-  { id: 'pantry-545', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/545.png') },
-  { id: 'pantry-546', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 23, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/546.png') },
-  { id: 'pantry-547', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 24, h: 27, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/547.png') },
-  { id: 'pantry-548', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/548.png') },
-  { id: 'pantry-549', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/549.png') },
-  { id: 'pantry-550', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/550.png') },
-  { id: 'pantry-551', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/551.png') },
-  { id: 'pantry-552', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 25, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/552.png') },
-  { id: 'pantry-553', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 23, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/553.png') },
-  { id: 'pantry-554', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/554.png') },
-  { id: 'pantry-555', set: 'pantry', label: "Tea, Coffee, Medicinal Herbs", w: 256, h: 43, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/555.png') },
-  { id: 'pantry-556', set: 'pantry', label: "Tortillas", w: 20, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/556.png') },
-  { id: 'pantry-557', set: 'pantry', label: "Tortillas", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/557.png') },
-  { id: 'pantry-558', set: 'pantry', label: "Tortillas", w: 18, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/558.png') },
-  { id: 'pantry-559', set: 'pantry', label: "Tortillas", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/559.png') },
-  { id: 'pantry-560', set: 'pantry', label: "Vegetables A", w: 19, h: 31, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/560.png') },
-  { id: 'pantry-561', set: 'pantry', label: "Vegetables A", w: 31, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/561.png') },
-  { id: 'pantry-562', set: 'pantry', label: "Vegetables A", w: 21, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/562.png') },
-  { id: 'pantry-563', set: 'pantry', label: "Vegetables A", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/563.png') },
-  { id: 'pantry-564', set: 'pantry', label: "Vegetables A", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/564.png') },
-  { id: 'pantry-565', set: 'pantry', label: "Vegetables A", w: 17, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/565.png') },
-  { id: 'pantry-566', set: 'pantry', label: "Vegetables A", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/566.png') },
-  { id: 'pantry-567', set: 'pantry', label: "Vegetables A", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/567.png') },
-  { id: 'pantry-568', set: 'pantry', label: "Vegetables A", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/568.png') },
-  { id: 'pantry-569', set: 'pantry', label: "Vegetables A", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/569.png') },
-  { id: 'pantry-570', set: 'pantry', label: "Vegetables A", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/570.png') },
-  { id: 'pantry-571', set: 'pantry', label: "Vegetables A", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/571.png') },
-  { id: 'pantry-572', set: 'pantry', label: "Vegetables A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/572.png') },
-  { id: 'pantry-573', set: 'pantry', label: "Vegetables A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/573.png') },
-  { id: 'pantry-574', set: 'pantry', label: "Vegetables A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/574.png') },
-  { id: 'pantry-575', set: 'pantry', label: "Vegetables A", w: 14, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/575.png') },
-  { id: 'pantry-576', set: 'pantry', label: "Vegetables A", w: 17, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/576.png') },
-  { id: 'pantry-577', set: 'pantry', label: "Vegetables A", w: 13, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/577.png') },
-  { id: 'pantry-578', set: 'pantry', label: "Vegetables A", w: 16, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/578.png') },
-  { id: 'pantry-579', set: 'pantry', label: "Vegetables A", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/579.png') },
-  { id: 'pantry-580', set: 'pantry', label: "Vegetables A", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/580.png') },
-  { id: 'pantry-581', set: 'pantry', label: "Vegetables A", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/581.png') },
-  { id: 'pantry-582', set: 'pantry', label: "Vegetables A", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/582.png') },
-  { id: 'pantry-583', set: 'pantry', label: "Vegetables A", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/583.png') },
-  { id: 'pantry-584', set: 'pantry', label: "Vegetables A", w: 13, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/584.png') },
-  { id: 'pantry-585', set: 'pantry', label: "Vegetables A", w: 11, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/585.png') },
-  { id: 'pantry-586', set: 'pantry', label: "Vegetables A", w: 11, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/586.png') },
-  { id: 'pantry-587', set: 'pantry', label: "Vegetables A", w: 11, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/587.png') },
-  { id: 'pantry-588', set: 'pantry', label: "Vegetables A", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/588.png') },
-  { id: 'pantry-589', set: 'pantry', label: "Vegetables A", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/589.png') },
-  { id: 'pantry-590', set: 'pantry', label: "Vegetables A", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/590.png') },
-  { id: 'pantry-591', set: 'pantry', label: "Vegetables A", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/591.png') },
-  { id: 'pantry-592', set: 'pantry', label: "Vegetables A", w: 11, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/592.png') },
-  { id: 'pantry-593', set: 'pantry', label: "Vegetables A", w: 11, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/593.png') },
-  { id: 'pantry-594', set: 'pantry', label: "Vegetables A", w: 11, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/594.png') },
-  { id: 'pantry-595', set: 'pantry', label: "Vegetables A", w: 11, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/595.png') },
-  { id: 'pantry-596', set: 'pantry', label: "Vegetables A", w: 17, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/596.png') },
-  { id: 'pantry-597', set: 'pantry', label: "Vegetables A", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/597.png') },
-  { id: 'pantry-598', set: 'pantry', label: "Vegetables A", w: 16, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/598.png') },
-  { id: 'pantry-599', set: 'pantry', label: "Vegetables A", w: 8, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/599.png') },
-  { id: 'pantry-600', set: 'pantry', label: "Vegetables A", w: 24, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/600.png') },
-  { id: 'pantry-601', set: 'pantry', label: "Vegetables A", w: 24, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/601.png') },
-  { id: 'pantry-602', set: 'pantry', label: "Vegetables A", w: 24, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/602.png') },
-  { id: 'pantry-603', set: 'pantry', label: "Vegetables A", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/603.png') },
-  { id: 'pantry-604', set: 'pantry', label: "Vegetables A", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/604.png') },
-  { id: 'pantry-605', set: 'pantry', label: "Vegetables A", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/605.png') },
-  { id: 'pantry-606', set: 'pantry', label: "Vegetables A", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/606.png') },
-  { id: 'pantry-607', set: 'pantry', label: "Vegetables A", w: 17, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/607.png') },
-  { id: 'pantry-608', set: 'pantry', label: "Vegetables A", w: 14, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/608.png') },
-  { id: 'pantry-609', set: 'pantry', label: "Vegetables A", w: 15, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/609.png') },
-  { id: 'pantry-610', set: 'pantry', label: "Vegetables A", w: 95, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/610.png') },
-  { id: 'pantry-611', set: 'pantry', label: "Vegetables A", w: 29, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/611.png') },
-  { id: 'pantry-612', set: 'pantry', label: "Vegetables A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/612.png') },
-  { id: 'pantry-613', set: 'pantry', label: "Vegetables A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/613.png') },
-  { id: 'pantry-614', set: 'pantry', label: "Vegetables A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/614.png') },
-  { id: 'pantry-615', set: 'pantry', label: "Vegetables A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/615.png') },
-  { id: 'pantry-616', set: 'pantry', label: "Vegetables A", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/616.png') },
-  { id: 'pantry-617', set: 'pantry', label: "Vegetables A", w: 13, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/617.png') },
-  { id: 'pantry-618', set: 'pantry', label: "Vegetables A", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/618.png') },
-  { id: 'pantry-619', set: 'pantry', label: "Vegetables A", w: 22, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/619.png') },
-  { id: 'pantry-620', set: 'pantry', label: "Vegetables A", w: 15, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/620.png') },
-  { id: 'pantry-621', set: 'pantry', label: "Vegetables A", w: 15, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/621.png') },
-  { id: 'pantry-622', set: 'pantry', label: "Vegetables A", w: 15, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/622.png') },
-  { id: 'pantry-623', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/623.png') },
-  { id: 'pantry-624', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/624.png') },
-  { id: 'pantry-625', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/625.png') },
-  { id: 'pantry-626', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/626.png') },
-  { id: 'pantry-627', set: 'pantry', label: "Vegetables A", w: 14, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/627.png') },
-  { id: 'pantry-628', set: 'pantry', label: "Vegetables A", w: 14, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/628.png') },
-  { id: 'pantry-629', set: 'pantry', label: "Vegetables A", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/629.png') },
-  { id: 'pantry-630', set: 'pantry', label: "Vegetables A", w: 16, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/630.png') },
-  { id: 'pantry-631', set: 'pantry', label: "Vegetables A", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/631.png') },
-  { id: 'pantry-632', set: 'pantry', label: "Vegetables A", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/632.png') },
-  { id: 'pantry-633', set: 'pantry', label: "Vegetables A", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/633.png') },
-  { id: 'pantry-634', set: 'pantry', label: "Vegetables A", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/634.png') },
-  { id: 'pantry-635', set: 'pantry', label: "Vegetables A", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/635.png') },
-  { id: 'pantry-636', set: 'pantry', label: "Vegetables A", w: 10, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/636.png') },
-  { id: 'pantry-637', set: 'pantry', label: "Vegetables A", w: 21, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/637.png') },
-  { id: 'pantry-638', set: 'pantry', label: "Vegetables A", w: 21, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/638.png') },
-  { id: 'pantry-639', set: 'pantry', label: "Vegetables A", w: 16, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/639.png') },
-  { id: 'pantry-640', set: 'pantry', label: "Vegetables A", w: 19, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/640.png') },
-  { id: 'pantry-641', set: 'pantry', label: "Vegetables A", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/641.png') },
-  { id: 'pantry-642', set: 'pantry', label: "Vegetables A", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/642.png') },
-  { id: 'pantry-643', set: 'pantry', label: "Vegetables A", w: 13, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/643.png') },
-  { id: 'pantry-644', set: 'pantry', label: "Vegetables A", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/644.png') },
-  { id: 'pantry-645', set: 'pantry', label: "Vegetables A", w: 12, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/645.png') },
-  { id: 'pantry-646', set: 'pantry', label: "Vegetables A", w: 12, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/646.png') },
-  { id: 'pantry-647', set: 'pantry', label: "Vegetables A", w: 30, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/647.png') },
-  { id: 'pantry-648', set: 'pantry', label: "Vegetables A", w: 30, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/648.png') },
-  { id: 'pantry-649', set: 'pantry', label: "Vegetables A", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/649.png') },
-  { id: 'pantry-650', set: 'pantry', label: "Vegetables A", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/650.png') },
-  { id: 'pantry-651', set: 'pantry', label: "Vegetables A", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/651.png') },
-  { id: 'pantry-652', set: 'pantry', label: "Vegetables A", w: 28, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/652.png') },
-  { id: 'pantry-653', set: 'pantry', label: "Vegetables A", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/653.png') },
-  { id: 'pantry-654', set: 'pantry', label: "Vegetables A", w: 12, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/654.png') },
-  { id: 'pantry-655', set: 'pantry', label: "Vegetables A", w: 12, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/655.png') },
-  { id: 'pantry-656', set: 'pantry', label: "Vegetables A", w: 16, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/656.png') },
-  { id: 'pantry-657', set: 'pantry', label: "Vegetables A", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/657.png') },
-  { id: 'pantry-658', set: 'pantry', label: "Vegetables A", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/658.png') },
-  { id: 'pantry-659', set: 'pantry', label: "Vegetables A", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/659.png') },
-  { id: 'pantry-660', set: 'pantry', label: "Vegetables A", w: 18, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/660.png') },
-  { id: 'pantry-661', set: 'pantry', label: "Vegetables A", w: 18, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/661.png') },
-  { id: 'pantry-662', set: 'pantry', label: "Vegetables A", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/662.png') },
-  { id: 'pantry-663', set: 'pantry', label: "Vegetables A", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/663.png') },
-  { id: 'pantry-664', set: 'pantry', label: "Vegetables A", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/664.png') },
-  { id: 'pantry-665', set: 'pantry', label: "Vegetables A", w: 9, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/665.png') },
-  { id: 'pantry-666', set: 'pantry', label: "Vegetables A", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/666.png') },
-  { id: 'pantry-667', set: 'pantry', label: "Vegetables A", w: 27, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/667.png') },
-  { id: 'pantry-668', set: 'pantry', label: "Vegetables A", w: 30, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/668.png') },
-  { id: 'pantry-669', set: 'pantry', label: "Vegetables A", w: 6, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/669.png') },
-  { id: 'pantry-670', set: 'pantry', label: "Vegetables A", w: 6, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/670.png') },
-  { id: 'pantry-671', set: 'pantry', label: "Vegetables A", w: 6, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/671.png') },
-  { id: 'pantry-672', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/672.png') },
-  { id: 'pantry-673', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/673.png') },
-  { id: 'pantry-674', set: 'pantry', label: "Vegetables A", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/674.png') },
-  { id: 'pantry-675', set: 'pantry', label: "Vegetables A", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/675.png') },
-  { id: 'pantry-676', set: 'pantry', label: "Vegetables B", w: 16, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/676.png') },
-  { id: 'pantry-677', set: 'pantry', label: "Vegetables B", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/677.png') },
-  { id: 'pantry-678', set: 'pantry', label: "Vegetables B", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/678.png') },
-  { id: 'pantry-679', set: 'pantry', label: "Vegetables B", w: 16, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/679.png') },
-  { id: 'pantry-680', set: 'pantry', label: "Vegetables B", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/680.png') },
-  { id: 'pantry-681', set: 'pantry', label: "Vegetables B", w: 23, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/681.png') },
-  { id: 'pantry-682', set: 'pantry', label: "Vegetables B", w: 16, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/682.png') },
-  { id: 'pantry-683', set: 'pantry', label: "Vegetables B", w: 30, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/683.png') },
-  { id: 'pantry-684', set: 'pantry', label: "Vegetables B", w: 30, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/684.png') },
-  { id: 'pantry-685', set: 'pantry', label: "Vegetables B", w: 64, h: 43, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/685.png') },
-  { id: 'pantry-686', set: 'pantry', label: "Vegetables C", w: 22, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/686.png') },
-  { id: 'pantry-687', set: 'pantry', label: "Vegetables C", w: 24, h: 63, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/687.png') },
-  { id: 'pantry-688', set: 'pantry', label: "Vegetables C", w: 20, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/688.png') },
-  { id: 'pantry-689', set: 'pantry', label: "Vegetables C", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/689.png') },
-  { id: 'pantry-690', set: 'pantry', label: "Vegetables C", w: 16, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/690.png') },
-  { id: 'pantry-691', set: 'pantry', label: "Vegetables C", w: 22, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/691.png') },
-  { id: 'pantry-692', set: 'pantry', label: "Vegetables C", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/692.png') },
-  { id: 'pantry-693', set: 'pantry', label: "Vegetables C", w: 20, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/693.png') },
-  { id: 'pantry-694', set: 'pantry', label: "Vegetables C", w: 14, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/694.png') },
-  { id: 'pantry-695', set: 'pantry', label: "Vegetables C", w: 18, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/695.png') },
-  { id: 'pantry-696', set: 'pantry', label: "Vegetables C", w: 13, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/696.png') },
-  { id: 'pantry-697', set: 'pantry', label: "Vegetables C", w: 15, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/697.png') },
-  { id: 'pantry-698', set: 'pantry', label: "Vegetables C", w: 17, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/698.png') },
-  { id: 'pantry-699', set: 'pantry', label: "Vegetables C", w: 9, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/699.png') },
-  { id: 'pantry-700', set: 'pantry', label: "Vegetables C", w: 15, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/700.png') },
-  { id: 'pantry-701', set: 'pantry', label: "Vegetables C", w: 62, h: 62, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/701.png') },
-  { id: 'pantry-702', set: 'pantry', label: "Vegetables C", w: 22, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/702.png') },
-  { id: 'pantry-703', set: 'pantry', label: "Vegetables C", w: 24, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/703.png') },
-  { id: 'pantry-704', set: 'pantry', label: "Vegetables C", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/704.png') },
-  { id: 'pantry-705', set: 'pantry', label: "Vegetables C", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/705.png') },
-  { id: 'pantry-706', set: 'pantry', label: "Vegetables C", w: 28, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/706.png') },
-  { id: 'pantry-707', set: 'pantry', label: "Vegetables C", w: 26, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/707.png') },
-  { id: 'pantry-708', set: 'pantry', label: "Vegetables C", w: 27, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/708.png') },
-  { id: 'pantry-709', set: 'pantry', label: "Vegetables C", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/709.png') },
-  { id: 'pantry-710', set: 'pantry', label: "Vegetables C", w: 22, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/710.png') },
-  { id: 'pantry-711', set: 'pantry', label: "Vegetables C", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/711.png') },
-  { id: 'pantry-712', set: 'pantry', label: "Vegetables C", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/712.png') },
-  { id: 'pantry-713', set: 'pantry', label: "Vegetables C", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/713.png') },
-  { id: 'pantry-714', set: 'pantry', label: "Vegetables C", w: 16, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/714.png') },
-  { id: 'pantry-715', set: 'pantry', label: "Vegetables C", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/715.png') },
-  { id: 'pantry-716', set: 'pantry', label: "Vegetables C", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/716.png') },
-  { id: 'pantry-717', set: 'pantry', label: "Vegetables C", w: 28, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/717.png') },
-  { id: 'pantry-718', set: 'pantry', label: "Vegetables C", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/718.png') },
-  { id: 'pantry-719', set: 'pantry', label: "Vegetables C", w: 95, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/719.png') },
-  { id: 'pantry-720', set: 'pantry', label: "Vegetables C", w: 29, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/720.png') },
-  { id: 'pantry-721', set: 'pantry', label: "Vegetables C", w: 27, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/721.png') },
-  { id: 'pantry-722', set: 'pantry', label: "Vegetables C", w: 26, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/722.png') },
-  { id: 'pantry-723', set: 'pantry', label: "Vegetables C", w: 26, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/723.png') },
-  { id: 'pantry-724', set: 'pantry', label: "Vegetables C", w: 31, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/724.png') },
-  { id: 'pantry-725', set: 'pantry', label: "Vegetables C", w: 29, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/725.png') },
-  { id: 'pantry-726', set: 'pantry', label: "Vegetables C", w: 24, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/726.png') },
-  { id: 'pantry-727', set: 'pantry', label: "Vegetables C", w: 30, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/727.png') },
-  { id: 'pantry-728', set: 'pantry', label: "Vegetables C", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/728.png') },
-  { id: 'pantry-729', set: 'pantry', label: "Vegetables C", w: 29, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/729.png') },
-  { id: 'pantry-730', set: 'pantry', label: "Vegetables C", w: 28, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/730.png') },
-  { id: 'pantry-731', set: 'pantry', label: "Vegetables C", w: 576, h: 48, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/731.png') },
-  { id: 'pantry-732', set: 'pantry', label: "Vegetables C", w: 10, h: 27, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/732.png') },
-  { id: 'pantry-733', set: 'pantry', label: "Vegetables C", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/733.png') },
-  { id: 'pantry-734', set: 'pantry', label: "Vegetables C", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/734.png') },
-  { id: 'pantry-735', set: 'pantry', label: "Vegetables C", w: 27, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/735.png') },
-  { id: 'pantry-736', set: 'pantry', label: "Vegetables C", w: 19, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/736.png') },
-  { id: 'pantry-737', set: 'pantry', label: "Vegetables C", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/737.png') },
-  { id: 'pantry-738', set: 'pantry', label: "Vegetables C", w: 26, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/738.png') },
-  { id: 'pantry-739', set: 'pantry', label: "Vegetables C", w: 13, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/739.png') },
-  { id: 'pantry-740', set: 'pantry', label: "Vegetables C", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/740.png') },
-  { id: 'pantry-741', set: 'pantry', label: "Vegetables C", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/741.png') },
-  { id: 'pantry-742', set: 'pantry', label: "Vegetables C", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/742.png') },
-  { id: 'pantry-743', set: 'pantry', label: "Vegetables C", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/743.png') },
-  { id: 'pantry-744', set: 'pantry', label: "Vegetables C", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/744.png') },
-  { id: 'pantry-745', set: 'pantry', label: "Vegetables C", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/745.png') },
-  { id: 'pantry-746', set: 'pantry', label: "Vegetables C", w: 12, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/746.png') },
-  { id: 'pantry-747', set: 'pantry', label: "Vegetables C", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/747.png') },
-  { id: 'pantry-748', set: 'pantry', label: "Vegetables C", w: 12, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/748.png') },
-  { id: 'pantry-749', set: 'pantry', label: "Vegetables C", w: 26, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/749.png') },
-  { id: 'pantry-750', set: 'pantry', label: "Vegetables C", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/750.png') },
-  { id: 'pantry-751', set: 'pantry', label: "Vegetables C", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/751.png') },
-  { id: 'pantry-752', set: 'pantry', label: "Vegetables C", w: 14, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/752.png') },
-  { id: 'pantry-753', set: 'pantry', label: "Vegetables C", w: 14, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/753.png') },
-  { id: 'pantry-754', set: 'pantry', label: "Vegetables C", w: 14, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/754.png') },
-  { id: 'pantry-755', set: 'pantry', label: "Vegetables C", w: 14, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/755.png') },
-  { id: 'pantry-756', set: 'pantry', label: "Vegetables C", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/756.png') },
-  { id: 'pantry-757', set: 'pantry', label: "Vegetables C", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/757.png') },
-  { id: 'pantry-758', set: 'pantry', label: "Vegetables C", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/758.png') },
-  { id: 'pantry-759', set: 'pantry', label: "Vegetables C", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/759.png') },
-  { id: 'pantry-760', set: 'pantry', label: "Vegetables C", w: 19, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/760.png') },
-  { id: 'pantry-761', set: 'pantry', label: "Vegetables C", w: 19, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/761.png') },
-  { id: 'pantry-762', set: 'pantry', label: "Vegetables C", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/762.png') },
-  { id: 'pantry-763', set: 'pantry', label: "Vegetables C", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/763.png') },
-  { id: 'pantry-764', set: 'pantry', label: "Vegetables C", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/764.png') },
-  { id: 'pantry-765', set: 'pantry', label: "Vegetables C", w: 12, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/765.png') },
-  { id: 'pantry-766', set: 'pantry', label: "Vegetables C", w: 20, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/766.png') },
-  { id: 'pantry-767', set: 'pantry', label: "Vegetables C", w: 32, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/767.png') },
-  { id: 'pantry-768', set: 'pantry', label: "Vegetables C", w: 26, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/768.png') },
-  { id: 'pantry-769', set: 'pantry', label: "Vegetables C", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/769.png') },
-  { id: 'pantry-770', set: 'pantry', label: "Vegetables C", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/770.png') },
-  { id: 'pantry-771', set: 'pantry', label: "Vegetables C", w: 23, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/771.png') },
-  { id: 'pantry-772', set: 'pantry', label: "Vegetables C", w: 25, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/772.png') },
-  { id: 'pantry-773', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/773.png') },
-  { id: 'pantry-774', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/774.png') },
-  { id: 'pantry-775', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/775.png') },
-  { id: 'pantry-776', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/776.png') },
-  { id: 'pantry-777', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/777.png') },
-  { id: 'pantry-778', set: 'pantry', label: "Vegetables C", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/778.png') },
-  { id: 'pantry-779', set: 'pantry', label: "Vegetables C", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/779.png') },
-  { id: 'pantry-780', set: 'pantry', label: "Vegetables C", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/780.png') },
-  { id: 'pantry-781', set: 'pantry', label: "Vegetables C", w: 21, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/781.png') },
-  { id: 'pantry-782', set: 'pantry', label: "Vegetables C", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/782.png') },
-  { id: 'pantry-783', set: 'pantry', label: "Vegetables C", w: 26, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/783.png') },
-  { id: 'pantry-784', set: 'pantry', label: "Vegetables C", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/784.png') },
-  { id: 'pantry-785', set: 'pantry', label: "Vegetables C", w: 576, h: 42, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/785.png') },
-  { id: 'pantry-786', set: 'pantry', label: "Vegetables C", w: 18, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/786.png') },
-  { id: 'pantry-787', set: 'pantry', label: "Vegetables C", w: 19, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/787.png') },
-  { id: 'pantry-788', set: 'pantry', label: "Vegetables C", w: 17, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/788.png') },
-  { id: 'pantry-789', set: 'pantry', label: "Vegetables C", w: 13, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/789.png') },
-  { id: 'pantry-790', set: 'pantry', label: "Vegetables C", w: 19, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/790.png') },
-  { id: 'pantry-791', set: 'pantry', label: "Vegetables C", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/791.png') },
-  { id: 'pantry-792', set: 'pantry', label: "Vegetables C", w: 16, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/792.png') },
-  { id: 'pantry-793', set: 'pantry', label: "Vegetables C", w: 15, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/793.png') },
-  { id: 'pantry-794', set: 'pantry', label: "Vegetables C", w: 22, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/794.png') },
-  { id: 'pantry-795', set: 'pantry', label: "Vegetables C", w: 16, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/795.png') },
-  { id: 'pantry-796', set: 'pantry', label: "Vegetables C", w: 20, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/796.png') },
-  { id: 'pantry-797', set: 'pantry', label: "Vegetables C", w: 22, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/797.png') },
-  { id: 'pantry-798', set: 'pantry', label: "Vegetables C", w: 21, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/798.png') },
-  { id: 'pantry-799', set: 'pantry', label: "Vegetables C", w: 27, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/799.png') },
-  { id: 'pantry-800', set: 'pantry', label: "Vegetables C", w: 28, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/800.png') },
-  { id: 'pantry-801', set: 'pantry', label: "Vegetables C", w: 24, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/801.png') },
-  { id: 'pantry-802', set: 'pantry', label: "Vegetables C", w: 22, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/802.png') },
-  { id: 'pantry-803', set: 'pantry', label: "Vegetables C", w: 19, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/803.png') },
-  { id: 'pantry-804', set: 'pantry', label: "Vegetables C", w: 26, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/804.png') },
-  { id: 'pantry-805', set: 'pantry', label: "Vegetables C", w: 18, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/805.png') },
-  { id: 'pantry-806', set: 'pantry', label: "Vegetables C", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/806.png') },
-  { id: 'pantry-807', set: 'pantry', label: "Vegetables C", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/807.png') },
-  { id: 'pantry-808', set: 'pantry', label: "Vegetables C", w: 17, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/808.png') },
-  { id: 'pantry-809', set: 'pantry', label: "Vegetables C", w: 28, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/809.png') },
-  { id: 'pantry-810', set: 'pantry', label: "Vegetables C", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/810.png') },
-  { id: 'pantry-811', set: 'pantry', label: "Vegetables C", w: 27, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/811.png') },
-  { id: 'pantry-812', set: 'pantry', label: "Vegetables C", w: 25, h: 27, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/812.png') },
-  { id: 'pantry-813', set: 'pantry', label: "Vegetables C", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/813.png') },
-  { id: 'pantry-814', set: 'pantry', label: "Vegetables C", w: 25, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/814.png') },
-  { id: 'pantry-815', set: 'pantry', label: "Vegetables C", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/815.png') },
-  { id: 'pantry-816', set: 'pantry', label: "Vegetables C", w: 22, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/816.png') },
-  { id: 'pantry-817', set: 'pantry', label: "Vegetables C", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/817.png') },
-  { id: 'pantry-818', set: 'pantry', label: "Vegetables C", w: 30, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/pantry/818.png') },
-  { id: 'pantry-819', set: 'pantry', label: "Vegetables C", w: 23, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/819.png') },
-  { id: 'pantry-820', set: 'pantry', label: "Vegetables C", w: 29, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/pantry/820.png') },
-  { id: 'pantry-821', set: 'pantry', label: "Vegetables C", w: 385, h: 51, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/pantry/821.png') },
-  { id: 'lounge-393', set: 'lounge', label: "Games", w: 6, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/393.png') },
-  { id: 'lounge-394', set: 'lounge', label: "Games", w: 7, h: 7, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/394.png') },
-  { id: 'lounge-395', set: 'lounge', label: "Games", w: 7, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/395.png') },
-  { id: 'garden-055', set: 'garden', label: "Hay & Straw", w: 57, h: 76, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/garden/055.png') },
-  { id: 'garden-056', set: 'garden', label: "Hay & Straw", w: 57, h: 78, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/garden/056.png') },
-  { id: 'kitchen-156', set: 'kitchen', label: "Kitchen Clutter A", w: 24, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/156.png') },
-  { id: 'kitchen-157', set: 'kitchen', label: "Kitchen Clutter A", w: 15, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/157.png') },
-  { id: 'kitchen-158', set: 'kitchen', label: "Kitchen Clutter A", w: 15, h: 25, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/158.png') },
-  { id: 'kitchen-159', set: 'kitchen', label: "Kitchen Clutter A", w: 23, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/159.png') },
-  { id: 'kitchen-160', set: 'kitchen', label: "Kitchen Clutter A", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/160.png') },
-  { id: 'kitchen-161', set: 'kitchen', label: "Kitchen Clutter A", w: 28, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/161.png') },
-  { id: 'kitchen-162', set: 'kitchen', label: "Kitchen Clutter A", w: 32, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/kitchen/162.png') },
-  { id: 'kitchen-163', set: 'kitchen', label: "Kitchen Clutter A", w: 22, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/163.png') },
-  { id: 'kitchen-164', set: 'kitchen', label: "Kitchen Clutter A", w: 22, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/164.png') },
-  { id: 'kitchen-165', set: 'kitchen', label: "Kitchen Clutter A", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/165.png') },
-  { id: 'kitchen-166', set: 'kitchen', label: "Kitchen Clutter A", w: 28, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/166.png') },
-  { id: 'kitchen-167', set: 'kitchen', label: "Kitchen Clutter A", w: 27, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/167.png') },
-  { id: 'kitchen-168', set: 'kitchen', label: "Kitchen Clutter A", w: 28, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/168.png') },
-  { id: 'kitchen-169', set: 'kitchen', label: "Kitchen Clutter A", w: 14, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/169.png') },
-  { id: 'kitchen-170', set: 'kitchen', label: "Kitchen Clutter A", w: 28, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/170.png') },
-  { id: 'kitchen-171', set: 'kitchen', label: "Kitchen Clutter A", w: 30, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/171.png') },
-  { id: 'kitchen-172', set: 'kitchen', label: "Kitchen Clutter A", w: 28, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/172.png') },
-  { id: 'kitchen-173', set: 'kitchen', label: "Kitchen Clutter A", w: 23, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/173.png') },
-  { id: 'kitchen-174', set: 'kitchen', label: "Kitchen Clutter A", w: 23, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/174.png') },
-  { id: 'kitchen-175', set: 'kitchen', label: "Kitchen Clutter A", w: 6, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/175.png') },
-  { id: 'kitchen-176', set: 'kitchen', label: "Kitchen Clutter A", w: 6, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/176.png') },
-  { id: 'kitchen-177', set: 'kitchen', label: "Kitchen Clutter A", w: 6, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/kitchen/177.png') },
-  { id: 'study-028', set: 'study', label: "Laptop", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/028.png') },
-  { id: 'study-029', set: 'study', label: "Laptop", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/029.png') },
-  { id: 'study-030', set: 'study', label: "Laptop", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/030.png') },
-  { id: 'study-031', set: 'study', label: "Laptop", w: 19, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/031.png') },
-  { id: 'study-032', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/032.png') },
-  { id: 'study-033', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/033.png') },
-  { id: 'study-034', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/034.png') },
-  { id: 'study-035', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/035.png') },
-  { id: 'study-036', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/036.png') },
-  { id: 'study-037', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/037.png') },
-  { id: 'study-038', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/038.png') },
-  { id: 'study-039', set: 'study', label: "Laptop", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/039.png') },
-  { id: 'study-040', set: 'study', label: "Laptop", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/040.png') },
-  { id: 'study-041', set: 'study', label: "Laptop", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/041.png') },
-  { id: 'study-042', set: 'study', label: "Laptop", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/042.png') },
-  { id: 'study-043', set: 'study', label: "Laptop", w: 19, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/043.png') },
-  { id: 'bedroom-304', set: 'bedroom', label: "Lighting, Table", w: 24, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/304.png') },
-  { id: 'bedroom-305', set: 'bedroom', label: "Lighting, Table", w: 26, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/305.png') },
-  { id: 'bedroom-306', set: 'bedroom', label: "Lighting, Table", w: 10, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/306.png') },
-  { id: 'bedroom-307', set: 'bedroom', label: "Lighting, Table", w: 10, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/307.png') },
-  { id: 'bedroom-308', set: 'bedroom', label: "Lighting, Table", w: 20, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/308.png') },
-  { id: 'bedroom-309', set: 'bedroom', label: "Lighting, Table", w: 20, h: 92, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/309.png') },
-  { id: 'bedroom-310', set: 'bedroom', label: "Lighting, Table", w: 10, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/310.png') },
-  { id: 'bedroom-311', set: 'bedroom', label: "Lighting, Table", w: 18, h: 31, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/311.png') },
-  { id: 'bedroom-312', set: 'bedroom', label: "Lighting, Table", w: 17, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/312.png') },
-  { id: 'bedroom-313', set: 'bedroom', label: "Lighting, Table", w: 17, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/313.png') },
-  { id: 'bedroom-314', set: 'bedroom', label: "Lighting, Table", w: 22, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/314.png') },
-  { id: 'bedroom-315', set: 'bedroom', label: "Lighting, Table", w: 24, h: 63, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/bedroom/315.png') },
-  { id: 'bedroom-316', set: 'bedroom', label: "Lighting, Table", w: 12, h: 33, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/316.png') },
-  { id: 'bedroom-317', set: 'bedroom', label: "Lighting, Table", w: 14, h: 34, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/317.png') },
-  { id: 'bedroom-318', set: 'bedroom', label: "Lighting, Table", w: 18, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/318.png') },
-  { id: 'bedroom-319', set: 'bedroom', label: "Lighting, Table", w: 22, h: 29, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/319.png') },
-  { id: 'study-044', set: 'study', label: "Loose Paper", w: 10, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/044.png') },
-  { id: 'study-045', set: 'study', label: "Loose Paper", w: 8, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/045.png') },
-  { id: 'study-046', set: 'study', label: "Loose Paper", w: 8, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/046.png') },
-  { id: 'study-047', set: 'study', label: "Loose Paper", w: 15, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/047.png') },
-  { id: 'study-048', set: 'study', label: "Loose Paper", w: 15, h: 8, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/048.png') },
-  { id: 'study-049', set: 'study', label: "Loose Paper", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/049.png') },
-  { id: 'study-050', set: 'study', label: "Loose Paper", w: 15, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/050.png') },
-  { id: 'study-051', set: 'study', label: "Loose Paper", w: 11, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/051.png') },
-  { id: 'study-052', set: 'study', label: "Loose Paper", w: 13, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/study/052.png') },
-  { id: 'maker-140', set: 'maker', label: "Lumber", w: 18, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/140.png') },
-  { id: 'maker-141', set: 'maker', label: "Lumber", w: 27, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/141.png') },
-  { id: 'maker-142', set: 'maker', label: "Lumber", w: 61, h: 81, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/142.png') },
-  { id: 'maker-143', set: 'maker', label: "Lumber", w: 63, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/143.png') },
-  { id: 'maker-144', set: 'maker', label: "Lumber", w: 26, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/144.png') },
-  { id: 'maker-145', set: 'maker', label: "Lumber", w: 26, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/145.png') },
-  { id: 'maker-146', set: 'maker', label: "Lumber", w: 26, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/146.png') },
-  { id: 'maker-147', set: 'maker', label: "Lumber", w: 57, h: 61, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/147.png') },
-  { id: 'maker-148', set: 'maker', label: "Lumber", w: 53, h: 60, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/148.png') },
-  { id: 'maker-149', set: 'maker', label: "Lumber", w: 30, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/149.png') },
-  { id: 'maker-150', set: 'maker', label: "Lumber", w: 47, h: 22, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/150.png') },
-  { id: 'forge-058', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/058.png') },
-  { id: 'forge-059', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/059.png') },
-  { id: 'forge-060', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/060.png') },
-  { id: 'forge-061', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/061.png') },
-  { id: 'forge-062', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/062.png') },
-  { id: 'forge-063', set: 'forge', label: "Alloys", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/063.png') },
-  { id: 'forge-064', set: 'forge', label: "Ore, Coal", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/064.png') },
-  { id: 'forge-065', set: 'forge', label: "Ore, Coal", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/065.png') },
-  { id: 'forge-066', set: 'forge', label: "Ore, Coal", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/066.png') },
-  { id: 'forge-067', set: 'forge', label: "Ore, Coal", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/067.png') },
-  { id: 'forge-068', set: 'forge', label: "Ore, Coal", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/068.png') },
-  { id: 'forge-069', set: 'forge', label: "Ore, Coal", w: 26, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/069.png') },
-  { id: 'forge-070', set: 'forge', label: "Ore, Coal", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/070.png') },
-  { id: 'forge-071', set: 'forge', label: "Ore, Coal", w: 19, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/071.png') },
-  { id: 'forge-072', set: 'forge', label: "Ore, Copper", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/072.png') },
-  { id: 'forge-073', set: 'forge', label: "Ore, Copper", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/073.png') },
-  { id: 'forge-074', set: 'forge', label: "Ore, Copper", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/074.png') },
-  { id: 'forge-075', set: 'forge', label: "Ore, Copper", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/075.png') },
-  { id: 'forge-076', set: 'forge', label: "Ore, Copper", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/076.png') },
-  { id: 'forge-077', set: 'forge', label: "Ore, Copper", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/077.png') },
-  { id: 'forge-078', set: 'forge', label: "Ore, Copper", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/078.png') },
-  { id: 'forge-079', set: 'forge', label: "Ore, Copper", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/079.png') },
-  { id: 'forge-080', set: 'forge', label: "Ore, Copper", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/080.png') },
-  { id: 'forge-081', set: 'forge', label: "Ore, Copper", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/081.png') },
-  { id: 'forge-082', set: 'forge', label: "Ore, Copper", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/082.png') },
-  { id: 'forge-083', set: 'forge', label: "Ore, Copper", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/083.png') },
-  { id: 'forge-084', set: 'forge', label: "Ore, Gold", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/084.png') },
-  { id: 'forge-085', set: 'forge', label: "Ore, Gold", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/085.png') },
-  { id: 'forge-086', set: 'forge', label: "Ore, Gold", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/086.png') },
-  { id: 'forge-087', set: 'forge', label: "Ore, Gold", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/087.png') },
-  { id: 'forge-088', set: 'forge', label: "Ore, Gold", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/088.png') },
-  { id: 'forge-089', set: 'forge', label: "Ore, Gold", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/089.png') },
-  { id: 'forge-090', set: 'forge', label: "Ore, Gold", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/090.png') },
-  { id: 'forge-091', set: 'forge', label: "Ore, Gold", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/091.png') },
-  { id: 'forge-092', set: 'forge', label: "Ore, Gold", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/092.png') },
-  { id: 'forge-093', set: 'forge', label: "Ore, Gold", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/093.png') },
-  { id: 'forge-094', set: 'forge', label: "Ore, Gold", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/094.png') },
-  { id: 'forge-095', set: 'forge', label: "Ore, Gold", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/095.png') },
-  { id: 'forge-096', set: 'forge', label: "Ore, Iron", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/096.png') },
-  { id: 'forge-097', set: 'forge', label: "Ore, Iron", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/097.png') },
-  { id: 'forge-098', set: 'forge', label: "Ore, Iron", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/098.png') },
-  { id: 'forge-099', set: 'forge', label: "Ore, Iron", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/099.png') },
-  { id: 'forge-100', set: 'forge', label: "Ore, Iron", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/100.png') },
-  { id: 'forge-101', set: 'forge', label: "Ore, Iron", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/101.png') },
-  { id: 'forge-102', set: 'forge', label: "Ore, Iron", w: 22, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/102.png') },
-  { id: 'forge-103', set: 'forge', label: "Ore, Iron", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/103.png') },
-  { id: 'forge-104', set: 'forge', label: "Ore, Iron", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/104.png') },
-  { id: 'forge-105', set: 'forge', label: "Ore, Silver", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/105.png') },
-  { id: 'forge-106', set: 'forge', label: "Ore, Silver", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/106.png') },
-  { id: 'forge-107', set: 'forge', label: "Ore, Silver", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/107.png') },
-  { id: 'forge-108', set: 'forge', label: "Ore, Silver", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/108.png') },
-  { id: 'forge-109', set: 'forge', label: "Ore, Silver", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/109.png') },
-  { id: 'forge-110', set: 'forge', label: "Ore, Silver", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/110.png') },
-  { id: 'forge-111', set: 'forge', label: "Ore, Silver", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/111.png') },
-  { id: 'forge-112', set: 'forge', label: "Ore, Silver", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/112.png') },
-  { id: 'forge-113', set: 'forge', label: "Ore, Silver", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/113.png') },
-  { id: 'forge-114', set: 'forge', label: "Ore, Silver", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/114.png') },
-  { id: 'forge-115', set: 'forge', label: "Ore, Silver", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/115.png') },
-  { id: 'forge-116', set: 'forge', label: "Ore, Silver", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/116.png') },
-  { id: 'forge-117', set: 'forge', label: "Ore, Stone", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/117.png') },
-  { id: 'forge-118', set: 'forge', label: "Ore, Stone", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/118.png') },
-  { id: 'forge-119', set: 'forge', label: "Ore, Stone", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/119.png') },
-  { id: 'forge-120', set: 'forge', label: "Ore, Stone", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/120.png') },
-  { id: 'forge-121', set: 'forge', label: "Ore, Stone", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/121.png') },
-  { id: 'forge-122', set: 'forge', label: "Ore, Stone", w: 28, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/122.png') },
-  { id: 'forge-123', set: 'forge', label: "Ore, Stone", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/123.png') },
-  { id: 'forge-124', set: 'forge', label: "Ore, Tin", w: 30, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/124.png') },
-  { id: 'forge-125', set: 'forge', label: "Ore, Tin", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/125.png') },
-  { id: 'forge-126', set: 'forge', label: "Ore, Tin", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/126.png') },
-  { id: 'forge-127', set: 'forge', label: "Ore, Tin", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/127.png') },
-  { id: 'forge-128', set: 'forge', label: "Ore, Tin", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/128.png') },
-  { id: 'forge-129', set: 'forge', label: "Ore, Tin", w: 29, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/129.png') },
-  { id: 'forge-130', set: 'forge', label: "Ore, Tin", w: 28, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/130.png') },
-  { id: 'forge-131', set: 'forge', label: "Ore, Tin", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/131.png') },
-  { id: 'forge-132', set: 'forge', label: "Ore, Tin", w: 22, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/132.png') },
-  { id: 'forge-133', set: 'forge', label: "Ore, Tin", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/133.png') },
-  { id: 'forge-134', set: 'forge', label: "Ore, Tin", w: 21, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/134.png') },
-  { id: 'forge-135', set: 'forge', label: "Ore, Tin", w: 15, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/135.png') },
-  { id: 'bedroom-320', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/320.png') },
-  { id: 'bedroom-321', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/321.png') },
-  { id: 'bedroom-322', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/322.png') },
-  { id: 'bedroom-323', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/323.png') },
-  { id: 'bedroom-324', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/324.png') },
-  { id: 'bedroom-325', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/325.png') },
-  { id: 'bedroom-326', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/326.png') },
-  { id: 'bedroom-327', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/327.png') },
-  { id: 'bedroom-328', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/328.png') },
-  { id: 'bedroom-329', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/329.png') },
-  { id: 'bedroom-330', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/330.png') },
-  { id: 'bedroom-331', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/331.png') },
-  { id: 'bedroom-332', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/332.png') },
-  { id: 'bedroom-333', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/333.png') },
-  { id: 'bedroom-334', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/334.png') },
-  { id: 'bedroom-335', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/335.png') },
-  { id: 'bedroom-336', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/336.png') },
-  { id: 'bedroom-337', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/337.png') },
-  { id: 'bedroom-338', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/338.png') },
-  { id: 'bedroom-339', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/339.png') },
-  { id: 'bedroom-340', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/340.png') },
-  { id: 'bedroom-341', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/341.png') },
-  { id: 'bedroom-342', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/342.png') },
-  { id: 'bedroom-343', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/343.png') },
-  { id: 'bedroom-344', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/344.png') },
-  { id: 'bedroom-345', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/345.png') },
-  { id: 'bedroom-346', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/346.png') },
-  { id: 'bedroom-347', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/347.png') },
-  { id: 'bedroom-348', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/348.png') },
-  { id: 'bedroom-349', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/349.png') },
-  { id: 'bedroom-350', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/350.png') },
-  { id: 'bedroom-351', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/351.png') },
-  { id: 'bedroom-352', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/352.png') },
-  { id: 'bedroom-353', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/353.png') },
-  { id: 'bedroom-354', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/354.png') },
-  { id: 'bedroom-355', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/355.png') },
-  { id: 'bedroom-356', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/356.png') },
-  { id: 'bedroom-357', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/357.png') },
-  { id: 'bedroom-358', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/358.png') },
-  { id: 'bedroom-359', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/359.png') },
-  { id: 'bedroom-360', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/360.png') },
-  { id: 'bedroom-361', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/361.png') },
-  { id: 'bedroom-362', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/362.png') },
-  { id: 'bedroom-363', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/363.png') },
-  { id: 'bedroom-364', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/364.png') },
-  { id: 'bedroom-365', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/365.png') },
-  { id: 'bedroom-366', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/366.png') },
-  { id: 'bedroom-367', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/367.png') },
-  { id: 'bedroom-368', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/368.png') },
-  { id: 'bedroom-369', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/369.png') },
-  { id: 'bedroom-370', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/370.png') },
-  { id: 'bedroom-371', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/371.png') },
-  { id: 'bedroom-372', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/372.png') },
-  { id: 'bedroom-373', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/373.png') },
-  { id: 'bedroom-374', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/374.png') },
-  { id: 'bedroom-375', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/375.png') },
-  { id: 'bedroom-376', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/376.png') },
-  { id: 'bedroom-377', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/377.png') },
-  { id: 'bedroom-378', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/378.png') },
-  { id: 'bedroom-379', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/379.png') },
-  { id: 'bedroom-380', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/380.png') },
-  { id: 'bedroom-381', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/381.png') },
-  { id: 'bedroom-382', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/382.png') },
-  { id: 'bedroom-383', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/383.png') },
-  { id: 'bedroom-384', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/384.png') },
-  { id: 'bedroom-385', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/385.png') },
-  { id: 'bedroom-386', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/386.png') },
-  { id: 'bedroom-387', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/387.png') },
-  { id: 'bedroom-388', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/388.png') },
-  { id: 'bedroom-389', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/389.png') },
-  { id: 'bedroom-390', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/390.png') },
-  { id: 'bedroom-391', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/391.png') },
-  { id: 'bedroom-392', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/392.png') },
-  { id: 'bedroom-393', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/393.png') },
-  { id: 'bedroom-394', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/394.png') },
-  { id: 'bedroom-395', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/395.png') },
-  { id: 'bedroom-396', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/396.png') },
-  { id: 'bedroom-397', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/397.png') },
-  { id: 'bedroom-398', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/398.png') },
-  { id: 'bedroom-399', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/399.png') },
-  { id: 'bedroom-400', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/400.png') },
-  { id: 'bedroom-401', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/401.png') },
-  { id: 'bedroom-402', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/402.png') },
-  { id: 'bedroom-403', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/403.png') },
-  { id: 'bedroom-404', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/404.png') },
-  { id: 'bedroom-405', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/405.png') },
-  { id: 'bedroom-406', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/406.png') },
-  { id: 'bedroom-407', set: 'bedroom', label: "Pillows", w: 14, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/407.png') },
-  { id: 'bedroom-408', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/408.png') },
-  { id: 'bedroom-409', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/409.png') },
-  { id: 'bedroom-410', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/410.png') },
-  { id: 'bedroom-411', set: 'bedroom', label: "Pillows", w: 26, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/411.png') },
-  { id: 'bedroom-412', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/412.png') },
-  { id: 'bedroom-413', set: 'bedroom', label: "Pillows", w: 17, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/413.png') },
-  { id: 'bedroom-414', set: 'bedroom', label: "Pillows", w: 16, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/414.png') },
-  { id: 'bedroom-415', set: 'bedroom', label: "Pillows", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/bedroom/415.png') },
-  { id: 'festive-003', set: 'festive', label: "Presents", w: 26, h: 63, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/festive/003.png') },
-  { id: 'festive-004', set: 'festive', label: "Presents", w: 12, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/004.png') },
-  { id: 'festive-005', set: 'festive', label: "Presents", w: 23, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/005.png') },
-  { id: 'festive-006', set: 'festive', label: "Presents", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/006.png') },
-  { id: 'festive-007', set: 'festive', label: "Presents", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/007.png') },
-  { id: 'festive-008', set: 'festive', label: "Presents", w: 10, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/008.png') },
-  { id: 'festive-009', set: 'festive', label: "Presents", w: 12, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/009.png') },
-  { id: 'festive-010', set: 'festive', label: "Presents", w: 23, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/010.png') },
-  { id: 'festive-011', set: 'festive', label: "Presents", w: 23, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/011.png') },
-  { id: 'festive-012', set: 'festive', label: "Presents", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/012.png') },
-  { id: 'festive-013', set: 'festive', label: "Presents", w: 10, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/festive/013.png') },
-  { id: 'lounge-396', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/396.png') },
-  { id: 'lounge-397', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/397.png') },
-  { id: 'lounge-398', set: 'lounge', label: "Rotary Phones", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/398.png') },
-  { id: 'lounge-399', set: 'lounge', label: "Rotary Phones", w: 15, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/399.png') },
-  { id: 'lounge-400', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/400.png') },
-  { id: 'lounge-401', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/401.png') },
-  { id: 'lounge-402', set: 'lounge', label: "Rotary Phones", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/402.png') },
-  { id: 'lounge-403', set: 'lounge', label: "Rotary Phones", w: 15, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/403.png') },
-  { id: 'lounge-404', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/404.png') },
-  { id: 'lounge-405', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/405.png') },
-  { id: 'lounge-406', set: 'lounge', label: "Rotary Phones", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/406.png') },
-  { id: 'lounge-407', set: 'lounge', label: "Rotary Phones", w: 15, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/407.png') },
-  { id: 'lounge-408', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/408.png') },
-  { id: 'lounge-409', set: 'lounge', label: "Rotary Phones", w: 13, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/409.png') },
-  { id: 'lounge-410', set: 'lounge', label: "Rotary Phones", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/410.png') },
-  { id: 'lounge-411', set: 'lounge', label: "Rotary Phones", w: 15, h: 10, kind: 'small', rarity: 'common', src: require('../../assets/stickers/lounge/411.png') },
-  { id: 'maker-151', set: 'maker', label: "Sawdust", w: 13, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/151.png') },
-  { id: 'maker-152', set: 'maker', label: "Sawdust", w: 14, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/152.png') },
-  { id: 'curious-025', set: 'curious', label: "Skeletons A", w: 92, h: 64, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/curious/025.png') },
-  { id: 'gallery-001', set: 'gallery', label: "Tabletop Portraits", w: 13, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/gallery/001.png') },
-  { id: 'gallery-002', set: 'gallery', label: "Tabletop Portraits", w: 16, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/gallery/002.png') },
-  { id: 'gallery-003', set: 'gallery', label: "Tabletop Portraits", w: 13, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/gallery/003.png') },
-  { id: 'gallery-004', set: 'gallery', label: "Tabletop Portraits", w: 16, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/gallery/004.png') },
-  { id: 'gallery-005', set: 'gallery', label: "Tabletop Portraits", w: 13, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/gallery/005.png') },
-  { id: 'maker-153', set: 'maker', label: "Tools, Carpentry", w: 31, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/153.png') },
-  { id: 'maker-154', set: 'maker', label: "Tools, Carpentry", w: 60, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/154.png') },
-  { id: 'maker-155', set: 'maker', label: "Tools, Carpentry", w: 60, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/155.png') },
-  { id: 'maker-156', set: 'maker', label: "Tools, Carpentry", w: 191, h: 30, kind: 'small', rarity: 'epic', src: require('../../assets/stickers/maker/156.png') },
-  { id: 'maker-157', set: 'maker', label: "Tools, Carpentry", w: 29, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/157.png') },
-  { id: 'maker-158', set: 'maker', label: "Tools, Carpentry", w: 15, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/158.png') },
-  { id: 'maker-159', set: 'maker', label: "Tools, Carpentry", w: 24, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/159.png') },
-  { id: 'maker-160', set: 'maker', label: "Tools, Carpentry", w: 26, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/160.png') },
-  { id: 'maker-161', set: 'maker', label: "Tools, Carpentry", w: 27, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/161.png') },
-  { id: 'maker-162', set: 'maker', label: "Tools, Carpentry", w: 12, h: 6, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/162.png') },
-  { id: 'maker-163', set: 'maker', label: "Tools, Carpentry", w: 17, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/163.png') },
-  { id: 'maker-164', set: 'maker', label: "Tools, Carpentry", w: 18, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/164.png') },
-  { id: 'maker-165', set: 'maker', label: "Tools, Carpentry", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/165.png') },
-  { id: 'maker-166', set: 'maker', label: "Tools, Carpentry", w: 20, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/166.png') },
-  { id: 'maker-167', set: 'maker', label: "Tools, Carpentry", w: 15, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/167.png') },
-  { id: 'maker-168', set: 'maker', label: "Tools, Carpentry", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/168.png') },
-  { id: 'maker-169', set: 'maker', label: "Tools, Carpentry", w: 32, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/169.png') },
-  { id: 'maker-170', set: 'maker', label: "Tools, Carpentry", w: 18, h: 9, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/170.png') },
-  { id: 'maker-171', set: 'maker', label: "Tools, Carpentry", w: 17, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/171.png') },
-  { id: 'maker-172', set: 'maker', label: "Tools, Carpentry", w: 28, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/172.png') },
-  { id: 'maker-173', set: 'maker', label: "Tools, Carpentry", w: 55, h: 53, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/173.png') },
-  { id: 'maker-174', set: 'maker', label: "Tools, Carpentry", w: 26, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/174.png') },
-  { id: 'maker-175', set: 'maker', label: "Tools, Carpentry", w: 24, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/175.png') },
-  { id: 'maker-176', set: 'maker', label: "Tools, Carpentry", w: 20, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/176.png') },
-  { id: 'maker-177', set: 'maker', label: "Tools, Carpentry", w: 16, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/177.png') },
-  { id: 'maker-178', set: 'maker', label: "Tools, Carpentry", w: 22, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/178.png') },
-  { id: 'maker-179', set: 'maker', label: "Tools, Carpentry", w: 24, h: 14, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/179.png') },
-  { id: 'maker-180', set: 'maker', label: "Tools, Carpentry", w: 21, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/180.png') },
-  { id: 'maker-181', set: 'maker', label: "Tools, Carpentry", w: 19, h: 17, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/181.png') },
-  { id: 'maker-182', set: 'maker', label: "Tools, Carpentry", w: 15, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/182.png') },
-  { id: 'maker-183', set: 'maker', label: "Tools, Carpentry", w: 18, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/183.png') },
-  { id: 'maker-184', set: 'maker', label: "Tools, Carpentry", w: 32, h: 25, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/184.png') },
-  { id: 'maker-185', set: 'maker', label: "Tools, Carpentry", w: 64, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/185.png') },
-  { id: 'maker-186', set: 'maker', label: "Tools, Carpentry", w: 42, h: 24, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/186.png') },
-  { id: 'maker-187', set: 'maker', label: "Tools, Carpentry", w: 30, h: 26, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/187.png') },
-  { id: 'maker-188', set: 'maker', label: "Tools, Carpentry", w: 28, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/188.png') },
-  { id: 'maker-189', set: 'maker', label: "Tools, Carpentry", w: 35, h: 22, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/189.png') },
-  { id: 'maker-190', set: 'maker', label: "Tools, Sewing", w: 38, h: 28, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/190.png') },
-  { id: 'maker-191', set: 'maker', label: "Tools, Sewing", w: 23, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/191.png') },
-  { id: 'maker-192', set: 'maker', label: "Tools, Sewing", w: 28, h: 27, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/192.png') },
-  { id: 'maker-193', set: 'maker', label: "Tools, Sewing", w: 22, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/193.png') },
-  { id: 'maker-194', set: 'maker', label: "Tools, Sewing", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/194.png') },
-  { id: 'maker-195', set: 'maker', label: "Tools, Sewing", w: 9, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/195.png') },
-  { id: 'maker-196', set: 'maker', label: "Tools, Sewing", w: 22, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/196.png') },
-  { id: 'maker-197', set: 'maker', label: "Tools, Sewing", w: 24, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/197.png') },
-  { id: 'maker-198', set: 'maker', label: "Tools, Sewing", w: 26, h: 22, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/198.png') },
-  { id: 'maker-199', set: 'maker', label: "Tools, Sewing", w: 15, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/199.png') },
-  { id: 'maker-200', set: 'maker', label: "Tools, Sewing", w: 18, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/maker/200.png') },
-  { id: 'maker-201', set: 'maker', label: "Tools, Sewing", w: 95, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/201.png') },
-  { id: 'maker-202', set: 'maker', label: "Tools, Sewing", w: 35, h: 21, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/maker/202.png') },
-  { id: 'forge-136', set: 'forge', label: "Tools, Smithing", w: 15, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/136.png') },
-  { id: 'forge-137', set: 'forge', label: "Tools, Smithing", w: 17, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/137.png') },
-  { id: 'forge-138', set: 'forge', label: "Tools, Smithing", w: 13, h: 28, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/138.png') },
-  { id: 'forge-139', set: 'forge', label: "Tools, Smithing", w: 19, h: 30, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/139.png') },
-  { id: 'forge-140', set: 'forge', label: "Tools, Smithing", w: 13, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/140.png') },
-  { id: 'forge-141', set: 'forge', label: "Tools, Smithing", w: 16, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/141.png') },
-  { id: 'forge-142', set: 'forge', label: "Tools, Smithing", w: 19, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/142.png') },
-  { id: 'forge-143', set: 'forge', label: "Tools, Smithing", w: 13, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/143.png') },
-  { id: 'forge-144', set: 'forge', label: "Tools, Smithing", w: 20, h: 13, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/144.png') },
-  { id: 'forge-145', set: 'forge', label: "Tools, Smithing", w: 20, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/145.png') },
-  { id: 'forge-146', set: 'forge', label: "Tools, Smithing", w: 17, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/146.png') },
-  { id: 'forge-147', set: 'forge', label: "Tools, Smithing", w: 26, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/147.png') },
-  { id: 'forge-148', set: 'forge', label: "Tools, Smithing", w: 11, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/148.png') },
-  { id: 'forge-149', set: 'forge', label: "Tools, Smithing", w: 56, h: 31, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/149.png') },
-  { id: 'forge-150', set: 'forge', label: "Tools, Smithing", w: 12, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/150.png') },
-  { id: 'forge-151', set: 'forge', label: "Tools, Smithing", w: 12, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/151.png') },
-  { id: 'forge-152', set: 'forge', label: "Tools, Smithing", w: 29, h: 29, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/152.png') },
-  { id: 'forge-153', set: 'forge', label: "Tools, Smithing", w: 24, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/153.png') },
-  { id: 'forge-154', set: 'forge', label: "Tools, Smithing", w: 21, h: 20, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/154.png') },
-  { id: 'forge-155', set: 'forge', label: "Tools, Smithing", w: 25, h: 24, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/155.png') },
-  { id: 'forge-156', set: 'forge', label: "Tools, Smithing", w: 11, h: 23, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/156.png') },
-  { id: 'forge-157', set: 'forge', label: "Tools, Smithing", w: 18, h: 18, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/157.png') },
-  { id: 'forge-158', set: 'forge', label: "Tools, Smithing", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/158.png') },
-  { id: 'forge-159', set: 'forge', label: "Tools, Smithing", w: 9, h: 12, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/159.png') },
-  { id: 'forge-160', set: 'forge', label: "Tools, Smithing", w: 12, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/160.png') },
-  { id: 'forge-161', set: 'forge', label: "Tools, Smithing", w: 19, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/161.png') },
-  { id: 'forge-162', set: 'forge', label: "Tools, Smithing", w: 19, h: 16, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/162.png') },
-  { id: 'forge-163', set: 'forge', label: "Tools, Smithing", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/163.png') },
-  { id: 'forge-164', set: 'forge', label: "Tools, Smithing", w: 11, h: 11, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/164.png') },
-  { id: 'forge-165', set: 'forge', label: "Tools, Smithing", w: 60, h: 32, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/165.png') },
-  { id: 'forge-166', set: 'forge', label: "Tools, Smithing", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/166.png') },
-  { id: 'forge-167', set: 'forge', label: "Tools, Smithing", w: 58, h: 23, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/167.png') },
-  { id: 'forge-168', set: 'forge', label: "Tools, Smithing", w: 29, h: 30, kind: 'small', rarity: 'rare', src: require('../../assets/stickers/forge/168.png') },
-  { id: 'forge-169', set: 'forge', label: "Tools, Smithing", w: 25, h: 21, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/169.png') },
-  { id: 'forge-170', set: 'forge', label: "Tools, Smithing", w: 24, h: 19, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/170.png') },
-  { id: 'forge-171', set: 'forge', label: "Tools, Smithing", w: 18, h: 15, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/171.png') },
-  { id: 'forge-172', set: 'forge', label: "Tools, Smithing", w: 26, h: 26, kind: 'small', rarity: 'common', src: require('../../assets/stickers/forge/172.png') },
-  { id: 'festive-014', set: 'festive', label: "Christmas Wall Decor", w: 20, h: 22, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/014.png') },
-  { id: 'festive-015', set: 'festive', label: "Christmas Wall Decor", w: 20, h: 22, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/015.png') },
-  { id: 'festive-016', set: 'festive', label: "Christmas Wall Decor", w: 14, h: 11, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/016.png') },
-  { id: 'festive-017', set: 'festive', label: "Christmas Wall Decor", w: 14, h: 11, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/017.png') },
-  { id: 'festive-018', set: 'festive', label: "Christmas Wall Decor", w: 14, h: 11, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/018.png') },
-  { id: 'festive-019', set: 'festive', label: "Christmas Wall Decor", w: 14, h: 11, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/festive/019.png') },
-  { id: 'festive-020', set: 'festive', label: "Christmas Wall Decor", w: 72, h: 22, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/festive/020.png') },
-  { id: 'festive-021', set: 'festive', label: "Christmas Wall Decor", w: 72, h: 22, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/festive/021.png') },
-  { id: 'festive-022', set: 'festive', label: "Christmas Wall Decor", w: 128, h: 22, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/festive/022.png') },
-  { id: 'festive-023', set: 'festive', label: "Christmas Wall Decor", w: 128, h: 14, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/festive/023.png') },
-  { id: 'bedroom-416', set: 'bedroom', label: "Curtains", w: 96, h: 64, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/416.png') },
-  { id: 'bedroom-417', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/417.png') },
-  { id: 'bedroom-418', set: 'bedroom', label: "Curtains", w: 192, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/418.png') },
-  { id: 'bedroom-419', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/419.png') },
-  { id: 'bedroom-420', set: 'bedroom', label: "Curtains", w: 96, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/420.png') },
-  { id: 'bedroom-421', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/421.png') },
-  { id: 'bedroom-422', set: 'bedroom', label: "Curtains", w: 54, h: 383, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/422.png') },
-  { id: 'bedroom-423', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/423.png') },
-  { id: 'bedroom-424', set: 'bedroom', label: "Curtains", w: 54, h: 383, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/424.png') },
-  { id: 'bedroom-425', set: 'bedroom', label: "Curtains", w: 96, h: 64, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/425.png') },
-  { id: 'bedroom-426', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/426.png') },
-  { id: 'bedroom-427', set: 'bedroom', label: "Curtains", w: 192, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/427.png') },
-  { id: 'bedroom-428', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/428.png') },
-  { id: 'bedroom-429', set: 'bedroom', label: "Curtains", w: 96, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/429.png') },
-  { id: 'bedroom-430', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/430.png') },
-  { id: 'bedroom-431', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/431.png') },
-  { id: 'bedroom-432', set: 'bedroom', label: "Curtains", w: 96, h: 64, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/432.png') },
-  { id: 'bedroom-433', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/433.png') },
-  { id: 'bedroom-434', set: 'bedroom', label: "Curtains", w: 192, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/434.png') },
-  { id: 'bedroom-435', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/435.png') },
-  { id: 'bedroom-436', set: 'bedroom', label: "Curtains", w: 96, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/436.png') },
-  { id: 'bedroom-437', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/437.png') },
-  { id: 'bedroom-438', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/438.png') },
-  { id: 'bedroom-439', set: 'bedroom', label: "Curtains", w: 96, h: 64, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/439.png') },
-  { id: 'bedroom-440', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/440.png') },
-  { id: 'bedroom-441', set: 'bedroom', label: "Curtains", w: 192, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/441.png') },
-  { id: 'bedroom-442', set: 'bedroom', label: "Curtains", w: 46, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/442.png') },
-  { id: 'bedroom-443', set: 'bedroom', label: "Curtains", w: 96, h: 94, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/443.png') },
-  { id: 'bedroom-444', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/444.png') },
-  { id: 'bedroom-445', set: 'bedroom', label: "Curtains", w: 46, h: 78, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/bedroom/445.png') },
-  { id: 'gallery-006', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/006.png') },
-  { id: 'gallery-007', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/007.png') },
-  { id: 'gallery-008', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/008.png') },
-  { id: 'gallery-009', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/009.png') },
-  { id: 'gallery-010', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/010.png') },
-  { id: 'gallery-011', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/011.png') },
-  { id: 'gallery-012', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/012.png') },
-  { id: 'gallery-013', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/013.png') },
-  { id: 'gallery-014', set: 'gallery', label: "Graffiti Elements", w: 7, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/014.png') },
-  { id: 'gallery-015', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/015.png') },
-  { id: 'gallery-016', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/016.png') },
-  { id: 'gallery-017', set: 'gallery', label: "Graffiti Elements", w: 12, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/017.png') },
-  { id: 'gallery-018', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/018.png') },
-  { id: 'gallery-019', set: 'gallery', label: "Graffiti Elements", w: 7, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/019.png') },
-  { id: 'gallery-020', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/020.png') },
-  { id: 'gallery-021', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/021.png') },
-  { id: 'gallery-022', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/022.png') },
-  { id: 'gallery-023', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/023.png') },
-  { id: 'gallery-024', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/024.png') },
-  { id: 'gallery-025', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/025.png') },
-  { id: 'gallery-026', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/026.png') },
-  { id: 'gallery-027', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/027.png') },
-  { id: 'gallery-028', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/028.png') },
-  { id: 'gallery-029', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/029.png') },
-  { id: 'gallery-030', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/030.png') },
-  { id: 'gallery-031', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/031.png') },
-  { id: 'gallery-032', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/032.png') },
-  { id: 'gallery-033', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/033.png') },
-  { id: 'gallery-034', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/034.png') },
-  { id: 'gallery-035', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/035.png') },
-  { id: 'gallery-036', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/036.png') },
-  { id: 'gallery-037', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/037.png') },
-  { id: 'gallery-038', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/038.png') },
-  { id: 'gallery-039', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/039.png') },
-  { id: 'gallery-040', set: 'gallery', label: "Graffiti Elements", w: 10, h: 14, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/040.png') },
-  { id: 'gallery-041', set: 'gallery', label: "Graffiti Elements", w: 13, h: 14, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/041.png') },
-  { id: 'gallery-042', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/042.png') },
-  { id: 'gallery-043', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/043.png') },
-  { id: 'gallery-044', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/044.png') },
-  { id: 'gallery-045', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/045.png') },
-  { id: 'gallery-046', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/046.png') },
-  { id: 'gallery-047', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/047.png') },
-  { id: 'gallery-048', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/048.png') },
-  { id: 'gallery-049', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/049.png') },
-  { id: 'gallery-050', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/050.png') },
-  { id: 'gallery-051', set: 'gallery', label: "Graffiti Elements", w: 12, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/051.png') },
-  { id: 'gallery-052', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/052.png') },
-  { id: 'gallery-053', set: 'gallery', label: "Graffiti Elements", w: 10, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/053.png') },
-  { id: 'gallery-054', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/054.png') },
-  { id: 'gallery-055', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/055.png') },
-  { id: 'gallery-056', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/056.png') },
-  { id: 'gallery-057', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/057.png') },
-  { id: 'gallery-058', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/058.png') },
-  { id: 'gallery-059', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/059.png') },
-  { id: 'gallery-060', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/060.png') },
-  { id: 'gallery-061', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/061.png') },
-  { id: 'gallery-062', set: 'gallery', label: "Graffiti Elements", w: 8, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/062.png') },
-  { id: 'gallery-063', set: 'gallery', label: "Graffiti Elements", w: 11, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/063.png') },
-  { id: 'gallery-064', set: 'gallery', label: "Graffiti Elements", w: 7, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/064.png') },
-  { id: 'gallery-065', set: 'gallery', label: "Graffiti Elements", w: 9, h: 13, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/065.png') },
-  { id: 'gallery-066', set: 'gallery', label: "Graffiti Elements", w: 320, h: 190, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/066.png') },
-  { id: 'gallery-067', set: 'gallery', label: "Graffiti", w: 62, h: 79, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/067.png') },
-  { id: 'gallery-068', set: 'gallery', label: "Graffiti", w: 73, h: 53, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/068.png') },
-  { id: 'gallery-069', set: 'gallery', label: "Graffiti", w: 92, h: 47, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/069.png') },
-  { id: 'gallery-070', set: 'gallery', label: "Graffiti", w: 87, h: 40, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/070.png') },
-  { id: 'gallery-071', set: 'gallery', label: "Graffiti", w: 80, h: 28, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/071.png') },
-  { id: 'gallery-072', set: 'gallery', label: "Graffiti", w: 68, h: 49, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/072.png') },
-  { id: 'gallery-073', set: 'gallery', label: "Graffiti", w: 81, h: 67, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/073.png') },
-  { id: 'gallery-074', set: 'gallery', label: "Graffiti", w: 65, h: 35, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/074.png') },
-  { id: 'lounge-412', set: 'lounge', label: "Lighting, Wall", w: 20, h: 28, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/412.png') },
-  { id: 'lounge-413', set: 'lounge', label: "Lighting, Wall", w: 20, h: 28, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/413.png') },
-  { id: 'lounge-414', set: 'lounge', label: "Lighting, Wall", w: 10, h: 34, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/414.png') },
-  { id: 'lounge-415', set: 'lounge', label: "Lighting, Wall", w: 10, h: 33, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/415.png') },
-  { id: 'lounge-416', set: 'lounge', label: "Lighting, Wall", w: 10, h: 31, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/416.png') },
-  { id: 'lounge-417', set: 'lounge', label: "Lighting, Wall", w: 10, h: 26, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/lounge/417.png') },
-  { id: 'lounge-418', set: 'lounge', label: "Lighting, Wall", w: 64, h: 19, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/lounge/418.png') },
-  { id: 'curious-026', set: 'curious', label: "Mailboxes (tiling)", w: 37, h: 37, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/curious/026.png') },
-  { id: 'bedroom-446', set: 'bedroom', label: "Mirrors", w: 64, h: 23, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/446.png') },
-  { id: 'bedroom-447', set: 'bedroom', label: "Mirrors", w: 39, h: 39, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/bedroom/447.png') },
-  { id: 'bedroom-448', set: 'bedroom', label: "Mirrors", w: 22, h: 30, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/bedroom/448.png') },
-  { id: 'bedroom-449', set: 'bedroom', label: "Mirrors", w: 20, h: 26, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/bedroom/449.png') },
-  { id: 'gallery-075', set: 'gallery', label: "Paintings, Abstract", w: 39, h: 63, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/075.png') },
-  { id: 'gallery-076', set: 'gallery', label: "Paintings, Abstract", w: 23, h: 43, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/076.png') },
-  { id: 'gallery-077', set: 'gallery', label: "Paintings, Abstract", w: 59, h: 43, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/077.png') },
-  { id: 'gallery-078', set: 'gallery', label: "Paintings, Abstract", w: 23, h: 43, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/078.png') },
-  { id: 'gallery-079', set: 'gallery', label: "Paintings, Landscape", w: 44, h: 32, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/079.png') },
-  { id: 'gallery-080', set: 'gallery', label: "Paintings, Landscape", w: 37, h: 28, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/080.png') },
-  { id: 'gallery-081', set: 'gallery', label: "Paintings, Landscape", w: 39, h: 31, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/081.png') },
-  { id: 'gallery-082', set: 'gallery', label: "Paintings, Landscape", w: 32, h: 28, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/082.png') },
-  { id: 'gallery-083', set: 'gallery', label: "Paintings, Landscape", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/083.png') },
-  { id: 'gallery-084', set: 'gallery', label: "Paintings, Landscape", w: 81, h: 25, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/084.png') },
-  { id: 'gallery-085', set: 'gallery', label: "Paintings, Landscape", w: 81, h: 25, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/085.png') },
-  { id: 'gallery-086', set: 'gallery', label: "Paintings, Portraits", w: 17, h: 25, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/086.png') },
-  { id: 'gallery-087', set: 'gallery', label: "Paintings, Portraits", w: 17, h: 25, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/087.png') },
-  { id: 'gallery-088', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/088.png') },
-  { id: 'gallery-089', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/089.png') },
-  { id: 'gallery-090', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/090.png') },
-  { id: 'gallery-091', set: 'gallery', label: "Paintings, Portraits", w: 17, h: 25, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/091.png') },
-  { id: 'gallery-092', set: 'gallery', label: "Paintings, Portraits", w: 17, h: 25, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/092.png') },
-  { id: 'gallery-093', set: 'gallery', label: "Paintings, Portraits", w: 27, h: 32, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/093.png') },
-  { id: 'gallery-094', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/094.png') },
-  { id: 'gallery-095', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/095.png') },
-  { id: 'gallery-096', set: 'gallery', label: "Paintings, Portraits", w: 29, h: 49, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/096.png') },
-  { id: 'gallery-097', set: 'gallery', label: "Paintings, Still Life", w: 62, h: 50, kind: 'wall', rarity: 'epic', src: require('../../assets/stickers/gallery/097.png') },
-  { id: 'gallery-098', set: 'gallery', label: "Paintings, Still Life", w: 39, h: 31, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/098.png') },
-  { id: 'gallery-099', set: 'gallery', label: "Paintings, Still Life", w: 37, h: 28, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/099.png') },
-  { id: 'gallery-100', set: 'gallery', label: "Posters", w: 18, h: 24, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/100.png') },
-  { id: 'gallery-101', set: 'gallery', label: "Posters", w: 27, h: 40, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/101.png') },
-  { id: 'gallery-102', set: 'gallery', label: "Posters", w: 19, h: 23, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/102.png') },
-  { id: 'gallery-103', set: 'gallery', label: "Posters", w: 11, h: 17, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/103.png') },
-  { id: 'gallery-104', set: 'gallery', label: "Posters", w: 24, h: 36, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/104.png') },
-  { id: 'gallery-105', set: 'gallery', label: "Posters", w: 18, h: 24, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/105.png') },
-  { id: 'gallery-106', set: 'gallery', label: "Posters", w: 27, h: 40, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/106.png') },
-  { id: 'gallery-107', set: 'gallery', label: "Posters", w: 24, h: 36, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/107.png') },
-  { id: 'gallery-108', set: 'gallery', label: "Posters", w: 18, h: 24, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/108.png') },
-  { id: 'gallery-109', set: 'gallery', label: "Posters", w: 19, h: 23, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/109.png') },
-  { id: 'gallery-110', set: 'gallery', label: "Posters", w: 11, h: 17, kind: 'wall', rarity: 'common', src: require('../../assets/stickers/gallery/110.png') },
-  { id: 'gallery-111', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/111.png') },
-  { id: 'gallery-112', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/112.png') },
-  { id: 'gallery-113', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/113.png') },
-  { id: 'gallery-114', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/114.png') },
-  { id: 'gallery-115', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/115.png') },
-  { id: 'gallery-116', set: 'gallery', label: "Pride Flags", w: 50, h: 30, kind: 'wall', rarity: 'rare', src: require('../../assets/stickers/gallery/116.png') },
+const SRC: ImageSourcePropType[] = [
+  require('../../assets/stickers/fireside/001.png'),
+  require('../../assets/stickers/fireside/002.png'),
+  require('../../assets/stickers/fireside/003.png'),
+  require('../../assets/stickers/fireside/004.png'),
+  require('../../assets/stickers/bedroom/001.png'),
+  require('../../assets/stickers/bedroom/002.png'),
+  require('../../assets/stickers/bedroom/003.png'),
+  require('../../assets/stickers/bedroom/004.png'),
+  require('../../assets/stickers/bedroom/005.png'),
+  require('../../assets/stickers/bedroom/006.png'),
+  require('../../assets/stickers/bedroom/007.png'),
+  require('../../assets/stickers/bedroom/008.png'),
+  require('../../assets/stickers/bedroom/009.png'),
+  require('../../assets/stickers/bedroom/010.png'),
+  require('../../assets/stickers/bedroom/011.png'),
+  require('../../assets/stickers/bedroom/012.png'),
+  require('../../assets/stickers/bedroom/013.png'),
+  require('../../assets/stickers/bedroom/014.png'),
+  require('../../assets/stickers/bedroom/015.png'),
+  require('../../assets/stickers/bedroom/016.png'),
+  require('../../assets/stickers/bedroom/017.png'),
+  require('../../assets/stickers/bedroom/018.png'),
+  require('../../assets/stickers/bedroom/019.png'),
+  require('../../assets/stickers/bedroom/020.png'),
+  require('../../assets/stickers/bedroom/021.png'),
+  require('../../assets/stickers/bedroom/022.png'),
+  require('../../assets/stickers/bedroom/023.png'),
+  require('../../assets/stickers/bedroom/024.png'),
+  require('../../assets/stickers/bedroom/025.png'),
+  require('../../assets/stickers/bedroom/026.png'),
+  require('../../assets/stickers/bedroom/027.png'),
+  require('../../assets/stickers/bedroom/028.png'),
+  require('../../assets/stickers/bedroom/029.png'),
+  require('../../assets/stickers/bedroom/030.png'),
+  require('../../assets/stickers/bedroom/031.png'),
+  require('../../assets/stickers/bedroom/032.png'),
+  require('../../assets/stickers/bedroom/033.png'),
+  require('../../assets/stickers/bedroom/034.png'),
+  require('../../assets/stickers/bedroom/035.png'),
+  require('../../assets/stickers/bedroom/036.png'),
+  require('../../assets/stickers/bedroom/037.png'),
+  require('../../assets/stickers/bedroom/038.png'),
+  require('../../assets/stickers/bedroom/039.png'),
+  require('../../assets/stickers/bedroom/040.png'),
+  require('../../assets/stickers/bedroom/041.png'),
+  require('../../assets/stickers/bedroom/042.png'),
+  require('../../assets/stickers/bedroom/043.png'),
+  require('../../assets/stickers/bedroom/044.png'),
+  require('../../assets/stickers/bedroom/045.png'),
+  require('../../assets/stickers/bedroom/046.png'),
+  require('../../assets/stickers/bedroom/047.png'),
+  require('../../assets/stickers/bedroom/048.png'),
+  require('../../assets/stickers/bedroom/049.png'),
+  require('../../assets/stickers/bedroom/050.png'),
+  require('../../assets/stickers/bedroom/051.png'),
+  require('../../assets/stickers/bedroom/052.png'),
+  require('../../assets/stickers/bedroom/053.png'),
+  require('../../assets/stickers/bedroom/054.png'),
+  require('../../assets/stickers/bedroom/055.png'),
+  require('../../assets/stickers/bedroom/056.png'),
+  require('../../assets/stickers/bedroom/057.png'),
+  require('../../assets/stickers/bedroom/058.png'),
+  require('../../assets/stickers/bedroom/059.png'),
+  require('../../assets/stickers/bedroom/060.png'),
+  require('../../assets/stickers/bedroom/061.png'),
+  require('../../assets/stickers/bedroom/062.png'),
+  require('../../assets/stickers/bedroom/063.png'),
+  require('../../assets/stickers/bedroom/064.png'),
+  require('../../assets/stickers/bedroom/065.png'),
+  require('../../assets/stickers/bedroom/066.png'),
+  require('../../assets/stickers/bedroom/067.png'),
+  require('../../assets/stickers/bedroom/068.png'),
+  require('../../assets/stickers/bedroom/069.png'),
+  require('../../assets/stickers/bedroom/070.png'),
+  require('../../assets/stickers/bedroom/071.png'),
+  require('../../assets/stickers/bedroom/072.png'),
+  require('../../assets/stickers/bedroom/073.png'),
+  require('../../assets/stickers/bedroom/074.png'),
+  require('../../assets/stickers/bedroom/075.png'),
+  require('../../assets/stickers/bedroom/076.png'),
+  require('../../assets/stickers/bedroom/077.png'),
+  require('../../assets/stickers/bedroom/078.png'),
+  require('../../assets/stickers/bedroom/079.png'),
+  require('../../assets/stickers/bedroom/080.png'),
+  require('../../assets/stickers/bedroom/081.png'),
+  require('../../assets/stickers/bedroom/082.png'),
+  require('../../assets/stickers/bedroom/083.png'),
+  require('../../assets/stickers/bedroom/084.png'),
+  require('../../assets/stickers/bedroom/085.png'),
+  require('../../assets/stickers/bedroom/086.png'),
+  require('../../assets/stickers/bedroom/087.png'),
+  require('../../assets/stickers/bedroom/088.png'),
+  require('../../assets/stickers/bedroom/089.png'),
+  require('../../assets/stickers/bedroom/090.png'),
+  require('../../assets/stickers/bedroom/091.png'),
+  require('../../assets/stickers/bedroom/092.png'),
+  require('../../assets/stickers/bedroom/093.png'),
+  require('../../assets/stickers/bedroom/094.png'),
+  require('../../assets/stickers/bedroom/095.png'),
+  require('../../assets/stickers/bedroom/096.png'),
+  require('../../assets/stickers/bedroom/097.png'),
+  require('../../assets/stickers/bedroom/098.png'),
+  require('../../assets/stickers/bedroom/099.png'),
+  require('../../assets/stickers/bedroom/100.png'),
+  require('../../assets/stickers/bedroom/101.png'),
+  require('../../assets/stickers/bedroom/102.png'),
+  require('../../assets/stickers/bedroom/103.png'),
+  require('../../assets/stickers/bedroom/104.png'),
+  require('../../assets/stickers/bedroom/105.png'),
+  require('../../assets/stickers/bedroom/106.png'),
+  require('../../assets/stickers/bedroom/107.png'),
+  require('../../assets/stickers/bedroom/108.png'),
+  require('../../assets/stickers/bedroom/109.png'),
+  require('../../assets/stickers/bedroom/110.png'),
+  require('../../assets/stickers/bedroom/111.png'),
+  require('../../assets/stickers/bedroom/112.png'),
+  require('../../assets/stickers/bedroom/113.png'),
+  require('../../assets/stickers/bedroom/114.png'),
+  require('../../assets/stickers/bedroom/115.png'),
+  require('../../assets/stickers/bedroom/116.png'),
+  require('../../assets/stickers/bedroom/117.png'),
+  require('../../assets/stickers/bedroom/118.png'),
+  require('../../assets/stickers/bedroom/119.png'),
+  require('../../assets/stickers/bedroom/120.png'),
+  require('../../assets/stickers/bedroom/121.png'),
+  require('../../assets/stickers/bedroom/122.png'),
+  require('../../assets/stickers/bedroom/123.png'),
+  require('../../assets/stickers/bedroom/124.png'),
+  require('../../assets/stickers/bedroom/125.png'),
+  require('../../assets/stickers/bedroom/126.png'),
+  require('../../assets/stickers/bedroom/127.png'),
+  require('../../assets/stickers/bedroom/128.png'),
+  require('../../assets/stickers/bedroom/129.png'),
+  require('../../assets/stickers/bedroom/130.png'),
+  require('../../assets/stickers/bedroom/131.png'),
+  require('../../assets/stickers/bedroom/132.png'),
+  require('../../assets/stickers/bedroom/133.png'),
+  require('../../assets/stickers/bedroom/134.png'),
+  require('../../assets/stickers/bedroom/135.png'),
+  require('../../assets/stickers/bedroom/136.png'),
+  require('../../assets/stickers/bedroom/137.png'),
+  require('../../assets/stickers/bedroom/138.png'),
+  require('../../assets/stickers/bedroom/139.png'),
+  require('../../assets/stickers/bedroom/140.png'),
+  require('../../assets/stickers/bedroom/141.png'),
+  require('../../assets/stickers/bedroom/142.png'),
+  require('../../assets/stickers/bedroom/143.png'),
+  require('../../assets/stickers/bedroom/144.png'),
+  require('../../assets/stickers/bedroom/145.png'),
+  require('../../assets/stickers/bedroom/146.png'),
+  require('../../assets/stickers/bedroom/147.png'),
+  require('../../assets/stickers/bedroom/148.png'),
+  require('../../assets/stickers/bedroom/149.png'),
+  require('../../assets/stickers/bedroom/150.png'),
+  require('../../assets/stickers/bedroom/151.png'),
+  require('../../assets/stickers/bedroom/152.png'),
+  require('../../assets/stickers/bedroom/153.png'),
+  require('../../assets/stickers/bedroom/154.png'),
+  require('../../assets/stickers/bedroom/155.png'),
+  require('../../assets/stickers/bedroom/156.png'),
+  require('../../assets/stickers/bedroom/157.png'),
+  require('../../assets/stickers/bedroom/158.png'),
+  require('../../assets/stickers/bedroom/159.png'),
+  require('../../assets/stickers/bedroom/160.png'),
+  require('../../assets/stickers/bedroom/161.png'),
+  require('../../assets/stickers/bedroom/162.png'),
+  require('../../assets/stickers/bedroom/163.png'),
+  require('../../assets/stickers/bedroom/164.png'),
+  require('../../assets/stickers/bedroom/165.png'),
+  require('../../assets/stickers/bedroom/166.png'),
+  require('../../assets/stickers/bedroom/167.png'),
+  require('../../assets/stickers/bedroom/168.png'),
+  require('../../assets/stickers/bedroom/169.png'),
+  require('../../assets/stickers/bedroom/170.png'),
+  require('../../assets/stickers/bedroom/171.png'),
+  require('../../assets/stickers/bedroom/172.png'),
+  require('../../assets/stickers/bedroom/173.png'),
+  require('../../assets/stickers/bedroom/174.png'),
+  require('../../assets/stickers/bedroom/175.png'),
+  require('../../assets/stickers/bedroom/176.png'),
+  require('../../assets/stickers/bedroom/177.png'),
+  require('../../assets/stickers/bedroom/178.png'),
+  require('../../assets/stickers/bedroom/179.png'),
+  require('../../assets/stickers/bedroom/180.png'),
+  require('../../assets/stickers/bedroom/181.png'),
+  require('../../assets/stickers/bedroom/182.png'),
+  require('../../assets/stickers/bedroom/183.png'),
+  require('../../assets/stickers/bedroom/184.png'),
+  require('../../assets/stickers/bedroom/185.png'),
+  require('../../assets/stickers/bedroom/186.png'),
+  require('../../assets/stickers/bedroom/187.png'),
+  require('../../assets/stickers/bedroom/188.png'),
+  require('../../assets/stickers/bedroom/189.png'),
+  require('../../assets/stickers/bedroom/190.png'),
+  require('../../assets/stickers/bedroom/191.png'),
+  require('../../assets/stickers/bedroom/192.png'),
+  require('../../assets/stickers/bedroom/193.png'),
+  require('../../assets/stickers/bedroom/194.png'),
+  require('../../assets/stickers/bedroom/195.png'),
+  require('../../assets/stickers/bedroom/196.png'),
+  require('../../assets/stickers/bedroom/197.png'),
+  require('../../assets/stickers/bedroom/198.png'),
+  require('../../assets/stickers/bedroom/199.png'),
+  require('../../assets/stickers/bedroom/200.png'),
+  require('../../assets/stickers/bedroom/201.png'),
+  require('../../assets/stickers/bedroom/202.png'),
+  require('../../assets/stickers/bedroom/203.png'),
+  require('../../assets/stickers/bedroom/204.png'),
+  require('../../assets/stickers/bedroom/205.png'),
+  require('../../assets/stickers/bedroom/206.png'),
+  require('../../assets/stickers/bedroom/207.png'),
+  require('../../assets/stickers/bedroom/208.png'),
+  require('../../assets/stickers/bedroom/209.png'),
+  require('../../assets/stickers/bedroom/210.png'),
+  require('../../assets/stickers/bedroom/211.png'),
+  require('../../assets/stickers/bedroom/212.png'),
+  require('../../assets/stickers/kitchen/001.png'),
+  require('../../assets/stickers/kitchen/002.png'),
+  require('../../assets/stickers/kitchen/003.png'),
+  require('../../assets/stickers/kitchen/004.png'),
+  require('../../assets/stickers/kitchen/005.png'),
+  require('../../assets/stickers/kitchen/006.png'),
+  require('../../assets/stickers/kitchen/007.png'),
+  require('../../assets/stickers/kitchen/008.png'),
+  require('../../assets/stickers/kitchen/009.png'),
+  require('../../assets/stickers/kitchen/010.png'),
+  require('../../assets/stickers/kitchen/011.png'),
+  require('../../assets/stickers/kitchen/012.png'),
+  require('../../assets/stickers/kitchen/013.png'),
+  require('../../assets/stickers/kitchen/014.png'),
+  require('../../assets/stickers/kitchen/015.png'),
+  require('../../assets/stickers/kitchen/016.png'),
+  require('../../assets/stickers/kitchen/017.png'),
+  require('../../assets/stickers/kitchen/018.png'),
+  require('../../assets/stickers/kitchen/019.png'),
+  require('../../assets/stickers/kitchen/020.png'),
+  require('../../assets/stickers/kitchen/021.png'),
+  require('../../assets/stickers/kitchen/022.png'),
+  require('../../assets/stickers/kitchen/023.png'),
+  require('../../assets/stickers/kitchen/024.png'),
+  require('../../assets/stickers/kitchen/025.png'),
+  require('../../assets/stickers/kitchen/026.png'),
+  require('../../assets/stickers/kitchen/027.png'),
+  require('../../assets/stickers/curious/001.png'),
+  require('../../assets/stickers/curious/002.png'),
+  require('../../assets/stickers/fireside/005.png'),
+  require('../../assets/stickers/fireside/006.png'),
+  require('../../assets/stickers/fireside/007.png'),
+  require('../../assets/stickers/fireside/008.png'),
+  require('../../assets/stickers/fireside/009.png'),
+  require('../../assets/stickers/fireside/010.png'),
+  require('../../assets/stickers/fireside/011.png'),
+  require('../../assets/stickers/fireside/012.png'),
+  require('../../assets/stickers/festive/001.png'),
+  require('../../assets/stickers/festive/002.png'),
+  require('../../assets/stickers/study/001.png'),
+  require('../../assets/stickers/study/002.png'),
+  require('../../assets/stickers/study/003.png'),
+  require('../../assets/stickers/study/004.png'),
+  require('../../assets/stickers/kitchen/028.png'),
+  require('../../assets/stickers/study/005.png'),
+  require('../../assets/stickers/study/006.png'),
+  require('../../assets/stickers/study/007.png'),
+  require('../../assets/stickers/study/008.png'),
+  require('../../assets/stickers/study/009.png'),
+  require('../../assets/stickers/study/010.png'),
+  require('../../assets/stickers/study/011.png'),
+  require('../../assets/stickers/study/012.png'),
+  require('../../assets/stickers/study/013.png'),
+  require('../../assets/stickers/study/014.png'),
+  require('../../assets/stickers/study/015.png'),
+  require('../../assets/stickers/bedroom/213.png'),
+  require('../../assets/stickers/bedroom/214.png'),
+  require('../../assets/stickers/bedroom/215.png'),
+  require('../../assets/stickers/bedroom/216.png'),
+  require('../../assets/stickers/bedroom/217.png'),
+  require('../../assets/stickers/bedroom/218.png'),
+  require('../../assets/stickers/bedroom/219.png'),
+  require('../../assets/stickers/bedroom/220.png'),
+  require('../../assets/stickers/bedroom/221.png'),
+  require('../../assets/stickers/bedroom/222.png'),
+  require('../../assets/stickers/bedroom/223.png'),
+  require('../../assets/stickers/bedroom/224.png'),
+  require('../../assets/stickers/bedroom/225.png'),
+  require('../../assets/stickers/bedroom/226.png'),
+  require('../../assets/stickers/bedroom/227.png'),
+  require('../../assets/stickers/bedroom/228.png'),
+  require('../../assets/stickers/bedroom/229.png'),
+  require('../../assets/stickers/bedroom/230.png'),
+  require('../../assets/stickers/bedroom/231.png'),
+  require('../../assets/stickers/bedroom/232.png'),
+  require('../../assets/stickers/bedroom/233.png'),
+  require('../../assets/stickers/bedroom/234.png'),
+  require('../../assets/stickers/bedroom/235.png'),
+  require('../../assets/stickers/bedroom/236.png'),
+  require('../../assets/stickers/bedroom/237.png'),
+  require('../../assets/stickers/bedroom/238.png'),
+  require('../../assets/stickers/bedroom/239.png'),
+  require('../../assets/stickers/bedroom/240.png'),
+  require('../../assets/stickers/bedroom/241.png'),
+  require('../../assets/stickers/bedroom/242.png'),
+  require('../../assets/stickers/bedroom/243.png'),
+  require('../../assets/stickers/bedroom/244.png'),
+  require('../../assets/stickers/bedroom/245.png'),
+  require('../../assets/stickers/bedroom/246.png'),
+  require('../../assets/stickers/bedroom/247.png'),
+  require('../../assets/stickers/bedroom/248.png'),
+  require('../../assets/stickers/bedroom/249.png'),
+  require('../../assets/stickers/bedroom/250.png'),
+  require('../../assets/stickers/bedroom/251.png'),
+  require('../../assets/stickers/fireside/013.png'),
+  require('../../assets/stickers/fireside/014.png'),
+  require('../../assets/stickers/fireside/015.png'),
+  require('../../assets/stickers/fireside/016.png'),
+  require('../../assets/stickers/kitchen/029.png'),
+  require('../../assets/stickers/kitchen/030.png'),
+  require('../../assets/stickers/kitchen/031.png'),
+  require('../../assets/stickers/maker/001.png'),
+  require('../../assets/stickers/maker/002.png'),
+  require('../../assets/stickers/bedroom/252.png'),
+  require('../../assets/stickers/bedroom/253.png'),
+  require('../../assets/stickers/bedroom/254.png'),
+  require('../../assets/stickers/bedroom/255.png'),
+  require('../../assets/stickers/bedroom/256.png'),
+  require('../../assets/stickers/bedroom/257.png'),
+  require('../../assets/stickers/bedroom/258.png'),
+  require('../../assets/stickers/bedroom/259.png'),
+  require('../../assets/stickers/bedroom/260.png'),
+  require('../../assets/stickers/bedroom/261.png'),
+  require('../../assets/stickers/bedroom/262.png'),
+  require('../../assets/stickers/bedroom/263.png'),
+  require('../../assets/stickers/bedroom/264.png'),
+  require('../../assets/stickers/bedroom/265.png'),
+  require('../../assets/stickers/garden/001.png'),
+  require('../../assets/stickers/garden/002.png'),
+  require('../../assets/stickers/bedroom/266.png'),
+  require('../../assets/stickers/bedroom/267.png'),
+  require('../../assets/stickers/bedroom/268.png'),
+  require('../../assets/stickers/bedroom/269.png'),
+  require('../../assets/stickers/kitchen/032.png'),
+  require('../../assets/stickers/garden/003.png'),
+  require('../../assets/stickers/lounge/001.png'),
+  require('../../assets/stickers/lounge/002.png'),
+  require('../../assets/stickers/lounge/003.png'),
+  require('../../assets/stickers/lounge/004.png'),
+  require('../../assets/stickers/lounge/005.png'),
+  require('../../assets/stickers/lounge/006.png'),
+  require('../../assets/stickers/lounge/007.png'),
+  require('../../assets/stickers/lounge/008.png'),
+  require('../../assets/stickers/lounge/009.png'),
+  require('../../assets/stickers/lounge/010.png'),
+  require('../../assets/stickers/maker/003.png'),
+  require('../../assets/stickers/kitchen/033.png'),
+  require('../../assets/stickers/kitchen/034.png'),
+  require('../../assets/stickers/kitchen/035.png'),
+  require('../../assets/stickers/kitchen/036.png'),
+  require('../../assets/stickers/kitchen/037.png'),
+  require('../../assets/stickers/kitchen/038.png'),
+  require('../../assets/stickers/kitchen/039.png'),
+  require('../../assets/stickers/kitchen/040.png'),
+  require('../../assets/stickers/kitchen/041.png'),
+  require('../../assets/stickers/kitchen/042.png'),
+  require('../../assets/stickers/kitchen/043.png'),
+  require('../../assets/stickers/kitchen/044.png'),
+  require('../../assets/stickers/kitchen/045.png'),
+  require('../../assets/stickers/kitchen/046.png'),
+  require('../../assets/stickers/kitchen/047.png'),
+  require('../../assets/stickers/kitchen/048.png'),
+  require('../../assets/stickers/kitchen/049.png'),
+  require('../../assets/stickers/kitchen/050.png'),
+  require('../../assets/stickers/kitchen/051.png'),
+  require('../../assets/stickers/kitchen/052.png'),
+  require('../../assets/stickers/kitchen/053.png'),
+  require('../../assets/stickers/kitchen/054.png'),
+  require('../../assets/stickers/kitchen/055.png'),
+  require('../../assets/stickers/kitchen/056.png'),
+  require('../../assets/stickers/kitchen/057.png'),
+  require('../../assets/stickers/kitchen/058.png'),
+  require('../../assets/stickers/kitchen/059.png'),
+  require('../../assets/stickers/kitchen/060.png'),
+  require('../../assets/stickers/kitchen/061.png'),
+  require('../../assets/stickers/kitchen/062.png'),
+  require('../../assets/stickers/kitchen/063.png'),
+  require('../../assets/stickers/kitchen/064.png'),
+  require('../../assets/stickers/kitchen/065.png'),
+  require('../../assets/stickers/kitchen/066.png'),
+  require('../../assets/stickers/kitchen/067.png'),
+  require('../../assets/stickers/kitchen/068.png'),
+  require('../../assets/stickers/kitchen/069.png'),
+  require('../../assets/stickers/kitchen/070.png'),
+  require('../../assets/stickers/kitchen/071.png'),
+  require('../../assets/stickers/kitchen/072.png'),
+  require('../../assets/stickers/kitchen/073.png'),
+  require('../../assets/stickers/kitchen/074.png'),
+  require('../../assets/stickers/kitchen/075.png'),
+  require('../../assets/stickers/kitchen/076.png'),
+  require('../../assets/stickers/kitchen/077.png'),
+  require('../../assets/stickers/kitchen/078.png'),
+  require('../../assets/stickers/kitchen/079.png'),
+  require('../../assets/stickers/kitchen/080.png'),
+  require('../../assets/stickers/kitchen/081.png'),
+  require('../../assets/stickers/kitchen/082.png'),
+  require('../../assets/stickers/kitchen/083.png'),
+  require('../../assets/stickers/kitchen/084.png'),
+  require('../../assets/stickers/kitchen/085.png'),
+  require('../../assets/stickers/kitchen/086.png'),
+  require('../../assets/stickers/kitchen/087.png'),
+  require('../../assets/stickers/kitchen/088.png'),
+  require('../../assets/stickers/kitchen/089.png'),
+  require('../../assets/stickers/kitchen/090.png'),
+  require('../../assets/stickers/kitchen/091.png'),
+  require('../../assets/stickers/kitchen/092.png'),
+  require('../../assets/stickers/kitchen/093.png'),
+  require('../../assets/stickers/kitchen/094.png'),
+  require('../../assets/stickers/kitchen/095.png'),
+  require('../../assets/stickers/kitchen/096.png'),
+  require('../../assets/stickers/kitchen/097.png'),
+  require('../../assets/stickers/kitchen/098.png'),
+  require('../../assets/stickers/kitchen/099.png'),
+  require('../../assets/stickers/kitchen/100.png'),
+  require('../../assets/stickers/kitchen/101.png'),
+  require('../../assets/stickers/kitchen/102.png'),
+  require('../../assets/stickers/kitchen/103.png'),
+  require('../../assets/stickers/kitchen/104.png'),
+  require('../../assets/stickers/kitchen/105.png'),
+  require('../../assets/stickers/lounge/011.png'),
+  require('../../assets/stickers/lounge/012.png'),
+  require('../../assets/stickers/lounge/013.png'),
+  require('../../assets/stickers/lounge/014.png'),
+  require('../../assets/stickers/lounge/015.png'),
+  require('../../assets/stickers/lounge/016.png'),
+  require('../../assets/stickers/lounge/017.png'),
+  require('../../assets/stickers/lounge/018.png'),
+  require('../../assets/stickers/lounge/019.png'),
+  require('../../assets/stickers/lounge/020.png'),
+  require('../../assets/stickers/lounge/021.png'),
+  require('../../assets/stickers/lounge/022.png'),
+  require('../../assets/stickers/lounge/023.png'),
+  require('../../assets/stickers/lounge/024.png'),
+  require('../../assets/stickers/lounge/025.png'),
+  require('../../assets/stickers/lounge/026.png'),
+  require('../../assets/stickers/lounge/027.png'),
+  require('../../assets/stickers/lounge/028.png'),
+  require('../../assets/stickers/lounge/029.png'),
+  require('../../assets/stickers/lounge/030.png'),
+  require('../../assets/stickers/lounge/031.png'),
+  require('../../assets/stickers/lounge/032.png'),
+  require('../../assets/stickers/lounge/033.png'),
+  require('../../assets/stickers/lounge/034.png'),
+  require('../../assets/stickers/lounge/035.png'),
+  require('../../assets/stickers/lounge/036.png'),
+  require('../../assets/stickers/lounge/037.png'),
+  require('../../assets/stickers/lounge/038.png'),
+  require('../../assets/stickers/lounge/039.png'),
+  require('../../assets/stickers/lounge/040.png'),
+  require('../../assets/stickers/lounge/041.png'),
+  require('../../assets/stickers/lounge/042.png'),
+  require('../../assets/stickers/lounge/043.png'),
+  require('../../assets/stickers/lounge/044.png'),
+  require('../../assets/stickers/lounge/045.png'),
+  require('../../assets/stickers/lounge/046.png'),
+  require('../../assets/stickers/lounge/047.png'),
+  require('../../assets/stickers/lounge/048.png'),
+  require('../../assets/stickers/lounge/049.png'),
+  require('../../assets/stickers/lounge/050.png'),
+  require('../../assets/stickers/lounge/051.png'),
+  require('../../assets/stickers/lounge/052.png'),
+  require('../../assets/stickers/lounge/053.png'),
+  require('../../assets/stickers/lounge/054.png'),
+  require('../../assets/stickers/lounge/055.png'),
+  require('../../assets/stickers/lounge/056.png'),
+  require('../../assets/stickers/lounge/057.png'),
+  require('../../assets/stickers/lounge/058.png'),
+  require('../../assets/stickers/lounge/059.png'),
+  require('../../assets/stickers/lounge/060.png'),
+  require('../../assets/stickers/lounge/061.png'),
+  require('../../assets/stickers/lounge/062.png'),
+  require('../../assets/stickers/lounge/063.png'),
+  require('../../assets/stickers/lounge/064.png'),
+  require('../../assets/stickers/lounge/065.png'),
+  require('../../assets/stickers/lounge/066.png'),
+  require('../../assets/stickers/lounge/067.png'),
+  require('../../assets/stickers/lounge/068.png'),
+  require('../../assets/stickers/lounge/069.png'),
+  require('../../assets/stickers/lounge/070.png'),
+  require('../../assets/stickers/lounge/071.png'),
+  require('../../assets/stickers/lounge/072.png'),
+  require('../../assets/stickers/lounge/073.png'),
+  require('../../assets/stickers/lounge/074.png'),
+  require('../../assets/stickers/lounge/075.png'),
+  require('../../assets/stickers/lounge/076.png'),
+  require('../../assets/stickers/lounge/077.png'),
+  require('../../assets/stickers/lounge/078.png'),
+  require('../../assets/stickers/lounge/079.png'),
+  require('../../assets/stickers/lounge/080.png'),
+  require('../../assets/stickers/lounge/081.png'),
+  require('../../assets/stickers/lounge/082.png'),
+  require('../../assets/stickers/lounge/083.png'),
+  require('../../assets/stickers/lounge/084.png'),
+  require('../../assets/stickers/lounge/085.png'),
+  require('../../assets/stickers/lounge/086.png'),
+  require('../../assets/stickers/lounge/087.png'),
+  require('../../assets/stickers/lounge/088.png'),
+  require('../../assets/stickers/lounge/089.png'),
+  require('../../assets/stickers/lounge/090.png'),
+  require('../../assets/stickers/lounge/091.png'),
+  require('../../assets/stickers/lounge/092.png'),
+  require('../../assets/stickers/lounge/093.png'),
+  require('../../assets/stickers/lounge/094.png'),
+  require('../../assets/stickers/lounge/095.png'),
+  require('../../assets/stickers/lounge/096.png'),
+  require('../../assets/stickers/lounge/097.png'),
+  require('../../assets/stickers/lounge/098.png'),
+  require('../../assets/stickers/lounge/099.png'),
+  require('../../assets/stickers/lounge/100.png'),
+  require('../../assets/stickers/lounge/101.png'),
+  require('../../assets/stickers/lounge/102.png'),
+  require('../../assets/stickers/lounge/103.png'),
+  require('../../assets/stickers/lounge/104.png'),
+  require('../../assets/stickers/lounge/105.png'),
+  require('../../assets/stickers/lounge/106.png'),
+  require('../../assets/stickers/lounge/107.png'),
+  require('../../assets/stickers/lounge/108.png'),
+  require('../../assets/stickers/lounge/109.png'),
+  require('../../assets/stickers/lounge/110.png'),
+  require('../../assets/stickers/lounge/111.png'),
+  require('../../assets/stickers/lounge/112.png'),
+  require('../../assets/stickers/lounge/113.png'),
+  require('../../assets/stickers/lounge/114.png'),
+  require('../../assets/stickers/lounge/115.png'),
+  require('../../assets/stickers/lounge/116.png'),
+  require('../../assets/stickers/lounge/117.png'),
+  require('../../assets/stickers/lounge/118.png'),
+  require('../../assets/stickers/lounge/119.png'),
+  require('../../assets/stickers/lounge/120.png'),
+  require('../../assets/stickers/lounge/121.png'),
+  require('../../assets/stickers/lounge/122.png'),
+  require('../../assets/stickers/lounge/123.png'),
+  require('../../assets/stickers/lounge/124.png'),
+  require('../../assets/stickers/lounge/125.png'),
+  require('../../assets/stickers/lounge/126.png'),
+  require('../../assets/stickers/lounge/127.png'),
+  require('../../assets/stickers/lounge/128.png'),
+  require('../../assets/stickers/lounge/129.png'),
+  require('../../assets/stickers/lounge/130.png'),
+  require('../../assets/stickers/lounge/131.png'),
+  require('../../assets/stickers/lounge/132.png'),
+  require('../../assets/stickers/lounge/133.png'),
+  require('../../assets/stickers/lounge/134.png'),
+  require('../../assets/stickers/lounge/135.png'),
+  require('../../assets/stickers/lounge/136.png'),
+  require('../../assets/stickers/lounge/137.png'),
+  require('../../assets/stickers/lounge/138.png'),
+  require('../../assets/stickers/lounge/139.png'),
+  require('../../assets/stickers/lounge/140.png'),
+  require('../../assets/stickers/lounge/141.png'),
+  require('../../assets/stickers/lounge/142.png'),
+  require('../../assets/stickers/lounge/143.png'),
+  require('../../assets/stickers/lounge/144.png'),
+  require('../../assets/stickers/lounge/145.png'),
+  require('../../assets/stickers/lounge/146.png'),
+  require('../../assets/stickers/lounge/147.png'),
+  require('../../assets/stickers/lounge/148.png'),
+  require('../../assets/stickers/lounge/149.png'),
+  require('../../assets/stickers/lounge/150.png'),
+  require('../../assets/stickers/lounge/151.png'),
+  require('../../assets/stickers/lounge/152.png'),
+  require('../../assets/stickers/lounge/153.png'),
+  require('../../assets/stickers/lounge/154.png'),
+  require('../../assets/stickers/lounge/155.png'),
+  require('../../assets/stickers/lounge/156.png'),
+  require('../../assets/stickers/lounge/157.png'),
+  require('../../assets/stickers/lounge/158.png'),
+  require('../../assets/stickers/lounge/159.png'),
+  require('../../assets/stickers/lounge/160.png'),
+  require('../../assets/stickers/lounge/161.png'),
+  require('../../assets/stickers/lounge/162.png'),
+  require('../../assets/stickers/lounge/163.png'),
+  require('../../assets/stickers/lounge/164.png'),
+  require('../../assets/stickers/lounge/165.png'),
+  require('../../assets/stickers/lounge/166.png'),
+  require('../../assets/stickers/lounge/167.png'),
+  require('../../assets/stickers/lounge/168.png'),
+  require('../../assets/stickers/lounge/169.png'),
+  require('../../assets/stickers/lounge/170.png'),
+  require('../../assets/stickers/lounge/171.png'),
+  require('../../assets/stickers/lounge/172.png'),
+  require('../../assets/stickers/lounge/173.png'),
+  require('../../assets/stickers/lounge/174.png'),
+  require('../../assets/stickers/lounge/175.png'),
+  require('../../assets/stickers/lounge/176.png'),
+  require('../../assets/stickers/lounge/177.png'),
+  require('../../assets/stickers/lounge/178.png'),
+  require('../../assets/stickers/lounge/179.png'),
+  require('../../assets/stickers/lounge/180.png'),
+  require('../../assets/stickers/lounge/181.png'),
+  require('../../assets/stickers/lounge/182.png'),
+  require('../../assets/stickers/lounge/183.png'),
+  require('../../assets/stickers/lounge/184.png'),
+  require('../../assets/stickers/lounge/185.png'),
+  require('../../assets/stickers/lounge/186.png'),
+  require('../../assets/stickers/lounge/187.png'),
+  require('../../assets/stickers/lounge/188.png'),
+  require('../../assets/stickers/lounge/189.png'),
+  require('../../assets/stickers/lounge/190.png'),
+  require('../../assets/stickers/lounge/191.png'),
+  require('../../assets/stickers/lounge/192.png'),
+  require('../../assets/stickers/lounge/193.png'),
+  require('../../assets/stickers/lounge/194.png'),
+  require('../../assets/stickers/lounge/195.png'),
+  require('../../assets/stickers/lounge/196.png'),
+  require('../../assets/stickers/lounge/197.png'),
+  require('../../assets/stickers/lounge/198.png'),
+  require('../../assets/stickers/lounge/199.png'),
+  require('../../assets/stickers/lounge/200.png'),
+  require('../../assets/stickers/lounge/201.png'),
+  require('../../assets/stickers/lounge/202.png'),
+  require('../../assets/stickers/lounge/203.png'),
+  require('../../assets/stickers/lounge/204.png'),
+  require('../../assets/stickers/lounge/205.png'),
+  require('../../assets/stickers/lounge/206.png'),
+  require('../../assets/stickers/lounge/207.png'),
+  require('../../assets/stickers/lounge/208.png'),
+  require('../../assets/stickers/lounge/209.png'),
+  require('../../assets/stickers/lounge/210.png'),
+  require('../../assets/stickers/lounge/211.png'),
+  require('../../assets/stickers/lounge/212.png'),
+  require('../../assets/stickers/lounge/213.png'),
+  require('../../assets/stickers/lounge/214.png'),
+  require('../../assets/stickers/lounge/215.png'),
+  require('../../assets/stickers/lounge/216.png'),
+  require('../../assets/stickers/lounge/217.png'),
+  require('../../assets/stickers/lounge/218.png'),
+  require('../../assets/stickers/lounge/219.png'),
+  require('../../assets/stickers/lounge/220.png'),
+  require('../../assets/stickers/lounge/221.png'),
+  require('../../assets/stickers/lounge/222.png'),
+  require('../../assets/stickers/lounge/223.png'),
+  require('../../assets/stickers/lounge/224.png'),
+  require('../../assets/stickers/lounge/225.png'),
+  require('../../assets/stickers/lounge/226.png'),
+  require('../../assets/stickers/lounge/227.png'),
+  require('../../assets/stickers/lounge/228.png'),
+  require('../../assets/stickers/lounge/229.png'),
+  require('../../assets/stickers/lounge/230.png'),
+  require('../../assets/stickers/lounge/231.png'),
+  require('../../assets/stickers/lounge/232.png'),
+  require('../../assets/stickers/lounge/233.png'),
+  require('../../assets/stickers/lounge/234.png'),
+  require('../../assets/stickers/lounge/235.png'),
+  require('../../assets/stickers/lounge/236.png'),
+  require('../../assets/stickers/lounge/237.png'),
+  require('../../assets/stickers/lounge/238.png'),
+  require('../../assets/stickers/lounge/239.png'),
+  require('../../assets/stickers/lounge/240.png'),
+  require('../../assets/stickers/lounge/241.png'),
+  require('../../assets/stickers/lounge/242.png'),
+  require('../../assets/stickers/lounge/243.png'),
+  require('../../assets/stickers/lounge/244.png'),
+  require('../../assets/stickers/lounge/245.png'),
+  require('../../assets/stickers/lounge/246.png'),
+  require('../../assets/stickers/lounge/247.png'),
+  require('../../assets/stickers/lounge/248.png'),
+  require('../../assets/stickers/lounge/249.png'),
+  require('../../assets/stickers/lounge/250.png'),
+  require('../../assets/stickers/lounge/251.png'),
+  require('../../assets/stickers/lounge/252.png'),
+  require('../../assets/stickers/lounge/253.png'),
+  require('../../assets/stickers/lounge/254.png'),
+  require('../../assets/stickers/lounge/255.png'),
+  require('../../assets/stickers/lounge/256.png'),
+  require('../../assets/stickers/lounge/257.png'),
+  require('../../assets/stickers/lounge/258.png'),
+  require('../../assets/stickers/lounge/259.png'),
+  require('../../assets/stickers/lounge/260.png'),
+  require('../../assets/stickers/lounge/261.png'),
+  require('../../assets/stickers/lounge/262.png'),
+  require('../../assets/stickers/lounge/263.png'),
+  require('../../assets/stickers/lounge/264.png'),
+  require('../../assets/stickers/lounge/265.png'),
+  require('../../assets/stickers/lounge/266.png'),
+  require('../../assets/stickers/lounge/267.png'),
+  require('../../assets/stickers/lounge/268.png'),
+  require('../../assets/stickers/lounge/269.png'),
+  require('../../assets/stickers/lounge/270.png'),
+  require('../../assets/stickers/lounge/271.png'),
+  require('../../assets/stickers/lounge/272.png'),
+  require('../../assets/stickers/lounge/273.png'),
+  require('../../assets/stickers/lounge/274.png'),
+  require('../../assets/stickers/lounge/275.png'),
+  require('../../assets/stickers/lounge/276.png'),
+  require('../../assets/stickers/lounge/277.png'),
+  require('../../assets/stickers/lounge/278.png'),
+  require('../../assets/stickers/lounge/279.png'),
+  require('../../assets/stickers/lounge/280.png'),
+  require('../../assets/stickers/lounge/281.png'),
+  require('../../assets/stickers/lounge/282.png'),
+  require('../../assets/stickers/lounge/283.png'),
+  require('../../assets/stickers/lounge/284.png'),
+  require('../../assets/stickers/lounge/285.png'),
+  require('../../assets/stickers/lounge/286.png'),
+  require('../../assets/stickers/lounge/287.png'),
+  require('../../assets/stickers/lounge/288.png'),
+  require('../../assets/stickers/lounge/289.png'),
+  require('../../assets/stickers/lounge/290.png'),
+  require('../../assets/stickers/lounge/291.png'),
+  require('../../assets/stickers/lounge/292.png'),
+  require('../../assets/stickers/lounge/293.png'),
+  require('../../assets/stickers/lounge/294.png'),
+  require('../../assets/stickers/lounge/295.png'),
+  require('../../assets/stickers/lounge/296.png'),
+  require('../../assets/stickers/lounge/297.png'),
+  require('../../assets/stickers/curious/003.png'),
+  require('../../assets/stickers/curious/004.png'),
+  require('../../assets/stickers/curious/005.png'),
+  require('../../assets/stickers/curious/006.png'),
+  require('../../assets/stickers/curious/007.png'),
+  require('../../assets/stickers/curious/008.png'),
+  require('../../assets/stickers/curious/009.png'),
+  require('../../assets/stickers/maker/004.png'),
+  require('../../assets/stickers/maker/005.png'),
+  require('../../assets/stickers/maker/006.png'),
+  require('../../assets/stickers/maker/007.png'),
+  require('../../assets/stickers/maker/008.png'),
+  require('../../assets/stickers/maker/009.png'),
+  require('../../assets/stickers/maker/010.png'),
+  require('../../assets/stickers/maker/011.png'),
+  require('../../assets/stickers/maker/012.png'),
+  require('../../assets/stickers/maker/013.png'),
+  require('../../assets/stickers/maker/014.png'),
+  require('../../assets/stickers/maker/015.png'),
+  require('../../assets/stickers/maker/016.png'),
+  require('../../assets/stickers/maker/017.png'),
+  require('../../assets/stickers/maker/018.png'),
+  require('../../assets/stickers/maker/019.png'),
+  require('../../assets/stickers/maker/020.png'),
+  require('../../assets/stickers/maker/021.png'),
+  require('../../assets/stickers/maker/022.png'),
+  require('../../assets/stickers/maker/023.png'),
+  require('../../assets/stickers/maker/024.png'),
+  require('../../assets/stickers/maker/025.png'),
+  require('../../assets/stickers/maker/026.png'),
+  require('../../assets/stickers/maker/027.png'),
+  require('../../assets/stickers/maker/028.png'),
+  require('../../assets/stickers/maker/029.png'),
+  require('../../assets/stickers/maker/030.png'),
+  require('../../assets/stickers/maker/031.png'),
+  require('../../assets/stickers/maker/032.png'),
+  require('../../assets/stickers/maker/033.png'),
+  require('../../assets/stickers/maker/034.png'),
+  require('../../assets/stickers/maker/035.png'),
+  require('../../assets/stickers/maker/036.png'),
+  require('../../assets/stickers/maker/037.png'),
+  require('../../assets/stickers/maker/038.png'),
+  require('../../assets/stickers/maker/039.png'),
+  require('../../assets/stickers/maker/040.png'),
+  require('../../assets/stickers/maker/041.png'),
+  require('../../assets/stickers/maker/042.png'),
+  require('../../assets/stickers/maker/043.png'),
+  require('../../assets/stickers/maker/044.png'),
+  require('../../assets/stickers/maker/045.png'),
+  require('../../assets/stickers/maker/046.png'),
+  require('../../assets/stickers/maker/047.png'),
+  require('../../assets/stickers/maker/048.png'),
+  require('../../assets/stickers/maker/049.png'),
+  require('../../assets/stickers/maker/050.png'),
+  require('../../assets/stickers/maker/051.png'),
+  require('../../assets/stickers/maker/052.png'),
+  require('../../assets/stickers/maker/053.png'),
+  require('../../assets/stickers/maker/054.png'),
+  require('../../assets/stickers/maker/055.png'),
+  require('../../assets/stickers/maker/056.png'),
+  require('../../assets/stickers/maker/057.png'),
+  require('../../assets/stickers/maker/058.png'),
+  require('../../assets/stickers/maker/059.png'),
+  require('../../assets/stickers/maker/060.png'),
+  require('../../assets/stickers/maker/061.png'),
+  require('../../assets/stickers/maker/062.png'),
+  require('../../assets/stickers/maker/063.png'),
+  require('../../assets/stickers/maker/064.png'),
+  require('../../assets/stickers/maker/065.png'),
+  require('../../assets/stickers/maker/066.png'),
+  require('../../assets/stickers/maker/067.png'),
+  require('../../assets/stickers/maker/068.png'),
+  require('../../assets/stickers/study/016.png'),
+  require('../../assets/stickers/study/017.png'),
+  require('../../assets/stickers/study/018.png'),
+  require('../../assets/stickers/study/019.png'),
+  require('../../assets/stickers/study/020.png'),
+  require('../../assets/stickers/study/021.png'),
+  require('../../assets/stickers/kitchen/106.png'),
+  require('../../assets/stickers/kitchen/107.png'),
+  require('../../assets/stickers/kitchen/108.png'),
+  require('../../assets/stickers/kitchen/109.png'),
+  require('../../assets/stickers/kitchen/110.png'),
+  require('../../assets/stickers/kitchen/111.png'),
+  require('../../assets/stickers/kitchen/112.png'),
+  require('../../assets/stickers/kitchen/113.png'),
+  require('../../assets/stickers/kitchen/114.png'),
+  require('../../assets/stickers/kitchen/115.png'),
+  require('../../assets/stickers/kitchen/116.png'),
+  require('../../assets/stickers/kitchen/117.png'),
+  require('../../assets/stickers/kitchen/118.png'),
+  require('../../assets/stickers/kitchen/119.png'),
+  require('../../assets/stickers/kitchen/120.png'),
+  require('../../assets/stickers/kitchen/121.png'),
+  require('../../assets/stickers/kitchen/122.png'),
+  require('../../assets/stickers/kitchen/123.png'),
+  require('../../assets/stickers/kitchen/124.png'),
+  require('../../assets/stickers/kitchen/125.png'),
+  require('../../assets/stickers/kitchen/126.png'),
+  require('../../assets/stickers/kitchen/127.png'),
+  require('../../assets/stickers/kitchen/128.png'),
+  require('../../assets/stickers/kitchen/129.png'),
+  require('../../assets/stickers/kitchen/130.png'),
+  require('../../assets/stickers/forge/001.png'),
+  require('../../assets/stickers/forge/002.png'),
+  require('../../assets/stickers/forge/003.png'),
+  require('../../assets/stickers/forge/004.png'),
+  require('../../assets/stickers/forge/005.png'),
+  require('../../assets/stickers/forge/006.png'),
+  require('../../assets/stickers/forge/007.png'),
+  require('../../assets/stickers/forge/008.png'),
+  require('../../assets/stickers/forge/009.png'),
+  require('../../assets/stickers/forge/010.png'),
+  require('../../assets/stickers/forge/011.png'),
+  require('../../assets/stickers/forge/012.png'),
+  require('../../assets/stickers/forge/013.png'),
+  require('../../assets/stickers/forge/014.png'),
+  require('../../assets/stickers/forge/015.png'),
+  require('../../assets/stickers/forge/016.png'),
+  require('../../assets/stickers/forge/017.png'),
+  require('../../assets/stickers/forge/018.png'),
+  require('../../assets/stickers/forge/019.png'),
+  require('../../assets/stickers/forge/020.png'),
+  require('../../assets/stickers/forge/021.png'),
+  require('../../assets/stickers/forge/022.png'),
+  require('../../assets/stickers/forge/023.png'),
+  require('../../assets/stickers/forge/024.png'),
+  require('../../assets/stickers/forge/025.png'),
+  require('../../assets/stickers/forge/026.png'),
+  require('../../assets/stickers/forge/027.png'),
+  require('../../assets/stickers/forge/028.png'),
+  require('../../assets/stickers/forge/029.png'),
+  require('../../assets/stickers/forge/030.png'),
+  require('../../assets/stickers/forge/031.png'),
+  require('../../assets/stickers/forge/032.png'),
+  require('../../assets/stickers/forge/033.png'),
+  require('../../assets/stickers/forge/034.png'),
+  require('../../assets/stickers/forge/035.png'),
+  require('../../assets/stickers/forge/036.png'),
+  require('../../assets/stickers/forge/037.png'),
+  require('../../assets/stickers/forge/038.png'),
+  require('../../assets/stickers/forge/039.png'),
+  require('../../assets/stickers/forge/040.png'),
+  require('../../assets/stickers/forge/041.png'),
+  require('../../assets/stickers/forge/042.png'),
+  require('../../assets/stickers/forge/043.png'),
+  require('../../assets/stickers/forge/044.png'),
+  require('../../assets/stickers/forge/045.png'),
+  require('../../assets/stickers/forge/046.png'),
+  require('../../assets/stickers/forge/047.png'),
+  require('../../assets/stickers/forge/048.png'),
+  require('../../assets/stickers/forge/049.png'),
+  require('../../assets/stickers/forge/050.png'),
+  require('../../assets/stickers/forge/051.png'),
+  require('../../assets/stickers/forge/052.png'),
+  require('../../assets/stickers/forge/053.png'),
+  require('../../assets/stickers/forge/054.png'),
+  require('../../assets/stickers/forge/055.png'),
+  require('../../assets/stickers/forge/056.png'),
+  require('../../assets/stickers/forge/057.png'),
+  require('../../assets/stickers/bedroom/270.png'),
+  require('../../assets/stickers/bedroom/271.png'),
+  require('../../assets/stickers/curious/010.png'),
+  require('../../assets/stickers/curious/011.png'),
+  require('../../assets/stickers/curious/012.png'),
+  require('../../assets/stickers/curious/013.png'),
+  require('../../assets/stickers/lounge/298.png'),
+  require('../../assets/stickers/lounge/299.png'),
+  require('../../assets/stickers/lounge/300.png'),
+  require('../../assets/stickers/lounge/301.png'),
+  require('../../assets/stickers/lounge/302.png'),
+  require('../../assets/stickers/lounge/303.png'),
+  require('../../assets/stickers/lounge/304.png'),
+  require('../../assets/stickers/lounge/305.png'),
+  require('../../assets/stickers/lounge/306.png'),
+  require('../../assets/stickers/lounge/307.png'),
+  require('../../assets/stickers/lounge/308.png'),
+  require('../../assets/stickers/lounge/309.png'),
+  require('../../assets/stickers/lounge/310.png'),
+  require('../../assets/stickers/lounge/311.png'),
+  require('../../assets/stickers/lounge/312.png'),
+  require('../../assets/stickers/lounge/313.png'),
+  require('../../assets/stickers/lounge/314.png'),
+  require('../../assets/stickers/lounge/315.png'),
+  require('../../assets/stickers/lounge/316.png'),
+  require('../../assets/stickers/lounge/317.png'),
+  require('../../assets/stickers/lounge/318.png'),
+  require('../../assets/stickers/lounge/319.png'),
+  require('../../assets/stickers/lounge/320.png'),
+  require('../../assets/stickers/lounge/321.png'),
+  require('../../assets/stickers/lounge/322.png'),
+  require('../../assets/stickers/lounge/323.png'),
+  require('../../assets/stickers/lounge/324.png'),
+  require('../../assets/stickers/lounge/325.png'),
+  require('../../assets/stickers/lounge/326.png'),
+  require('../../assets/stickers/lounge/327.png'),
+  require('../../assets/stickers/kitchen/131.png'),
+  require('../../assets/stickers/kitchen/132.png'),
+  require('../../assets/stickers/kitchen/133.png'),
+  require('../../assets/stickers/kitchen/134.png'),
+  require('../../assets/stickers/kitchen/135.png'),
+  require('../../assets/stickers/maker/069.png'),
+  require('../../assets/stickers/maker/070.png'),
+  require('../../assets/stickers/maker/071.png'),
+  require('../../assets/stickers/maker/072.png'),
+  require('../../assets/stickers/maker/073.png'),
+  require('../../assets/stickers/maker/074.png'),
+  require('../../assets/stickers/maker/075.png'),
+  require('../../assets/stickers/maker/076.png'),
+  require('../../assets/stickers/garden/004.png'),
+  require('../../assets/stickers/garden/005.png'),
+  require('../../assets/stickers/garden/006.png'),
+  require('../../assets/stickers/garden/007.png'),
+  require('../../assets/stickers/garden/008.png'),
+  require('../../assets/stickers/garden/009.png'),
+  require('../../assets/stickers/garden/010.png'),
+  require('../../assets/stickers/garden/011.png'),
+  require('../../assets/stickers/garden/012.png'),
+  require('../../assets/stickers/garden/013.png'),
+  require('../../assets/stickers/garden/014.png'),
+  require('../../assets/stickers/garden/015.png'),
+  require('../../assets/stickers/lounge/328.png'),
+  require('../../assets/stickers/lounge/329.png'),
+  require('../../assets/stickers/lounge/330.png'),
+  require('../../assets/stickers/lounge/331.png'),
+  require('../../assets/stickers/lounge/332.png'),
+  require('../../assets/stickers/lounge/333.png'),
+  require('../../assets/stickers/lounge/334.png'),
+  require('../../assets/stickers/lounge/335.png'),
+  require('../../assets/stickers/lounge/336.png'),
+  require('../../assets/stickers/lounge/337.png'),
+  require('../../assets/stickers/lounge/338.png'),
+  require('../../assets/stickers/lounge/339.png'),
+  require('../../assets/stickers/lounge/340.png'),
+  require('../../assets/stickers/lounge/341.png'),
+  require('../../assets/stickers/lounge/342.png'),
+  require('../../assets/stickers/study/022.png'),
+  require('../../assets/stickers/study/023.png'),
+  require('../../assets/stickers/kitchen/136.png'),
+  require('../../assets/stickers/kitchen/137.png'),
+  require('../../assets/stickers/kitchen/138.png'),
+  require('../../assets/stickers/kitchen/139.png'),
+  require('../../assets/stickers/curious/014.png'),
+  require('../../assets/stickers/maker/077.png'),
+  require('../../assets/stickers/maker/078.png'),
+  require('../../assets/stickers/maker/079.png'),
+  require('../../assets/stickers/maker/080.png'),
+  require('../../assets/stickers/maker/081.png'),
+  require('../../assets/stickers/maker/082.png'),
+  require('../../assets/stickers/curious/015.png'),
+  require('../../assets/stickers/curious/016.png'),
+  require('../../assets/stickers/lounge/343.png'),
+  require('../../assets/stickers/lounge/344.png'),
+  require('../../assets/stickers/lounge/345.png'),
+  require('../../assets/stickers/lounge/346.png'),
+  require('../../assets/stickers/lounge/347.png'),
+  require('../../assets/stickers/lounge/348.png'),
+  require('../../assets/stickers/lounge/349.png'),
+  require('../../assets/stickers/lounge/350.png'),
+  require('../../assets/stickers/lounge/351.png'),
+  require('../../assets/stickers/lounge/352.png'),
+  require('../../assets/stickers/lounge/353.png'),
+  require('../../assets/stickers/lounge/354.png'),
+  require('../../assets/stickers/lounge/355.png'),
+  require('../../assets/stickers/lounge/356.png'),
+  require('../../assets/stickers/lounge/357.png'),
+  require('../../assets/stickers/lounge/358.png'),
+  require('../../assets/stickers/lounge/359.png'),
+  require('../../assets/stickers/lounge/360.png'),
+  require('../../assets/stickers/lounge/361.png'),
+  require('../../assets/stickers/lounge/362.png'),
+  require('../../assets/stickers/lounge/363.png'),
+  require('../../assets/stickers/lounge/364.png'),
+  require('../../assets/stickers/lounge/365.png'),
+  require('../../assets/stickers/lounge/366.png'),
+  require('../../assets/stickers/lounge/367.png'),
+  require('../../assets/stickers/lounge/368.png'),
+  require('../../assets/stickers/lounge/369.png'),
+  require('../../assets/stickers/lounge/370.png'),
+  require('../../assets/stickers/lounge/371.png'),
+  require('../../assets/stickers/lounge/372.png'),
+  require('../../assets/stickers/lounge/373.png'),
+  require('../../assets/stickers/lounge/374.png'),
+  require('../../assets/stickers/lounge/375.png'),
+  require('../../assets/stickers/lounge/376.png'),
+  require('../../assets/stickers/lounge/377.png'),
+  require('../../assets/stickers/lounge/378.png'),
+  require('../../assets/stickers/lounge/379.png'),
+  require('../../assets/stickers/lounge/380.png'),
+  require('../../assets/stickers/lounge/381.png'),
+  require('../../assets/stickers/lounge/382.png'),
+  require('../../assets/stickers/lounge/383.png'),
+  require('../../assets/stickers/lounge/384.png'),
+  require('../../assets/stickers/lounge/385.png'),
+  require('../../assets/stickers/lounge/386.png'),
+  require('../../assets/stickers/lounge/387.png'),
+  require('../../assets/stickers/lounge/388.png'),
+  require('../../assets/stickers/lounge/389.png'),
+  require('../../assets/stickers/lounge/390.png'),
+  require('../../assets/stickers/lounge/391.png'),
+  require('../../assets/stickers/lounge/392.png'),
+  require('../../assets/stickers/garden/016.png'),
+  require('../../assets/stickers/study/024.png'),
+  require('../../assets/stickers/study/025.png'),
+  require('../../assets/stickers/study/026.png'),
+  require('../../assets/stickers/study/027.png'),
+  require('../../assets/stickers/garden/017.png'),
+  require('../../assets/stickers/garden/018.png'),
+  require('../../assets/stickers/kitchen/140.png'),
+  require('../../assets/stickers/kitchen/141.png'),
+  require('../../assets/stickers/kitchen/142.png'),
+  require('../../assets/stickers/kitchen/143.png'),
+  require('../../assets/stickers/kitchen/144.png'),
+  require('../../assets/stickers/kitchen/145.png'),
+  require('../../assets/stickers/kitchen/146.png'),
+  require('../../assets/stickers/kitchen/147.png'),
+  require('../../assets/stickers/kitchen/148.png'),
+  require('../../assets/stickers/kitchen/149.png'),
+  require('../../assets/stickers/kitchen/150.png'),
+  require('../../assets/stickers/kitchen/151.png'),
+  require('../../assets/stickers/kitchen/152.png'),
+  require('../../assets/stickers/kitchen/153.png'),
+  require('../../assets/stickers/kitchen/154.png'),
+  require('../../assets/stickers/kitchen/155.png'),
+  require('../../assets/stickers/curious/017.png'),
+  require('../../assets/stickers/curious/018.png'),
+  require('../../assets/stickers/curious/019.png'),
+  require('../../assets/stickers/curious/020.png'),
+  require('../../assets/stickers/curious/021.png'),
+  require('../../assets/stickers/curious/022.png'),
+  require('../../assets/stickers/curious/023.png'),
+  require('../../assets/stickers/curious/024.png'),
+  require('../../assets/stickers/bedroom/272.png'),
+  require('../../assets/stickers/bedroom/273.png'),
+  require('../../assets/stickers/bedroom/274.png'),
+  require('../../assets/stickers/bedroom/275.png'),
+  require('../../assets/stickers/bedroom/276.png'),
+  require('../../assets/stickers/bedroom/277.png'),
+  require('../../assets/stickers/bedroom/278.png'),
+  require('../../assets/stickers/bedroom/279.png'),
+  require('../../assets/stickers/bedroom/280.png'),
+  require('../../assets/stickers/bedroom/281.png'),
+  require('../../assets/stickers/bedroom/282.png'),
+  require('../../assets/stickers/bedroom/283.png'),
+  require('../../assets/stickers/bedroom/284.png'),
+  require('../../assets/stickers/bedroom/285.png'),
+  require('../../assets/stickers/bedroom/286.png'),
+  require('../../assets/stickers/bedroom/287.png'),
+  require('../../assets/stickers/bedroom/288.png'),
+  require('../../assets/stickers/bedroom/289.png'),
+  require('../../assets/stickers/bedroom/290.png'),
+  require('../../assets/stickers/bedroom/291.png'),
+  require('../../assets/stickers/bedroom/292.png'),
+  require('../../assets/stickers/bedroom/293.png'),
+  require('../../assets/stickers/bedroom/294.png'),
+  require('../../assets/stickers/bedroom/295.png'),
+  require('../../assets/stickers/bedroom/296.png'),
+  require('../../assets/stickers/bedroom/297.png'),
+  require('../../assets/stickers/bedroom/298.png'),
+  require('../../assets/stickers/bedroom/299.png'),
+  require('../../assets/stickers/bedroom/300.png'),
+  require('../../assets/stickers/bedroom/301.png'),
+  require('../../assets/stickers/bedroom/302.png'),
+  require('../../assets/stickers/bedroom/303.png'),
+  require('../../assets/stickers/maker/083.png'),
+  require('../../assets/stickers/maker/084.png'),
+  require('../../assets/stickers/maker/085.png'),
+  require('../../assets/stickers/maker/086.png'),
+  require('../../assets/stickers/maker/087.png'),
+  require('../../assets/stickers/maker/088.png'),
+  require('../../assets/stickers/maker/089.png'),
+  require('../../assets/stickers/maker/090.png'),
+  require('../../assets/stickers/maker/091.png'),
+  require('../../assets/stickers/maker/092.png'),
+  require('../../assets/stickers/maker/093.png'),
+  require('../../assets/stickers/maker/094.png'),
+  require('../../assets/stickers/maker/095.png'),
+  require('../../assets/stickers/maker/096.png'),
+  require('../../assets/stickers/maker/097.png'),
+  require('../../assets/stickers/maker/098.png'),
+  require('../../assets/stickers/maker/099.png'),
+  require('../../assets/stickers/maker/100.png'),
+  require('../../assets/stickers/maker/101.png'),
+  require('../../assets/stickers/maker/102.png'),
+  require('../../assets/stickers/maker/103.png'),
+  require('../../assets/stickers/maker/104.png'),
+  require('../../assets/stickers/maker/105.png'),
+  require('../../assets/stickers/maker/106.png'),
+  require('../../assets/stickers/maker/107.png'),
+  require('../../assets/stickers/maker/108.png'),
+  require('../../assets/stickers/maker/109.png'),
+  require('../../assets/stickers/maker/110.png'),
+  require('../../assets/stickers/maker/111.png'),
+  require('../../assets/stickers/maker/112.png'),
+  require('../../assets/stickers/maker/113.png'),
+  require('../../assets/stickers/maker/114.png'),
+  require('../../assets/stickers/maker/115.png'),
+  require('../../assets/stickers/maker/116.png'),
+  require('../../assets/stickers/maker/117.png'),
+  require('../../assets/stickers/maker/118.png'),
+  require('../../assets/stickers/maker/119.png'),
+  require('../../assets/stickers/maker/120.png'),
+  require('../../assets/stickers/maker/121.png'),
+  require('../../assets/stickers/maker/122.png'),
+  require('../../assets/stickers/maker/123.png'),
+  require('../../assets/stickers/maker/124.png'),
+  require('../../assets/stickers/maker/125.png'),
+  require('../../assets/stickers/maker/126.png'),
+  require('../../assets/stickers/maker/127.png'),
+  require('../../assets/stickers/maker/128.png'),
+  require('../../assets/stickers/maker/129.png'),
+  require('../../assets/stickers/maker/130.png'),
+  require('../../assets/stickers/maker/131.png'),
+  require('../../assets/stickers/maker/132.png'),
+  require('../../assets/stickers/maker/133.png'),
+  require('../../assets/stickers/maker/134.png'),
+  require('../../assets/stickers/maker/135.png'),
+  require('../../assets/stickers/maker/136.png'),
+  require('../../assets/stickers/maker/137.png'),
+  require('../../assets/stickers/maker/138.png'),
+  require('../../assets/stickers/maker/139.png'),
+  require('../../assets/stickers/fireside/017.png'),
+  require('../../assets/stickers/fireside/018.png'),
+  require('../../assets/stickers/fireside/019.png'),
+  require('../../assets/stickers/fireside/020.png'),
+  require('../../assets/stickers/fireside/021.png'),
+  require('../../assets/stickers/fireside/022.png'),
+  require('../../assets/stickers/fireside/023.png'),
+  require('../../assets/stickers/fireside/024.png'),
+  require('../../assets/stickers/garden/019.png'),
+  require('../../assets/stickers/garden/020.png'),
+  require('../../assets/stickers/garden/021.png'),
+  require('../../assets/stickers/garden/022.png'),
+  require('../../assets/stickers/garden/023.png'),
+  require('../../assets/stickers/garden/024.png'),
+  require('../../assets/stickers/garden/025.png'),
+  require('../../assets/stickers/garden/026.png'),
+  require('../../assets/stickers/garden/027.png'),
+  require('../../assets/stickers/garden/028.png'),
+  require('../../assets/stickers/garden/029.png'),
+  require('../../assets/stickers/garden/030.png'),
+  require('../../assets/stickers/garden/031.png'),
+  require('../../assets/stickers/garden/032.png'),
+  require('../../assets/stickers/garden/033.png'),
+  require('../../assets/stickers/garden/034.png'),
+  require('../../assets/stickers/garden/035.png'),
+  require('../../assets/stickers/garden/036.png'),
+  require('../../assets/stickers/garden/037.png'),
+  require('../../assets/stickers/garden/038.png'),
+  require('../../assets/stickers/garden/039.png'),
+  require('../../assets/stickers/garden/040.png'),
+  require('../../assets/stickers/garden/041.png'),
+  require('../../assets/stickers/garden/042.png'),
+  require('../../assets/stickers/garden/043.png'),
+  require('../../assets/stickers/garden/044.png'),
+  require('../../assets/stickers/garden/045.png'),
+  require('../../assets/stickers/garden/046.png'),
+  require('../../assets/stickers/garden/047.png'),
+  require('../../assets/stickers/garden/048.png'),
+  require('../../assets/stickers/garden/049.png'),
+  require('../../assets/stickers/garden/050.png'),
+  require('../../assets/stickers/garden/051.png'),
+  require('../../assets/stickers/garden/052.png'),
+  require('../../assets/stickers/garden/053.png'),
+  require('../../assets/stickers/garden/054.png'),
+  require('../../assets/stickers/pantry/001.png'),
+  require('../../assets/stickers/pantry/002.png'),
+  require('../../assets/stickers/pantry/003.png'),
+  require('../../assets/stickers/pantry/004.png'),
+  require('../../assets/stickers/pantry/005.png'),
+  require('../../assets/stickers/pantry/006.png'),
+  require('../../assets/stickers/pantry/007.png'),
+  require('../../assets/stickers/pantry/008.png'),
+  require('../../assets/stickers/pantry/009.png'),
+  require('../../assets/stickers/pantry/010.png'),
+  require('../../assets/stickers/pantry/011.png'),
+  require('../../assets/stickers/pantry/012.png'),
+  require('../../assets/stickers/pantry/013.png'),
+  require('../../assets/stickers/pantry/014.png'),
+  require('../../assets/stickers/pantry/015.png'),
+  require('../../assets/stickers/pantry/016.png'),
+  require('../../assets/stickers/pantry/017.png'),
+  require('../../assets/stickers/pantry/018.png'),
+  require('../../assets/stickers/pantry/019.png'),
+  require('../../assets/stickers/pantry/020.png'),
+  require('../../assets/stickers/pantry/021.png'),
+  require('../../assets/stickers/pantry/022.png'),
+  require('../../assets/stickers/pantry/023.png'),
+  require('../../assets/stickers/pantry/024.png'),
+  require('../../assets/stickers/pantry/025.png'),
+  require('../../assets/stickers/pantry/026.png'),
+  require('../../assets/stickers/pantry/027.png'),
+  require('../../assets/stickers/pantry/028.png'),
+  require('../../assets/stickers/pantry/029.png'),
+  require('../../assets/stickers/pantry/030.png'),
+  require('../../assets/stickers/pantry/031.png'),
+  require('../../assets/stickers/pantry/032.png'),
+  require('../../assets/stickers/pantry/033.png'),
+  require('../../assets/stickers/pantry/034.png'),
+  require('../../assets/stickers/pantry/035.png'),
+  require('../../assets/stickers/pantry/036.png'),
+  require('../../assets/stickers/pantry/037.png'),
+  require('../../assets/stickers/pantry/038.png'),
+  require('../../assets/stickers/pantry/039.png'),
+  require('../../assets/stickers/pantry/040.png'),
+  require('../../assets/stickers/pantry/041.png'),
+  require('../../assets/stickers/pantry/042.png'),
+  require('../../assets/stickers/pantry/043.png'),
+  require('../../assets/stickers/pantry/044.png'),
+  require('../../assets/stickers/pantry/045.png'),
+  require('../../assets/stickers/pantry/046.png'),
+  require('../../assets/stickers/pantry/047.png'),
+  require('../../assets/stickers/pantry/048.png'),
+  require('../../assets/stickers/pantry/049.png'),
+  require('../../assets/stickers/pantry/050.png'),
+  require('../../assets/stickers/pantry/051.png'),
+  require('../../assets/stickers/pantry/052.png'),
+  require('../../assets/stickers/pantry/053.png'),
+  require('../../assets/stickers/pantry/054.png'),
+  require('../../assets/stickers/pantry/055.png'),
+  require('../../assets/stickers/pantry/056.png'),
+  require('../../assets/stickers/pantry/057.png'),
+  require('../../assets/stickers/pantry/058.png'),
+  require('../../assets/stickers/pantry/059.png'),
+  require('../../assets/stickers/pantry/060.png'),
+  require('../../assets/stickers/pantry/061.png'),
+  require('../../assets/stickers/pantry/062.png'),
+  require('../../assets/stickers/pantry/063.png'),
+  require('../../assets/stickers/pantry/064.png'),
+  require('../../assets/stickers/pantry/065.png'),
+  require('../../assets/stickers/pantry/066.png'),
+  require('../../assets/stickers/pantry/067.png'),
+  require('../../assets/stickers/pantry/068.png'),
+  require('../../assets/stickers/pantry/069.png'),
+  require('../../assets/stickers/pantry/070.png'),
+  require('../../assets/stickers/pantry/071.png'),
+  require('../../assets/stickers/pantry/072.png'),
+  require('../../assets/stickers/pantry/073.png'),
+  require('../../assets/stickers/pantry/074.png'),
+  require('../../assets/stickers/pantry/075.png'),
+  require('../../assets/stickers/pantry/076.png'),
+  require('../../assets/stickers/pantry/077.png'),
+  require('../../assets/stickers/pantry/078.png'),
+  require('../../assets/stickers/pantry/079.png'),
+  require('../../assets/stickers/pantry/080.png'),
+  require('../../assets/stickers/pantry/081.png'),
+  require('../../assets/stickers/pantry/082.png'),
+  require('../../assets/stickers/pantry/083.png'),
+  require('../../assets/stickers/pantry/084.png'),
+  require('../../assets/stickers/pantry/085.png'),
+  require('../../assets/stickers/pantry/086.png'),
+  require('../../assets/stickers/pantry/087.png'),
+  require('../../assets/stickers/pantry/088.png'),
+  require('../../assets/stickers/pantry/089.png'),
+  require('../../assets/stickers/pantry/090.png'),
+  require('../../assets/stickers/pantry/091.png'),
+  require('../../assets/stickers/pantry/092.png'),
+  require('../../assets/stickers/pantry/093.png'),
+  require('../../assets/stickers/pantry/094.png'),
+  require('../../assets/stickers/pantry/095.png'),
+  require('../../assets/stickers/pantry/096.png'),
+  require('../../assets/stickers/pantry/097.png'),
+  require('../../assets/stickers/pantry/098.png'),
+  require('../../assets/stickers/pantry/099.png'),
+  require('../../assets/stickers/pantry/100.png'),
+  require('../../assets/stickers/pantry/101.png'),
+  require('../../assets/stickers/pantry/102.png'),
+  require('../../assets/stickers/pantry/103.png'),
+  require('../../assets/stickers/pantry/104.png'),
+  require('../../assets/stickers/pantry/105.png'),
+  require('../../assets/stickers/pantry/106.png'),
+  require('../../assets/stickers/pantry/107.png'),
+  require('../../assets/stickers/pantry/108.png'),
+  require('../../assets/stickers/pantry/109.png'),
+  require('../../assets/stickers/pantry/110.png'),
+  require('../../assets/stickers/pantry/111.png'),
+  require('../../assets/stickers/pantry/112.png'),
+  require('../../assets/stickers/pantry/113.png'),
+  require('../../assets/stickers/pantry/114.png'),
+  require('../../assets/stickers/pantry/115.png'),
+  require('../../assets/stickers/pantry/116.png'),
+  require('../../assets/stickers/pantry/117.png'),
+  require('../../assets/stickers/pantry/118.png'),
+  require('../../assets/stickers/pantry/119.png'),
+  require('../../assets/stickers/pantry/120.png'),
+  require('../../assets/stickers/pantry/121.png'),
+  require('../../assets/stickers/pantry/122.png'),
+  require('../../assets/stickers/pantry/123.png'),
+  require('../../assets/stickers/pantry/124.png'),
+  require('../../assets/stickers/pantry/125.png'),
+  require('../../assets/stickers/pantry/126.png'),
+  require('../../assets/stickers/pantry/127.png'),
+  require('../../assets/stickers/pantry/128.png'),
+  require('../../assets/stickers/pantry/129.png'),
+  require('../../assets/stickers/pantry/130.png'),
+  require('../../assets/stickers/pantry/131.png'),
+  require('../../assets/stickers/pantry/132.png'),
+  require('../../assets/stickers/pantry/133.png'),
+  require('../../assets/stickers/pantry/134.png'),
+  require('../../assets/stickers/pantry/135.png'),
+  require('../../assets/stickers/pantry/136.png'),
+  require('../../assets/stickers/pantry/137.png'),
+  require('../../assets/stickers/pantry/138.png'),
+  require('../../assets/stickers/pantry/139.png'),
+  require('../../assets/stickers/pantry/140.png'),
+  require('../../assets/stickers/pantry/141.png'),
+  require('../../assets/stickers/pantry/142.png'),
+  require('../../assets/stickers/pantry/143.png'),
+  require('../../assets/stickers/pantry/144.png'),
+  require('../../assets/stickers/pantry/145.png'),
+  require('../../assets/stickers/pantry/146.png'),
+  require('../../assets/stickers/pantry/147.png'),
+  require('../../assets/stickers/pantry/148.png'),
+  require('../../assets/stickers/pantry/149.png'),
+  require('../../assets/stickers/pantry/150.png'),
+  require('../../assets/stickers/pantry/151.png'),
+  require('../../assets/stickers/pantry/152.png'),
+  require('../../assets/stickers/pantry/153.png'),
+  require('../../assets/stickers/pantry/154.png'),
+  require('../../assets/stickers/pantry/155.png'),
+  require('../../assets/stickers/pantry/156.png'),
+  require('../../assets/stickers/pantry/157.png'),
+  require('../../assets/stickers/pantry/158.png'),
+  require('../../assets/stickers/pantry/159.png'),
+  require('../../assets/stickers/pantry/160.png'),
+  require('../../assets/stickers/pantry/161.png'),
+  require('../../assets/stickers/pantry/162.png'),
+  require('../../assets/stickers/pantry/163.png'),
+  require('../../assets/stickers/pantry/164.png'),
+  require('../../assets/stickers/pantry/165.png'),
+  require('../../assets/stickers/pantry/166.png'),
+  require('../../assets/stickers/pantry/167.png'),
+  require('../../assets/stickers/pantry/168.png'),
+  require('../../assets/stickers/pantry/169.png'),
+  require('../../assets/stickers/pantry/170.png'),
+  require('../../assets/stickers/pantry/171.png'),
+  require('../../assets/stickers/pantry/172.png'),
+  require('../../assets/stickers/pantry/173.png'),
+  require('../../assets/stickers/pantry/174.png'),
+  require('../../assets/stickers/pantry/175.png'),
+  require('../../assets/stickers/pantry/176.png'),
+  require('../../assets/stickers/pantry/177.png'),
+  require('../../assets/stickers/pantry/178.png'),
+  require('../../assets/stickers/pantry/179.png'),
+  require('../../assets/stickers/pantry/180.png'),
+  require('../../assets/stickers/pantry/181.png'),
+  require('../../assets/stickers/pantry/182.png'),
+  require('../../assets/stickers/pantry/183.png'),
+  require('../../assets/stickers/pantry/184.png'),
+  require('../../assets/stickers/pantry/185.png'),
+  require('../../assets/stickers/pantry/186.png'),
+  require('../../assets/stickers/pantry/187.png'),
+  require('../../assets/stickers/pantry/188.png'),
+  require('../../assets/stickers/pantry/189.png'),
+  require('../../assets/stickers/pantry/190.png'),
+  require('../../assets/stickers/pantry/191.png'),
+  require('../../assets/stickers/pantry/192.png'),
+  require('../../assets/stickers/pantry/193.png'),
+  require('../../assets/stickers/pantry/194.png'),
+  require('../../assets/stickers/pantry/195.png'),
+  require('../../assets/stickers/pantry/196.png'),
+  require('../../assets/stickers/pantry/197.png'),
+  require('../../assets/stickers/pantry/198.png'),
+  require('../../assets/stickers/pantry/199.png'),
+  require('../../assets/stickers/pantry/200.png'),
+  require('../../assets/stickers/pantry/201.png'),
+  require('../../assets/stickers/pantry/202.png'),
+  require('../../assets/stickers/pantry/203.png'),
+  require('../../assets/stickers/pantry/204.png'),
+  require('../../assets/stickers/pantry/205.png'),
+  require('../../assets/stickers/pantry/206.png'),
+  require('../../assets/stickers/pantry/207.png'),
+  require('../../assets/stickers/pantry/208.png'),
+  require('../../assets/stickers/pantry/209.png'),
+  require('../../assets/stickers/pantry/210.png'),
+  require('../../assets/stickers/pantry/211.png'),
+  require('../../assets/stickers/pantry/212.png'),
+  require('../../assets/stickers/pantry/213.png'),
+  require('../../assets/stickers/pantry/214.png'),
+  require('../../assets/stickers/pantry/215.png'),
+  require('../../assets/stickers/pantry/216.png'),
+  require('../../assets/stickers/pantry/217.png'),
+  require('../../assets/stickers/pantry/218.png'),
+  require('../../assets/stickers/pantry/219.png'),
+  require('../../assets/stickers/pantry/220.png'),
+  require('../../assets/stickers/pantry/221.png'),
+  require('../../assets/stickers/pantry/222.png'),
+  require('../../assets/stickers/pantry/223.png'),
+  require('../../assets/stickers/pantry/224.png'),
+  require('../../assets/stickers/pantry/225.png'),
+  require('../../assets/stickers/pantry/226.png'),
+  require('../../assets/stickers/pantry/227.png'),
+  require('../../assets/stickers/pantry/228.png'),
+  require('../../assets/stickers/pantry/229.png'),
+  require('../../assets/stickers/pantry/230.png'),
+  require('../../assets/stickers/pantry/231.png'),
+  require('../../assets/stickers/pantry/232.png'),
+  require('../../assets/stickers/pantry/233.png'),
+  require('../../assets/stickers/pantry/234.png'),
+  require('../../assets/stickers/pantry/235.png'),
+  require('../../assets/stickers/pantry/236.png'),
+  require('../../assets/stickers/pantry/237.png'),
+  require('../../assets/stickers/pantry/238.png'),
+  require('../../assets/stickers/pantry/239.png'),
+  require('../../assets/stickers/pantry/240.png'),
+  require('../../assets/stickers/pantry/241.png'),
+  require('../../assets/stickers/pantry/242.png'),
+  require('../../assets/stickers/pantry/243.png'),
+  require('../../assets/stickers/pantry/244.png'),
+  require('../../assets/stickers/pantry/245.png'),
+  require('../../assets/stickers/pantry/246.png'),
+  require('../../assets/stickers/pantry/247.png'),
+  require('../../assets/stickers/pantry/248.png'),
+  require('../../assets/stickers/pantry/249.png'),
+  require('../../assets/stickers/pantry/250.png'),
+  require('../../assets/stickers/pantry/251.png'),
+  require('../../assets/stickers/pantry/252.png'),
+  require('../../assets/stickers/pantry/253.png'),
+  require('../../assets/stickers/pantry/254.png'),
+  require('../../assets/stickers/pantry/255.png'),
+  require('../../assets/stickers/pantry/256.png'),
+  require('../../assets/stickers/pantry/257.png'),
+  require('../../assets/stickers/pantry/258.png'),
+  require('../../assets/stickers/pantry/259.png'),
+  require('../../assets/stickers/pantry/260.png'),
+  require('../../assets/stickers/pantry/261.png'),
+  require('../../assets/stickers/pantry/262.png'),
+  require('../../assets/stickers/pantry/263.png'),
+  require('../../assets/stickers/pantry/264.png'),
+  require('../../assets/stickers/pantry/265.png'),
+  require('../../assets/stickers/pantry/266.png'),
+  require('../../assets/stickers/pantry/267.png'),
+  require('../../assets/stickers/pantry/268.png'),
+  require('../../assets/stickers/pantry/269.png'),
+  require('../../assets/stickers/pantry/270.png'),
+  require('../../assets/stickers/pantry/271.png'),
+  require('../../assets/stickers/pantry/272.png'),
+  require('../../assets/stickers/pantry/273.png'),
+  require('../../assets/stickers/pantry/274.png'),
+  require('../../assets/stickers/pantry/275.png'),
+  require('../../assets/stickers/pantry/276.png'),
+  require('../../assets/stickers/pantry/277.png'),
+  require('../../assets/stickers/pantry/278.png'),
+  require('../../assets/stickers/pantry/279.png'),
+  require('../../assets/stickers/pantry/280.png'),
+  require('../../assets/stickers/pantry/281.png'),
+  require('../../assets/stickers/pantry/282.png'),
+  require('../../assets/stickers/pantry/283.png'),
+  require('../../assets/stickers/pantry/284.png'),
+  require('../../assets/stickers/pantry/285.png'),
+  require('../../assets/stickers/pantry/286.png'),
+  require('../../assets/stickers/pantry/287.png'),
+  require('../../assets/stickers/pantry/288.png'),
+  require('../../assets/stickers/pantry/289.png'),
+  require('../../assets/stickers/pantry/290.png'),
+  require('../../assets/stickers/pantry/291.png'),
+  require('../../assets/stickers/pantry/292.png'),
+  require('../../assets/stickers/pantry/293.png'),
+  require('../../assets/stickers/pantry/294.png'),
+  require('../../assets/stickers/pantry/295.png'),
+  require('../../assets/stickers/pantry/296.png'),
+  require('../../assets/stickers/pantry/297.png'),
+  require('../../assets/stickers/pantry/298.png'),
+  require('../../assets/stickers/pantry/299.png'),
+  require('../../assets/stickers/pantry/300.png'),
+  require('../../assets/stickers/pantry/301.png'),
+  require('../../assets/stickers/pantry/302.png'),
+  require('../../assets/stickers/pantry/303.png'),
+  require('../../assets/stickers/pantry/304.png'),
+  require('../../assets/stickers/pantry/305.png'),
+  require('../../assets/stickers/pantry/306.png'),
+  require('../../assets/stickers/pantry/307.png'),
+  require('../../assets/stickers/pantry/308.png'),
+  require('../../assets/stickers/pantry/309.png'),
+  require('../../assets/stickers/pantry/310.png'),
+  require('../../assets/stickers/pantry/311.png'),
+  require('../../assets/stickers/pantry/312.png'),
+  require('../../assets/stickers/pantry/313.png'),
+  require('../../assets/stickers/pantry/314.png'),
+  require('../../assets/stickers/pantry/315.png'),
+  require('../../assets/stickers/pantry/316.png'),
+  require('../../assets/stickers/pantry/317.png'),
+  require('../../assets/stickers/pantry/318.png'),
+  require('../../assets/stickers/pantry/319.png'),
+  require('../../assets/stickers/pantry/320.png'),
+  require('../../assets/stickers/pantry/321.png'),
+  require('../../assets/stickers/pantry/322.png'),
+  require('../../assets/stickers/pantry/323.png'),
+  require('../../assets/stickers/pantry/324.png'),
+  require('../../assets/stickers/pantry/325.png'),
+  require('../../assets/stickers/pantry/326.png'),
+  require('../../assets/stickers/pantry/327.png'),
+  require('../../assets/stickers/pantry/328.png'),
+  require('../../assets/stickers/pantry/329.png'),
+  require('../../assets/stickers/pantry/330.png'),
+  require('../../assets/stickers/pantry/331.png'),
+  require('../../assets/stickers/pantry/332.png'),
+  require('../../assets/stickers/pantry/333.png'),
+  require('../../assets/stickers/pantry/334.png'),
+  require('../../assets/stickers/pantry/335.png'),
+  require('../../assets/stickers/pantry/336.png'),
+  require('../../assets/stickers/pantry/337.png'),
+  require('../../assets/stickers/pantry/338.png'),
+  require('../../assets/stickers/pantry/339.png'),
+  require('../../assets/stickers/pantry/340.png'),
+  require('../../assets/stickers/pantry/341.png'),
+  require('../../assets/stickers/pantry/342.png'),
+  require('../../assets/stickers/pantry/343.png'),
+  require('../../assets/stickers/pantry/344.png'),
+  require('../../assets/stickers/pantry/345.png'),
+  require('../../assets/stickers/pantry/346.png'),
+  require('../../assets/stickers/pantry/347.png'),
+  require('../../assets/stickers/pantry/348.png'),
+  require('../../assets/stickers/pantry/349.png'),
+  require('../../assets/stickers/pantry/350.png'),
+  require('../../assets/stickers/pantry/351.png'),
+  require('../../assets/stickers/pantry/352.png'),
+  require('../../assets/stickers/pantry/353.png'),
+  require('../../assets/stickers/pantry/354.png'),
+  require('../../assets/stickers/pantry/355.png'),
+  require('../../assets/stickers/pantry/356.png'),
+  require('../../assets/stickers/pantry/357.png'),
+  require('../../assets/stickers/pantry/358.png'),
+  require('../../assets/stickers/pantry/359.png'),
+  require('../../assets/stickers/pantry/360.png'),
+  require('../../assets/stickers/pantry/361.png'),
+  require('../../assets/stickers/pantry/362.png'),
+  require('../../assets/stickers/pantry/363.png'),
+  require('../../assets/stickers/pantry/364.png'),
+  require('../../assets/stickers/pantry/365.png'),
+  require('../../assets/stickers/pantry/366.png'),
+  require('../../assets/stickers/pantry/367.png'),
+  require('../../assets/stickers/pantry/368.png'),
+  require('../../assets/stickers/pantry/369.png'),
+  require('../../assets/stickers/pantry/370.png'),
+  require('../../assets/stickers/pantry/371.png'),
+  require('../../assets/stickers/pantry/372.png'),
+  require('../../assets/stickers/pantry/373.png'),
+  require('../../assets/stickers/pantry/374.png'),
+  require('../../assets/stickers/pantry/375.png'),
+  require('../../assets/stickers/pantry/376.png'),
+  require('../../assets/stickers/pantry/377.png'),
+  require('../../assets/stickers/pantry/378.png'),
+  require('../../assets/stickers/pantry/379.png'),
+  require('../../assets/stickers/pantry/380.png'),
+  require('../../assets/stickers/pantry/381.png'),
+  require('../../assets/stickers/pantry/382.png'),
+  require('../../assets/stickers/pantry/383.png'),
+  require('../../assets/stickers/pantry/384.png'),
+  require('../../assets/stickers/pantry/385.png'),
+  require('../../assets/stickers/pantry/386.png'),
+  require('../../assets/stickers/pantry/387.png'),
+  require('../../assets/stickers/pantry/388.png'),
+  require('../../assets/stickers/pantry/389.png'),
+  require('../../assets/stickers/pantry/390.png'),
+  require('../../assets/stickers/pantry/391.png'),
+  require('../../assets/stickers/pantry/392.png'),
+  require('../../assets/stickers/pantry/393.png'),
+  require('../../assets/stickers/pantry/394.png'),
+  require('../../assets/stickers/pantry/395.png'),
+  require('../../assets/stickers/pantry/396.png'),
+  require('../../assets/stickers/pantry/397.png'),
+  require('../../assets/stickers/pantry/398.png'),
+  require('../../assets/stickers/pantry/399.png'),
+  require('../../assets/stickers/pantry/400.png'),
+  require('../../assets/stickers/pantry/401.png'),
+  require('../../assets/stickers/pantry/402.png'),
+  require('../../assets/stickers/pantry/403.png'),
+  require('../../assets/stickers/pantry/404.png'),
+  require('../../assets/stickers/pantry/405.png'),
+  require('../../assets/stickers/pantry/406.png'),
+  require('../../assets/stickers/pantry/407.png'),
+  require('../../assets/stickers/pantry/408.png'),
+  require('../../assets/stickers/pantry/409.png'),
+  require('../../assets/stickers/pantry/410.png'),
+  require('../../assets/stickers/pantry/411.png'),
+  require('../../assets/stickers/pantry/412.png'),
+  require('../../assets/stickers/pantry/413.png'),
+  require('../../assets/stickers/pantry/414.png'),
+  require('../../assets/stickers/pantry/415.png'),
+  require('../../assets/stickers/pantry/416.png'),
+  require('../../assets/stickers/pantry/417.png'),
+  require('../../assets/stickers/pantry/418.png'),
+  require('../../assets/stickers/pantry/419.png'),
+  require('../../assets/stickers/pantry/420.png'),
+  require('../../assets/stickers/pantry/421.png'),
+  require('../../assets/stickers/pantry/422.png'),
+  require('../../assets/stickers/pantry/423.png'),
+  require('../../assets/stickers/pantry/424.png'),
+  require('../../assets/stickers/pantry/425.png'),
+  require('../../assets/stickers/pantry/426.png'),
+  require('../../assets/stickers/pantry/427.png'),
+  require('../../assets/stickers/pantry/428.png'),
+  require('../../assets/stickers/pantry/429.png'),
+  require('../../assets/stickers/pantry/430.png'),
+  require('../../assets/stickers/pantry/431.png'),
+  require('../../assets/stickers/pantry/432.png'),
+  require('../../assets/stickers/pantry/433.png'),
+  require('../../assets/stickers/pantry/434.png'),
+  require('../../assets/stickers/pantry/435.png'),
+  require('../../assets/stickers/pantry/436.png'),
+  require('../../assets/stickers/pantry/437.png'),
+  require('../../assets/stickers/pantry/438.png'),
+  require('../../assets/stickers/pantry/439.png'),
+  require('../../assets/stickers/pantry/440.png'),
+  require('../../assets/stickers/pantry/441.png'),
+  require('../../assets/stickers/pantry/442.png'),
+  require('../../assets/stickers/pantry/443.png'),
+  require('../../assets/stickers/pantry/444.png'),
+  require('../../assets/stickers/pantry/445.png'),
+  require('../../assets/stickers/pantry/446.png'),
+  require('../../assets/stickers/pantry/447.png'),
+  require('../../assets/stickers/pantry/448.png'),
+  require('../../assets/stickers/pantry/449.png'),
+  require('../../assets/stickers/pantry/450.png'),
+  require('../../assets/stickers/pantry/451.png'),
+  require('../../assets/stickers/pantry/452.png'),
+  require('../../assets/stickers/pantry/453.png'),
+  require('../../assets/stickers/pantry/454.png'),
+  require('../../assets/stickers/pantry/455.png'),
+  require('../../assets/stickers/pantry/456.png'),
+  require('../../assets/stickers/pantry/457.png'),
+  require('../../assets/stickers/pantry/458.png'),
+  require('../../assets/stickers/pantry/459.png'),
+  require('../../assets/stickers/pantry/460.png'),
+  require('../../assets/stickers/pantry/461.png'),
+  require('../../assets/stickers/pantry/462.png'),
+  require('../../assets/stickers/pantry/463.png'),
+  require('../../assets/stickers/pantry/464.png'),
+  require('../../assets/stickers/pantry/465.png'),
+  require('../../assets/stickers/pantry/466.png'),
+  require('../../assets/stickers/pantry/467.png'),
+  require('../../assets/stickers/pantry/468.png'),
+  require('../../assets/stickers/pantry/469.png'),
+  require('../../assets/stickers/pantry/470.png'),
+  require('../../assets/stickers/pantry/471.png'),
+  require('../../assets/stickers/pantry/472.png'),
+  require('../../assets/stickers/pantry/473.png'),
+  require('../../assets/stickers/pantry/474.png'),
+  require('../../assets/stickers/pantry/475.png'),
+  require('../../assets/stickers/pantry/476.png'),
+  require('../../assets/stickers/pantry/477.png'),
+  require('../../assets/stickers/pantry/478.png'),
+  require('../../assets/stickers/pantry/479.png'),
+  require('../../assets/stickers/pantry/480.png'),
+  require('../../assets/stickers/pantry/481.png'),
+  require('../../assets/stickers/pantry/482.png'),
+  require('../../assets/stickers/pantry/483.png'),
+  require('../../assets/stickers/pantry/484.png'),
+  require('../../assets/stickers/pantry/485.png'),
+  require('../../assets/stickers/pantry/486.png'),
+  require('../../assets/stickers/pantry/487.png'),
+  require('../../assets/stickers/pantry/488.png'),
+  require('../../assets/stickers/pantry/489.png'),
+  require('../../assets/stickers/pantry/490.png'),
+  require('../../assets/stickers/pantry/491.png'),
+  require('../../assets/stickers/pantry/492.png'),
+  require('../../assets/stickers/pantry/493.png'),
+  require('../../assets/stickers/pantry/494.png'),
+  require('../../assets/stickers/pantry/495.png'),
+  require('../../assets/stickers/pantry/496.png'),
+  require('../../assets/stickers/pantry/497.png'),
+  require('../../assets/stickers/pantry/498.png'),
+  require('../../assets/stickers/pantry/499.png'),
+  require('../../assets/stickers/pantry/500.png'),
+  require('../../assets/stickers/pantry/501.png'),
+  require('../../assets/stickers/pantry/502.png'),
+  require('../../assets/stickers/pantry/503.png'),
+  require('../../assets/stickers/pantry/504.png'),
+  require('../../assets/stickers/pantry/505.png'),
+  require('../../assets/stickers/pantry/506.png'),
+  require('../../assets/stickers/pantry/507.png'),
+  require('../../assets/stickers/pantry/508.png'),
+  require('../../assets/stickers/pantry/509.png'),
+  require('../../assets/stickers/pantry/510.png'),
+  require('../../assets/stickers/pantry/511.png'),
+  require('../../assets/stickers/pantry/512.png'),
+  require('../../assets/stickers/pantry/513.png'),
+  require('../../assets/stickers/pantry/514.png'),
+  require('../../assets/stickers/pantry/515.png'),
+  require('../../assets/stickers/pantry/516.png'),
+  require('../../assets/stickers/pantry/517.png'),
+  require('../../assets/stickers/pantry/518.png'),
+  require('../../assets/stickers/pantry/519.png'),
+  require('../../assets/stickers/pantry/520.png'),
+  require('../../assets/stickers/pantry/521.png'),
+  require('../../assets/stickers/pantry/522.png'),
+  require('../../assets/stickers/pantry/523.png'),
+  require('../../assets/stickers/pantry/524.png'),
+  require('../../assets/stickers/pantry/525.png'),
+  require('../../assets/stickers/pantry/526.png'),
+  require('../../assets/stickers/pantry/527.png'),
+  require('../../assets/stickers/pantry/528.png'),
+  require('../../assets/stickers/pantry/529.png'),
+  require('../../assets/stickers/pantry/530.png'),
+  require('../../assets/stickers/pantry/531.png'),
+  require('../../assets/stickers/pantry/532.png'),
+  require('../../assets/stickers/pantry/533.png'),
+  require('../../assets/stickers/pantry/534.png'),
+  require('../../assets/stickers/pantry/535.png'),
+  require('../../assets/stickers/pantry/536.png'),
+  require('../../assets/stickers/pantry/537.png'),
+  require('../../assets/stickers/pantry/538.png'),
+  require('../../assets/stickers/pantry/539.png'),
+  require('../../assets/stickers/pantry/540.png'),
+  require('../../assets/stickers/pantry/541.png'),
+  require('../../assets/stickers/pantry/542.png'),
+  require('../../assets/stickers/pantry/543.png'),
+  require('../../assets/stickers/pantry/544.png'),
+  require('../../assets/stickers/pantry/545.png'),
+  require('../../assets/stickers/pantry/546.png'),
+  require('../../assets/stickers/pantry/547.png'),
+  require('../../assets/stickers/pantry/548.png'),
+  require('../../assets/stickers/pantry/549.png'),
+  require('../../assets/stickers/pantry/550.png'),
+  require('../../assets/stickers/pantry/551.png'),
+  require('../../assets/stickers/pantry/552.png'),
+  require('../../assets/stickers/pantry/553.png'),
+  require('../../assets/stickers/pantry/554.png'),
+  require('../../assets/stickers/pantry/555.png'),
+  require('../../assets/stickers/pantry/556.png'),
+  require('../../assets/stickers/pantry/557.png'),
+  require('../../assets/stickers/pantry/558.png'),
+  require('../../assets/stickers/pantry/559.png'),
+  require('../../assets/stickers/pantry/560.png'),
+  require('../../assets/stickers/pantry/561.png'),
+  require('../../assets/stickers/pantry/562.png'),
+  require('../../assets/stickers/pantry/563.png'),
+  require('../../assets/stickers/pantry/564.png'),
+  require('../../assets/stickers/pantry/565.png'),
+  require('../../assets/stickers/pantry/566.png'),
+  require('../../assets/stickers/pantry/567.png'),
+  require('../../assets/stickers/pantry/568.png'),
+  require('../../assets/stickers/pantry/569.png'),
+  require('../../assets/stickers/pantry/570.png'),
+  require('../../assets/stickers/pantry/571.png'),
+  require('../../assets/stickers/pantry/572.png'),
+  require('../../assets/stickers/pantry/573.png'),
+  require('../../assets/stickers/pantry/574.png'),
+  require('../../assets/stickers/pantry/575.png'),
+  require('../../assets/stickers/pantry/576.png'),
+  require('../../assets/stickers/pantry/577.png'),
+  require('../../assets/stickers/pantry/578.png'),
+  require('../../assets/stickers/pantry/579.png'),
+  require('../../assets/stickers/pantry/580.png'),
+  require('../../assets/stickers/pantry/581.png'),
+  require('../../assets/stickers/pantry/582.png'),
+  require('../../assets/stickers/pantry/583.png'),
+  require('../../assets/stickers/pantry/584.png'),
+  require('../../assets/stickers/pantry/585.png'),
+  require('../../assets/stickers/pantry/586.png'),
+  require('../../assets/stickers/pantry/587.png'),
+  require('../../assets/stickers/pantry/588.png'),
+  require('../../assets/stickers/pantry/589.png'),
+  require('../../assets/stickers/pantry/590.png'),
+  require('../../assets/stickers/pantry/591.png'),
+  require('../../assets/stickers/pantry/592.png'),
+  require('../../assets/stickers/pantry/593.png'),
+  require('../../assets/stickers/pantry/594.png'),
+  require('../../assets/stickers/pantry/595.png'),
+  require('../../assets/stickers/pantry/596.png'),
+  require('../../assets/stickers/pantry/597.png'),
+  require('../../assets/stickers/pantry/598.png'),
+  require('../../assets/stickers/pantry/599.png'),
+  require('../../assets/stickers/pantry/600.png'),
+  require('../../assets/stickers/pantry/601.png'),
+  require('../../assets/stickers/pantry/602.png'),
+  require('../../assets/stickers/pantry/603.png'),
+  require('../../assets/stickers/pantry/604.png'),
+  require('../../assets/stickers/pantry/605.png'),
+  require('../../assets/stickers/pantry/606.png'),
+  require('../../assets/stickers/pantry/607.png'),
+  require('../../assets/stickers/pantry/608.png'),
+  require('../../assets/stickers/pantry/609.png'),
+  require('../../assets/stickers/pantry/610.png'),
+  require('../../assets/stickers/pantry/611.png'),
+  require('../../assets/stickers/pantry/612.png'),
+  require('../../assets/stickers/pantry/613.png'),
+  require('../../assets/stickers/pantry/614.png'),
+  require('../../assets/stickers/pantry/615.png'),
+  require('../../assets/stickers/pantry/616.png'),
+  require('../../assets/stickers/pantry/617.png'),
+  require('../../assets/stickers/pantry/618.png'),
+  require('../../assets/stickers/pantry/619.png'),
+  require('../../assets/stickers/pantry/620.png'),
+  require('../../assets/stickers/pantry/621.png'),
+  require('../../assets/stickers/pantry/622.png'),
+  require('../../assets/stickers/pantry/623.png'),
+  require('../../assets/stickers/pantry/624.png'),
+  require('../../assets/stickers/pantry/625.png'),
+  require('../../assets/stickers/pantry/626.png'),
+  require('../../assets/stickers/pantry/627.png'),
+  require('../../assets/stickers/pantry/628.png'),
+  require('../../assets/stickers/pantry/629.png'),
+  require('../../assets/stickers/pantry/630.png'),
+  require('../../assets/stickers/pantry/631.png'),
+  require('../../assets/stickers/pantry/632.png'),
+  require('../../assets/stickers/pantry/633.png'),
+  require('../../assets/stickers/pantry/634.png'),
+  require('../../assets/stickers/pantry/635.png'),
+  require('../../assets/stickers/pantry/636.png'),
+  require('../../assets/stickers/pantry/637.png'),
+  require('../../assets/stickers/pantry/638.png'),
+  require('../../assets/stickers/pantry/639.png'),
+  require('../../assets/stickers/pantry/640.png'),
+  require('../../assets/stickers/pantry/641.png'),
+  require('../../assets/stickers/pantry/642.png'),
+  require('../../assets/stickers/pantry/643.png'),
+  require('../../assets/stickers/pantry/644.png'),
+  require('../../assets/stickers/pantry/645.png'),
+  require('../../assets/stickers/pantry/646.png'),
+  require('../../assets/stickers/pantry/647.png'),
+  require('../../assets/stickers/pantry/648.png'),
+  require('../../assets/stickers/pantry/649.png'),
+  require('../../assets/stickers/pantry/650.png'),
+  require('../../assets/stickers/pantry/651.png'),
+  require('../../assets/stickers/pantry/652.png'),
+  require('../../assets/stickers/pantry/653.png'),
+  require('../../assets/stickers/pantry/654.png'),
+  require('../../assets/stickers/pantry/655.png'),
+  require('../../assets/stickers/pantry/656.png'),
+  require('../../assets/stickers/pantry/657.png'),
+  require('../../assets/stickers/pantry/658.png'),
+  require('../../assets/stickers/pantry/659.png'),
+  require('../../assets/stickers/pantry/660.png'),
+  require('../../assets/stickers/pantry/661.png'),
+  require('../../assets/stickers/pantry/662.png'),
+  require('../../assets/stickers/pantry/663.png'),
+  require('../../assets/stickers/pantry/664.png'),
+  require('../../assets/stickers/pantry/665.png'),
+  require('../../assets/stickers/pantry/666.png'),
+  require('../../assets/stickers/pantry/667.png'),
+  require('../../assets/stickers/pantry/668.png'),
+  require('../../assets/stickers/pantry/669.png'),
+  require('../../assets/stickers/pantry/670.png'),
+  require('../../assets/stickers/pantry/671.png'),
+  require('../../assets/stickers/pantry/672.png'),
+  require('../../assets/stickers/pantry/673.png'),
+  require('../../assets/stickers/pantry/674.png'),
+  require('../../assets/stickers/pantry/675.png'),
+  require('../../assets/stickers/pantry/676.png'),
+  require('../../assets/stickers/pantry/677.png'),
+  require('../../assets/stickers/pantry/678.png'),
+  require('../../assets/stickers/pantry/679.png'),
+  require('../../assets/stickers/pantry/680.png'),
+  require('../../assets/stickers/pantry/681.png'),
+  require('../../assets/stickers/pantry/682.png'),
+  require('../../assets/stickers/pantry/683.png'),
+  require('../../assets/stickers/pantry/684.png'),
+  require('../../assets/stickers/pantry/685.png'),
+  require('../../assets/stickers/pantry/686.png'),
+  require('../../assets/stickers/pantry/687.png'),
+  require('../../assets/stickers/pantry/688.png'),
+  require('../../assets/stickers/pantry/689.png'),
+  require('../../assets/stickers/pantry/690.png'),
+  require('../../assets/stickers/pantry/691.png'),
+  require('../../assets/stickers/pantry/692.png'),
+  require('../../assets/stickers/pantry/693.png'),
+  require('../../assets/stickers/pantry/694.png'),
+  require('../../assets/stickers/pantry/695.png'),
+  require('../../assets/stickers/pantry/696.png'),
+  require('../../assets/stickers/pantry/697.png'),
+  require('../../assets/stickers/pantry/698.png'),
+  require('../../assets/stickers/pantry/699.png'),
+  require('../../assets/stickers/pantry/700.png'),
+  require('../../assets/stickers/pantry/701.png'),
+  require('../../assets/stickers/pantry/702.png'),
+  require('../../assets/stickers/pantry/703.png'),
+  require('../../assets/stickers/pantry/704.png'),
+  require('../../assets/stickers/pantry/705.png'),
+  require('../../assets/stickers/pantry/706.png'),
+  require('../../assets/stickers/pantry/707.png'),
+  require('../../assets/stickers/pantry/708.png'),
+  require('../../assets/stickers/pantry/709.png'),
+  require('../../assets/stickers/pantry/710.png'),
+  require('../../assets/stickers/pantry/711.png'),
+  require('../../assets/stickers/pantry/712.png'),
+  require('../../assets/stickers/pantry/713.png'),
+  require('../../assets/stickers/pantry/714.png'),
+  require('../../assets/stickers/pantry/715.png'),
+  require('../../assets/stickers/pantry/716.png'),
+  require('../../assets/stickers/pantry/717.png'),
+  require('../../assets/stickers/pantry/718.png'),
+  require('../../assets/stickers/pantry/719.png'),
+  require('../../assets/stickers/pantry/720.png'),
+  require('../../assets/stickers/pantry/721.png'),
+  require('../../assets/stickers/pantry/722.png'),
+  require('../../assets/stickers/pantry/723.png'),
+  require('../../assets/stickers/pantry/724.png'),
+  require('../../assets/stickers/pantry/725.png'),
+  require('../../assets/stickers/pantry/726.png'),
+  require('../../assets/stickers/pantry/727.png'),
+  require('../../assets/stickers/pantry/728.png'),
+  require('../../assets/stickers/pantry/729.png'),
+  require('../../assets/stickers/pantry/730.png'),
+  require('../../assets/stickers/pantry/731.png'),
+  require('../../assets/stickers/pantry/732.png'),
+  require('../../assets/stickers/pantry/733.png'),
+  require('../../assets/stickers/pantry/734.png'),
+  require('../../assets/stickers/pantry/735.png'),
+  require('../../assets/stickers/pantry/736.png'),
+  require('../../assets/stickers/pantry/737.png'),
+  require('../../assets/stickers/pantry/738.png'),
+  require('../../assets/stickers/pantry/739.png'),
+  require('../../assets/stickers/pantry/740.png'),
+  require('../../assets/stickers/pantry/741.png'),
+  require('../../assets/stickers/pantry/742.png'),
+  require('../../assets/stickers/pantry/743.png'),
+  require('../../assets/stickers/pantry/744.png'),
+  require('../../assets/stickers/pantry/745.png'),
+  require('../../assets/stickers/pantry/746.png'),
+  require('../../assets/stickers/pantry/747.png'),
+  require('../../assets/stickers/pantry/748.png'),
+  require('../../assets/stickers/pantry/749.png'),
+  require('../../assets/stickers/pantry/750.png'),
+  require('../../assets/stickers/pantry/751.png'),
+  require('../../assets/stickers/pantry/752.png'),
+  require('../../assets/stickers/pantry/753.png'),
+  require('../../assets/stickers/pantry/754.png'),
+  require('../../assets/stickers/pantry/755.png'),
+  require('../../assets/stickers/pantry/756.png'),
+  require('../../assets/stickers/pantry/757.png'),
+  require('../../assets/stickers/pantry/758.png'),
+  require('../../assets/stickers/pantry/759.png'),
+  require('../../assets/stickers/pantry/760.png'),
+  require('../../assets/stickers/pantry/761.png'),
+  require('../../assets/stickers/pantry/762.png'),
+  require('../../assets/stickers/pantry/763.png'),
+  require('../../assets/stickers/pantry/764.png'),
+  require('../../assets/stickers/pantry/765.png'),
+  require('../../assets/stickers/pantry/766.png'),
+  require('../../assets/stickers/pantry/767.png'),
+  require('../../assets/stickers/pantry/768.png'),
+  require('../../assets/stickers/pantry/769.png'),
+  require('../../assets/stickers/pantry/770.png'),
+  require('../../assets/stickers/pantry/771.png'),
+  require('../../assets/stickers/pantry/772.png'),
+  require('../../assets/stickers/pantry/773.png'),
+  require('../../assets/stickers/pantry/774.png'),
+  require('../../assets/stickers/pantry/775.png'),
+  require('../../assets/stickers/pantry/776.png'),
+  require('../../assets/stickers/pantry/777.png'),
+  require('../../assets/stickers/pantry/778.png'),
+  require('../../assets/stickers/pantry/779.png'),
+  require('../../assets/stickers/pantry/780.png'),
+  require('../../assets/stickers/pantry/781.png'),
+  require('../../assets/stickers/pantry/782.png'),
+  require('../../assets/stickers/pantry/783.png'),
+  require('../../assets/stickers/pantry/784.png'),
+  require('../../assets/stickers/pantry/785.png'),
+  require('../../assets/stickers/pantry/786.png'),
+  require('../../assets/stickers/pantry/787.png'),
+  require('../../assets/stickers/pantry/788.png'),
+  require('../../assets/stickers/pantry/789.png'),
+  require('../../assets/stickers/pantry/790.png'),
+  require('../../assets/stickers/pantry/791.png'),
+  require('../../assets/stickers/pantry/792.png'),
+  require('../../assets/stickers/pantry/793.png'),
+  require('../../assets/stickers/pantry/794.png'),
+  require('../../assets/stickers/pantry/795.png'),
+  require('../../assets/stickers/pantry/796.png'),
+  require('../../assets/stickers/pantry/797.png'),
+  require('../../assets/stickers/pantry/798.png'),
+  require('../../assets/stickers/pantry/799.png'),
+  require('../../assets/stickers/pantry/800.png'),
+  require('../../assets/stickers/pantry/801.png'),
+  require('../../assets/stickers/pantry/802.png'),
+  require('../../assets/stickers/pantry/803.png'),
+  require('../../assets/stickers/pantry/804.png'),
+  require('../../assets/stickers/pantry/805.png'),
+  require('../../assets/stickers/pantry/806.png'),
+  require('../../assets/stickers/pantry/807.png'),
+  require('../../assets/stickers/pantry/808.png'),
+  require('../../assets/stickers/pantry/809.png'),
+  require('../../assets/stickers/pantry/810.png'),
+  require('../../assets/stickers/pantry/811.png'),
+  require('../../assets/stickers/pantry/812.png'),
+  require('../../assets/stickers/pantry/813.png'),
+  require('../../assets/stickers/pantry/814.png'),
+  require('../../assets/stickers/pantry/815.png'),
+  require('../../assets/stickers/pantry/816.png'),
+  require('../../assets/stickers/pantry/817.png'),
+  require('../../assets/stickers/pantry/818.png'),
+  require('../../assets/stickers/pantry/819.png'),
+  require('../../assets/stickers/pantry/820.png'),
+  require('../../assets/stickers/pantry/821.png'),
+  require('../../assets/stickers/lounge/393.png'),
+  require('../../assets/stickers/lounge/394.png'),
+  require('../../assets/stickers/lounge/395.png'),
+  require('../../assets/stickers/garden/055.png'),
+  require('../../assets/stickers/garden/056.png'),
+  require('../../assets/stickers/kitchen/156.png'),
+  require('../../assets/stickers/kitchen/157.png'),
+  require('../../assets/stickers/kitchen/158.png'),
+  require('../../assets/stickers/kitchen/159.png'),
+  require('../../assets/stickers/kitchen/160.png'),
+  require('../../assets/stickers/kitchen/161.png'),
+  require('../../assets/stickers/kitchen/162.png'),
+  require('../../assets/stickers/kitchen/163.png'),
+  require('../../assets/stickers/kitchen/164.png'),
+  require('../../assets/stickers/kitchen/165.png'),
+  require('../../assets/stickers/kitchen/166.png'),
+  require('../../assets/stickers/kitchen/167.png'),
+  require('../../assets/stickers/kitchen/168.png'),
+  require('../../assets/stickers/kitchen/169.png'),
+  require('../../assets/stickers/kitchen/170.png'),
+  require('../../assets/stickers/kitchen/171.png'),
+  require('../../assets/stickers/kitchen/172.png'),
+  require('../../assets/stickers/kitchen/173.png'),
+  require('../../assets/stickers/kitchen/174.png'),
+  require('../../assets/stickers/kitchen/175.png'),
+  require('../../assets/stickers/kitchen/176.png'),
+  require('../../assets/stickers/kitchen/177.png'),
+  require('../../assets/stickers/study/028.png'),
+  require('../../assets/stickers/study/029.png'),
+  require('../../assets/stickers/study/030.png'),
+  require('../../assets/stickers/study/031.png'),
+  require('../../assets/stickers/study/032.png'),
+  require('../../assets/stickers/study/033.png'),
+  require('../../assets/stickers/study/034.png'),
+  require('../../assets/stickers/study/035.png'),
+  require('../../assets/stickers/study/036.png'),
+  require('../../assets/stickers/study/037.png'),
+  require('../../assets/stickers/study/038.png'),
+  require('../../assets/stickers/study/039.png'),
+  require('../../assets/stickers/study/040.png'),
+  require('../../assets/stickers/study/041.png'),
+  require('../../assets/stickers/study/042.png'),
+  require('../../assets/stickers/study/043.png'),
+  require('../../assets/stickers/bedroom/304.png'),
+  require('../../assets/stickers/bedroom/305.png'),
+  require('../../assets/stickers/bedroom/306.png'),
+  require('../../assets/stickers/bedroom/307.png'),
+  require('../../assets/stickers/bedroom/308.png'),
+  require('../../assets/stickers/bedroom/309.png'),
+  require('../../assets/stickers/bedroom/310.png'),
+  require('../../assets/stickers/bedroom/311.png'),
+  require('../../assets/stickers/bedroom/312.png'),
+  require('../../assets/stickers/bedroom/313.png'),
+  require('../../assets/stickers/bedroom/314.png'),
+  require('../../assets/stickers/bedroom/315.png'),
+  require('../../assets/stickers/bedroom/316.png'),
+  require('../../assets/stickers/bedroom/317.png'),
+  require('../../assets/stickers/bedroom/318.png'),
+  require('../../assets/stickers/bedroom/319.png'),
+  require('../../assets/stickers/study/044.png'),
+  require('../../assets/stickers/study/045.png'),
+  require('../../assets/stickers/study/046.png'),
+  require('../../assets/stickers/study/047.png'),
+  require('../../assets/stickers/study/048.png'),
+  require('../../assets/stickers/study/049.png'),
+  require('../../assets/stickers/study/050.png'),
+  require('../../assets/stickers/study/051.png'),
+  require('../../assets/stickers/study/052.png'),
+  require('../../assets/stickers/maker/140.png'),
+  require('../../assets/stickers/maker/141.png'),
+  require('../../assets/stickers/maker/142.png'),
+  require('../../assets/stickers/maker/143.png'),
+  require('../../assets/stickers/maker/144.png'),
+  require('../../assets/stickers/maker/145.png'),
+  require('../../assets/stickers/maker/146.png'),
+  require('../../assets/stickers/maker/147.png'),
+  require('../../assets/stickers/maker/148.png'),
+  require('../../assets/stickers/maker/149.png'),
+  require('../../assets/stickers/maker/150.png'),
+  require('../../assets/stickers/forge/058.png'),
+  require('../../assets/stickers/forge/059.png'),
+  require('../../assets/stickers/forge/060.png'),
+  require('../../assets/stickers/forge/061.png'),
+  require('../../assets/stickers/forge/062.png'),
+  require('../../assets/stickers/forge/063.png'),
+  require('../../assets/stickers/forge/064.png'),
+  require('../../assets/stickers/forge/065.png'),
+  require('../../assets/stickers/forge/066.png'),
+  require('../../assets/stickers/forge/067.png'),
+  require('../../assets/stickers/forge/068.png'),
+  require('../../assets/stickers/forge/069.png'),
+  require('../../assets/stickers/forge/070.png'),
+  require('../../assets/stickers/forge/071.png'),
+  require('../../assets/stickers/forge/072.png'),
+  require('../../assets/stickers/forge/073.png'),
+  require('../../assets/stickers/forge/074.png'),
+  require('../../assets/stickers/forge/075.png'),
+  require('../../assets/stickers/forge/076.png'),
+  require('../../assets/stickers/forge/077.png'),
+  require('../../assets/stickers/forge/078.png'),
+  require('../../assets/stickers/forge/079.png'),
+  require('../../assets/stickers/forge/080.png'),
+  require('../../assets/stickers/forge/081.png'),
+  require('../../assets/stickers/forge/082.png'),
+  require('../../assets/stickers/forge/083.png'),
+  require('../../assets/stickers/forge/084.png'),
+  require('../../assets/stickers/forge/085.png'),
+  require('../../assets/stickers/forge/086.png'),
+  require('../../assets/stickers/forge/087.png'),
+  require('../../assets/stickers/forge/088.png'),
+  require('../../assets/stickers/forge/089.png'),
+  require('../../assets/stickers/forge/090.png'),
+  require('../../assets/stickers/forge/091.png'),
+  require('../../assets/stickers/forge/092.png'),
+  require('../../assets/stickers/forge/093.png'),
+  require('../../assets/stickers/forge/094.png'),
+  require('../../assets/stickers/forge/095.png'),
+  require('../../assets/stickers/forge/096.png'),
+  require('../../assets/stickers/forge/097.png'),
+  require('../../assets/stickers/forge/098.png'),
+  require('../../assets/stickers/forge/099.png'),
+  require('../../assets/stickers/forge/100.png'),
+  require('../../assets/stickers/forge/101.png'),
+  require('../../assets/stickers/forge/102.png'),
+  require('../../assets/stickers/forge/103.png'),
+  require('../../assets/stickers/forge/104.png'),
+  require('../../assets/stickers/forge/105.png'),
+  require('../../assets/stickers/forge/106.png'),
+  require('../../assets/stickers/forge/107.png'),
+  require('../../assets/stickers/forge/108.png'),
+  require('../../assets/stickers/forge/109.png'),
+  require('../../assets/stickers/forge/110.png'),
+  require('../../assets/stickers/forge/111.png'),
+  require('../../assets/stickers/forge/112.png'),
+  require('../../assets/stickers/forge/113.png'),
+  require('../../assets/stickers/forge/114.png'),
+  require('../../assets/stickers/forge/115.png'),
+  require('../../assets/stickers/forge/116.png'),
+  require('../../assets/stickers/forge/117.png'),
+  require('../../assets/stickers/forge/118.png'),
+  require('../../assets/stickers/forge/119.png'),
+  require('../../assets/stickers/forge/120.png'),
+  require('../../assets/stickers/forge/121.png'),
+  require('../../assets/stickers/forge/122.png'),
+  require('../../assets/stickers/forge/123.png'),
+  require('../../assets/stickers/forge/124.png'),
+  require('../../assets/stickers/forge/125.png'),
+  require('../../assets/stickers/forge/126.png'),
+  require('../../assets/stickers/forge/127.png'),
+  require('../../assets/stickers/forge/128.png'),
+  require('../../assets/stickers/forge/129.png'),
+  require('../../assets/stickers/forge/130.png'),
+  require('../../assets/stickers/forge/131.png'),
+  require('../../assets/stickers/forge/132.png'),
+  require('../../assets/stickers/forge/133.png'),
+  require('../../assets/stickers/forge/134.png'),
+  require('../../assets/stickers/forge/135.png'),
+  require('../../assets/stickers/bedroom/320.png'),
+  require('../../assets/stickers/bedroom/321.png'),
+  require('../../assets/stickers/bedroom/322.png'),
+  require('../../assets/stickers/bedroom/323.png'),
+  require('../../assets/stickers/bedroom/324.png'),
+  require('../../assets/stickers/bedroom/325.png'),
+  require('../../assets/stickers/bedroom/326.png'),
+  require('../../assets/stickers/bedroom/327.png'),
+  require('../../assets/stickers/bedroom/328.png'),
+  require('../../assets/stickers/bedroom/329.png'),
+  require('../../assets/stickers/bedroom/330.png'),
+  require('../../assets/stickers/bedroom/331.png'),
+  require('../../assets/stickers/bedroom/332.png'),
+  require('../../assets/stickers/bedroom/333.png'),
+  require('../../assets/stickers/bedroom/334.png'),
+  require('../../assets/stickers/bedroom/335.png'),
+  require('../../assets/stickers/bedroom/336.png'),
+  require('../../assets/stickers/bedroom/337.png'),
+  require('../../assets/stickers/bedroom/338.png'),
+  require('../../assets/stickers/bedroom/339.png'),
+  require('../../assets/stickers/bedroom/340.png'),
+  require('../../assets/stickers/bedroom/341.png'),
+  require('../../assets/stickers/bedroom/342.png'),
+  require('../../assets/stickers/bedroom/343.png'),
+  require('../../assets/stickers/bedroom/344.png'),
+  require('../../assets/stickers/bedroom/345.png'),
+  require('../../assets/stickers/bedroom/346.png'),
+  require('../../assets/stickers/bedroom/347.png'),
+  require('../../assets/stickers/bedroom/348.png'),
+  require('../../assets/stickers/bedroom/349.png'),
+  require('../../assets/stickers/bedroom/350.png'),
+  require('../../assets/stickers/bedroom/351.png'),
+  require('../../assets/stickers/bedroom/352.png'),
+  require('../../assets/stickers/bedroom/353.png'),
+  require('../../assets/stickers/bedroom/354.png'),
+  require('../../assets/stickers/bedroom/355.png'),
+  require('../../assets/stickers/bedroom/356.png'),
+  require('../../assets/stickers/bedroom/357.png'),
+  require('../../assets/stickers/bedroom/358.png'),
+  require('../../assets/stickers/bedroom/359.png'),
+  require('../../assets/stickers/bedroom/360.png'),
+  require('../../assets/stickers/bedroom/361.png'),
+  require('../../assets/stickers/bedroom/362.png'),
+  require('../../assets/stickers/bedroom/363.png'),
+  require('../../assets/stickers/bedroom/364.png'),
+  require('../../assets/stickers/bedroom/365.png'),
+  require('../../assets/stickers/bedroom/366.png'),
+  require('../../assets/stickers/bedroom/367.png'),
+  require('../../assets/stickers/bedroom/368.png'),
+  require('../../assets/stickers/bedroom/369.png'),
+  require('../../assets/stickers/bedroom/370.png'),
+  require('../../assets/stickers/bedroom/371.png'),
+  require('../../assets/stickers/bedroom/372.png'),
+  require('../../assets/stickers/bedroom/373.png'),
+  require('../../assets/stickers/bedroom/374.png'),
+  require('../../assets/stickers/bedroom/375.png'),
+  require('../../assets/stickers/bedroom/376.png'),
+  require('../../assets/stickers/bedroom/377.png'),
+  require('../../assets/stickers/bedroom/378.png'),
+  require('../../assets/stickers/bedroom/379.png'),
+  require('../../assets/stickers/bedroom/380.png'),
+  require('../../assets/stickers/bedroom/381.png'),
+  require('../../assets/stickers/bedroom/382.png'),
+  require('../../assets/stickers/bedroom/383.png'),
+  require('../../assets/stickers/bedroom/384.png'),
+  require('../../assets/stickers/bedroom/385.png'),
+  require('../../assets/stickers/bedroom/386.png'),
+  require('../../assets/stickers/bedroom/387.png'),
+  require('../../assets/stickers/bedroom/388.png'),
+  require('../../assets/stickers/bedroom/389.png'),
+  require('../../assets/stickers/bedroom/390.png'),
+  require('../../assets/stickers/bedroom/391.png'),
+  require('../../assets/stickers/bedroom/392.png'),
+  require('../../assets/stickers/bedroom/393.png'),
+  require('../../assets/stickers/bedroom/394.png'),
+  require('../../assets/stickers/bedroom/395.png'),
+  require('../../assets/stickers/bedroom/396.png'),
+  require('../../assets/stickers/bedroom/397.png'),
+  require('../../assets/stickers/bedroom/398.png'),
+  require('../../assets/stickers/bedroom/399.png'),
+  require('../../assets/stickers/bedroom/400.png'),
+  require('../../assets/stickers/bedroom/401.png'),
+  require('../../assets/stickers/bedroom/402.png'),
+  require('../../assets/stickers/bedroom/403.png'),
+  require('../../assets/stickers/bedroom/404.png'),
+  require('../../assets/stickers/bedroom/405.png'),
+  require('../../assets/stickers/bedroom/406.png'),
+  require('../../assets/stickers/bedroom/407.png'),
+  require('../../assets/stickers/bedroom/408.png'),
+  require('../../assets/stickers/bedroom/409.png'),
+  require('../../assets/stickers/bedroom/410.png'),
+  require('../../assets/stickers/bedroom/411.png'),
+  require('../../assets/stickers/bedroom/412.png'),
+  require('../../assets/stickers/bedroom/413.png'),
+  require('../../assets/stickers/bedroom/414.png'),
+  require('../../assets/stickers/bedroom/415.png'),
+  require('../../assets/stickers/festive/003.png'),
+  require('../../assets/stickers/festive/004.png'),
+  require('../../assets/stickers/festive/005.png'),
+  require('../../assets/stickers/festive/006.png'),
+  require('../../assets/stickers/festive/007.png'),
+  require('../../assets/stickers/festive/008.png'),
+  require('../../assets/stickers/festive/009.png'),
+  require('../../assets/stickers/festive/010.png'),
+  require('../../assets/stickers/festive/011.png'),
+  require('../../assets/stickers/festive/012.png'),
+  require('../../assets/stickers/festive/013.png'),
+  require('../../assets/stickers/lounge/396.png'),
+  require('../../assets/stickers/lounge/397.png'),
+  require('../../assets/stickers/lounge/398.png'),
+  require('../../assets/stickers/lounge/399.png'),
+  require('../../assets/stickers/lounge/400.png'),
+  require('../../assets/stickers/lounge/401.png'),
+  require('../../assets/stickers/lounge/402.png'),
+  require('../../assets/stickers/lounge/403.png'),
+  require('../../assets/stickers/lounge/404.png'),
+  require('../../assets/stickers/lounge/405.png'),
+  require('../../assets/stickers/lounge/406.png'),
+  require('../../assets/stickers/lounge/407.png'),
+  require('../../assets/stickers/lounge/408.png'),
+  require('../../assets/stickers/lounge/409.png'),
+  require('../../assets/stickers/lounge/410.png'),
+  require('../../assets/stickers/lounge/411.png'),
+  require('../../assets/stickers/maker/151.png'),
+  require('../../assets/stickers/maker/152.png'),
+  require('../../assets/stickers/curious/025.png'),
+  require('../../assets/stickers/gallery/001.png'),
+  require('../../assets/stickers/gallery/002.png'),
+  require('../../assets/stickers/gallery/003.png'),
+  require('../../assets/stickers/gallery/004.png'),
+  require('../../assets/stickers/gallery/005.png'),
+  require('../../assets/stickers/maker/153.png'),
+  require('../../assets/stickers/maker/154.png'),
+  require('../../assets/stickers/maker/155.png'),
+  require('../../assets/stickers/maker/156.png'),
+  require('../../assets/stickers/maker/157.png'),
+  require('../../assets/stickers/maker/158.png'),
+  require('../../assets/stickers/maker/159.png'),
+  require('../../assets/stickers/maker/160.png'),
+  require('../../assets/stickers/maker/161.png'),
+  require('../../assets/stickers/maker/162.png'),
+  require('../../assets/stickers/maker/163.png'),
+  require('../../assets/stickers/maker/164.png'),
+  require('../../assets/stickers/maker/165.png'),
+  require('../../assets/stickers/maker/166.png'),
+  require('../../assets/stickers/maker/167.png'),
+  require('../../assets/stickers/maker/168.png'),
+  require('../../assets/stickers/maker/169.png'),
+  require('../../assets/stickers/maker/170.png'),
+  require('../../assets/stickers/maker/171.png'),
+  require('../../assets/stickers/maker/172.png'),
+  require('../../assets/stickers/maker/173.png'),
+  require('../../assets/stickers/maker/174.png'),
+  require('../../assets/stickers/maker/175.png'),
+  require('../../assets/stickers/maker/176.png'),
+  require('../../assets/stickers/maker/177.png'),
+  require('../../assets/stickers/maker/178.png'),
+  require('../../assets/stickers/maker/179.png'),
+  require('../../assets/stickers/maker/180.png'),
+  require('../../assets/stickers/maker/181.png'),
+  require('../../assets/stickers/maker/182.png'),
+  require('../../assets/stickers/maker/183.png'),
+  require('../../assets/stickers/maker/184.png'),
+  require('../../assets/stickers/maker/185.png'),
+  require('../../assets/stickers/maker/186.png'),
+  require('../../assets/stickers/maker/187.png'),
+  require('../../assets/stickers/maker/188.png'),
+  require('../../assets/stickers/maker/189.png'),
+  require('../../assets/stickers/maker/190.png'),
+  require('../../assets/stickers/maker/191.png'),
+  require('../../assets/stickers/maker/192.png'),
+  require('../../assets/stickers/maker/193.png'),
+  require('../../assets/stickers/maker/194.png'),
+  require('../../assets/stickers/maker/195.png'),
+  require('../../assets/stickers/maker/196.png'),
+  require('../../assets/stickers/maker/197.png'),
+  require('../../assets/stickers/maker/198.png'),
+  require('../../assets/stickers/maker/199.png'),
+  require('../../assets/stickers/maker/200.png'),
+  require('../../assets/stickers/maker/201.png'),
+  require('../../assets/stickers/maker/202.png'),
+  require('../../assets/stickers/forge/136.png'),
+  require('../../assets/stickers/forge/137.png'),
+  require('../../assets/stickers/forge/138.png'),
+  require('../../assets/stickers/forge/139.png'),
+  require('../../assets/stickers/forge/140.png'),
+  require('../../assets/stickers/forge/141.png'),
+  require('../../assets/stickers/forge/142.png'),
+  require('../../assets/stickers/forge/143.png'),
+  require('../../assets/stickers/forge/144.png'),
+  require('../../assets/stickers/forge/145.png'),
+  require('../../assets/stickers/forge/146.png'),
+  require('../../assets/stickers/forge/147.png'),
+  require('../../assets/stickers/forge/148.png'),
+  require('../../assets/stickers/forge/149.png'),
+  require('../../assets/stickers/forge/150.png'),
+  require('../../assets/stickers/forge/151.png'),
+  require('../../assets/stickers/forge/152.png'),
+  require('../../assets/stickers/forge/153.png'),
+  require('../../assets/stickers/forge/154.png'),
+  require('../../assets/stickers/forge/155.png'),
+  require('../../assets/stickers/forge/156.png'),
+  require('../../assets/stickers/forge/157.png'),
+  require('../../assets/stickers/forge/158.png'),
+  require('../../assets/stickers/forge/159.png'),
+  require('../../assets/stickers/forge/160.png'),
+  require('../../assets/stickers/forge/161.png'),
+  require('../../assets/stickers/forge/162.png'),
+  require('../../assets/stickers/forge/163.png'),
+  require('../../assets/stickers/forge/164.png'),
+  require('../../assets/stickers/forge/165.png'),
+  require('../../assets/stickers/forge/166.png'),
+  require('../../assets/stickers/forge/167.png'),
+  require('../../assets/stickers/forge/168.png'),
+  require('../../assets/stickers/forge/169.png'),
+  require('../../assets/stickers/forge/170.png'),
+  require('../../assets/stickers/forge/171.png'),
+  require('../../assets/stickers/forge/172.png'),
+  require('../../assets/stickers/festive/014.png'),
+  require('../../assets/stickers/festive/015.png'),
+  require('../../assets/stickers/festive/016.png'),
+  require('../../assets/stickers/festive/017.png'),
+  require('../../assets/stickers/festive/018.png'),
+  require('../../assets/stickers/festive/019.png'),
+  require('../../assets/stickers/festive/020.png'),
+  require('../../assets/stickers/festive/021.png'),
+  require('../../assets/stickers/festive/022.png'),
+  require('../../assets/stickers/festive/023.png'),
+  require('../../assets/stickers/bedroom/416.png'),
+  require('../../assets/stickers/bedroom/417.png'),
+  require('../../assets/stickers/bedroom/418.png'),
+  require('../../assets/stickers/bedroom/419.png'),
+  require('../../assets/stickers/bedroom/420.png'),
+  require('../../assets/stickers/bedroom/421.png'),
+  require('../../assets/stickers/bedroom/422.png'),
+  require('../../assets/stickers/bedroom/423.png'),
+  require('../../assets/stickers/bedroom/424.png'),
+  require('../../assets/stickers/bedroom/425.png'),
+  require('../../assets/stickers/bedroom/426.png'),
+  require('../../assets/stickers/bedroom/427.png'),
+  require('../../assets/stickers/bedroom/428.png'),
+  require('../../assets/stickers/bedroom/429.png'),
+  require('../../assets/stickers/bedroom/430.png'),
+  require('../../assets/stickers/bedroom/431.png'),
+  require('../../assets/stickers/bedroom/432.png'),
+  require('../../assets/stickers/bedroom/433.png'),
+  require('../../assets/stickers/bedroom/434.png'),
+  require('../../assets/stickers/bedroom/435.png'),
+  require('../../assets/stickers/bedroom/436.png'),
+  require('../../assets/stickers/bedroom/437.png'),
+  require('../../assets/stickers/bedroom/438.png'),
+  require('../../assets/stickers/bedroom/439.png'),
+  require('../../assets/stickers/bedroom/440.png'),
+  require('../../assets/stickers/bedroom/441.png'),
+  require('../../assets/stickers/bedroom/442.png'),
+  require('../../assets/stickers/bedroom/443.png'),
+  require('../../assets/stickers/bedroom/444.png'),
+  require('../../assets/stickers/bedroom/445.png'),
+  require('../../assets/stickers/gallery/006.png'),
+  require('../../assets/stickers/gallery/007.png'),
+  require('../../assets/stickers/gallery/008.png'),
+  require('../../assets/stickers/gallery/009.png'),
+  require('../../assets/stickers/gallery/010.png'),
+  require('../../assets/stickers/gallery/011.png'),
+  require('../../assets/stickers/gallery/012.png'),
+  require('../../assets/stickers/gallery/013.png'),
+  require('../../assets/stickers/gallery/014.png'),
+  require('../../assets/stickers/gallery/015.png'),
+  require('../../assets/stickers/gallery/016.png'),
+  require('../../assets/stickers/gallery/017.png'),
+  require('../../assets/stickers/gallery/018.png'),
+  require('../../assets/stickers/gallery/019.png'),
+  require('../../assets/stickers/gallery/020.png'),
+  require('../../assets/stickers/gallery/021.png'),
+  require('../../assets/stickers/gallery/022.png'),
+  require('../../assets/stickers/gallery/023.png'),
+  require('../../assets/stickers/gallery/024.png'),
+  require('../../assets/stickers/gallery/025.png'),
+  require('../../assets/stickers/gallery/026.png'),
+  require('../../assets/stickers/gallery/027.png'),
+  require('../../assets/stickers/gallery/028.png'),
+  require('../../assets/stickers/gallery/029.png'),
+  require('../../assets/stickers/gallery/030.png'),
+  require('../../assets/stickers/gallery/031.png'),
+  require('../../assets/stickers/gallery/032.png'),
+  require('../../assets/stickers/gallery/033.png'),
+  require('../../assets/stickers/gallery/034.png'),
+  require('../../assets/stickers/gallery/035.png'),
+  require('../../assets/stickers/gallery/036.png'),
+  require('../../assets/stickers/gallery/037.png'),
+  require('../../assets/stickers/gallery/038.png'),
+  require('../../assets/stickers/gallery/039.png'),
+  require('../../assets/stickers/gallery/040.png'),
+  require('../../assets/stickers/gallery/041.png'),
+  require('../../assets/stickers/gallery/042.png'),
+  require('../../assets/stickers/gallery/043.png'),
+  require('../../assets/stickers/gallery/044.png'),
+  require('../../assets/stickers/gallery/045.png'),
+  require('../../assets/stickers/gallery/046.png'),
+  require('../../assets/stickers/gallery/047.png'),
+  require('../../assets/stickers/gallery/048.png'),
+  require('../../assets/stickers/gallery/049.png'),
+  require('../../assets/stickers/gallery/050.png'),
+  require('../../assets/stickers/gallery/051.png'),
+  require('../../assets/stickers/gallery/052.png'),
+  require('../../assets/stickers/gallery/053.png'),
+  require('../../assets/stickers/gallery/054.png'),
+  require('../../assets/stickers/gallery/055.png'),
+  require('../../assets/stickers/gallery/056.png'),
+  require('../../assets/stickers/gallery/057.png'),
+  require('../../assets/stickers/gallery/058.png'),
+  require('../../assets/stickers/gallery/059.png'),
+  require('../../assets/stickers/gallery/060.png'),
+  require('../../assets/stickers/gallery/061.png'),
+  require('../../assets/stickers/gallery/062.png'),
+  require('../../assets/stickers/gallery/063.png'),
+  require('../../assets/stickers/gallery/064.png'),
+  require('../../assets/stickers/gallery/065.png'),
+  require('../../assets/stickers/gallery/066.png'),
+  require('../../assets/stickers/gallery/067.png'),
+  require('../../assets/stickers/gallery/068.png'),
+  require('../../assets/stickers/gallery/069.png'),
+  require('../../assets/stickers/gallery/070.png'),
+  require('../../assets/stickers/gallery/071.png'),
+  require('../../assets/stickers/gallery/072.png'),
+  require('../../assets/stickers/gallery/073.png'),
+  require('../../assets/stickers/gallery/074.png'),
+  require('../../assets/stickers/lounge/412.png'),
+  require('../../assets/stickers/lounge/413.png'),
+  require('../../assets/stickers/lounge/414.png'),
+  require('../../assets/stickers/lounge/415.png'),
+  require('../../assets/stickers/lounge/416.png'),
+  require('../../assets/stickers/lounge/417.png'),
+  require('../../assets/stickers/lounge/418.png'),
+  require('../../assets/stickers/curious/026.png'),
+  require('../../assets/stickers/bedroom/446.png'),
+  require('../../assets/stickers/bedroom/447.png'),
+  require('../../assets/stickers/bedroom/448.png'),
+  require('../../assets/stickers/bedroom/449.png'),
+  require('../../assets/stickers/gallery/075.png'),
+  require('../../assets/stickers/gallery/076.png'),
+  require('../../assets/stickers/gallery/077.png'),
+  require('../../assets/stickers/gallery/078.png'),
+  require('../../assets/stickers/gallery/079.png'),
+  require('../../assets/stickers/gallery/080.png'),
+  require('../../assets/stickers/gallery/081.png'),
+  require('../../assets/stickers/gallery/082.png'),
+  require('../../assets/stickers/gallery/083.png'),
+  require('../../assets/stickers/gallery/084.png'),
+  require('../../assets/stickers/gallery/085.png'),
+  require('../../assets/stickers/gallery/086.png'),
+  require('../../assets/stickers/gallery/087.png'),
+  require('../../assets/stickers/gallery/088.png'),
+  require('../../assets/stickers/gallery/089.png'),
+  require('../../assets/stickers/gallery/090.png'),
+  require('../../assets/stickers/gallery/091.png'),
+  require('../../assets/stickers/gallery/092.png'),
+  require('../../assets/stickers/gallery/093.png'),
+  require('../../assets/stickers/gallery/094.png'),
+  require('../../assets/stickers/gallery/095.png'),
+  require('../../assets/stickers/gallery/096.png'),
+  require('../../assets/stickers/gallery/097.png'),
+  require('../../assets/stickers/gallery/098.png'),
+  require('../../assets/stickers/gallery/099.png'),
+  require('../../assets/stickers/gallery/100.png'),
+  require('../../assets/stickers/gallery/101.png'),
+  require('../../assets/stickers/gallery/102.png'),
+  require('../../assets/stickers/gallery/103.png'),
+  require('../../assets/stickers/gallery/104.png'),
+  require('../../assets/stickers/gallery/105.png'),
+  require('../../assets/stickers/gallery/106.png'),
+  require('../../assets/stickers/gallery/107.png'),
+  require('../../assets/stickers/gallery/108.png'),
+  require('../../assets/stickers/gallery/109.png'),
+  require('../../assets/stickers/gallery/110.png'),
+  require('../../assets/stickers/gallery/111.png'),
+  require('../../assets/stickers/gallery/112.png'),
+  require('../../assets/stickers/gallery/113.png'),
+  require('../../assets/stickers/gallery/114.png'),
+  require('../../assets/stickers/gallery/115.png'),
+  require('../../assets/stickers/gallery/116.png'),
 ];
+
+/** id|set|label|w|h|kind|rarity, in the same order as SRC */
+const META = `
+fireside-001|fireside|Barrel|48|61|furniture|rare
+fireside-002|fireside|Barrel|28|37|furniture|rare
+fireside-003|fireside|Barrel|28|38|furniture|rare
+fireside-004|fireside|Barrel|28|38|furniture|rare
+bedroom-001|bedroom|Beds, Child Headboards|38|50|furniture|rare
+bedroom-002|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-003|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-004|bedroom|Beds, Child Headboards|38|50|furniture|rare
+bedroom-005|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-006|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-007|bedroom|Beds, Child Headboards|38|50|furniture|rare
+bedroom-008|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-009|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-010|bedroom|Beds, Child Headboards|38|49|furniture|rare
+bedroom-011|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-012|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-013|bedroom|Beds, Child Headboards|38|49|furniture|rare
+bedroom-014|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-015|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-016|bedroom|Beds, Child Headboards|38|49|furniture|rare
+bedroom-017|bedroom|Beds, Child Headboards|12|49|furniture|common
+bedroom-018|bedroom|Beds, Child Headboards|6|49|furniture|common
+bedroom-019|bedroom|Beds, Child Mattresses|32|56|furniture|rare
+bedroom-020|bedroom|Beds, Child Mattresses|56|34|furniture|rare
+bedroom-021|bedroom|Beds, Child Mattresses|12|34|furniture|common
+bedroom-022|bedroom|Beds, Child Mattresses|12|34|furniture|common
+bedroom-023|bedroom|Beds, Child Mattresses|32|18|furniture|common
+bedroom-024|bedroom|Beds, Child Mattresses|32|9|furniture|common
+bedroom-025|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-026|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-027|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-028|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-029|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-030|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-031|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-032|bedroom|Beds, Child|64|91|furniture|epic
+bedroom-033|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-034|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-035|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-036|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-037|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-038|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-039|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-040|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-041|bedroom|Beds, Child|12|34|furniture|common
+bedroom-042|bedroom|Beds, Child|12|34|furniture|common
+bedroom-043|bedroom|Beds, Child|12|34|furniture|common
+bedroom-044|bedroom|Beds, Child|12|34|furniture|common
+bedroom-045|bedroom|Beds, Child|12|34|furniture|common
+bedroom-046|bedroom|Beds, Child|12|34|furniture|common
+bedroom-047|bedroom|Beds, Child|12|34|furniture|common
+bedroom-048|bedroom|Beds, Child|12|34|furniture|common
+bedroom-049|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-050|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-051|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-052|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-053|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-054|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-055|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-056|bedroom|Beds, Child|44|38|furniture|rare
+bedroom-057|bedroom|Beds, Child|12|34|furniture|common
+bedroom-058|bedroom|Beds, Child|12|34|furniture|common
+bedroom-059|bedroom|Beds, Child|12|34|furniture|common
+bedroom-060|bedroom|Beds, Child|12|34|furniture|common
+bedroom-061|bedroom|Beds, Child|12|34|furniture|common
+bedroom-062|bedroom|Beds, Child|12|34|furniture|common
+bedroom-063|bedroom|Beds, Child|12|34|furniture|common
+bedroom-064|bedroom|Beds, Child|12|34|furniture|common
+bedroom-065|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-066|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-067|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-068|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-069|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-070|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-071|bedroom|Beds, Double B|126|237|furniture|epic
+bedroom-072|bedroom|Beds, Double C - Overlays|10|53|furniture|common
+bedroom-073|bedroom|Beds, Double C - Overlays|10|52|furniture|common
+bedroom-074|bedroom|Beds, Double C - Overlays|10|52|furniture|common
+bedroom-075|bedroom|Beds, Double C - Overlays|10|53|furniture|common
+bedroom-076|bedroom|Beds, Double C - Overlays|128|53|furniture|epic
+bedroom-077|bedroom|Beds, Double C - Overlays|64|53|furniture|epic
+bedroom-078|bedroom|Beds, Double C - Overlays|11|21|furniture|common
+bedroom-079|bedroom|Beds, Double C|512|62|furniture|epic
+bedroom-080|bedroom|Beds, Double C|512|61|furniture|epic
+bedroom-081|bedroom|Beds, Double C|448|61|furniture|epic
+bedroom-082|bedroom|Beds, Double C|512|62|furniture|epic
+bedroom-083|bedroom|Beds, Double C|512|61|furniture|epic
+bedroom-084|bedroom|Beds, Double C|448|61|furniture|epic
+bedroom-085|bedroom|Beds, Double C|320|62|furniture|epic
+bedroom-086|bedroom|Beds, Double Headboards|64|32|furniture|rare
+bedroom-087|bedroom|Beds, Double Headboards|6|89|furniture|common
+bedroom-088|bedroom|Beds, Double Headboards|12|89|furniture|rare
+bedroom-089|bedroom|Beds, Double Headboards|6|89|furniture|common
+bedroom-090|bedroom|Beds, Double Headboards|64|35|furniture|rare
+bedroom-091|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-092|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-093|bedroom|Beds, Double Headboards|12|71|furniture|rare
+bedroom-094|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-095|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-096|bedroom|Beds, Double Headboards|64|17|furniture|rare
+bedroom-097|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-098|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-099|bedroom|Beds, Double Headboards|12|71|furniture|rare
+bedroom-100|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-101|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-102|bedroom|Beds, Double Headboards|64|17|furniture|rare
+bedroom-103|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-104|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-105|bedroom|Beds, Double Headboards|12|71|furniture|rare
+bedroom-106|bedroom|Beds, Double Headboards|6|71|furniture|common
+bedroom-107|bedroom|Beds, Double Headboards|64|21|furniture|rare
+bedroom-108|bedroom|Beds, Double Headboards|64|17|furniture|rare
+bedroom-109|bedroom|Beds, Double Mattresses|72|60|furniture|epic
+bedroom-110|bedroom|Beds, Double Mattresses|60|70|furniture|epic
+bedroom-111|bedroom|Beds, Double Mattresses|60|14|furniture|rare
+bedroom-112|bedroom|Beds, Double Mattresses|60|25|furniture|rare
+bedroom-113|bedroom|Beds, Double Mattresses|15|60|furniture|rare
+bedroom-114|bedroom|Beds, Double Mattresses|15|60|furniture|rare
+bedroom-115|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-116|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-117|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-118|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-119|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-120|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-121|bedroom|Beds, Double|126|238|furniture|epic
+bedroom-122|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-123|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-124|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-125|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-126|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-127|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-128|bedroom|Beds, Single A|46|55|furniture|rare
+bedroom-129|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-130|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-131|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-132|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-133|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-134|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-135|bedroom|Beds, Single A|44|14|furniture|common
+bedroom-136|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-137|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-138|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-139|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-140|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-141|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-142|bedroom|Beds, Single A|46|58|furniture|rare
+bedroom-143|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-144|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-145|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-146|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-147|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-148|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-149|bedroom|Beds, Single A|44|25|furniture|rare
+bedroom-150|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-151|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-152|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-153|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-154|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-155|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-156|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-157|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-158|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-159|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-160|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-161|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-162|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-163|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-164|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-165|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-166|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-167|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-168|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-169|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-170|bedroom|Beds, Single A|59|52|furniture|epic
+bedroom-171|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-172|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-173|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-174|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-175|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-176|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-177|bedroom|Beds, Single A|15|49|furniture|rare
+bedroom-178|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-179|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-180|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-181|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-182|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-183|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-184|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-185|bedroom|Beds, Single B|121|216|furniture|epic
+bedroom-186|bedroom|Beds, Single C|48|71|furniture|epic
+bedroom-187|bedroom|Beds, Single C|48|71|furniture|epic
+bedroom-188|bedroom|Beds, Single C|48|71|furniture|epic
+bedroom-189|bedroom|Beds, Single C|48|71|furniture|epic
+bedroom-190|bedroom|Beds, Single C|71|55|furniture|epic
+bedroom-191|bedroom|Beds, Single C|71|55|furniture|epic
+bedroom-192|bedroom|Beds, Single C|71|55|furniture|epic
+bedroom-193|bedroom|Beds, Single C|71|55|furniture|epic
+bedroom-194|bedroom|Beds, Single Headboards|48|32|furniture|rare
+bedroom-195|bedroom|Beds, Single Headboards|6|274|furniture|rare
+bedroom-196|bedroom|Beds, Single Headboards|12|274|furniture|epic
+bedroom-197|bedroom|Beds, Single Headboards|6|274|furniture|rare
+bedroom-198|bedroom|Beds, Single Headboards|48|35|furniture|rare
+bedroom-199|bedroom|Beds, Single Headboards|48|18|furniture|rare
+bedroom-200|bedroom|Beds, Single Headboards|48|17|furniture|rare
+bedroom-201|bedroom|Beds, Single Headboards|48|18|furniture|rare
+bedroom-202|bedroom|Beds, Single Headboards|48|17|furniture|rare
+bedroom-203|bedroom|Beds, Single Headboards|48|18|furniture|rare
+bedroom-204|bedroom|Beds, Single Headboards|48|17|furniture|rare
+bedroom-205|bedroom|Beds, Single Mattresses|72|49|furniture|epic
+bedroom-206|bedroom|Beds, Single Mattresses|44|70|furniture|epic
+bedroom-207|bedroom|Beds, Single Mattresses|44|14|furniture|common
+bedroom-208|bedroom|Beds, Single Mattresses|44|25|furniture|rare
+bedroom-209|bedroom|Beds, Single Mattresses|15|49|furniture|rare
+bedroom-210|bedroom|Beds, Single Mattresses|15|49|furniture|rare
+bedroom-211|bedroom|Single Beds B|121|216|furniture|epic
+bedroom-212|bedroom|Single Beds B|121|216|furniture|epic
+kitchen-001|kitchen|Bin|14|31|furniture|common
+kitchen-002|kitchen|Bin|14|31|furniture|common
+kitchen-003|kitchen|Bin|14|31|furniture|common
+kitchen-004|kitchen|Bin|18|28|furniture|common
+kitchen-005|kitchen|Bin|18|28|furniture|common
+kitchen-006|kitchen|Bin|18|28|furniture|common
+kitchen-007|kitchen|Bin|14|53|furniture|rare
+kitchen-008|kitchen|Bin|14|53|furniture|rare
+kitchen-009|kitchen|Bin|14|53|furniture|rare
+kitchen-010|kitchen|Bin|16|19|furniture|common
+kitchen-011|kitchen|Bin|16|19|furniture|common
+kitchen-012|kitchen|Bin|16|19|furniture|common
+kitchen-013|kitchen|Bin|18|28|furniture|common
+kitchen-014|kitchen|Bin|18|28|furniture|common
+kitchen-015|kitchen|Bin|18|28|furniture|common
+kitchen-016|kitchen|Bin|12|21|furniture|common
+kitchen-017|kitchen|Bin|12|21|furniture|common
+kitchen-018|kitchen|Bin|12|21|furniture|common
+kitchen-019|kitchen|Bin|16|19|furniture|common
+kitchen-020|kitchen|Bin|16|19|furniture|common
+kitchen-021|kitchen|Bin|16|19|furniture|common
+kitchen-022|kitchen|Cabinet|224|165|furniture|epic
+kitchen-023|kitchen|Cabinet|128|27|furniture|epic
+kitchen-024|kitchen|Cabinet|28|56|furniture|rare
+kitchen-025|kitchen|Cabinet|28|56|furniture|rare
+kitchen-026|kitchen|Cabinet|28|56|furniture|rare
+kitchen-027|kitchen|Cabinet|128|43|furniture|epic
+curious-001|curious|Cauldron|27|30|furniture|rare
+curious-002|curious|Cauldron|31|127|furniture|epic
+fireside-005|fireside|Chest|64|64|furniture|epic
+fireside-006|fireside|Chest|28|27|furniture|rare
+fireside-007|fireside|Chest|28|27|furniture|rare
+fireside-008|fireside|Chest|28|27|furniture|rare
+fireside-009|fireside|Chest|28|27|furniture|rare
+fireside-010|fireside|Chest|28|22|furniture|common
+fireside-011|fireside|Chest|28|22|furniture|common
+fireside-012|fireside|Chest|64|24|furniture|rare
+festive-001|festive|Christmas Tree|85|114|furniture|epic
+festive-002|festive|Christmas Tree|85|114|furniture|epic
+study-001|study|Clock, Grandfather|18|71|furniture|rare
+study-002|study|Clock, Grandfather|18|71|furniture|rare
+study-003|study|Clock, Grandfather|18|71|furniture|rare
+study-004|study|Copy Machine|53|45|furniture|rare
+kitchen-028|kitchen|Countertop|186|210|furniture|epic
+study-005|study|Crate|64|128|furniture|epic
+study-006|study|Crate|19|23|furniture|common
+study-007|study|Crate|22|24|furniture|common
+study-008|study|Crate|19|23|furniture|common
+study-009|study|Crate|22|24|furniture|common
+study-010|study|Desk, Office|52|90|furniture|epic
+study-011|study|Desk, Office|192|40|furniture|epic
+study-012|study|Desk, Office|58|35|furniture|rare
+study-013|study|Desk, Office|58|35|furniture|rare
+study-014|study|Desk, Office|58|35|furniture|rare
+study-015|study|Desk, Office|58|35|furniture|rare
+bedroom-213|bedroom|Desk, Vanity|56|65|furniture|epic
+bedroom-214|bedroom|Dresser|62|40|furniture|rare
+bedroom-215|bedroom|Dresser|62|40|furniture|rare
+bedroom-216|bedroom|Dresser|62|40|furniture|rare
+bedroom-217|bedroom|Dresser|22|72|furniture|rare
+bedroom-218|bedroom|Dresser|44|72|furniture|epic
+bedroom-219|bedroom|Dresser|44|72|furniture|epic
+bedroom-220|bedroom|Dresser|22|72|furniture|rare
+bedroom-221|bedroom|Dresser|62|40|furniture|rare
+bedroom-222|bedroom|Dresser|62|40|furniture|rare
+bedroom-223|bedroom|Dresser|62|40|furniture|rare
+bedroom-224|bedroom|Dresser|62|40|furniture|rare
+bedroom-225|bedroom|Dresser|62|40|furniture|rare
+bedroom-226|bedroom|Dresser|62|40|furniture|rare
+bedroom-227|bedroom|Dresser|22|72|furniture|rare
+bedroom-228|bedroom|Dresser|44|72|furniture|epic
+bedroom-229|bedroom|Dresser|44|72|furniture|epic
+bedroom-230|bedroom|Dresser|22|72|furniture|rare
+bedroom-231|bedroom|Dresser|62|40|furniture|rare
+bedroom-232|bedroom|Dresser|62|40|furniture|rare
+bedroom-233|bedroom|Dresser|62|40|furniture|rare
+bedroom-234|bedroom|Dresser|62|40|furniture|rare
+bedroom-235|bedroom|Dresser|22|72|furniture|rare
+bedroom-236|bedroom|Dresser|22|72|furniture|rare
+bedroom-237|bedroom|Dresser|62|40|furniture|rare
+bedroom-238|bedroom|End Table|20|24|furniture|common
+bedroom-239|bedroom|End Table|20|24|furniture|common
+bedroom-240|bedroom|End Table|20|24|furniture|common
+bedroom-241|bedroom|End Table|20|24|furniture|common
+bedroom-242|bedroom|End Table|20|24|furniture|common
+bedroom-243|bedroom|End Table|20|24|furniture|common
+bedroom-244|bedroom|End Table|20|24|furniture|common
+bedroom-245|bedroom|End Table|20|24|furniture|common
+bedroom-246|bedroom|End Table|20|24|furniture|common
+bedroom-247|bedroom|End Table|20|24|furniture|common
+bedroom-248|bedroom|End Table|20|24|furniture|common
+bedroom-249|bedroom|End Table|20|24|furniture|common
+bedroom-250|bedroom|End Table|20|24|furniture|common
+bedroom-251|bedroom|End Table|20|24|furniture|common
+fireside-013|fireside|Fireplace, Cast Iron|96|91|furniture|epic
+fireside-014|fireside|Fireplace|72|70|furniture|epic
+fireside-015|fireside|Fireplace|94|72|furniture|epic
+fireside-016|fireside|Fireplace|80|74|furniture|epic
+kitchen-029|kitchen|Fridge|30|64|furniture|rare
+kitchen-030|kitchen|Fridge|30|64|furniture|rare
+kitchen-031|kitchen|Fridge|32|62|furniture|rare
+maker-001|maker|Ladder|26|83|furniture|rare
+maker-002|maker|Ladder|48|83|furniture|epic
+bedroom-252|bedroom|Lighting, Floor|96|57|furniture|epic
+bedroom-253|bedroom|Lighting, Floor|24|49|furniture|rare
+bedroom-254|bedroom|Lighting, Floor|24|49|furniture|rare
+bedroom-255|bedroom|Lighting, Floor|63|52|furniture|epic
+bedroom-256|bedroom|Lighting, Floor|20|52|furniture|rare
+bedroom-257|bedroom|Lighting, Floor|20|52|furniture|rare
+bedroom-258|bedroom|Lighting, Floor|24|49|furniture|rare
+bedroom-259|bedroom|Lighting, Floor|24|49|furniture|rare
+bedroom-260|bedroom|Lighting, Floor|18|52|furniture|rare
+bedroom-261|bedroom|Lighting, Floor|18|52|furniture|rare
+bedroom-262|bedroom|Lighting, Floor|24|51|furniture|rare
+bedroom-263|bedroom|Lighting, Floor|24|51|furniture|rare
+bedroom-264|bedroom|Lighting, Floor|12|50|furniture|common
+bedroom-265|bedroom|Lighting, Floor|12|50|furniture|common
+garden-001|garden|Lighting, Outdoors|18|80|furniture|rare
+garden-002|garden|Lighting, Outdoors|18|80|furniture|rare
+bedroom-266|bedroom|Mirror, Standing|39|62|furniture|rare
+bedroom-267|bedroom|Mirror, Standing|39|62|furniture|rare
+bedroom-268|bedroom|Mirror, Standing|39|62|furniture|rare
+bedroom-269|bedroom|Mirror, Standing|39|62|furniture|rare
+kitchen-032|kitchen|Oven, Modern|32|41|furniture|rare
+garden-003|garden|Planter|160|84|furniture|epic
+lounge-001|lounge|Diamond Rug, tiling|384|192|furniture|epic
+lounge-002|lounge|Rainbow Checkered Rug|56|75|furniture|epic
+lounge-003|lounge|Rainbow Checkered Rug|100|42|furniture|epic
+lounge-004|lounge|Rainbow Checkered Rug|56|75|furniture|epic
+lounge-005|lounge|Rainbow Checkered Rug|100|42|furniture|epic
+lounge-006|lounge|Rainbow Rug|92|62|furniture|epic
+lounge-007|lounge|Rainbow Rug|83|70|furniture|epic
+lounge-008|lounge|Rainbow Rug|83|70|furniture|epic
+lounge-009|lounge|Rainbow Rug|92|62|furniture|epic
+lounge-010|lounge|Swirling Vine Rug|160|128|furniture|epic
+maker-003|maker|Sawhorse|60|96|furniture|epic
+kitchen-033|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-034|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-035|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-036|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-037|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-038|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-039|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-040|kitchen|Bar Stools|24|32|furniture|rare
+kitchen-041|kitchen|Chair, Dining A|26|256|furniture|epic
+kitchen-042|kitchen|Chair, Dining A|22|256|furniture|epic
+kitchen-043|kitchen|Chair, Dining A|22|256|furniture|epic
+kitchen-044|kitchen|Chair, Dining A|7|19|furniture|common
+kitchen-045|kitchen|Chair, Dining A|7|19|furniture|common
+kitchen-046|kitchen|Chair, Dining A|26|18|furniture|common
+kitchen-047|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-048|kitchen|Chair, Dining A|26|18|furniture|common
+kitchen-049|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-050|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-051|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-052|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-053|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-054|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-055|kitchen|Chair, Dining A|24|21|furniture|common
+kitchen-056|kitchen|Chair, Dining B|26|256|furniture|epic
+kitchen-057|kitchen|Chair, Dining B|26|20|furniture|common
+kitchen-058|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-059|kitchen|Chair, Dining B|26|20|furniture|common
+kitchen-060|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-061|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-062|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-063|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-064|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-065|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-066|kitchen|Chair, Dining B|24|21|furniture|common
+kitchen-067|kitchen|Chair, Dining C|24|256|furniture|epic
+kitchen-068|kitchen|Chair, Dining C|22|256|furniture|epic
+kitchen-069|kitchen|Chair, Dining C|22|256|furniture|epic
+kitchen-070|kitchen|Chair, Dining C|24|27|furniture|common
+kitchen-071|kitchen|Chair, Dining D|26|256|furniture|epic
+kitchen-072|kitchen|Chair, Dining D|22|256|furniture|epic
+kitchen-073|kitchen|Chair, Dining D|22|256|furniture|epic
+kitchen-074|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-075|kitchen|Chair, Dining D|18|9|furniture|common
+kitchen-076|kitchen|Chair, Dining D|18|9|furniture|common
+kitchen-077|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-078|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-079|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-080|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-081|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-082|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-083|kitchen|Chair, Dining D|24|27|furniture|common
+kitchen-084|kitchen|Chair, Dining E|26|128|furniture|epic
+kitchen-085|kitchen|Chair, Dining E|22|128|furniture|rare
+kitchen-086|kitchen|Chair, Dining E|22|128|furniture|rare
+kitchen-087|kitchen|Chair, Dining E|26|15|furniture|common
+kitchen-088|kitchen|Chair, Dining E|24|21|furniture|common
+kitchen-089|kitchen|Chair, Dining E|26|15|furniture|common
+kitchen-090|kitchen|Chair, Dining E|24|21|furniture|common
+kitchen-091|kitchen|Chair, Dining E|26|15|furniture|common
+kitchen-092|kitchen|Chair, Dining E|24|21|furniture|common
+kitchen-093|kitchen|Chair, Dining E|26|15|furniture|common
+kitchen-094|kitchen|Chair, Dining E|24|21|furniture|common
+kitchen-095|kitchen|Chair, Dining F|24|128|furniture|epic
+kitchen-096|kitchen|Chair, Dining F|22|128|furniture|rare
+kitchen-097|kitchen|Chair, Dining F|22|128|furniture|rare
+kitchen-098|kitchen|Chair, Dining F|25|16|furniture|common
+kitchen-099|kitchen|Chair, Dining F|24|22|furniture|common
+kitchen-100|kitchen|Chair, Dining F|25|16|furniture|common
+kitchen-101|kitchen|Chair, Dining F|24|22|furniture|common
+kitchen-102|kitchen|Chair, Dining F|25|16|furniture|common
+kitchen-103|kitchen|Chair, Dining F|24|22|furniture|common
+kitchen-104|kitchen|Chair, Dining F|25|16|furniture|common
+kitchen-105|kitchen|Chair, Dining F|24|22|furniture|common
+lounge-011|lounge|Chair, Office|24|64|furniture|rare
+lounge-012|lounge|Chair, Office|24|29|furniture|common
+lounge-013|lounge|Chair, Office|24|34|furniture|rare
+lounge-014|lounge|Chair, Sofa A|22|256|furniture|epic
+lounge-015|lounge|Chair, Sofa A|23|256|furniture|epic
+lounge-016|lounge|Chair, Sofa A|23|256|furniture|epic
+lounge-017|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-018|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-019|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-020|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-021|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-022|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-023|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-024|lounge|Chair, Sofa A|22|28|furniture|common
+lounge-025|lounge|Chair, Sofa B|27|256|furniture|epic
+lounge-026|lounge|Chair, Sofa B|24|256|furniture|epic
+lounge-027|lounge|Chair, Sofa B|24|256|furniture|epic
+lounge-028|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-029|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-030|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-031|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-032|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-033|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-034|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-035|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-036|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-037|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-038|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-039|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-040|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-041|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-042|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-043|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-044|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-045|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-046|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-047|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-048|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-049|lounge|Chair, Sofa B|26|28|furniture|rare
+lounge-050|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-051|lounge|Chair, Sofa B|22|14|furniture|common
+lounge-052|lounge|Chair, Sofa C|54|512|furniture|epic
+lounge-053|lounge|Chair, Sofa C|127|512|furniture|epic
+lounge-054|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-055|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-056|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-057|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-058|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-059|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-060|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-061|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-062|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-063|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-064|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-065|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-066|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-067|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-068|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-069|lounge|Chair, Sofa C|35|35|furniture|rare
+lounge-070|lounge|Chair, Sofa D|256|128|furniture|epic
+lounge-071|lounge|Chair, Sofa E|256|128|furniture|epic
+lounge-072|lounge|Chair, Sofa F|256|128|furniture|epic
+lounge-073|lounge|Chair, Sofa G|256|128|furniture|epic
+lounge-074|lounge|Loveseat, Small - Casual Patterned A|52|32|furniture|rare
+lounge-075|lounge|Loveseat, Small - Casual Patterned A|52|32|furniture|rare
+lounge-076|lounge|Loveseat, Small - Casual Patterned A|52|32|furniture|rare
+lounge-077|lounge|Loveseat, Small - Casual Patterned A|52|32|furniture|rare
+lounge-078|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-079|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-080|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-081|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-082|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-083|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-084|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-085|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-086|lounge|Loveseat, Small - Casual Patterned A|53|63|furniture|epic
+lounge-087|lounge|Loveseat, Small - Casual Patterned A|53|63|furniture|epic
+lounge-088|lounge|Loveseat, Small - Casual Patterned A|53|63|furniture|epic
+lounge-089|lounge|Loveseat, Small - Casual Patterned A|53|63|furniture|epic
+lounge-090|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-091|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-092|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-093|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-094|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-095|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-096|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-097|lounge|Loveseat, Small - Casual Patterned A|25|55|furniture|rare
+lounge-098|lounge|Loveseat, Small - Casual Patterned A|53|30|furniture|rare
+lounge-099|lounge|Loveseat, Small - Casual Patterned A|53|30|furniture|rare
+lounge-100|lounge|Loveseat, Small - Casual Patterned A|53|30|furniture|rare
+lounge-101|lounge|Loveseat, Small - Casual Patterned A|53|30|furniture|rare
+lounge-102|lounge|Loveseat, Small - Casual Patterned B|52|32|furniture|rare
+lounge-103|lounge|Loveseat, Small - Casual Patterned B|52|32|furniture|rare
+lounge-104|lounge|Loveseat, Small - Casual Patterned B|52|32|furniture|rare
+lounge-105|lounge|Loveseat, Small - Casual Patterned B|52|32|furniture|rare
+lounge-106|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-107|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-108|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-109|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-110|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-111|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-112|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-113|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-114|lounge|Loveseat, Small - Casual Patterned B|53|63|furniture|epic
+lounge-115|lounge|Loveseat, Small - Casual Patterned B|53|63|furniture|epic
+lounge-116|lounge|Loveseat, Small - Casual Patterned B|53|63|furniture|epic
+lounge-117|lounge|Loveseat, Small - Casual Patterned B|53|63|furniture|epic
+lounge-118|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-119|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-120|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-121|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-122|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-123|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-124|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-125|lounge|Loveseat, Small - Casual Patterned B|25|55|furniture|rare
+lounge-126|lounge|Loveseat, Small - Casual Patterned B|53|30|furniture|rare
+lounge-127|lounge|Loveseat, Small - Casual Patterned B|53|30|furniture|rare
+lounge-128|lounge|Loveseat, Small - Casual Patterned B|53|30|furniture|rare
+lounge-129|lounge|Loveseat, Small - Casual Patterned B|53|30|furniture|rare
+lounge-130|lounge|Loveseat, Small - Casual Patterned C|52|32|furniture|rare
+lounge-131|lounge|Loveseat, Small - Casual Patterned C|52|32|furniture|rare
+lounge-132|lounge|Loveseat, Small - Casual Patterned C|52|32|furniture|rare
+lounge-133|lounge|Loveseat, Small - Casual Patterned C|52|32|furniture|rare
+lounge-134|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-135|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-136|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-137|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-138|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-139|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-140|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-141|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-142|lounge|Loveseat, Small - Casual Patterned C|53|63|furniture|epic
+lounge-143|lounge|Loveseat, Small - Casual Patterned C|53|63|furniture|epic
+lounge-144|lounge|Loveseat, Small - Casual Patterned C|53|63|furniture|epic
+lounge-145|lounge|Loveseat, Small - Casual Patterned C|53|63|furniture|epic
+lounge-146|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-147|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-148|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-149|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-150|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-151|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-152|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-153|lounge|Loveseat, Small - Casual Patterned C|25|55|furniture|rare
+lounge-154|lounge|Loveseat, Small - Casual Patterned C|53|30|furniture|rare
+lounge-155|lounge|Loveseat, Small - Casual Patterned C|53|30|furniture|rare
+lounge-156|lounge|Loveseat, Small - Casual Patterned C|53|30|furniture|rare
+lounge-157|lounge|Loveseat, Small - Casual Patterned C|53|30|furniture|rare
+lounge-158|lounge|Loveseat, Small - Casual Patterned D|52|32|furniture|rare
+lounge-159|lounge|Loveseat, Small - Casual Patterned D|52|32|furniture|rare
+lounge-160|lounge|Loveseat, Small - Casual Patterned D|52|32|furniture|rare
+lounge-161|lounge|Loveseat, Small - Casual Patterned D|52|32|furniture|rare
+lounge-162|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-163|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-164|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-165|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-166|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-167|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-168|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-169|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-170|lounge|Loveseat, Small - Casual Patterned D|53|63|furniture|epic
+lounge-171|lounge|Loveseat, Small - Casual Patterned D|53|63|furniture|epic
+lounge-172|lounge|Loveseat, Small - Casual Patterned D|53|63|furniture|epic
+lounge-173|lounge|Loveseat, Small - Casual Patterned D|53|63|furniture|epic
+lounge-174|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-175|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-176|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-177|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-178|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-179|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-180|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-181|lounge|Loveseat, Small - Casual Patterned D|25|55|furniture|rare
+lounge-182|lounge|Loveseat, Small - Casual Patterned D|53|30|furniture|rare
+lounge-183|lounge|Loveseat, Small - Casual Patterned D|53|30|furniture|rare
+lounge-184|lounge|Loveseat, Small - Casual Patterned D|53|30|furniture|rare
+lounge-185|lounge|Loveseat, Small - Casual Patterned D|53|30|furniture|rare
+lounge-186|lounge|Loveseat, Small - Casual Solid A|56|64|furniture|epic
+lounge-187|lounge|Loveseat, Small - Casual Solid A|56|64|furniture|epic
+lounge-188|lounge|Loveseat, Small - Casual Solid A|56|64|furniture|epic
+lounge-189|lounge|Loveseat, Small - Casual Solid A|56|64|furniture|epic
+lounge-190|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-191|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-192|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-193|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-194|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-195|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-196|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-197|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-198|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-199|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-200|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-201|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-202|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-203|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-204|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-205|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-206|lounge|Loveseat, Small - Casual Solid A|56|95|furniture|epic
+lounge-207|lounge|Loveseat, Small - Casual Solid A|56|95|furniture|epic
+lounge-208|lounge|Loveseat, Small - Casual Solid A|56|95|furniture|epic
+lounge-209|lounge|Loveseat, Small - Casual Solid A|56|95|furniture|epic
+lounge-210|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-211|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-212|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-213|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-214|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-215|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-216|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-217|lounge|Loveseat, Small - Casual Solid A|25|43|furniture|rare
+lounge-218|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-219|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-220|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-221|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-222|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-223|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-224|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-225|lounge|Loveseat, Small - Casual Solid A|25|12|furniture|common
+lounge-226|lounge|Loveseat, Small - Casual Solid A|56|30|furniture|rare
+lounge-227|lounge|Loveseat, Small - Casual Solid A|56|30|furniture|rare
+lounge-228|lounge|Loveseat, Small - Casual Solid A|56|30|furniture|rare
+lounge-229|lounge|Loveseat, Small - Casual Solid A|56|30|furniture|rare
+lounge-230|lounge|Loveseat, Small - Casual Solid B|256|255|furniture|epic
+lounge-231|lounge|Loveseat, Small - Casual Solid C|256|95|furniture|epic
+lounge-232|lounge|Loveseat, Small - Casual Solid C|256|126|furniture|epic
+lounge-233|lounge|Loveseat, Small - Casual Solid C|256|30|furniture|epic
+lounge-234|lounge|Loveseat, Small - Formal A|256|40|furniture|epic
+lounge-235|lounge|Loveseat, Small - Formal A|256|96|furniture|epic
+lounge-236|lounge|Loveseat, Small - Formal A|256|40|furniture|epic
+lounge-237|lounge|Loveseat, Small - Formal A|256|96|furniture|epic
+lounge-238|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-239|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-240|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-241|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-242|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-243|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-244|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-245|lounge|Ottoman, Long A|24|51|furniture|rare
+lounge-246|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-247|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-248|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-249|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-250|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-251|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-252|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-253|lounge|Ottoman, Long A|57|22|furniture|rare
+lounge-254|lounge|Ottoman, Medium A|128|30|furniture|epic
+lounge-255|lounge|Ottoman, Medium A|128|30|furniture|epic
+lounge-256|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-257|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-258|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-259|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-260|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-261|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-262|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-263|lounge|Ottoman, Small A|24|21|furniture|common
+lounge-264|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-265|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-266|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-267|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-268|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-269|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-270|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-271|lounge|Ottoman, Small B|24|22|furniture|common
+lounge-272|lounge|Sofa Set, Casual A|122|63|furniture|epic
+lounge-273|lounge|Sofa Set, Casual A|154|96|furniture|epic
+lounge-274|lounge|Sofa Set, Casual A|29|82|furniture|rare
+lounge-275|lounge|Sofa Set, Casual A|29|45|furniture|rare
+lounge-276|lounge|Sofa Set, Casual A|40|38|furniture|rare
+lounge-277|lounge|Sofa Set, Casual A|40|31|furniture|rare
+lounge-278|lounge|Sofa Set, Casual A|120|31|furniture|epic
+lounge-279|lounge|Sofa Set, Casual A|28|16|furniture|common
+lounge-280|lounge|Sofa, Casual A|124|224|furniture|epic
+lounge-281|lounge|Sofa, Casual A|154|96|furniture|epic
+lounge-282|lounge|Sofa, Casual A|154|96|furniture|epic
+lounge-283|lounge|Sofa, Casual A|29|82|furniture|rare
+lounge-284|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-285|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-286|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-287|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-288|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-289|lounge|Sofa, Casual A|154|96|furniture|epic
+lounge-290|lounge|Sofa, Casual A|154|96|furniture|epic
+lounge-291|lounge|Sofa, Casual A|29|82|furniture|rare
+lounge-292|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-293|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-294|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-295|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-296|lounge|Sofa, Casual A|28|16|furniture|common
+lounge-297|lounge|Sofa, Casual A|28|16|furniture|common
+curious-003|curious|Thrones|320|64|furniture|epic
+curious-004|curious|Thrones|30|75|furniture|rare
+curious-005|curious|Thrones|61|75|furniture|epic
+curious-006|curious|Thrones|61|75|furniture|epic
+curious-007|curious|Thrones|61|75|furniture|epic
+curious-008|curious|Thrones|61|75|furniture|epic
+curious-009|curious|Thrones|30|75|furniture|rare
+maker-004|maker|Dress Form|30|64|furniture|rare
+maker-005|maker|Dress Form|28|64|furniture|rare
+maker-006|maker|Dress Form|27|64|furniture|rare
+maker-007|maker|Dress Form|23|64|furniture|rare
+maker-008|maker|Dress Form|27|64|furniture|rare
+maker-009|maker|Dress Form|23|64|furniture|rare
+maker-010|maker|Loom|51|60|furniture|epic
+maker-011|maker|Loom|35|38|furniture|rare
+maker-012|maker|Loom|35|30|furniture|rare
+maker-013|maker|Loom|35|22|furniture|rare
+maker-014|maker|Loom|35|13|furniture|common
+maker-015|maker|Loom|35|38|furniture|rare
+maker-016|maker|Loom|35|38|furniture|rare
+maker-017|maker|Loom|35|30|furniture|rare
+maker-018|maker|Loom|35|30|furniture|rare
+maker-019|maker|Loom|35|22|furniture|rare
+maker-020|maker|Loom|35|22|furniture|rare
+maker-021|maker|Loom|35|13|furniture|common
+maker-022|maker|Loom|35|13|furniture|common
+maker-023|maker|Loom|35|38|furniture|rare
+maker-024|maker|Loom|35|38|furniture|rare
+maker-025|maker|Loom|35|30|furniture|rare
+maker-026|maker|Loom|35|30|furniture|rare
+maker-027|maker|Loom|35|22|furniture|rare
+maker-028|maker|Loom|35|22|furniture|rare
+maker-029|maker|Loom|35|13|furniture|common
+maker-030|maker|Loom|35|13|furniture|common
+maker-031|maker|Loom|35|38|furniture|rare
+maker-032|maker|Loom|35|38|furniture|rare
+maker-033|maker|Loom|35|30|furniture|rare
+maker-034|maker|Loom|35|30|furniture|rare
+maker-035|maker|Loom|35|22|furniture|rare
+maker-036|maker|Loom|35|22|furniture|rare
+maker-037|maker|Loom|35|13|furniture|common
+maker-038|maker|Loom|35|13|furniture|common
+maker-039|maker|Loom|35|38|furniture|rare
+maker-040|maker|Loom|35|38|furniture|rare
+maker-041|maker|Loom|35|30|furniture|rare
+maker-042|maker|Loom|35|30|furniture|rare
+maker-043|maker|Loom|35|22|furniture|rare
+maker-044|maker|Loom|35|22|furniture|rare
+maker-045|maker|Loom|35|13|furniture|common
+maker-046|maker|Loom|35|13|furniture|common
+maker-047|maker|Spinning Wheel|34|26|furniture|rare
+maker-048|maker|Spinning Wheel|34|26|furniture|rare
+maker-049|maker|Spinning Wheel|34|26|furniture|rare
+maker-050|maker|Spinning Wheel|34|26|furniture|rare
+maker-051|maker|Spinning Wheel|29|38|furniture|rare
+maker-052|maker|Spinning Wheel|40|30|furniture|rare
+maker-053|maker|Spinning Wheel|40|30|furniture|rare
+maker-054|maker|Spinning Wheel|40|30|furniture|rare
+maker-055|maker|Spinning Wheel|41|30|furniture|rare
+maker-056|maker|Workbench, Sewing Machine|64|50|furniture|epic
+maker-057|maker|Workbench, Sewing|62|54|furniture|epic
+maker-058|maker|Workbench, Sewing|62|47|furniture|rare
+maker-059|maker|Workbench, Sewing|62|27|furniture|rare
+maker-060|maker|Workbench, Sewing|30|90|furniture|rare
+maker-061|maker|Workbench, Sewing|30|90|furniture|rare
+maker-062|maker|Workbench, Sewing|30|90|furniture|rare
+maker-063|maker|Workbench, Sewing|62|27|furniture|rare
+maker-064|maker|Workbench, Sewing|22|6|furniture|common
+maker-065|maker|Workbench, Sewing|22|6|furniture|common
+maker-066|maker|Workbench, Sewing|22|6|furniture|common
+maker-067|maker|Shavehorse|52|37|furniture|rare
+maker-068|maker|Shavehorse|52|37|furniture|rare
+study-016|study|Shelf|32|96|furniture|epic
+study-017|study|Shelf|96|20|furniture|rare
+study-018|study|Shelf|32|21|furniture|common
+study-019|study|Shelf|32|59|furniture|rare
+study-020|study|Shelf|62|21|furniture|rare
+study-021|study|Shelf|64|21|furniture|rare
+kitchen-106|kitchen|Sink, Countertop|61|29|furniture|rare
+kitchen-107|kitchen|Sink, Countertop|22|20|furniture|common
+kitchen-108|kitchen|Sink, Countertop|22|13|furniture|common
+kitchen-109|kitchen|Sink, Pedestal|22|33|furniture|rare
+kitchen-110|kitchen|Sink, Pedestal|22|33|furniture|rare
+kitchen-111|kitchen|Sink, Pedestal|22|33|furniture|rare
+kitchen-112|kitchen|Sink, Pedestal|22|33|furniture|rare
+kitchen-113|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-114|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-115|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-116|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-117|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-118|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-119|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-120|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-121|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-122|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-123|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-124|kitchen|Sink, Pedestal|14|35|furniture|common
+kitchen-125|kitchen|Sink, Pedestal|22|34|furniture|rare
+kitchen-126|kitchen|Sink, Pedestal|22|34|furniture|rare
+kitchen-127|kitchen|Sink, Pedestal|22|34|furniture|rare
+kitchen-128|kitchen|Sink, Pedestal|22|34|furniture|rare
+kitchen-129|kitchen|Sink, Pedestal|22|34|furniture|rare
+kitchen-130|kitchen|Sink, Pedestal|22|34|furniture|rare
+forge-001|forge|Anvils|46|27|furniture|rare
+forge-002|forge|Anvils|32|24|furniture|rare
+forge-003|forge|Anvils|30|20|furniture|common
+forge-004|forge|Anvils|128|24|furniture|epic
+forge-005|forge|Bellows|36|11|furniture|common
+forge-006|forge|Bellows|29|10|furniture|common
+forge-007|forge|Bellows|20|9|furniture|common
+forge-008|forge|Bellows|7|7|furniture|common
+forge-009|forge|Bellows|20|9|furniture|common
+forge-010|forge|Bellows|13|6|furniture|common
+forge-011|forge|Bellows|26|6|furniture|common
+forge-012|forge|Bellows|13|6|furniture|common
+forge-013|forge|Bellows|75|25|furniture|rare
+forge-014|forge|Bellows|43|22|furniture|rare
+forge-015|forge|Bellows|43|20|furniture|rare
+forge-016|forge|Bellows|43|25|furniture|rare
+forge-017|forge|Bellows|43|22|furniture|rare
+forge-018|forge|Bellows|43|20|furniture|rare
+forge-019|forge|Coal Piles|113|51|furniture|epic
+forge-020|forge|Coal Piles|102|47|furniture|epic
+forge-021|forge|Coal Piles|60|45|furniture|rare
+forge-022|forge|Coal Piles|91|47|furniture|epic
+forge-023|forge|Coal Piles|67|45|furniture|epic
+forge-024|forge|Coal Piles|32|36|furniture|rare
+forge-025|forge|Coal Piles|51|36|furniture|rare
+forge-026|forge|Coal Piles|30|21|furniture|common
+forge-027|forge|Coal Piles|288|56|furniture|epic
+forge-028|forge|Forge A|256|103|furniture|epic
+forge-029|forge|Forge A|7|7|furniture|common
+forge-030|forge|Forge A|18|31|furniture|common
+forge-031|forge|Forge A|18|26|furniture|common
+forge-032|forge|Forge A|18|52|furniture|rare
+forge-033|forge|Forge A|18|20|furniture|common
+forge-034|forge|Forge A|512|116|furniture|epic
+forge-035|forge|Furnace A|128|64|furniture|epic
+forge-036|forge|Furnace A|51|20|furniture|rare
+forge-037|forge|Furnace A|51|20|furniture|rare
+forge-038|forge|Furnace A|51|20|furniture|rare
+forge-039|forge|Furnace A|51|19|furniture|rare
+forge-040|forge|Furnace A|51|19|furniture|rare
+forge-041|forge|Furnace A|49|16|furniture|rare
+forge-042|forge|Furnace A|29|23|furniture|common
+forge-043|forge|Furnace A|25|28|furniture|rare
+forge-044|forge|Furnace A|15|35|furniture|common
+forge-045|forge|Furnace A|6|38|furniture|common
+forge-046|forge|Furnace A|29|23|furniture|common
+forge-047|forge|Furnace A|25|28|furniture|rare
+forge-048|forge|Furnace A|15|35|furniture|common
+forge-049|forge|Furnace A|6|38|furniture|common
+forge-050|forge|Grindstone|96|30|furniture|rare
+forge-051|forge|Smelter|64|40|furniture|rare
+forge-052|forge|Smelter|192|40|furniture|epic
+forge-053|forge|Workbench, Smith|125|64|furniture|epic
+forge-054|forge|Workbench, Smith|61|62|furniture|epic
+forge-055|forge|Workbench, Smith|63|61|furniture|epic
+forge-056|forge|Workbench, Smith|60|50|furniture|epic
+forge-057|forge|Workbench, Smith|58|50|furniture|rare
+bedroom-270|bedroom|Standing Screen|256|64|furniture|epic
+bedroom-271|bedroom|Standing Screen|31|86|furniture|rare
+curious-010|curious|Stone Slab|64|26|furniture|rare
+curious-011|curious|Stone Slab|49|27|furniture|rare
+curious-012|curious|Stone Slab|64|33|furniture|rare
+curious-013|curious|Stone Slab|49|32|furniture|rare
+lounge-298|lounge|TV, Widescreen - No Service|96|54|furniture|epic
+lounge-299|lounge|TV, Widescreen - No Service|80|45|furniture|epic
+lounge-300|lounge|TV, Widescreen - No Service|64|36|furniture|rare
+lounge-301|lounge|TV, Widescreen - No Service|48|27|furniture|rare
+lounge-302|lounge|TV, Widescreen - No Service|32|18|furniture|common
+lounge-303|lounge|TV, Widescreen - No Service|96|54|furniture|epic
+lounge-304|lounge|TV, Widescreen - No Service|80|45|furniture|epic
+lounge-305|lounge|TV, Widescreen - No Service|64|36|furniture|rare
+lounge-306|lounge|TV, Widescreen - No Service|48|27|furniture|rare
+lounge-307|lounge|TV, Widescreen - No Service|32|18|furniture|common
+lounge-308|lounge|TV, Widescreen - No Service|96|54|furniture|epic
+lounge-309|lounge|TV, Widescreen - No Service|80|45|furniture|epic
+lounge-310|lounge|TV, Widescreen - No Service|64|36|furniture|rare
+lounge-311|lounge|TV, Widescreen - No Service|48|27|furniture|rare
+lounge-312|lounge|TV, Widescreen - No Service|32|18|furniture|common
+lounge-313|lounge|TV, Widescreen - No Service|96|54|furniture|epic
+lounge-314|lounge|TV, Widescreen - No Service|80|45|furniture|epic
+lounge-315|lounge|TV, Widescreen - No Service|64|36|furniture|rare
+lounge-316|lounge|TV, Widescreen - No Service|48|27|furniture|rare
+lounge-317|lounge|TV, Widescreen - No Service|32|18|furniture|common
+lounge-318|lounge|TV, Widescreen|100|61|furniture|epic
+lounge-319|lounge|TV, Widescreen|84|52|furniture|epic
+lounge-320|lounge|TV, Widescreen|68|43|furniture|rare
+lounge-321|lounge|TV, Widescreen|52|34|furniture|rare
+lounge-322|lounge|TV, Widescreen|36|25|furniture|rare
+lounge-323|lounge|TV, Widescreen|32|11|furniture|common
+lounge-324|lounge|TV, Widescreen|24|10|furniture|common
+lounge-325|lounge|Table, Card|128|61|furniture|epic
+lounge-326|lounge|Table, Card|128|61|furniture|epic
+lounge-327|lounge|Table, Card|128|61|furniture|epic
+kitchen-131|kitchen|Table, Ornate Wood|64|32|furniture|rare
+kitchen-132|kitchen|Table, Ornate Wood|16|46|furniture|rare
+kitchen-133|kitchen|Table, Ornate Wood|80|112|furniture|epic
+kitchen-134|kitchen|Table, Ornate Wood|48|25|furniture|rare
+kitchen-135|kitchen|Table, Ornate Wood|48|64|furniture|epic
+maker-069|maker|Table, Rough Wood|80|42|furniture|epic
+maker-070|maker|Table, Rough Wood|96|32|furniture|epic
+maker-071|maker|Table, Rough Wood|29|86|furniture|rare
+maker-072|maker|Table, Rough Wood|29|86|furniture|rare
+maker-073|maker|Table, Rough Wood|29|86|furniture|rare
+maker-074|maker|Table, Rough Wood|80|42|furniture|epic
+maker-075|maker|Table, Rough Wood|80|42|furniture|epic
+maker-076|maker|Table, Workshop|127|116|furniture|epic
+garden-004|garden|Trough|128|320|furniture|epic
+garden-005|garden|Trough|62|320|furniture|epic
+garden-006|garden|Trough|57|38|furniture|rare
+garden-007|garden|Trough|59|38|furniture|rare
+garden-008|garden|Trough|57|38|furniture|rare
+garden-009|garden|Trough|59|38|furniture|rare
+garden-010|garden|Trough|57|38|furniture|rare
+garden-011|garden|Trough|59|38|furniture|rare
+garden-012|garden|Trough|57|38|furniture|rare
+garden-013|garden|Trough|59|38|furniture|rare
+garden-014|garden|Trough|57|38|furniture|rare
+garden-015|garden|Trough|59|38|furniture|rare
+lounge-328|lounge|Vase-Studies|22|45|furniture|rare
+lounge-329|lounge|Vase-Studies|24|45|furniture|rare
+lounge-330|lounge|Vase-Studies|22|45|furniture|rare
+lounge-331|lounge|Vase-Studies|16|34|furniture|common
+lounge-332|lounge|Vase-Studies|20|34|furniture|common
+lounge-333|lounge|Vase-Studies|28|36|furniture|rare
+lounge-334|lounge|Vase-Studies|28|36|furniture|rare
+lounge-335|lounge|Vase-Studies|28|36|furniture|rare
+lounge-336|lounge|Vase-Studies|28|36|furniture|rare
+lounge-337|lounge|Vase-Studies|24|36|furniture|rare
+lounge-338|lounge|Vase-Studies|24|36|furniture|rare
+lounge-339|lounge|Vase-Studies|24|36|furniture|rare
+lounge-340|lounge|Vase-Studies|26|37|furniture|rare
+lounge-341|lounge|Vase-Studies|26|37|furniture|rare
+lounge-342|lounge|Vase-Studies|26|37|furniture|rare
+study-022|study|Vending Machine|80|64|furniture|epic
+study-023|study|Vending Machine|80|64|furniture|epic
+kitchen-136|kitchen|Water Cooler|18|53|furniture|rare
+kitchen-137|kitchen|Water Cooler|16|53|furniture|rare
+kitchen-138|kitchen|Water Cooler|18|53|furniture|rare
+kitchen-139|kitchen|Water Cooler|16|53|furniture|rare
+curious-014|curious|Wolf Stone|128|127|furniture|epic
+maker-077|maker|Workbench, Carpentry|77|52|furniture|epic
+maker-078|maker|Workbench, Carpentry|40|88|furniture|epic
+maker-079|maker|Workbench, Carpentry|43|88|furniture|epic
+maker-080|maker|Workbench, Wire Drawing|26|20|furniture|common
+maker-081|maker|Workbench, Wire Drawing|32|17|furniture|common
+maker-082|maker|Workbench, Wire Drawing|63|57|furniture|epic
+curious-015|curious|Shopping Cart|30|30|furniture|rare
+curious-016|curious|Shopping Cart|30|30|furniture|rare
+lounge-343|lounge|Wheelchair, Black|32|30|furniture|rare
+lounge-344|lounge|Wheelchair, Black|26|23|furniture|common
+lounge-345|lounge|Wheelchair, Black|26|23|furniture|common
+lounge-346|lounge|Wheelchair, Black|32|34|furniture|rare
+lounge-347|lounge|Wheelchair, Black|22|25|furniture|common
+lounge-348|lounge|Wheelchair, Black|22|25|furniture|common
+lounge-349|lounge|Wheelchair, Black|32|42|furniture|rare
+lounge-350|lounge|Wheelchair, Black|32|34|furniture|rare
+lounge-351|lounge|Wheelchair, Black|22|25|furniture|common
+lounge-352|lounge|Wheelchair, Black|22|25|furniture|common
+lounge-353|lounge|Wheelchair, Blue|32|30|furniture|rare
+lounge-354|lounge|Wheelchair, Blue|26|23|furniture|common
+lounge-355|lounge|Wheelchair, Blue|26|23|furniture|common
+lounge-356|lounge|Wheelchair, Blue|32|34|furniture|rare
+lounge-357|lounge|Wheelchair, Blue|22|25|furniture|common
+lounge-358|lounge|Wheelchair, Blue|22|25|furniture|common
+lounge-359|lounge|Wheelchair, Blue|32|42|furniture|rare
+lounge-360|lounge|Wheelchair, Blue|32|34|furniture|rare
+lounge-361|lounge|Wheelchair, Blue|22|25|furniture|common
+lounge-362|lounge|Wheelchair, Blue|22|25|furniture|common
+lounge-363|lounge|Wheelchair, Pink|32|30|furniture|rare
+lounge-364|lounge|Wheelchair, Pink|26|23|furniture|common
+lounge-365|lounge|Wheelchair, Pink|26|23|furniture|common
+lounge-366|lounge|Wheelchair, Pink|32|34|furniture|rare
+lounge-367|lounge|Wheelchair, Pink|22|25|furniture|common
+lounge-368|lounge|Wheelchair, Pink|22|25|furniture|common
+lounge-369|lounge|Wheelchair, Pink|32|42|furniture|rare
+lounge-370|lounge|Wheelchair, Pink|32|34|furniture|rare
+lounge-371|lounge|Wheelchair, Pink|22|25|furniture|common
+lounge-372|lounge|Wheelchair, Pink|22|25|furniture|common
+lounge-373|lounge|Wheelchair, Tan|32|30|furniture|rare
+lounge-374|lounge|Wheelchair, Tan|26|23|furniture|common
+lounge-375|lounge|Wheelchair, Tan|26|23|furniture|common
+lounge-376|lounge|Wheelchair, Tan|32|34|furniture|rare
+lounge-377|lounge|Wheelchair, Tan|22|25|furniture|common
+lounge-378|lounge|Wheelchair, Tan|22|25|furniture|common
+lounge-379|lounge|Wheelchair, Tan|32|42|furniture|rare
+lounge-380|lounge|Wheelchair, Tan|32|34|furniture|rare
+lounge-381|lounge|Wheelchair, Tan|22|25|furniture|common
+lounge-382|lounge|Wheelchair, Tan|22|25|furniture|common
+lounge-383|lounge|Wheelchair, White|32|30|furniture|rare
+lounge-384|lounge|Wheelchair, White|26|23|furniture|common
+lounge-385|lounge|Wheelchair, White|26|23|furniture|common
+lounge-386|lounge|Wheelchair, White|32|34|furniture|rare
+lounge-387|lounge|Wheelchair, White|22|25|furniture|common
+lounge-388|lounge|Wheelchair, White|22|25|furniture|common
+lounge-389|lounge|Wheelchair, White|32|42|furniture|rare
+lounge-390|lounge|Wheelchair, White|32|34|furniture|rare
+lounge-391|lounge|Wheelchair, White|22|25|furniture|common
+lounge-392|lounge|Wheelchair, White|22|25|furniture|common
+garden-016|garden|Baskets A|95|64|small|epic
+study-024|study|Boxes|28|22|small|common
+study-025|study|Boxes|19|14|small|common
+study-026|study|Boxes|14|20|small|common
+study-027|study|Boxes|20|21|small|common
+garden-017|garden|Buckets|21|24|small|common
+garden-018|garden|Buckets|21|24|small|common
+kitchen-140|kitchen|Coffee Maker|15|29|small|common
+kitchen-141|kitchen|Coffee Maker|9|8|small|common
+kitchen-142|kitchen|Coffee Maker|15|29|small|common
+kitchen-143|kitchen|Coffee Maker|9|8|small|common
+kitchen-144|kitchen|Dishes A|29|22|small|common
+kitchen-145|kitchen|Dishes A|20|11|small|common
+kitchen-146|kitchen|Dishes A|22|14|small|common
+kitchen-147|kitchen|Dishes A|24|15|small|common
+kitchen-148|kitchen|Dishes A|20|16|small|common
+kitchen-149|kitchen|Dishes A|22|18|small|common
+kitchen-150|kitchen|Dishes A|20|12|small|common
+kitchen-151|kitchen|Dishes A|18|14|small|common
+kitchen-152|kitchen|Dishes A|22|19|small|common
+kitchen-153|kitchen|Dishes A|20|18|small|common
+kitchen-154|kitchen|Dishes A|64|24|small|rare
+kitchen-155|kitchen|Dishes A|28|21|small|common
+curious-017|curious|Dungeon Elements|24|32|small|rare
+curious-018|curious|Dungeon Elements|30|53|small|rare
+curious-019|curious|Dungeon Elements|32|23|small|rare
+curious-020|curious|Dungeon Elements|17|30|small|common
+curious-021|curious|Dungeon Elements|30|22|small|common
+curious-022|curious|Dungeon Elements|31|29|small|rare
+curious-023|curious|Dungeon Elements|7|20|small|common
+curious-024|curious|Dungeon Elements|7|20|small|common
+bedroom-272|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-273|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-274|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-275|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-276|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-277|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-278|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-279|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-280|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-281|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-282|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-283|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-284|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-285|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-286|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-287|bedroom|Blankets, Crumpled|38|28|small|rare
+bedroom-288|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-289|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-290|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-291|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-292|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-293|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-294|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-295|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-296|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-297|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-298|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-299|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-300|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-301|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-302|bedroom|Blankets, Crumpled|30|38|small|rare
+bedroom-303|bedroom|Blankets, Crumpled|30|38|small|rare
+maker-083|maker|Fabric Baskets|128|44|small|epic
+maker-084|maker|Fabric Baskets|128|44|small|epic
+maker-085|maker|Fabric Rolls, Groups|28|64|small|rare
+maker-086|maker|Fabric Rolls, Groups|24|49|small|rare
+maker-087|maker|Fabric Rolls, Groups|26|49|small|rare
+maker-088|maker|Fabric Rolls|15|30|small|common
+maker-089|maker|Fabric Rolls|15|30|small|common
+maker-090|maker|Fabric Rolls|15|30|small|common
+maker-091|maker|Fabric Rolls|15|30|small|common
+maker-092|maker|Fabric Rolls|15|30|small|common
+maker-093|maker|Fabric Rolls|15|30|small|common
+maker-094|maker|Fabric Rolls|15|30|small|common
+maker-095|maker|Fabric Rolls|15|30|small|common
+maker-096|maker|Fabric Rolls|15|30|small|common
+maker-097|maker|Fabric Rolls|15|30|small|common
+maker-098|maker|Fabric Rolls|15|30|small|common
+maker-099|maker|Fabric Rolls|15|30|small|common
+maker-100|maker|Fabric Rolls|14|30|small|common
+maker-101|maker|Fabric Rolls|14|30|small|common
+maker-102|maker|Fabric Rolls|14|30|small|common
+maker-103|maker|Fabric Rolls|14|30|small|common
+maker-104|maker|Fabric Rolls|14|30|small|common
+maker-105|maker|Fabric Rolls|14|30|small|common
+maker-106|maker|Fabric Rolls|14|30|small|common
+maker-107|maker|Fabric Rolls|14|30|small|common
+maker-108|maker|Fabric Rolls|14|30|small|common
+maker-109|maker|Fabric Rolls|14|30|small|common
+maker-110|maker|Fabric Rolls|14|30|small|common
+maker-111|maker|Fabric Rolls|14|30|small|common
+maker-112|maker|Fabric Rolls|14|38|small|common
+maker-113|maker|Fabric Rolls|14|38|small|common
+maker-114|maker|Fabric Rolls|14|38|small|common
+maker-115|maker|Fabric Rolls|14|38|small|common
+maker-116|maker|Fabric Rolls|14|38|small|common
+maker-117|maker|Fabric Rolls|14|38|small|common
+maker-118|maker|Fabric Rolls|14|38|small|common
+maker-119|maker|Fabric Rolls|14|38|small|common
+maker-120|maker|Fabric Rolls|14|38|small|common
+maker-121|maker|Fabric Rolls|14|38|small|common
+maker-122|maker|Fabric Rolls|14|38|small|common
+maker-123|maker|Fabric Rolls|14|38|small|common
+maker-124|maker|Fabric Rolls|15|40|small|common
+maker-125|maker|Fabric Rolls|15|40|small|common
+maker-126|maker|Fabric Rolls|15|40|small|common
+maker-127|maker|Fabric Rolls|15|40|small|common
+maker-128|maker|Fabric Rolls|15|40|small|common
+maker-129|maker|Fabric Rolls|15|40|small|common
+maker-130|maker|Fabric Rolls|15|40|small|common
+maker-131|maker|Fabric Rolls|15|40|small|common
+maker-132|maker|Fabric Rolls|15|40|small|common
+maker-133|maker|Fabric Rolls|15|40|small|common
+maker-134|maker|Fabric Rolls|15|40|small|common
+maker-135|maker|Fabric Rolls|15|40|small|common
+maker-136|maker|Fabril Rolls, Mounted|52|60|small|epic
+maker-137|maker|Fabril Rolls, Mounted|52|60|small|epic
+maker-138|maker|Fabril Rolls, Mounted|52|60|small|epic
+maker-139|maker|Fabril Rolls, Mounted|52|60|small|epic
+fireside-017|fireside|Fire, Camp|31|24|small|rare
+fireside-018|fireside|Fire, Camp|127|30|small|epic
+fireside-019|fireside|Fire, Fireplace|128|24|small|epic
+fireside-020|fireside|Fire, Fireplace|96|29|small|rare
+fireside-021|fireside|Fire, Fireplace|128|24|small|epic
+fireside-022|fireside|Fireplace, Accessories A|10|29|small|common
+fireside-023|fireside|Fireplace, Accessories A|9|15|small|common
+fireside-024|fireside|Fireplace, Accessories A|19|17|small|common
+garden-019|garden|Flowers|7|13|small|common
+garden-020|garden|Flowers|7|13|small|common
+garden-021|garden|Flowers|7|13|small|common
+garden-022|garden|Flowers|7|13|small|common
+garden-023|garden|Flowers|7|13|small|common
+garden-024|garden|Flowers|7|13|small|common
+garden-025|garden|Flowers|7|13|small|common
+garden-026|garden|Flowers|7|13|small|common
+garden-027|garden|Flowers|7|13|small|common
+garden-028|garden|Flowers|19|15|small|common
+garden-029|garden|Flowers|19|15|small|common
+garden-030|garden|Flowers|19|15|small|common
+garden-031|garden|Flowers|19|15|small|common
+garden-032|garden|Flowers|19|15|small|common
+garden-033|garden|Flowers|19|15|small|common
+garden-034|garden|Flowers|19|15|small|common
+garden-035|garden|Flowers|19|15|small|common
+garden-036|garden|Flowers|19|15|small|common
+garden-037|garden|Flowers|19|15|small|common
+garden-038|garden|Flowers|19|15|small|common
+garden-039|garden|Flowers|19|15|small|common
+garden-040|garden|Flowers|19|15|small|common
+garden-041|garden|Flowers|22|25|small|common
+garden-042|garden|Flowers|12|22|small|common
+garden-043|garden|Flowers|12|22|small|common
+garden-044|garden|Flowers|8|13|small|common
+garden-045|garden|Flowers|8|13|small|common
+garden-046|garden|Flowers|19|15|small|common
+garden-047|garden|Flowers|19|15|small|common
+garden-048|garden|Flowers|19|15|small|common
+garden-049|garden|Flowers|19|15|small|common
+garden-050|garden|Flowers|22|25|small|common
+garden-051|garden|Flowers|12|22|small|common
+garden-052|garden|Flowers|12|22|small|common
+garden-053|garden|Flowers|8|13|small|common
+garden-054|garden|Flowers|8|13|small|common
+pantry-001|pantry|Bread A|27|23|small|common
+pantry-002|pantry|Bread A|16|11|small|common
+pantry-003|pantry|Bread A|22|20|small|common
+pantry-004|pantry|Bread A|22|20|small|common
+pantry-005|pantry|Bread A|23|15|small|common
+pantry-006|pantry|Bread A|13|10|small|common
+pantry-007|pantry|Bread A|18|11|small|common
+pantry-008|pantry|Bread A|16|10|small|common
+pantry-009|pantry|Bread B|17|18|small|common
+pantry-010|pantry|Bread B|30|18|small|common
+pantry-011|pantry|Bread B|26|19|small|common
+pantry-012|pantry|Bread B|23|17|small|common
+pantry-013|pantry|Bread B|23|17|small|common
+pantry-014|pantry|Bread B|22|17|small|common
+pantry-015|pantry|Bread B|96|28|small|rare
+pantry-016|pantry|Bread B|20|21|small|common
+pantry-017|pantry|Bread B|27|21|small|common
+pantry-018|pantry|Bread B|32|19|small|common
+pantry-019|pantry|Bread B|62|32|small|rare
+pantry-020|pantry|Bread B|95|31|small|rare
+pantry-021|pantry|Bread B|29|24|small|common
+pantry-022|pantry|Bread B|22|20|small|common
+pantry-023|pantry|Bread B|21|20|small|common
+pantry-024|pantry|Bread B|21|20|small|common
+pantry-025|pantry|Bread B|16|10|small|common
+pantry-026|pantry|Bread B|24|19|small|common
+pantry-027|pantry|Bread B|27|23|small|common
+pantry-028|pantry|Bread B|26|24|small|common
+pantry-029|pantry|Bread B|24|23|small|common
+pantry-030|pantry|Bread B|21|12|small|common
+pantry-031|pantry|Bread B|24|19|small|common
+pantry-032|pantry|Bread B|62|26|small|rare
+pantry-033|pantry|Bread B|31|27|small|rare
+pantry-034|pantry|Bread B|25|21|small|common
+pantry-035|pantry|Bread B|25|18|small|common
+pantry-036|pantry|Bread C|12|11|small|common
+pantry-037|pantry|Bread C|11|11|small|common
+pantry-038|pantry|Bread C|19|14|small|common
+pantry-039|pantry|Bread C|12|11|small|common
+pantry-040|pantry|Bread C|11|13|small|common
+pantry-041|pantry|Bread C|16|8|small|common
+pantry-042|pantry|Bread C|25|20|small|common
+pantry-043|pantry|Bread C|23|19|small|common
+pantry-044|pantry|Bread C|21|14|small|common
+pantry-045|pantry|Bread C|20|16|small|common
+pantry-046|pantry|Bread C|12|11|small|common
+pantry-047|pantry|Bread C|12|10|small|common
+pantry-048|pantry|Bread C|20|16|small|common
+pantry-049|pantry|Bread C|29|30|small|rare
+pantry-050|pantry|Bread C|28|27|small|rare
+pantry-051|pantry|Bread C|31|28|small|rare
+pantry-052|pantry|Bread C|26|23|small|common
+pantry-053|pantry|Bread C|24|21|small|common
+pantry-054|pantry|Bread C|29|22|small|common
+pantry-055|pantry|Bread C|18|17|small|common
+pantry-056|pantry|Bread C|18|17|small|common
+pantry-057|pantry|Bread C|17|16|small|common
+pantry-058|pantry|Bread C|17|16|small|common
+pantry-059|pantry|Bread C|16|13|small|common
+pantry-060|pantry|Bread C|18|14|small|common
+pantry-061|pantry|Bread C|52|22|small|rare
+pantry-062|pantry|Bread C|24|17|small|common
+pantry-063|pantry|Bread C|18|17|small|common
+pantry-064|pantry|Bread C|17|16|small|common
+pantry-065|pantry|Bread C|17|16|small|common
+pantry-066|pantry|Bread C|64|30|small|rare
+pantry-067|pantry|Bread C|27|21|small|common
+pantry-068|pantry|Bread C|18|17|small|common
+pantry-069|pantry|Bread C|17|16|small|common
+pantry-070|pantry|Bread C|17|16|small|common
+pantry-071|pantry|Butter|17|14|small|common
+pantry-072|pantry|Butter|25|21|small|common
+pantry-073|pantry|Butter|31|27|small|rare
+pantry-074|pantry|Cheese A|17|16|small|common
+pantry-075|pantry|Cheese A|17|15|small|common
+pantry-076|pantry|Cheese A|17|15|small|common
+pantry-077|pantry|Cheese A|17|15|small|common
+pantry-078|pantry|Cheese A|17|15|small|common
+pantry-079|pantry|Cheese A|17|16|small|common
+pantry-080|pantry|Cheese A|21|20|small|common
+pantry-081|pantry|Cheese A|21|20|small|common
+pantry-082|pantry|Cheese A|21|20|small|common
+pantry-083|pantry|Cheese A|21|20|small|common
+pantry-084|pantry|Cheese A|21|20|small|common
+pantry-085|pantry|Cheese A|21|20|small|common
+pantry-086|pantry|Cheese A|21|21|small|common
+pantry-087|pantry|Cheese A|21|21|small|common
+pantry-088|pantry|Cheese A|21|21|small|common
+pantry-089|pantry|Cheese A|21|21|small|common
+pantry-090|pantry|Cheese A|21|21|small|common
+pantry-091|pantry|Cheese A|21|21|small|common
+pantry-092|pantry|Cheese B|17|21|small|common
+pantry-093|pantry|Cheese B|17|16|small|common
+pantry-094|pantry|Cheese B|20|23|small|common
+pantry-095|pantry|Cheese B|17|16|small|common
+pantry-096|pantry|Cheese B|7|7|small|common
+pantry-097|pantry|Cheese B|20|15|small|common
+pantry-098|pantry|Cheese B|15|15|small|common
+pantry-099|pantry|Cheese B|25|28|small|rare
+pantry-100|pantry|Cheese B|21|29|small|common
+pantry-101|pantry|Cheese B|24|29|small|common
+pantry-102|pantry|Cheese B|23|26|small|common
+pantry-103|pantry|Cheese B|25|24|small|common
+pantry-104|pantry|Cheese B|21|20|small|common
+pantry-105|pantry|Cheese B|23|20|small|common
+pantry-106|pantry|Cheese B|25|28|small|rare
+pantry-107|pantry|Cheese B|21|21|small|common
+pantry-108|pantry|Cheese B|21|21|small|common
+pantry-109|pantry|Cheese B|25|24|small|common
+pantry-110|pantry|Cheese B|25|24|small|common
+pantry-111|pantry|Cheese B|23|22|small|common
+pantry-112|pantry|Cheese B|23|20|small|common
+pantry-113|pantry|Dessert|21|21|small|common
+pantry-114|pantry|Dessert|21|21|small|common
+pantry-115|pantry|Dessert|26|21|small|common
+pantry-116|pantry|Dessert|26|22|small|common
+pantry-117|pantry|Dessert|24|19|small|common
+pantry-118|pantry|Dessert|21|21|small|common
+pantry-119|pantry|Dessert|32|22|small|rare
+pantry-120|pantry|Dessert|21|19|small|common
+pantry-121|pantry|Dessert|26|37|small|rare
+pantry-122|pantry|Dessert|26|37|small|rare
+pantry-123|pantry|Dessert|64|32|small|rare
+pantry-124|pantry|Dessert|14|11|small|common
+pantry-125|pantry|Dessert|14|11|small|common
+pantry-126|pantry|Eggs|10|12|small|common
+pantry-127|pantry|Eggs|10|12|small|common
+pantry-128|pantry|Eggs|22|10|small|common
+pantry-129|pantry|Eggs|10|12|small|common
+pantry-130|pantry|Eggs|24|12|small|common
+pantry-131|pantry|Eggs|22|17|small|common
+pantry-132|pantry|Eggs|27|20|small|common
+pantry-133|pantry|Eggs|21|17|small|common
+pantry-134|pantry|Eggs|21|17|small|common
+pantry-135|pantry|Eggs|26|18|small|common
+pantry-136|pantry|Eggs|128|29|small|epic
+pantry-137|pantry|Eggs|27|21|small|common
+pantry-138|pantry|Fruit A|19|32|small|common
+pantry-139|pantry|Fruit A|16|14|small|common
+pantry-140|pantry|Fruit A|11|7|small|common
+pantry-141|pantry|Fruit A|10|10|small|common
+pantry-142|pantry|Fruit A|11|14|small|common
+pantry-143|pantry|Fruit A|18|14|small|common
+pantry-144|pantry|Fruit A|12|12|small|common
+pantry-145|pantry|Fruit A|15|13|small|common
+pantry-146|pantry|Fruit A|13|12|small|common
+pantry-147|pantry|Fruit A|14|12|small|common
+pantry-148|pantry|Fruit A|10|9|small|common
+pantry-149|pantry|Fruit A|20|15|small|common
+pantry-150|pantry|Fruit A|11|12|small|common
+pantry-151|pantry|Fruit A|14|13|small|common
+pantry-152|pantry|Fruit A|21|14|small|common
+pantry-153|pantry|Fruit A|11|13|small|common
+pantry-154|pantry|Fruit A|13|12|small|common
+pantry-155|pantry|Fruit A|11|11|small|common
+pantry-156|pantry|Fruit A|9|8|small|common
+pantry-157|pantry|Fruit A|10|9|small|common
+pantry-158|pantry|Fruit A|15|8|small|common
+pantry-159|pantry|Fruit A|14|7|small|common
+pantry-160|pantry|Fruit A|11|14|small|common
+pantry-161|pantry|Fruit A|9|10|small|common
+pantry-162|pantry|Fruit A|18|13|small|common
+pantry-163|pantry|Fruit A|21|14|small|common
+pantry-164|pantry|Fruit A|7|6|small|common
+pantry-165|pantry|Fruit A|11|9|small|common
+pantry-166|pantry|Fruit A|21|16|small|common
+pantry-167|pantry|Fruit A|12|13|small|common
+pantry-168|pantry|Fruit A|21|15|small|common
+pantry-169|pantry|Fruit A|13|12|small|common
+pantry-170|pantry|Fruit B|16|23|small|common
+pantry-171|pantry|Fruit B|14|16|small|common
+pantry-172|pantry|Fruit B|22|17|small|common
+pantry-173|pantry|Fruit B|12|19|small|common
+pantry-174|pantry|Fruit B|11|17|small|common
+pantry-175|pantry|Fruit B|11|20|small|common
+pantry-176|pantry|Fruit B|12|11|small|common
+pantry-177|pantry|Fruit B|9|12|small|common
+pantry-178|pantry|Fruit B|14|13|small|common
+pantry-179|pantry|Fruit B|16|19|small|common
+pantry-180|pantry|Fruit B|13|14|small|common
+pantry-181|pantry|Fruit B|17|10|small|common
+pantry-182|pantry|Fruit B|8|8|small|common
+pantry-183|pantry|Fruit B|8|8|small|common
+pantry-184|pantry|Fruit B|16|10|small|common
+pantry-185|pantry|Fruit B|20|24|small|common
+pantry-186|pantry|Fruit B|28|22|small|common
+pantry-187|pantry|Fruit B|19|18|small|common
+pantry-188|pantry|Fruit B|14|16|small|common
+pantry-189|pantry|Fruit B|23|20|small|common
+pantry-190|pantry|Fruit B|14|11|small|common
+pantry-191|pantry|Fruit B|26|23|small|common
+pantry-192|pantry|Fruit B|24|22|small|common
+pantry-193|pantry|Fruit B|19|20|small|common
+pantry-194|pantry|Fruit B|20|16|small|common
+pantry-195|pantry|Fruit B|23|18|small|common
+pantry-196|pantry|Fruit B|18|11|small|common
+pantry-197|pantry|Fruit B|18|11|small|common
+pantry-198|pantry|Fruit B|19|15|small|common
+pantry-199|pantry|Fruit B|21|17|small|common
+pantry-200|pantry|Fruit B|31|31|small|rare
+pantry-201|pantry|Fruit B|30|29|small|rare
+pantry-202|pantry|Fruit B|24|24|small|common
+pantry-203|pantry|Fruit B|26|23|small|common
+pantry-204|pantry|Fruit B|27|28|small|rare
+pantry-205|pantry|Fruit B|32|27|small|rare
+pantry-206|pantry|Fruit B|29|28|small|rare
+pantry-207|pantry|Fruit B|27|23|small|common
+pantry-208|pantry|Fruit B|25|23|small|common
+pantry-209|pantry|Fruit B|27|21|small|common
+pantry-210|pantry|Fruit B|24|19|small|common
+pantry-211|pantry|Fruit B|23|21|small|common
+pantry-212|pantry|Fruit B|28|19|small|common
+pantry-213|pantry|Fruit B|28|19|small|common
+pantry-214|pantry|Fruit B|20|20|small|common
+pantry-215|pantry|Fruit B|480|48|small|epic
+pantry-216|pantry|Fruit B|20|19|small|common
+pantry-217|pantry|Fruit B|12|28|small|common
+pantry-218|pantry|Fruit B|24|25|small|common
+pantry-219|pantry|Fruit B|10|9|small|common
+pantry-220|pantry|Fruit B|12|15|small|common
+pantry-221|pantry|Fruit B|20|19|small|common
+pantry-222|pantry|Fruit B|18|16|small|common
+pantry-223|pantry|Fruit B|21|21|small|common
+pantry-224|pantry|Fruit B|18|16|small|common
+pantry-225|pantry|Fruit B|15|13|small|common
+pantry-226|pantry|Fruit B|10|8|small|common
+pantry-227|pantry|Fruit B|16|15|small|common
+pantry-228|pantry|Fruit B|15|15|small|common
+pantry-229|pantry|Fruit B|11|12|small|common
+pantry-230|pantry|Fruit B|7|8|small|common
+pantry-231|pantry|Fruit B|8|7|small|common
+pantry-232|pantry|Fruit B|10|13|small|common
+pantry-233|pantry|Fruit B|10|9|small|common
+pantry-234|pantry|Fruit B|31|63|small|rare
+pantry-235|pantry|Fruit B|31|26|small|rare
+pantry-236|pantry|Fruit B|21|23|small|common
+pantry-237|pantry|Fruit B|26|23|small|common
+pantry-238|pantry|Fruit B|16|18|small|common
+pantry-239|pantry|Fruit B|26|21|small|common
+pantry-240|pantry|Fruit B|28|20|small|common
+pantry-241|pantry|Fruit B|59|58|small|epic
+pantry-242|pantry|Fruit B|28|25|small|rare
+pantry-243|pantry|Fruit B|24|16|small|common
+pantry-244|pantry|Fruit B|19|16|small|common
+pantry-245|pantry|Fruit B|17|17|small|common
+pantry-246|pantry|Fruit B|19|16|small|common
+pantry-247|pantry|Fruit B|17|13|small|common
+pantry-248|pantry|Fruit B|29|30|small|rare
+pantry-249|pantry|Fruit B|30|29|small|rare
+pantry-250|pantry|Fruit B|29|26|small|rare
+pantry-251|pantry|Fruit B|28|24|small|common
+pantry-252|pantry|Fruit B|32|30|small|rare
+pantry-253|pantry|Fruit B|26|21|small|common
+pantry-254|pantry|Fruit B|24|20|small|common
+pantry-255|pantry|Fruit B|28|25|small|rare
+pantry-256|pantry|Fruit B|24|17|small|common
+pantry-257|pantry|Fruit B|24|20|small|common
+pantry-258|pantry|Fruit B|29|22|small|common
+pantry-259|pantry|Fruit B|21|14|small|common
+pantry-260|pantry|Fruit B|480|144|small|epic
+pantry-261|pantry|Fruit B|448|46|small|epic
+pantry-262|pantry|Grains, Grasses|7|30|small|common
+pantry-263|pantry|Grains, Grasses|18|30|small|common
+pantry-264|pantry|Grains, Grasses|19|27|small|common
+pantry-265|pantry|Grains, Grasses|11|26|small|common
+pantry-266|pantry|Grains, Grasses|9|28|small|common
+pantry-267|pantry|Grains, Grasses|23|22|small|common
+pantry-268|pantry|Grains, Grasses|15|25|small|common
+pantry-269|pantry|Grains, Grasses|20|18|small|common
+pantry-270|pantry|Grains, Grasses|23|11|small|common
+pantry-271|pantry|Grains, Grasses|10|29|small|common
+pantry-272|pantry|Grains, Grasses|12|29|small|common
+pantry-273|pantry|Grains, Grasses|23|18|small|common
+pantry-274|pantry|Grains, Grasses|21|17|small|common
+pantry-275|pantry|Grains, Grasses|14|15|small|common
+pantry-276|pantry|Grains, Grasses|22|16|small|common
+pantry-277|pantry|Grains, Grasses|22|19|small|common
+pantry-278|pantry|Grains, Grasses|22|16|small|common
+pantry-279|pantry|Grains, Grasses|18|13|small|common
+pantry-280|pantry|Grains, Grasses|18|13|small|common
+pantry-281|pantry|Grains, Grasses|31|31|small|rare
+pantry-282|pantry|Grains, Grasses|32|28|small|rare
+pantry-283|pantry|Grains, Grasses|28|25|small|rare
+pantry-284|pantry|Grains, Grasses|29|24|small|common
+pantry-285|pantry|Grains, Grasses|22|19|small|common
+pantry-286|pantry|Grains, Grasses|24|19|small|common
+pantry-287|pantry|Grains, Grasses|24|19|small|common
+pantry-288|pantry|Grains, Grasses|23|19|small|common
+pantry-289|pantry|Grains, Grasses|23|19|small|common
+pantry-290|pantry|Grains, Grasses|28|21|small|common
+pantry-291|pantry|Grains, Grasses|320|45|small|epic
+pantry-292|pantry|Grains, Rice, Noodles|22|14|small|common
+pantry-293|pantry|Grains, Rice, Noodles|19|12|small|common
+pantry-294|pantry|Grains, Rice, Noodles|16|11|small|common
+pantry-295|pantry|Grains, Rice, Noodles|16|8|small|common
+pantry-296|pantry|Grains, Rice, Noodles|19|12|small|common
+pantry-297|pantry|Grains, Rice, Noodles|22|14|small|common
+pantry-298|pantry|Grains, Rice, Noodles|16|11|small|common
+pantry-299|pantry|Grains, Rice, Noodles|16|8|small|common
+pantry-300|pantry|Grains, Rice, Noodles|16|11|small|common
+pantry-301|pantry|Grains, Rice, Noodles|16|8|small|common
+pantry-302|pantry|Hamburgers|18|21|small|common
+pantry-303|pantry|Hamburgers|19|21|small|common
+pantry-304|pantry|Hamburgers|17|13|small|common
+pantry-305|pantry|Hamburgers|17|13|small|common
+pantry-306|pantry|Hamburgers|16|14|small|common
+pantry-307|pantry|Hamburgers|18|14|small|common
+pantry-308|pantry|Hamburgers|19|14|small|common
+pantry-309|pantry|Hamburgers|14|11|small|common
+pantry-310|pantry|Hamburgers|18|15|small|common
+pantry-311|pantry|Hamburgers|12|9|small|common
+pantry-312|pantry|Hamburgers|31|29|small|rare
+pantry-313|pantry|Hamburgers|28|27|small|rare
+pantry-314|pantry|Hamburgers|18|17|small|common
+pantry-315|pantry|Hamburgers|14|11|small|common
+pantry-316|pantry|Hamburgers|12|9|small|common
+pantry-317|pantry|Herbs & Spices|29|29|small|rare
+pantry-318|pantry|Herbs & Spices|21|16|small|common
+pantry-319|pantry|Herbs & Spices|15|19|small|common
+pantry-320|pantry|Herbs & Spices|18|23|small|common
+pantry-321|pantry|Herbs & Spices|20|20|small|common
+pantry-322|pantry|Herbs & Spices|17|22|small|common
+pantry-323|pantry|Herbs & Spices|22|22|small|common
+pantry-324|pantry|Herbs & Spices|23|19|small|common
+pantry-325|pantry|Herbs & Spices|18|17|small|common
+pantry-326|pantry|Herbs & Spices|22|19|small|common
+pantry-327|pantry|Herbs & Spices|16|15|small|common
+pantry-328|pantry|Herbs & Spices|15|15|small|common
+pantry-329|pantry|Herbs & Spices|20|13|small|common
+pantry-330|pantry|Herbs & Spices|11|12|small|common
+pantry-331|pantry|Herbs & Spices|19|8|small|common
+pantry-332|pantry|Herbs & Spices|25|25|small|common
+pantry-333|pantry|Herbs & Spices|24|19|small|common
+pantry-334|pantry|Herbs & Spices|21|20|small|common
+pantry-335|pantry|Herbs & Spices|19|27|small|common
+pantry-336|pantry|Herbs & Spices|26|26|small|common
+pantry-337|pantry|Herbs & Spices|32|22|small|rare
+pantry-338|pantry|Herbs & Spices|20|23|small|common
+pantry-339|pantry|Herbs & Spices|25|24|small|common
+pantry-340|pantry|Herbs & Spices|20|19|small|common
+pantry-341|pantry|Herbs & Spices|23|24|small|common
+pantry-342|pantry|Herbs & Spices|25|21|small|common
+pantry-343|pantry|Herbs & Spices|21|19|small|common
+pantry-344|pantry|Herbs & Spices|18|16|small|common
+pantry-345|pantry|Herbs & Spices|27|19|small|common
+pantry-346|pantry|Herbs & Spices|17|14|small|common
+pantry-347|pantry|Herbs & Spices|31|30|small|rare
+pantry-348|pantry|Herbs & Spices|26|28|small|rare
+pantry-349|pantry|Herbs & Spices|21|20|small|common
+pantry-350|pantry|Herbs & Spices|27|29|small|rare
+pantry-351|pantry|Herbs & Spices|30|23|small|common
+pantry-352|pantry|Herbs & Spices|63|25|small|rare
+pantry-353|pantry|Herbs & Spices|27|23|small|common
+pantry-354|pantry|Herbs & Spices|30|23|small|common
+pantry-355|pantry|Herbs & Spices|28|23|small|common
+pantry-356|pantry|Herbs & Spices|27|25|small|common
+pantry-357|pantry|Herbs & Spices|26|24|small|common
+pantry-358|pantry|Herbs & Spices|22|17|small|common
+pantry-359|pantry|Herbs & Spices|21|21|small|common
+pantry-360|pantry|Herbs & Spices|21|19|small|common
+pantry-361|pantry|Herbs & Spices|480|142|small|epic
+pantry-362|pantry|Herbs & Spices|480|46|small|epic
+pantry-363|pantry|Meals|26|21|small|common
+pantry-364|pantry|Meals|26|21|small|common
+pantry-365|pantry|Meals|17|19|small|common
+pantry-366|pantry|Meals|17|19|small|common
+pantry-367|pantry|Meals|22|18|small|common
+pantry-368|pantry|Meals|22|18|small|common
+pantry-369|pantry|Meals|17|15|small|common
+pantry-370|pantry|Meals|26|21|small|common
+pantry-371|pantry|Meals|26|21|small|common
+pantry-372|pantry|Meals|17|21|small|common
+pantry-373|pantry|Meals|17|21|small|common
+pantry-374|pantry|Meals|17|17|small|common
+pantry-375|pantry|Meals|22|18|small|common
+pantry-376|pantry|Meals|22|18|small|common
+pantry-377|pantry|Meals|62|31|small|rare
+pantry-378|pantry|Meals|26|23|small|common
+pantry-379|pantry|Meals|28|21|small|common
+pantry-380|pantry|Meals|22|19|small|common
+pantry-381|pantry|Meals|20|18|small|common
+pantry-382|pantry|Meats A|30|18|small|common
+pantry-383|pantry|Meats A|15|11|small|common
+pantry-384|pantry|Meats A|12|11|small|common
+pantry-385|pantry|Meats A|14|9|small|common
+pantry-386|pantry|Meats A|18|11|small|common
+pantry-387|pantry|Meats A|19|13|small|common
+pantry-388|pantry|Meats A|18|11|small|common
+pantry-389|pantry|Meats A|15|11|small|common
+pantry-390|pantry|Meats A|14|9|small|common
+pantry-391|pantry|Meats A|10|10|small|common
+pantry-392|pantry|Meats A|19|13|small|common
+pantry-393|pantry|Meats A|17|11|small|common
+pantry-394|pantry|Meats A|18|11|small|common
+pantry-395|pantry|Meats A|15|11|small|common
+pantry-396|pantry|Meats A|14|9|small|common
+pantry-397|pantry|Meats A|31|27|small|rare
+pantry-398|pantry|Meats A|20|14|small|common
+pantry-399|pantry|Meats A|18|12|small|common
+pantry-400|pantry|Meats A|25|22|small|common
+pantry-401|pantry|Meats A|16|12|small|common
+pantry-402|pantry|Meats A|18|18|small|common
+pantry-403|pantry|Meats A|20|14|small|common
+pantry-404|pantry|Meats A|27|23|small|common
+pantry-405|pantry|Meats A|14|14|small|common
+pantry-406|pantry|Meats A|29|25|small|rare
+pantry-407|pantry|Meats A|18|12|small|common
+pantry-408|pantry|Meats A|14|13|small|common
+pantry-409|pantry|Meats A|18|9|small|common
+pantry-410|pantry|Meats A|9|7|small|common
+pantry-411|pantry|Meats A|20|14|small|common
+pantry-412|pantry|Meats A|17|19|small|common
+pantry-413|pantry|Meats A|15|19|small|common
+pantry-414|pantry|Meats A|7|6|small|common
+pantry-415|pantry|Meats A|7|6|small|common
+pantry-416|pantry|Meats A|22|16|small|common
+pantry-417|pantry|Meats A|29|25|small|rare
+pantry-418|pantry|Meats A|17|18|small|common
+pantry-419|pantry|Meats A|15|18|small|common
+pantry-420|pantry|Meats A|7|6|small|common
+pantry-421|pantry|Meats A|7|6|small|common
+pantry-422|pantry|Meats A|15|18|small|common
+pantry-423|pantry|Meats A|16|18|small|common
+pantry-424|pantry|Meats B|32|94|small|epic
+pantry-425|pantry|Meats B|30|18|small|common
+pantry-426|pantry|Meats B|31|27|small|rare
+pantry-427|pantry|Meats B|26|15|small|common
+pantry-428|pantry|Meats B|22|14|small|common
+pantry-429|pantry|Meats B|16|14|small|common
+pantry-430|pantry|Meats B|18|12|small|common
+pantry-431|pantry|Meats B|25|20|small|common
+pantry-432|pantry|Meats B|28|25|small|rare
+pantry-433|pantry|Meats B|20|17|small|common
+pantry-434|pantry|Meats B|31|59|small|rare
+pantry-435|pantry|Meats B|29|23|small|common
+pantry-436|pantry|Meats B|23|22|small|common
+pantry-437|pantry|Meats B|24|15|small|common
+pantry-438|pantry|Meats B|19|17|small|common
+pantry-439|pantry|Meats B|22|17|small|common
+pantry-440|pantry|Meats B|30|18|small|common
+pantry-441|pantry|Meats B|24|16|small|common
+pantry-442|pantry|Meats B|24|32|small|rare
+pantry-443|pantry|Meats B|29|28|small|rare
+pantry-444|pantry|Meats B|26|22|small|common
+pantry-445|pantry|Meats B|29|24|small|common
+pantry-446|pantry|Meats B|64|24|small|rare
+pantry-447|pantry|Meats B|20|17|small|common
+pantry-448|pantry|Meats B|24|20|small|common
+pantry-449|pantry|Meats B|26|18|small|common
+pantry-450|pantry|Mushrooms|21|21|small|common
+pantry-451|pantry|Mushrooms|21|18|small|common
+pantry-452|pantry|Mushrooms|12|22|small|common
+pantry-453|pantry|Mushrooms|14|17|small|common
+pantry-454|pantry|Mushrooms|20|19|small|common
+pantry-455|pantry|Mushrooms|18|18|small|common
+pantry-456|pantry|Mushrooms|12|13|small|common
+pantry-457|pantry|Mushrooms|12|18|small|common
+pantry-458|pantry|Mushrooms|23|11|small|common
+pantry-459|pantry|Mushrooms|11|15|small|common
+pantry-460|pantry|Mushrooms|10|13|small|common
+pantry-461|pantry|Mushrooms|29|27|small|rare
+pantry-462|pantry|Mushrooms|95|62|small|epic
+pantry-463|pantry|Mushrooms|19|25|small|common
+pantry-464|pantry|Mushrooms|28|27|small|rare
+pantry-465|pantry|Mushrooms|17|24|small|common
+pantry-466|pantry|Mushrooms|20|21|small|common
+pantry-467|pantry|Mushrooms|20|16|small|common
+pantry-468|pantry|Mushrooms|24|20|small|common
+pantry-469|pantry|Mushrooms|25|31|small|rare
+pantry-470|pantry|Mushrooms|30|30|small|rare
+pantry-471|pantry|Mushrooms|27|25|small|common
+pantry-472|pantry|Mushrooms|58|28|small|rare
+pantry-473|pantry|Mushrooms|27|24|small|common
+pantry-474|pantry|Mushrooms|26|23|small|common
+pantry-475|pantry|Nuts|19|19|small|common
+pantry-476|pantry|Nuts|19|22|small|common
+pantry-477|pantry|Nuts|19|17|small|common
+pantry-478|pantry|Nuts|19|19|small|common
+pantry-479|pantry|Nuts|19|18|small|common
+pantry-480|pantry|Nuts|17|15|small|common
+pantry-481|pantry|Nuts|22|17|small|common
+pantry-482|pantry|Nuts|18|17|small|common
+pantry-483|pantry|Nuts|14|9|small|common
+pantry-484|pantry|Nuts|29|30|small|rare
+pantry-485|pantry|Nuts|28|28|small|rare
+pantry-486|pantry|Nuts|24|26|small|common
+pantry-487|pantry|Nuts|29|61|small|rare
+pantry-488|pantry|Nuts|29|30|small|rare
+pantry-489|pantry|Nuts|27|23|small|common
+pantry-490|pantry|Nuts|24|21|small|common
+pantry-491|pantry|Nuts|8|7|small|common
+pantry-492|pantry|Nuts|25|20|small|common
+pantry-493|pantry|Nuts|16|21|small|common
+pantry-494|pantry|Nuts|28|28|small|rare
+pantry-495|pantry|Nuts|29|28|small|rare
+pantry-496|pantry|Nuts|24|24|small|common
+pantry-497|pantry|Nuts|27|24|small|common
+pantry-498|pantry|Nuts|25|26|small|common
+pantry-499|pantry|Nuts|28|24|small|common
+pantry-500|pantry|Nuts|26|23|small|common
+pantry-501|pantry|Nuts|28|17|small|common
+pantry-502|pantry|Nuts|288|44|small|epic
+pantry-503|pantry|Seafood A|95|21|small|rare
+pantry-504|pantry|Seafood A|7|8|small|common
+pantry-505|pantry|Seafood A|62|17|small|rare
+pantry-506|pantry|Seafood A|25|18|small|common
+pantry-507|pantry|Seafood A|17|15|small|common
+pantry-508|pantry|Seafood A|25|16|small|common
+pantry-509|pantry|Seafood A|62|16|small|rare
+pantry-510|pantry|Seafood A|18|10|small|common
+pantry-511|pantry|Seafood A|9|10|small|common
+pantry-512|pantry|Seafood A|159|61|small|epic
+pantry-513|pantry|Seafood A|16|31|small|common
+pantry-514|pantry|Seafood A|14|30|small|common
+pantry-515|pantry|Seafood A|29|29|small|rare
+pantry-516|pantry|Seafood A|29|25|small|rare
+pantry-517|pantry|Seafood A|28|28|small|rare
+pantry-518|pantry|Seafood A|21|21|small|common
+pantry-519|pantry|Seafood A|10|18|small|common
+pantry-520|pantry|Seafood A|28|30|small|rare
+pantry-521|pantry|Seafood A|32|30|small|rare
+pantry-522|pantry|Seafood A|25|23|small|common
+pantry-523|pantry|Seafood A|28|25|small|rare
+pantry-524|pantry|Seafood A|62|25|small|rare
+pantry-525|pantry|Seafood A|31|23|small|rare
+pantry-526|pantry|Seafood A|36|25|small|rare
+pantry-527|pantry|Seafood A|42|19|small|rare
+pantry-528|pantry|Seafood A|19|42|small|rare
+pantry-529|pantry|Seafood A|25|36|small|rare
+pantry-530|pantry|Tea, Coffee, Medicinal Herbs|23|21|small|common
+pantry-531|pantry|Tea, Coffee, Medicinal Herbs|23|21|small|common
+pantry-532|pantry|Tea, Coffee, Medicinal Herbs|16|18|small|common
+pantry-533|pantry|Tea, Coffee, Medicinal Herbs|20|14|small|common
+pantry-534|pantry|Tea, Coffee, Medicinal Herbs|8|7|small|common
+pantry-535|pantry|Tea, Coffee, Medicinal Herbs|25|15|small|common
+pantry-536|pantry|Tea, Coffee, Medicinal Herbs|7|7|small|common
+pantry-537|pantry|Tea, Coffee, Medicinal Herbs|18|13|small|common
+pantry-538|pantry|Tea, Coffee, Medicinal Herbs|8|8|small|common
+pantry-539|pantry|Tea, Coffee, Medicinal Herbs|20|20|small|common
+pantry-540|pantry|Tea, Coffee, Medicinal Herbs|25|19|small|common
+pantry-541|pantry|Tea, Coffee, Medicinal Herbs|25|19|small|common
+pantry-542|pantry|Tea, Coffee, Medicinal Herbs|25|14|small|common
+pantry-543|pantry|Tea, Coffee, Medicinal Herbs|18|17|small|common
+pantry-544|pantry|Tea, Coffee, Medicinal Herbs|24|20|small|common
+pantry-545|pantry|Tea, Coffee, Medicinal Herbs|17|17|small|common
+pantry-546|pantry|Tea, Coffee, Medicinal Herbs|23|15|small|common
+pantry-547|pantry|Tea, Coffee, Medicinal Herbs|24|27|small|common
+pantry-548|pantry|Tea, Coffee, Medicinal Herbs|25|21|small|common
+pantry-549|pantry|Tea, Coffee, Medicinal Herbs|25|22|small|common
+pantry-550|pantry|Tea, Coffee, Medicinal Herbs|25|21|small|common
+pantry-551|pantry|Tea, Coffee, Medicinal Herbs|25|21|small|common
+pantry-552|pantry|Tea, Coffee, Medicinal Herbs|25|23|small|common
+pantry-553|pantry|Tea, Coffee, Medicinal Herbs|23|23|small|common
+pantry-554|pantry|Tea, Coffee, Medicinal Herbs|26|22|small|common
+pantry-555|pantry|Tea, Coffee, Medicinal Herbs|256|43|small|epic
+pantry-556|pantry|Tortillas|20|15|small|common
+pantry-557|pantry|Tortillas|18|17|small|common
+pantry-558|pantry|Tortillas|18|23|small|common
+pantry-559|pantry|Tortillas|17|15|small|common
+pantry-560|pantry|Vegetables A|19|31|small|common
+pantry-561|pantry|Vegetables A|31|25|small|rare
+pantry-562|pantry|Vegetables A|21|25|small|common
+pantry-563|pantry|Vegetables A|16|16|small|common
+pantry-564|pantry|Vegetables A|18|17|small|common
+pantry-565|pantry|Vegetables A|17|18|small|common
+pantry-566|pantry|Vegetables A|15|13|small|common
+pantry-567|pantry|Vegetables A|16|16|small|common
+pantry-568|pantry|Vegetables A|16|16|small|common
+pantry-569|pantry|Vegetables A|16|16|small|common
+pantry-570|pantry|Vegetables A|16|16|small|common
+pantry-571|pantry|Vegetables A|14|11|small|common
+pantry-572|pantry|Vegetables A|13|12|small|common
+pantry-573|pantry|Vegetables A|13|12|small|common
+pantry-574|pantry|Vegetables A|13|12|small|common
+pantry-575|pantry|Vegetables A|14|13|small|common
+pantry-576|pantry|Vegetables A|17|12|small|common
+pantry-577|pantry|Vegetables A|13|12|small|common
+pantry-578|pantry|Vegetables A|16|12|small|common
+pantry-579|pantry|Vegetables A|16|15|small|common
+pantry-580|pantry|Vegetables A|16|15|small|common
+pantry-581|pantry|Vegetables A|16|15|small|common
+pantry-582|pantry|Vegetables A|16|15|small|common
+pantry-583|pantry|Vegetables A|12|11|small|common
+pantry-584|pantry|Vegetables A|13|11|small|common
+pantry-585|pantry|Vegetables A|11|9|small|common
+pantry-586|pantry|Vegetables A|11|9|small|common
+pantry-587|pantry|Vegetables A|11|9|small|common
+pantry-588|pantry|Vegetables A|19|14|small|common
+pantry-589|pantry|Vegetables A|8|7|small|common
+pantry-590|pantry|Vegetables A|8|7|small|common
+pantry-591|pantry|Vegetables A|8|7|small|common
+pantry-592|pantry|Vegetables A|11|10|small|common
+pantry-593|pantry|Vegetables A|11|10|small|common
+pantry-594|pantry|Vegetables A|11|10|small|common
+pantry-595|pantry|Vegetables A|11|10|small|common
+pantry-596|pantry|Vegetables A|17|9|small|common
+pantry-597|pantry|Vegetables A|18|17|small|common
+pantry-598|pantry|Vegetables A|16|11|small|common
+pantry-599|pantry|Vegetables A|8|7|small|common
+pantry-600|pantry|Vegetables A|24|16|small|common
+pantry-601|pantry|Vegetables A|24|16|small|common
+pantry-602|pantry|Vegetables A|24|16|small|common
+pantry-603|pantry|Vegetables A|19|14|small|common
+pantry-604|pantry|Vegetables A|19|14|small|common
+pantry-605|pantry|Vegetables A|19|14|small|common
+pantry-606|pantry|Vegetables A|19|14|small|common
+pantry-607|pantry|Vegetables A|17|12|small|common
+pantry-608|pantry|Vegetables A|14|10|small|common
+pantry-609|pantry|Vegetables A|15|10|small|common
+pantry-610|pantry|Vegetables A|95|29|small|rare
+pantry-611|pantry|Vegetables A|29|25|small|rare
+pantry-612|pantry|Vegetables A|15|19|small|common
+pantry-613|pantry|Vegetables A|15|19|small|common
+pantry-614|pantry|Vegetables A|15|19|small|common
+pantry-615|pantry|Vegetables A|15|19|small|common
+pantry-616|pantry|Vegetables A|16|15|small|common
+pantry-617|pantry|Vegetables A|13|11|small|common
+pantry-618|pantry|Vegetables A|15|19|small|common
+pantry-619|pantry|Vegetables A|22|14|small|common
+pantry-620|pantry|Vegetables A|15|22|small|common
+pantry-621|pantry|Vegetables A|15|22|small|common
+pantry-622|pantry|Vegetables A|15|22|small|common
+pantry-623|pantry|Vegetables A|15|18|small|common
+pantry-624|pantry|Vegetables A|15|18|small|common
+pantry-625|pantry|Vegetables A|15|18|small|common
+pantry-626|pantry|Vegetables A|15|18|small|common
+pantry-627|pantry|Vegetables A|14|12|small|common
+pantry-628|pantry|Vegetables A|14|12|small|common
+pantry-629|pantry|Vegetables A|12|11|small|common
+pantry-630|pantry|Vegetables A|16|12|small|common
+pantry-631|pantry|Vegetables A|10|12|small|common
+pantry-632|pantry|Vegetables A|10|12|small|common
+pantry-633|pantry|Vegetables A|14|11|small|common
+pantry-634|pantry|Vegetables A|14|11|small|common
+pantry-635|pantry|Vegetables A|14|11|small|common
+pantry-636|pantry|Vegetables A|10|12|small|common
+pantry-637|pantry|Vegetables A|21|15|small|common
+pantry-638|pantry|Vegetables A|21|15|small|common
+pantry-639|pantry|Vegetables A|16|12|small|common
+pantry-640|pantry|Vegetables A|19|13|small|common
+pantry-641|pantry|Vegetables A|13|13|small|common
+pantry-642|pantry|Vegetables A|13|13|small|common
+pantry-643|pantry|Vegetables A|13|11|small|common
+pantry-644|pantry|Vegetables A|13|13|small|common
+pantry-645|pantry|Vegetables A|12|10|small|common
+pantry-646|pantry|Vegetables A|12|10|small|common
+pantry-647|pantry|Vegetables A|30|26|small|rare
+pantry-648|pantry|Vegetables A|30|26|small|rare
+pantry-649|pantry|Vegetables A|18|14|small|common
+pantry-650|pantry|Vegetables A|19|17|small|common
+pantry-651|pantry|Vegetables A|19|17|small|common
+pantry-652|pantry|Vegetables A|28|24|small|common
+pantry-653|pantry|Vegetables A|19|17|small|common
+pantry-654|pantry|Vegetables A|12|12|small|common
+pantry-655|pantry|Vegetables A|12|12|small|common
+pantry-656|pantry|Vegetables A|16|8|small|common
+pantry-657|pantry|Vegetables A|27|24|small|common
+pantry-658|pantry|Vegetables A|27|24|small|common
+pantry-659|pantry|Vegetables A|27|24|small|common
+pantry-660|pantry|Vegetables A|18|20|small|common
+pantry-661|pantry|Vegetables A|18|20|small|common
+pantry-662|pantry|Vegetables A|16|18|small|common
+pantry-663|pantry|Vegetables A|15|13|small|common
+pantry-664|pantry|Vegetables A|15|13|small|common
+pantry-665|pantry|Vegetables A|9|7|small|common
+pantry-666|pantry|Vegetables A|27|23|small|common
+pantry-667|pantry|Vegetables A|27|23|small|common
+pantry-668|pantry|Vegetables A|30|24|small|rare
+pantry-669|pantry|Vegetables A|6|6|small|common
+pantry-670|pantry|Vegetables A|6|6|small|common
+pantry-671|pantry|Vegetables A|6|6|small|common
+pantry-672|pantry|Vegetables A|15|18|small|common
+pantry-673|pantry|Vegetables A|15|18|small|common
+pantry-674|pantry|Vegetables A|15|18|small|common
+pantry-675|pantry|Vegetables A|16|18|small|common
+pantry-676|pantry|Vegetables B|16|19|small|common
+pantry-677|pantry|Vegetables B|20|16|small|common
+pantry-678|pantry|Vegetables B|17|17|small|common
+pantry-679|pantry|Vegetables B|16|13|small|common
+pantry-680|pantry|Vegetables B|26|21|small|common
+pantry-681|pantry|Vegetables B|23|13|small|common
+pantry-682|pantry|Vegetables B|16|13|small|common
+pantry-683|pantry|Vegetables B|30|28|small|rare
+pantry-684|pantry|Vegetables B|30|28|small|rare
+pantry-685|pantry|Vegetables B|64|43|small|rare
+pantry-686|pantry|Vegetables C|22|25|small|common
+pantry-687|pantry|Vegetables C|24|63|small|rare
+pantry-688|pantry|Vegetables C|20|26|small|common
+pantry-689|pantry|Vegetables C|26|26|small|common
+pantry-690|pantry|Vegetables C|16|26|small|common
+pantry-691|pantry|Vegetables C|22|24|small|common
+pantry-692|pantry|Vegetables C|22|22|small|common
+pantry-693|pantry|Vegetables C|20|25|small|common
+pantry-694|pantry|Vegetables C|14|14|small|common
+pantry-695|pantry|Vegetables C|18|14|small|common
+pantry-696|pantry|Vegetables C|13|11|small|common
+pantry-697|pantry|Vegetables C|15|15|small|common
+pantry-698|pantry|Vegetables C|17|13|small|common
+pantry-699|pantry|Vegetables C|9|16|small|common
+pantry-700|pantry|Vegetables C|15|15|small|common
+pantry-701|pantry|Vegetables C|62|62|small|epic
+pantry-702|pantry|Vegetables C|22|28|small|common
+pantry-703|pantry|Vegetables C|24|28|small|common
+pantry-704|pantry|Vegetables C|25|21|small|common
+pantry-705|pantry|Vegetables C|26|26|small|common
+pantry-706|pantry|Vegetables C|28|26|small|rare
+pantry-707|pantry|Vegetables C|26|18|small|common
+pantry-708|pantry|Vegetables C|27|22|small|common
+pantry-709|pantry|Vegetables C|26|22|small|common
+pantry-710|pantry|Vegetables C|22|18|small|common
+pantry-711|pantry|Vegetables C|22|22|small|common
+pantry-712|pantry|Vegetables C|21|19|small|common
+pantry-713|pantry|Vegetables C|19|22|small|common
+pantry-714|pantry|Vegetables C|16|18|small|common
+pantry-715|pantry|Vegetables C|19|15|small|common
+pantry-716|pantry|Vegetables C|17|15|small|common
+pantry-717|pantry|Vegetables C|28|26|small|rare
+pantry-718|pantry|Vegetables C|30|30|small|rare
+pantry-719|pantry|Vegetables C|95|31|small|rare
+pantry-720|pantry|Vegetables C|29|24|small|common
+pantry-721|pantry|Vegetables C|27|25|small|common
+pantry-722|pantry|Vegetables C|26|27|small|rare
+pantry-723|pantry|Vegetables C|26|27|small|rare
+pantry-724|pantry|Vegetables C|31|30|small|rare
+pantry-725|pantry|Vegetables C|29|25|small|rare
+pantry-726|pantry|Vegetables C|24|24|small|common
+pantry-727|pantry|Vegetables C|30|27|small|rare
+pantry-728|pantry|Vegetables C|26|22|small|common
+pantry-729|pantry|Vegetables C|29|21|small|common
+pantry-730|pantry|Vegetables C|28|22|small|common
+pantry-731|pantry|Vegetables C|576|48|small|epic
+pantry-732|pantry|Vegetables C|10|27|small|common
+pantry-733|pantry|Vegetables C|23|21|small|common
+pantry-734|pantry|Vegetables C|23|21|small|common
+pantry-735|pantry|Vegetables C|27|19|small|common
+pantry-736|pantry|Vegetables C|19|26|small|common
+pantry-737|pantry|Vegetables C|23|21|small|common
+pantry-738|pantry|Vegetables C|26|19|small|common
+pantry-739|pantry|Vegetables C|13|20|small|common
+pantry-740|pantry|Vegetables C|11|11|small|common
+pantry-741|pantry|Vegetables C|11|11|small|common
+pantry-742|pantry|Vegetables C|11|11|small|common
+pantry-743|pantry|Vegetables C|11|11|small|common
+pantry-744|pantry|Vegetables C|20|19|small|common
+pantry-745|pantry|Vegetables C|14|11|small|common
+pantry-746|pantry|Vegetables C|12|15|small|common
+pantry-747|pantry|Vegetables C|17|17|small|common
+pantry-748|pantry|Vegetables C|12|17|small|common
+pantry-749|pantry|Vegetables C|26|31|small|rare
+pantry-750|pantry|Vegetables C|22|22|small|common
+pantry-751|pantry|Vegetables C|26|26|small|common
+pantry-752|pantry|Vegetables C|14|15|small|common
+pantry-753|pantry|Vegetables C|14|15|small|common
+pantry-754|pantry|Vegetables C|14|15|small|common
+pantry-755|pantry|Vegetables C|14|15|small|common
+pantry-756|pantry|Vegetables C|15|14|small|common
+pantry-757|pantry|Vegetables C|15|14|small|common
+pantry-758|pantry|Vegetables C|15|14|small|common
+pantry-759|pantry|Vegetables C|15|14|small|common
+pantry-760|pantry|Vegetables C|19|20|small|common
+pantry-761|pantry|Vegetables C|19|18|small|common
+pantry-762|pantry|Vegetables C|19|15|small|common
+pantry-763|pantry|Vegetables C|18|17|small|common
+pantry-764|pantry|Vegetables C|15|14|small|common
+pantry-765|pantry|Vegetables C|12|12|small|common
+pantry-766|pantry|Vegetables C|20|18|small|common
+pantry-767|pantry|Vegetables C|32|27|small|rare
+pantry-768|pantry|Vegetables C|26|27|small|rare
+pantry-769|pantry|Vegetables C|28|28|small|rare
+pantry-770|pantry|Vegetables C|28|27|small|rare
+pantry-771|pantry|Vegetables C|23|24|small|common
+pantry-772|pantry|Vegetables C|25|20|small|common
+pantry-773|pantry|Vegetables C|26|23|small|common
+pantry-774|pantry|Vegetables C|26|23|small|common
+pantry-775|pantry|Vegetables C|26|23|small|common
+pantry-776|pantry|Vegetables C|26|23|small|common
+pantry-777|pantry|Vegetables C|26|23|small|common
+pantry-778|pantry|Vegetables C|21|19|small|common
+pantry-779|pantry|Vegetables C|21|19|small|common
+pantry-780|pantry|Vegetables C|21|19|small|common
+pantry-781|pantry|Vegetables C|21|19|small|common
+pantry-782|pantry|Vegetables C|26|23|small|common
+pantry-783|pantry|Vegetables C|26|24|small|common
+pantry-784|pantry|Vegetables C|22|22|small|common
+pantry-785|pantry|Vegetables C|576|42|small|epic
+pantry-786|pantry|Vegetables C|18|25|small|common
+pantry-787|pantry|Vegetables C|19|21|small|common
+pantry-788|pantry|Vegetables C|17|17|small|common
+pantry-789|pantry|Vegetables C|13|16|small|common
+pantry-790|pantry|Vegetables C|19|13|small|common
+pantry-791|pantry|Vegetables C|25|24|small|common
+pantry-792|pantry|Vegetables C|16|20|small|common
+pantry-793|pantry|Vegetables C|15|16|small|common
+pantry-794|pantry|Vegetables C|22|16|small|common
+pantry-795|pantry|Vegetables C|16|15|small|common
+pantry-796|pantry|Vegetables C|20|20|small|common
+pantry-797|pantry|Vegetables C|22|26|small|common
+pantry-798|pantry|Vegetables C|21|25|small|common
+pantry-799|pantry|Vegetables C|27|26|small|rare
+pantry-800|pantry|Vegetables C|28|25|small|rare
+pantry-801|pantry|Vegetables C|24|24|small|common
+pantry-802|pantry|Vegetables C|22|20|small|common
+pantry-803|pantry|Vegetables C|19|21|small|common
+pantry-804|pantry|Vegetables C|26|18|small|common
+pantry-805|pantry|Vegetables C|18|18|small|common
+pantry-806|pantry|Vegetables C|20|19|small|common
+pantry-807|pantry|Vegetables C|23|21|small|common
+pantry-808|pantry|Vegetables C|17|16|small|common
+pantry-809|pantry|Vegetables C|28|30|small|rare
+pantry-810|pantry|Vegetables C|29|28|small|rare
+pantry-811|pantry|Vegetables C|27|28|small|rare
+pantry-812|pantry|Vegetables C|25|27|small|common
+pantry-813|pantry|Vegetables C|25|24|small|common
+pantry-814|pantry|Vegetables C|25|26|small|common
+pantry-815|pantry|Vegetables C|25|24|small|common
+pantry-816|pantry|Vegetables C|22|24|small|common
+pantry-817|pantry|Vegetables C|22|22|small|common
+pantry-818|pantry|Vegetables C|30|25|small|rare
+pantry-819|pantry|Vegetables C|23|23|small|common
+pantry-820|pantry|Vegetables C|29|19|small|common
+pantry-821|pantry|Vegetables C|385|51|small|epic
+lounge-393|lounge|Games|6|10|small|common
+lounge-394|lounge|Games|7|7|small|common
+lounge-395|lounge|Games|7|9|small|common
+garden-055|garden|Hay & Straw|57|76|small|epic
+garden-056|garden|Hay & Straw|57|78|small|epic
+kitchen-156|kitchen|Kitchen Clutter A|24|15|small|common
+kitchen-157|kitchen|Kitchen Clutter A|15|26|small|common
+kitchen-158|kitchen|Kitchen Clutter A|15|25|small|common
+kitchen-159|kitchen|Kitchen Clutter A|23|14|small|common
+kitchen-160|kitchen|Kitchen Clutter A|24|19|small|common
+kitchen-161|kitchen|Kitchen Clutter A|28|18|small|common
+kitchen-162|kitchen|Kitchen Clutter A|32|27|small|rare
+kitchen-163|kitchen|Kitchen Clutter A|22|21|small|common
+kitchen-164|kitchen|Kitchen Clutter A|22|13|small|common
+kitchen-165|kitchen|Kitchen Clutter A|18|9|small|common
+kitchen-166|kitchen|Kitchen Clutter A|28|9|small|common
+kitchen-167|kitchen|Kitchen Clutter A|27|17|small|common
+kitchen-168|kitchen|Kitchen Clutter A|28|18|small|common
+kitchen-169|kitchen|Kitchen Clutter A|14|17|small|common
+kitchen-170|kitchen|Kitchen Clutter A|28|18|small|common
+kitchen-171|kitchen|Kitchen Clutter A|30|14|small|common
+kitchen-172|kitchen|Kitchen Clutter A|28|12|small|common
+kitchen-173|kitchen|Kitchen Clutter A|23|21|small|common
+kitchen-174|kitchen|Kitchen Clutter A|23|11|small|common
+kitchen-175|kitchen|Kitchen Clutter A|6|18|small|common
+kitchen-176|kitchen|Kitchen Clutter A|6|18|small|common
+kitchen-177|kitchen|Kitchen Clutter A|6|18|small|common
+study-028|study|Laptop|19|22|small|common
+study-029|study|Laptop|19|22|small|common
+study-030|study|Laptop|19|22|small|common
+study-031|study|Laptop|19|22|small|common
+study-032|study|Laptop|15|19|small|common
+study-033|study|Laptop|15|19|small|common
+study-034|study|Laptop|15|19|small|common
+study-035|study|Laptop|15|19|small|common
+study-036|study|Laptop|15|19|small|common
+study-037|study|Laptop|15|19|small|common
+study-038|study|Laptop|15|19|small|common
+study-039|study|Laptop|15|19|small|common
+study-040|study|Laptop|19|14|small|common
+study-041|study|Laptop|19|14|small|common
+study-042|study|Laptop|19|14|small|common
+study-043|study|Laptop|19|14|small|common
+bedroom-304|bedroom|Lighting, Table|24|31|small|rare
+bedroom-305|bedroom|Lighting, Table|26|32|small|rare
+bedroom-306|bedroom|Lighting, Table|10|20|small|common
+bedroom-307|bedroom|Lighting, Table|10|20|small|common
+bedroom-308|bedroom|Lighting, Table|20|26|small|common
+bedroom-309|bedroom|Lighting, Table|20|92|small|rare
+bedroom-310|bedroom|Lighting, Table|10|14|small|common
+bedroom-311|bedroom|Lighting, Table|18|31|small|common
+bedroom-312|bedroom|Lighting, Table|17|23|small|common
+bedroom-313|bedroom|Lighting, Table|17|23|small|common
+bedroom-314|bedroom|Lighting, Table|22|29|small|common
+bedroom-315|bedroom|Lighting, Table|24|63|small|rare
+bedroom-316|bedroom|Lighting, Table|12|33|small|common
+bedroom-317|bedroom|Lighting, Table|14|34|small|common
+bedroom-318|bedroom|Lighting, Table|18|29|small|common
+bedroom-319|bedroom|Lighting, Table|22|29|small|common
+study-044|study|Loose Paper|10|10|small|common
+study-045|study|Loose Paper|8|9|small|common
+study-046|study|Loose Paper|8|9|small|common
+study-047|study|Loose Paper|15|8|small|common
+study-048|study|Loose Paper|15|8|small|common
+study-049|study|Loose Paper|12|11|small|common
+study-050|study|Loose Paper|15|19|small|common
+study-051|study|Loose Paper|11|18|small|common
+study-052|study|Loose Paper|13|15|small|common
+maker-140|maker|Lumber|18|17|small|common
+maker-141|maker|Lumber|27|18|small|common
+maker-142|maker|Lumber|61|81|small|epic
+maker-143|maker|Lumber|63|26|small|rare
+maker-144|maker|Lumber|26|16|small|common
+maker-145|maker|Lumber|26|20|small|common
+maker-146|maker|Lumber|26|16|small|common
+maker-147|maker|Lumber|57|61|small|epic
+maker-148|maker|Lumber|53|60|small|epic
+maker-149|maker|Lumber|30|24|small|rare
+maker-150|maker|Lumber|47|22|small|rare
+forge-058|forge|Alloys|21|17|small|common
+forge-059|forge|Alloys|21|17|small|common
+forge-060|forge|Alloys|21|17|small|common
+forge-061|forge|Alloys|21|17|small|common
+forge-062|forge|Alloys|21|17|small|common
+forge-063|forge|Alloys|21|17|small|common
+forge-064|forge|Ore, Coal|30|30|small|rare
+forge-065|forge|Ore, Coal|29|28|small|rare
+forge-066|forge|Ore, Coal|28|28|small|rare
+forge-067|forge|Ore, Coal|28|21|small|common
+forge-068|forge|Ore, Coal|15|13|small|common
+forge-069|forge|Ore, Coal|26|21|small|common
+forge-070|forge|Ore, Coal|22|19|small|common
+forge-071|forge|Ore, Coal|19|12|small|common
+forge-072|forge|Ore, Copper|30|30|small|rare
+forge-073|forge|Ore, Copper|29|28|small|rare
+forge-074|forge|Ore, Copper|28|28|small|rare
+forge-075|forge|Ore, Copper|29|28|small|rare
+forge-076|forge|Ore, Copper|29|28|small|rare
+forge-077|forge|Ore, Copper|29|28|small|rare
+forge-078|forge|Ore, Copper|28|28|small|rare
+forge-079|forge|Ore, Copper|28|27|small|rare
+forge-080|forge|Ore, Copper|22|22|small|common
+forge-081|forge|Ore, Copper|23|22|small|common
+forge-082|forge|Ore, Copper|21|17|small|common
+forge-083|forge|Ore, Copper|15|14|small|common
+forge-084|forge|Ore, Gold|30|30|small|rare
+forge-085|forge|Ore, Gold|29|28|small|rare
+forge-086|forge|Ore, Gold|28|28|small|rare
+forge-087|forge|Ore, Gold|29|28|small|rare
+forge-088|forge|Ore, Gold|29|28|small|rare
+forge-089|forge|Ore, Gold|29|28|small|rare
+forge-090|forge|Ore, Gold|28|28|small|rare
+forge-091|forge|Ore, Gold|28|27|small|rare
+forge-092|forge|Ore, Gold|22|22|small|common
+forge-093|forge|Ore, Gold|23|22|small|common
+forge-094|forge|Ore, Gold|21|17|small|common
+forge-095|forge|Ore, Gold|15|14|small|common
+forge-096|forge|Ore, Iron|30|30|small|rare
+forge-097|forge|Ore, Iron|29|28|small|rare
+forge-098|forge|Ore, Iron|28|21|small|common
+forge-099|forge|Ore, Iron|28|28|small|rare
+forge-100|forge|Ore, Iron|28|28|small|rare
+forge-101|forge|Ore, Iron|28|21|small|common
+forge-102|forge|Ore, Iron|22|19|small|common
+forge-103|forge|Ore, Iron|21|17|small|common
+forge-104|forge|Ore, Iron|16|14|small|common
+forge-105|forge|Ore, Silver|30|30|small|rare
+forge-106|forge|Ore, Silver|29|28|small|rare
+forge-107|forge|Ore, Silver|28|28|small|rare
+forge-108|forge|Ore, Silver|29|28|small|rare
+forge-109|forge|Ore, Silver|29|28|small|rare
+forge-110|forge|Ore, Silver|29|28|small|rare
+forge-111|forge|Ore, Silver|28|28|small|rare
+forge-112|forge|Ore, Silver|28|27|small|rare
+forge-113|forge|Ore, Silver|22|22|small|common
+forge-114|forge|Ore, Silver|23|22|small|common
+forge-115|forge|Ore, Silver|21|17|small|common
+forge-116|forge|Ore, Silver|15|14|small|common
+forge-117|forge|Ore, Stone|29|28|small|rare
+forge-118|forge|Ore, Stone|28|27|small|rare
+forge-119|forge|Ore, Stone|30|30|small|rare
+forge-120|forge|Ore, Stone|28|28|small|rare
+forge-121|forge|Ore, Stone|28|28|small|rare
+forge-122|forge|Ore, Stone|28|21|small|common
+forge-123|forge|Ore, Stone|29|28|small|rare
+forge-124|forge|Ore, Tin|30|30|small|rare
+forge-125|forge|Ore, Tin|29|28|small|rare
+forge-126|forge|Ore, Tin|28|28|small|rare
+forge-127|forge|Ore, Tin|29|28|small|rare
+forge-128|forge|Ore, Tin|29|28|small|rare
+forge-129|forge|Ore, Tin|29|28|small|rare
+forge-130|forge|Ore, Tin|28|28|small|rare
+forge-131|forge|Ore, Tin|28|27|small|rare
+forge-132|forge|Ore, Tin|22|22|small|common
+forge-133|forge|Ore, Tin|23|22|small|common
+forge-134|forge|Ore, Tin|21|17|small|common
+forge-135|forge|Ore, Tin|15|14|small|common
+bedroom-320|bedroom|Pillows|14|26|small|common
+bedroom-321|bedroom|Pillows|14|26|small|common
+bedroom-322|bedroom|Pillows|14|26|small|common
+bedroom-323|bedroom|Pillows|14|26|small|common
+bedroom-324|bedroom|Pillows|26|15|small|common
+bedroom-325|bedroom|Pillows|26|15|small|common
+bedroom-326|bedroom|Pillows|26|15|small|common
+bedroom-327|bedroom|Pillows|26|15|small|common
+bedroom-328|bedroom|Pillows|17|15|small|common
+bedroom-329|bedroom|Pillows|17|15|small|common
+bedroom-330|bedroom|Pillows|16|14|small|common
+bedroom-331|bedroom|Pillows|18|9|small|common
+bedroom-332|bedroom|Pillows|14|26|small|common
+bedroom-333|bedroom|Pillows|14|26|small|common
+bedroom-334|bedroom|Pillows|14|26|small|common
+bedroom-335|bedroom|Pillows|14|26|small|common
+bedroom-336|bedroom|Pillows|17|15|small|common
+bedroom-337|bedroom|Pillows|17|15|small|common
+bedroom-338|bedroom|Pillows|26|15|small|common
+bedroom-339|bedroom|Pillows|26|15|small|common
+bedroom-340|bedroom|Pillows|26|15|small|common
+bedroom-341|bedroom|Pillows|26|15|small|common
+bedroom-342|bedroom|Pillows|16|14|small|common
+bedroom-343|bedroom|Pillows|18|9|small|common
+bedroom-344|bedroom|Pillows|14|26|small|common
+bedroom-345|bedroom|Pillows|14|26|small|common
+bedroom-346|bedroom|Pillows|14|26|small|common
+bedroom-347|bedroom|Pillows|14|26|small|common
+bedroom-348|bedroom|Pillows|26|15|small|common
+bedroom-349|bedroom|Pillows|26|15|small|common
+bedroom-350|bedroom|Pillows|26|15|small|common
+bedroom-351|bedroom|Pillows|26|15|small|common
+bedroom-352|bedroom|Pillows|17|15|small|common
+bedroom-353|bedroom|Pillows|17|15|small|common
+bedroom-354|bedroom|Pillows|16|14|small|common
+bedroom-355|bedroom|Pillows|18|9|small|common
+bedroom-356|bedroom|Pillows|14|26|small|common
+bedroom-357|bedroom|Pillows|14|26|small|common
+bedroom-358|bedroom|Pillows|14|26|small|common
+bedroom-359|bedroom|Pillows|14|26|small|common
+bedroom-360|bedroom|Pillows|26|15|small|common
+bedroom-361|bedroom|Pillows|26|15|small|common
+bedroom-362|bedroom|Pillows|26|15|small|common
+bedroom-363|bedroom|Pillows|26|15|small|common
+bedroom-364|bedroom|Pillows|17|15|small|common
+bedroom-365|bedroom|Pillows|17|15|small|common
+bedroom-366|bedroom|Pillows|16|14|small|common
+bedroom-367|bedroom|Pillows|18|9|small|common
+bedroom-368|bedroom|Pillows|14|26|small|common
+bedroom-369|bedroom|Pillows|14|26|small|common
+bedroom-370|bedroom|Pillows|14|26|small|common
+bedroom-371|bedroom|Pillows|14|26|small|common
+bedroom-372|bedroom|Pillows|26|15|small|common
+bedroom-373|bedroom|Pillows|26|15|small|common
+bedroom-374|bedroom|Pillows|26|15|small|common
+bedroom-375|bedroom|Pillows|26|15|small|common
+bedroom-376|bedroom|Pillows|17|15|small|common
+bedroom-377|bedroom|Pillows|17|15|small|common
+bedroom-378|bedroom|Pillows|16|14|small|common
+bedroom-379|bedroom|Pillows|18|9|small|common
+bedroom-380|bedroom|Pillows|14|26|small|common
+bedroom-381|bedroom|Pillows|14|26|small|common
+bedroom-382|bedroom|Pillows|14|26|small|common
+bedroom-383|bedroom|Pillows|14|26|small|common
+bedroom-384|bedroom|Pillows|26|15|small|common
+bedroom-385|bedroom|Pillows|26|15|small|common
+bedroom-386|bedroom|Pillows|26|15|small|common
+bedroom-387|bedroom|Pillows|26|15|small|common
+bedroom-388|bedroom|Pillows|17|15|small|common
+bedroom-389|bedroom|Pillows|17|15|small|common
+bedroom-390|bedroom|Pillows|16|14|small|common
+bedroom-391|bedroom|Pillows|18|9|small|common
+bedroom-392|bedroom|Pillows|14|26|small|common
+bedroom-393|bedroom|Pillows|14|26|small|common
+bedroom-394|bedroom|Pillows|14|26|small|common
+bedroom-395|bedroom|Pillows|14|26|small|common
+bedroom-396|bedroom|Pillows|26|15|small|common
+bedroom-397|bedroom|Pillows|26|15|small|common
+bedroom-398|bedroom|Pillows|26|15|small|common
+bedroom-399|bedroom|Pillows|26|15|small|common
+bedroom-400|bedroom|Pillows|17|15|small|common
+bedroom-401|bedroom|Pillows|17|15|small|common
+bedroom-402|bedroom|Pillows|16|14|small|common
+bedroom-403|bedroom|Pillows|18|9|small|common
+bedroom-404|bedroom|Pillows|14|26|small|common
+bedroom-405|bedroom|Pillows|14|26|small|common
+bedroom-406|bedroom|Pillows|14|26|small|common
+bedroom-407|bedroom|Pillows|14|26|small|common
+bedroom-408|bedroom|Pillows|26|15|small|common
+bedroom-409|bedroom|Pillows|26|15|small|common
+bedroom-410|bedroom|Pillows|26|15|small|common
+bedroom-411|bedroom|Pillows|26|15|small|common
+bedroom-412|bedroom|Pillows|17|15|small|common
+bedroom-413|bedroom|Pillows|17|15|small|common
+bedroom-414|bedroom|Pillows|16|14|small|common
+bedroom-415|bedroom|Pillows|18|9|small|common
+festive-003|festive|Presents|26|63|small|rare
+festive-004|festive|Presents|12|28|small|common
+festive-005|festive|Presents|23|28|small|common
+festive-006|festive|Presents|23|22|small|common
+festive-007|festive|Presents|26|26|small|common
+festive-008|festive|Presents|10|13|small|common
+festive-009|festive|Presents|12|28|small|common
+festive-010|festive|Presents|23|28|small|common
+festive-011|festive|Presents|23|22|small|common
+festive-012|festive|Presents|26|26|small|common
+festive-013|festive|Presents|10|13|small|common
+lounge-396|lounge|Rotary Phones|13|14|small|common
+lounge-397|lounge|Rotary Phones|13|14|small|common
+lounge-398|lounge|Rotary Phones|15|13|small|common
+lounge-399|lounge|Rotary Phones|15|10|small|common
+lounge-400|lounge|Rotary Phones|13|14|small|common
+lounge-401|lounge|Rotary Phones|13|14|small|common
+lounge-402|lounge|Rotary Phones|15|13|small|common
+lounge-403|lounge|Rotary Phones|15|10|small|common
+lounge-404|lounge|Rotary Phones|13|14|small|common
+lounge-405|lounge|Rotary Phones|13|14|small|common
+lounge-406|lounge|Rotary Phones|15|13|small|common
+lounge-407|lounge|Rotary Phones|15|10|small|common
+lounge-408|lounge|Rotary Phones|13|14|small|common
+lounge-409|lounge|Rotary Phones|13|14|small|common
+lounge-410|lounge|Rotary Phones|15|13|small|common
+lounge-411|lounge|Rotary Phones|15|10|small|common
+maker-151|maker|Sawdust|13|9|small|common
+maker-152|maker|Sawdust|14|11|small|common
+curious-025|curious|Skeletons A|92|64|small|epic
+gallery-001|gallery|Tabletop Portraits|13|20|small|common
+gallery-002|gallery|Tabletop Portraits|16|20|small|common
+gallery-003|gallery|Tabletop Portraits|13|20|small|common
+gallery-004|gallery|Tabletop Portraits|16|20|small|common
+gallery-005|gallery|Tabletop Portraits|13|20|small|common
+maker-153|maker|Tools, Carpentry|31|32|small|rare
+maker-154|maker|Tools, Carpentry|60|30|small|rare
+maker-155|maker|Tools, Carpentry|60|30|small|rare
+maker-156|maker|Tools, Carpentry|191|30|small|epic
+maker-157|maker|Tools, Carpentry|29|22|small|common
+maker-158|maker|Tools, Carpentry|15|16|small|common
+maker-159|maker|Tools, Carpentry|24|24|small|common
+maker-160|maker|Tools, Carpentry|26|9|small|common
+maker-161|maker|Tools, Carpentry|27|24|small|common
+maker-162|maker|Tools, Carpentry|12|6|small|common
+maker-163|maker|Tools, Carpentry|17|18|small|common
+maker-164|maker|Tools, Carpentry|18|18|small|common
+maker-165|maker|Tools, Carpentry|13|13|small|common
+maker-166|maker|Tools, Carpentry|20|16|small|common
+maker-167|maker|Tools, Carpentry|15|13|small|common
+maker-168|maker|Tools, Carpentry|13|13|small|common
+maker-169|maker|Tools, Carpentry|32|11|small|common
+maker-170|maker|Tools, Carpentry|18|9|small|common
+maker-171|maker|Tools, Carpentry|17|11|small|common
+maker-172|maker|Tools, Carpentry|28|24|small|common
+maker-173|maker|Tools, Carpentry|55|53|small|rare
+maker-174|maker|Tools, Carpentry|26|27|small|rare
+maker-175|maker|Tools, Carpentry|24|20|small|common
+maker-176|maker|Tools, Carpentry|20|18|small|common
+maker-177|maker|Tools, Carpentry|16|16|small|common
+maker-178|maker|Tools, Carpentry|22|16|small|common
+maker-179|maker|Tools, Carpentry|24|14|small|common
+maker-180|maker|Tools, Carpentry|21|13|small|common
+maker-181|maker|Tools, Carpentry|19|17|small|common
+maker-182|maker|Tools, Carpentry|15|16|small|common
+maker-183|maker|Tools, Carpentry|18|12|small|common
+maker-184|maker|Tools, Carpentry|32|25|small|rare
+maker-185|maker|Tools, Carpentry|64|30|small|rare
+maker-186|maker|Tools, Carpentry|42|24|small|rare
+maker-187|maker|Tools, Carpentry|30|26|small|rare
+maker-188|maker|Tools, Carpentry|28|24|small|common
+maker-189|maker|Tools, Carpentry|35|22|small|rare
+maker-190|maker|Tools, Sewing|38|28|small|rare
+maker-191|maker|Tools, Sewing|23|26|small|common
+maker-192|maker|Tools, Sewing|28|27|small|rare
+maker-193|maker|Tools, Sewing|22|15|small|common
+maker-194|maker|Tools, Sewing|15|18|small|common
+maker-195|maker|Tools, Sewing|9|12|small|common
+maker-196|maker|Tools, Sewing|22|24|small|common
+maker-197|maker|Tools, Sewing|24|22|small|common
+maker-198|maker|Tools, Sewing|26|22|small|common
+maker-199|maker|Tools, Sewing|15|18|small|common
+maker-200|maker|Tools, Sewing|18|15|small|common
+maker-201|maker|Tools, Sewing|95|31|small|rare
+maker-202|maker|Tools, Sewing|35|21|small|rare
+forge-136|forge|Tools, Smithing|15|28|small|common
+forge-137|forge|Tools, Smithing|17|30|small|common
+forge-138|forge|Tools, Smithing|13|28|small|common
+forge-139|forge|Tools, Smithing|19|30|small|common
+forge-140|forge|Tools, Smithing|13|21|small|common
+forge-141|forge|Tools, Smithing|16|12|small|common
+forge-142|forge|Tools, Smithing|19|15|small|common
+forge-143|forge|Tools, Smithing|13|13|small|common
+forge-144|forge|Tools, Smithing|20|13|small|common
+forge-145|forge|Tools, Smithing|20|19|small|common
+forge-146|forge|Tools, Smithing|17|18|small|common
+forge-147|forge|Tools, Smithing|26|23|small|common
+forge-148|forge|Tools, Smithing|11|26|small|common
+forge-149|forge|Tools, Smithing|56|31|small|rare
+forge-150|forge|Tools, Smithing|12|18|small|common
+forge-151|forge|Tools, Smithing|12|18|small|common
+forge-152|forge|Tools, Smithing|29|29|small|rare
+forge-153|forge|Tools, Smithing|24|23|small|common
+forge-154|forge|Tools, Smithing|21|20|small|common
+forge-155|forge|Tools, Smithing|25|24|small|common
+forge-156|forge|Tools, Smithing|11|23|small|common
+forge-157|forge|Tools, Smithing|18|18|small|common
+forge-158|forge|Tools, Smithing|12|11|small|common
+forge-159|forge|Tools, Smithing|9|12|small|common
+forge-160|forge|Tools, Smithing|12|11|small|common
+forge-161|forge|Tools, Smithing|19|19|small|common
+forge-162|forge|Tools, Smithing|19|16|small|common
+forge-163|forge|Tools, Smithing|11|11|small|common
+forge-164|forge|Tools, Smithing|11|11|small|common
+forge-165|forge|Tools, Smithing|60|32|small|rare
+forge-166|forge|Tools, Smithing|25|21|small|common
+forge-167|forge|Tools, Smithing|58|23|small|rare
+forge-168|forge|Tools, Smithing|29|30|small|rare
+forge-169|forge|Tools, Smithing|25|21|small|common
+forge-170|forge|Tools, Smithing|24|19|small|common
+forge-171|forge|Tools, Smithing|18|15|small|common
+forge-172|forge|Tools, Smithing|26|26|small|common
+festive-014|festive|Christmas Wall Decor|20|22|wall|common
+festive-015|festive|Christmas Wall Decor|20|22|wall|common
+festive-016|festive|Christmas Wall Decor|14|11|wall|common
+festive-017|festive|Christmas Wall Decor|14|11|wall|common
+festive-018|festive|Christmas Wall Decor|14|11|wall|common
+festive-019|festive|Christmas Wall Decor|14|11|wall|common
+festive-020|festive|Christmas Wall Decor|72|22|wall|rare
+festive-021|festive|Christmas Wall Decor|72|22|wall|rare
+festive-022|festive|Christmas Wall Decor|128|22|wall|rare
+festive-023|festive|Christmas Wall Decor|128|14|wall|rare
+bedroom-416|bedroom|Curtains|96|64|wall|epic
+bedroom-417|bedroom|Curtains|46|63|wall|rare
+bedroom-418|bedroom|Curtains|192|94|wall|epic
+bedroom-419|bedroom|Curtains|46|63|wall|rare
+bedroom-420|bedroom|Curtains|96|94|wall|epic
+bedroom-421|bedroom|Curtains|46|78|wall|epic
+bedroom-422|bedroom|Curtains|54|383|wall|epic
+bedroom-423|bedroom|Curtains|46|78|wall|epic
+bedroom-424|bedroom|Curtains|54|383|wall|epic
+bedroom-425|bedroom|Curtains|96|64|wall|epic
+bedroom-426|bedroom|Curtains|46|63|wall|rare
+bedroom-427|bedroom|Curtains|192|94|wall|epic
+bedroom-428|bedroom|Curtains|46|63|wall|rare
+bedroom-429|bedroom|Curtains|96|94|wall|epic
+bedroom-430|bedroom|Curtains|46|78|wall|epic
+bedroom-431|bedroom|Curtains|46|78|wall|epic
+bedroom-432|bedroom|Curtains|96|64|wall|epic
+bedroom-433|bedroom|Curtains|46|63|wall|rare
+bedroom-434|bedroom|Curtains|192|94|wall|epic
+bedroom-435|bedroom|Curtains|46|63|wall|rare
+bedroom-436|bedroom|Curtains|96|94|wall|epic
+bedroom-437|bedroom|Curtains|46|78|wall|epic
+bedroom-438|bedroom|Curtains|46|78|wall|epic
+bedroom-439|bedroom|Curtains|96|64|wall|epic
+bedroom-440|bedroom|Curtains|46|63|wall|rare
+bedroom-441|bedroom|Curtains|192|94|wall|epic
+bedroom-442|bedroom|Curtains|46|63|wall|rare
+bedroom-443|bedroom|Curtains|96|94|wall|epic
+bedroom-444|bedroom|Curtains|46|78|wall|epic
+bedroom-445|bedroom|Curtains|46|78|wall|epic
+gallery-006|gallery|Graffiti Elements|10|13|wall|common
+gallery-007|gallery|Graffiti Elements|10|13|wall|common
+gallery-008|gallery|Graffiti Elements|10|13|wall|common
+gallery-009|gallery|Graffiti Elements|11|13|wall|common
+gallery-010|gallery|Graffiti Elements|11|13|wall|common
+gallery-011|gallery|Graffiti Elements|10|13|wall|common
+gallery-012|gallery|Graffiti Elements|11|13|wall|common
+gallery-013|gallery|Graffiti Elements|10|13|wall|common
+gallery-014|gallery|Graffiti Elements|7|13|wall|common
+gallery-015|gallery|Graffiti Elements|10|13|wall|common
+gallery-016|gallery|Graffiti Elements|10|13|wall|common
+gallery-017|gallery|Graffiti Elements|12|13|wall|common
+gallery-018|gallery|Graffiti Elements|9|13|wall|common
+gallery-019|gallery|Graffiti Elements|7|13|wall|common
+gallery-020|gallery|Graffiti Elements|9|13|wall|common
+gallery-021|gallery|Graffiti Elements|8|13|wall|common
+gallery-022|gallery|Graffiti Elements|9|13|wall|common
+gallery-023|gallery|Graffiti Elements|10|13|wall|common
+gallery-024|gallery|Graffiti Elements|10|13|wall|common
+gallery-025|gallery|Graffiti Elements|11|13|wall|common
+gallery-026|gallery|Graffiti Elements|9|13|wall|common
+gallery-027|gallery|Graffiti Elements|9|13|wall|common
+gallery-028|gallery|Graffiti Elements|10|13|wall|common
+gallery-029|gallery|Graffiti Elements|11|13|wall|common
+gallery-030|gallery|Graffiti Elements|9|13|wall|common
+gallery-031|gallery|Graffiti Elements|10|13|wall|common
+gallery-032|gallery|Graffiti Elements|8|13|wall|common
+gallery-033|gallery|Graffiti Elements|8|13|wall|common
+gallery-034|gallery|Graffiti Elements|11|13|wall|common
+gallery-035|gallery|Graffiti Elements|9|13|wall|common
+gallery-036|gallery|Graffiti Elements|9|13|wall|common
+gallery-037|gallery|Graffiti Elements|11|13|wall|common
+gallery-038|gallery|Graffiti Elements|8|13|wall|common
+gallery-039|gallery|Graffiti Elements|9|13|wall|common
+gallery-040|gallery|Graffiti Elements|10|14|wall|common
+gallery-041|gallery|Graffiti Elements|13|14|wall|common
+gallery-042|gallery|Graffiti Elements|10|13|wall|common
+gallery-043|gallery|Graffiti Elements|10|13|wall|common
+gallery-044|gallery|Graffiti Elements|10|13|wall|common
+gallery-045|gallery|Graffiti Elements|10|13|wall|common
+gallery-046|gallery|Graffiti Elements|11|13|wall|common
+gallery-047|gallery|Graffiti Elements|8|13|wall|common
+gallery-048|gallery|Graffiti Elements|8|13|wall|common
+gallery-049|gallery|Graffiti Elements|9|13|wall|common
+gallery-050|gallery|Graffiti Elements|10|13|wall|common
+gallery-051|gallery|Graffiti Elements|12|13|wall|common
+gallery-052|gallery|Graffiti Elements|8|13|wall|common
+gallery-053|gallery|Graffiti Elements|10|13|wall|common
+gallery-054|gallery|Graffiti Elements|9|13|wall|common
+gallery-055|gallery|Graffiti Elements|9|13|wall|common
+gallery-056|gallery|Graffiti Elements|8|13|wall|common
+gallery-057|gallery|Graffiti Elements|9|13|wall|common
+gallery-058|gallery|Graffiti Elements|9|13|wall|common
+gallery-059|gallery|Graffiti Elements|8|13|wall|common
+gallery-060|gallery|Graffiti Elements|8|13|wall|common
+gallery-061|gallery|Graffiti Elements|8|13|wall|common
+gallery-062|gallery|Graffiti Elements|8|13|wall|common
+gallery-063|gallery|Graffiti Elements|11|13|wall|common
+gallery-064|gallery|Graffiti Elements|7|13|wall|common
+gallery-065|gallery|Graffiti Elements|9|13|wall|common
+gallery-066|gallery|Graffiti Elements|320|190|wall|epic
+gallery-067|gallery|Graffiti|62|79|wall|epic
+gallery-068|gallery|Graffiti|73|53|wall|epic
+gallery-069|gallery|Graffiti|92|47|wall|epic
+gallery-070|gallery|Graffiti|87|40|wall|epic
+gallery-071|gallery|Graffiti|80|28|wall|rare
+gallery-072|gallery|Graffiti|68|49|wall|epic
+gallery-073|gallery|Graffiti|81|67|wall|epic
+gallery-074|gallery|Graffiti|65|35|wall|rare
+lounge-412|lounge|Lighting, Wall|20|28|wall|common
+lounge-413|lounge|Lighting, Wall|20|28|wall|common
+lounge-414|lounge|Lighting, Wall|10|34|wall|common
+lounge-415|lounge|Lighting, Wall|10|33|wall|common
+lounge-416|lounge|Lighting, Wall|10|31|wall|common
+lounge-417|lounge|Lighting, Wall|10|26|wall|common
+lounge-418|lounge|Lighting, Wall|64|19|wall|rare
+curious-026|curious|Mailboxes (tiling)|37|37|wall|rare
+bedroom-446|bedroom|Mirrors|64|23|wall|rare
+bedroom-447|bedroom|Mirrors|39|39|wall|rare
+bedroom-448|bedroom|Mirrors|22|30|wall|common
+bedroom-449|bedroom|Mirrors|20|26|wall|common
+gallery-075|gallery|Paintings, Abstract|39|63|wall|rare
+gallery-076|gallery|Paintings, Abstract|23|43|wall|rare
+gallery-077|gallery|Paintings, Abstract|59|43|wall|rare
+gallery-078|gallery|Paintings, Abstract|23|43|wall|rare
+gallery-079|gallery|Paintings, Landscape|44|32|wall|rare
+gallery-080|gallery|Paintings, Landscape|37|28|wall|rare
+gallery-081|gallery|Paintings, Landscape|39|31|wall|rare
+gallery-082|gallery|Paintings, Landscape|32|28|wall|rare
+gallery-083|gallery|Paintings, Landscape|29|49|wall|rare
+gallery-084|gallery|Paintings, Landscape|81|25|wall|rare
+gallery-085|gallery|Paintings, Landscape|81|25|wall|rare
+gallery-086|gallery|Paintings, Portraits|17|25|wall|common
+gallery-087|gallery|Paintings, Portraits|17|25|wall|common
+gallery-088|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-089|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-090|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-091|gallery|Paintings, Portraits|17|25|wall|common
+gallery-092|gallery|Paintings, Portraits|17|25|wall|common
+gallery-093|gallery|Paintings, Portraits|27|32|wall|rare
+gallery-094|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-095|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-096|gallery|Paintings, Portraits|29|49|wall|rare
+gallery-097|gallery|Paintings, Still Life|62|50|wall|epic
+gallery-098|gallery|Paintings, Still Life|39|31|wall|rare
+gallery-099|gallery|Paintings, Still Life|37|28|wall|rare
+gallery-100|gallery|Posters|18|24|wall|common
+gallery-101|gallery|Posters|27|40|wall|rare
+gallery-102|gallery|Posters|19|23|wall|common
+gallery-103|gallery|Posters|11|17|wall|common
+gallery-104|gallery|Posters|24|36|wall|rare
+gallery-105|gallery|Posters|18|24|wall|common
+gallery-106|gallery|Posters|27|40|wall|rare
+gallery-107|gallery|Posters|24|36|wall|rare
+gallery-108|gallery|Posters|18|24|wall|common
+gallery-109|gallery|Posters|19|23|wall|common
+gallery-110|gallery|Posters|11|17|wall|common
+gallery-111|gallery|Pride Flags|50|30|wall|rare
+gallery-112|gallery|Pride Flags|50|30|wall|rare
+gallery-113|gallery|Pride Flags|50|30|wall|rare
+gallery-114|gallery|Pride Flags|50|30|wall|rare
+gallery-115|gallery|Pride Flags|50|30|wall|rare
+gallery-116|gallery|Pride Flags|50|30|wall|rare
+`;
+
+export const pieces: Piece[] = META.trim()
+  .split('\n')
+  .map((line, i) => {
+    const [id, set, label, w, h, kind, rarity] = line.split('|');
+    return { id, set, label, w: Number(w), h: Number(h), kind: kind as StickerKind, rarity: rarity as Rarity, src: SRC[i] };
+  });
