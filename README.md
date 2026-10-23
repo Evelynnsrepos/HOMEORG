@@ -1,286 +1,283 @@
 <div align="center">
 
-<img src="docs/media/under-construction.png" alt="Under construction – Baustelle, bitte Helm aufsetzen" width="100%" />
+<img src="docs/media/under-construction.png" alt="Under construction – hard hats on, please" width="100%" />
 
-<a href="docs/media/homeorg.mp4"><img src="docs/media/homeorg.gif" alt="Homeorg<3 in 20 Sekunden: Aufgabe abhaken, Münzen bekommen, Pixel-Möbel und Haustiere ziehen, Mochi füttern" width="100%" /></a>
+<a href="docs/media/homeorg.mp4"><img src="docs/media/homeorg.gif" alt="Homeorg<3 in 20 seconds: tick off a chore, earn coins, draw pixel furniture and pets, feed Mochi" width="100%" /></a>
 
-<sub>▶ Mit Ton ansehen: <a href="docs/media/homeorg.mp4">homeorg.mp4</a></sub>
+<sub>▶ Watch with sound: <a href="docs/media/homeorg.mp4">homeorg.mp4</a></sub>
 
 # Homeorg<3
 
-**Putzen, Kochen, Haustiere – und ein kleines Pixel-Zuhause, das mit dir gemütlicher wird.**
+**Chores, cooking, pets – and a little pixel home that gets cosier as you go.**
 
 ![Android](https://img.shields.io/badge/Android-APK-6FCDA8?style=flat-square&logo=android&logoColor=white)
-![iPhone](https://img.shields.io/badge/iPhone-Sideload-B48CF0?style=flat-square&logo=apple&logoColor=white)
-![Lokal](https://img.shields.io/badge/Daten-nur_auf_dem_Handy-FF79B0?style=flat-square)
-![Kein Konto](https://img.shields.io/badge/Konto-keins-FFC24D?style=flat-square)
-![In-App-Käufe](https://img.shields.io/badge/In--App--K%C3%A4ufe-niemals-E2508F?style=flat-square)
+![iPhone](https://img.shields.io/badge/iPhone-sideload-B48CF0?style=flat-square&logo=apple&logoColor=white)
+![Local](https://img.shields.io/badge/data-stays_on_your_phone-FF79B0?style=flat-square)
+![No account](https://img.shields.io/badge/account-none-FFC24D?style=flat-square)
+![In-app purchases](https://img.shields.io/badge/in--app_purchases-never-E2508F?style=flat-square)
 
 </div>
 
 > [!WARNING]
-> **🚧 Baustelle.** Homeorg<3 wird gerade kräftig umgebaut: neue Pixel-Zimmer,
-> Haustiere, iPhone-Build. Es läuft schon jeden Tag auf echten Handys, aber
-> Sachen können sich ändern, ruckeln oder kurz kaputtgehen. Mach ab und zu ein
-> Backup (*Einstellungen → Export data*).
+> **🚧 Under construction.** Homeorg<3 is in the middle of a big makeover: pixel
+> rooms, pets, an iPhone build. It already runs every day on real phones, but
+> things may change, wobble or briefly break. Make a backup now and then
+> (*Settings → Export data*).
 
 ---
 
-## ✨ Was drin ist
+## ✨ What's inside
 
 |  |  |
 | --- | --- |
-| 🧽 **Putzen ohne Druck** | Jede Aufgabe hat ihren Rhythmus. *Heute* packt nur so viel in den Tag, wie in dein Zeitbudget passt – leichte Sachen zuerst, damit du in Schwung kommst. |
-| 🪙 **Münzen für alles** | Putzen, Kochen, Einräumen, Haustier versorgen, Einchecken: alles gibt Münzen, mit Tageslimit pro Quelle. |
-| 🏠 **Dein Pixel-Zuhause** | Jedes Zimmer ist ein kleines Pixel-Bild mit Tapete und Boden zur Wahl. Möbel und Deko klebst du als Sticker hin – frei schieben, drehen, spiegeln, stapeln. |
-| 🎰 **Sticker-Automat** | Rund 2 600 Pixel-Teile in 27 Sets, jeden Monat drei Möbel-Sets und ein Tier-Set im Automaten. Jede Ziehung ist neu. **Keine In-App-Käufe. Niemals.** |
-| 🐈 **Haustier-Modus** | Katze, Hund, Vogel, Fisch, Hamster, Gecko …: ein Tipp für Futter, Wasser, Katzenklo, Gassi oder Wasserwechsel, dazu Vorräte mit Reichweite in Tagen. |
-| 🍳 **Küche** | Rezeptbuch, „Let's cook it“, Vorrat mit Mindesthaltbarkeit, Einkaufsliste. REWE-Bestellungen und eBons räumen sich selbst ein. |
-| 🔖 **Nicht vergessen** | Was weg muss, was bald abläuft, ein leerer Kühlschrank, Katzenstreu, die zur Neige geht – an einer Stelle, sanft statt nervig. |
-| 💗 **Wie geht's dir?** | Kurz einchecken. An schweren Tagen gibt es liebe Worte und weniger Aufgaben, nie mehr – und mit Haustier einen Kuschel-Vorschlag. |
-| 🌸 **Kawaii** | Rosa Papier, Efeu, Glühbirnen, Sticker mit Gesichtern, Pixel-Kleckse. Fünf weitere Farbschemata, von Classic bis Midnight. |
+| 🧽 **Chores without pressure** | Every chore has its own rhythm. *Today* only fills your day up to your time budget – easy wins first, so you get going. |
+| 🪙 **Coins for everything** | Cleaning, cooking, putting the shopping away, looking after your pets, checking in: it all earns coins, with a daily cap per kind. |
+| 🏠 **Your pixel home** | Every room is a little pixel picture with the wallpaper and floor you pick. Furniture and decor are stickers: drag, turn, mirror and stack them anywhere. |
+| 🎰 **Sticker machine** | About 2,600 pixel pieces in 27 sets; each month three furniture sets and one pet set are in the machine. Every draw is new. **No in-app purchases. Ever.** |
+| 🐈 **Pet mode** | Cat, dog, bird, fish, hamster, gecko…: one tap for food, water, the litter box, a walk or a water change, plus supplies that tell you how many days they'll last. |
+| 🍳 **Kitchen** | Recipe book, "Let's cook it", a pantry with best-before dates, a shopping list. REWE orders and receipts put themselves away. |
+| 🔖 **Don't forget this** | What needs throwing out, what's about to go off, an empty fridge, cat litter running low – in one place, a nudge rather than a nag. |
+| 💗 **How do you feel?** | A quick check-in. On hard days you get kind words and fewer chores, never more – and, with a pet, a suggestion to cuddle. |
+| 🌸 **Kawaii** | Blush paper, ivy, fairy lights, stickers with faces, pixel splashes. Five more colour schemes, from Classic to Midnight. |
 
-## 📸 So sieht's aus
+## 📸 A look around
 
 <div align="center">
 <table>
   <tr>
     <td><img src="docs/media/screen-home.png" width="200" alt="Home" /></td>
-    <td><img src="docs/media/screen-room.png" width="200" alt="Ein Zimmer" /></td>
-    <td><img src="docs/media/screen-shop.png" width="200" alt="Sticker-Automat" /></td>
-    <td><img src="docs/media/screen-pets.png" width="200" alt="Haustiere" /></td>
+    <td><img src="docs/media/screen-room.png" width="200" alt="A room" /></td>
+    <td><img src="docs/media/screen-shop.png" width="200" alt="Sticker machine" /></td>
+    <td><img src="docs/media/screen-pets.png" width="200" alt="Pets" /></td>
   </tr>
   <tr>
     <td align="center"><sub>Home</sub></td>
-    <td align="center"><sub>Ein Zimmer</sub></td>
-    <td align="center"><sub>Sticker-Automat</sub></td>
-    <td align="center"><sub>Haustiere</sub></td>
+    <td align="center"><sub>A room</sub></td>
+    <td align="center"><sub>Sticker machine</sub></td>
+    <td align="center"><sub>Pets</sub></td>
   </tr>
 </table>
 </div>
 
-## 📲 Installieren
+## 📲 Install
 
-**Android:** Die APK aus den [Releases](../../releases) aufs Handy laden, antippen,
-„Installation aus unbekannter Quelle“ erlauben. Läuft auf jedem 64-Bit-Android
-(etwa ab 2017).
+**Android:** download the APK from [Releases](../../releases) to your phone,
+tap it and allow "install from unknown sources". Runs on any 64-bit Android
+(roughly 2017 and newer).
 
-**iPhone:** Ohne App Store, per Sideload. Die `.ipa` aus den Releases mit
-SideStore, AltStore oder Sideloadly und deiner eigenen Apple-ID installieren.
-Braucht iOS 16.4 oder neuer. Die Details stehen [unten](#iphone-sideloaden).
+**iPhone:** no App Store, it's a sideload. Install the `.ipa` from Releases with
+SideStore, AltStore or Sideloadly and your own Apple ID. Needs iOS 16.4 or
+newer. The details are [below](#iphone-sideloading).
 
-**Nur mal reinschauen:** `npm install && npm run web` öffnet die App im Browser
-(ohne Kamera und Haptik).
+**Just have a look:** `npm install && npm run web` opens the app in a browser
+(no camera, no haptics).
 
-## 🔒 Privat, ganz ehrlich
+## 🔒 Private, honestly
 
-Alles liegt auf dem Handy. Kein Konto, kein Server, keine Synchronisation,
-keine Werbung, keine Analyse. Die einzige Netzverbindung ist die abschaltbare
-Barcode-Suche bei Open Food Facts, und die schickt nur die Nummer vom Karton.
-PDFs und Fotos werden auf dem Gerät gelesen und nie hochgeladen.
+Everything lives on your phone. No account, no server, no sync, no ads, no
+analytics. The only network call is the optional barcode lookup at Open Food
+Facts, and it sends nothing but the number on the box. PDFs and photos are read
+on the device and never uploaded.
 
 ---
 
-## 🛠️ Für Entwickler:innen
+## 🛠️ For developers
 
-Wer am Code arbeitet (Mensch oder KI-Agent), liest zuerst [AGENTS.md](AGENTS.md).
+Anyone working on the code – person or AI agent – reads [AGENTS.md](AGENTS.md) first.
 
 <details>
-<summary><b>Starten, testen, bauen</b></summary>
+<summary><b>Run, test, build</b></summary>
 
 ```bash
 npm install
-npx expo start          # QR-Code mit Expo Go scannen (gleiches WLAN, sonst --tunnel)
-npm run web             # im Browser
-npm run tsc             # Typprüfung
-npm test                # REWE, Haltbarkeit, GS1, Datumsscan, Sticker, Streaks, Check-ins, Haustiere
-npm run apk             # Release-APK lokal (JDK 21 + Android SDK 36)
+npx expo start          # scan the QR code with Expo Go (same Wi-Fi, or --tunnel)
+npm run web             # in the browser
+npm run tsc             # typecheck
+npm test                # REWE, shelf life, GS1, printed dates, stickers, streaks, check-ins, pets
+npm run apk             # local release APK (JDK 21 + Android SDK 36)
 ```
 
-### APK selbst bauen
+### Build the APK yourself
 
-Läuft komplett auf dem eigenen Rechner – kein Expo-Konto, nichts wird
-hochgeladen. `scripts/build-apk.js` sucht JDK und SDK selbst zusammen.
-`npm run apk` erzeugt die nativen Projektdateien, trägt den Signierschlüssel
-ein und baut; die Datei landet in
+Runs entirely on your own machine – no Expo account, nothing uploaded.
+`scripts/build-apk.js` finds the JDK and SDK by itself. `npm run apk` generates
+the native project, adds the signing key and builds; the file lands in
 `android/app/build/outputs/apk/release/app-release.apk`.
 
-Gebaut wird nur für **arm64-v8a**; für ein altes 32-Bit-Gerät einmalig
-`TIDYWELL_ABIS=armeabi-v7a,arm64-v8a npm run apk`. Der erste Build lädt rund
-1,6 GB Gradle-Abhängigkeiten und dauert eine Viertelstunde, danach gut eine Minute.
+It builds for **arm64-v8a** only; for an old 32-bit device run
+`TIDYWELL_ABIS=armeabi-v7a,arm64-v8a npm run apk` once. The first build
+downloads about 1.6 GB of Gradle dependencies and takes a quarter of an hour;
+after that, a minute or so.
 
-**Der Signierschlüssel liegt in `credentials/` und gehört nicht ins Git.**
-Ohne ihn lässt sich eine installierte Version nicht mehr aktualisieren.
-`npx expo prebuild` überschreibt `android/` komplett; `scripts/sign-android.js`
-setzt die Signierung danach neu, `npm run apk` erledigt das mit.
+**The signing key lives in `credentials/` and never goes into git.** Without it
+an installed copy can't be updated. `npx expo prebuild` rewrites `android/`
+from scratch; `scripts/sign-android.js` puts the signing back, and `npm run apk`
+does that for you.
 
-### Über GitHub bauen lassen
+### Let GitHub build it
 
-Ein Tag wie `v1.3.0` pushen: Der Workflow *Release* baut die APK und die IPA
-und hängt beide an ein GitHub-Release. Unter *Actions → Release → Run workflow*
-geht es auch ohne Release, wahlweise nur für Android oder nur für iOS. Für die
-eigene Android-Signatur braucht das Repo vier Secrets – siehe
-[AGENTS.md](AGENTS.md#git-and-releases).
+Push a tag like `v1.3.0`: the *Release* workflow builds the APK and the IPA and
+attaches both to a GitHub release. *Actions → Release → Run workflow* builds
+without releasing, for Android, iOS or both. Signing the APK with your own key
+needs four repository secrets – see [AGENTS.md](AGENTS.md#git-and-releases).
 
-### iPhone (sideloaden)
+### iPhone (sideloading)
 
-Der Workflow baut eine **unsignierte IPA** auf einem kostenlosen macOS-Rechner
-von GitHub, kein eigener Mac nötig. Signiert wird beim Installieren mit deiner
-Apple-ID:
+The workflow builds an **unsigned IPA** on a free macOS machine from GitHub, so
+no Mac of your own is needed. It's signed with your Apple ID when you install it:
 
-1. IPA herunterladen (Release oder Workflow-Artefakt).
-2. Mit **SideStore**, **AltStore** oder **Sideloadly** installieren.
-3. Auf dem iPhone *Einstellungen → Datenschutz & Sicherheit → Entwicklermodus*
-   einschalten und dem Entwickler unter *Allgemein → VPN & Geräteverwaltung*
-   vertrauen.
+1. Download the IPA (from a release or as a workflow artifact).
+2. Install it with **SideStore**, **AltStore** or **Sideloadly**.
+3. On the iPhone, turn on *Settings → Privacy & Security → Developer Mode* and
+   trust the developer under *General → VPN & Device Management*.
 
-Mit einer **kostenlosen Apple-ID** läuft die App 7 Tage und muss dann
-aufgefrischt werden (SideStore/AltStore machen das im WLAN), höchstens 3 Apps
-gleichzeitig. Mit dem **Apple Developer Program** (99 €/Jahr) hält die Signatur
-ein Jahr. Daten bleiben beim Auffrischen erhalten. Die Erinnerungen sind lokale
-Benachrichtigungen; die Push-Berechtigung, die eine kostenlose Apple-ID nicht
-signieren kann, nimmt der Workflow heraus. Mindestens iOS 16.4.
+With a **free Apple ID** the app runs for 7 days and then needs refreshing
+(SideStore and AltStore do it over Wi-Fi), and you can have at most 3 sideloaded
+apps. With the **Apple Developer Program** ($99/year) the signature lasts a year.
+Your data survives a refresh. Reminders are local notifications; the push
+entitlement, which a free Apple ID can't sign, is removed by the workflow.
+iOS 16.4 or newer.
 
 ### EAS
 
-`eas.json` liegt dabei, falls du lieber bei Expo in der Cloud baust
-(`eas build -p android --profile preview`). Dafür brauchst du ein Expo-Konto,
-und das Projekt samt Musik wandert auf fremde Server.
+`eas.json` is there if you'd rather build in Expo's cloud
+(`eas build -p android --profile preview`). That needs an Expo account, and the
+project – music included – goes to their servers.
 
 </details>
 
 <details>
-<summary><b>Wie es funktioniert</b></summary>
+<summary><b>How it works</b></summary>
 
-**Sauberkeit** Jede Aufgabe hat eine Frequenz. Von 100 % (gerade geputzt) läuft
-eine Linie auf 0 % (ein voller Zyklus vorbei), bei jedem Öffnen neu gerechnet.
-Monate sind echte Monate: 31. Januar + 1 Monat = 28. Februar.
+**Cleanliness** Every chore has a frequency. It runs from 100 % (just cleaned)
+down to 0 % (one full cycle gone), worked out fresh every time you open the
+app. Months are real months: 31 January + 1 month = 28 February.
 
-**Reihenfolge** Wie überfällig und wie leicht. Überfällig zählt mehr, aber
-leichte Aufgaben bekommen einen Bonus: Fünf kleine Erfolge bauen die Energie für
-den großen auf. Irgendwann hört „überfällig“ auf zu wachsen.
+**Order** How overdue and how easy. Overdue counts for more, but easy chores get
+a bonus: five small wins build the energy for the big one. At some point
+"overdue" stops growing.
 
-**Raum-Prozent** Ein nach Minuten gewichteter Durchschnitt. Ein sauberer Spiegel
-rettet keinen dreckigen Boden.
+**Room percentage** An average weighted by minutes. A clean mirror doesn't save
+a dirty floor.
 
-**Heute** Ein Zeitbudget pro Tag (Standard 30 Min), gefüllt mit dem
-Dringendsten; der Rest wartet in „Got more time?“. Abgehakte Aufgaben zählen
-gegen das Budget, damit der Tag auch mal endet.
+**Today** A time budget per day (30 minutes by default), filled with what's most
+urgent; the rest waits under "Got more time?". Ticked chores count against the
+budget, so the day can actually end.
 
-**Münzen und Streaks** Münzen für Aufgaben (3/5/10 nach Aufwand) und fast alles
-andere, mit Tageslimit pro Quelle (`src/lib/rewards.ts`). Streaks zählen jeden
-aktiven Tag im selbst gewählten Rhythmus (täglich, alle 2–3 Tage, wöchentlich)
-mit Schonfrist.
+**Coins and streaks** Coins for chores (3/5/10 by effort) and almost everything
+else, with a daily cap per source (`src/lib/rewards.ts`). Streaks count any
+active day at the rhythm you choose (daily, every 2–3 days, weekly), with grace days.
 
-**Zimmer** Jedes Zimmer ist ein Pixel-Bild in 3/4-Draufsicht: Tapete und Boden
-aus LPC-Kacheln (rund 250 Tapeten und 150 Böden, je mit rosa Variante), darauf
-Sticker. Neue Zimmer kommen mit ein paar passenden Pixel-Möbeln.
+**Rooms** Every room is a pixel picture in a 3/4 top-down view: wallpaper and
+floor from LPC tiles (about 250 wallpapers and 150 floors, each with a pink
+version), with stickers on top. New rooms come with a few fitting pixel pieces.
 
-**Sticker-Automat** Jede Ziehung ist ein Teil, das du noch nicht hast, aus den
-Sets des Monats. Erst wird das Set gewählt, dann das Teil nach Seltenheit.
+**Sticker machine** Every draw is a piece you don't have yet, from this month's
+sets. It picks the set first, then the piece by rarity.
 
-**Haustiere** Pflege-Tipps je Tierart (`src/lib/pets.ts`), ein zweiter Tipp
-innerhalb von zehn Minuten nimmt den ersten zurück. Vorräte laufen nach
-Tagesverbrauch ab und melden sich fünf Tage vorher.
+**Pets** Care taps for each kind of animal (`src/lib/pets.ts`); a second tap
+within ten minutes takes the first one back. Supplies run down by their daily
+use and give you a nudge five days before they run out.
 
-**Küche** *Rezepte* ist eine Sammlung, kein Wochenplan. Homeorg<3 hält sie gegen
-den Vorrat: was sofort ginge, wo ein, zwei Sachen fehlen. „Cooked it“ zieht die
-Zutaten ab, der Einkaufsknopf schickt nur das Fehlende auf die Liste.
+**Kitchen** *Recipes* is a collection, not a weekly plan. Homeorg<3 checks it
+against the pantry: what you could cook right now, what's missing one or two
+things. "Cooked it" uses up the ingredients; the shopping button only adds
+what's missing to the list.
 
-**Musik** Startet in Focus und bei Sprints und läuft im Hintergrund weiter.
-
-</details>
-
-<details>
-<summary><b>Barcode, REWE, Haltbarkeit</b></summary>
-
-**Barcode scannen** Im Vorrat: Kamera drauf, Name und Packungsgröße kommen von
-[Open Food Facts](https://world.openfoodfacts.org). Die einzige Stelle, an der
-die App ins Netz geht; abschaltbar unter *Einstellungen → Look barcodes up online*.
-
-**REWE-Bestellung einräumen** Das PDF zur Abholung/Lieferung oder den **eBon**
-wählen; die App liest es auf dem Handy. Gezählt wird die Liefermenge, Ersatzartikel
-kommen als das, was wirklich in der Tüte war, lose Ware mit echtem Gewicht. Aus
-Kassenkürzeln wie `KRAEUT.SEITL.BIO` wird „Kräuterseitlinge bio“.
-`npm run test:rewe` prüft gegen echte (anonymisierte) Bestellungen in `scripts/fixtures/`.
-
-**Haltbarkeit** Alles im Vorrat bekommt ein Mindesthaltbarkeitsdatum: vom Etikett
-(**Scan date** liest es per Kamera mit Google ML Kit – MHD, SKT, 賞味期限,
-有效日期, 유통기한 …), aus dem QR-/DataMatrix-Code (GS1), oder geschätzt nach
-Lagerort – eigene Tabelle, dann USDA FoodKeeper (CC0), dann Open-Food-Facts-Kategorien.
-Geschätzte Daten stehen mit „≈“ da. Die Texterkennung ist nativ: in der APK ja,
-in Expo Go und im Browser nicht.
+**Music** Starts in Focus and during sprints and keeps playing in the background.
 
 </details>
 
 <details>
-<summary><b>Aufbau</b></summary>
+<summary><b>Barcodes, REWE, best-before dates</b></summary>
+
+**Scan a barcode** In the pantry: point the camera at it, and the name and pack
+size come from [Open Food Facts](https://world.openfoodfacts.org). This is the
+only place the app goes online; switch it off under *Settings → Look barcodes up online*.
+
+**Put a REWE order away** Pick the pickup/delivery PDF or the **eBon** (till
+receipt); the app reads it on the phone. It counts what was delivered:
+substitutes come in as what was really in the bag, loose produce with its real
+weight. Till abbreviations like `KRAEUT.SEITL.BIO` become "Kräuterseitlinge bio".
+`npm run test:rewe` checks against real (anonymised) orders in `scripts/fixtures/`.
+
+**Best-before dates** Everything in the pantry gets one: from the label (**Scan
+date** reads it with the camera, using Google ML Kit – MHD, SKT, 賞味期限,
+有效日期, 유통기한…), from the QR or DataMatrix code (GS1), or estimated by where
+it's kept – our own table first, then USDA FoodKeeper (CC0), then Open Food Facts
+categories. Estimated dates show with a "≈". Text recognition is native: it works
+in the APK, not in Expo Go or the browser.
+
+</details>
+
+<details>
+<summary><b>Project layout</b></summary>
 
 ```
-app/                 Screens (expo-router, dateibasiert)
+app/                 screens (expo-router, one file per route)
   (tabs)/            Home, History, Today, My Home, Profile
   room/ task/ challenge/ decorate/ recipe/
-  kitchen.tsx cook.tsx recipes.tsx shopping.tsx   die Küche
-  pets.tsx           Haustiere und Vorräte
-  shop.tsx           der Sticker-Automat
-  scan.tsx import.tsx Barcode scannen, REWE-Bestellung einräumen
+  kitchen.tsx cook.tsx recipes.tsx shopping.tsx   the kitchen
+  pets.tsx           pets and their supplies
+  shop.tsx           the sticker machine
+  scan.tsx import.tsx barcode scanner, REWE import
 src/
-  lib/               reine Logik: Planung, Daten, PDF, REWE, Sticker, Haustiere, Erinnerungen
-  state/             Zustand (zustand + AsyncStorage), abgeleitete Werte
-  data/              Raumtypen, Sticker-Katalog, Wände/Böden, Challenges, Einheiten
-  ui/                Bausteine, RoomCanvas, StickerLayer, Deko, Pixel-Kleckse
-assets/stickers/     Pixel-Sticker (generiert)
-assets/surfaces/     Tapeten und Böden (generiert)
-assets/music/        die Musik
+  lib/               pure logic: planning, dates, PDF, REWE, stickers, pets, reminders
+  state/             the store (zustand + AsyncStorage), derived values
+  data/              room types, sticker catalog, walls and floors, challenges, units
+  ui/                building blocks, RoomCanvas, StickerLayer, decor, pixel splashes
+assets/stickers/     pixel stickers (generated)
+assets/surfaces/     wallpapers and floors (generated)
+assets/music/        the music
 scripts/
-  build-stickers.py  Sticker aus LPC-Bögen schneiden, Haustiere rendern
-  build-surfaces.py  Tapeten und Böden schneiden
-  pets/              die selbst gezeichneten Haustiere (Vorlagen, Fell, Arten)
-  build-apk.js sign-android.js  APK bauen und signieren
+  build-stickers.py  cut stickers from the LPC sheets, render the pets
+  build-surfaces.py  cut wallpapers and floors
+  pets/              the hand-drawn pets (templates, coats, species)
+  build-apk.js sign-android.js  build and sign the APK
 ```
 
-Sticker neu bauen: `python3 scripts/build-stickers.py` (braucht Pillow);
-Wände und Böden: `python3 scripts/build-surfaces.py`;
-Musik: `TIDYWELL_MUSIC_SRC="D:/pfad/zu/Music" npm run music`.
+Rebuild the stickers: `python3 scripts/build-stickers.py` (needs Pillow);
+walls and floors: `python3 scripts/build-surfaces.py`;
+music: `TIDYWELL_MUSIC_SRC="D:/path/to/Music" npm run music`.
 
 </details>
 
 <details>
-<summary><b>Daten sichern</b></summary>
+<summary><b>Backups</b></summary>
 
-**Einstellungen → Export data** schreibt alles in eine Datei
-`homeorg-backup-JJJJ-MM-TT.json` und öffnet das Teilen-Menü. **Import data**
-liest so eine Datei wieder ein und ersetzt dabei alles (vorher wird gefragt).
-Vorher-/Nachher-Fotos bleiben auf dem Gerät. Die Datei trägt eine
-Formatversion, damit spätere Versionen ältere Sicherungen lesen können.
+**Settings → Export data** writes everything into one file,
+`homeorg-backup-YYYY-MM-DD.json`, and opens the share sheet. **Import data**
+reads such a file back and replaces everything on the phone (it asks first).
+Before/after photos stay on the device. The file carries a format version, so
+later versions of the app can read older backups.
 
 </details>
 
 <details>
-<summary><b>Was fehlt (mit Absicht)</b></summary>
+<summary><b>What's missing (on purpose)</b></summary>
 
-Homeorg<3 begann als lokaler Nachbau der App von tidywell-app.com, ohne alles,
-was einen Server braucht:
+Homeorg<3 started as a local-only take on the tidywell-app.com app, leaving out
+everything that needs a server:
 
-- Haushalt teilen, Mitglieder, Rollen, Kinder-Modus
-- Live-Sprints zu mehreren (Solo-Sprint ist drin)
-- Foto-Sync zwischen Geräten
+- sharing a household, members, roles, kids mode
+- live sprints with others (solo sprints are in)
+- photo sync between devices
 
-Die Aufgabenzerlegung läuft regelbasiert auf dem Gerät. Alles ist freigeschaltet –
-ein Abo ohne Server wäre sinnlos.
+Breaking chores into steps runs on rules, on the device. Everything is unlocked –
+a subscription without a server would make no sense.
 
 </details>
 
 ## 💗 Credits
 
-- **Pixel-Möbel, Wände und Böden:** [LPC Revised](https://github.com/ElizaWy/LPC)
-  (CC-BY 3.0 / OGA-BY 3.0), Künstler:innen pro Set im About-Screen und in
-  `assets/stickers/CREDITS.md`.
-- **Haustiere:** für diese App gezeichnet (`scripts/pets/`).
-- **Produktdaten:** [Open Food Facts](https://world.openfoodfacts.org) (ODbL).
-  **Haltbarkeit:** USDA FoodKeeper (CC0).
-- **Musik:** aus der eigenen Bibliothek, neu kodiert. Die NCS-Titel sind für so
-  etwas freigegeben, die Spiele-Soundtracks normalerweise nicht – vor einem
-  Store-Release müsste die Musik raus oder durch lizenzfreie ersetzt werden.
-- **Das Video oben** ist mit [/brag](https://github.com/latent-spaces/brag)
-  entstanden; der Soundtrack darin ist eigens erzeugt.
+- **Pixel furniture, walls and floors:** [LPC Revised](https://github.com/ElizaWy/LPC)
+  (CC-BY 3.0 / OGA-BY 3.0); the artists for each set are on the About screen and
+  in `assets/stickers/CREDITS.md`.
+- **Pets:** drawn for this app (`scripts/pets/`).
+- **Product data:** [Open Food Facts](https://world.openfoodfacts.org) (ODbL).
+  **Shelf life:** USDA FoodKeeper (CC0).
+- **Music:** from the owner's own library, re-encoded. The NCS tracks are cleared
+  for this kind of use; the game soundtracks usually aren't – before a store
+  release the music would need to go or be swapped for royalty-free tracks.
+- **The video at the top** was made with [/brag](https://github.com/latent-spaces/brag);
+  its soundtrack was generated for it.

@@ -109,7 +109,7 @@ There is no linter and no other test suite. "Done" means `tsc` and
   and add the attribution the licence asks for to `app/about.tsx`.
 
 ### Words
-- UI copy is **English** (the README is German). Warm, short, encouraging,
+- UI copy is **English** (so is the README). Warm, short, encouraging,
   second person. Sentence case for titles.
 - History in particular is a hype screen: only what you did, never what you
   missed.
