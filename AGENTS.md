@@ -275,7 +275,12 @@ fields the parser reads — see `scripts/fixtures/`.
   push often. Don't commit `credentials/`, `android/` or `ios/`.
 - **Release:** bump `version` (and `android.versionCode`) in `app.json`, merge
   to `main`, then tag: `git tag v1.3.0 && git push origin v1.3.0`. The
-  *Release* workflow builds the APK and attaches it to a GitHub release.
+  *Release* workflow builds the APK and an unsigned iOS IPA (on a macOS
+  runner, `ipa` job) and attaches both to a GitHub release. The IPA is for
+  sideloading (AltStore, SideStore, Sideloadly sign it with the user's Apple
+  ID); the job drops the `aps-environment` entitlement because a free Apple ID
+  can't sign push, and reminders are local notifications anyway. Keep iOS in
+  mind: no Android-only APIs without a `Platform.OS` fallback.
   *Run workflow* on the Actions tab builds one without releasing.
 - **Signing in CI** needs four repository secrets (Settings → Secrets and
   variables → Actions):

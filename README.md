@@ -79,6 +79,31 @@ Server — samt der 37 MB Musik. Für iOS führt allerdings kein Weg daran vorbe
 und dort kommt ein Apple-Developer-Konto (99 €/Jahr) dazu. Ohne das bleibt
 Expo Go, was zum Benutzen völlig reicht.
 
+## iPhone (sideloaden)
+
+Ohne App Store: Der *Release*-Workflow baut neben der APK eine **unsignierte
+IPA** (auf einem kostenlosen macOS-Rechner von GitHub, kein eigener Mac nötig).
+Signiert wird sie beim Installieren mit deiner eigenen Apple-ID:
+
+1. IPA herunterladen – aus dem GitHub-Release (`homeorg-v….ipa`) oder unter
+   *Actions → Release → Run workflow* als Artefakt.
+2. Mit **SideStore** oder **AltStore** (iPhone + einmalig Computer) oder
+   **Sideloadly** (Windows/Mac) installieren und mit der Apple-ID anmelden.
+3. Auf dem iPhone *Einstellungen → Datenschutz & Sicherheit → Entwicklermodus*
+   einschalten und dem Entwickler unter *Allgemein → VPN & Geräteverwaltung*
+   vertrauen.
+
+Mit einer **kostenlosen Apple-ID** läuft die App 7 Tage und muss dann
+aufgefrischt werden (SideStore/AltStore machen das automatisch im WLAN);
+höchstens 3 selbst installierte Apps gleichzeitig. Mit dem **Apple Developer
+Program** (99 €/Jahr) hält die Signatur ein Jahr. Daten bleiben beim
+Auffrischen erhalten, solange die App nicht gelöscht wird – trotzdem ab und zu
+unter *Einstellungen → Sichern* ein Backup machen.
+
+Die Erinnerungen sind lokale Benachrichtigungen; die Push-Berechtigung, die
+eine kostenlose Apple-ID nicht signieren kann, nimmt der Workflow heraus.
+Datum-Scan (ML Kit) braucht iOS 15.5 oder neuer.
+
 ## Wie es funktioniert
 
 **Sauberkeit** Jede Aufgabe hat eine Frequenz. Von 100 % (gerade geputzt) läuft
