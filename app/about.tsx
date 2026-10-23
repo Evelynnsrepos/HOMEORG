@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import { presetChallenges } from '../src/data/challenges';
 import { playlists } from '../src/data/musicTracks';
+import { surfaceArtists } from '../src/data/roomSurfaces';
 import { stickerSets } from '../src/data/stickerCatalog';
 import { shopItems } from '../src/data/shop';
 import { useStore } from '../src/state/store';
@@ -117,14 +118,17 @@ export default function About() {
           {set.emoji} {set.name}: {set.artists.join(', ') || 'see CREDITS.md'}
         </T>
       ))}
+      <T v="caption" style={{ marginBottom: 4 }}>
+        🧱 Walls and floors: {surfaceArtists.join(', ')} (the blush ones are our pink recolours)
+      </T>
 
       <Spacer h={20} />
       <T v="over">Where the art comes from</T>
       <Spacer h={8} />
       <T v="body">
-        None of it is an image file. Every piece of furniture, every wall, floor, chart and room is
-        a drawing recipe in the code — a shape and three colours. That is why the whole shop costs
-        nothing to carry around, and why it all looks like one thing.
+        Rooms, their walls and floors and the stickers in them are pixel art from the sheets above,
+        all in the same top-down view and the same pixel size, so they fit together. Everything
+        else — the vines, bulbs, charts and the original furniture — is drawn in code.
       </T>
 
       <Spacer h={20} />

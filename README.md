@@ -152,7 +152,7 @@ src/
   state/music.ts     Player-Zustand (eigener Store, eigene Persistenz)
   state/derived.ts   Abgeleitete Werte für die Screens
   data/              Raumtypen, Möbelkatalog, Challenges, Zerlegung, Playlists, Maßeinheiten
-  ui/RoomCanvas.tsx  Der Raum: Wand, Boden, Einbauten, Stellplätze
+  ui/RoomCanvas.tsx  Der Raum: Pixel-Wand und -Boden, darauf die Sticker
   ui/Furniture.tsx   Die 120 Möbel als SVG-Rezepte
   ui/QuantitySheet.tsx  "Wie viel hast du gekauft?"
   ui/RecipeEditor.tsx   Ein Rezept schreiben, Zutat für Zutat
@@ -249,6 +249,8 @@ gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
 been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
 
 Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
+Wände und Böden (rund 250 Tapeten und 150 Böden in 16 Mustern, je mit einer
+rosa Variante) entstehen mit `python3 scripts/build-surfaces.py`.
 
 ## Haltbarkeit
 

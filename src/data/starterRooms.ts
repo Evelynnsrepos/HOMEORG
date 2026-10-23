@@ -1,8 +1,7 @@
 /**
- * A few free pieces so a new room isn't bare. The built-in fixtures (the bath,
- * the kitchen units, the bed) are drawn by Fixtures.tsx and can't be moved —
- * these are the decorative extras. They land in your inventory too, so you can
- * shuffle them between rooms later.
+ * The drawn pieces a room used to start with. New rooms start with pixel
+ * stickers now (`starterStickers`); these still fill the Originals shelf and
+ * old rooms that predate stickers.
  *
  * Keys are slot indices from SLOTS in RoomCanvas: 0-2 wall, 3-5 floor,
  * 6-7 corner, 8-9 small.

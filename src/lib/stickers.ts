@@ -1,5 +1,6 @@
 import { itemById, type ShopItem } from '../data/shop';
 import { pieces, stickerSets, type Piece, type Rarity } from '../data/stickerCatalog';
+import { ART_H, ART_W } from './surfaces';
 import type { PlacedSticker } from './types';
 
 export type { PlacedSticker };
@@ -36,11 +37,56 @@ export function aspect(p: AnyPiece): number {
 
 /**
  * How big a piece first lands: pixel pieces at the scale they were drawn
- * (a room is about 260 of their pixels across), drawn pieces by what they are.
+ * (a room is 192 of their pixels across), drawn pieces by what they are.
  */
 export function defaultSize(p: AnyPiece): number {
   if (p.type === 'svg') return p.item.zone === 'small' ? 0.16 : p.item.zone === 'wall' ? 0.22 : 0.3;
-  return Math.min(0.55, Math.max(0.07, p.piece.w / 260));
+  return Math.min(0.55, Math.max(0.07, p.piece.w / ART_W));
+}
+
+/* ---- a new room's first pieces -------------------------------------- */
+
+// [piece id or label, centre x, bottom y] in the 192 x 160 art-pixel room; the
+// wall ends at 96. Ids are hand-picked where a sheet's biggest piece is a
+// group shot; rugs come first so they lie under everything.
+type Spot = [string | RegExp, number, number];
+const STARTERS: Record<string, Spot[]> = {
+  kitchen: [['fridge-03', 26, 118], ['oven-modern-01', 62, 118], ['sink-countertop-02', 112, 114], ['kitchen-clutter-a-07', 112, 64], [/^Flowers/, 165, 144]],
+  living: [['rainbow-rug-02', 96, 160], ['loveseat-small-casual-solid-a-02', 96, 140], [/^Paintings, Landscape/, 96, 52], ['lighting-floor-02', 166, 128], [/^Flowers/, 26, 144]],
+  bathroom: [['sink-pedestal-01', 68, 118], [/^Mirrors/, 68, 60], [/^Flowers/, 150, 136]],
+  bedroom: [['beds-single-a-07', 96, 158], [/^Paintings, Abstract/, 96, 52], ['end-table-11', 45, 118], ['lighting-table-01', 45, 100], ['dresser-03', 158, 118]],
+  kids: [['rainbow-checkered-rug-02', 128, 160], ['beds-single-a-06', 52, 158], [/^Paintings, Portraits/, 135, 58], [/^Games/, 128, 148]],
+  dining: [['table-ornate-wood-04', 96, 148], [/^Paintings, Still Life/, 96, 58], ['lighting-wall-07', 158, 48], [/^Flowers/, 30, 144]],
+  office: [['desk-office-04', 90, 128], ['chair-office-02', 90, 158], ['shelf-04', 166, 118], [/^Paintings, Landscape/, 38, 58]],
+  hallway: [['rainbow-rug-04', 96, 160], ['mirror-standing-01', 45, 128], [/^Clock, Grandfather/, 150, 118], ['lighting-wall-07', 96, 48]],
+  laundry: [[/^Baskets/, 52, 144], [/^Buckets/, 135, 144], ['shelf-02', 96, 58]],
+  guest: [['beds-single-a-01', 75, 158], [/^Paintings, Landscape/, 96, 52], ['end-table-01', 150, 118]],
+  garage: [['workbench-carpentry-01', 82, 128], [/^Boxes/, 158, 148], [/^Ladder/, 22, 128]],
+  storage: [['crate-03', 45, 148], ['crate-05', 75, 154], [/^Boxes/, 142, 148], ['shelf-04', 150, 118]],
+  balcony: [['planter-01', 60, 150], [/^Flowers/, 142, 148], ['lighting-outdoors-01', 168, 118]],
+  wc: [['sink-pedestal-02', 96, 118], [/^Mirrors/, 96, 60]],
+  custom: [[/^Flowers/, 45, 144], [/^Paintings, Abstract/, 96, 52]],
+};
+
+/**
+ * A few pixel pieces so a new room isn't bare: the biggest single piece matching
+ * each label (the whole bed, not its pillow), standing where it would in a room.
+ */
+export function starterStickers(typeId: string, makeId: () => string): PlacedSticker[] {
+  const out: PlacedSticker[] = [];
+  (STARTERS[typeId] ?? STARTERS.custom).forEach(([label, cx, bottom], i) => {
+    // sheets sometimes hold a row of things cut as one; keep to one-object sizes
+    const fits = (p: Piece) => p.w <= 130 && p.h <= 100 && p.h / p.w < 3.2;
+    const piece =
+      typeof label === 'string'
+        ? pieces.find((p) => p.id === label)
+        : pieces.filter((p) => label.test(p.label) && fits(p)).sort((a, b) => b.w * b.h - a.w * a.h)[0];
+    if (!piece) return;
+    const w = Math.min(piece.w, ART_W * 0.55);
+    const h = (w * piece.h) / piece.w;
+    out.push({ id: makeId(), piece: piece.id, x: cx / ART_W, y: (bottom - h / 2) / ART_H, size: w / ART_W, rot: 0, z: i });
+  });
+  return out;
 }
 
 /* ---- from the old ten slots ----------------------------------------- */

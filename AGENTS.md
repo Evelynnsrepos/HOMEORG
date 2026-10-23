@@ -133,6 +133,17 @@ once on load; `room.decor` is only history now.
 `assets/stickers/CREDITS.md`. The artists are listed on the About screen —
 that attribution is required, keep it.
 
+**Walls and floors** are generated too: `python3 scripts/build-surfaces.py`
+cuts the LPC Structure sheets in `scripts/data/lpc-revised/Structure/` into
+96x128 wall cells and small floor tiles (plus a pink "blush" recolour per
+pattern), writing `assets/surfaces/` and `src/data/roomSurfaces.ts`.
+`RoomCanvas` lays them edge to edge in a 192 x 160 art-pixel room (the top of
+the wall cropped off), the same pixel size the stickers use — keep the two in
+step. Surface ids come from the sheet, `surfaceFor()` in `src/lib/surfaces.ts`
+maps the old vector ids over and falls back for anything unknown. A new room
+gets its type's surfaces (`ROOM_SURFACES`) and a few hand-picked pixel pieces
+(`starterStickers`). Walls and floors are free; only stickers are drawn.
+
 **The sticker draw** (`app/shop.tsx`) is the only place coins are spent:
 every draw is a piece you don't own yet, from this month's three sets
 (`featuredSets`, they rotate on the 1st), set first then piece by rarity.

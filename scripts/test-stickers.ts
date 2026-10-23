@@ -4,7 +4,9 @@
 import assert from 'node:assert/strict';
 
 import { pieces, stickerSets } from '../src/data/stickerCatalog';
-import { drawPiece, featuredSets, starterPieces, stickersFromSlots } from '../src/lib/stickers';
+import { surfaceFamilies, surfaces } from '../src/data/roomSurfaces';
+import { drawPiece, featuredSets, pieceById, starterPieces, starterStickers, stickersFromSlots } from '../src/lib/stickers';
+import { DEFAULT_SURFACES, ROOM_SURFACES, surfaceFor } from '../src/lib/surfaces';
 
 let failed = 0;
 function check(name: string, fn: () => void) {
@@ -60,6 +62,37 @@ check('the welcome kit has two pieces from every set', () => {
   const kit = starterPieces(rng(3));
   assert.equal(kit.length, stickerSets.length * 2);
   assert.equal(new Set(kit).size, kit.length);
+});
+
+check('every room type starts with pixel pieces that exist, inside the room', () => {
+  for (const type of [...Object.keys(ROOM_SURFACES), 'custom']) {
+    const list = starterStickers(type, () => 'k');
+    assert.ok(list.length >= 2, type);
+    for (const k of list) {
+      assert.equal(pieceById(k.piece)?.type, 'pixel', `${type} ${k.piece}`);
+      assert.ok(k.x > 0 && k.x < 1 && k.y > 0 && k.y < 1, `${type} ${k.piece} at ${k.x},${k.y}`);
+    }
+  }
+});
+
+check('walls and floors: default ids exist, old ids map over, unknown ids fall back', () => {
+  for (const [wall, floor] of [...Object.values(ROOM_SURFACES), DEFAULT_SURFACES]) {
+    assert.equal(surfaceFor('wall', wall).id, wall);
+    assert.equal(surfaceFor('floor', floor).id, floor);
+  }
+  assert.equal(surfaceFor('wall', 'wall_blush').kind, 'wall');
+  assert.notEqual(surfaceFor('floor', 'floor_oak').id, DEFAULT_SURFACES[0]);
+  assert.equal(surfaceFor('floor', 'nope').kind, 'floor');
+  assert.equal(surfaceFor('floor', 'wall-painted-blush').kind, 'floor');
+});
+
+check('every wall and floor family has a blush one and a dozen or so to pick from', () => {
+  assert.ok(surfaceFamilies.length >= 15);
+  for (const f of surfaceFamilies) {
+    const mine = surfaces.filter((s) => s.family === f.id);
+    assert.ok(mine.some((s) => s.id.endsWith('-blush')), f.id);
+    assert.ok(mine.length >= 3, f.id);
+  }
 });
 
 check('old slot furniture becomes stickers in the same places', () => {

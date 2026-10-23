@@ -8,7 +8,8 @@ import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
 import { autoBestBefore } from '../data/shelfLife';
 import { REWARDS, allowed, trimLog, type CoinEvent, type RewardSource } from '../lib/rewards';
-import { drawPiece, featuredSets, pieceById, starterPieces, stickersFromSlots } from '../lib/stickers';
+import { DEFAULT_SURFACES, ROOM_SURFACES } from '../lib/surfaces';
+import { drawPiece, featuredSets, pieceById, starterPieces, starterStickers, stickersFromSlots } from '../lib/stickers';
 import { DEFAULT_STREAK, activeDays, streakOf, weekStartKey, type StreakSettings } from '../lib/streak';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
@@ -261,23 +262,11 @@ function spread(condition: number, seedText: string): number {
   return Math.max(0, Math.min(1, condition + jitter));
 }
 
-/** Rooms don't all want the same wallpaper. */
-const surfaceFor: Record<string, [string, string]> = {
-  kitchen: ['wall_plaster', 'floor_tile'],
-  living: ['wall_sage', 'floor_oak'],
-  bathroom: ['wall_blush', 'floor_tile'],
-  bedroom: ['wall_blush', 'floor_ash'],
-  kids: ['wall_botanic', 'floor_ash'],
-  dining: ['wall_clay', 'floor_herring'],
-  office: ['wall_sage', 'floor_ash'],
-  hallway: ['wall_clay', 'floor_herring'],
-  laundry: ['wall_plaster', 'floor_tile'],
-  guest: ['wall_botanic', 'floor_oak'],
-  garage: ['wall_plaster', 'floor_slate'],
-  storage: ['wall_plaster', 'floor_slate'],
-  balcony: ['wall_botanic', 'floor_slate'],
-  wc: ['wall_blush', 'floor_tile'],
-};
+/** A new room's pixel pieces are yours too, so they show up in the tray. */
+function withRoomPieces(owned: string[] | undefined, rooms: Room[]): string[] {
+  const ids = rooms.flatMap((r) => (r.stickers ?? []).map((k) => k.piece)).filter((id) => !id.startsWith('svg:'));
+  return [...new Set([...(owned ?? []), ...ids])];
+}
 
 /** Starter pieces are yours to keep, so you can move them between rooms. */
 function withStarters(inventory: string[], rooms: Room[]): string[] {
@@ -404,9 +393,9 @@ function buildRoom(input: NewRoomInput, order: number): { room: Room; tasks: Tas
   const starter = starterFor(input.typeId);
   const decor: (string | null)[] = Array(DECOR_SLOTS).fill(null);
   for (const [slot, itemId] of Object.entries(starter)) decor[Number(slot)] = itemId;
-  const stickers = stickersFromSlots(decor, () => uid('stk'));
+  const stickers = starterStickers(input.typeId, () => uid('stk'));
 
-  const [wallpaper, flooring] = surfaceFor[input.typeId] ?? ['wall_plaster', 'floor_oak'];
+  const [wallpaper, flooring] = ROOM_SURFACES[input.typeId] ?? DEFAULT_SURFACES;
 
   const room: Room = {
     id,
@@ -486,6 +475,7 @@ export const useStore = create<Store>()(
             rooms: built_rooms,
             tasks: built.flatMap((b) => b.tasks),
             inventory: withStarters(s.inventory, built_rooms),
+            pieces: withRoomPieces(s.pieces, built_rooms),
           };
         }),
 
@@ -496,6 +486,7 @@ export const useStore = create<Store>()(
           rooms: [...s.rooms, room],
           tasks: [...s.tasks, ...tasks],
           inventory: withStarters(s.inventory, [room]),
+          pieces: withRoomPieces(s.pieces, [room]),
         }));
         return room.id;
       },
@@ -1111,6 +1102,7 @@ export const useStore = create<Store>()(
             tasks: built.flatMap((b) => b.tasks),
             completions: [],
             inventory: withStarters(s.inventory, built_rooms),
+            pieces: withRoomPieces(s.pieces, built_rooms),
           };
         }),
 

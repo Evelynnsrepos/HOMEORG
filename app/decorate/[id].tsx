@@ -1,12 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
+import { Image, Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
-import { floorings, itemById, wallpapers } from '../../src/data/shop';
+import { itemById } from '../../src/data/shop';
+import { surfaceFamilies, surfaces, type Surface as Tile } from '../../src/data/roomSurfaces';
 import { pieces, stickerSets } from '../../src/data/stickerCatalog';
 import { defaultSize, pieceById, type PlacedSticker } from '../../src/lib/stickers';
+import { surfaceFor } from '../../src/lib/surfaces';
 import { useStore } from '../../src/state/store';
 import { colors, radius } from '../../src/theme';
 import { Btn, Empty, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
@@ -41,7 +43,8 @@ export default function Decorate() {
   const setSurface = useStore((s) => s.setSurface);
 
   const [tab, setTab] = useState<Tab>('stickers');
-  const [shelf, setShelf] = useState<string>('original');
+  // open on the newest pixel piece's set; the drawn originals sit at the end
+  const [shelf, setShelf] = useState<string>(() => pieces.find((p) => p.id === owned.at(-1))?.set ?? 'original');
   const [selected, setSelected] = useState<string | null>(null);
   /** the selected sticker while a finger is on it, before it's saved */
   const [draft, setDraft] = useState<PlacedSticker | null>(null);
@@ -52,8 +55,8 @@ export default function Decorate() {
   const ownedSet = useMemo(() => new Set(owned), [owned]);
   const shelves = useMemo(
     () => [
-      { id: 'original', name: 'Originals', emoji: '🪑', count: inventory.length },
       ...stickerSets.map((s) => ({ ...s, count: pieces.filter((p) => p.set === s.id && ownedSet.has(p.id)).length })),
+      { id: 'original', name: 'Originals', emoji: '🪑', count: inventory.length },
     ],
     [inventory, ownedSet],
   );
@@ -323,36 +326,13 @@ export default function Decorate() {
           </>
         ) : null}
 
-        {tab === 'walls' ? (
-          <Row style={{ flexWrap: 'wrap', gap: 10 }}>
-            {wallpapers.map((w) => (
-              <Surface
-                key={w.id}
-                name={w.name}
-                base={w.base}
-                accent={w.accent}
-                width={(width - 20) / 3}
-                active={room.wallpaper === w.id}
-                onPress={() => setSurface(room.id, 'wallpaper', w.id)}
-              />
-            ))}
-          </Row>
-        ) : null}
-
-        {tab === 'floors' ? (
-          <Row style={{ flexWrap: 'wrap', gap: 10 }}>
-            {floorings.map((f) => (
-              <Surface
-                key={f.id}
-                name={f.name}
-                base={f.base}
-                accent={f.accent}
-                width={(width - 20) / 3}
-                active={room.flooring === f.id}
-                onPress={() => setSurface(room.id, 'flooring', f.id)}
-              />
-            ))}
-          </Row>
+        {tab === 'walls' || tab === 'floors' ? (
+          <SurfacePicker
+            kind={tab === 'walls' ? 'wall' : 'floor'}
+            current={tab === 'walls' ? surfaceFor('wall', room.wallpaper).id : surfaceFor('floor', room.flooring).id}
+            width={width}
+            onPick={(id) => setSurface(room.id, tab === 'walls' ? 'wallpaper' : 'flooring', id)}
+          />
         ) : null}
       </ScrollView>
     </Screen>
@@ -388,38 +368,72 @@ function Tool({ icon, label, onPress }: { icon: keyof typeof Ionicons.glyphMap; 
   );
 }
 
-function Surface({
-  name,
-  base,
-  accent,
+/**
+ * Every wall or floor, a row per pattern and a swatch per colour — the real
+ * tile, so what you tap is what you get. Walls and floors are free.
+ */
+function SurfacePicker({
+  kind,
+  current,
   width,
-  active,
-  onPress,
+  onPick,
 }: {
-  name: string;
-  base: string;
-  accent: string;
+  kind: 'wall' | 'floor';
+  current: string;
   width: number;
-  active: boolean;
-  onPress: () => void;
+  onPick: (id: string) => void;
 }) {
+  const families = surfaceFamilies.filter((f) => f.kind === kind);
+  const size = Math.floor((width - 5 * 6) / 6);
+  return (
+    <View style={{ gap: 12 }}>
+      {families.map((f) => (
+        <View key={f.id}>
+          <T v="label" color={colors.ink} style={{ marginBottom: 6 }}>
+            {f.name}
+          </T>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6 }}>
+            {surfaces
+              .filter((s) => s.family === f.id)
+              .map((s) => (
+                <Swatch key={s.id} tile={s} size={size} active={s.id === current} onPress={() => (tap(), onPick(s.id))} />
+              ))}
+          </ScrollView>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function Swatch({ tile, size, active, onPress }: { tile: Tile; size: number; active: boolean; onPress: () => void }) {
+  // walls show their paper, rail and baseboard; floors a patch of two by two tiles
+  const h = tile.kind === 'wall' ? size * 1.33 : size;
+  const k = tile.kind === 'wall' ? size / tile.w : size / 2 / Math.min(tile.w, tile.h);
   return (
     <Press
       onPress={onPress}
+      accessibilityLabel={tile.label}
+      accessibilityState={{ selected: active }}
       style={{
-        width,
-        borderRadius: radius.md,
+        width: size,
+        height: h,
+        borderRadius: radius.sm,
         overflow: 'hidden',
-        borderWidth: 2,
+        borderWidth: active ? 3 : 1,
         borderColor: active ? colors.coral : colors.lineSoft,
       }}
     >
-      <View style={{ height: 54, backgroundColor: base }}>
-        <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 18, backgroundColor: accent }} />
-      </View>
-      <T v="caption" center style={{ paddingVertical: 5, fontSize: 10 }}>
-        {name}
-      </T>
+      {[0, 1].flatMap((y) =>
+        [0, 1].map((x) => (
+          <Image
+            key={`${x}${y}`}
+            source={tile.src}
+            fadeDuration={0}
+            resizeMode="stretch"
+            style={{ position: 'absolute', left: x * tile.w * k, top: y * tile.h * k, width: tile.w * k, height: tile.h * k }}
+          />
+        )),
+      )}
     </Press>
   );
 }
