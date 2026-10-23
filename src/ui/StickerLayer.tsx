@@ -2,18 +2,15 @@ import React from 'react';
 import { Image, View } from 'react-native';
 
 import { aspect, pieceById, type PlacedSticker } from '../lib/stickers';
-import { FurnitureTile } from './Furniture';
 
 /**
- * One piece at a given width: a pixel sticker from the library, or one of the
- * original drawn pieces. Pixel art is stretched, never smoothed into a
+ * One piece at a given width, from the pixel sticker library. Pixel art is stretched, never smoothed into a
  * different shape — the files are already 4x so it stays crisp.
  */
 export function PieceImage({ piece, width }: { piece: string; width: number }) {
   const p = pieceById(piece);
   if (!p) return null;
   const h = width * aspect(p);
-  if (p.type === 'svg') return <FurnitureTile kind={p.item.kind} palette={p.item.palette} size={width} />;
   return <Image source={p.piece.src} style={{ width, height: h }} resizeMode="stretch" fadeDuration={0} />;
 }
 

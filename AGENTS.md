@@ -109,7 +109,7 @@ There is no linter and no other test suite. "Done" means `tsc` and
   and add the attribution the licence asks for to `app/about.tsx`.
 
 ### Words
-- UI copy is **English** (the README is German). Warm, short, encouraging,
+- UI copy is **English** (so is the README). Warm, short, encouraging,
   second person. Sentence case for titles.
 - History in particular is a hype screen: only what you did, never what you
   missed.
@@ -126,8 +126,12 @@ There is no linter and no other test suite. "Done" means `tsc` and
 **Rooms are decorated with stickers** (`room.stickers`, `src/lib/stickers.ts`):
 a piece id, a centre as a fraction of the room picture, a width as a
 fraction of its width, a rotation, a mirror flag and a layer. Pieces are
-pixel art from `src/data/stickerCatalog.ts` or the original drawn furniture
-(`svg:<shop item id>`). The editor (`app/decorate/[id].tsx`) drags, pinches,
+pixel art from `src/data/stickerCatalog.ts`, nothing else: the old drawn
+furniture is gone, and any `svg:<shop item id>` in saved data is swapped for
+its pixel stand-in on load (`DRAWN_TO_PIXEL`, `pixelOnly`). Some LPC sheets
+draw one thing from several sides; when picking pieces by hand, look at them —
+a front and a back view cut as one piece reads as two sofas facing each other.
+The editor (`app/decorate/[id].tsx`) drags, pinches,
 twists, and has buttons for the same. Old slot layouts were moved to stickers
 once on load; `room.decor` is only history now.
 

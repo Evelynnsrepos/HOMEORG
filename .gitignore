@@ -43,3 +43,4 @@ yarn-error.*
 # signing key and local android sdk path
 credentials/
 android/local.properties
+brag-output*/

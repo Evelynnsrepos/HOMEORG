@@ -1,329 +1,283 @@
-# Homeorg<3 (lokal)
+<div align="center">
 
-Ein Haushalts- und Putzplaner für iOS und Android — komplett auf dem Handy.
-Kein Konto, kein Server, keine Synchronisation. Alle Daten liegen in einem
-lokalen Speicher auf dem Gerät und verlassen es nie.
+<img src="docs/media/under-construction.png" alt="Under construction – hard hats on, please" width="100%" />
 
-Nachbau der App von tidywell-app.com, ohne die Mehrpersonen-Features
-(siehe [Was fehlt](#was-fehlt)).
+<a href="docs/media/homeorg.mp4"><img src="docs/media/homeorg.gif" alt="Homeorg<3 in 20 seconds: tick off a chore, earn coins, draw pixel furniture and pets, feed Mochi" width="100%" /></a>
 
-## Starten
+<sub>▶ Watch with sound: <a href="docs/media/homeorg.mp4">homeorg.mp4</a></sub>
+
+# Homeorg<3
+
+**Chores, cooking, pets – and a little pixel home that gets cosier as you go.**
+
+![Android](https://img.shields.io/badge/Android-APK-6FCDA8?style=flat-square&logo=android&logoColor=white)
+![iPhone](https://img.shields.io/badge/iPhone-sideload-B48CF0?style=flat-square&logo=apple&logoColor=white)
+![Local](https://img.shields.io/badge/data-stays_on_your_phone-FF79B0?style=flat-square)
+![No account](https://img.shields.io/badge/account-none-FFC24D?style=flat-square)
+![In-app purchases](https://img.shields.io/badge/in--app_purchases-never-E2508F?style=flat-square)
+
+</div>
+
+> [!WARNING]
+> **🚧 Under construction.** Homeorg<3 is in the middle of a big makeover: pixel
+> rooms, pets, an iPhone build. It already runs every day on real phones, but
+> things may change, wobble or briefly break. Make a backup now and then
+> (*Settings → Export data*).
+
+---
+
+## ✨ What's inside
+
+|  |  |
+| --- | --- |
+| 🧽 **Chores without pressure** | Every chore has its own rhythm. *Today* only fills your day up to your time budget – easy wins first, so you get going. |
+| 🪙 **Coins for everything** | Cleaning, cooking, putting the shopping away, looking after your pets, checking in: it all earns coins, with a daily cap per kind. |
+| 🏠 **Your pixel home** | Every room is a little pixel picture with the wallpaper and floor you pick. Furniture and decor are stickers: drag, turn, mirror and stack them anywhere. |
+| 🎰 **Sticker machine** | About 2,600 pixel pieces in 27 sets; each month three furniture sets and one pet set are in the machine. Every draw is new. **No in-app purchases. Ever.** |
+| 🐈 **Pet mode** | Cat, dog, bird, fish, hamster, gecko…: one tap for food, water, the litter box, a walk or a water change, plus supplies that tell you how many days they'll last. |
+| 🍳 **Kitchen** | Recipe book, "Let's cook it", a pantry with best-before dates, a shopping list. REWE orders and receipts put themselves away. |
+| 🔖 **Don't forget this** | What needs throwing out, what's about to go off, an empty fridge, cat litter running low – in one place, a nudge rather than a nag. |
+| 💗 **How do you feel?** | A quick check-in. On hard days you get kind words and fewer chores, never more – and, with a pet, a suggestion to cuddle. |
+| 🌸 **Kawaii** | Blush paper, ivy, fairy lights, stickers with faces, pixel splashes. Five more colour schemes, from Classic to Midnight. |
+
+## 📸 A look around
+
+<div align="center">
+<table>
+  <tr>
+    <td><img src="docs/media/screen-home.png" width="200" alt="Home" /></td>
+    <td><img src="docs/media/screen-room.png" width="200" alt="A room" /></td>
+    <td><img src="docs/media/screen-shop.png" width="200" alt="Sticker machine" /></td>
+    <td><img src="docs/media/screen-pets.png" width="200" alt="Pets" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Home</sub></td>
+    <td align="center"><sub>A room</sub></td>
+    <td align="center"><sub>Sticker machine</sub></td>
+    <td align="center"><sub>Pets</sub></td>
+  </tr>
+</table>
+</div>
+
+## 📲 Install
+
+**Android:** download the APK from [Releases](../../releases) to your phone,
+tap it and allow "install from unknown sources". Runs on any 64-bit Android
+(roughly 2017 and newer).
+
+**iPhone:** no App Store, it's a sideload. Install the `.ipa` from Releases with
+SideStore, AltStore or Sideloadly and your own Apple ID. Needs iOS 16.4 or
+newer. The details are [below](#iphone-sideloading).
+
+**Just have a look:** `npm install && npm run web` opens the app in a browser
+(no camera, no haptics).
+
+## 🔒 Private, honestly
+
+Everything lives on your phone. No account, no server, no sync, no ads, no
+analytics. The only network call is the optional barcode lookup at Open Food
+Facts, and it sends nothing but the number on the box. PDFs and photos are read
+on the device and never uploaded.
+
+---
+
+## 🛠️ For developers
+
+Anyone working on the code – person or AI agent – reads [AGENTS.md](AGENTS.md) first.
+
+<details>
+<summary><b>Run, test, build</b></summary>
 
 ```bash
 npm install
-npx expo start
+npx expo start          # scan the QR code with Expo Go (same Wi-Fi, or --tunnel)
+npm run web             # in the browser
+npm run tsc             # typecheck
+npm test                # REWE, shelf life, GS1, printed dates, stickers, streaks, check-ins, pets
+npm run apk             # local release APK (JDK 21 + Android SDK 36)
 ```
 
-Dann in **Expo Go** (kostenlos im App Store / Play Store) den QR-Code scannen.
-Handy und PC müssen im selben WLAN sein. Klemmt das Netzwerk:
+### Build the APK yourself
 
-```bash
-npx expo start --tunnel
-```
+Runs entirely on your own machine – no Expo account, nothing uploaded.
+`scripts/build-apk.js` finds the JDK and SDK by itself. `npm run apk` generates
+the native project, adds the signing key and builds; the file lands in
+`android/app/build/outputs/apk/release/app-release.apk`.
 
-Im Browser testen (nur zum schnellen Draufschauen, Kamera und Haptik fehlen dort):
+It builds for **arm64-v8a** only; for an old 32-bit device run
+`TIDYWELL_ABIS=armeabi-v7a,arm64-v8a npm run apk` once. The first build
+downloads about 1.6 GB of Gradle dependencies and takes a quarter of an hour;
+after that, a minute or so.
 
-```bash
-npm run web
-```
+**The signing key lives in `credentials/` and never goes into git.** Without it
+an installed copy can't be updated. `npx expo prebuild` rewrites `android/`
+from scratch; `scripts/sign-android.js` puts the signing back, and `npm run apk`
+does that for you.
 
-## APK selbst bauen
+### Let GitHub build it
 
-Läuft komplett auf diesem Rechner — kein Expo-Konto, nichts wird hochgeladen.
-Gebraucht werden JDK 21 und das Android SDK 36; beides ist hier schon
-eingerichtet, und `scripts/build-apk.js` sucht sie selbst zusammen — aus
-jeder Shell, egal was gerade im Environment steht.
+Push a tag like `v1.3.0`: the *Release* workflow builds the APK and the IPA and
+attaches both to a GitHub release. *Actions → Release → Run workflow* builds
+without releasing, for Android, iOS or both. Signing the APK with your own key
+needs four repository secrets – see [AGENTS.md](AGENTS.md#git-and-releases).
 
-```bash
-npm run apk
-```
+### iPhone (sideloading)
 
-Das macht der Reihe nach: native Projektdateien erzeugen, den Signierschlüssel
-eintragen, Gradle bauen. Die fertige Datei landet in
-`android/app/build/outputs/apk/release/app-release.apk` — per USB oder Cloud aufs
-Handy, dort antippen, „Installation aus unbekannter Quelle" erlauben, fertig.
+The workflow builds an **unsigned IPA** on a free macOS machine from GitHub, so
+no Mac of your own is needed. It's signed with your Apple ID when you install it:
 
-Gebaut wird nur für **arm64-v8a**, also jedes Android-Gerät ab etwa 2017. Das
-spart gegenüber einem Universal-Build rund 70 MB; die APK liegt bei 93 MB, wovon
-37 MB die Musik ist. Für ein altes 32-Bit-Gerät einmalig
-`TIDYWELL_ABIS=armeabi-v7a,arm64-v8a npm run apk`.
+1. Download the IPA (from a release or as a workflow artifact).
+2. Install it with **SideStore**, **AltStore** or **Sideloadly**.
+3. On the iPhone, turn on *Settings → Privacy & Security → Developer Mode* and
+   trust the developer under *General → VPN & Device Management*.
 
-Der erste Build lädt etwa 1,6 GB Gradle-Abhängigkeiten und dauert eine
-Viertelstunde. Danach ist er in gut einer Minute durch.
+With a **free Apple ID** the app runs for 7 days and then needs refreshing
+(SideStore and AltStore do it over Wi-Fi), and you can have at most 3 sideloaded
+apps. With the **Apple Developer Program** ($99/year) the signature lasts a year.
+Your data survives a refresh. Reminders are local notifications; the push
+entitlement, which a free Apple ID can't sign, is removed by the workflow.
+iOS 16.4 or newer.
 
-**Der Signierschlüssel liegt in `credentials/` und gehört nicht ins Git.**
-Behalte ihn. Ohne ihn lässt sich eine schon installierte Version nicht mehr
-aktualisieren — dann hilft nur deinstallieren und neu aufspielen.
+### EAS
 
-`npx expo prebuild` überschreibt `android/` komplett, deshalb setzt
-`scripts/sign-android.js` die Signierung danach jedes Mal neu. `npm run apk`
-erledigt das mit.
+`eas.json` is there if you'd rather build in Expo's cloud
+(`eas build -p android --profile preview`). That needs an Expo account, and the
+project – music included – goes to their servers.
 
-### Über GitHub bauen lassen
+</details>
 
-Ein Tag wie `v1.3.0` pushen, und der Workflow *Release* baut die APK und hängt
-sie an ein GitHub-Release. Damit sie mit dem eigenen Schlüssel signiert ist,
-braucht das Repo vier Secrets (`ANDROID_KEYSTORE_BASE64` und drei Passwörter
-bzw. Alias); wie, steht in [AGENTS.md](AGENTS.md#git-and-releases).
+<details>
+<summary><b>How it works</b></summary>
 
-### Der andere Weg: EAS
+**Cleanliness** Every chore has a frequency. It runs from 100 % (just cleaned)
+down to 0 % (one full cycle gone), worked out fresh every time you open the
+app. Months are real months: 31 January + 1 month = 28 February.
 
-`eas.json` liegt dabei, falls du lieber in der Cloud baust:
+**Order** How overdue and how easy. Overdue counts for more, but easy chores get
+a bonus: five small wins build the energy for the big one. At some point
+"overdue" stops growing.
 
-```bash
-npm install -g eas-cli && eas login && eas build -p android --profile preview
-```
+**Room percentage** An average weighted by minutes. A clean mirror doesn't save
+a dirty floor.
 
-Dafür brauchst du ein Expo-Konto, und das ganze Projekt wandert auf fremde
-Server — samt der 37 MB Musik. Für iOS führt allerdings kein Weg daran vorbei,
-und dort kommt ein Apple-Developer-Konto (99 €/Jahr) dazu. Ohne das bleibt
-Expo Go, was zum Benutzen völlig reicht.
+**Today** A time budget per day (30 minutes by default), filled with what's most
+urgent; the rest waits under "Got more time?". Ticked chores count against the
+budget, so the day can actually end.
 
-## iPhone (sideloaden)
+**Coins and streaks** Coins for chores (3/5/10 by effort) and almost everything
+else, with a daily cap per source (`src/lib/rewards.ts`). Streaks count any
+active day at the rhythm you choose (daily, every 2–3 days, weekly), with grace days.
 
-Ohne App Store: Der *Release*-Workflow baut neben der APK eine **unsignierte
-IPA** (auf einem kostenlosen macOS-Rechner von GitHub, kein eigener Mac nötig).
-Signiert wird sie beim Installieren mit deiner eigenen Apple-ID:
+**Rooms** Every room is a pixel picture in a 3/4 top-down view: wallpaper and
+floor from LPC tiles (about 250 wallpapers and 150 floors, each with a pink
+version), with stickers on top. New rooms come with a few fitting pixel pieces.
 
-1. IPA herunterladen – aus dem GitHub-Release (`homeorg-v….ipa`) oder unter
-   *Actions → Release → Run workflow* als Artefakt.
-2. Mit **SideStore** oder **AltStore** (iPhone + einmalig Computer) oder
-   **Sideloadly** (Windows/Mac) installieren und mit der Apple-ID anmelden.
-3. Auf dem iPhone *Einstellungen → Datenschutz & Sicherheit → Entwicklermodus*
-   einschalten und dem Entwickler unter *Allgemein → VPN & Geräteverwaltung*
-   vertrauen.
+**Sticker machine** Every draw is a piece you don't have yet, from this month's
+sets. It picks the set first, then the piece by rarity.
 
-Mit einer **kostenlosen Apple-ID** läuft die App 7 Tage und muss dann
-aufgefrischt werden (SideStore/AltStore machen das automatisch im WLAN);
-höchstens 3 selbst installierte Apps gleichzeitig. Mit dem **Apple Developer
-Program** (99 €/Jahr) hält die Signatur ein Jahr. Daten bleiben beim
-Auffrischen erhalten, solange die App nicht gelöscht wird – trotzdem ab und zu
-unter *Einstellungen → Sichern* ein Backup machen.
+**Pets** Care taps for each kind of animal (`src/lib/pets.ts`); a second tap
+within ten minutes takes the first one back. Supplies run down by their daily
+use and give you a nudge five days before they run out.
 
-Die Erinnerungen sind lokale Benachrichtigungen; die Push-Berechtigung, die
-eine kostenlose Apple-ID nicht signieren kann, nimmt der Workflow heraus.
-Datum-Scan (ML Kit) braucht iOS 15.5 oder neuer.
+**Kitchen** *Recipes* is a collection, not a weekly plan. Homeorg<3 checks it
+against the pantry: what you could cook right now, what's missing one or two
+things. "Cooked it" uses up the ingredients; the shopping button only adds
+what's missing to the list.
 
-## Wie es funktioniert
+**Music** Starts in Focus and during sprints and keeps playing in the background.
 
-**Sauberkeit** Jede Aufgabe hat eine Frequenz. Von 100 % (gerade geputzt) läuft
-eine unsichtbare Linie auf 0 % (ein voller Zyklus vorbei). Der Prozentwert wird
-bei jedem Öffnen neu gerechnet, nichts wird gespeichert. Unter 0 % geht es nicht,
-über 100 % auch nicht. Monate sind echte Monate: 31. Januar + 1 Monat = 28. Februar.
+</details>
 
-**Reihenfolge** Zwei Zutaten — wie überfällig und wie leicht. Überfällig zählt
-mehr, aber leichte Aufgaben bekommen einen Bonus. Deshalb schlägt „Arbeitsfläche
-abwischen, etwas überfällig" den „Backofen, sehr überfällig". Fünf kleine Erfolge
-bauen die Energie für den großen auf. Irgendwann hört „überfällig" auf zu wachsen,
-damit nicht eine uralte Aufgabe für immer oben klebt.
+<details>
+<summary><b>Barcodes, REWE, best-before dates</b></summary>
 
-**Raum-Prozent** Ein nach Minuten gewichteter Durchschnitt. Ein sauberer Spiegel
-rettet keinen dreckigen Boden.
+**Scan a barcode** In the pantry: point the camera at it, and the name and pack
+size come from [Open Food Facts](https://world.openfoodfacts.org). This is the
+only place the app goes online; switch it off under *Settings → Look barcodes up online*.
 
-**Heute** Ein Zeitbudget pro Tag (Standard 30 Min). Homeorg<3 packt die
-dringendsten Aufgaben hinein, bis das Budget voll ist — der Rest wartet in
-„Got more time?". An Tagen, die nicht als Putztage markiert sind, gilt das halbe
-Budget. Einmalige Termine hebeln das Limit aus. Abgehakte Aufgaben bleiben
-durchgestrichen stehen und zählen gegen das Budget, damit der Tag auch mal endet.
+**Put a REWE order away** Pick the pickup/delivery PDF or the **eBon** (till
+receipt); the app reads it on the phone. It counts what was delivered:
+substitutes come in as what was really in the bag, loose produce with its real
+weight. Till abbreviations like `KRAEUT.SEITL.BIO` become "Kräuterseitlinge bio".
+`npm run test:rewe` checks against real (anonymised) orders in `scripts/fixtures/`.
 
-**Münzen** 3 für leicht, 5 für mittel, 10 für tief. Zwei Aufgaben innerhalb von
-zehn Minuten geben +2, ab der dritten +5. Ausgegeben wird im Shop: 120 Möbel,
-6 Tapeten, 6 Böden, zehn Stellplätze pro Raum.
+**Best-before dates** Everything in the pantry gets one: from the label (**Scan
+date** reads it with the camera, using Google ML Kit – MHD, SKT, 賞味期限,
+有效日期, 유통기한…), from the QR or DataMatrix code (GS1), or estimated by where
+it's kept – our own table first, then USDA FoodKeeper (CC0), then Open Food Facts
+categories. Estimated dates show with a "≈". Text recognition is native: it works
+in the APK, not in Expo Go or the browser.
 
-**Puppenhaus** Jeder Raum wird flach von vorn gezeichnet: Tapete, Bodenstreifen,
-die fest eingebauten Sachen des Raumtyps (Küchenzeile, Badewanne, Bett) und zehn
-Stellplätze. Alles Vektor, nichts als Bilddatei. Neue Räume kommen möbliert: pro
-Raumtyp gibt es ein Starter-Set, das dir gehört und das du umstellen kannst.
+</details>
 
-**Musik** Startet von selbst, sobald in Focus eine Aufgabe auf dem Schirm steht
-oder ein Sprint losgeht, und hört auf, wenn du den Screen verlässt. Läuft im
-Hintergrund und bei gesperrtem Bildschirm weiter.
-
-**Küche** Drei Reiter. *Rezepte* ist eine Sammlung von dem, was du kochen
-kannst — kein Wochenplan, nichts hängt an einem Montag. Ein Rezept ist ein Name
-und eine Zutatenliste, wie vorher. Homeorg<3 hält sie gegen den Vorrat und sortiert
-danach: was heute sofort ginge, wo ein, zwei Sachen fehlen, wofür du erst einkaufen
-musst. „Cooked it“ zieht die Zutaten vom Regal ab, der Einkaufsknopf schickt nur das
-Fehlende auf die Liste, und der Stern merkt sich, worauf du Lust hast. Geschrieben
-wird ein Rezept auf einem eigenen Screen: Name oben, Zutaten einzeln darunter —
-tippen und auf + drücken, oder direkt aus dem Vorrat antippen. Im Vorrat schiebt das
-Drei-Punkte-Menü eine Sache zwischen Kühlschrank, Gefrierfach und Schrank hin und
-her. Ist der Vorrat leer, bleibt es eine schlichte Liste — sortieren kann die App
-erst, wenn sie weiß, was da ist. Alte Wochenpläne wandern beim ersten Start
-automatisch in die Sammlung, doppelte Gerichte zusammengefasst.
-
-**Minuten** Focus und Sprint messen echte Zeit (Focus gedeckelt auf die Schätzung).
-Ein einfacher Haken zählt die geschätzten Minuten.
-
-## Aufbau
+<details>
+<summary><b>Project layout</b></summary>
 
 ```
-app/                 Screens (expo-router, dateibasiert)
+app/                 screens (expo-router, one file per route)
   (tabs)/            Home, History, Today, My Home, Profile
   room/ task/ challenge/ decorate/ recipe/
-  kitchen.tsx cook.tsx recipes.tsx shopping.tsx  Die vier Küchen-Reiter
-  scan.tsx import.tsx Barcode scannen, REWE-Bestellung einräumen
+  kitchen.tsx cook.tsx recipes.tsx shopping.tsx   the kitchen
+  pets.tsx           pets and their supplies
+  shop.tsx           the sticker machine
+  scan.tsx import.tsx barcode scanner, REWE import
 src/
-  lib/engine.ts      Sauberkeit, Priorität, Raumgesundheit, Tagesplanung
-  lib/date.ts        Kalenderechte Intervalle
-  lib/pdf.ts         Kleiner PDF-Textleser (offline, auch verschlüsselte eBons)
-  lib/crypt.ts       MD5 und RC4 für den PDF-Schutz
-  lib/rewe.ts        REWE-Bestellung lesen
-  lib/ebon.ts        REWE-eBon (Kassenbon) lesen
-  lib/hype.ts        Die Zahlen und Jubelsätze für History
-  lib/orderImport.ts Bestellung → Vorrat: Namen, Mengen, Regalplatz
-  lib/backup.ts      Alle Daten als eine JSON-Datei raus und wieder rein
-  state/store.ts     Zustand + AsyncStorage
-  state/music.ts     Player-Zustand (eigener Store, eigene Persistenz)
-  state/derived.ts   Abgeleitete Werte für die Screens
-  data/              Raumtypen, Möbelkatalog, Challenges, Zerlegung, Playlists, Maßeinheiten
-  ui/RoomCanvas.tsx  Der Raum: Pixel-Wand und -Boden, darauf die Sticker
-  ui/Furniture.tsx   Die 120 Möbel als SVG-Rezepte
-  ui/QuantitySheet.tsx  "Wie viel hast du gekauft?"
-  ui/RecipeEditor.tsx   Ein Rezept schreiben, Zutat für Zutat
-  ui/MusicEngine.tsx Der eine Audio-Player der App (hängt im Root-Layout)
-  ui/Art.tsx         Effort-Ring, Kühlschrank-Anzeige, Rezeptbuch (nach den Skizzen)
-  ui/Decor.tsx       Efeu, Glühbirnen und Kawaii-Sticker
-assets/music/        27 Titel (~37 MB)
+  lib/               pure logic: planning, dates, PDF, REWE, stickers, pets, reminders
+  state/             the store (zustand + AsyncStorage), derived values
+  data/              room types, sticker catalog, walls and floors, challenges, units
+  ui/                building blocks, RoomCanvas, StickerLayer, decor, pixel splashes
+assets/stickers/     pixel stickers (generated)
+assets/surfaces/     wallpapers and floors (generated)
+assets/music/        the music
 scripts/
-  prepare-music.js   Musik kuratieren und neu kodieren
-  make-icons.js      App-Icons als PNG erzeugen
-  sign-android.js    Signierschlüssel nach jedem prebuild wieder eintragen
-  build-apk.js       Release-APK bauen, findet JDK und SDK selbst
+  build-stickers.py  cut stickers from the LPC sheets, render the pets
+  build-surfaces.py  cut wallpapers and floors
+  pets/              the hand-drawn pets (templates, coats, species)
+  build-apk.js sign-android.js  build and sign the APK
 ```
 
-Alles Sichtbare ist im Code gezeichnet. Nur die Musik besteht aus Dateien, damit
-liegt die App bei rund 40 MB.
+Rebuild the stickers: `python3 scripts/build-stickers.py` (needs Pillow);
+walls and floors: `python3 scripts/build-surfaces.py`;
+music: `TIDYWELL_MUSIC_SRC="D:/path/to/Music" npm run music`.
 
-### Musik neu bauen
+</details>
 
-Das Skript liest aus einem festen Pfad und schreibt nach `assets/music`. Wenn
-deine Bibliothek woanders liegt:
+<details>
+<summary><b>Backups</b></summary>
 
-```bash
-TIDYWELL_MUSIC_SRC="D:/pfad/zu/Music" npm run music
-```
+**Settings → Export data** writes everything into one file,
+`homeorg-backup-YYYY-MM-DD.json`, and opens the share sheet. **Import data**
+reads such a file back and replaces everything on the phone (it asks first).
+Before/after photos stay on the device. The file carries a format version, so
+later versions of the app can read older backups.
 
-## Woher die Sachen kommen
+</details>
 
-**Möbel** Keine Bilddateien. Jedes der 120 Teile ist ein Zeichenrezept in
-`src/ui/Furniture.tsx` — Form plus drei Farben. Deshalb wiegt der ganze Shop
-nichts und passt stilistisch zum Rest der App.
+<details>
+<summary><b>What's missing (on purpose)</b></summary>
 
-**Musik** 27 Titel aus deiner eigenen Bibliothek, in fünf Playlists nach deinen
-Ordnern: Underwater, Tokyo Nights, Moonlight, With Words, Focus Beats. Neu
-kodiert mit 64 kbit/s mono, weil Hintergrundmusik keine 300 MB braucht.
+Homeorg<3 started as a local-only take on the tidywell-app.com app, leaving out
+everything that needs a server:
 
-Ein ehrlicher Hinweis: die NCS-Titel sind für so etwas freigegeben, die
-Spiele-Soundtracks (Persona, Subnautica) sind es normalerweise nicht. Für deine
-eigene App auf deinem eigenen Handy ist das deine Entscheidung. Vor einem
-Store-Release müsste die Musik raus oder durch lizenzfreie ersetzt werden — der
-Player selbst bleibt davon unberührt, `prepare-music.js` bekommt einfach eine
-andere Liste.
+- sharing a household, members, roles, kids mode
+- live sprints with others (solo sprints are in)
+- photo sync between devices
 
-## Barcode scannen
+Breaking chores into steps runs on rules, on the device. Everything is unlocked –
+a subscription without a server would make no sense.
 
-Im Vorrat: **Scan a barcode** → Kamera drauf, Name und Packungsgröße kommen von
-[Open Food Facts](https://world.openfoodfacts.org) (rund 425.000 in Deutschland
-verkaufte Produkte), Menge bestätigen, ab ins Regal. Der Scanner bleibt offen,
-damit du einen ganzen Einkauf am Stück wegräumen kannst.
+</details>
 
-Das ist die **einzige** Stelle, an der die App ins Netz geht, und sie schickt nur
-die Nummer vom Karton — kein Konto, keine Kennung, keine Historie. Abschaltbar
-unter Einstellungen, „Look barcodes up online"; der Scanner geht dann weiter, du
-tippst den Namen nur selbst.
+## 💗 Credits
 
-REWEs eigener Produkt-Endpunkt (`mobile-api.rewe.de`) löst nicht mehr auf, und
-für Warenkorb oder Einkaufsliste gibt es keine öffentliche Schnittstelle. Hier
-ist also nichts nachgebaut oder umgangen worden.
-
-## REWE-Bestellung einräumen
-
-Im Vorrat: **REWE PDF** → das PDF wählen, das REWE zur Abholung oder Lieferung
-schickt (Abhol-/Lieferavis), oder den **eBon** vom Einkauf im Markt. Die App liest es auf dem Handy, nichts wird
-hochgeladen. Gezählt wird die Liefermenge: Nicht Lieferbares und Gebühren fallen
-weg, Ersatzartikel kommen als das, was wirklich in der Tüte war, lose Ware mit
-dem echten Gewicht. Jedes Produkt bekommt einen Platz (Kühlschrank, Gefrierfach,
-Schrank) vorgeschlagen; Nicht-Essbares wie Teelichter ist abgewählt. Kurz
-durchsehen, **Put away**, fertig. Was auf der Einkaufsliste stand, wird
-abgehakt, und dieselbe Bestellung zweimal einräumen gibt eine Warnung.
-
-Wird etwas umgeräumt (hier oder später im Vorrat), merkt sich die App den Platz
-fürs nächste Mal.
-
-Beim eBon steht kein Liefer-Status, dafür Kassenkürzel: aus `KRAEUT.SEITL.BIO`
-wird „Kräuterseitlinge bio“, aus `SONNENB.OEL KALT` „Sonnenblumenöl kalt“.
-
-`npm run test:rewe` prüft Leser und Parser gegen drei echte Bestellungen und
-einen echten eBon (`scripts/fixtures/`, ohne Kopfdaten wie Name, Kundennummer
-oder Kartendaten).
-
-## Zimmer, Sticker, Münzen
-
-Zimmer werden mit Stickern eingerichtet: frei platzieren, skalieren, drehen,
-spiegeln, stapeln. Rund 2500 Pixel-Teile in 21 Sets (LPC Revised, CC-BY /
-OGA-BY, Credits im About-Screen) gibt es nur über den Sticker-Automaten —
-jede Ziehung ein neues Teil, jeden Monat drei andere Sets. Münzen gibt es
-fürs Putzen, Kochen, Vorher-/Nachher-Fotos, Einräumen, MHDs eintragen,
-Einchecken und Streaks (mit Tageslimit pro Quelle). Keine In-App-Käufe.
-
-Streaks zählen jeden aktiven Tag, im selbst gewählten Rhythmus (täglich, alle
-2–3 Tage, wöchentlich) und mit Schonfrist. Das „Wie geht's dir?"-Kärtchen auf
-Home speichert Stimmung, soziale Kapazität und Energie; an schweren Tagen
-gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
-been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
-
-Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
-Dazu kommen 97 selbst gezeichnete Haustiere in sechs Sets (Hauskatzen, Wildkatzen
-wie Manul, Serval und Tiger, Vögel und Häschen, Hunde, Fische im Glas, Hamster,
-Meerschweinchen, Ratten, Geckos und Schildkröten) aus `scripts/pets/`; jeden
-Monat ist ein Tier-Set neben drei Möbel-Sets in der Maschine.
-
-**Haustier-Modus** (optional, in den Einstellungen): eine Kachel auf Home mit
-deinem Tier als Pixelbild und Schnell-Tipps für Futter, Wasser, Katzenklo,
-Gassi, Wasserwechsel, Terrarium …, ein Bildschirm für Pflege und Vorräte (Futter, Streu, Heu mit
-Reichweite in Tagen) und an schweren Tagen der Vorschlag zum Kuscheln.
-„Nicht vergessen“ (für alle) sammelt Abgelaufenes zum Wegwerfen, Bald-Fälliges,
-einen leeren Kühlschrank und – mit Tieren – Vorräte und fällige Reinigung.
-Wände und Böden (rund 250 Tapeten und 150 Böden in 16 Mustern, je mit einer
-rosa Variante) entstehen mit `python3 scripts/build-surfaces.py`.
-
-## Haltbarkeit
-
-Alles im Vorrat bekommt ein Mindesthaltbarkeitsdatum, in dieser Reihenfolge:
-vom Etikett (**Scan date** liest es per Kamera, auf dem Handy, mit Google ML
-Kit — MHD, SKT, 賞味期限, 有效日期, 유통기한 …), aus dem QR-/DataMatrix-Code
-neuer Verpackungen (GS1), oder geschätzt nach Lagerort: eigene Tabelle für
-deutsche und internationale Namen, dann die USDA-FoodKeeper-Daten (CC0), dann
-die Kategorien von Open Food Facts. Geschätzte Daten stehen mit „≈“ da.
-
-Die Texterkennung ist ein natives Modul: in der APK ja, in Expo Go und im
-Browser nicht. Sie macht die APK um rund 20 MB größer (fünf Schriftsysteme).
-FoodKeeper neu einlesen: `node scripts/import-foodkeeper.js`.
-
-## Daten sichern
-
-**Settings → Export data** schreibt alles in eine Datei
-`homeorg-backup-JJJJ-MM-TT.json`: Haushalt, Räume, Aufgaben, Verlauf, Münzen,
-Möbel, Challenges, Rezepte, Vorrat, Listen, Notizen, Einstellungen und die
-Musikwahl. Danach geht das Teilen-Menü auf, also z. B. in Drive, Dateien oder
-per Mail ablegen. **Import data** liest so eine Datei wieder ein und ersetzt
-dabei alles, was gerade auf dem Handy ist (vorher wird gefragt). Vorher-/Nachher-
-Fotos kommen nicht mit, die bleiben auf dem Gerät.
-
-Die Datei trägt eine Formatversion (`format: "homeorg-backup"`, `version: 1`)
-und die Speicherversion, damit spätere Versionen der App ältere Sicherungen
-lesen und notfalls migrieren können.
-
-## Was fehlt
-
-Bewusst weggelassen, weil es ohne Server nicht geht:
-
-- Haushalt teilen, Mitglieder, Rollen, Kinder-Modus, Freigaben
-- Live-Sprints zu mehreren (Solo-Sprint ist drin)
-- Foto-Sync zwischen Geräten (Fotos bleiben lokal auf dem Gerät)
-
-Die KI-Aufgabenzerlegung läuft regelbasiert auf dem Gerät statt über ein Modell —
-das ist genau das, was die Original-App offline auch macht.
-
-Alles ist freigeschaltet. Ein Abo ohne Server wäre sinnlos.
+- **Pixel furniture, walls and floors:** [LPC Revised](https://github.com/ElizaWy/LPC)
+  (CC-BY 3.0 / OGA-BY 3.0); the artists for each set are on the About screen and
+  in `assets/stickers/CREDITS.md`.
+- **Pets:** drawn for this app (`scripts/pets/`).
+- **Product data:** [Open Food Facts](https://world.openfoodfacts.org) (ODbL).
+  **Shelf life:** USDA FoodKeeper (CC0).
+- **Music:** from the owner's own library, re-encoded. The NCS tracks are cleared
+  for this kind of use; the game soundtracks usually aren't – before a store
+  release the music would need to go or be swapped for royalty-free tracks.
+- **The video at the top** was made with [/brag](https://github.com/latent-spaces/brag);
+  its soundtrack was generated for it.
