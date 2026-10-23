@@ -8,7 +8,7 @@ import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
 import { autoBestBefore } from '../data/shelfLife';
 import { REWARDS, allowed, trimLog, type CoinEvent, type RewardSource } from '../lib/rewards';
-import { drawPiece, featuredSets, starterPieces, stickersFromSlots } from '../lib/stickers';
+import { drawPiece, featuredSets, pieceById, starterPieces, stickersFromSlots } from '../lib/stickers';
 import { DEFAULT_STREAK, activeDays, streakOf, weekStartKey, type StreakSettings } from '../lib/streak';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
@@ -307,6 +307,20 @@ function streakSettings(s: State): StreakSettings {
 function stickerRooms(rooms: Room[]): Room[] | null {
   if (rooms.every((r) => r.stickers)) return null;
   return rooms.map((r) => (r.stickers ? r : { ...r, stickers: stickersFromSlots(r.decor, () => uid('stk')) }));
+}
+
+/**
+ * Pieces whose art is no longer in the catalog (a test build's ids, say)
+ * are let go quietly, so a missing picture never breaks a room.
+ */
+function forgetLostPieces(s: Pick<State, 'pieces' | 'rooms'>): Pick<State, 'pieces' | 'rooms'> | null {
+  const pieces = (s.pieces ?? []).filter((id) => pieceById(id));
+  const lost = (r: Room) => (r.stickers ?? []).some((k) => !pieceById(k.piece));
+  if (pieces.length === (s.pieces ?? []).length && !s.rooms.some(lost)) return null;
+  return {
+    pieces,
+    rooms: s.rooms.map((r) => (lost(r) ? { ...r, stickers: r.stickers!.filter((k) => pieceById(k.piece)) } : r)),
+  };
 }
 
 /** What a new or edited item's date should be: given, "keeps", or looked up. */
@@ -1158,6 +1172,8 @@ export const useStore = create<Store>()(
         if (dated) useStore.setState({ pantry: dated });
         const moved = stickerRooms(useStore.getState().rooms ?? []);
         if (moved) useStore.setState({ rooms: moved });
+        const known = forgetLostPieces(useStore.getState());
+        if (known) useStore.setState(known);
         if (!state.welcomeKit) {
           useStore.setState({ pieces: [...new Set([...(state.pieces ?? []), ...starterPieces()])], welcomeKit: true });
         }

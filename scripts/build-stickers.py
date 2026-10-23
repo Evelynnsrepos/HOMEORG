@@ -37,18 +37,27 @@ MIN_PIXELS = 30
 # set id, name, emoji, and the sheet paths (regex, relative to Objects/) that belong to it.
 # First match wins, so the narrow patterns come first.
 SETS = [
-    ('forge', 'Forge & Ore', '⚒️', [r'^Furniture/Smithing/', r'^Small Items/Ores & Ingots/', r'Tools, Smithing']),
-    ('maker', "Maker's Workshop", '🧵', [r'Sewing & Weaving/', r'^Small Items/Fabric/Fabri', r'Tools, (Carpentry|Sewing)', r'Workbench', r'Lumber', r'Sawdust', r'Sawhorse', r'Shavehorse', r'Table, (Workshop|Rough Wood)', r'Ladder']),
-    ('pantry', 'Pantry Treats', '🧁', [r'^Small Items/Food/']),
-    ('festive', 'Festive', '🎄', [r'Christmas', r'Presents']),
-    ('curious', 'Curiosities', '🔮', [r'Skeletons', r'Dungeon', r'Cauldron', r'Thrones', r'Stone Slab', r'Wolf Stone', r'Mailboxes', r'Shopping Cart']),
-    ('bedroom', 'Snug Bedroom', '🛏️', [r'^Furniture/Beds/', r'Pillows', r'Blankets', r'Dresser', r'Desk, Vanity', r'End Table', r'Mirror', r'Curtains', r'Standing Screen', r'Lighting, (Floor|Table)']),
-    ('kitchen', 'Kitchen Corner', '🍳', [r'Fridge', r'Countertop', r'Cabinet', r'Oven', r'Sink', r'Coffee Maker', r'Dishes', r'Kitchen Clutter', r'Water Cooler', r'Bar Stools', r'Chair, Dining', r'Table, Ornate', r'^Furniture/Bin']),
-    ('lounge', 'Lounge Life', '🛋️', [r'^Furniture/Seating/', r'^Furniture/Rugs/', r'TV, ', r'Table, Card', r'Games', r'Rotary Phones', r'Vase-Studies', r'Lighting, Wall', r'Wheelchair']),
-    ('garden', 'Green Thumb', '🪴', [r'Flowers', r'Planter', r'Lighting, Outdoors', r'Hay & Straw', r'Trough', r'Baskets', r'Buckets']),
+    ('bakery', 'Bakery & Dairy', '🥐', [r'Food/Bread', r'Food/Butter', r'Food/Cheese', r'Food/Dessert', r'Food/Eggs', r'Food/Tortillas']),
+    ('orchard', 'Orchard', '🍑', [r'Food/Fruit']),
+    ('grocer', 'Green Grocer', '🥕', [r'Food/Vegetables (A|B)']),
+    ('veggie', 'Veggie Patch', '🥬', [r'Food/Vegetables C']),
+    ('butcher', 'Butcher & Fishmonger', '🍤', [r'Food/Meats', r'Food/Seafood', r'Food/Hamburgers', r'Food/Meals']),
+    ('spice', 'Spice Market', '🌶️', [r'Food/Herbs', r'Food/Grains', r'Food/Mushrooms', r'Food/Nuts', r'Food/Tea']),
+    ('kids', "Kids' Room", '🧸', [r'Beds, Child', r'Blankets', r'Games']),
+    ('bedroom', 'Snug Bedroom', '🛏️', [r'^Furniture/Beds/']),
+    ('pillows', 'Pillow Fort', '🛋️', [r'Pillows', r'Ottoman']),
+    ('dressing', 'Dressing Room', '🪞', [r'Dresser', r'Curtains', r'Mirror', r'Desk, Vanity', r'Standing Screen', r'End Table', r'Lighting, (Floor|Table|Wall)']),
+    ('couches', 'Cosy Couches', '💺', [r'Loveseat, Small - (Casual Patterned|Formal)']),
+    ('lounge', 'Lounge Life', '🛋️', [r'Chair, Sofa', r'Sofa', r'Loveseat']),
+    ('screens', 'Screen Time', '📺', [r'TV, ', r'Rotary Phones', r'Laptop', r'^Furniture/Rugs/', r'Table, Card', r'Vase-Studies']),
+    ('kitchen', 'Kitchen & Dining', '🍳', [r'Fridge', r'Countertop', r'Cabinet', r'Oven', r'Sink', r'Coffee Maker', r'Dishes', r'Kitchen Clutter', r'Bar Stools', r'Chair, Dining', r'Table, Ornate']),
+    ('sewing', 'Sewing Room', '🧵', [r'Sewing & Weaving/', r'^Small Items/Fabric/Fabri', r'Tools, Sewing']),
+    ('carpentry', 'Carpentry', '🪚', [r'Tools, Carpentry', r'Workbench, (Carpentry|Wire)', r'Lumber', r'Sawdust', r'Sawhorse', r'Shavehorse', r'Table, (Workshop|Rough Wood)', r'Ladder', r'Boxes', r'Crate']),
+    ('forge', 'Forge & Dungeon', '⚒️', [r'^Furniture/Smithing/', r'Tools, Smithing', r'Skeletons', r'Dungeon', r'Cauldron', r'Thrones', r'Stone Slab', r'Wolf Stone']),
+    ('ores', 'Ores & Gems', '💎', [r'^Small Items/Ores & Ingots/']),
     ('gallery', 'Gallery Wall', '🖼️', [r'Paintings', r'Posters', r'Tabletop Portraits', r'Pride Flags', r'Graffiti']),
-    ('study', 'Study Nook', '📚', [r'Desk, Office', r'Chair, Office', r'Laptop', r'Loose Paper', r'Copy Machine', r'Shelf', r'Clock', r'Vending Machine', r'Boxes', r'Crate']),
-    ('fireside', 'Fireside', '🔥', [r'Fireplace', r'Fire, ', r'Barrel', r'Chest']),
+    ('hearth', 'Hearth & Garden', '🔥', [r'Fireplace', r'Fire, ', r'Barrel', r'Chest', r'Christmas', r'Presents', r'Flowers', r'Planter', r'Lighting, Outdoors', r'Hay & Straw', r'Trough', r'Baskets', r'Buckets']),
+    ('everyday', 'Study & Everyday', '📚', [r'Desk, Office', r'Chair, Office', r'Loose Paper', r'Copy Machine', r'Shelf', r'Clock', r'Vending Machine', r'Wheelchair', r'^Furniture/Bin', r'Water Cooler', r'Shopping Cart', r'Mailboxes']),
 ]
 
 
@@ -143,6 +152,7 @@ def main():
     set_artists = {sid: set() for sid, *_ in SETS}
     set_licenses = {sid: set() for sid, *_ in SETS}
     counters = {sid: 0 for sid, *_ in SETS}
+    per_sheet = {}
 
     sheets = []
     for folder, _dirs, files in os.walk(SRC):
@@ -167,16 +177,20 @@ def main():
                 continue
             seen.add(digest)
             counters[sid] += 1
-            n = counters[sid]
+            # ids come from the sheet, not the set, so sets can be reshuffled
+            # without anyone's collection changing under them
+            slug = re.sub(r'[^a-z0-9]+', '-', rel.lower().rsplit('.', 1)[0].split('/')[-1]).strip('-')
+            per_sheet[slug] = per_sheet.get(slug, 0) + 1
+            pid = f'{slug}-{per_sheet[slug]:02d}'
             os.makedirs(os.path.join(OUT, sid), exist_ok=True)
-            name = f'{sid}/{n:03d}.png'
+            name = f'{sid}/{pid}.png'
             big = crop.resize((crop.width * SCALE, crop.height * SCALE), Image.NEAREST)
             # pixel art has a handful of colours: an indexed PNG is a fraction of the size
             big.quantize(colors=256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).save(
                 os.path.join(OUT, name), optimize=True
             )
             entries.append({
-                'id': f'{sid}-{n:03d}', 'set': sid, 'file': name, 'label': label,
+                'id': pid, 'set': sid, 'file': name, 'label': label,
                 'w': crop.width, 'h': crop.height, 'kind': kind_for(rel), 'rarity': rarity(crop.width, crop.height),
             })
 

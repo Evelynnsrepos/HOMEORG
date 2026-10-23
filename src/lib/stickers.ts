@@ -132,7 +132,10 @@ export function drawPiece(owned: Set<string>, featured: string[], random = Math.
 export function starterPieces(random = Math.random): string[] {
   const out: string[] = [];
   for (const set of stickerSets) {
-    const pool = pieces.filter((p) => p.set === set.id && p.rarity === 'common');
+    // a set of nothing but big sofas has no commons; start with its rares then
+    const mine = pieces.filter((p) => p.set === set.id);
+    const commons = mine.filter((p) => p.rarity === 'common');
+    const pool = commons.length >= 2 ? commons : mine.filter((p) => p.rarity !== 'epic');
     for (let i = 0; i < 2 && pool.length; i++) out.push(pool.splice(Math.floor(random() * pool.length), 1)[0].id);
   }
   return out;

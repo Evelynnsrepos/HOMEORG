@@ -51,7 +51,7 @@ check("this month's sets come first, each about as likely", () => {
 
 check('the sets turn over every month and each comes round', () => {
   const seen = new Set<string>();
-  for (let m = 0; m < 4; m++) featuredSets(new Date(2026, m, 10)).forEach((s) => seen.add(s));
+  for (let m = 0; m < Math.ceil(stickerSets.length / 3); m++) featuredSets(new Date(2026, m, 10)).forEach((s) => seen.add(s));
   assert.equal(seen.size, stickerSets.length);
   assert.notDeepEqual(featuredSets(new Date(2026, 0, 10)), featuredSets(new Date(2026, 1, 10)));
 });

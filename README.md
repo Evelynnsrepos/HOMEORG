@@ -236,7 +236,7 @@ oder Kartendaten).
 ## Zimmer, Sticker, Münzen
 
 Zimmer werden mit Stickern eingerichtet: frei platzieren, skalieren, drehen,
-spiegeln, stapeln. Rund 2500 Pixel-Teile in 12 Sets (LPC Revised, CC-BY /
+spiegeln, stapeln. Rund 2500 Pixel-Teile in 21 Sets (LPC Revised, CC-BY /
 OGA-BY, Credits im About-Screen) gibt es nur über den Sticker-Automaten —
 jede Ziehung ein neues Teil, jeden Monat drei andere Sets. Münzen gibt es
 fürs Putzen, Kochen, Vorher-/Nachher-Fotos, Einräumen, MHDs eintragen,

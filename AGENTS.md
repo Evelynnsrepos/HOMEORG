@@ -128,7 +128,7 @@ once on load; `room.decor` is only history now.
 
 **The sticker library** is generated: `python3 scripts/build-stickers.py`
 (needs Pillow) cuts the LPC Revised sheets in `scripts/data/lpc-revised/`
-(CC-BY 3.0 / OGA-BY 3.0) into ~2500 pieces in 12 sets, writes
+(CC-BY 3.0 / OGA-BY 3.0) into ~2500 pieces in 21 sets of about 80–160 (ids come from the source sheet, so sets can be reshuffled without touching anyone's collection), writes
 `assets/stickers/` and `src/data/stickerCatalog.ts`, and the credits to
 `assets/stickers/CREDITS.md`. The artists are listed on the About screen —
 that attribution is required, keep it.
