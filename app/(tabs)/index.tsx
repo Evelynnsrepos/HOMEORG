@@ -8,7 +8,7 @@ import { cookableNow, expiringSoon, matchRecipes, shelfLifeLabel } from '../../s
 import { pickChallenge } from '../../src/lib/suggest';
 import { useHomeHealth, useRooms, useStreak, useToday } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
-import { band, bandColor, bandLabel, colors, font, radius } from '../../src/theme';
+import { band, bandColor, bandLabel, colors, font, radius, shadow } from '../../src/theme';
 import { EffortRing, FridgeGauge, fridgeWord } from '../../src/ui/Art';
 import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
@@ -235,29 +235,44 @@ export default function HomeTab() {
           </Press>
           <Spacer h={6} />
           {cookable.length ? (
-            cookable.map(({ recipe, missing }, i) => (
-              <Press
-                key={recipe.id}
-                onPress={() => router.push(`/recipe/${recipe.id}`)}
-                style={{
-                  paddingVertical: 8,
-                  borderTopWidth: i ? 1 : 0,
-                  borderTopColor: colors.lineSoft,
-                }}
-              >
-                <Row style={{ gap: 7 }}>
-                  <T v="label" color={colors.ink} style={{ flex: 1 }} numberOfLines={2}>
-                    {recipe.name}
-                  </T>
-                  <EffortRing effort={recipe.effort} size={18} />
-                </Row>
-                {pantry.length && recipe.ingredients.length ? (
-                  <T v="caption" style={{ fontSize: 10.5 }} color={missing.length ? colors.inkMuted : colors.sageDeep}>
-                    {missing.length ? `${missing.length} to buy` : 'All in the kitchen'}
-                  </T>
-                ) : null}
-              </Press>
-            ))
+            <View style={{ gap: 7, paddingTop: 2 }}>
+              {cookable.map(({ recipe, missing }) => {
+                const look = scatter(recipe.id);
+                return (
+                  <Press
+                    key={recipe.id}
+                    onPress={() => router.push(`/recipe/${recipe.id}`)}
+                    style={{
+                      alignSelf: look.side,
+                      width: `${look.width}%`,
+                      transform: [{ rotate: `${look.tilt}deg` }, { scale: look.scale }],
+                      backgroundColor: colors.cardAlt,
+                      borderRadius: radius.sm,
+                      borderWidth: 1,
+                      borderColor: colors.line,
+                      paddingHorizontal: 9,
+                      paddingVertical: 7,
+                      ...shadow.card,
+                      shadowOpacity: 0.08,
+                      shadowRadius: 4,
+                      shadowOffset: { width: 0, height: 2 },
+                    }}
+                  >
+                    <Row style={{ gap: 6, alignItems: 'flex-start' }}>
+                      <T v="label" color={colors.ink} style={{ flex: 1, fontFamily: font.semi, fontSize: 12.5 }} numberOfLines={2}>
+                        {recipe.name}
+                      </T>
+                      <EffortRing effort={recipe.effort} size={16} />
+                    </Row>
+                    {pantry.length && recipe.ingredients.length ? (
+                      <T v="caption" style={{ fontSize: 10 }} color={missing.length ? colors.inkMuted : colors.sageDeep}>
+                        {missing.length ? `${missing.length} to buy` : 'All in the kitchen'}
+                      </T>
+                    ) : null}
+                  </Press>
+                );
+              })}
+            </View>
           ) : (
             <Press onPress={() => router.push('/recipe/new')}>
               <T v="caption">Write your first recipe down and it shows up here.</T>
@@ -391,6 +406,23 @@ export default function HomeTab() {
       </Card>
     </Screen>
   );
+}
+
+/**
+ * A little card's own look: a slight tilt, a touch bigger or smaller, nudged
+ * left or right. Seeded by the recipe id so each card keeps its look between
+ * renders instead of jittering.
+ */
+function scatter(id: string) {
+  let h = 2166136261;
+  for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619);
+  const r = (shift: number) => ((h >>> shift) & 255) / 255;
+  return {
+    tilt: (r(0) - 0.5) * 7,
+    scale: 0.94 + r(8) * 0.1,
+    width: 88 + Math.round(r(16) * 12),
+    side: (r(24) < 0.5 ? 'flex-start' : 'flex-end') as 'flex-start' | 'flex-end',
+  };
 }
 
 function pill(bg: string) {
