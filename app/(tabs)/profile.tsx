@@ -62,7 +62,7 @@ export default function Profile() {
         <Divider />
         <MenuRow icon="ribbon" label="Achievements" hint="Quietly waiting for you" onPress={() => router.push('/achievements')} />
         <Divider />
-        <MenuRow icon="storefront" label="The Shop" hint={`${coins} coins to spend`} onPress={() => router.push('/shop')} />
+        <MenuRow icon="sparkles" label="Sticker draws" hint={`${coins} coins to spend`} onPress={() => router.push('/shop')} />
         <Divider />
         <MenuRow icon="home" label="Home layout" hint="Rooms, floors, moving house" onPress={() => router.push('/layout')} />
       </Card>

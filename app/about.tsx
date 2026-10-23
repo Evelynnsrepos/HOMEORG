@@ -68,7 +68,7 @@ export default function About() {
       <T v="body">
         Household sharing, live multiplayer sprints, kid approvals and photo sync all need a server
         to pass data between phones. This build is deliberately server-free, so those are left out.
-        Everything else — the dollhouse, the shop, Focus mode, Sprints, challenges, the kitchen
+        Everything else — the dollhouse, the sticker draws, Focus mode, Sprints, challenges, the kitchen
         and insights — runs entirely on the device.
       </T>
 

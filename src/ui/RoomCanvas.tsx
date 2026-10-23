@@ -1,10 +1,12 @@
 import React from 'react';
+import { View } from 'react-native';
 import Svg, { Circle, ClipPath, Defs, G, Line, Path, Rect } from 'react-native-svg';
 
 import { floorings, itemById, wallpapers, type Zone } from '../data/shop';
 import type { Room } from '../lib/types';
 import { Fixtures } from './Fixtures';
 import { Furniture } from './Furniture';
+import { StickerLayer } from './StickerLayer';
 
 /**
  * One room, drawn flat and face on: a papered wall, a strip of floor, the
@@ -217,6 +219,7 @@ export function RoomCanvas({
   dim = 0,
   editing = false,
   activeSlot,
+  selected,
 }: {
   room: Room;
   width: number;
@@ -225,9 +228,13 @@ export function RoomCanvas({
   dim?: number;
   editing?: boolean;
   activeSlot?: number | null;
+  /** the sticker being moved in the editor */
+  selected?: string | null;
 }) {
   const h = height ?? width * ROOM_ASPECT;
   const decor = room.decor ?? [];
+  // rooms with stickers draw those; the old slots are only for rooms that predate them
+  const stickers = room.stickers;
 
   // Rugs lie flat, then walls, then the corners, floor and little things in
   // front of them — so nothing ends up behind the sofa it should sit on.
@@ -240,6 +247,7 @@ export function RoomCanvas({
   const order = [...SLOTS.keys()].sort((a, b) => rank(a) - rank(b) || a - b);
 
   return (
+    <View style={{ width, height: h, overflow: 'hidden', borderRadius: 8 * (width / VB_W) }}>
     <Svg width={width} height={h} viewBox={`0 ${VB_TOP} ${VB_W} ${VB_H - VB_TOP}`}>
       <Defs>
         <ClipPath id={`clip-${room.id}`}>
@@ -251,12 +259,14 @@ export function RoomCanvas({
         <Flooring id={room.flooring} />
         <Fixtures typeId={room.typeId} />
 
-        {order.map((i) => {
-          const id = decor[i];
-          return id ? <Placed key={i} slot={SLOTS[i]} itemId={id} /> : null;
-        })}
+        {stickers
+          ? null
+          : order.map((i) => {
+              const id = decor[i];
+              return id ? <Placed key={i} slot={SLOTS[i]} itemId={id} /> : null;
+            })}
 
-        {editing
+        {editing && !stickers
           ? SLOTS.map((slot, i) =>
               decor[i] && activeSlot !== i ? null : (
                 <Rect
@@ -275,10 +285,15 @@ export function RoomCanvas({
             )
           : null}
 
-        {dim > 0 ? (
-          <Rect x={0} y={VB_TOP} width={VB_W} height={VB_H - VB_TOP} fill="#5B4B36" opacity={dim * 0.32} />
-        ) : null}
       </G>
     </Svg>
+    {stickers ? <StickerLayer stickers={stickers} width={width} height={h} selected={selected} /> : null}
+    {dim > 0 ? (
+      <View
+        pointerEvents="none"
+        style={{ position: 'absolute', left: 0, top: 0, width, height: h, backgroundColor: '#5B4B36', opacity: dim * 0.32 }}
+      />
+    ) : null}
+    </View>
   );
 }
