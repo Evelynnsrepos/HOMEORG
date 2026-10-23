@@ -56,7 +56,8 @@
     "test:shelf": "tsx scripts/test-shelf.ts",
     "test:gs1": "tsx scripts/test-gs1.ts",
     "test:dates": "tsx scripts/test-dates.ts",
-    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts && tsx scripts/test-gs1.ts && tsx scripts/test-dates.ts"
+    "test:stickers": "tsx --require ./scripts/png-require.cjs scripts/test-stickers.ts",
+    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts && tsx scripts/test-gs1.ts && tsx scripts/test-dates.ts && npm run -s test:stickers"
   },
   "private": true,
   "overrides": {

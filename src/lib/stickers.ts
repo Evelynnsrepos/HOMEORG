@@ -102,8 +102,8 @@ export function daysUntilRotation(on = new Date()): number {
 }
 
 /**
- * One draw: always a piece you don't have yet, from this month's sets, the
- * common ones more often. When those are complete it reaches into every set,
+ * One draw: always a piece you don't have yet, from one of this month's sets
+ * (each as likely as the others), the common ones more often. When those are complete it reaches into every set,
  * and only when you own the whole library is there nothing left to draw.
  */
 export function drawPiece(owned: Set<string>, featured: string[], random = Math.random): Piece | null {
@@ -118,7 +118,14 @@ export function drawPiece(owned: Set<string>, featured: string[], random = Math.
     return pool[pool.length - 1];
   };
   const fresh = (p: Piece) => !owned.has(p.id);
-  return pick(pieces.filter((p) => featured.includes(p.set) && fresh(p))) ?? pick(pieces.filter(fresh));
+  // a set first, evenly, then a piece in it: otherwise a set with 450 pillows
+  // would drown one with 23 Christmas things
+  const open = featured.filter((sid) => pieces.some((p) => p.set === sid && fresh(p)));
+  if (open.length) {
+    const sid = open[Math.floor(random() * open.length)];
+    return pick(pieces.filter((p) => p.set === sid && fresh(p)));
+  }
+  return pick(pieces.filter(fresh));
 }
 
 /** The welcome kit: two common pieces from every set, so every room can start somewhere. */
