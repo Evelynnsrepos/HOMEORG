@@ -173,7 +173,7 @@ export default function Pantry() {
               <Btn
                 tone="quiet"
                 icon="document-text-outline"
-                label="REWE order"
+                label="REWE PDF"
                 onPress={() => router.push('/import')}
               />
             </View>

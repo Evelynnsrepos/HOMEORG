@@ -1,6 +1,7 @@
 import { guessFor, type Place } from '../data/units';
+import { NotAnEbon, parseEbon } from './ebon';
 import { readPdfText } from './pdf';
-import { deliveredLines, parseReweOrder, type OrderLine, type ReweOrder } from './rewe';
+import { NotAReweOrder, deliveredLines, parseReweOrder, type OrderLine, type ReweOrder } from './rewe';
 
 /**
  * From a parsed shop order to rows you can put on a shelf: tidy names, an
@@ -48,21 +49,53 @@ const HOUSE_BRANDS: [RegExp, string][] = [
   [/^ja!\s+/i, ''],
 ];
 
-/** Shorthand on the loose produce labels. */
-const CAPS_WORDS: Record<string, string> = {
-  'KART.': 'KARTOFFELN',
-};
+/** Shorthand on the loose produce labels and the till roll. */
+const CAPS_SHORT: [RegExp, string][] = [
+  [/\bKART\./g, 'KARTOFFELN '],
+  [/^VEG\.\s*/, 'VEGANES '],
+  [/\bZWIEB\.\s*/g, 'ZWIEBEL'],
+  [/\bKRAEUT\.\s*SEITL\.\s*/g, 'KRAEUTERSEITLINGE '],
+  [/\bSONNENB\.\s*/g, 'SONNENBLUMEN'],
+  [/\bTHUNFISCHFI\.\s*OEL\b/g, 'THUNFISCHFILET IN OEL'],
+  [/\bTHUNFISCHFI\.\s*/g, 'THUNFISCHFILET '],
+  [/\bAPFELGETR\.\s*PFIRSI\b/g, 'APFELGETRAENK PFIRSICH'],
+  [/\bERDNUSSB\b/g, 'ERDNUSSBUTTER'],
+  [/\bCRU\b/g, 'CRUNCHY'],
+];
+
+/** Short words that mean something, unlike the supplier and grade codes beside them. */
+const KEEP_SHORT = new Set(['BIO', 'OEL', 'MIX', 'EI', 'TEE', 'IN', 'MIT', 'ROT', 'RAW']);
+/** Words that happen to spell AE, OE or UE without an umlaut in them. */
+const NOT_UMLAUT = new Set(['OELEK', 'QUEUE', 'ISRAEL', 'MICHAEL', 'POESIE', 'BOEUF', 'STEUER']);
+
+/** Tills can't print umlauts: GEMUESE is Gemüse, but BAUER stays Bauer. */
+function umlauts(word: string): string {
+  if (NOT_UMLAUT.has(word)) return word;
+  return word.replace(/(AE|OE|UE)/g, (pair, _p, at: number) => {
+    const before = word[at - 1];
+    if (pair === 'UE' && (before === 'A' || before === 'E' || before === 'Q')) return pair;
+    return pair === 'AE' ? 'Ä' : pair === 'OE' ? 'Ö' : 'Ü';
+  });
+}
 
 /**
  * "PETERSILIE KRAUS GQB" is a till label, not a name: drop the supplier and
- * grade codes and write it like a person would.
+ * grade codes, put the umlauts back and write it like a person would.
  */
 function untill(name: string): string {
   if (/[a-zäöüß]/.test(name)) return name;
-  const words = name
+  let caps = name;
+  for (const [re, to] of CAPS_SHORT) caps = caps.replace(re, to);
+  const words = caps
+    .trim()
     .split(/\s+/)
-    .map((w) => CAPS_WORDS[w] ?? w)
-    .filter((w, i) => i === 0 || !(/^\d+ER$/.test(w) || /^[A-ZÄÖÜ]{2,3}$/.test(w)));
+    .filter(
+      (w, i) =>
+        i === 0 ||
+        KEEP_SHORT.has(w) ||
+        !(/^\d+ER$/.test(w) || /^[A-ZÄÖÜ]{2,3}$/.test(w) || /^([A-Z]{1,3}\.)+$/.test(w) || w === 'REWE'),
+    )
+    .map(umlauts);
   const lower = words.join(' ').toLowerCase();
   return lower.charAt(0).toUpperCase() + lower.slice(1);
 }
@@ -76,7 +109,7 @@ export function tidyName(raw: string, weighed = false): string {
 }
 
 const NOT_FOOD =
-  /teelicht|kerze|tabak|iqos|terea|zigarett|\brosen\b|blumen|\bstiele\b|strau(ß|ss)|servietten|spülmittel|spültabs|toilettenpapier|klopapier|küchenrolle|taschentücher|müllbeutel|waschmittel|weichspüler|batterie|zahnpasta|zahnbürste|shampoo|duschgel|\bdeo\b|seife|reiniger|schwamm|alufolie|frischhaltefolie|backpapier|gefrierbeutel|katzen|hunde|tiernahrung|streu\b/i;
+  /teelicht|kerze|tabak|iqos|terea|zigarett|\brosen\b|\bblumen(?!kohl)|\btasche\b|tragetasche|einkaufstasche|\bstiele\b|strau(ß|ss)|servietten|spülmittel|spültabs|toilettenpapier|klopapier|küchenrolle|taschentücher|müllbeutel|waschmittel|weichspüler|batterie|zahnpasta|zahnbürste|shampoo|duschgel|\bdeo\b|seife|reiniger|schwamm|alufolie|frischhaltefolie|backpapier|gefrierbeutel|katzen|hunde|tiernahrung|streu\b/i;
 
 export function isFood(name: string): boolean {
   return !NOT_FOOD.test(name);
@@ -139,9 +172,23 @@ export function planImport(order: ReweOrder, memory: Record<string, Place> = {})
   return { orderNo: order.orderNo, date: order.date, drafts: [...byKey.values()], skipped };
 }
 
-/** The whole trip from file bytes to rows. Throws NotAReweOrder for anything else. */
+/**
+ * The whole trip from file bytes to rows, for either kind of REWE paper: the
+ * order PDF from pickup and delivery, or the eBon from the till. Throws
+ * NotAReweOrder for anything else.
+ */
 export function readReweOrder(bytes: Uint8Array, memory?: Record<string, Place>): ImportPlan {
-  return planImport(parseReweOrder(readPdfText(bytes)), memory);
+  const runs = readPdfText(bytes);
+  try {
+    return planImport(parseReweOrder(runs), memory);
+  } catch (e) {
+    if (!(e instanceof NotAReweOrder)) throw e;
+  }
+  try {
+    return planImport(parseEbon(runs), memory);
+  } catch (e) {
+    throw e instanceof NotAnEbon ? new NotAReweOrder() : e;
+  }
 }
 
 /**

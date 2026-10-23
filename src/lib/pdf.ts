@@ -1,14 +1,18 @@
 import { unzlibSync } from 'fflate';
 
+import { fileKey, objectKey, rc4 } from './crypt';
+
 /**
  * Just enough of a PDF reader to get the words out of a shop's order PDF, with
  * where each one sits on the page. Runs on the phone, no network, no WebView.
  *
- * It handles what generated documents (invoices, order confirmations) use:
- * uncompressed or Flate-compressed page streams, the standard fonts with
- * WinAnsi encoding, and text placed with Tm/Td. Embedded fonts with their own
- * character maps, scanned pages and encrypted files are out of scope — those
- * come back with no text, and the caller says it can't read the file.
+ * It handles what generated documents (invoices, order confirmations,
+ * receipts) use: uncompressed or Flate-compressed page streams, objects packed
+ * into object streams, the standard fonts with WinAnsi encoding, embedded
+ * fonts that carry a ToUnicode map, text placed with Tm/Td, and files locked
+ * with RC4 and an empty user password (REWE's eBons). Scanned pages, AES and
+ * real passwords are out of scope — those come back with no text, and the
+ * caller says it can't read the file.
  */
 
 export interface TextRun {
@@ -49,6 +53,8 @@ function latin1(data: Uint8Array): string {
 /* ---- the file: objects, pages, streams ------------------------------ */
 
 interface PdfObject {
+  num: number;
+  gen: number;
   dict: string;
   stream?: Uint8Array;
 }
@@ -56,11 +62,12 @@ interface PdfObject {
 function readObjects(data: Uint8Array): Map<number, PdfObject> {
   const raw = latin1(data);
   const objects = new Map<number, PdfObject>();
-  const head = /(\d+)\s+\d+\s+obj\b/g;
+  const head = /(\d+)\s+(\d+)\s+obj\b/g;
   let m: RegExpExecArray | null;
 
   while ((m = head.exec(raw))) {
     const num = Number(m[1]);
+    const gen = Number(m[2]);
     const start = m.index + m[0].length;
     const end = raw.indexOf('endobj', start);
     if (end < 0) break;
@@ -68,18 +75,82 @@ function readObjects(data: Uint8Array): Map<number, PdfObject> {
 
     const at = body.search(/stream\r?\n/);
     if (at < 0) {
-      objects.set(num, { dict: body });
+      objects.set(num, { num, gen, dict: body });
     } else {
       const dict = body.slice(0, at);
       const begin = start + at + (body[at + 6] === '\r' ? 8 : 7);
       const len = /\/Length\s+(\d+)\b(?!\s+\d+\s+R)/.exec(dict);
       let stop = len ? begin + Number(len[1]) : raw.indexOf('endstream', begin);
       if (stop > end || stop < begin) stop = raw.indexOf('endstream', begin);
-      objects.set(num, { dict, stream: data.subarray(begin, stop) });
+      objects.set(num, { num, gen, dict, stream: data.subarray(begin, stop) });
     }
     head.lastIndex = end;
   }
+
+  unlock(raw, objects);
+  unpack(objects);
   return objects;
+}
+
+/**
+ * Undo the standard security handler in place. Only RC4 with the empty user
+ * password: that is "anyone may read this", which is all a receipt needs.
+ */
+function unlock(raw: string, objects: Map<number, PdfObject>) {
+  const ref = /\/Encrypt\s+(\d+)\s+\d+\s+R/.exec(raw);
+  if (!ref) return;
+  const enc = objects.get(Number(ref[1]));
+  const id = /\/ID\s*\[\s*<([0-9A-Fa-f]+)>/.exec(raw);
+  if (!enc || !id || !/\/Filter\s*\/Standard\b/.test(enc.dict)) return;
+
+  const num = (key: string, fallback: number) => {
+    const m = new RegExp(`/${key}\\s+(-?\\d+)`).exec(enc.dict);
+    return m ? Number(m[1]) : fallback;
+  };
+  const v = num('V', 0);
+  const r = num('R', 2);
+  if (v >= 4 && !/\/CFM\s*\/V2\b/.test(enc.dict)) return; // AES: not ours
+  const at = enc.dict.search(/\/O\s*[<(]/);
+  const o = at < 0 ? null : tokenize(enc.dict.slice(at + 2))[0];
+  if (o?.kind !== 'str') return;
+
+  const key = fileKey(
+    Uint8Array.from(o.v),
+    num('P', 0),
+    hexBytes(id[1]),
+    r,
+    Math.floor(num('Length', 40) / 8),
+  );
+  for (const obj of objects.values()) {
+    if (!obj.stream || obj === enc || /\/Type\s*\/XRef\b/.test(obj.dict)) continue;
+    obj.stream = rc4(objectKey(key, obj.num, obj.gen), obj.stream);
+  }
+}
+
+/** Objects packed into an object stream become ordinary objects. */
+function unpack(objects: Map<number, PdfObject>) {
+  for (const obj of [...objects.values()]) {
+    if (!/\/Type\s*\/ObjStm\b/.test(obj.dict)) continue;
+    const bytes = decode(obj);
+    const n = /\/N\s+(\d+)/.exec(obj.dict);
+    const first = /\/First\s+(\d+)/.exec(obj.dict);
+    if (!bytes || !n || !first) continue;
+    const text = latin1(bytes);
+    const head = text.slice(0, Number(first[1])).trim().split(/\s+/).map(Number);
+    for (let i = 0; i < Number(n[1]); i++) {
+      const num = head[i * 2];
+      const from = Number(first[1]) + head[i * 2 + 1];
+      const to = i + 1 < Number(n[1]) ? Number(first[1]) + head[i * 2 + 3] : text.length;
+      if (!objects.has(num)) objects.set(num, { num, gen: 0, dict: text.slice(from, to) });
+    }
+  }
+}
+
+function hexBytes(hex: string): Uint8Array {
+  const clean = hex.replace(/\s+/g, '');
+  const out = new Uint8Array(clean.length >> 1);
+  for (let i = 0; i < out.length; i++) out[i] = parseInt(clean.slice(i * 2, i * 2 + 2), 16);
+  return out;
 }
 
 function refs(text: string): number[] {
@@ -135,6 +206,104 @@ function pageContent(page: PdfObject, objects: Map<number, PdfObject>): string {
       return bytes ? latin1(bytes) : '';
     })
     .join('\n');
+}
+
+/* ---- fonts: which bytes mean which letters --------------------------- */
+
+interface Font {
+  /** Type0 fonts with Identity-H spend two bytes per letter */
+  wide: boolean;
+  /** from the font's ToUnicode map, when it has one */
+  map?: Map<number, string>;
+}
+
+/** The value of `/Key` in a dictionary: an inline `<<…>>` or the object it points at. */
+function entry(dict: string, key: string, objects: Map<number, PdfObject>): string | null {
+  const m = new RegExp(`/${key}\\s*(<<|(\\d+)\\s+\\d+\\s+R)`).exec(dict);
+  if (!m) return null;
+  if (m[2]) return objects.get(Number(m[2]))?.dict ?? null;
+  let depth = 0;
+  for (let i = m.index + m[0].length - 2; i < dict.length - 1; i++) {
+    if (dict[i] === '<' && dict[i + 1] === '<') {
+      depth++;
+      i++;
+    } else if (dict[i] === '>' && dict[i + 1] === '>') {
+      if (--depth === 0) return dict.slice(m.index + m[0].length, i);
+      i++;
+    }
+  }
+  return null;
+}
+
+function utf16(hex: string): string {
+  let out = '';
+  for (let i = 0; i + 4 <= hex.length; i += 4) out += String.fromCharCode(parseInt(hex.slice(i, i + 4), 16));
+  return out;
+}
+
+/** The bfchar and bfrange sections of a ToUnicode CMap. */
+export function parseCMap(text: string): Map<number, string> {
+  const map = new Map<number, string>();
+  for (const block of text.matchAll(/beginbfchar([\s\S]*?)endbfchar/g)) {
+    for (const m of block[1].matchAll(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]*)>/g)) {
+      map.set(parseInt(m[1], 16), utf16(m[2]));
+    }
+  }
+  for (const block of text.matchAll(/beginbfrange([\s\S]*?)endbfrange/g)) {
+    for (const m of block[1].matchAll(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*(<[0-9A-Fa-f]+>|\[[^\]]*\])/g)) {
+      const lo = parseInt(m[1], 16);
+      const hi = parseInt(m[2], 16);
+      if (m[3].startsWith('[')) {
+        const each = [...m[3].matchAll(/<([0-9A-Fa-f]*)>/g)].map((x) => utf16(x[1]));
+        each.forEach((t, i) => lo + i <= hi && map.set(lo + i, t));
+      } else {
+        const hex = m[3].slice(1, -1);
+        const base = parseInt(hex.slice(-4), 16);
+        const prefix = utf16(hex.slice(0, -4));
+        for (let c = lo; c <= hi && c - lo < 0x10000; c++) {
+          map.set(c, prefix + String.fromCharCode(base + c - lo));
+        }
+      }
+    }
+  }
+  return map;
+}
+
+function pageFonts(page: PdfObject, objects: Map<number, PdfObject>): Map<string, Font> {
+  const fonts = new Map<string, Font>();
+  // resources can sit on a parent in the page tree
+  let node: PdfObject | undefined = page;
+  let resources: string | null = null;
+  for (let hops = 0; node && !resources && hops < 20; hops++) {
+    resources = entry(node.dict, 'Resources', objects);
+    const parent = /\/Parent\s+(\d+)\s+\d+\s+R/.exec(node.dict);
+    node = parent ? objects.get(Number(parent[1])) : undefined;
+  }
+  const list = resources ? entry(resources, 'Font', objects) : null;
+  if (!list) return fonts;
+
+  for (const m of list.matchAll(/\/([^\s/<>\[\]()]+)\s+(\d+)\s+\d+\s+R/g)) {
+    const font = objects.get(Number(m[2]));
+    if (!font) continue;
+    const cmapRef = /\/ToUnicode\s+(\d+)\s+\d+\s+R/.exec(font.dict);
+    const cmapObj = cmapRef ? objects.get(Number(cmapRef[1])) : undefined;
+    const bytes = cmapObj ? decode(cmapObj) : null;
+    fonts.set(m[1], {
+      wide: /\/Subtype\s*\/Type0\b/.test(font.dict),
+      map: bytes ? parseCMap(latin1(bytes)) : undefined,
+    });
+  }
+  return fonts;
+}
+
+function decodeText(bytes: number[], font?: Font): string {
+  if (font?.wide) {
+    let out = '';
+    for (let i = 0; i + 1 < bytes.length; i += 2) out += font.map?.get((bytes[i] << 8) | bytes[i + 1]) ?? '';
+    return out;
+  }
+  if (font?.map) return bytes.map((b) => font.map!.get(b) ?? winAnsi([b])).join('');
+  return winAnsi(bytes);
 }
 
 /* ---- the page: text operators ------------------------------------ */
@@ -247,7 +416,7 @@ function multiply(m: Matrix, n: Matrix): Matrix {
   ];
 }
 
-function pageText(content: string, page: number): TextRun[] {
+function pageText(content: string, page: number, fonts: Map<string, Font> = new Map()): TextRun[] {
   const runs: TextRun[] = [];
   const stack: Matrix[] = [];
   let ctm: Matrix = IDENTITY;
@@ -255,6 +424,7 @@ function pageText(content: string, page: number): TextRun[] {
   let line: Matrix = IDENTITY;
   let size = 10;
   let leading = 0;
+  let font: Font | undefined;
   const args: Token[] = [];
 
   const num = (k: number) => {
@@ -265,8 +435,7 @@ function pageText(content: string, page: number): TextRun[] {
     line = multiply([1, 0, 0, 1, tx, ty], line);
     tm = line;
   };
-  const show = (bytes: number[]) => {
-    const text = winAnsi(bytes);
+  const show = (text: string) => {
     if (!text.trim()) return;
     const at = multiply(tm, ctm);
     runs.push({ page, x: at[4], y: at[5], size: size * Math.abs(at[3] || at[0]), text });
@@ -290,9 +459,12 @@ function pageText(content: string, page: number): TextRun[] {
       case 'BT':
         tm = line = IDENTITY;
         break;
-      case 'Tf':
+      case 'Tf': {
         size = num(1);
+        const name = args[args.length - 2];
+        font = name?.kind === 'name' ? fonts.get(name.v) : undefined;
         break;
+      }
       case 'TL':
         leading = num(1);
         break;
@@ -311,26 +483,26 @@ function pageText(content: string, page: number): TextRun[] {
         break;
       case 'Tj': {
         const s = args[args.length - 1];
-        if (s?.kind === 'str') show(s.v);
+        if (s?.kind === 'str') show(decodeText(s.v, font));
         break;
       }
       case "'":
       case '"': {
         moveTo(0, -leading);
         const s = args[args.length - 1];
-        if (s?.kind === 'str') show(s.v);
+        if (s?.kind === 'str') show(decodeText(s.v, font));
         break;
       }
       case 'TJ': {
         const arr = args[args.length - 1];
         if (arr?.kind !== 'arr') break;
         // kerning numbers only nudge letters; a big gap means a word space
-        const bytes: number[] = [];
+        let text = '';
         for (const part of arr.v) {
-          if (part.kind === 'str') bytes.push(...part.v);
-          else if (part.kind === 'num' && part.v < -200) bytes.push(32);
+          if (part.kind === 'str') text += decodeText(part.v, font);
+          else if (part.kind === 'num' && part.v < -200) text += ' ';
         }
-        show(bytes);
+        show(text);
         break;
       }
     }
@@ -342,7 +514,9 @@ function pageText(content: string, page: number): TextRun[] {
 /** Every piece of text in the file, page by page, top to bottom. */
 export function readPdfText(data: Uint8Array): TextRun[] {
   const objects = readObjects(data);
-  return pageList(objects).flatMap((page, i) => pageText(pageContent(page, objects), i));
+  return pageList(objects).flatMap((page, i) =>
+    pageText(pageContent(page, objects), i, pageFonts(page, objects)),
+  );
 }
 
 /**

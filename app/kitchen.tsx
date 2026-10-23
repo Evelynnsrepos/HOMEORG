@@ -150,7 +150,7 @@ export default function Kitchen() {
             small
             tone="quiet"
             icon="document-text-outline"
-            label="REWE order"
+            label="REWE PDF"
             onPress={() => router.push('/import')}
           />
         </View>
