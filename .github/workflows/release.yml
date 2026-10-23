@@ -19,12 +19,19 @@ on:
   push:
     tags: ['v*']
   workflow_dispatch:
+    inputs:
+      platform:
+        description: Which app to build
+        type: choice
+        options: [both, android, ios]
+        default: both
 
 permissions:
   contents: write
 
 jobs:
   apk:
+    if: github.event_name != 'workflow_dispatch' || inputs.platform != 'ios'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -102,6 +109,7 @@ jobs:
           prerelease: ${{ contains(github.ref_name, '-') }}
 
   ipa:
+    if: github.event_name != 'workflow_dispatch' || inputs.platform != 'android'
     runs-on: macos-15
     timeout-minutes: 90
     steps:
@@ -129,8 +137,24 @@ jobs:
             /usr/libexec/PlistBuddy -c "Delete :aps-environment" "$f" || true
           done
 
+      - name: Tools
+        run: |
+          xcodebuild -version
+          pod --version
+          grep -h "deploymentTarget" ios/Podfile.properties.json || true
+
+      # the job log isn't always at hand: the lines that explain a failure go
+      # into the run's annotations too
       - name: Pods
-        run: cd ios && pod install
+        run: |
+          cd ios
+          set +e
+          pod install 2>&1 | tee ../pods.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" != 0 ]; then
+            grep -E "\[!\]|error|Error|requires|compatib" ../pods.log | head -15 | while read -r line; do echo "::error::$line"; done
+          fi
+          exit $code
 
       - name: Build
         run: |
@@ -138,7 +162,12 @@ jobs:
           scheme=$(basename "$workspace" .xcworkspace)
           xcodebuild -workspace "$workspace" -scheme "$scheme" -configuration Release \
             -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build 2>&1 | tee xcode.log | grep -E "error:|warning: .*deprecated" | head -40
+          code=${PIPESTATUS[0]}
+          if [ "$code" != 0 ]; then
+            grep -E "error:" xcode.log | sort -u | head -15 | while read -r line; do echo "::error::$line"; done
+          fi
+          exit $code
 
       - name: Pack the IPA
         id: ipa
