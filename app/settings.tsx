@@ -172,6 +172,13 @@ export default function Settings() {
           value={settings.showStickers ?? currentTheme().decor}
           onChange={(showStickers) => patch({ showStickers })}
         />
+        <Divider />
+        <Toggle
+          label="Pixel splashes"
+          hint="Faint dabs of colour here and there, like pixel watercolour"
+          value={settings.showSplashes ?? currentTheme().decor}
+          onChange={(showSplashes) => patch({ showSplashes })}
+        />
       </Card>
 
       <Spacer h={14} />

@@ -13,6 +13,7 @@ import { Btn, Card, Empty, Press, Row, Screen, Spacer, T } from '../../src/ui/ba
 import { FurnitureTile } from '../../src/ui/Furniture';
 import { RoomCanvas } from '../../src/ui/RoomCanvas';
 import { ScreenGarland } from '../../src/ui/Decor';
+import { Splashes } from '../../src/ui/PixelSplash';
 
 
 export default function MyHome() {
@@ -29,6 +30,7 @@ export default function MyHome() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.9, y: 120, size: 160, tone: 'lilac' }, { x: 0.05, y: 660, size: 160 }]} />
       <ScreenGarland seed={5} />
       <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <View style={{ flex: 1 }}>

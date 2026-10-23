@@ -13,6 +13,7 @@ import { useStore } from '../../src/state/store';
 import { colors, font, radius } from '../../src/theme';
 import { Btn, Card, Press, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
+import { Splashes } from '../../src/ui/PixelSplash';
 
 const sourceIcon: Record<Completion['source'], keyof typeof Ionicons.glyphMap> = {
   tick: 'checkmark',
@@ -84,6 +85,7 @@ export default function History() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.14, y: 170, size: 180, tone: 'gold' }, { x: 0.92, y: 620, size: 150 }, { x: 0.08, y: 1120, size: 140, tone: 'lilac' }]} />
       <ScreenGarland height={70} bulbs={4} seed={11} />
 
       {/* The hero ---------------------------------------------------- */}

@@ -89,6 +89,11 @@ There is no linter and no other test suite. "Done" means `tsc` and
   the scheme (stickers are coloured from its palette) and two switches in
   Settings (`showVines`, `showStickers`; unset = the scheme's `decor`
   default, off in Classic). Lay screens out to work without them.
+- `PixelSplash` / `Splashes` (`src/ui/PixelSplash.tsx`) add faint dithered
+  dabs of colour, deep in the middle and loose pixels at the edge, to echo the
+  pixel rooms. Two or three per screen, behind content or tucked into a card
+  corner, and keep them a whisper: if you notice one before the content, it's
+  too strong. They follow `showSplashes` (unset = the scheme's `decor`).
 - Art traced from the sketches stays in the sketches' flat shape language: a
   few solid shapes, no added detail lines, textures or inner shadows.
 - Two fonts: Bricolage Grotesque for everything, and the handwritten

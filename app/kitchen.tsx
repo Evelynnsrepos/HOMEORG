@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
-import { View } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 
 import { qtyLabel } from '../src/data/units';
 import { expiringSoon, shelfLifeLabel } from '../src/lib/kitchen';
@@ -12,6 +12,7 @@ import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T } from '../src/ui/bas
 import { Sticker } from '../src/ui/Decor';
 import { EffortMeter, dayLabel } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
+import { Splashes } from '../src/ui/PixelSplash';
 
 /**
  * The kitchen at a glance, as sketched: what's there (opens the pantry), a
@@ -19,6 +20,7 @@ import { KitchenTabs } from '../src/ui/KitchenTabs';
  * a doorway to the screen that does the work.
  */
 export default function Kitchen() {
+  const { width: W } = useWindowDimensions();
   const router = useRouter();
   const pantry = useStore((s) => s.pantry);
   const recipes = useStore((s) => s.recipes);
@@ -57,6 +59,7 @@ export default function Kitchen() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.1, y: 110, size: 170, tone: 'gold' }, { x: 0.93, y: 540, size: 140 }]} />
       <Row style={{ justifyContent: 'space-between' }}>
         <IconBtn
           name="chevron-back"

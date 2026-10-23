@@ -15,6 +15,7 @@ import { EffortRing, FridgeGauge, fridgeWord } from '../../src/ui/Art';
 import { Bar, Card, Press, Ring, Row, Screen, Spacer, T } from '../../src/ui/base';
 import { ScreenGarland, Sticker } from '../../src/ui/Decor';
 import { ScriptTitle } from '../../src/ui/Script';
+import { PixelSplash, Splashes } from '../../src/ui/PixelSplash';
 
 const FOCUS_MINUTES = [15, 25, 45];
 const MOOD_TINT = { mood: '#FF79B0', social: '#B48CF0', clean: '#6FCDA8', hobby: '#FFB35C' } as const;
@@ -74,6 +75,7 @@ export default function HomeTab() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.9, y: 150, size: 170 }, { x: 0.06, y: 540, size: 150, tone: 'lilac' }, { x: 0.94, y: 1000, size: 130, tone: 'gold' }]} />
       <ScreenGarland height={84} />
 
       {/* Header ---------------------------------------------------- */}
@@ -298,7 +300,8 @@ export default function HomeTab() {
       {/* How do you feel? | Focus now? ---------------------------------- */}
       <Spacer h={10} />
       <Row style={{ gap: 10, alignItems: 'stretch' }}>
-        <Card style={{ flex: 1, padding: 13 }}>
+        <Card style={{ flex: 1, padding: 13, overflow: 'hidden' }}>
+          <PixelSplash size={110} tone="lilac" pixel={5} seed={4} style={{ right: -36, bottom: -40 }} />
           <Press onPress={() => router.push('/mood')}>
             <Row style={{ justifyContent: 'space-between' }}>
               <CardHead icon="heart-outline" title="How do you feel?" tint={colors.coralDeep} />

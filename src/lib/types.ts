@@ -122,6 +122,8 @@ export interface Settings {
   showVines?: boolean;
   /** stickers on cards; missing means whatever the scheme does */
   showStickers?: boolean;
+  /** faint pixel colour splashes behind the screens; missing means whatever the scheme does */
+  showSplashes?: boolean;
 }
 
 export interface ChallengeProgress {

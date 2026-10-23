@@ -1,15 +1,17 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Switch, View } from 'react-native';
+import { Switch, View, useWindowDimensions } from 'react-native';
 
 import { useStats } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { colors, font } from '../../src/theme';
 import { Card, Divider, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
 import { ScreenGarland } from '../../src/ui/Decor';
+import { Splashes } from '../../src/ui/PixelSplash';
 
 export default function Profile() {
+  const { width: W } = useWindowDimensions();
   const router = useRouter();
   const settings = useStore((s) => s.settings);
   const coins = useStore((s) => s.coins);
@@ -18,6 +20,7 @@ export default function Profile() {
 
   return (
     <Screen>
+      <Splashes width={Math.min(W, 520)} spots={[{ x: 0.86, y: 140, size: 150 }, { x: 0.08, y: 580, size: 130, tone: 'sage' }]} />
       <ScreenGarland seed={9} />
       <Row style={{ gap: 14 }}>
         <View

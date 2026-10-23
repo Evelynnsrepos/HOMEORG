@@ -19,6 +19,7 @@ import { colors, font, radius } from '../src/theme';
 import { Bar, Btn, Card, IconBtn, Press, Row, Screen, Spacer, T, tapSuccess } from '../src/ui/base';
 import { Confetti } from '../src/ui/Confetti';
 import { PieceImage } from '../src/ui/StickerLayer';
+import { Splashes } from '../src/ui/PixelSplash';
 
 const rarityText: Record<Rarity, string> = { common: 'Common', rare: 'Rare', epic: 'Epic' };
 const rarityTone = (r: Rarity) => (r === 'epic' ? colors.gold : r === 'rare' ? colors.lilac : colors.sage);
@@ -65,6 +66,7 @@ export default function StickerDraw() {
   return (
     <View style={{ flex: 1 }}>
       <Screen>
+        <Splashes width={Math.min(W, 520)} spots={[{ x: 0.5, y: 230, size: 230, tone: 'lilac', strength: 0.8 }, { x: 0.06, y: 760, size: 130 }]} />
         <Row style={{ justifyContent: 'space-between' }}>
           <IconBtn name="chevron-back" onPress={() => router.back()} />
           <T v="heading">Sticker draw</T>
