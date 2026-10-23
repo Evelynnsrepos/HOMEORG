@@ -6,6 +6,7 @@ import { presetChallenges } from '../data/challenges';
 import { roomTypeById } from '../data/roomTypes';
 import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
+import { autoBestBefore } from '../data/shelfLife';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
 import { coinsForEffort, momentumBonus, taskCycleMs } from '../lib/engine';
@@ -23,6 +24,7 @@ import type {
   PantryItem,
   PinnedNote,
   CookedMeal,
+  NewPantryItem,
   PlannedMeal,
   Recipe,
   RecipeExtra,
@@ -142,14 +144,16 @@ interface Actions {
   removeShopping: (id: string) => void;
   clearDoneShopping: () => void;
 
-  addPantry: (item: Omit<PantryItem, 'id' | 'addedAt'>) => void;
+  /** No best-before given? It's looked up from where the thing goes (data/shelfLife.ts). */
+  addPantry: (item: NewPantryItem) => void;
   adjustPantry: (id: string, delta: number) => void;
-  updatePantry: (id: string, patch: Partial<PantryItem>) => void;
+  /** Moving a looked-up item to another shelf looks its date up again, counting from now. */
+  updatePantry: (id: string, patch: Partial<Omit<PantryItem, 'bestBefore'>> & { bestBefore?: string | null }) => void;
   removePantry: (id: string) => void;
   useUpIngredients: (names: string[]) => void;
   rememberShelf: (name: string, place: Place) => void;
   /** a whole shop at once: onto the shelves, off the list. Returns how many list items it ticked. */
-  putAway: (items: Omit<PantryItem, 'id' | 'addedAt'>[], orderNo?: string) => number;
+  putAway: (items: NewPantryItem[], orderNo?: string) => number;
 
   addNote: (title: string, body: string) => void;
   removeNote: (id: string) => void;
@@ -257,6 +261,45 @@ function withStarters(inventory: string[], rooms: Room[]): string[] {
  * that no longer exist. Drop those, and if that empties a room out entirely,
  * hand it its starter set back rather than leaving it bare.
  */
+/** What a new or edited item's date should be: given, "keeps", or looked up. */
+function datedFor(
+  name: string,
+  place: Place,
+  given: string | null | undefined,
+  from: Date | string = new Date(),
+): { bestBefore?: string; bestBeforeAuto: boolean } {
+  if (given) return { bestBefore: given, bestBeforeAuto: false };
+  if (given === null) return { bestBeforeAuto: false };
+  return { bestBefore: autoBestBefore(name, place, from), bestBeforeAuto: true };
+}
+
+function withDate<T extends { bestBefore?: string; bestBeforeAuto?: boolean }>(
+  item: T,
+  dated: { bestBefore?: string; bestBeforeAuto: boolean },
+): T {
+  const { bestBefore: _old, ...rest } = item;
+  return {
+    ...(rest as T),
+    ...(dated.bestBefore ? { bestBefore: dated.bestBefore } : {}),
+    bestBeforeAuto: dated.bestBeforeAuto,
+  };
+}
+
+/**
+ * Shelves from before the lookup existed: anything without a date gets one,
+ * counted from when it went in. Runs on every start, but only touches items
+ * that have never been dated either way.
+ */
+function dateOldShelves(pantry: PantryItem[]): PantryItem[] | null {
+  let changed = false;
+  const out = pantry.map((p) => {
+    if (p.bestBefore || p.bestBeforeAuto !== undefined) return p;
+    changed = true;
+    return withDate(p, datedFor(p.name, p.place, undefined, p.addedAt));
+  });
+  return changed ? out : null;
+}
+
 function reconcileDecor(state: Store): Partial<Store> | null {
   if (!state.rooms?.length) return null;
   const known = new Set(shopItems.map((i) => i.id));
@@ -743,22 +786,29 @@ export const useStore = create<Store>()(
         set((s) => {
           const key = item.name.trim().toLowerCase();
           if (!key) return {};
+          const dated = datedFor(item.name, item.place, item.bestBefore);
           const same = s.pantry.find(
             (p) =>
               p.name.trim().toLowerCase() === key && p.unit === item.unit && p.place === item.place,
           );
           if (same) {
+            // a date you typed wins; otherwise the older stock's date stands, it goes first
+            const keep = same.bestBefore && dated.bestBeforeAuto !== false;
             return {
               pantry: s.pantry.map((p) =>
                 p.id === same.id
-                  ? { ...p, qty: p.qty + item.qty, bestBefore: item.bestBefore ?? p.bestBefore }
+                  ? withDate<PantryItem>({ ...p, qty: p.qty + item.qty }, keep ? { bestBefore: p.bestBefore, bestBeforeAuto: !!p.bestBeforeAuto } : dated)
                   : p,
               ),
             };
           }
+          const { bestBefore: _given, ...rest } = item;
           return {
             pantry: [
-              { ...item, name: item.name.trim(), id: uid('pan'), addedAt: new Date().toISOString() },
+              withDate<PantryItem>(
+                { ...rest, name: item.name.trim(), id: uid('pan'), addedAt: new Date().toISOString() },
+                dated,
+              ),
               ...s.pantry,
             ],
           };
@@ -775,7 +825,22 @@ export const useStore = create<Store>()(
         })),
 
       updatePantry: (id, patch) =>
-        set((s) => ({ pantry: s.pantry.map((p) => (p.id === id ? { ...p, ...patch } : p)) })),
+        set((s) => ({
+          pantry: s.pantry.map((p) => {
+            if (p.id !== id) return p;
+            const { bestBefore, ...rest } = patch;
+            const next = { ...p, ...rest };
+            if ('bestBefore' in patch) {
+              // undefined asks for a lookup: from now if it moved shelf, else from when it came in
+              const moved = next.place !== p.place;
+              return withDate(next, datedFor(next.name, next.place, bestBefore, moved ? new Date() : p.addedAt));
+            }
+            if (p.bestBeforeAuto && next.place !== p.place) {
+              return withDate(next, datedFor(next.name, next.place, undefined));
+            }
+            return next;
+          }),
+        })),
 
       removePantry: (id) => set((s) => ({ pantry: s.pantry.filter((p) => p.id !== id) })),
 
@@ -909,6 +974,8 @@ export const useStore = create<Store>()(
         if (!state) return;
         const fixed = reconcileDecor(state);
         if (fixed) useStore.setState(fixed);
+        const dated = dateOldShelves(state.pantry ?? []);
+        if (dated) useStore.setState({ pantry: dated });
         state.setHydrated();
       },
     },

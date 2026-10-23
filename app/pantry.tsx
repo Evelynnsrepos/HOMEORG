@@ -197,7 +197,7 @@ export default function Pantry() {
                     </T>
                     <T v="caption">
                       {qtyLabel(item.qty, item.unit)}
-                      {item.bestBefore ? ` · best before ${item.bestBefore.slice(5)}` : ''}
+                      {item.bestBefore ? ` · best before ${item.bestBeforeAuto ? '≈ ' : ''}${item.bestBefore.slice(5)}` : ''}
                     </T>
                   </Press>
 
@@ -251,7 +251,10 @@ export default function Pantry() {
             qty: editing.qty,
             unit: editing.unit,
             place: editing.place,
-            bestBefore: editing.bestBefore,
+            // a looked-up date stays "Auto" so it follows a move to the freezer
+            bestBefore: editing.bestBeforeAuto
+              ? undefined
+              : (editing.bestBefore ?? (editing.bestBeforeAuto === false ? null : undefined)),
           }}
           confirmLabel="Save"
           onCancel={() => setEditing(null)}

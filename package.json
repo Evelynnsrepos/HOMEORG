@@ -50,7 +50,9 @@
     "icons": "node scripts/make-icons.js",
     "music": "node scripts/prepare-music.js",
     "apk": "expo prebuild -p android && node scripts/sign-android.js && node scripts/build-apk.js",
-    "test:rewe": "tsx scripts/test-rewe.ts"
+    "test:rewe": "tsx scripts/test-rewe.ts",
+    "test:shelf": "tsx scripts/test-shelf.ts",
+    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts"
   },
   "private": true,
   "overrides": {

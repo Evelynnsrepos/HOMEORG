@@ -1,4 +1,4 @@
-# Typecheck and the REWE import tests on every push and pull request.
+# Typecheck and the tests (REWE import, shelf life) on every push and pull request.
 name: Check
 
 on:
@@ -17,4 +17,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run tsc
-      - run: npm run test:rewe
+      - run: npm test

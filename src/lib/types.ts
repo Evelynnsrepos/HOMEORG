@@ -175,8 +175,22 @@ export interface PantryItem {
   place: 'fridge' | 'freezer' | 'pantry';
   /** day key — optional, only for things that go off */
   bestBefore?: string;
+  /**
+   * true: the date was looked up from data/shelfLife.ts and follows the item
+   * when it moves shelf. false: you set it (or said it keeps), leave it alone.
+   * Missing on items from before the lookup existed.
+   */
+  bestBeforeAuto?: boolean;
   addedAt: string;
 }
+
+/**
+ * Something going onto a shelf. `bestBefore` undefined means "look it up",
+ * null means "it keeps, no date", a day key is the date on the packet.
+ */
+export type NewPantryItem = Omit<PantryItem, 'id' | 'addedAt' | 'bestBefore' | 'bestBeforeAuto'> & {
+  bestBefore?: string | null;
+};
 
 export interface ShoppingItem {
   id: string;

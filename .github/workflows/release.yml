@@ -45,7 +45,7 @@ jobs:
       - name: Check
         run: |
           npm run tsc
-          npm run test:rewe
+          npm test
 
       - name: Native project
         run: npx expo prebuild -p android --no-install

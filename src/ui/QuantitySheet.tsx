@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 
 import { addDays, dayKey, daysBetween } from '../lib/date';
+import { autoBestBefore, shelfLifeText } from '../data/shelfLife';
 import { formatQty, guessFor, places, units, unitStep, type Place } from '../data/units';
 import { colors, font, radius } from '../theme';
 import { Btn, Card, Chip, Row, Spacer, T, tap } from './base';
@@ -12,8 +13,8 @@ export interface Bought {
   qty: number;
   unit: string;
   place: Place;
-  /** day key, only for things that go off */
-  bestBefore?: string;
+  /** day key from the packet; undefined looks it up from the shelf, null means it keeps */
+  bestBefore?: string | null;
 }
 
 /** "Good for" shortcuts, in days from today. */
@@ -51,7 +52,9 @@ export function QuantitySheet({
   const [qty, setQty] = useState(initial?.qty ?? 1);
   const [unit, setUnit] = useState(initial?.unit ?? guess.unit);
   const [place, setPlace] = useState<Place>(initial?.place ?? guess.place);
-  const [bestBefore, setBestBefore] = useState<string | undefined>(initial?.bestBefore);
+  const [bestBefore, setBestBefore] = useState<string | null | undefined>(initial?.bestBefore);
+  // what "Auto" would give for this name on this shelf, shown so it's not a black box
+  const auto = autoBestBefore(label || name, place);
   const [custom, setCustom] = useState('');
   const [customOpen, setCustomOpen] = useState(
     !!initial?.unit && !units.some((u) => u.id === initial.unit),
@@ -183,15 +186,22 @@ export function QuantitySheet({
           <Spacer h={16} />
           <Row style={{ justifyContent: 'space-between' }}>
             <T v="over">Good for</T>
-            {bestBefore ? (
+            {(bestBefore === undefined ? auto : bestBefore) ? (
               <T v="caption">
-                till {bestBefore.slice(8)}.{bestBefore.slice(5, 7)}. ({daysBetween(dayKey(), bestBefore)}d)
+                {bestBefore === undefined ? '≈ ' : ''}till {dateText((bestBefore ?? auto)!)}
               </T>
             ) : null}
           </Row>
           <Spacer h={8} />
           <Row style={{ flexWrap: 'wrap', gap: 6 }}>
-            <Chip small label="Keeps" active={!bestBefore} onPress={() => setBestBefore(undefined)} />
+            <Chip
+              small
+              icon="sparkles"
+              label={`Auto · ${shelfLifeText(label || name, place)}`}
+              active={bestBefore === undefined}
+              onPress={() => setBestBefore(undefined)}
+            />
+            <Chip small label="Keeps" active={bestBefore === null} onPress={() => setBestBefore(null)} />
             {KEEPS.map((k) => {
               const day = dayKey(addDays(new Date(), k.days));
               return (
@@ -220,6 +230,10 @@ export function QuantitySheet({
       </Pressable>
     </Pressable>
   );
+}
+
+function dateText(day: string): string {
+  return `${day.slice(8)}.${day.slice(5, 7)}. (${daysBetween(dayKey(), day)}d)`;
 }
 
 function Stepper({ icon, onPress }: { icon: 'add' | 'remove'; onPress: () => void }) {

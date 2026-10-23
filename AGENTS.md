@@ -21,12 +21,12 @@ npm ci                 # install
 npx expo start         # dev server, scan the QR code with Expo Go
 npm run web            # quick look in a browser (no camera, no haptics)
 npm run tsc            # typecheck — must pass
-npm run test:rewe      # REWE order + eBon import tests — must pass
+npm test               # REWE import + shelf-life tests — must pass
 npm run apk            # local release APK (needs JDK 21 + Android SDK 36)
 ```
 
 There is no linter and no other test suite. "Done" means `tsc` and
-`test:rewe` pass **and** you looked at the screen you changed (see
+`npm test` pass **and** you looked at the screen you changed (see
 [Checking your work](#checking-your-work)).
 
 ## Where things are
@@ -117,6 +117,19 @@ list" puts missing ingredients on the shopping list and stars the dish, and
 starred dishes are suggested in Let's cook it. "Cooked it" uses up the pantry,
 drops the pick and writes a line to `cookLog`, which History counts.
 
+## Best-before dates
+
+Anything that goes on a shelf without a date gets one looked up from
+`src/data/shelfLife.ts`: a table of name patterns with how many days each
+keeps in the fridge, freezer and cupboard (`null` = keeps, no date). The
+store marks those with `bestBeforeAuto: true`; moving such an item to
+another shelf looks it up again from that day (freezing buys months), while
+a date typed from the packet (`bestBeforeAuto: false`) is never touched.
+The "About to expire" list on Home runs on these dates.
+
+Rules are first-match-wins, so put narrow patterns above broad ones and add a
+line to `scripts/test-shelf.ts` for any name that surprised you.
+
 ## REWE import
 
 `app/import.tsx` takes a PDF and `readReweOrder` in `src/lib/orderImport.ts`
@@ -133,7 +146,7 @@ fields the parser reads — see `scripts/fixtures/`.
 
 ## Checking your work
 
-1. `npm run tsc` and `npm run test:rewe`.
+1. `npm run tsc` and `npm test`.
 2. Look at it. `npm run web` serves the app on `http://localhost:8081`; in dev
    the store is on `window.tidywell`, so you can seed a household from the
    browser console (`tidywell.getState().createHome(...)`, `addRecipe(...)`,
@@ -157,4 +170,4 @@ fields the parser reads — see `scripts/fixtures/`.
 
   Without them the APK is signed with a debug key and won't install over a
   copy signed with the real one.
-- The *Check* workflow runs `tsc` and `test:rewe` on every pull request.
+- The *Check* workflow runs `tsc` and `npm test` on every pull request.

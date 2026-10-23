@@ -24,8 +24,8 @@ export interface ImportDraft {
   /** the line as REWE printed it */
   source: string;
   changed?: 'amount' | 'substitute';
-  /** set by hand in the review, day key */
-  bestBefore?: string;
+  /** set by hand in the review, day key; null if it keeps, undefined to look it up */
+  bestBefore?: string | null;
 }
 
 export interface Skipped {
