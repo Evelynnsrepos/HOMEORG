@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FAF5EA"
+      "backgroundColor": "#FFF3F7"
     },
     "ios": {
       "supportsTablet": true,
@@ -28,7 +28,7 @@
       "package": "com.tidywell.local",
       "versionCode": 3,
       "adaptiveIcon": {
-        "backgroundColor": "#FAF5EA",
+        "backgroundColor": "#FFF3F7",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
@@ -71,7 +71,7 @@
       [
         "expo-notifications",
         {
-          "color": "#7FA88A"
+          "color": "#FF79B0"
         }
       ],
       [

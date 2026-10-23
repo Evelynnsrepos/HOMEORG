@@ -158,7 +158,7 @@ export default function Shop() {
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: '#2E2A25CC',
+            backgroundColor: '#3D2836B8',
             justifyContent: 'flex-end',
           }}
         >

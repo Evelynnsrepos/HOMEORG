@@ -31,7 +31,7 @@ export default function RecipeView() {
   const [toast, setToast] = useState<string | null>(null);
 
   const plans = useMemo(
-    () => allPlans.filter((m) => m.recipeId === id).sort((a, b) => a.day.localeCompare(b.day)),
+    () => allPlans.filter((m) => m.recipeId === id).sort((a, b) => (a.day ?? '').localeCompare(b.day ?? '')),
     [allPlans, id],
   );
 
@@ -202,7 +202,7 @@ export default function RecipeView() {
 
         {/* Planned -------------------------------------------------- */}
         <Spacer h={20} />
-        <T v="over">On the plan</T>
+        <T v="over">In Let's cook it</T>
         <Spacer h={8} />
         <Row style={{ flexWrap: 'wrap', gap: 6 }}>
           {plans.map((p) => (
@@ -241,7 +241,7 @@ export default function RecipeView() {
           >
             <Ionicons name="add" size={12} color={colors.inkSoft} />
             <T v="caption" color={colors.inkSoft}>
-              Plan a day
+              Pick it
             </T>
           </Press>
         </Row>

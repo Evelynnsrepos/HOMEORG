@@ -3,17 +3,20 @@ import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 
-import { places, qtyLabel } from '../src/data/units';
-import { expiringSoon, nextDays, shelfLifeLabel } from '../src/lib/kitchen';
+import { qtyLabel } from '../src/data/units';
+import { expiringSoon, shelfLifeLabel } from '../src/lib/kitchen';
 import { useStore } from '../src/state/store';
-import { colors, radius } from '../src/theme';
+import { colors, font, radius } from '../src/theme';
+import { RecipeBookArt } from '../src/ui/Art';
 import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T } from '../src/ui/base';
-import { CookTime, EffortMeter, dayLabel } from '../src/ui/Kitchen';
+import { Sticker } from '../src/ui/Decor';
+import { EffortMeter, dayLabel } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 
 /**
- * The kitchen at a glance: what is on the shelves, what is planned for the
- * next days, and the recipe book. Each card opens the screen that does the work.
+ * The kitchen at a glance, as sketched: what's there (opens the pantry), a
+ * few plan entries (opens "Let's cook it") and the recipe book. Each card is
+ * a doorway to the screen that does the work.
  */
 export default function Kitchen() {
   const router = useRouter();
@@ -23,7 +26,6 @@ export default function Kitchen() {
   const shopping = useStore((s) => s.shopping);
 
   const soon = useMemo(() => expiringSoon(pantry), [pantry]);
-  const days = nextDays(3);
   const byId = useMemo(() => new Map(recipes.map((r) => [r.id, r])), [recipes]);
   const toBuy = shopping.filter((s) => !s.done).length;
 
@@ -31,6 +33,15 @@ export default function Kitchen() {
   const recent = useMemo(
     () => [...pantry].sort((a, b) => b.addedAt.localeCompare(a.addedAt)).slice(0, 5),
     [pantry],
+  );
+
+  const picks = useMemo(
+    () =>
+      mealPlan
+        .filter((m) => byId.has(m.recipeId))
+        .sort((a, b) => (!!a.day !== !!b.day ? (a.day ? -1 : 1) : (a.day ?? '').localeCompare(b.day ?? '')))
+        .slice(0, 6),
+    [mealPlan, byId],
   );
 
   const book = useMemo(
@@ -58,67 +69,48 @@ export default function Kitchen() {
       <Spacer h={12} />
       <KitchenTabs active="kitchen" />
 
-      <Spacer h={16} />
-      <T v="display" style={{ fontSize: 28 }}>
-        Pantry
-      </T>
-      <Spacer h={6} />
-      <T v="label">
-        {pantry.length
-          ? `${pantry.length} ${pantry.length === 1 ? 'thing' : 'things'} on the shelves${soon.length ? `, ${soon.length} to use up soon` : ''}.`
-          : 'Nothing on the shelves yet.'}
-      </T>
-
       {/* What's there --------------------------------------------- */}
       <Spacer h={16} />
       <Press onPress={() => router.push('/pantry')}>
         <Card>
           <Row style={{ justifyContent: 'space-between' }}>
-            <T v="over">What's there</T>
+            <T v="title" style={{ fontSize: 21 }}>
+              What's there
+            </T>
             <Row style={{ gap: 3 }}>
               <T v="caption" color={colors.coralDeep}>
-                Open the shelves
+                {pantry.length ? `All ${pantry.length}` : 'Open the shelves'}
               </T>
               <Ionicons name="chevron-forward" size={12} color={colors.coralDeep} />
             </Row>
           </Row>
-          <Spacer h={10} />
-          <Row style={{ gap: 8 }}>
-            {places.map((p) => {
-              const n = pantry.filter((i) => i.place === p.id).length;
-              return (
+          <Spacer h={8} />
+          {recent.length ? (
+            recent.map((p) => (
+              <Row key={p.id} style={{ paddingVertical: 5, gap: 6 }}>
                 <View
-                  key={p.id}
                   style={{
-                    flex: 1,
                     backgroundColor: colors.cardAlt,
-                    borderRadius: radius.md,
-                    paddingVertical: 10,
-                    alignItems: 'center',
+                    borderRadius: radius.sm,
+                    paddingHorizontal: 9,
+                    paddingVertical: 4,
+                    maxWidth: '62%',
                   }}
                 >
-                  <T style={{ fontSize: 18 }}>{p.emoji}</T>
-                  <T v="title" style={{ fontSize: 18 }}>
-                    {n}
-                  </T>
-                  <T v="caption">{p.name}</T>
-                </View>
-              );
-            })}
-          </Row>
-          {recent.length ? (
-            <>
-              <Spacer h={10} />
-              {recent.map((p) => (
-                <Row key={p.id} style={{ justifyContent: 'space-between', paddingVertical: 4 }}>
-                  <T v="body" color={colors.ink} numberOfLines={1} style={{ flex: 1 }}>
+                  <T v="label" color={colors.ink} numberOfLines={1}>
                     {p.name}
                   </T>
-                  <T v="caption">{qtyLabel(p.qty, p.unit)}</T>
-                </Row>
-              ))}
-            </>
-          ) : null}
+                </View>
+                {/* the dotted line from the sketch, name to amount */}
+                <View style={{ flex: 1, borderBottomWidth: 1.5, borderStyle: 'dotted', borderColor: colors.line, marginTop: 8 }} />
+                <T v="label" style={{ fontFamily: font.semi }}>
+                  {qtyLabel(p.qty, p.unit)}
+                </T>
+              </Row>
+            ))
+          ) : (
+            <T v="caption">Nothing on the shelves yet. Scan something or import a REWE PDF.</T>
+          )}
           {soon.length ? (
             <>
               <Spacer h={8} />
@@ -137,67 +129,96 @@ export default function Kitchen() {
       <Spacer h={10} />
       <Row style={{ gap: 8 }}>
         <View style={{ flex: 1 }}>
-          <Btn
-            small
-            tone="sage"
-            icon="barcode-outline"
-            label="Scan"
-            onPress={() => router.push('/scan')}
-          />
+          <Btn small tone="sage" icon="barcode-outline" label="Scan" onPress={() => router.push('/scan')} />
         </View>
         <View style={{ flex: 1 }}>
-          <Btn
-            small
-            tone="quiet"
-            icon="document-text-outline"
-            label="REWE PDF"
-            onPress={() => router.push('/import')}
-          />
+          <Btn small tone="quiet" icon="document-text-outline" label="REWE PDF" onPress={() => router.push('/import')} />
         </View>
       </Row>
 
-      {/* Plan what to cook ---------------------------------------- */}
+      {/* Plan what to cook? --------------------------------------- */}
       <Spacer h={16} />
       <Press onPress={() => router.push('/cook')}>
         <Card>
           <Row style={{ justifyContent: 'space-between' }}>
-            <T v="over">Plan what to cook?</T>
-            <Row style={{ gap: 3 }}>
-              <T v="caption" color={colors.coralDeep}>
-                Let's cook it
-              </T>
-              <Ionicons name="chevron-forward" size={12} color={colors.coralDeep} />
-            </Row>
+            <T v="title" style={{ fontSize: 21 }}>
+              Plan what to cook?
+            </T>
+            <Ionicons name="chevron-forward" size={14} color={colors.coralDeep} />
           </Row>
-          <Spacer h={8} />
-          {days.map((d, i) => {
-            const meals = mealPlan.filter((m) => m.day === d && byId.has(m.recipeId));
-            return (
-              <Row
-                key={d}
-                style={{
-                  paddingVertical: 8,
-                  borderTopWidth: i ? 1 : 0,
-                  borderTopColor: colors.lineSoft,
-                  gap: 10,
-                }}
-              >
-                <T v="label" style={{ width: 72 }}>
-                  {dayLabel(d)}
-                </T>
-                <T
-                  v="body"
-                  color={meals.length ? colors.ink : colors.inkMuted}
-                  numberOfLines={1}
-                  style={{ flex: 1 }}
+          <Spacer h={10} />
+          {picks.length ? (
+            <Row style={{ flexWrap: 'wrap', gap: 7 }}>
+              {picks.map((m) => (
+                <View
+                  key={m.id}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: 6,
+                    backgroundColor: colors.coralSoft,
+                    borderRadius: radius.md,
+                    paddingHorizontal: 11,
+                    paddingVertical: 7,
+                  }}
                 >
-                  {meals.length
-                    ? meals.map((m) => byId.get(m.recipeId)!.name).join(', ')
-                    : 'Nothing planned'}
-                </T>
-              </Row>
-            );
-          })}
+                  <T v="label" color={colors.ink}>
+                    {byId.get(m.recipeId)!.name}
+                  </T>
+                  {m.day ? (
+                    <T v="caption" color={colors.coralDeep}>
+                      {dayLabel(m.day)}
+                    </T>
+                  ) : null}
+                </View>
+              ))}
+            </Row>
+          ) : (
+            <T v="caption">Nothing picked yet. Tap to choose a few dishes for the next days.</T>
+          )}
+        </Card>
+      </Press>
+
+      {/* My recipes ----------------------------------------------- */}
+      <Spacer h={16} />
+      <Press onPress={() => router.push('/recipes')}>
+        <Card>
+          <T v="title" style={{ fontSize: 21 }}>
+            My recipes
+          </T>
+          <Spacer h={10} />
+          <Row style={{ gap: 12, alignItems: 'center' }}>
+            <RecipeBookArt size={110} />
+            <View style={{ flex: 1, gap: 7 }}>
+              {book.length ? (
+                book.map((r) => (
+                  <Press
+                    key={r.id}
+                    onPress={() => router.push(`/recipe/${r.id}`)}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 6,
+                      borderWidth: 1.5,
+                      borderColor: colors.line,
+                      borderRadius: radius.md,
+                      paddingHorizontal: 10,
+                      paddingVertical: 7,
+                    }}
+                  >
+                    {r.wanted ? <Ionicons name="star" size={11} color={colors.gold} /> : null}
+                    <T v="label" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
+                      {r.name}
+                    </T>
+                    <EffortMeter effort={r.effort} size={6} />
+                  </Press>
+                ))
+              ) : (
+                <Btn small tone="quiet" icon="add" label="Your first recipe" onPress={() => router.push('/recipe/new')} />
+              )}
+            </View>
+          </Row>
+          <Sticker kind="cat" size={40} tilt={12} style={{ position: 'absolute', right: -6, top: -14 }} />
         </Card>
       </Press>
 
@@ -214,51 +235,6 @@ export default function Kitchen() {
           </Row>
         </Card>
       </Press>
-
-      {/* My recipes ----------------------------------------------- */}
-      <Spacer h={16} />
-      <Card>
-        <Press onPress={() => router.push('/recipes')}>
-          <Row style={{ justifyContent: 'space-between' }}>
-            <Row style={{ gap: 7 }}>
-              <Ionicons name="book-outline" size={15} color={colors.inkSoft} />
-              <T v="over">My recipes</T>
-            </Row>
-            <Row style={{ gap: 3 }}>
-              <T v="caption" color={colors.coralDeep}>
-                {recipes.length ? `All ${recipes.length}` : 'Open the book'}
-              </T>
-              <Ionicons name="chevron-forward" size={12} color={colors.coralDeep} />
-            </Row>
-          </Row>
-        </Press>
-        <Spacer h={8} />
-        {book.length ? (
-          book.map((r, i) => (
-            <Press
-              key={r.id}
-              onPress={() => router.push(`/recipe/${r.id}`)}
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 8,
-                paddingVertical: 9,
-                borderTopWidth: i ? 1 : 0,
-                borderTopColor: colors.lineSoft,
-              }}
-            >
-              {r.wanted ? <Ionicons name="star" size={12} color={colors.gold} /> : null}
-              <T v="body" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
-                {r.name}
-              </T>
-              <EffortMeter effort={r.effort} size={6} />
-              <CookTime minutes={r.minutes} />
-            </Press>
-          ))
-        ) : (
-          <Btn small tone="quiet" icon="add" label="Add your first recipe" onPress={() => router.push('/recipe/new')} />
-        )}
-      </Card>
     </Screen>
   );
 }

@@ -9,6 +9,7 @@ import type { Recipe } from '../src/lib/types';
 import { useStore } from '../src/state/store';
 import { colors, font, radius } from '../src/theme';
 import { Btn, Card, Chip, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
+import { RecipeBookArt } from '../src/ui/Art';
 import { CookTime, DaySheet, EffortMeter } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { Toast } from '../src/ui/TaskRow';
@@ -17,7 +18,9 @@ type Filter = 'all' | 'starred' | 'quick';
 
 /**
  * The recipe book: everything you know how to cook, written down once and
- * reused. What to cook on which day is the job of "Let's cook it" (app/cook.tsx).
+ * reused — ingredients with the steps or a link. From here a dish goes on the
+ * shopping list (what's missing, and it gets starred so the planner suggests
+ * it) or straight into "Let's cook it" (app/cook.tsx).
  */
 export default function RecipeBook() {
   const router = useRouter();
@@ -28,6 +31,7 @@ export default function RecipeBook() {
   const toggleWanted = useStore((s) => s.toggleWanted);
   const recipeToList = useStore((s) => s.recipeToList);
   const planMeal = useStore((s) => s.planMeal);
+  const byDay = useStore((s) => !!s.settings.cookByDay);
 
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<Filter>('all');
@@ -93,11 +97,18 @@ export default function RecipeBook() {
             </Press>
           </Row>
 
+          {n ? (
+            <>
+              <Spacer h={6} />
+              <T v="caption" numberOfLines={2}>
+                {r.ingredients.join(' · ')}
+              </T>
+            </>
+          ) : null}
           <Spacer h={8} />
           <Row style={{ gap: 6, flexWrap: 'wrap' }}>
             {hasSteps ? <Tag icon="list-outline" text="Steps" /> : null}
             {r.link ? <Tag icon="link-outline" text="Link" /> : null}
-            {planned ? <Tag icon="calendar-outline" text={`Planned ${planned}x`} tint /> : null}
             {r.lastCooked ? (
               <T v="caption" style={{ fontSize: 11 }}>
                 Cooked {lastDoneLabel(r.lastCooked).toLowerCase()}
@@ -116,16 +127,21 @@ export default function RecipeBook() {
             label="To the list"
             onPress={() => {
               const k = recipeToList(r.id);
-              say(k ? `${k} on the shopping list` : 'Nothing missing, starred for the planner');
+              say(k ? `${k} on the shopping list, starred for the planner` : 'Nothing missing, starred for the planner');
             }}
           />
           <Btn
             small
             style={{ flex: 1 }}
-            tone="sage"
-            icon="calendar-outline"
-            label="Plan it"
-            onPress={() => setPlanning(r)}
+            tone="primary"
+            icon="restaurant-outline"
+            label={planned ? 'Picked' : 'Pick it'}
+            disabled={!!planned && !byDay}
+            onPress={() => {
+              if (byDay) return setPlanning(r);
+              planMeal(r.id);
+              say(`${r.name} is in Let's cook it`);
+            }}
           />
         </Row>
       </Card>
@@ -152,25 +168,36 @@ export default function RecipeBook() {
           <KitchenTabs active="recipes" />
 
           <Spacer h={16} />
-          <Row style={{ alignItems: 'flex-end' }}>
-            <View style={{ flex: 1 }}>
-              <T v="display" style={{ fontSize: 28 }}>
-                My recipe{'\n'}book
-              </T>
-              <Spacer h={6} />
-              <T v="label">
-                {recipes.length
-                  ? `${recipes.length} written down, ready to cook again.`
-                  : 'Write a dish down once, cook it forever.'}
-              </T>
-            </View>
-            <IconBtn
-              name="add"
-              bg={colors.coral}
-              color="#FFF8F2"
-              size={24}
+          <T v="display" style={{ fontSize: 30 }}>
+            My recipe book
+          </T>
+          <Spacer h={10} />
+          <Row style={{ gap: 14, alignItems: 'center' }}>
+            <RecipeBookArt size={120} />
+            <Press
               onPress={() => router.push('/recipe/new')}
-            />
+              style={{
+                width: 76,
+                height: 76,
+                borderRadius: radius.lg,
+                borderWidth: 2,
+                borderColor: colors.coral,
+                borderStyle: 'dashed',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: colors.card,
+              }}
+            >
+              <Ionicons name="add" size={30} color={colors.coral} />
+              <T v="caption" color={colors.coralDeep}>
+                Add
+              </T>
+            </Press>
+            <T v="label" style={{ flex: 1 }}>
+              {recipes.length
+                ? `${recipes.length} written down, ready to cook again.`
+                : 'Write a dish down once, cook it forever.'}
+            </T>
           </Row>
 
           <Spacer h={14} />
@@ -256,7 +283,7 @@ export default function RecipeBook() {
           onPick={(d) => {
             planMeal(planning.id, d);
             setPlanning(null);
-            say(`${planning.name} is on the plan`);
+            say(d ? `${planning.name} is on the plan` : `${planning.name} is in your picks`);
           }}
         />
       ) : null}

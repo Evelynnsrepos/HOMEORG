@@ -1,58 +1,64 @@
 /**
- * Tidywell design tokens.
- * Warm cream paper, sage greens, coral accents. Nothing red for "you failed" —
- * the palette deliberately has no alarm colour for overdue work.
+ * Homeorg<3 design tokens: kawaii pink.
+ * Blush paper, white cards, bubblegum accents and mint for "done". Still no
+ * alarm colour for overdue work — the worst a room gets is a warm peach.
+ * The token names are older than the palette (coral is the pink, sage the
+ * mint), so every screen picks the new colours up without a rename.
  */
 
 export const colors = {
   // Paper
-  bg: '#FAF5EA',
-  bgDeep: '#F3EADA',
-  card: '#FFFCF5',
-  cardAlt: '#F6EFE1',
-  line: '#E7DECB',
-  lineSoft: '#EFE7D7',
+  bg: '#FFF3F7',
+  bgDeep: '#FCE3EE',
+  card: '#FFFFFF',
+  cardAlt: '#FFEFF5',
+  line: '#F5D3E2',
+  lineSoft: '#FAE3EC',
 
   // Ink
-  ink: '#2E2A25',
-  inkSoft: '#5B544A',
-  inkMuted: '#9A9083',
-  onDark: '#FBF6EC',
+  ink: '#3D2836',
+  inkSoft: '#6E5066',
+  inkMuted: '#A9879B',
+  onDark: '#FFF6FA',
 
   // Brand
-  coral: '#EE8A6C',
-  coralDeep: '#DC7154',
-  coralSoft: '#FBDCD1',
-  sage: '#7FA88A',
-  sageDeep: '#5F8A6C',
-  sageSoft: '#DDEBE0',
-  gold: '#E3AE45',
-  goldSoft: '#F8E9C8',
-  ember: '#E2664A',
+  coral: '#FF79B0',
+  coralDeep: '#E2508F',
+  coralSoft: '#FFD8E8',
+  sage: '#6FCDA8',
+  sageDeep: '#2F9C77',
+  sageSoft: '#D6F4E8',
+  gold: '#FFC24D',
+  goldSoft: '#FFF0C8',
+  ember: '#FF5F8F',
 
   // Cleanliness scale (never alarming)
-  sparkling: '#7FA88A',
-  noRush: '#A9BE86',
-  needsLove: '#E0A458',
-  needsYou: '#CF8368',
+  sparkling: '#5FC79C',
+  noRush: '#A8D46F',
+  needsLove: '#FFAA5E',
+  needsYou: '#FF8BA0',
 
-  espresso: '#4A403A',
-  night: '#241F1B',
+  // Lilac for the odd accent, the purple of the recipe book
+  lilac: '#B48CF0',
+  plum: '#7D2470',
+
+  espresso: '#4A2F43',
+  night: '#2A1A26',
 } as const;
 
 /** Accent colours rooms cycle through. */
 export const roomPalette = [
-  '#7FA88A', // sage
-  '#A78BC4', // lilac
-  '#E0A458', // amber
-  '#C4676B', // berry
-  '#7FA8C4', // sky
-  '#D98BA8', // rose
-  '#8FA05E', // olive
-  '#C98A5E', // clay
+  '#FF8FB8', // bubblegum
+  '#B48CF0', // lilac
+  '#6FCDA8', // mint
+  '#FFB35C', // peach
+  '#7FC4F0', // sky
+  '#F47FD8', // orchid
+  '#A8D46F', // lime
+  '#FF9E8A', // coral
 ];
 
-export const radius = { sm: 10, md: 16, lg: 22, xl: 28, pill: 999 } as const;
+export const radius = { sm: 12, md: 18, lg: 26, xl: 32, pill: 999 } as const;
 
 export const space = (n: number) => n * 4;
 
@@ -66,14 +72,14 @@ export const font = {
 
 export const shadow = {
   card: {
-    shadowColor: '#8A7A5C',
+    shadowColor: '#D2588F',
     shadowOpacity: 0.1,
     shadowRadius: 14,
     shadowOffset: { width: 0, height: 6 },
     elevation: 2,
   },
   lift: {
-    shadowColor: '#8A7A5C',
+    shadowColor: '#D2588F',
     shadowOpacity: 0.18,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 10 },

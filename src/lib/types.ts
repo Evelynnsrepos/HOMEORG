@@ -70,6 +70,8 @@ export interface Settings {
   /** allow the one outbound call the app makes: barcode lookup */
   lookupOnline: boolean;
   onboarded: boolean;
+  /** "Let's cook it" groups the picks by weekday. Off: one shortlist. */
+  cookByDay?: boolean;
 }
 
 export interface ChallengeProgress {
@@ -121,13 +123,25 @@ export type RecipeEffort = 1 | 2 | 3;
 /** The bits of a recipe besides its name and what goes in it. */
 export type RecipeExtra = Pick<Recipe, 'steps' | 'link' | 'minutes' | 'effort'>;
 
-/** One dish put on one of the next days in "Let's cook it". */
+/**
+ * One dish picked in "Let's cook it". A day is optional: most picks are just
+ * "soon", and only people who plan by weekday give them one.
+ */
 export interface PlannedMeal {
   id: string;
   recipeId: string;
-  /** day key */
-  day: string;
+  /** day key, when the pick is meant for a particular day */
+  day?: string;
   createdAt: string;
+}
+
+/** Every time "Cooked it" was pressed, so History can count what you made. */
+export interface CookedMeal {
+  id: string;
+  recipeId: string;
+  /** the name then, in case the recipe is thrown out later */
+  name: string;
+  at: string;
 }
 
 /**

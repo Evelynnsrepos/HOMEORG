@@ -22,6 +22,7 @@ import type {
   LegacySavedMeal,
   PantryItem,
   PinnedNote,
+  CookedMeal,
   PlannedMeal,
   Recipe,
   RecipeExtra,
@@ -72,8 +73,9 @@ interface State {
   challenges: ChallengeProgress[];
   customChallenges: CustomChallenge[];
   recipes: Recipe[];
-  /** dishes put on the next days */
+  /** dishes picked in "Let's cook it", some with a day */
   mealPlan: PlannedMeal[];
+  cookLog: CookedMeal[];
   shopping: ShoppingItem[];
   pantry: PantryItem[];
   /** shelf you moved something to, by lowercased name, so the next order gets it right */
@@ -129,7 +131,10 @@ interface Actions {
   /** what is missing goes on the list, and the dish gets starred for the planner. Returns how many went on. */
   recipeToList: (id: string) => number;
 
-  planMeal: (recipeId: string, day: string) => void;
+  /** Pick a dish, for a day or for "soon". The same dish twice on one day (or twice undated) is a slip of the thumb. */
+  planMeal: (recipeId: string, day?: string) => void;
+  /** Move a pick to another day, or take its day away. */
+  setMealDay: (id: string, day?: string) => void;
   unplanMeal: (id: string) => void;
 
   addShopping: (name: string, qty?: number, from?: string) => void;
@@ -172,6 +177,7 @@ const initialState: State = {
   customChallenges: [],
   recipes: [],
   mealPlan: [],
+  cookLog: [],
   shopping: [],
   pantry: [],
   shelfMemory: {},
@@ -654,19 +660,20 @@ export const useStore = create<Store>()(
         })),
 
       /**
-       * Cooked it: the shelves come down a step and the recipe gets a date.
-       * The plan for today (or a day already gone) is done with, too.
+       * Cooked it: the shelves come down a step, the recipe gets a date and
+       * the log gets a line. The pick for today, a day already gone or no day
+       * at all is done with, too; one for later in the week stays.
        */
       cookRecipe: (id) => {
         const recipe = get().recipes.find((r) => r.id === id);
         if (!recipe) return;
         get().useUpIngredients(recipe.ingredients);
         const today = dayKey();
+        const now = new Date().toISOString();
         set((s) => ({
-          recipes: s.recipes.map((r) =>
-            r.id === id ? { ...r, lastCooked: new Date().toISOString() } : r,
-          ),
-          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || m.day > today),
+          recipes: s.recipes.map((r) => (r.id === id ? { ...r, lastCooked: now } : r)),
+          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || (!!m.day && m.day > today)),
+          cookLog: [...(s.cookLog ?? []), { id: uid('cook'), recipeId: id, name: recipe.name, at: now }],
         }));
       },
 
@@ -682,7 +689,6 @@ export const useStore = create<Store>()(
         return missing.length;
       },
 
-      /** The same dish twice on one day is a slip of the thumb, not a plan. */
       planMeal: (recipeId, day) =>
         set((s) =>
           s.mealPlan.some((m) => m.recipeId === recipeId && m.day === day)
@@ -690,10 +696,19 @@ export const useStore = create<Store>()(
             : {
                 mealPlan: [
                   ...s.mealPlan,
-                  { id: uid('meal'), recipeId, day, createdAt: new Date().toISOString() },
+                  { id: uid('meal'), recipeId, ...(day ? { day } : {}), createdAt: new Date().toISOString() },
                 ],
               },
         ),
+
+      setMealDay: (id, day) =>
+        set((s) => ({
+          mealPlan: s.mealPlan.map((m) => {
+            if (m.id !== id) return m;
+            const { day: _old, ...rest } = m;
+            return day ? { ...rest, day } : rest;
+          }),
+        })),
 
       unplanMeal: (id) => set((s) => ({ mealPlan: s.mealPlan.filter((m) => m.id !== id) })),
 
