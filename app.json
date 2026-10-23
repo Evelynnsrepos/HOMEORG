@@ -2,7 +2,7 @@
   "expo": {
     "name": "Homeorg<3",
     "slug": "tidywell",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "tidywell",
@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FAF5EA"
+      "backgroundColor": "#FFF3F7"
     },
     "ios": {
       "supportsTablet": true,
@@ -26,9 +26,9 @@
     },
     "android": {
       "package": "com.tidywell.local",
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
-        "backgroundColor": "#FAF5EA",
+        "backgroundColor": "#FFF3F7",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
@@ -71,7 +71,7 @@
       [
         "expo-notifications",
         {
-          "color": "#7FA88A"
+          "color": "#FF79B0"
         }
       ],
       [

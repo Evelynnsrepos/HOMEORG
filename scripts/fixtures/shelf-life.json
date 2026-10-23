@@ -1,0 +1,1661 @@
+{
+"about": "Sensible best-before ranges in days for ingredients from many kitchens, checked by scripts/test-shelf.ts. A range, not an exact number: the table may be tuned inside it. keeps = no date.",
+"items": [
+{
+"name": "Kimchi",
+"place": "fridge",
+"min": 30,
+"max": 180
+},
+{
+"name": "Miso",
+"place": "fridge",
+"min": 90,
+"max": 365
+},
+{
+"name": "Natto",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Tofu",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Seidentofu",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Udon frisch",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Ramen Nudeln",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Reisnudeln",
+"place": "pantry",
+"min": 180,
+"max": 730
+},
+{
+"name": "Glasnudeln",
+"place": "pantry",
+"min": 180,
+"max": 730
+},
+{
+"name": "Gochujang",
+"place": "fridge",
+"min": 90,
+"max": 730
+},
+{
+"name": "Fischsauce",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Sojasauce",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Mirin",
+"place": "pantry",
+"min": 90,
+"max": 1000
+},
+{
+"name": "Sake",
+"place": "pantry",
+"min": 30,
+"max": 1000
+},
+{
+"name": "Nori",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Kombu",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Wakame getrocknet",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Edamame TK",
+"place": "freezer",
+"min": 90,
+"max": 365
+},
+{
+"name": "Pak Choi",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Daikon Rettich",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "Shiitake",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Dumplings TK",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Gyoza",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Mochi",
+"place": "pantry",
+"min": 1,
+"max": 14
+},
+{
+"name": "Sushi Reis",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Wasabi Paste",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Paneer",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Ghee",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Naan",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Chapati",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Basmati Reis",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Rote Linsen",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Kokosmilch",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Kokosnuss",
+"place": "pantry",
+"min": 7,
+"max": 60
+},
+{
+"name": "Zitronengras",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "Galgant",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Kaffirlimettenblätter",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Curryblätter",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Tamarindenpaste",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Currypaste",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Koriander",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Thai Basilikum",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Jackfruit Dose",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Okra",
+"place": "fridge",
+"min": 2,
+"max": 7
+},
+{
+"name": "Mango",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Lychee",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Garam Masala",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Kurkuma gemahlen",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Tahini",
+"place": "pantry",
+"min": 90,
+"max": 365
+},
+{
+"name": "Hummus",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Falafel",
+"place": "fridge",
+"min": 2,
+"max": 7
+},
+{
+"name": "Labneh",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Halloumi",
+"place": "fridge",
+"min": 5,
+"max": 60
+},
+{
+"name": "Feta",
+"place": "fridge",
+"min": 5,
+"max": 30
+},
+{
+"name": "Pita",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Bulgur",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Couscous",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Harissa",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Za'atar",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Sumach",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Granatapfel",
+"place": "fridge",
+"min": 14,
+"max": 60
+},
+{
+"name": "Datteln",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Oliven",
+"place": "fridge",
+"min": 14,
+"max": 90
+},
+{
+"name": "Kapern",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Sardellen",
+"place": "fridge",
+"min": 3,
+"max": 60
+},
+{
+"name": "Ölsardinen",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Prosciutto",
+"place": "fridge",
+"min": 3,
+"max": 21
+},
+{
+"name": "Parmesan",
+"place": "fridge",
+"min": 21,
+"max": 90
+},
+{
+"name": "Mascarpone",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Ricotta",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Pesto",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Gnocchi",
+"place": "fridge",
+"min": 3,
+"max": 30
+},
+{
+"name": "Frische Pasta",
+"place": "fridge",
+"min": 2,
+"max": 7
+},
+{
+"name": "Polenta",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Ayran",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Tzatziki",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Kochbananen",
+"place": "pantry",
+"min": 3,
+"max": 10
+},
+{
+"name": "Maniok",
+"place": "pantry",
+"min": 3,
+"max": 14
+},
+{
+"name": "Süßkartoffel",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Yams",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Injera",
+"place": "pantry",
+"min": 1,
+"max": 5
+},
+{
+"name": "Teff Mehl",
+"place": "pantry",
+"min": 90,
+"max": 365
+},
+{
+"name": "Berbere",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Tortillas",
+"place": "pantry",
+"min": 5,
+"max": 30
+},
+{
+"name": "Masa Harina",
+"place": "pantry",
+"min": 90,
+"max": 365
+},
+{
+"name": "Schwarze Bohnen Dose",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Jalapeños",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Avocado",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Limetten",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Queso Fresco",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Chorizo",
+"place": "fridge",
+"min": 7,
+"max": 60
+},
+{
+"name": "Salsa",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Maiskolben",
+"place": "fridge",
+"min": 1,
+"max": 5
+},
+{
+"name": "Mais Dose",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Ahornsirup",
+"place": "fridge",
+"min": 90,
+"max": 365
+},
+{
+"name": "Erdnussbutter",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Sauerkraut",
+"place": "fridge",
+"min": 14,
+"max": 90
+},
+{
+"name": "Essiggurken",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Gewürzgurken",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Rote Bete gekocht",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Zuckerschoten",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Honigmelone",
+"place": "pantry",
+"min": 3,
+"max": 10
+},
+{
+"name": "Preiselbeeren Glas",
+"place": "pantry",
+"min": 90,
+"max": 1000
+},
+{
+"name": "Butterkeks",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Salzstangen",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Leberwurst",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Kartoffelsalat",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Eisbergsalat",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Blumenkohl",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Rotkohl",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Weißkohl",
+"place": "fridge",
+"min": 7,
+"max": 60
+},
+{
+"name": "Spätzle frisch",
+"place": "fridge",
+"min": 3,
+"max": 21
+},
+{
+"name": "Maultaschen",
+"place": "fridge",
+"min": 3,
+"max": 21
+},
+{
+"name": "Schmand",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Buttermilch",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Kefir",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Brie",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Camembert",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Räucherlachs",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Hähnchenbrust",
+"place": "fridge",
+"min": 1,
+"max": 3
+},
+{
+"name": "Rinderhack",
+"place": "fridge",
+"min": 1,
+"max": 2
+},
+{
+"name": "Eier",
+"place": "fridge",
+"min": 14,
+"max": 35
+},
+{
+"name": "Champignons",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Erdbeeren",
+"place": "fridge",
+"min": 1,
+"max": 5
+},
+{
+"name": "Heidelbeeren",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Bananen",
+"place": "pantry",
+"min": 3,
+"max": 7
+},
+{
+"name": "Äpfel",
+"place": "pantry",
+"min": 7,
+"max": 30
+},
+{
+"name": "Zwiebeln",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Knoblauch",
+"place": "pantry",
+"min": 14,
+"max": 90
+},
+{
+"name": "Ingwer",
+"place": "fridge",
+"min": 14,
+"max": 30
+},
+{
+"name": "Kartoffeln",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Hefe",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "Trockenhefe",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Backpulver",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Mehl",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Zucker",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Salz",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Honig",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Olivenöl",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Balsamico",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Senf",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Ketchup",
+"place": "fridge",
+"min": 30,
+"max": 365
+},
+{
+"name": "Mayonnaise",
+"place": "fridge",
+"min": 30,
+"max": 120
+},
+{
+"name": "Marmelade",
+"place": "fridge",
+"min": 14,
+"max": 60
+},
+{
+"name": "Nutella",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Schokolade",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Kaffee",
+"place": "pantry",
+"min": 60,
+"max": 1000
+},
+{
+"name": "Tee",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Orangensaft frisch",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Apfelsaft",
+"place": "pantry",
+"min": 60,
+"max": 1000
+},
+{
+"name": "Hafermilch",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Sojamilch",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Mandelmilch",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Vollmilch",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Sahne",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Butter",
+"place": "fridge",
+"min": 14,
+"max": 90
+},
+{
+"name": "Toastbrot",
+"place": "pantry",
+"min": 3,
+"max": 10
+},
+{
+"name": "Vollkornbrot",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Brötchen",
+"place": "pantry",
+"min": 1,
+"max": 3
+},
+{
+"name": "Croissant",
+"place": "pantry",
+"min": 1,
+"max": 3
+},
+{
+"name": "Tiefkühlpizza",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Pommes",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Spinat TK",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Erbsen TK",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Vanilleeis",
+"place": "freezer",
+"min": 30,
+"max": 365
+},
+{
+"name": "Pfefferoni",
+"place": "fridge",
+"min": 14,
+"max": 365
+},
+{
+"name": "Peperoni",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Grünkohl",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Rosenkohl",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Spargel",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Rucola",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Feldsalat",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Radieschen",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Lauch",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "Sellerie",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "English: chicken thighs",
+"place": "fridge",
+"min": 1,
+"max": 3
+},
+{
+"name": "ground beef",
+"place": "fridge",
+"min": 1,
+"max": 2
+},
+{
+"name": "heavy cream",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "cream cheese",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "soy sauce",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "fish sauce",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "kimchi",
+"place": "fridge",
+"min": 30,
+"max": 180
+},
+{
+"name": "tortillas",
+"place": "pantry",
+"min": 5,
+"max": 30
+},
+{
+"name": "plantains",
+"place": "pantry",
+"min": 3,
+"max": 10
+},
+{
+"name": "coconut milk",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "rice noodles",
+"place": "pantry",
+"min": 180,
+"max": 730
+},
+{
+"name": "peanut butter",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "maple syrup",
+"place": "fridge",
+"min": 90,
+"max": 365
+},
+{
+"name": "lemongrass",
+"place": "fridge",
+"min": 7,
+"max": 21
+},
+{
+"name": "bok choy",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "paneer",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "ghee",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Garnelen kr.kn.",
+"place": "fridge",
+"min": 1,
+"max": 3
+},
+{
+"name": "Veganes pilz-hack",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Räuchertofu",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Mandarine",
+"place": "pantry",
+"min": 5,
+"max": 14
+},
+{
+"name": "Limette",
+"place": "pantry",
+"min": 5,
+"max": 14
+},
+{
+"name": "Apfel pink lady",
+"place": "pantry",
+"min": 7,
+"max": 30
+},
+{
+"name": "Ingwer bio",
+"place": "pantry",
+"min": 5,
+"max": 21
+},
+{
+"name": "Avocado bio",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Kaki",
+"place": "pantry",
+"min": 3,
+"max": 7
+},
+{
+"name": "Zwiebelgemüse",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Wirsing",
+"place": "pantry",
+"min": 3,
+"max": 10
+},
+{
+"name": "Broccoli",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Rotkohl",
+"place": "pantry",
+"min": 3,
+"max": 14
+},
+{
+"name": "Pakchoi mini",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Karotte bio",
+"place": "fridge",
+"min": 14,
+"max": 30
+},
+{
+"name": "Suppengrün",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Salatgurke",
+"place": "fridge",
+"min": 5,
+"max": 10
+},
+{
+"name": "Paprika mix",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Kräuterseitlinge bio",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Eier weiss",
+"place": "fridge",
+"min": 14,
+"max": 35
+},
+{
+"name": "Linguine no.7",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Sushi reis",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Sonnenblumenöl kalt",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Bio kokosöl",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Paprika scharf",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Sambal oelek",
+"place": "fridge",
+"min": 60,
+"max": 365
+},
+{
+"name": "Bio erdnussbutter crunchy",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Blütenhonig",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Thunfischfilet in öl",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Apfelgetränk pfirsich",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Baby Broccoli 200g",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Chinakohl",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Petersilie kraus",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Zitrone",
+"place": "pantry",
+"min": 5,
+"max": 14
+},
+{
+"name": "Fusilli 500g",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Hirtenkäse 250g",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Gemüsezwiebeln 750g im Netz",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Zwiebel rot",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Bernbacher Eiernudeln Spaghetti 250g",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Schlagsahne 30%",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Griechischer Joghurt",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Hähnchenschenkel",
+"place": "fridge",
+"min": 1,
+"max": 3
+},
+{
+"name": "Lammkeule",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Tortellini Ricotta Spinat",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Weißwein",
+"place": "pantry",
+"min": 90,
+"max": 1000
+},
+{
+"name": "Mineralwasser",
+"place": "pantry",
+"min": 90,
+"max": 1000
+},
+{
+"name": "Haferflocken zart",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Kidneybohnen",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Tomaten passiert",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Cherrytomaten",
+"place": "fridge",
+"min": 4,
+"max": 10
+},
+{
+"name": "Rispentomaten",
+"place": "pantry",
+"min": 3,
+"max": 7
+},
+{
+"name": "Laugenbrezel",
+"place": "pantry",
+"min": 1,
+"max": 2
+},
+{
+"name": "Dinkelbrot",
+"place": "pantry",
+"min": 2,
+"max": 7
+},
+{
+"name": "Rinderbrühe",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Gemüsebrühe Pulver",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Spinat",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Frischkäse Kräuter",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Kräuterbutter",
+"place": "fridge",
+"min": 7,
+"max": 60
+},
+{
+"name": "Feldsalat",
+"place": "fridge",
+"min": 2,
+"max": 5
+},
+{
+"name": "Bananenchips",
+"place": "pantry",
+"min": 60,
+"max": 365
+},
+{
+"name": "Apfelmus",
+"place": "pantry",
+"min": 90,
+"max": 1000
+},
+{
+"name": "Erdbeerjoghurt",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Schokopudding",
+"place": "fridge",
+"min": 3,
+"max": 14
+},
+{
+"name": "Bratwurst",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Weißwurst",
+"place": "fridge",
+"min": 2,
+"max": 7
+},
+{
+"name": "Lachsfilet",
+"place": "fridge",
+"min": 1,
+"max": 3
+},
+{
+"name": "Lachsfilet",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Pizza Margherita TK",
+"place": "freezer",
+"min": 60,
+"max": 365
+},
+{
+"name": "Blätterteig",
+"place": "fridge",
+"min": 7,
+"max": 30
+},
+{
+"name": "Pizzateig",
+"place": "fridge",
+"min": 5,
+"max": 21
+},
+{
+"name": "Halloumi",
+"place": "fridge",
+"min": 7,
+"max": 60
+},
+{
+"name": "Tofu natur",
+"place": "fridge",
+"min": 3,
+"max": 10
+},
+{
+"name": "Kokosjoghurt",
+"place": "fridge",
+"min": 5,
+"max": 14
+},
+{
+"name": "Matcha Pulver",
+"place": "pantry",
+"min": 90,
+"max": 730
+},
+{
+"name": "Jasmintee",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Okraschoten",
+"place": "fridge",
+"min": 2,
+"max": 7
+},
+{
+"name": "Süßkartoffeln",
+"place": "pantry",
+"min": 14,
+"max": 60
+},
+{
+"name": "Yuzu Saft",
+"place": "pantry",
+"min": 60,
+"max": 730
+},
+{
+"name": "Reisessig",
+"place": "pantry",
+"keeps": true
+},
+{
+"name": "Ras el Hanout",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Teriyaki Sauce",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Gochugaru",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Pho Nudeln",
+"place": "pantry",
+"min": 180,
+"max": 1000
+},
+{
+"name": "Mozzarella",
+"place": "fridge",
+"min": 3,
+"max": 7
+},
+{
+"name": "Garam masala",
+"place": "pantry",
+"min": 180,
+"max": 1000
+}
+]
+}

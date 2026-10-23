@@ -59,7 +59,7 @@ export default function Spin() {
     <View
       style={{
         flex: 1,
-        backgroundColor: '#2E2A25EE',
+        backgroundColor: '#3D2836EE',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 24,

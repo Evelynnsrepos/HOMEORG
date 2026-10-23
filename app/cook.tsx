@@ -10,20 +10,28 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
-import { matchRecipes, nextDays } from '../src/lib/kitchen';
-import type { Recipe } from '../src/lib/types';
+import { matchRecipe, nextDays } from '../src/lib/kitchen';
+import type { PlannedMeal, Recipe } from '../src/lib/types';
 import { useStore } from '../src/state/store';
 import { colors, font, radius } from '../src/theme';
+import { RecipeBookArt } from '../src/ui/Art';
 import { Btn, Card, IconBtn, Press, Row, Screen, Spacer, T, tap } from '../src/ui/base';
-import { CookTime, DaySheet, EffortMeter, RecipeTile, dayLabel } from '../src/ui/Kitchen';
+import { Sticker } from '../src/ui/Decor';
+import { ScriptTitle } from '../src/ui/Script';
+import { CookTime, DaySheet, EffortMeter, PickTile, dayLabel, packRows, tileSpan } from '../src/ui/Kitchen';
 import { KitchenTabs } from '../src/ui/KitchenTabs';
 import { Toast } from '../src/ui/TaskRow';
 
+type Pick = { meal: PlannedMeal; recipe: Recipe };
+
 /**
- * "Let's cook it": the next seven days with a dish or two on each, and the
- * book underneath to pick from. Starred recipes and the ones the shelves can
- * already supply float to the top.
+ * "Let's cook it", after the sketch: a big banner, one button to add from the
+ * recipe book (or write a new one into it), a search over your picks, and the
+ * picks themselves as packed tiles or a list. It starts empty — only what you
+ * put here shows up. Weekdays are optional: switch them on and the picks
+ * group by day, leave them off and it's one shortlist of "soon".
  */
 export default function Cook() {
   const router = useRouter();
@@ -32,14 +40,19 @@ export default function Cook() {
   const recipes = useStore((s) => s.recipes);
   const pantry = useStore((s) => s.pantry);
   const mealPlan = useStore((s) => s.mealPlan);
+  const byDay = useStore((s) => !!s.settings.cookByDay);
+  const patchSettings = useStore((s) => s.patchSettings);
   const planMeal = useStore((s) => s.planMeal);
+  const setMealDay = useStore((s) => s.setMealDay);
   const unplanMeal = useStore((s) => s.unplanMeal);
+  const cookRecipe = useStore((s) => s.cookRecipe);
   const recipeToList = useStore((s) => s.recipeToList);
 
   const [query, setQuery] = useState('');
   const [view, setView] = useState<'tiles' | 'list'>('tiles');
-  const [forRecipe, setForRecipe] = useState<Recipe | null>(null);
-  const [forDay, setForDay] = useState<string | null>(null);
+  const [adding, setAdding] = useState(false);
+  const [open, setOpen] = useState<Pick | null>(null);
+  const [moving, setMoving] = useState<Pick | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
   function say(text: string) {
@@ -47,31 +60,110 @@ export default function Cook() {
     setTimeout(() => setToast(null), 2600);
   }
 
-  const days = nextDays(7);
   const byId = useMemo(() => new Map(recipes.map((r) => [r.id, r])), [recipes]);
-  const upcoming = mealPlan.filter((m) => m.day >= days[0] && m.day <= days[6] && byId.has(m.recipeId));
 
-  const picks = useMemo(() => {
+  const picks: Pick[] = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return matchRecipes(recipes, pantry).filter(
-      (m) =>
-        !q ||
-        m.recipe.name.toLowerCase().includes(q) ||
-        m.recipe.ingredients.some((i) => i.toLowerCase().includes(q)),
-    );
-  }, [recipes, pantry, query]);
+    return mealPlan
+      .filter((m) => byId.has(m.recipeId))
+      .map((meal) => ({ meal, recipe: byId.get(meal.recipeId)! }))
+      .filter(
+        ({ recipe }) =>
+          !q ||
+          recipe.name.toLowerCase().includes(q) ||
+          recipe.ingredients.some((i) => i.toLowerCase().includes(q)),
+      )
+      .sort((a, b) => {
+        // dated picks in day order, then the undated ones in the order you picked them
+        if (!!a.meal.day !== !!b.meal.day) return a.meal.day ? -1 : 1;
+        return (a.meal.day ?? '').localeCompare(b.meal.day ?? '') || a.meal.createdAt.localeCompare(b.meal.createdAt);
+      });
+  }, [mealPlan, byId, query]);
 
-  const tileW = Math.floor((W - 32 - 8) / 2);
+  const total = mealPlan.filter((m) => byId.has(m.recipeId)).length;
+  const picked = new Set(mealPlan.map((m) => m.recipeId));
+  // starred dishes (that's what "to the list" does) come up here as a nudge
+  const suggested = recipes.filter((r) => r.wanted && !picked.has(r.id)).slice(0, 6);
 
-  function noteFor(missing: string[], n: number) {
-    if (!n || !pantry.length) return undefined;
-    return missing.length ? `${missing.length} to buy` : 'All in the kitchen';
+  const groups: { title?: string; items: Pick[] }[] = byDay
+    ? [
+        { title: 'Soon', items: picks.filter((p) => !p.meal.day) },
+        ...[...new Set(picks.filter((p) => p.meal.day).map((p) => p.meal.day!))].map((d) => ({
+          title: dayLabel(d),
+          items: picks.filter((p) => p.meal.day === d),
+        })),
+      ].filter((g) => g.items.length)
+    : [{ items: picks }];
+
+  const inner = Math.min(W, 520) - 32;
+  const GAP = 8;
+  const colW = (inner - GAP * 5) / 6;
+
+  function noteFor(r: Recipe) {
+    if (!pantry.length || !r.ingredients.length) return undefined;
+    const missing = matchRecipe(r, pantry).missing.length;
+    return missing ? `${missing} to buy` : 'All here';
   }
 
-  function shopForPlan() {
-    const ids = [...new Set(upcoming.map((m) => m.recipeId))];
+  function shopForPicks() {
+    const ids = [...new Set(mealPlan.map((m) => m.recipeId))].filter((id) => byId.has(id));
     const n = ids.reduce((sum, id) => sum + recipeToList(id), 0);
-    say(n ? `${n} on the shopping list` : 'You have everything for the plan');
+    say(n ? `${n} on the shopping list` : 'You have everything for your picks');
+  }
+
+  function renderTiles(items: Pick[]) {
+    return packRows(items, (p) => tileSpan(p.recipe.minutes)).map((row, i) => (
+      <Row key={i} style={{ gap: GAP, marginBottom: GAP }}>
+        {row.map(({ item, span }) => (
+          <PickTile
+            key={item.meal.id}
+            recipe={item.recipe}
+            width={colW * span + GAP * (span - 1)}
+            day={byDay ? undefined : item.meal.day}
+            note={noteFor(item.recipe)}
+            onPress={() => setOpen(item)}
+            onLongPress={() => setMoving(item)}
+          />
+        ))}
+      </Row>
+    ));
+  }
+
+  function renderList(items: Pick[]) {
+    return (
+      <Card style={{ padding: 4, marginBottom: GAP }}>
+        {items.map((p, i) => {
+          const note = noteFor(p.recipe);
+          return (
+            <Press
+              key={p.meal.id}
+              onPress={() => setOpen(p)}
+              onLongPress={() => setMoving(p)}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 10,
+                paddingVertical: 11,
+                paddingHorizontal: 10,
+                borderTopWidth: i ? 1 : 0,
+                borderTopColor: colors.lineSoft,
+              }}
+            >
+              <View style={{ flex: 1 }}>
+                <T v="heading" style={{ fontSize: 14 }} numberOfLines={1}>
+                  {p.recipe.name}
+                </T>
+                <T v="caption" numberOfLines={1}>
+                  {[!byDay && p.meal.day ? dayLabel(p.meal.day) : null, note].filter(Boolean).join(' · ') || ' '}
+                </T>
+              </View>
+              <EffortMeter effort={p.recipe.effort} size={7} />
+              <CookTime minutes={p.recipe.minutes} />
+            </Press>
+          );
+        })}
+      </Card>
+    );
   }
 
   return (
@@ -93,131 +185,69 @@ export default function Cook() {
           <Spacer h={12} />
           <KitchenTabs active="cook" />
 
-          <Spacer h={16} />
-          <T v="display" style={{ fontSize: 28 }}>
-            Let's cook it
-          </T>
-          <Spacer h={6} />
-          <T v="label">
-            {upcoming.length
-              ? `${upcoming.length} ${upcoming.length === 1 ? 'dish' : 'dishes'} planned for the next days.`
-              : 'Put a dish on one of the next days.'}
-          </T>
-
-          {/* Add from the book or to the book --------------------------- */}
-          <Spacer h={14} />
-          <Row style={{ gap: 8 }}>
-            <Btn
-              style={{ flex: 1 }}
-              small
-              icon="book-outline"
-              label="From the book"
-              onPress={() => setForDay(days[0])}
+          {/* The banner ------------------------------------------------- */}
+          <Spacer h={30} />
+          <View style={{ minHeight: 150 }}>
+            {/* the gradient is clipped to the card; the title on top is not */}
+            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radius.lg, overflow: 'hidden' }}>
+              <Svg width="100%" height="100%">
+                <Defs>
+                  <LinearGradient id="banner" x1="0" y1="0" x2="1" y2="1">
+                    <Stop offset="0" stopColor={colors.coral} stopOpacity={0.75} />
+                    <Stop offset="0.6" stopColor={colors.coral} />
+                    <Stop offset="1" stopColor={colors.lilac} />
+                  </LinearGradient>
+                </Defs>
+                <Rect x="0" y="0" width="100%" height="100%" fill="url(#banner)" />
+              </Svg>
+            </View>
+            <ScriptTitle
+              words={["Let's", 'cook', 'it!']}
+              size={44}
+              grow={1.35}
+              step={0.9}
+              tilt={-9}
+              color="#FFFFFF"
+              outline={colors.coralDeep}
+              style={{ marginTop: -30, marginLeft: 4 }}
             />
-            <Btn
-              style={{ flex: 1 }}
-              small
-              tone="quiet"
-              icon="add"
-              label="New to the book"
-              onPress={() => router.push('/recipe/new')}
-            />
-          </Row>
+            <T v="label" color="#FFF0F7" style={{ paddingHorizontal: 18, paddingBottom: 14, marginTop: -4, paddingRight: 100 }}>
+              {total
+                ? `${total} ${total === 1 ? 'dish' : 'dishes'} picked for the next days`
+                : 'Pick a few dishes for the next days'}
+            </T>
+            <Sticker kind="cake" size={62} tilt={10} style={{ position: 'absolute', right: 14, top: 12 }} />
+            <Sticker kind="star" size={34} tilt={-14} style={{ position: 'absolute', right: 74, bottom: 10 }} />
+          </View>
 
-          {/* The next seven days ---------------------------------------- */}
-          <Spacer h={16} />
-          <Card style={{ padding: 4 }}>
-            {days.map((d, i) => {
-              const meals = upcoming.filter((m) => m.day === d);
-              return (
-                <Row
-                  key={d}
-                  style={{
-                    paddingVertical: 9,
-                    paddingHorizontal: 10,
-                    borderTopWidth: i ? 1 : 0,
-                    borderTopColor: colors.lineSoft,
-                    alignItems: 'flex-start',
-                    gap: 10,
-                  }}
-                >
-                  <T
-                    v="label"
-                    style={{ width: 72, paddingTop: 5 }}
-                    color={i === 0 ? colors.coralDeep : colors.inkSoft}
-                  >
-                    {dayLabel(d)}
-                  </T>
-                  <Row style={{ flex: 1, flexWrap: 'wrap', gap: 6 }}>
-                    {meals.map((m) => {
-                      const r = byId.get(m.recipeId)!;
-                      return (
-                        <Press
-                          key={m.id}
-                          onPress={() => router.push(`/recipe/${r.id}`)}
-                          onLongPress={() => unplanMeal(m.id)}
-                          style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 6,
-                            backgroundColor: colors.sageSoft,
-                            borderRadius: radius.pill,
-                            paddingLeft: 11,
-                            paddingRight: 7,
-                            paddingVertical: 6,
-                          }}
-                        >
-                          <T v="caption" color={colors.sageDeep} style={{ fontSize: 12 }}>
-                            {r.name}
-                          </T>
-                          <Press hitSlop={8} onPress={() => unplanMeal(m.id)}>
-                            <Ionicons name="close" size={12} color={colors.sageDeep} />
-                          </Press>
-                        </Press>
-                      );
-                    })}
-                    <Press
-                      onPress={() => setForDay(d)}
-                      style={{
-                        width: 28,
-                        height: 28,
-                        borderRadius: 14,
-                        borderWidth: 1,
-                        borderColor: colors.line,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Ionicons name="add" size={14} color={colors.inkMuted} />
-                    </Press>
-                  </Row>
-                </Row>
-              );
-            })}
-          </Card>
-          {upcoming.length ? (
-            <>
-              <Spacer h={10} />
-              <Btn
-                small
-                tone="ghost"
-                icon="cart-outline"
-                label="Put what the plan needs on the list"
-                onPress={shopForPlan}
-              />
-            </>
-          ) : null}
+          {/* From the book or to the book ------------------------------- */}
+          <Spacer h={12} />
+          <Press
+            onPress={() => setAdding(true)}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 12,
+              backgroundColor: colors.card,
+              borderRadius: radius.lg,
+              borderWidth: 1.5,
+              borderColor: colors.line,
+              paddingVertical: 10,
+              paddingHorizontal: 14,
+            }}
+          >
+            <RecipeBookArt size={46} />
+            <View style={{ flex: 1 }}>
+              <T v="heading" style={{ fontSize: 15 }}>
+                Add a recipe
+              </T>
+              <T v="caption">from your book, or write a new one into it</T>
+            </View>
+            <Ionicons name="add-circle" size={26} color={colors.coral} />
+          </Press>
 
-          {/* Picks ------------------------------------------------------ */}
-          <Spacer h={20} />
-          <Row style={{ justifyContent: 'space-between' }}>
-            <T v="over">Pick for the next days</T>
-            <Row style={{ gap: 2 }}>
-              <ViewToggle icon="grid-outline" on={view === 'tiles'} onPress={() => setView('tiles')} />
-              <ViewToggle icon="list-outline" on={view === 'list'} onPress={() => setView('list')} />
-            </Row>
-          </Row>
-          <Spacer h={8} />
+          {/* Search, view, weekdays ------------------------------------- */}
+          <Spacer h={12} />
           <Row
             style={{
               backgroundColor: colors.cardAlt,
@@ -246,105 +276,168 @@ export default function Cook() {
               </Press>
             ) : null}
           </Row>
-          <Spacer h={10} />
+          <Spacer h={8} />
+          <Row style={{ justifyContent: 'space-between' }}>
+            <Row style={{ gap: 2, backgroundColor: colors.cardAlt, borderRadius: 11, padding: 2 }}>
+              <ViewToggle icon="grid-outline" on={view === 'tiles'} onPress={() => setView('tiles')} />
+              <ViewToggle icon="list-outline" on={view === 'list'} onPress={() => setView('list')} />
+            </Row>
+            <Press
+              onPress={() => {
+                tap();
+                patchSettings({ cookByDay: !byDay });
+              }}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 6,
+                paddingVertical: 6,
+                paddingHorizontal: 11,
+                borderRadius: radius.pill,
+                backgroundColor: byDay ? colors.coralSoft : 'transparent',
+                borderWidth: 1,
+                borderColor: byDay ? colors.coralSoft : colors.line,
+              }}
+            >
+              <Ionicons name={byDay ? 'calendar' : 'calendar-outline'} size={13} color={byDay ? colors.coralDeep : colors.inkMuted} />
+              <T v="caption" color={byDay ? colors.coralDeep : colors.inkSoft} style={{ fontFamily: font.semi }}>
+                {byDay ? 'Planning by weekday' : 'Plan by weekday?'}
+              </T>
+            </Press>
+          </Row>
 
-          {!recipes.length ? (
-            <Card soft style={{ padding: 20, alignItems: 'center' }}>
+          {/* Suggestions ----------------------------------------------- */}
+          {suggested.length ? (
+            <>
+              <Spacer h={12} />
+              <T v="over">Starred, maybe soon?</T>
+              <Spacer h={6} />
+              <Row style={{ flexWrap: 'wrap', gap: 6 }}>
+                {suggested.map((r) => (
+                  <Press
+                    key={r.id}
+                    onPress={() => {
+                      planMeal(r.id);
+                      say(`${r.name} picked`);
+                    }}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 5,
+                      backgroundColor: colors.card,
+                      borderWidth: 1,
+                      borderColor: colors.line,
+                      borderRadius: radius.pill,
+                      paddingLeft: 11,
+                      paddingRight: 8,
+                      paddingVertical: 6,
+                    }}
+                  >
+                    <T v="caption" color={colors.ink}>
+                      {r.name}
+                    </T>
+                    <Ionicons name="add" size={13} color={colors.coralDeep} />
+                  </Press>
+                ))}
+              </Row>
+            </>
+          ) : null}
+
+          {/* The picks ------------------------------------------------- */}
+          <Spacer h={14} />
+          {!total ? (
+            <Card soft style={{ padding: 22, alignItems: 'center' }}>
+              <Sticker kind="icecream" size={56} tilt={-8} />
+              <Spacer h={8} />
               <T v="heading" center>
-                No recipes to pick from yet
+                Nothing picked yet
               </T>
               <Spacer h={6} />
-              <T v="body" center>
-                Add some to your recipe book and they show up here.
+              <T v="body" center style={{ maxWidth: 280 }}>
+                Add a dish from your recipe book and it lands here. Give it a day if you like, or just
+                keep it for "soon".
               </T>
             </Card>
           ) : !picks.length ? (
             <T v="body" center color={colors.inkMuted}>
               Nothing matches {'“' + query.trim() + '”'}.
             </T>
-          ) : view === 'tiles' ? (
-            <Row style={{ flexWrap: 'wrap', gap: 8, alignItems: 'stretch' }}>
-              {picks.map(({ recipe, missing }) => (
-                <RecipeTile
-                  key={recipe.id}
-                  recipe={recipe}
-                  width={tileW}
-                  note={noteFor(missing, recipe.ingredients.length)}
-                  noteColor={missing.length ? colors.inkMuted : colors.sageDeep}
-                  onPress={() => setForRecipe(recipe)}
-                />
-              ))}
-            </Row>
           ) : (
-            <Card style={{ padding: 4 }}>
-              {picks.map(({ recipe, missing }, i) => {
-                const note = noteFor(missing, recipe.ingredients.length);
-                return (
-                  <Press
-                    key={recipe.id}
-                    onPress={() => setForRecipe(recipe)}
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 10,
-                      paddingVertical: 11,
-                      paddingHorizontal: 10,
-                      borderTopWidth: i ? 1 : 0,
-                      borderTopColor: colors.lineSoft,
-                    }}
-                  >
-                    {recipe.wanted ? <Ionicons name="star" size={12} color={colors.gold} /> : null}
-                    <View style={{ flex: 1 }}>
-                      <T v="heading" style={{ fontSize: 14 }} numberOfLines={1}>
-                        {recipe.name}
-                      </T>
-                      {note ? (
-                        <T v="caption" color={missing.length ? colors.inkMuted : colors.sageDeep}>
-                          {note}
-                        </T>
-                      ) : null}
-                    </View>
-                    <EffortMeter effort={recipe.effort} size={6} />
-                    <CookTime minutes={recipe.minutes} />
-                  </Press>
-                );
-              })}
-            </Card>
+            groups.map((g, gi) => (
+              <View key={g.title ?? gi}>
+                {g.title ? (
+                  <T v="over" style={{ marginBottom: 6, marginTop: gi ? 6 : 0 }} color={g.title === 'Today' ? colors.coralDeep : undefined}>
+                    {g.title}
+                  </T>
+                ) : null}
+                {view === 'tiles' ? renderTiles(g.items) : renderList(g.items)}
+              </View>
+            ))
           )}
-          <Spacer h={10} />
-          <T v="caption" center>
-            Tap a dish to give it a day. Hold a planned one to take it off.
-          </T>
+
+          {total ? (
+            <>
+              <Spacer h={6} />
+              <Btn small tone="ghost" icon="cart-outline" label="Put what the picks need on the list" onPress={shopForPicks} />
+              <T v="caption" center>
+                Tap a dish for more. Hold it to {byDay ? 'move it to another day' : 'give it a day'}.
+              </T>
+            </>
+          ) : null}
         </Screen>
       </KeyboardAvoidingView>
 
-      {forRecipe ? (
-        <DaySheet
-          title={forRecipe.name}
-          taken={mealPlan.filter((p) => p.recipeId === forRecipe.id).map((p) => p.day)}
-          onClose={() => setForRecipe(null)}
-          onPick={(d) => {
-            planMeal(forRecipe.id, d);
-            setForRecipe(null);
-            say(`${forRecipe.name} on ${dayLabel(d).toLowerCase()}`);
+      {open ? (
+        <PickSheet
+          pick={open}
+          byDay={byDay}
+          onClose={() => setOpen(null)}
+          onRecipe={() => {
+            setOpen(null);
+            router.push(`/recipe/${open.recipe.id}`);
+          }}
+          onCooked={() => {
+            cookRecipe(open.recipe.id);
+            setOpen(null);
+            say(`Yum! ${open.recipe.name} is in your history`);
+          }}
+          onDay={() => {
+            setMoving(open);
+            setOpen(null);
+          }}
+          onRemove={() => {
+            unplanMeal(open.meal.id);
+            setOpen(null);
           }}
         />
       ) : null}
 
-      {forDay ? (
+      {moving ? (
+        <DaySheet
+          title={moving.recipe.name}
+          current={moving.meal.day}
+          taken={mealPlan.filter((p) => p.recipeId === moving.recipe.id && p.id !== moving.meal.id).map((p) => p.day)}
+          onClose={() => setMoving(null)}
+          onPick={(d) => {
+            setMealDay(moving.meal.id, d);
+            setMoving(null);
+            say(d ? `${moving.recipe.name} on ${dayLabel(d).toLowerCase()}` : `${moving.recipe.name} is for soon`);
+          }}
+        />
+      ) : null}
+
+      {adding ? (
         <BookSheet
-          day={forDay}
-          days={days}
           recipes={recipes}
-          onDay={setForDay}
-          onClose={() => setForDay(null)}
-          onPick={(r) => {
-            planMeal(r.id, forDay);
-            setForDay(null);
-            say(`${r.name} on ${dayLabel(forDay).toLowerCase()}`);
+          picked={picked}
+          byDay={byDay}
+          onClose={() => setAdding(false)}
+          onPick={(r, day) => {
+            planMeal(r.id, day);
+            say(day ? `${r.name} on ${dayLabel(day).toLowerCase()}` : `${r.name} picked`);
           }}
           onNew={() => {
-            setForDay(null);
+            setAdding(false);
             router.push('/recipe/new');
           }}
         />
@@ -372,44 +465,20 @@ function ViewToggle({
         onPress();
       }}
       style={{
-        width: 30,
-        height: 30,
+        width: 32,
+        height: 28,
         borderRadius: 9,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: on ? colors.card : 'transparent',
-        borderWidth: on ? 1 : 0,
-        borderColor: colors.line,
       }}
     >
-      <Ionicons name={icon} size={15} color={on ? colors.ink : colors.inkMuted} />
+      <Ionicons name={icon} size={15} color={on ? colors.coralDeep : colors.inkMuted} />
     </Press>
   );
 }
 
-/** The whole book in a sheet, to drop a dish onto one day. */
-function BookSheet({
-  day,
-  days,
-  recipes,
-  onDay,
-  onPick,
-  onNew,
-  onClose,
-}: {
-  day: string;
-  days: string[];
-  recipes: Recipe[];
-  onDay: (d: string) => void;
-  onPick: (r: Recipe) => void;
-  onNew: () => void;
-  onClose: () => void;
-}) {
-  const [q, setQ] = useState('');
-  const list = [...recipes]
-    .filter((r) => !q.trim() || r.name.toLowerCase().includes(q.trim().toLowerCase()))
-    .sort((a, b) => (!!a.wanted !== !!b.wanted ? (a.wanted ? -1 : 1) : a.name.localeCompare(b.name)));
-
+function Sheet({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
   return (
     <Pressable
       onPress={onClose}
@@ -419,86 +488,177 @@ function BookSheet({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#2E2A25CC',
+        backgroundColor: '#3D2836B8',
         justifyContent: 'flex-end',
       }}
     >
       <Pressable onPress={() => {}}>
-        <Card style={{ margin: 12, padding: 18 }}>
-          <T v="over">From the book, for</T>
-          <Spacer h={8} />
+        <Card style={{ margin: 12, padding: 18 }}>{children}</Card>
+      </Pressable>
+    </Pressable>
+  );
+}
+
+/** What you can do with a pick. */
+function PickSheet({
+  pick,
+  byDay,
+  onClose,
+  onRecipe,
+  onCooked,
+  onDay,
+  onRemove,
+}: {
+  pick: Pick;
+  byDay: boolean;
+  onClose: () => void;
+  onRecipe: () => void;
+  onCooked: () => void;
+  onDay: () => void;
+  onRemove: () => void;
+}) {
+  return (
+    <Sheet onClose={onClose}>
+      <Row style={{ gap: 10 }}>
+        <View style={{ flex: 1 }}>
+          <T v="over">{dayLabel(pick.meal.day)}</T>
+          <Spacer h={4} />
+          <T v="title" style={{ fontSize: 20 }}>
+            {pick.recipe.name}
+          </T>
+        </View>
+        <EffortMeter effort={pick.recipe.effort} size={12} />
+      </Row>
+      <Spacer h={16} />
+      <Btn icon="sparkles" label="Cooked it!" onPress={onCooked} />
+      <Spacer h={8} />
+      <Row style={{ gap: 8 }}>
+        <Btn style={{ flex: 1 }} small tone="quiet" icon="book-outline" label="Recipe" onPress={onRecipe} />
+        <Btn
+          style={{ flex: 1 }}
+          small
+          tone="quiet"
+          icon="calendar-outline"
+          label={pick.meal.day ? 'Change day' : byDay ? 'Give it a day' : 'A day?'}
+          onPress={onDay}
+        />
+      </Row>
+      <Spacer h={8} />
+      <Btn small tone="ghost" icon="close" label="Take it off the picks" onPress={onRemove} />
+    </Sheet>
+  );
+}
+
+/** The whole book in a sheet, to pick from or to write a new one. */
+function BookSheet({
+  recipes,
+  picked,
+  byDay,
+  onPick,
+  onNew,
+  onClose,
+}: {
+  recipes: Recipe[];
+  picked: Set<string>;
+  byDay: boolean;
+  onPick: (r: Recipe, day?: string) => void;
+  onNew: () => void;
+  onClose: () => void;
+}) {
+  const [q, setQ] = useState('');
+  const [day, setDay] = useState<string | undefined>(undefined);
+  const list = [...recipes]
+    .filter((r) => !q.trim() || r.name.toLowerCase().includes(q.trim().toLowerCase()))
+    .sort((a, b) => (!!a.wanted !== !!b.wanted ? (a.wanted ? -1 : 1) : a.name.localeCompare(b.name)));
+
+  return (
+    <Sheet onClose={onClose}>
+      <Row style={{ gap: 10 }}>
+        <RecipeBookArt size={40} />
+        <View style={{ flex: 1 }}>
+          <T v="over">From your recipe book</T>
+          <T v="heading">Pick something to cook</T>
+        </View>
+      </Row>
+      {byDay ? (
+        <>
+          <Spacer h={10} />
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Row style={{ gap: 6 }}>
-              {days.map((d) => (
+              {[undefined, ...nextDays(7)].map((d) => (
                 <Press
-                  key={d}
-                  onPress={() => onDay(d)}
+                  key={d ?? 'none'}
+                  onPress={() => setDay(d)}
                   style={{
                     paddingVertical: 7,
                     paddingHorizontal: 12,
                     borderRadius: radius.pill,
-                    backgroundColor: d === day ? colors.ink : colors.cardAlt,
+                    backgroundColor: d === day ? colors.coral : colors.cardAlt,
                   }}
                 >
-                  <T v="caption" color={d === day ? colors.onDark : colors.inkSoft}>
+                  <T v="caption" color={d === day ? '#FFFFFF' : colors.inkSoft}>
                     {dayLabel(d)}
                   </T>
                 </Press>
               ))}
             </Row>
           </ScrollView>
-          <Spacer h={12} />
-          <TextInput
-            value={q}
-            onChangeText={setQ}
-            placeholder="Search the book"
-            placeholderTextColor={colors.inkMuted}
-            style={{
-              backgroundColor: colors.cardAlt,
-              borderRadius: radius.md,
-              paddingHorizontal: 12,
-              paddingVertical: 10,
-              fontFamily: font.medium,
-              fontSize: 14.5,
-              color: colors.ink,
-            }}
-          />
-          <Spacer h={8} />
-          <ScrollView style={{ maxHeight: 300 }} keyboardShouldPersistTaps="handled">
-            {list.map((r) => (
-              <Press
-                key={r.id}
-                onPress={() => onPick(r)}
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 8,
-                  paddingVertical: 11,
-                  borderBottomWidth: 1,
-                  borderBottomColor: colors.lineSoft,
-                }}
-              >
-                {r.wanted ? <Ionicons name="star" size={12} color={colors.gold} /> : null}
-                <T v="body" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
-                  {r.name}
-                </T>
-                <EffortMeter effort={r.effort} size={6} />
-                <CookTime minutes={r.minutes} />
-              </Press>
-            ))}
-            {!list.length ? (
-              <T v="caption" center style={{ paddingVertical: 14 }}>
-                {recipes.length ? 'Nothing matches.' : 'The book is empty.'}
+        </>
+      ) : null}
+      <Spacer h={12} />
+      <TextInput
+        value={q}
+        onChangeText={setQ}
+        placeholder="Search the book"
+        placeholderTextColor={colors.inkMuted}
+        style={{
+          backgroundColor: colors.cardAlt,
+          borderRadius: radius.md,
+          paddingHorizontal: 12,
+          paddingVertical: 10,
+          fontFamily: font.medium,
+          fontSize: 14.5,
+          color: colors.ink,
+        }}
+      />
+      <Spacer h={8} />
+      <ScrollView style={{ maxHeight: 300 }} keyboardShouldPersistTaps="handled">
+        {list.map((r) => {
+          const on = picked.has(r.id);
+          return (
+            <Press
+              key={r.id}
+              onPress={() => onPick(r, day)}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+                paddingVertical: 11,
+                borderBottomWidth: 1,
+                borderBottomColor: colors.lineSoft,
+              }}
+            >
+              {r.wanted ? <Ionicons name="star" size={12} color={colors.gold} /> : null}
+              <T v="body" color={colors.ink} style={{ flex: 1 }} numberOfLines={1}>
+                {r.name}
               </T>
-            ) : null}
-          </ScrollView>
-          <Spacer h={12} />
-          <Row style={{ gap: 8 }}>
-            <Btn style={{ flex: 1 }} small tone="quiet" icon="add" label="New recipe" onPress={onNew} />
-            <Btn style={{ flex: 1 }} small tone="ghost" label="Close" onPress={onClose} />
-          </Row>
-        </Card>
-      </Pressable>
-    </Pressable>
+              <EffortMeter effort={r.effort} size={6} />
+              <CookTime minutes={r.minutes} />
+              <Ionicons name={on ? 'checkmark-circle' : 'add-circle-outline'} size={18} color={on ? colors.sageDeep : colors.coral} />
+            </Press>
+          );
+        })}
+        {!list.length ? (
+          <T v="caption" center style={{ paddingVertical: 14 }}>
+            {recipes.length ? 'Nothing matches.' : 'The book is empty.'}
+          </T>
+        ) : null}
+      </ScrollView>
+      <Spacer h={12} />
+      <Row style={{ gap: 8 }}>
+        <Btn style={{ flex: 1 }} small tone="quiet" icon="add" label="New into the book" onPress={onNew} />
+        <Btn style={{ flex: 1 }} small tone="ghost" label="Done" onPress={onClose} />
+      </Row>
+    </Sheet>
   );
 }

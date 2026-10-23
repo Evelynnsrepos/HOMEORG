@@ -6,16 +6,17 @@ import {
   BricolageGrotesque_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/bricolage-grotesque';
+import { DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useStore } from '../src/state/store';
 import { MusicEngine } from '../src/ui/MusicEngine';
-import { colors } from '../src/theme';
+import { applyTheme, colors, currentTheme, themeReturn } from '../src/theme';
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -24,12 +25,28 @@ export default function RootLayout() {
     Bricolage_600SemiBold: BricolageGrotesque_600SemiBold,
     Bricolage_700Bold: BricolageGrotesque_700Bold,
     Bricolage_800ExtraBold: BricolageGrotesque_800ExtraBold,
+    Script_700Bold: DancingScript_700Bold,
   });
 
   const hydrated = useStore((s) => s.hydrated);
   const onboarded = useStore((s) => s.settings.onboarded);
+  const theme = useStore((s) => s.settings.theme);
   const segments = useSegments();
   const router = useRouter();
+
+  // The scheme is copied into `colors` before anything draws. Changing it
+  // remounts the tree below (see the key), because screens read colours as
+  // they render and navigation keeps its screens around otherwise.
+  if (theme && currentTheme().id !== theme) applyTheme(theme);
+  const themeId = currentTheme().id;
+
+  // the remount lands on Home; take the person back to where they changed it
+  useEffect(() => {
+    const to = themeReturn.route;
+    if (!to || !hydrated || !fontsLoaded) return;
+    themeReturn.route = null;
+    if (Platform.OS !== 'web') router.push(to as never);
+  }, [themeId, hydrated, fontsLoaded, router]);
 
   useEffect(() => {
     if (!hydrated || !fontsLoaded) return;
@@ -47,9 +64,9 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView key={themeId} style={{ flex: 1, backgroundColor: colors.bg }}>
       <SafeAreaProvider>
-        <StatusBar style="dark" />
+        <StatusBar style={currentTheme().dark ? 'light' : 'dark'} />
         <MusicEngine />
         <Stack
           screenOptions={{

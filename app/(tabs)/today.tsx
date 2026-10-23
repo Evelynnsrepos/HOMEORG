@@ -11,6 +11,7 @@ import { colors, radius } from '../../src/theme';
 import { Bar, Btn, Card, Empty, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
 import { Confetti } from '../../src/ui/Confetti';
 import { GroupHeader, TaskRow, Toast } from '../../src/ui/TaskRow';
+import { ScreenGarland } from '../../src/ui/Decor';
 
 export default function TodayTab() {
   const router = useRouter();
@@ -66,6 +67,7 @@ export default function TodayTab() {
   return (
     <View style={{ flex: 1 }}>
       <Screen>
+        <ScreenGarland seed={3} />
         <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <View>
             <T v="display" style={{ fontSize: 32 }}>

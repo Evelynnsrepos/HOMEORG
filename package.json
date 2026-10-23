@@ -1,11 +1,13 @@
 {
   "name": "tidywell",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo-google-fonts/bricolage-grotesque": "^0.4.1",
+    "@expo-google-fonts/dancing-script": "^0.4.2",
     "@expo/vector-icons": "^15.1.1",
     "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-native-ml-kit/text-recognition": "^2.0.0",
     "expo": "~57.0.20",
     "expo-audio": "^57.0.4",
     "expo-camera": "^57.0.4",
@@ -50,7 +52,11 @@
     "icons": "node scripts/make-icons.js",
     "music": "node scripts/prepare-music.js",
     "apk": "expo prebuild -p android && node scripts/sign-android.js && node scripts/build-apk.js",
-    "test:rewe": "tsx scripts/test-rewe.ts"
+    "test:rewe": "tsx scripts/test-rewe.ts",
+    "test:shelf": "tsx scripts/test-shelf.ts",
+    "test:gs1": "tsx scripts/test-gs1.ts",
+    "test:dates": "tsx scripts/test-dates.ts",
+    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts && tsx scripts/test-gs1.ts && tsx scripts/test-dates.ts"
   },
   "private": true,
   "overrides": {

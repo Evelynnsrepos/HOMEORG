@@ -70,6 +70,14 @@ export interface Settings {
   /** allow the one outbound call the app makes: barcode lookup */
   lookupOnline: boolean;
   onboarded: boolean;
+  /** "Let's cook it" groups the picks by weekday. Off: one shortlist. */
+  cookByDay?: boolean;
+  /** colour scheme id from src/theme.ts; missing means the default */
+  theme?: string;
+  /** vines and fairy lights; missing means whatever the scheme does */
+  showVines?: boolean;
+  /** stickers on cards; missing means whatever the scheme does */
+  showStickers?: boolean;
 }
 
 export interface ChallengeProgress {
@@ -121,13 +129,25 @@ export type RecipeEffort = 1 | 2 | 3;
 /** The bits of a recipe besides its name and what goes in it. */
 export type RecipeExtra = Pick<Recipe, 'steps' | 'link' | 'minutes' | 'effort'>;
 
-/** One dish put on one of the next days in "Let's cook it". */
+/**
+ * One dish picked in "Let's cook it". A day is optional: most picks are just
+ * "soon", and only people who plan by weekday give them one.
+ */
 export interface PlannedMeal {
   id: string;
   recipeId: string;
-  /** day key */
-  day: string;
+  /** day key, when the pick is meant for a particular day */
+  day?: string;
   createdAt: string;
+}
+
+/** Every time "Cooked it" was pressed, so History can count what you made. */
+export interface CookedMeal {
+  id: string;
+  recipeId: string;
+  /** the name then, in case the recipe is thrown out later */
+  name: string;
+  at: string;
 }
 
 /**
@@ -159,8 +179,24 @@ export interface PantryItem {
   place: 'fridge' | 'freezer' | 'pantry';
   /** day key — optional, only for things that go off */
   bestBefore?: string;
+  /**
+   * true: the date was looked up from data/shelfLife.ts and follows the item
+   * when it moves shelf. false: you set it (or said it keeps), leave it alone.
+   * Missing on items from before the lookup existed.
+   */
+  bestBeforeAuto?: boolean;
+  /** other words for it from a barcode lookup, so a moved item is looked up again just as well */
+  hints?: string[];
   addedAt: string;
 }
+
+/**
+ * Something going onto a shelf. `bestBefore` undefined means "look it up",
+ * null means "it keeps, no date", a day key is the date on the packet.
+ */
+export type NewPantryItem = Omit<PantryItem, 'id' | 'addedAt' | 'bestBefore' | 'bestBeforeAuto'> & {
+  bestBefore?: string | null;
+};
 
 export interface ShoppingItem {
   id: string;

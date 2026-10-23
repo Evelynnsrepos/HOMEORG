@@ -18,7 +18,8 @@ Repository context:
 - This is a local-first household/cleaning app built with Expo and React Native.
 - Data is stored locally on-device; avoid introducing server dependencies or cloud sync requirements unless explicitly requested.
 - Preserve existing app patterns for state, utilities, and feature organization.
-- Keep changes consistent with the app's German-language UX and project structure.
+- Keep changes consistent with the app's English UI copy (the README is German) and project structure.
+- Follow AGENTS.md at the repository root: it has the commands, rules and release steps.
 
 When working on code:
 - Inspect the relevant files narrowly before editing.

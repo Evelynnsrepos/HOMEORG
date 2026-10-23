@@ -173,7 +173,7 @@ export default function Pantry() {
               <Btn
                 tone="quiet"
                 icon="document-text-outline"
-                label="REWE order"
+                label="REWE PDF"
                 onPress={() => router.push('/import')}
               />
             </View>
@@ -197,7 +197,7 @@ export default function Pantry() {
                     </T>
                     <T v="caption">
                       {qtyLabel(item.qty, item.unit)}
-                      {item.bestBefore ? ` · best before ${item.bestBefore.slice(5)}` : ''}
+                      {item.bestBefore ? ` · best before ${item.bestBeforeAuto ? '≈ ' : ''}${item.bestBefore.slice(5)}` : ''}
                     </T>
                   </Press>
 
@@ -251,7 +251,10 @@ export default function Pantry() {
             qty: editing.qty,
             unit: editing.unit,
             place: editing.place,
-            bestBefore: editing.bestBefore,
+            // a looked-up date stays "Auto" so it follows a move to the freezer
+            bestBefore: editing.bestBeforeAuto
+              ? undefined
+              : (editing.bestBefore ?? (editing.bestBeforeAuto === false ? null : undefined)),
           }}
           confirmLabel="Save"
           onCancel={() => setEditing(null)}
@@ -324,7 +327,7 @@ function ItemMenu({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#2E2A25CC',
+        backgroundColor: '#3D2836B8',
         justifyContent: 'flex-end',
       }}
     >

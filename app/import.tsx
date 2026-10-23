@@ -31,8 +31,8 @@ async function bytesOf(asset: DocumentPicker.DocumentPickerAsset): Promise<Uint8
 const reweDay = (day?: string) => (day ? `${day.slice(8)}.${day.slice(5, 7)}` : '');
 
 /**
- * Hand it the PDF REWE sends with a pickup or delivery and the whole shop goes
- * on the shelves at once. Read on the phone, nothing is uploaded. You get to
+ * Hand it the PDF REWE sends with a pickup or delivery, or the eBon from the
+ * till, and the whole shop goes on the shelves at once. Read on the phone, nothing is uploaded. You get to
  * look over the list first, because a guess about where Halloumi lives is
  * still a guess.
  */
@@ -67,7 +67,7 @@ export default function ImportOrder() {
         kind: 'failed',
         message:
           e instanceof NotAReweOrder
-            ? "That PDF doesn't look like a REWE order. It wants the Abhol- or Lieferavis REWE sends by email."
+            ? "That PDF doesn't look like a REWE order or eBon. It wants the Abhol- or Lieferavis, or the eBon from the till."
             : "That file couldn't be opened. Try saving the PDF again and picking it from Files.",
       });
     }
@@ -129,7 +129,7 @@ export default function ImportOrder() {
       <Screen>
         <Row style={{ justifyContent: 'space-between' }}>
           <IconBtn name="chevron-back" onPress={back} />
-          <T v="heading">Import an order</T>
+          <T v="heading">Import a shop</T>
           <View style={{ width: 38 }} />
         </Row>
         <Spacer h={60} />
@@ -142,8 +142,8 @@ export default function ImportOrder() {
         </T>
         <Spacer h={6} />
         <T v="body" center style={{ alignSelf: 'center', maxWidth: 300 }}>
-          Pick the PDF REWE emails with a pickup or delivery. It's read on this phone and never
-          uploaded.
+          Pick the PDF REWE emails with a pickup or delivery, or the eBon from the till. It's read
+          on this phone and never uploaded.
         </T>
         <Spacer h={22} />
         <Btn icon="document-text-outline" label="Choose the PDF" onPress={pick} />
@@ -156,7 +156,7 @@ export default function ImportOrder() {
       <Screen>
         <Row style={{ justifyContent: 'space-between' }}>
           <IconBtn name="chevron-back" onPress={back} />
-          <T v="heading">Import an order</T>
+          <T v="heading">Import a shop</T>
           <View style={{ width: 38 }} />
         </Row>
         <Spacer h={60} />
@@ -224,7 +224,7 @@ export default function ImportOrder() {
       <Screen>
         <Row style={{ justifyContent: 'space-between' }}>
           <IconBtn name="chevron-back" onPress={back} />
-          <T v="heading">Import an order</T>
+          <T v="heading">Import a shop</T>
           <View style={{ width: 38 }} />
         </Row>
 

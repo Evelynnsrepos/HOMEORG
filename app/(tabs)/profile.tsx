@@ -7,6 +7,7 @@ import { useStats } from '../../src/state/derived';
 import { useStore } from '../../src/state/store';
 import { colors, font } from '../../src/theme';
 import { Card, Divider, Press, Row, Screen, Spacer, T, tap } from '../../src/ui/base';
+import { ScreenGarland } from '../../src/ui/Decor';
 
 export default function Profile() {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function Profile() {
 
   return (
     <Screen>
+      <ScreenGarland seed={9} />
       <Row style={{ gap: 14 }}>
         <View
           style={{

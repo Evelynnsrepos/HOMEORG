@@ -4,7 +4,7 @@ import { Animated, Easing, View } from 'react-native';
 import { colors } from '../theme';
 
 const PIECES = 18;
-const PALETTE = [colors.coral, colors.sage, colors.gold, '#A78BC4', '#7FA8C4', '#E2856A'];
+const palette = () => [colors.coral, colors.sage, colors.gold, colors.lilac, '#7FA8C4', colors.ember];
 
 /**
  * A small burst for the moment something gets ticked off. Purely decorative —
@@ -31,7 +31,7 @@ export function Confetti({
           key: `${trigger}-${i}`,
           dx: Math.cos(angle) * spread * (0.35 + ((i * 37) % 65) / 100),
           dy: Math.sin(angle) * spread * (0.3 + ((i * 53) % 55) / 100) - 40,
-          color: PALETTE[i % PALETTE.length],
+          color: palette()[i % palette().length],
           size: 5 + ((i * 13) % 5),
           round: i % 3 === 0,
           spin: i % 2 ? 1 : -1,

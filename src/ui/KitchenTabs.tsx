@@ -7,7 +7,7 @@ import { Row, tap } from './base';
 
 /** The kitchen screens share one segmented header. */
 const tabs = [
-  { id: 'kitchen', label: 'Pantry', href: '/kitchen' },
+  { id: 'kitchen', label: 'Kitchen', href: '/kitchen' },
   { id: 'cook', label: 'Cook', href: '/cook' },
   { id: 'recipes', label: 'Recipes', href: '/recipes' },
   { id: 'shopping', label: 'Shopping', href: '/shopping' },

@@ -6,6 +6,7 @@ import { presetChallenges } from '../data/challenges';
 import { roomTypeById } from '../data/roomTypes';
 import { shopItems } from '../data/shop';
 import { starterFor } from '../data/starterRooms';
+import { autoBestBefore } from '../data/shelfLife';
 import { unitStep as pantryStep, type Place } from '../data/units';
 import { dayKey } from '../lib/date';
 import { coinsForEffort, momentumBonus, taskCycleMs } from '../lib/engine';
@@ -22,6 +23,8 @@ import type {
   LegacySavedMeal,
   PantryItem,
   PinnedNote,
+  CookedMeal,
+  NewPantryItem,
   PlannedMeal,
   Recipe,
   RecipeExtra,
@@ -72,8 +75,9 @@ interface State {
   challenges: ChallengeProgress[];
   customChallenges: CustomChallenge[];
   recipes: Recipe[];
-  /** dishes put on the next days */
+  /** dishes picked in "Let's cook it", some with a day */
   mealPlan: PlannedMeal[];
+  cookLog: CookedMeal[];
   shopping: ShoppingItem[];
   pantry: PantryItem[];
   /** shelf you moved something to, by lowercased name, so the next order gets it right */
@@ -129,7 +133,10 @@ interface Actions {
   /** what is missing goes on the list, and the dish gets starred for the planner. Returns how many went on. */
   recipeToList: (id: string) => number;
 
-  planMeal: (recipeId: string, day: string) => void;
+  /** Pick a dish, for a day or for "soon". The same dish twice on one day (or twice undated) is a slip of the thumb. */
+  planMeal: (recipeId: string, day?: string) => void;
+  /** Move a pick to another day, or take its day away. */
+  setMealDay: (id: string, day?: string) => void;
   unplanMeal: (id: string) => void;
 
   addShopping: (name: string, qty?: number, from?: string) => void;
@@ -137,14 +144,16 @@ interface Actions {
   removeShopping: (id: string) => void;
   clearDoneShopping: () => void;
 
-  addPantry: (item: Omit<PantryItem, 'id' | 'addedAt'>) => void;
+  /** No best-before given? It's looked up from where the thing goes (data/shelfLife.ts). */
+  addPantry: (item: NewPantryItem) => void;
   adjustPantry: (id: string, delta: number) => void;
-  updatePantry: (id: string, patch: Partial<PantryItem>) => void;
+  /** Moving a looked-up item to another shelf looks its date up again, counting from now. */
+  updatePantry: (id: string, patch: Partial<Omit<PantryItem, 'bestBefore'>> & { bestBefore?: string | null }) => void;
   removePantry: (id: string) => void;
   useUpIngredients: (names: string[]) => void;
   rememberShelf: (name: string, place: Place) => void;
   /** a whole shop at once: onto the shelves, off the list. Returns how many list items it ticked. */
-  putAway: (items: Omit<PantryItem, 'id' | 'addedAt'>[], orderNo?: string) => number;
+  putAway: (items: NewPantryItem[], orderNo?: string) => number;
 
   addNote: (title: string, body: string) => void;
   removeNote: (id: string) => void;
@@ -172,6 +181,7 @@ const initialState: State = {
   customChallenges: [],
   recipes: [],
   mealPlan: [],
+  cookLog: [],
   shopping: [],
   pantry: [],
   shelfMemory: {},
@@ -251,6 +261,46 @@ function withStarters(inventory: string[], rooms: Room[]): string[] {
  * that no longer exist. Drop those, and if that empties a room out entirely,
  * hand it its starter set back rather than leaving it bare.
  */
+/** What a new or edited item's date should be: given, "keeps", or looked up. */
+function datedFor(
+  name: string,
+  place: Place,
+  given: string | null | undefined,
+  from: Date | string = new Date(),
+  hints: string[] = [],
+): { bestBefore?: string; bestBeforeAuto: boolean } {
+  if (given) return { bestBefore: given, bestBeforeAuto: false };
+  if (given === null) return { bestBeforeAuto: false };
+  return { bestBefore: autoBestBefore(name, place, from, hints), bestBeforeAuto: true };
+}
+
+function withDate<T extends { bestBefore?: string; bestBeforeAuto?: boolean }>(
+  item: T,
+  dated: { bestBefore?: string; bestBeforeAuto: boolean },
+): T {
+  const { bestBefore: _old, ...rest } = item;
+  return {
+    ...(rest as T),
+    ...(dated.bestBefore ? { bestBefore: dated.bestBefore } : {}),
+    bestBeforeAuto: dated.bestBeforeAuto,
+  };
+}
+
+/**
+ * Shelves from before the lookup existed: anything without a date gets one,
+ * counted from when it went in. Runs on every start, but only touches items
+ * that have never been dated either way.
+ */
+function dateOldShelves(pantry: PantryItem[]): PantryItem[] | null {
+  let changed = false;
+  const out = pantry.map((p) => {
+    if (p.bestBefore || p.bestBeforeAuto !== undefined) return p;
+    changed = true;
+    return withDate(p, datedFor(p.name, p.place, undefined, p.addedAt, p.hints));
+  });
+  return changed ? out : null;
+}
+
 function reconcileDecor(state: Store): Partial<Store> | null {
   if (!state.rooms?.length) return null;
   const known = new Set(shopItems.map((i) => i.id));
@@ -654,19 +704,20 @@ export const useStore = create<Store>()(
         })),
 
       /**
-       * Cooked it: the shelves come down a step and the recipe gets a date.
-       * The plan for today (or a day already gone) is done with, too.
+       * Cooked it: the shelves come down a step, the recipe gets a date and
+       * the log gets a line. The pick for today, a day already gone or no day
+       * at all is done with, too; one for later in the week stays.
        */
       cookRecipe: (id) => {
         const recipe = get().recipes.find((r) => r.id === id);
         if (!recipe) return;
         get().useUpIngredients(recipe.ingredients);
         const today = dayKey();
+        const now = new Date().toISOString();
         set((s) => ({
-          recipes: s.recipes.map((r) =>
-            r.id === id ? { ...r, lastCooked: new Date().toISOString() } : r,
-          ),
-          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || m.day > today),
+          recipes: s.recipes.map((r) => (r.id === id ? { ...r, lastCooked: now } : r)),
+          mealPlan: s.mealPlan.filter((m) => m.recipeId !== id || (!!m.day && m.day > today)),
+          cookLog: [...(s.cookLog ?? []), { id: uid('cook'), recipeId: id, name: recipe.name, at: now }],
         }));
       },
 
@@ -682,7 +733,6 @@ export const useStore = create<Store>()(
         return missing.length;
       },
 
-      /** The same dish twice on one day is a slip of the thumb, not a plan. */
       planMeal: (recipeId, day) =>
         set((s) =>
           s.mealPlan.some((m) => m.recipeId === recipeId && m.day === day)
@@ -690,10 +740,19 @@ export const useStore = create<Store>()(
             : {
                 mealPlan: [
                   ...s.mealPlan,
-                  { id: uid('meal'), recipeId, day, createdAt: new Date().toISOString() },
+                  { id: uid('meal'), recipeId, ...(day ? { day } : {}), createdAt: new Date().toISOString() },
                 ],
               },
         ),
+
+      setMealDay: (id, day) =>
+        set((s) => ({
+          mealPlan: s.mealPlan.map((m) => {
+            if (m.id !== id) return m;
+            const { day: _old, ...rest } = m;
+            return day ? { ...rest, day } : rest;
+          }),
+        })),
 
       unplanMeal: (id) => set((s) => ({ mealPlan: s.mealPlan.filter((m) => m.id !== id) })),
 
@@ -728,22 +787,29 @@ export const useStore = create<Store>()(
         set((s) => {
           const key = item.name.trim().toLowerCase();
           if (!key) return {};
+          const dated = datedFor(item.name, item.place, item.bestBefore, new Date(), item.hints);
           const same = s.pantry.find(
             (p) =>
               p.name.trim().toLowerCase() === key && p.unit === item.unit && p.place === item.place,
           );
           if (same) {
+            // a date you typed wins; otherwise the older stock's date stands, it goes first
+            const keep = same.bestBefore && dated.bestBeforeAuto !== false;
             return {
               pantry: s.pantry.map((p) =>
                 p.id === same.id
-                  ? { ...p, qty: p.qty + item.qty, bestBefore: item.bestBefore ?? p.bestBefore }
+                  ? withDate<PantryItem>({ ...p, qty: p.qty + item.qty }, keep ? { bestBefore: p.bestBefore, bestBeforeAuto: !!p.bestBeforeAuto } : dated)
                   : p,
               ),
             };
           }
+          const { bestBefore: _given, ...rest } = item;
           return {
             pantry: [
-              { ...item, name: item.name.trim(), id: uid('pan'), addedAt: new Date().toISOString() },
+              withDate<PantryItem>(
+                { ...rest, name: item.name.trim(), id: uid('pan'), addedAt: new Date().toISOString() },
+                dated,
+              ),
               ...s.pantry,
             ],
           };
@@ -760,7 +826,22 @@ export const useStore = create<Store>()(
         })),
 
       updatePantry: (id, patch) =>
-        set((s) => ({ pantry: s.pantry.map((p) => (p.id === id ? { ...p, ...patch } : p)) })),
+        set((s) => ({
+          pantry: s.pantry.map((p) => {
+            if (p.id !== id) return p;
+            const { bestBefore, ...rest } = patch;
+            const next = { ...p, ...rest };
+            if ('bestBefore' in patch) {
+              // undefined asks for a lookup: from now if it moved shelf, else from when it came in
+              const moved = next.place !== p.place;
+              return withDate(next, datedFor(next.name, next.place, bestBefore, moved ? new Date() : p.addedAt, next.hints));
+            }
+            if (p.bestBeforeAuto && next.place !== p.place) {
+              return withDate(next, datedFor(next.name, next.place, undefined, new Date(), next.hints));
+            }
+            return next;
+          }),
+        })),
 
       removePantry: (id) => set((s) => ({ pantry: s.pantry.filter((p) => p.id !== id) })),
 
@@ -894,6 +975,8 @@ export const useStore = create<Store>()(
         if (!state) return;
         const fixed = reconcileDecor(state);
         if (fixed) useStore.setState(fixed);
+        const dated = dateOldShelves(state.pantry ?? []);
+        if (dated) useStore.setState({ pantry: dated });
         state.setHydrated();
       },
     },

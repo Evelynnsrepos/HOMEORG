@@ -27,7 +27,8 @@ import { colors, font, radius, shadow } from '../theme';
 
 type Variant = 'display' | 'title' | 'heading' | 'body' | 'label' | 'caption' | 'over';
 
-const variants: Record<Variant, TextStyle> = {
+/** Built per render, so the text follows the active colour scheme. */
+const variants = (): Record<Variant, TextStyle> => ({
   display: { fontFamily: font.display, fontSize: 34, lineHeight: 38, color: colors.ink },
   title: { fontFamily: font.bold, fontSize: 22, lineHeight: 27, color: colors.ink },
   heading: { fontFamily: font.semi, fontSize: 16, lineHeight: 21, color: colors.ink },
@@ -41,7 +42,7 @@ const variants: Record<Variant, TextStyle> = {
     color: colors.inkMuted,
     textTransform: 'uppercase',
   },
-};
+});
 
 export function T({
   v = 'body',
@@ -53,7 +54,7 @@ export function T({
   return (
     <Text
       {...rest}
-      style={[variants[v], color ? { color } : null, center ? { textAlign: 'center' } : null, style]}
+      style={[variants()[v], color ? { color } : null, center ? { textAlign: 'center' } : null, style]}
     />
   );
 }
