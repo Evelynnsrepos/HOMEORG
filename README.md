@@ -249,6 +249,9 @@ gibt es freundliche Worte statt mehr Aufgaben. Unter Profil → „How you've
 been" liegen alle Daten als Kalender-Raster und Diagramme — nur auf dem Handy.
 
 Sticker neu schneiden: `python3 scripts/build-stickers.py` (braucht Pillow).
+Dazu kommen 57 selbst gezeichnete Haustiere in drei Sets (Hauskatzen, Wildkatzen
+wie Manul, Serval und Tiger, Vögel und Häschen) aus `scripts/pets/`; jeden
+Monat ist ein Tier-Set neben drei Möbel-Sets in der Maschine.
 Wände und Böden (rund 250 Tapeten und 150 Böden in 16 Mustern, je mit einer
 rosa Variante) entstehen mit `python3 scripts/build-surfaces.py`.
 

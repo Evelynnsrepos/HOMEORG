@@ -96,6 +96,8 @@ interface State {
   pieces: string[];
   /** the welcome kit of stickers has been handed out */
   welcomeKit: boolean;
+  /** the first pets were handed out (installs from before pets get them once) */
+  petKit?: boolean;
   /** every coin earned outside chores' own price, with where it came from — for caps, streaks and the data screen */
   coinLog: CoinEvent[];
   moods: MoodEntry[];
@@ -1167,7 +1169,11 @@ export const useStore = create<Store>()(
         const known = forgetLostPieces(useStore.getState());
         if (known) useStore.setState(known);
         if (!state.welcomeKit) {
-          useStore.setState({ pieces: [...new Set([...(state.pieces ?? []), ...starterPieces()])], welcomeKit: true });
+          useStore.setState({ pieces: [...new Set([...(state.pieces ?? []), ...starterPieces()])], welcomeKit: true, petKit: true });
+        } else if (!state.petKit) {
+          // pets came later: everyone who already had the welcome kit meets a few now
+          const kit = starterPieces().filter((id) => id.startsWith('pet-'));
+          useStore.setState({ pieces: [...new Set([...(useStore.getState().pieces ?? []), ...kit])], petKit: true });
         }
         state.setHydrated();
       },

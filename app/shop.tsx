@@ -26,10 +26,12 @@ const rarityTone = (r: Rarity) => (r === 'epic' ? colors.gold : r === 'rare' ? c
 
 /**
  * The sticker machine. Coins in, a capsule out, and inside it always a piece
- * you don't have yet — from this month's three sets, which change on the
- * first of every month. Coins only come from looking after your home and
+ * you don't have yet — from this month's three furniture sets and one set
+ * of pets, which change on the first of every month. Coins only come from looking after your home and
  * yourself; there is nothing to buy here with real money, ever.
  */
+const pets = (sid: string) => stickerSets.find((s) => s.id === sid)?.pets;
+
 export default function StickerDraw() {
   const router = useRouter();
   const { width: W } = useWindowDimensions();
@@ -43,7 +45,8 @@ export default function StickerDraw() {
   const shake = useRef(new Animated.Value(0)).current;
 
   const ownedSet = useMemo(() => new Set(owned), [owned]);
-  const featured = featuredSets();
+  // this month's pets lead, they're the special guests
+  const featured = featuredSets().sort((a, b) => Number(!!pets(b)) - Number(!!pets(a)));
   const days = daysUntilRotation();
   const inner = Math.min(W, 520) - 32;
   const left = pieces.length - owned.length;
@@ -130,7 +133,11 @@ export default function StickerDraw() {
         {featured.map((sid) => {
           const set = stickerSets.find((s) => s.id === sid)!;
           const { have, total } = setProgress(ownedSet, sid);
-          const preview = pieces.filter((p) => p.set === sid && p.rarity !== 'common').slice(0, 4);
+          // the nicest shapes for a peek: no slivers, rarer ones first
+          const preview = pieces
+            .filter((p) => p.set === sid && p.w / p.h > 0.45 && p.w / p.h < 2.4)
+            .sort((a, b) => Number(a.rarity === 'common') - Number(b.rarity === 'common'))
+            .slice(0, 4);
           return (
             <Card key={sid} style={{ marginBottom: 8, padding: 14 }}>
               <Row style={{ gap: 10 }}>
@@ -138,7 +145,7 @@ export default function StickerDraw() {
                 <View style={{ flex: 1 }}>
                   <T v="heading">{set.name}</T>
                   <T v="caption">
-                    {have} of {total} found
+                    {have} of {total} {set.pets ? 'friends met' : 'found'}
                   </T>
                   <Spacer h={5} />
                   <Bar pct={(have / total) * 100} color={colors.coral} height={5} />

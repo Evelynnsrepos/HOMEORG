@@ -109,3 +109,18 @@ Licence: OGA-BY 3.0
 Artists: Eliza Wyatt (DeathsDarling), Lanea Zimmerman (Sharm)  
 Licence: OGA-BY 3.0
 
+## 🐈 Cosy Cats
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+
+## 🐅 Wild Whiskers
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+
+## 🐦 Feathers & Fluff
+
+Artists: Homeorg (drawn for the app)  
+Licence: CC0 1.0
+

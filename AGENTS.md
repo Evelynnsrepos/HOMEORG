@@ -149,9 +149,17 @@ maps the old vector ids over and falls back for anything unknown. A new room
 gets its type's surfaces (`ROOM_SURFACES`) and a few hand-picked pixel pieces
 (`starterStickers`). Walls and floors are free; only stickers are drawn.
 
+**Pets** are drawn for the app, not cut from LPC: `scripts/pets/` holds
+hand-made pixel templates (one character per pixel, see `templates.py`),
+coats with patterns (`coats.py`: tabby, tiger, spots, rosettes, points,
+calico…) and the list of every species and colour (`species.py`).
+`build-stickers.py` renders them into three pet sets (`pets: true` in the
+catalog). Add a pet at the end of its list and never rename an id. Keep them
+at LPC scale — a house cat is about 17 pixels across.
+
 **The sticker draw** (`app/shop.tsx`) is the only place coins are spent:
-every draw is a piece you don't own yet, from this month's three sets
-(`featuredSets`, they rotate on the 1st), set first then piece by rarity.
+every draw is a piece you don't own yet, from this month's three furniture
+sets and one pet set (`featuredSets`, they rotate on the 1st), set first then piece by rarity.
 **There are no in-app purchases and never will be.**
 
 **Coins** come from almost everything, through the store's `earn(source)`

@@ -125,20 +125,24 @@ export function stickersFromSlots(decor: (string | null)[] | undefined, makeId: 
 
 export const DRAW_PRICE = 60;
 export const TEN_DRAW_PRICE = 540;
+/** furniture sets featured each month; one pet set joins them */
 export const FEATURED_PER_MONTH = 3;
 
 const RARITY_WEIGHT: Record<Rarity, number> = { common: 70, rare: 25, epic: 5 };
 
 /**
  * The sets you can draw from this month. They turn over on the first of every
- * month, three at a time, so every set comes round again every four months.
+ * month: three furniture sets, so each comes round every seven months, and
+ * one set of pets, so there is always someone new to meet.
  */
 export function featuredSets(on = new Date()): string[] {
   const month = on.getFullYear() * 12 + on.getMonth();
-  return Array.from(
-    { length: FEATURED_PER_MONTH },
-    (_, k) => stickerSets[(month * FEATURED_PER_MONTH + k) % stickerSets.length].id,
-  );
+  const furniture = stickerSets.filter((s) => !s.pets);
+  const pets = stickerSets.filter((s) => s.pets);
+  return [
+    ...Array.from({ length: FEATURED_PER_MONTH }, (_, k) => furniture[(month * FEATURED_PER_MONTH + k) % furniture.length].id),
+    ...(pets.length ? [pets[month % pets.length].id] : []),
+  ];
 }
 
 /** Days left until the sets change. */

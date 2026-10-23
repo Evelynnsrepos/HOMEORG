@@ -194,12 +194,32 @@ def main():
                 'w': crop.width, 'h': crop.height, 'kind': kind_for(rel), 'rarity': rarity(crop.width, crop.height),
             })
 
+    # the pets are drawn for this app from templates in scripts/pets/
+    import sys
+    sys.path.insert(0, os.path.join(ROOT, 'scripts', 'pets'))
+    from render import render
+    from species import PET_SETS, all_pets
+    for sid, name, emoji in PET_SETS:
+        set_artists[sid] = {'Homeorg (drawn for the app)'}
+        set_licenses[sid] = {'CC0 1.0'}
+        counters[sid] = 0
+    for pid, sid, label, rar, template, coat in all_pets():
+        img = render(template, coat)
+        counters[sid] += 1
+        os.makedirs(os.path.join(OUT, sid), exist_ok=True)
+        name = f'{sid}/{pid}.png'
+        img.resize((img.width * SCALE, img.height * SCALE), Image.NEAREST).quantize(
+            colors=256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).save(os.path.join(OUT, name), optimize=True)
+        entries.append({'id': pid, 'set': sid, 'file': name, 'label': label, 'w': img.width, 'h': img.height,
+                        'kind': 'pet', 'rarity': rar})
+    all_sets = [(sid, name, emoji, False) for sid, name, emoji, _ in SETS] + [(sid, name, emoji, True) for sid, name, emoji in PET_SETS]
+
     # assets/stickers/CREDITS.md: who drew what, as the licence asks
     with open(os.path.join(OUT, 'CREDITS.md'), 'w', encoding='utf-8') as fh:
         fh.write('# Sticker credits\n\nPixel art from **LPC Revised** (https://github.com/ElizaWy/LPC), cut into single stickers and\n'
                  'scaled 4x by scripts/build-stickers.py. Licensed CC-BY 3.0 / OGA-BY 3.0. Full per-sheet credits are in\n'
-                 'scripts/data/lpc-revised/Objects/**/Credits.txt.\n\n')
-        for sid, name, emoji, _ in SETS:
+                 'scripts/data/lpc-revised/Objects/**/Credits.txt. The pet sets are drawn for this app (scripts/pets/), CC0.\n\n')
+        for sid, name, emoji, _ in all_sets:
             fh.write(f'## {emoji} {name}\n\nArtists: {", ".join(sorted(set_artists[sid])) or "see Credits.txt"}  \n'
                      f'Licence: {", ".join(sorted(set_licenses[sid])) or "CC-BY 3.0 / OGA-BY 3.0"}\n\n')
 
@@ -213,13 +233,15 @@ def main():
         ' */',
         "import type { ImageSourcePropType } from 'react-native';",
         '',
-        "export type StickerKind = 'furniture' | 'small' | 'wall';",
+        "export type StickerKind = 'furniture' | 'small' | 'wall' | 'pet';",
         "export type Rarity = 'common' | 'rare' | 'epic';",
         '',
         'export interface StickerSet {',
         '  id: string;',
         '  name: string;',
         '  emoji: string;',
+        '  /** a set of pets: one of these is featured every month next to the furniture */',
+        '  pets: boolean;',
         '  artists: string[];',
         '  licenses: string[];',
         '}',
@@ -237,8 +259,8 @@ def main():
         '',
         'export const stickerSets: StickerSet[] = [',
     ]
-    for sid, name, emoji, _ in SETS:
-        lines.append(f'  {{ id: {json.dumps(sid)}, name: {json.dumps(name)}, emoji: {json.dumps(emoji)}, '
+    for sid, name, emoji, pets in all_sets:
+        lines.append(f'  {{ id: {json.dumps(sid)}, name: {json.dumps(name)}, emoji: {json.dumps(emoji)}, pets: {json.dumps(pets)}, '
                      f'artists: {json.dumps(sorted(set_artists[sid]), ensure_ascii=False)}, '
                      f'licenses: {json.dumps(sorted(set_licenses[sid]) or ["CC-BY 3.0", "OGA-BY 3.0"])} }},')
     # two flat lists instead of 2500 object literals, which TypeScript can't infer in one go:
@@ -260,8 +282,8 @@ def main():
     with open(CATALOG, 'w', encoding='utf-8') as fh:
         fh.write('\n'.join(lines))
 
-    print(f'{len(entries)} stickers in {len(SETS)} sets')
-    for sid, *_ in SETS:
+    print(f'{len(entries)} stickers in {len(all_sets)} sets')
+    for sid, *_ in all_sets:
         print(f'  {sid:9s} {counters[sid]}')
 
 

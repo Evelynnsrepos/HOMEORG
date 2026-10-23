@@ -53,7 +53,7 @@ check("this month's sets come first, each about as likely", () => {
 
 check('the sets turn over every month and each comes round', () => {
   const seen = new Set<string>();
-  for (let m = 0; m < Math.ceil(stickerSets.length / 3); m++) featuredSets(new Date(2026, m, 10)).forEach((s) => seen.add(s));
+  for (let m = 0; m < Math.ceil(stickerSets.filter((s) => !s.pets).length / 3); m++) featuredSets(new Date(2026, m, 10)).forEach((s) => seen.add(s));
   assert.equal(seen.size, stickerSets.length);
   assert.notDeepEqual(featuredSets(new Date(2026, 0, 10)), featuredSets(new Date(2026, 1, 10)));
 });
@@ -93,6 +93,25 @@ check('every wall and floor family has a blush one and a dozen or so to pick fro
     assert.ok(mine.some((s) => s.id.endsWith('-blush')), f.id);
     assert.ok(mine.length >= 3, f.id);
   }
+});
+
+check('every month has exactly one pet set, and they take turns', () => {
+  const petSets = stickerSets.filter((s) => s.pets).map((s) => s.id);
+  assert.ok(petSets.length >= 3);
+  const seen = new Set<string>();
+  for (let m = 0; m < petSets.length; m++) {
+    const f = featuredSets(new Date(2026, m, 10));
+    assert.equal(f.filter((id) => petSets.includes(id)).length, 1);
+    f.forEach((id) => petSets.includes(id) && seen.add(id));
+  }
+  assert.equal(seen.size, petSets.length);
+});
+
+check('pets: manul, serval, tiger, house cats and birds are all there', () => {
+  for (const id of ['pet-manul', 'pet-serval', 'pet-tiger', 'pet-cat-calico-sit', 'pet-budgie-blue', 'pet-cockatiel']) {
+    assert.equal(pieceById(id)?.type, 'pixel', id);
+  }
+  assert.ok(pieces.filter((p) => p.kind === 'pet').length >= 50);
 });
 
 check('old slot furniture becomes stickers in the same places', () => {

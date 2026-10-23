@@ -7,13 +7,15 @@
  */
 import type { ImageSourcePropType } from 'react-native';
 
-export type StickerKind = 'furniture' | 'small' | 'wall';
+export type StickerKind = 'furniture' | 'small' | 'wall' | 'pet';
 export type Rarity = 'common' | 'rare' | 'epic';
 
 export interface StickerSet {
   id: string;
   name: string;
   emoji: string;
+  /** a set of pets: one of these is featured every month next to the furniture */
+  pets: boolean;
   artists: string[];
   licenses: string[];
 }
@@ -30,27 +32,30 @@ export interface Piece {
 }
 
 export const stickerSets: StickerSet[] = [
-  { id: "bakery", name: "Bakery & Dairy", emoji: "\ud83e\udd50", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Richard Kettering (Jetrel)", "Thekingphoenix"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
-  { id: "orchard", name: "Orchard", emoji: "\ud83c\udf51", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
-  { id: "grocer", name: "Green Grocer", emoji: "\ud83e\udd55", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Richard Kettering (Jetrel)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
-  { id: "veggie", name: "Veggie Patch", emoji: "\ud83e\udd6c", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
-  { id: "butcher", name: "Butcher & Fishmonger", emoji: "\ud83c\udf64", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0", "OGA-BY 3.0 (Original art CC0)"] },
-  { id: "spice", name: "Spice Market", emoji: "\ud83c\udf36\ufe0f", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
-  { id: "kids", name: "Kids' Room", emoji: "\ud83e\uddf8", artists: ["Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "bedroom", name: "Snug Bedroom", emoji: "\ud83d\udecf\ufe0f", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "pillows", name: "Pillow Fort", emoji: "\ud83d\udecb\ufe0f", artists: ["BlueCarrot16", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "dressing", name: "Dressing Room", emoji: "\ud83e\ude9e", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "couches", name: "Cosy Couches", emoji: "\ud83d\udcba", artists: [], licenses: ["CC-BY 3.0", "OGA-BY 3.0"] },
-  { id: "lounge", name: "Lounge Life", emoji: "\ud83d\udecb\ufe0f", artists: ["Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
-  { id: "screens", name: "Screen Time", emoji: "\ud83d\udcfa", artists: ["Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
-  { id: "kitchen", name: "Kitchen & Dining", emoji: "\ud83c\udf73", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Hyptosis", "Lanea Zimmerman (Sharm)", "Richard Kettering (Jetrel)"], licenses: ["OGA-BY 3.0", "OGA-BY 3.0 (Original art CC0)"] },
-  { id: "sewing", name: "Sewing Room", emoji: "\ud83e\uddf5", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
-  { id: "carpentry", name: "Carpentry", emoji: "\ud83e\ude9a", artists: ["BlueCarrot16", "Eliza Wyatt", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "forge", name: "Forge & Dungeon", emoji: "\u2692\ufe0f", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
-  { id: "ores", name: "Ores & Gems", emoji: "\ud83d\udc8e", artists: ["BlueCarrot16"], licenses: ["OGA-BY 3.0"] },
-  { id: "gallery", name: "Gallery Wall", emoji: "\ud83d\uddbc\ufe0f", artists: ["Craftpix.net 2D Game Assets", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0", "OGA-by 3.0"] },
-  { id: "hearth", name: "Hearth & Garden", emoji: "\ud83d\udd25", artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)", "Lanea Zimmerman (aka Sharm)", "YuriNikolai"], licenses: ["OGA-BY 3.0"] },
-  { id: "everyday", name: "Study & Everyday", emoji: "\ud83d\udcda", artists: ["Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "bakery", name: "Bakery & Dairy", emoji: "\ud83e\udd50", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Richard Kettering (Jetrel)", "Thekingphoenix"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
+  { id: "orchard", name: "Orchard", emoji: "\ud83c\udf51", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
+  { id: "grocer", name: "Green Grocer", emoji: "\ud83e\udd55", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Richard Kettering (Jetrel)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
+  { id: "veggie", name: "Veggie Patch", emoji: "\ud83e\udd6c", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
+  { id: "butcher", name: "Butcher & Fishmonger", emoji: "\ud83c\udf64", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0", "OGA-BY 3.0 (Original art CC0)"] },
+  { id: "spice", name: "Spice Market", emoji: "\ud83c\udf36\ufe0f", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0 (Original art CC0)"] },
+  { id: "kids", name: "Kids' Room", emoji: "\ud83e\uddf8", pets: false, artists: ["Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "bedroom", name: "Snug Bedroom", emoji: "\ud83d\udecf\ufe0f", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "pillows", name: "Pillow Fort", emoji: "\ud83d\udecb\ufe0f", pets: false, artists: ["BlueCarrot16", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "dressing", name: "Dressing Room", emoji: "\ud83e\ude9e", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "couches", name: "Cosy Couches", emoji: "\ud83d\udcba", pets: false, artists: [], licenses: ["CC-BY 3.0", "OGA-BY 3.0"] },
+  { id: "lounge", name: "Lounge Life", emoji: "\ud83d\udecb\ufe0f", pets: false, artists: ["Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
+  { id: "screens", name: "Screen Time", emoji: "\ud83d\udcfa", pets: false, artists: ["Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
+  { id: "kitchen", name: "Kitchen & Dining", emoji: "\ud83c\udf73", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Hyptosis", "Lanea Zimmerman (Sharm)", "Richard Kettering (Jetrel)"], licenses: ["OGA-BY 3.0", "OGA-BY 3.0 (Original art CC0)"] },
+  { id: "sewing", name: "Sewing Room", emoji: "\ud83e\uddf5", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)"], licenses: ["OGA-BY 3.0"] },
+  { id: "carpentry", name: "Carpentry", emoji: "\ud83e\ude9a", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "forge", name: "Forge & Dungeon", emoji: "\u2692\ufe0f", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "ores", name: "Ores & Gems", emoji: "\ud83d\udc8e", pets: false, artists: ["BlueCarrot16"], licenses: ["OGA-BY 3.0"] },
+  { id: "gallery", name: "Gallery Wall", emoji: "\ud83d\uddbc\ufe0f", pets: false, artists: ["Craftpix.net 2D Game Assets", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0", "OGA-by 3.0"] },
+  { id: "hearth", name: "Hearth & Garden", emoji: "\ud83d\udd25", pets: false, artists: ["BlueCarrot16", "Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)", "Lanea Zimmerman (aka Sharm)", "YuriNikolai"], licenses: ["OGA-BY 3.0"] },
+  { id: "everyday", name: "Study & Everyday", emoji: "\ud83d\udcda", pets: false, artists: ["Eliza Wyatt (DeathsDarling)", "Lanea Zimmerman (Sharm)"], licenses: ["OGA-BY 3.0"] },
+  { id: "cats", name: "Cosy Cats", emoji: "\ud83d\udc08", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
+  { id: "wildcats", name: "Wild Whiskers", emoji: "\ud83d\udc05", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
+  { id: "feathers", name: "Feathers & Fluff", emoji: "\ud83d\udc26", pets: true, artists: ["Homeorg (drawn for the app)"], licenses: ["CC0 1.0"] },
 ];
 
 const SRC: ImageSourcePropType[] = [
@@ -2590,6 +2595,63 @@ const SRC: ImageSourcePropType[] = [
   require('../../assets/stickers/gallery/pride-flags-04.png'),
   require('../../assets/stickers/gallery/pride-flags-05.png'),
   require('../../assets/stickers/gallery/pride-flags-06.png'),
+  require('../../assets/stickers/cats/pet-cat-ginger-tabby-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-ginger-tabby-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-brown-tabby-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-brown-tabby-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-grey-tabby-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-grey-tabby-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-black-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-black-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-white-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-white-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-tuxedo-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-tuxedo-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-calico-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-calico-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-siamese-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-siamese-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-tortie-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-tortie-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-cream-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-cream-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-blue-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-blue-loaf.png'),
+  require('../../assets/stickers/cats/pet-cat-pink-sit.png'),
+  require('../../assets/stickers/cats/pet-cat-pink-loaf.png'),
+  require('../../assets/stickers/wildcats/pet-manul.png'),
+  require('../../assets/stickers/wildcats/pet-manul-rusty.png'),
+  require('../../assets/stickers/wildcats/pet-manul-winter.png'),
+  require('../../assets/stickers/wildcats/pet-serval.png'),
+  require('../../assets/stickers/wildcats/pet-serval-black.png'),
+  require('../../assets/stickers/wildcats/pet-caracal.png'),
+  require('../../assets/stickers/wildcats/pet-lynx.png'),
+  require('../../assets/stickers/wildcats/pet-tiger.png'),
+  require('../../assets/stickers/wildcats/pet-tiger-white.png'),
+  require('../../assets/stickers/wildcats/pet-snow-leopard.png'),
+  require('../../assets/stickers/wildcats/pet-lion.png'),
+  require('../../assets/stickers/wildcats/pet-cheetah.png'),
+  require('../../assets/stickers/wildcats/pet-panther.png'),
+  require('../../assets/stickers/wildcats/pet-jaguar.png'),
+  require('../../assets/stickers/feathers/pet-budgie-green.png'),
+  require('../../assets/stickers/feathers/pet-budgie-blue.png'),
+  require('../../assets/stickers/feathers/pet-budgie-violet.png'),
+  require('../../assets/stickers/feathers/pet-budgie-lutino.png'),
+  require('../../assets/stickers/feathers/pet-cockatiel.png'),
+  require('../../assets/stickers/feathers/pet-cockatiel-lutino.png'),
+  require('../../assets/stickers/feathers/pet-robin.png'),
+  require('../../assets/stickers/feathers/pet-java-sparrow.png'),
+  require('../../assets/stickers/feathers/pet-canary.png'),
+  require('../../assets/stickers/feathers/pet-lovebird.png'),
+  require('../../assets/stickers/feathers/pet-blue-tit.png'),
+  require('../../assets/stickers/feathers/pet-pink-galah.png'),
+  require('../../assets/stickers/feathers/pet-bunny-white.png'),
+  require('../../assets/stickers/feathers/pet-bunny-brown.png'),
+  require('../../assets/stickers/feathers/pet-bunny-grey.png'),
+  require('../../assets/stickers/feathers/pet-bunny-dutch.png'),
+  require('../../assets/stickers/feathers/pet-bunny-pink.png'),
+  require('../../assets/stickers/feathers/pet-bunny-cream.png'),
+  require('../../assets/stickers/feathers/pet-bunny-black.png'),
 ];
 
 /** id|set|label|w|h|kind|rarity, in the same order as SRC */
@@ -5130,6 +5192,63 @@ pride-flags-03|gallery|Pride Flags|50|30|wall|rare
 pride-flags-04|gallery|Pride Flags|50|30|wall|rare
 pride-flags-05|gallery|Pride Flags|50|30|wall|rare
 pride-flags-06|gallery|Pride Flags|50|30|wall|rare
+pet-cat-ginger-tabby-sit|cats|Ginger tabby|17|18|pet|common
+pet-cat-ginger-tabby-loaf|cats|Ginger tabby loafing|21|13|pet|common
+pet-cat-brown-tabby-sit|cats|Brown tabby|17|18|pet|common
+pet-cat-brown-tabby-loaf|cats|Brown tabby loafing|21|13|pet|common
+pet-cat-grey-tabby-sit|cats|Grey tabby|17|18|pet|common
+pet-cat-grey-tabby-loaf|cats|Grey tabby loafing|21|13|pet|common
+pet-cat-black-sit|cats|Black cat|17|18|pet|common
+pet-cat-black-loaf|cats|Black cat loafing|21|13|pet|common
+pet-cat-white-sit|cats|White cat|17|18|pet|common
+pet-cat-white-loaf|cats|White cat loafing|21|13|pet|common
+pet-cat-tuxedo-sit|cats|Tuxedo cat|17|18|pet|common
+pet-cat-tuxedo-loaf|cats|Tuxedo cat loafing|21|13|pet|common
+pet-cat-calico-sit|cats|Calico|17|18|pet|rare
+pet-cat-calico-loaf|cats|Calico loafing|21|13|pet|rare
+pet-cat-siamese-sit|cats|Siamese|17|18|pet|rare
+pet-cat-siamese-loaf|cats|Siamese loafing|21|13|pet|rare
+pet-cat-tortie-sit|cats|Tortoiseshell|17|18|pet|rare
+pet-cat-tortie-loaf|cats|Tortoiseshell loafing|21|13|pet|rare
+pet-cat-cream-sit|cats|Cream cat|17|18|pet|common
+pet-cat-cream-loaf|cats|Cream cat loafing|21|13|pet|common
+pet-cat-blue-sit|cats|Blue cat|17|18|pet|common
+pet-cat-blue-loaf|cats|Blue cat loafing|21|13|pet|common
+pet-cat-pink-sit|cats|Strawberry cat|17|18|pet|rare
+pet-cat-pink-loaf|cats|Strawberry cat loafing|21|13|pet|rare
+pet-manul|wildcats|Pallas's cat|22|16|pet|epic
+pet-manul-rusty|wildcats|Rusty Pallas's cat|22|16|pet|epic
+pet-manul-winter|wildcats|Pallas's cat in winter|22|16|pet|epic
+pet-serval|wildcats|Serval|17|19|pet|rare
+pet-serval-black|wildcats|Black serval|17|19|pet|epic
+pet-caracal|wildcats|Caracal|17|19|pet|rare
+pet-lynx|wildcats|Lynx|17|19|pet|rare
+pet-tiger|wildcats|Tiger|39|17|pet|epic
+pet-tiger-white|wildcats|White tiger|39|17|pet|epic
+pet-snow-leopard|wildcats|Snow leopard|39|17|pet|epic
+pet-lion|wildcats|Lion|39|17|pet|epic
+pet-cheetah|wildcats|Cheetah|39|17|pet|epic
+pet-panther|wildcats|Black panther|39|17|pet|epic
+pet-jaguar|wildcats|Jaguar|39|17|pet|epic
+pet-budgie-green|feathers|Green budgie|13|14|pet|common
+pet-budgie-blue|feathers|Blue budgie|13|14|pet|common
+pet-budgie-violet|feathers|Violet budgie|13|14|pet|rare
+pet-budgie-lutino|feathers|Lutino budgie|13|14|pet|common
+pet-cockatiel|feathers|Cockatiel|14|17|pet|common
+pet-cockatiel-lutino|feathers|Lutino cockatiel|14|17|pet|rare
+pet-robin|feathers|Robin|13|14|pet|common
+pet-java-sparrow|feathers|Java sparrow|13|14|pet|common
+pet-canary|feathers|Canary|13|14|pet|common
+pet-lovebird|feathers|Lovebird|13|14|pet|common
+pet-blue-tit|feathers|Blue tit|13|14|pet|common
+pet-pink-galah|feathers|Galah|14|17|pet|rare
+pet-bunny-white|feathers|White bunny|15|16|pet|common
+pet-bunny-brown|feathers|Brown bunny|15|16|pet|common
+pet-bunny-grey|feathers|Grey bunny|15|16|pet|common
+pet-bunny-dutch|feathers|Dutch bunny|15|16|pet|common
+pet-bunny-pink|feathers|Candy bunny|15|16|pet|rare
+pet-bunny-cream|feathers|Cream bunny|15|16|pet|common
+pet-bunny-black|feathers|Black bunny|15|16|pet|common
 `;
 
 export const pieces: Piece[] = META.trim()
