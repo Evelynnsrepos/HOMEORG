@@ -102,7 +102,7 @@ unter *Einstellungen → Sichern* ein Backup machen.
 
 Die Erinnerungen sind lokale Benachrichtigungen; die Push-Berechtigung, die
 eine kostenlose Apple-ID nicht signieren kann, nimmt der Workflow heraus.
-Datum-Scan (ML Kit) braucht iOS 15.5 oder neuer.
+Die App braucht iOS 16.4 oder neuer (iPhone XS/XR und jünger).
 
 ## Wie es funktioniert
 

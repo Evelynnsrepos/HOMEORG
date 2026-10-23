@@ -17,7 +17,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.tidywell.local",
       "buildNumber": "1",
-      "deploymentTarget": "15.5",
+      "deploymentTarget": "16.4",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "UIBackgroundModes": [
