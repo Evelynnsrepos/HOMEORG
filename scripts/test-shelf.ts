@@ -10,6 +10,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { autoBestBefore, shelfLife } from '../src/data/shelfLife';
+import { hintsFrom } from '../src/lib/products';
 import type { Place } from '../src/data/units';
 
 let failed = 0;
@@ -82,6 +83,19 @@ check('FoodKeeper fills in English names the table does not know', () => {
 check('hints from a barcode lookup help a name nobody knows', () => {
   assert.equal(shelfLife('배추김치', 'fridge').known, false);
   assert.equal(shelfLife('배추김치', 'fridge', ['en:kimchi', 'en:fermented-foods']).days, 90);
+});
+
+check('an Open Food Facts product labelled only in Korean', () => {
+  // the shape the API returns, trimmed to the fields we ask for
+  const hints = hintsFrom({
+    product_name: '종가 맛김치',
+    categories_tags: ['en:plant-based-foods-and-beverages', 'en:plant-based-foods', 'en:fermented-foods', 'en:fermented-vegetables', 'en:kimchi'],
+  });
+  assert.equal(hints[0], 'en:kimchi');
+  assert.equal(shelfLife('종가 맛김치', 'fridge', hints).days, 90);
+  // and a Turkish one, where the English name does the work
+  const ayran = hintsFrom({ product_name: 'Sütaş Ayran', product_name_en: 'Ayran yogurt drink', categories_tags: ['en:dairies'] });
+  assert.ok(shelfLife('Sütaş Ayran', 'fridge', ayran).days! <= 14);
 });
 
 check('ingredients from many kitchens land in a sensible range', () => {

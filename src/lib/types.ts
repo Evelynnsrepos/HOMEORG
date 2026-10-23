@@ -185,6 +185,8 @@ export interface PantryItem {
    * Missing on items from before the lookup existed.
    */
   bestBeforeAuto?: boolean;
+  /** other words for it from a barcode lookup, so a moved item is looked up again just as well */
+  hints?: string[];
   addedAt: string;
 }
 

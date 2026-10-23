@@ -23,6 +23,12 @@ export interface Product {
   place: Place;
   /** false when the lookup found nothing and you have to type it yourself */
   found: boolean;
+  /**
+   * Other words for it, for the best-before lookup: Open Food Facts
+   * categories (most specific first) and the English or generic name. A jar
+   * labelled only in Korean still says "en:kimchi" here.
+   */
+  hints?: string[];
 }
 
 const DBS = [
@@ -32,7 +38,7 @@ const DBS = [
 ];
 
 const FIELDS =
-  'product_name,product_name_de,generic_name_de,brands,quantity,product_quantity,product_quantity_unit,categories_tags';
+  'product_name,product_name_de,product_name_en,generic_name,generic_name_de,generic_name_en,brands,quantity,product_quantity,product_quantity_unit,categories_tags';
 
 const HEADERS = {
   // Open Food Facts asks apps to identify themselves.
@@ -119,6 +125,21 @@ function placeFrom(tags: string[] | undefined, name: string): Place {
   return guessFor(name).place;
 }
 
+/** Categories narrowest first, then other names; a handful is plenty. */
+export function hintsFrom(p: {
+  categories_tags?: string[];
+  product_name?: string;
+  product_name_en?: string;
+  generic_name?: string;
+  generic_name_en?: string;
+}): string[] {
+  const tags = [...(p.categories_tags ?? [])].reverse().filter((t) => t.startsWith('en:'));
+  const names = [p.product_name_en, p.generic_name_en, p.generic_name, p.product_name].filter(
+    (n): n is string => !!n?.trim(),
+  );
+  return [...new Set([...tags.slice(0, 6), ...names])].slice(0, 9);
+}
+
 async function askOne(base: string, ean: string, signal: AbortSignal): Promise<Product | null> {
   const res = await fetch(`${base}/api/v2/product/${ean}.json?fields=${FIELDS}`, {
     headers: HEADERS,
@@ -130,7 +151,10 @@ async function askOne(base: string, ean: string, signal: AbortSignal): Promise<P
     product?: {
       product_name?: string;
       product_name_de?: string;
+      product_name_en?: string;
+      generic_name?: string;
       generic_name_de?: string;
+      generic_name_en?: string;
       brands?: string;
       quantity?: string;
       product_quantity?: number;
@@ -157,6 +181,7 @@ async function askOne(base: string, ean: string, signal: AbortSignal): Promise<P
     unit: size?.unit ?? guess.unit,
     place: placeFrom(p.categories_tags, name),
     found: true,
+    hints: hintsFrom(p),
   };
 }
 

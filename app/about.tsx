@@ -83,6 +83,27 @@ export default function About() {
       </T>
 
       <Spacer h={20} />
+      <T v="over">Best-before dates</T>
+      <Spacer h={8} />
+      <T v="body">
+        A date printed on the packet always wins: type it in, scan it off the label, or let the QR
+        code on newer packaging fill it in. Without one, the app estimates from where you keep it —
+        a table of its own for German and international names, then the USDA FoodKeeper data, then
+        the product categories from Open Food Facts. Estimates show with a ≈ and are a nudge to use
+        things up, not a food safety guarantee. When in doubt, look, smell, and check the packet.
+      </T>
+
+      <Spacer h={20} />
+      <T v="over">Data credits</T>
+      <Spacer h={8} />
+      <T v="body">
+        Product names, sizes and categories: Open Food Facts (openfoodfacts.org), made available
+        under the Open Database License (ODbL). Storage times: FoodKeeper by the USDA Food Safety
+        and Inspection Service, public domain (CC0). Text recognition for scanning dates runs on the
+        phone with Google ML Kit; no picture leaves the device.
+      </T>
+
+      <Spacer h={20} />
       <T v="over">Where the art comes from</T>
       <Spacer h={8} />
       <T v="body">

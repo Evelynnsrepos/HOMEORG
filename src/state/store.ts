@@ -267,10 +267,11 @@ function datedFor(
   place: Place,
   given: string | null | undefined,
   from: Date | string = new Date(),
+  hints: string[] = [],
 ): { bestBefore?: string; bestBeforeAuto: boolean } {
   if (given) return { bestBefore: given, bestBeforeAuto: false };
   if (given === null) return { bestBeforeAuto: false };
-  return { bestBefore: autoBestBefore(name, place, from), bestBeforeAuto: true };
+  return { bestBefore: autoBestBefore(name, place, from, hints), bestBeforeAuto: true };
 }
 
 function withDate<T extends { bestBefore?: string; bestBeforeAuto?: boolean }>(
@@ -295,7 +296,7 @@ function dateOldShelves(pantry: PantryItem[]): PantryItem[] | null {
   const out = pantry.map((p) => {
     if (p.bestBefore || p.bestBeforeAuto !== undefined) return p;
     changed = true;
-    return withDate(p, datedFor(p.name, p.place, undefined, p.addedAt));
+    return withDate(p, datedFor(p.name, p.place, undefined, p.addedAt, p.hints));
   });
   return changed ? out : null;
 }
@@ -786,7 +787,7 @@ export const useStore = create<Store>()(
         set((s) => {
           const key = item.name.trim().toLowerCase();
           if (!key) return {};
-          const dated = datedFor(item.name, item.place, item.bestBefore);
+          const dated = datedFor(item.name, item.place, item.bestBefore, new Date(), item.hints);
           const same = s.pantry.find(
             (p) =>
               p.name.trim().toLowerCase() === key && p.unit === item.unit && p.place === item.place,
@@ -833,10 +834,10 @@ export const useStore = create<Store>()(
             if ('bestBefore' in patch) {
               // undefined asks for a lookup: from now if it moved shelf, else from when it came in
               const moved = next.place !== p.place;
-              return withDate(next, datedFor(next.name, next.place, bestBefore, moved ? new Date() : p.addedAt));
+              return withDate(next, datedFor(next.name, next.place, bestBefore, moved ? new Date() : p.addedAt, next.hints));
             }
             if (p.bestBeforeAuto && next.place !== p.place) {
-              return withDate(next, datedFor(next.name, next.place, undefined));
+              return withDate(next, datedFor(next.name, next.place, undefined, new Date(), next.hints));
             }
             return next;
           }),

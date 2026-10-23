@@ -35,10 +35,16 @@ export function QuantitySheet({
   name,
   note,
   initial,
+  hints,
+  dateNote,
   confirmLabel = 'Put it away',
   onCancel,
   onConfirm,
 }: {
+  /** other words for it, from a barcode lookup, for the "Auto" estimate */
+  hints?: string[];
+  /** where a date filled in up front came from, e.g. "from the QR code" */
+  dateNote?: string;
   name: string;
   /** a line under the title — where the name came from, say */
   note?: string;
@@ -54,7 +60,7 @@ export function QuantitySheet({
   const [place, setPlace] = useState<Place>(initial?.place ?? guess.place);
   const [bestBefore, setBestBefore] = useState<string | null | undefined>(initial?.bestBefore);
   // what "Auto" would give for this name on this shelf, shown so it's not a black box
-  const auto = autoBestBefore(label || name, place);
+  const auto = autoBestBefore(label || name, place, new Date(), hints);
   const [custom, setCustom] = useState('');
   const [customOpen, setCustomOpen] = useState(
     !!initial?.unit && !units.some((u) => u.id === initial.unit),
@@ -189,6 +195,7 @@ export function QuantitySheet({
             {(bestBefore === undefined ? auto : bestBefore) ? (
               <T v="caption">
                 {bestBefore === undefined ? '≈ ' : ''}till {dateText((bestBefore ?? auto)!)}
+                {dateNote && bestBefore && bestBefore === initial?.bestBefore ? ` · ${dateNote}` : ''}
               </T>
             ) : null}
           </Row>
@@ -197,7 +204,7 @@ export function QuantitySheet({
             <Chip
               small
               icon="sparkles"
-              label={`Auto · ${shelfLifeText(label || name, place)}`}
+              label={`Auto · ${shelfLifeText(label || name, place, hints)}`}
               active={bestBefore === undefined}
               onPress={() => setBestBefore(undefined)}
             />

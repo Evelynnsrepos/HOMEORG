@@ -53,7 +53,8 @@
     "apk": "expo prebuild -p android && node scripts/sign-android.js && node scripts/build-apk.js",
     "test:rewe": "tsx scripts/test-rewe.ts",
     "test:shelf": "tsx scripts/test-shelf.ts",
-    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts"
+    "test:gs1": "tsx scripts/test-gs1.ts",
+    "test": "tsx scripts/test-rewe.ts && tsx scripts/test-shelf.ts && tsx scripts/test-gs1.ts"
   },
   "private": true,
   "overrides": {

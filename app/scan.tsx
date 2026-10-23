@@ -6,15 +6,25 @@ import { ActivityIndicator, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { qtyLabel } from '../src/data/units';
+import { parseGs1 } from '../src/lib/gs1';
 import { lookupBarcode, type Product } from '../src/lib/products';
 import { useStore } from '../src/state/store';
 import { colors, radius } from '../src/theme';
 import { Btn, Row, Spacer, T, tap, tapSuccess } from '../src/ui/base';
 import { QuantitySheet } from '../src/ui/QuantitySheet';
 
+/** A scanned product, plus the date printed into its 2D code when it had one. */
+type Pending = Product & { expiry?: string; dateKind?: 'use-by' | 'best-before' | 'sell-by' };
+
+const DATE_NOTE = { 'use-by': 'use-by from the code', 'best-before': 'best before from the code', 'sell-by': 'sell-by from the code' };
+
 /**
  * Point the camera at a barcode and the thing lands on a shelf. Built for
  * unpacking a whole shop: it stays open and keeps scanning until you're done.
+ *
+ * Besides the plain barcode it reads the QR and DataMatrix codes that newer
+ * packaging carries (GS1 Digital Link). Those can hold the date of this very
+ * packet, which then fills in "Good for" — no guessing needed.
  */
 export default function Scan() {
   const insets = useSafeAreaInsets();
@@ -25,7 +35,7 @@ export default function Scan() {
   const addPantry = useStore((s) => s.addPantry);
 
   const [busy, setBusy] = useState(false);
-  const [pending, setPending] = useState<Product | null>(null);
+  const [pending, setPending] = useState<Pending | null>(null);
   const [added, setAdded] = useState<string[]>([]);
   const [torch, setTorch] = useState(false);
   /** the scanner fires many times a second — one barcode at a time is plenty */
@@ -33,20 +43,26 @@ export default function Scan() {
 
   const onScanned = useCallback(
     async ({ data }: { data: string }) => {
-      const ean = data.trim();
-      if (!ean || lock.current || pending) return;
-      lock.current = ean;
+      const text = data.trim();
+      if (!text || lock.current || pending) return;
+      // a GS1 2D code carries the product number and maybe the date; any
+      // other QR code (a menu, a Wi-Fi login) is not ours to read
+      const gs1 = /^\d{8,14}$/.test(text) ? null : parseGs1(text);
+      if (!gs1 && !/^\d{8,14}$/.test(text)) return;
+      const ean = gs1?.gtin ?? text;
+      const date = gs1?.expiry ? { expiry: gs1.expiry, dateKind: gs1.dateKind } : {};
+      lock.current = text;
       tapSuccess();
 
-      if (!lookupOnline) {
-        setPending({ ean, name: '', place: 'pantry', unit: 'pc', found: false });
+      if (!lookupOnline || (gs1 && !gs1.gtin)) {
+        setPending({ ean, name: '', place: 'pantry', unit: 'pc', found: false, ...date });
         return;
       }
 
       setBusy(true);
       const product = await lookupBarcode(ean);
       setBusy(false);
-      setPending(product);
+      setPending({ ...product, ...date });
     },
     [lookupOnline, pending],
   );
@@ -99,7 +115,7 @@ export default function Scan() {
         facing="back"
         enableTorch={torch}
         barcodeScannerSettings={{
-          barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128'],
+          barcodeTypes: ['ean13', 'ean8', 'upc_a', 'upc_e', 'code128', 'qr', 'datamatrix'],
         }}
         onBarcodeScanned={pending ? undefined : onScanned}
       />
@@ -128,7 +144,7 @@ export default function Scan() {
         />
         <Spacer h={16} />
         <T v="label" color="#EDE4D4">
-          {busy ? 'Looking it up…' : 'Hold a barcode in the frame'}
+          {busy ? 'Looking it up…' : 'Hold a barcode or QR code in the frame'}
         </T>
       </View>
 
@@ -195,10 +211,12 @@ export default function Scan() {
         <QuantitySheet
           name={pending.name}
           note={pending.found ? 'Scanned' : `Not in the database · ${pending.ean}`}
-          initial={{ qty: pending.qty ?? 1, unit: pending.unit, place: pending.place }}
+          initial={{ qty: pending.qty ?? 1, unit: pending.unit, place: pending.place, bestBefore: pending.expiry }}
+          hints={pending.hints}
+          dateNote={pending.dateKind ? DATE_NOTE[pending.dateKind] : undefined}
           onCancel={close}
           onConfirm={(b) => {
-            addPantry(b);
+            addPantry({ ...b, hints: pending.hints });
             setAdded((a) => [...a, `${b.name} · ${qtyLabel(b.qty, b.unit)}`]);
             tap();
             close();
