@@ -1,6 +1,7 @@
 # Builds the Android APK and attaches it to a GitHub release.
 #
 #   git tag v1.3.0 && git push origin v1.3.0      -> release "v1.3.0" with the APK
+#   git tag v1.3.0-beta.1 && git push ...        -> the same, marked as a pre-release
 #   Actions tab -> Release -> Run workflow        -> APK as a build artifact only
 #
 # Signing: with the four ANDROID_* secrets set (see AGENTS.md), the APK is
@@ -92,3 +93,5 @@ jobs:
         with:
           files: ${{ steps.apk.outputs.file }}
           generate_release_notes: true
+          # v1.3.0-beta.1 and the like are test builds, not the real thing
+          prerelease: ${{ contains(github.ref_name, '-') }}
